@@ -1,0 +1,1 @@
+fds.protobuf.stach >= 1.0,<2.0
