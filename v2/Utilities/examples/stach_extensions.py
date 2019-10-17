@@ -42,7 +42,10 @@ class StachExtensions:
             for series_definition_column in header_table.definition.columns:
                 header_row = list()
                 for i in range(0, dimension_columns_count, 1):
-                    header_row.append(dimension_columns[i].description)
+                    if dimension_columns[i].description is "":
+                        header_row.append(" ")
+                    else:
+                        header_row.append(dimension_columns[i].description)
 
                 for i in range(0, header_row_count, 1):
                     header_row.append(str(SeriesDataHelper.get_value_helper(header_table.data.columns[series_definition_column.id], series_definition_column.type, i, series_definition_column.format.null_format)))
