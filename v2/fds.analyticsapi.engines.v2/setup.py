@@ -28,12 +28,14 @@ setup(
     name=NAME,
     version=VERSION,
     description="Engines API",
+    author="Analytics API Support",
     author_email="analytics.api.support@factset.com",
     url="",
     keywords=["OpenAPI", "OpenAPI-Generator", "Engines API"],
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,
+    license="The Apache Software License, Version 2.0",
     long_description="""\
     Allow clients to fetch Engines Analytics through APIs.  # noqa: E501
     """
