@@ -59,8 +59,12 @@ class StachExtensions:
                     data_row.append(str(SeriesDataHelper.get_value_helper(primary_table.data.columns[series_definition_column.id], series_definition_column.type, i, series_definition_column.format.null_format)))
                 data.append(data_row)
 
-            data_frame = pd.DataFrame(data=data)
-            data_frame.columns = pd.MultiIndex.from_arrays(headers)
+            if len(header_table.definition.columns) > 1:
+                data_frame = pd.DataFrame(data=data)
+                data_frame.columns = pd.MultiIndex.from_arrays(headers)
+            else:
+                data_frame = pd.DataFrame(data=data, columns = headers[0])
+            
             return data_frame
 
         else:
