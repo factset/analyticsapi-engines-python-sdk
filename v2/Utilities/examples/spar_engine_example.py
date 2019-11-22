@@ -25,6 +25,8 @@ username = "<username-serial>"
 password = "<apiKey>"
 
 spar_document_name = "pmw_root:/spar_documents/Factset Default Document"
+spar_component_name = "Returns Data"
+spar_component_category = "Raw Data / Returns"
 spar_benchmark_r_1000 = "R.1000"
 spar_benchmark_russell_pr_2000 = "RUSSELL_P:R.2000"
 spar_benchmark_russell_prefix = "RUSSELL"
@@ -46,7 +48,7 @@ api_client = ApiClient(config)
 components_api = ComponentsApi(api_client)
 
 components = components_api.get_spar_components(spar_document_name)
-component_id = list(components.keys())[0]
+component_id = list((dict(filter(lambda component: (component[1].name == spar_component_name and component[1].category == spar_component_category), components.items()))).keys())[0]
 
 spar_account_identifier = SPARIdentifier(spar_benchmark_r_1000, spar_benchmark_russell_return_type, spar_benchmark_russell_prefix)
 spar_accounts = [spar_account_identifier]

@@ -32,14 +32,20 @@ username = "<username-serial>"
 password = "<apiKey>"
 
 pa_document_name = "PA_DOCUMENTS:DEFAULT"
+pa_component_name = "Weights"
+pa_component_category = "Weights / Exposures"
 pa_benchmark_sp_50 = "BENCH:SP50"
 pa_benchmark_r_1000 = "BENCH:R.1000"
 spar_document_name = "pmw_root:/spar_documents/Factset Default Document"
+spar_component_name = "Returns Data"
+spar_component_category = "Raw Data / Returns"
 spar_benchmark_r_1000 = "R.1000"
 spar_benchmark_russell_pr_2000 = "RUSSELL_P:R.2000"
 spar_benchmark_russell_prefix = "RUSSELL"
 spar_benchmark_russell_return_type = "GTR"
 vault_document_name = "PA3_DOCUMENTS:DEFAULT"
+vault_component_name = "Exposures"
+vault_component_category = "General / Positioning"
 vault_default_account = "Client:/analytics/data/US_MID_CAP_CORE.ACTM"
 vault_startdate = "FIRST_REPOSITORY"
 vault_enddate = "LAST_REPOSITORY"
@@ -60,7 +66,7 @@ api_client = ApiClient(config)
 components_api = ComponentsApi(api_client)
 
 components = components_api.get_pa_components(pa_document_name)
-component_id = list(components.keys())[0]
+component_id = list((dict(filter(lambda component: (component[1].name == pa_component_name and component[1].category == pa_component_category), components.items()))).keys())[0]
 
 pa_account_identifier = PAIdentifier(pa_benchmark_sp_50)
 pa_accounts = [pa_account_identifier]
@@ -71,7 +77,7 @@ pa_dates = PADateParameters(startdate, enddate, frequency)
 pa_calculation_parameters = {"1": PACalculationParameters(component_id, pa_accounts, pa_benchmarks, pa_dates)}
 
 components = components_api.get_spar_components(spar_document_name)
-component_id = list(components.keys())[0]
+component_id = list((dict(filter(lambda component: (component[1].name == spar_component_name and component[1].category == spar_component_category), components.items()))).keys())[0]
 
 spar_account_identifier = SPARIdentifier(spar_benchmark_r_1000, spar_benchmark_russell_return_type, spar_benchmark_russell_prefix)
 spar_accounts = [spar_account_identifier]
@@ -81,7 +87,7 @@ spar_dates = SPARDateParameters(startdate, enddate, frequency)
 spar_calculation_parameters = {"2": SPARCalculationParameters(component_id, spar_accounts, spar_benchmark_identifier, spar_dates)}
 
 components = components_api.get_vault_components(vault_document_name)
-component_id = list(components.keys())[0]
+component_id = list((dict(filter(lambda component: (component[1].name == vault_component_name and component[1].category == vault_component_category), components.items()))).keys())[0]
 
 vault_account_identifier = VaultIdentifier(vault_default_account)
 vault_dates = VaultDateParameters(vault_startdate, vault_enddate, frequency)
