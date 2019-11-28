@@ -25,6 +25,8 @@ username = "<username-serial>"
 password = "<apiKey>"
 
 pa_document_name = "PA_DOCUMENTS:DEFAULT"
+pa_component_name = "Weights"
+pa_component_category = "Weights / Exposures"
 pa_benchmark_sp_50 = "BENCH:SP50"
 pa_benchmark_r_1000 = "BENCH:R.1000"
 startdate = "20180101"
@@ -44,7 +46,7 @@ api_client = ApiClient(config)
 components_api = ComponentsApi(api_client)
 
 components = components_api.get_pa_components(pa_document_name)
-component_id = list(components.keys())[0]
+component_id = list((dict(filter(lambda component: (component[1].name == pa_component_name and component[1].category == pa_component_category), components.items()))).keys())[0]
 
 pa_account_identifier = PAIdentifier(pa_benchmark_sp_50)
 pa_accounts = [pa_account_identifier]

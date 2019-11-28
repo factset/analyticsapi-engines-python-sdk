@@ -26,6 +26,8 @@ username = "<username-serial>"
 password = "<apiKey>"
 
 vault_document_name = "PA3_DOCUMENTS:DEFAULT"
+vault_component_name = "Exposures"
+vault_component_category = "General / Positioning"
 vault_default_account = "Client:/analytics/data/US_MID_CAP_CORE.ACTM"
 vault_startdate = "FIRST_REPOSITORY"
 vault_enddate = "LAST_REPOSITORY"
@@ -44,7 +46,7 @@ api_client = ApiClient(config)
 components_api = ComponentsApi(api_client)
 
 components = components_api.get_vault_components(vault_document_name)
-component_id = list(components.keys())[0]
+component_id = list((dict(filter(lambda component: (component[1].name == vault_component_name and component[1].category == vault_component_category), components.items()))).keys())[0]
 
 vault_account_identifier = VaultIdentifier(vault_default_account)
 vault_dates = VaultDateParameters(vault_startdate, vault_enddate, frequency)
