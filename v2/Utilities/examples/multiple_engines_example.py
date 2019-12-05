@@ -24,7 +24,7 @@ from fds.analyticsapi.engines.v2.models.vault_calculation_parameters import Vaul
 from fds.analyticsapi.engines.v2.models.vault_identifier import VaultIdentifier
 from fds.analyticsapi.engines.v2.models.vault_date_parameters import VaultDateParameters
 
-# Copy 'Converting API output to Table Format' snippet to a file with name 'stach_extension.py' to use below import statement
+# Copy 'Converting API output to Table Format' snippet to a file with name 'stach_extensions.py' to use below import statement
 from stach_extensions import StachExtensions
 
 host = "https://api.factset.com"
