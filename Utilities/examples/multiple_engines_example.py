@@ -61,6 +61,8 @@ config.password = password
 # config.proxy = "<proxyUrl>"
 config.verify_ssl = False
 
+config.retries = Retry(total=3, status=3, status_forcelist=frozenset([429, 503]), backoff_factor=2, raise_on_status=False)
+
 api_client = ApiClient(config)
 
 components_api = ComponentsApi(api_client)
