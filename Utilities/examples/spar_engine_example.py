@@ -16,6 +16,7 @@ from fds.analyticsapi.engines.models.calculation import Calculation
 from fds.analyticsapi.engines.models.spar_calculation_parameters import SPARCalculationParameters
 from fds.analyticsapi.engines.models.spar_identifier import SPARIdentifier
 from fds.analyticsapi.engines.models.spar_date_parameters import SPARDateParameters
+from urllib3 import Retry
 
 # Copy 'Converting API output to Table Format' snippet to a file with name 'stach_extensions.py' to use below import statement
 from stach_extensions import StachExtensions

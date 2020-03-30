@@ -17,6 +17,7 @@ from fds.analyticsapi.engines.models.calculation import Calculation
 from fds.analyticsapi.engines.models.vault_calculation_parameters import VaultCalculationParameters
 from fds.analyticsapi.engines.models.vault_identifier import VaultIdentifier
 from fds.analyticsapi.engines.models.vault_date_parameters import VaultDateParameters
+from urllib3 import Retry
 
 # Copy 'Converting API output to Table Format' snippet to a file with name 'stach_extensions.py' to use below import statement
 from stach_extensions import StachExtensions
