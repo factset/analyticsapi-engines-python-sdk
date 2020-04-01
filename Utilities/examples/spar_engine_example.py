@@ -2,13 +2,15 @@ import json
 import sys
 import time
 
+from fds.analyticsapi.engines import ComponentSummary
 from google.protobuf import json_format
 from google.protobuf.json_format import MessageToJson
 from google.protobuf.json_format import MessageToDict
 from fds.protobuf.stach.Package_pb2 import Package
 
-from fds.analyticsapi.engines.configuration import Configuration
 from fds.analyticsapi.engines.api_client import ApiClient
+from fds.analyticsapi.engines import ComponentSummary
+from fds.analyticsapi.engines.configuration import Configuration
 from fds.analyticsapi.engines.api.components_api import ComponentsApi
 from fds.analyticsapi.engines.api.calculations_api import CalculationsApi
 from fds.analyticsapi.engines.api.utility_api import UtilityApi
@@ -51,7 +53,8 @@ api_client = ApiClient(config)
 components_api = ComponentsApi(api_client)
 
 components = components_api.get_spar_components(spar_document_name)
-component_id = list((dict(filter(lambda component: (component[1].name == spar_component_name and component[1].category == spar_component_category), components.items()))).keys())[0]
+component_desc = ComponentSummary(name=spar_component_name, category=spar_component_category)
+component_id = [x for x in list(components.keys()) if components[x] == component_desc][0]
 
 spar_account_identifier = SPARIdentifier(spar_benchmark_r_1000, spar_benchmark_russell_return_type, spar_benchmark_russell_prefix)
 spar_accounts = [spar_account_identifier]
@@ -77,7 +80,7 @@ calculation_id = run_calculation_response[2].get("location").split("/")[-1]
 print("Calculation Id: " + calculation_id)
 
 status_response = calculations_api.get_calculation_status_by_id_with_http_info(calculation_id)
-while (status_response[1] == 200 and (status_response[0].status == "Queued" or status_response[0].status == "Executing")):
+while status_response[1] == 200 and (status_response[0].status in ("Queued", "Executing")):
     max_age = '5'
     age_value = status_response[2].get("cache-control")
     if age_value is not None:
