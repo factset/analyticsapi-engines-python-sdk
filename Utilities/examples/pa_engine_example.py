@@ -2,21 +2,21 @@ import json
 import sys
 import time
 
+from fds.analyticsapi.engines import ComponentSummary
+from fds.analyticsapi.engines.api.calculations_api import CalculationsApi
+from fds.analyticsapi.engines.api.components_api import ComponentsApi
+from fds.analyticsapi.engines.api.utility_api import UtilityApi
+from fds.analyticsapi.engines.api_client import ApiClient
+from fds.analyticsapi.engines.configuration import Configuration
+from fds.analyticsapi.engines.models.calculation import Calculation
+from fds.analyticsapi.engines.models.pa_calculation_parameters import PACalculationParameters
+from fds.analyticsapi.engines.models.pa_date_parameters import PADateParameters
+from fds.analyticsapi.engines.models.pa_identifier import PAIdentifier
+from fds.protobuf.stach.Package_pb2 import Package
+
 from google.protobuf import json_format
 from google.protobuf.json_format import MessageToJson
 from google.protobuf.json_format import MessageToDict
-from fds.protobuf.stach.Package_pb2 import Package
-
-from fds.analyticsapi.engines.api_client import ApiClient
-from fds.analyticsapi.engines import ComponentSummary
-from fds.analyticsapi.engines.configuration import Configuration
-from fds.analyticsapi.engines.api.components_api import ComponentsApi
-from fds.analyticsapi.engines.api.calculations_api import CalculationsApi
-from fds.analyticsapi.engines.api.utility_api import UtilityApi
-from fds.analyticsapi.engines.models.calculation import Calculation
-from fds.analyticsapi.engines.models.pa_calculation_parameters import PACalculationParameters
-from fds.analyticsapi.engines.models.pa_identifier import PAIdentifier
-from fds.analyticsapi.engines.models.pa_date_parameters import PADateParameters
 from urllib3 import Retry
 
 # Copy 'Converting API output to Table Format' snippet to a file with name 'stach_extensions.py' to use below import statement
@@ -43,6 +43,7 @@ config.password = password
 # config.proxy = "<proxyUrl>"
 config.verify_ssl = False
 
+# Setting configuration to retry api calls on http status codes of 429 and 503.
 config.retries = Retry(total=3, status=3, status_forcelist=frozenset([429, 503]), backoff_factor=2, raise_on_status=False)
 
 api_client = ApiClient(config)
@@ -51,7 +52,7 @@ components_api = ComponentsApi(api_client)
 
 components = components_api.get_pa_components(pa_document_name)
 component_desc = ComponentSummary(name=pa_component_name, category=pa_component_category)
-component_id = [x for x in list(components.keys()) if components[x] == component_desc][0]
+component_id = [id for id in list(components.keys()) if components[id] == component_desc][0]
 
 pa_account_identifier = PAIdentifier(pa_benchmark_sp_50)
 pa_accounts = [pa_account_identifier]
