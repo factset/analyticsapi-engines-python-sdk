@@ -2,7 +2,6 @@ import json
 import sys
 import time
 
-from fds.analyticsapi.engines import ComponentSummary
 from google.protobuf import json_format
 from google.protobuf.json_format import MessageToJson
 from google.protobuf.json_format import MessageToDict
