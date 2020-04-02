@@ -2,21 +2,23 @@ import json
 import sys
 import time
 
+from fds.analyticsapi.engines import ComponentSummary
+from fds.analyticsapi.engines.api.calculations_api import CalculationsApi
+from fds.analyticsapi.engines.api.components_api import ComponentsApi
+from fds.analyticsapi.engines.api.configurations_api import ConfigurationsApi
+from fds.analyticsapi.engines.api.utility_api import UtilityApi
+from fds.analyticsapi.engines.api_client import ApiClient
+from fds.analyticsapi.engines.configuration import Configuration
+from fds.analyticsapi.engines.models.calculation import Calculation
+from fds.analyticsapi.engines.models.vault_calculation_parameters import VaultCalculationParameters
+from fds.analyticsapi.engines.models.vault_date_parameters import VaultDateParameters
+from fds.analyticsapi.engines.models.vault_identifier import VaultIdentifier
+from fds.protobuf.stach.Package_pb2 import Package
+
 from google.protobuf import json_format
 from google.protobuf.json_format import MessageToJson
 from google.protobuf.json_format import MessageToDict
-from fds.protobuf.stach.Package_pb2 import Package
-
-from fds.analyticsapi.engines.configuration import Configuration
-from fds.analyticsapi.engines.api_client import ApiClient
-from fds.analyticsapi.engines.api.components_api import ComponentsApi
-from fds.analyticsapi.engines.api.configurations_api import ConfigurationsApi
-from fds.analyticsapi.engines.api.calculations_api import CalculationsApi
-from fds.analyticsapi.engines.api.utility_api import UtilityApi
-from fds.analyticsapi.engines.models.calculation import Calculation
-from fds.analyticsapi.engines.models.vault_calculation_parameters import VaultCalculationParameters
-from fds.analyticsapi.engines.models.vault_identifier import VaultIdentifier
-from fds.analyticsapi.engines.models.vault_date_parameters import VaultDateParameters
+from urllib3 import Retry
 
 # Copy 'Converting API output to Table Format' snippet to a file with name 'stach_extensions.py' to use below import statement
 from stach_extensions import StachExtensions
@@ -41,12 +43,16 @@ config.password = password
 # config.proxy = "<proxyUrl>"
 config.verify_ssl = False
 
+# Setting configuration to retry api calls on http status codes of 429 and 503.
+config.retries = Retry(total=3, status=3, status_forcelist=frozenset([429, 503]), backoff_factor=2, raise_on_status=False)
+
 api_client = ApiClient(config)
 
 components_api = ComponentsApi(api_client)
 
 components = components_api.get_vault_components(vault_document_name)
-component_id = list((dict(filter(lambda component: (component[1].name == vault_component_name and component[1].category == vault_component_category), components.items()))).keys())[0]
+component_desc = ComponentSummary(name=vault_component_name, category=vault_component_category)
+component_id = [id for id in list(components.keys()) if components[id] == component_desc][0]
 
 vault_account_identifier = VaultIdentifier(vault_default_account)
 vault_dates = VaultDateParameters(vault_startdate, vault_enddate, frequency)
@@ -74,7 +80,7 @@ calculation_id = run_calculation_response[2].get("location").split("/")[-1]
 print("Calculation Id: " + calculation_id)
 
 status_response = calculations_api.get_calculation_status_by_id_with_http_info(calculation_id)
-while (status_response[1] == 200 and (status_response[0].status == "Queued" or status_response[0].status == "Executing")):
+while status_response[1] == 200 and (status_response[0].status in ("Queued", "Executing")):
     max_age = '5'
     age_value = status_response[2].get("cache-control")
     if age_value is not None:
