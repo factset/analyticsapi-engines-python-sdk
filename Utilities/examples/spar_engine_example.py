@@ -27,7 +27,7 @@ username = "<username-serial>"
 password = "<apiKey>"
 
 spar_document_name = "pmw_root:/spar_documents/Factset Default Document"
-spar_component_name = "Returns Data"
+spar_component_name = "Returns Table"
 spar_component_category = "Raw Data / Returns"
 spar_benchmark_r_1000 = "R.1000"
 spar_benchmark_russell_pr_2000 = "RUSSELL_P:R.2000"

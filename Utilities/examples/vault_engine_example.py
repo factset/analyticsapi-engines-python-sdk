@@ -28,7 +28,7 @@ username = "<username-serial>"
 password = "<apiKey>"
 
 vault_document_name = "PA3_DOCUMENTS:DEFAULT"
-vault_component_name = "Exposures"
+vault_component_name = "Weights"
 vault_component_category = "General / Positioning"
 vault_default_account = "Client:/analytics/data/US_MID_CAP_CORE.ACTM"
 vault_startdate = "FIRST_REPOSITORY"
