@@ -96,6 +96,7 @@ class SPARCalculationParameters(object):
     def accounts(self):
         """Gets the accounts of this SPARCalculationParameters.  # noqa: E501
 
+        List of accounts for SPAR calculation.  # noqa: E501
 
         :return: The accounts of this SPARCalculationParameters.  # noqa: E501
         :rtype: list[SPARIdentifier]
@@ -106,6 +107,7 @@ class SPARCalculationParameters(object):
     def accounts(self, accounts):
         """Sets the accounts of this SPARCalculationParameters.
 
+        List of accounts for SPAR calculation.  # noqa: E501
 
         :param accounts: The accounts of this SPARCalculationParameters.  # noqa: E501
         :type: list[SPARIdentifier]

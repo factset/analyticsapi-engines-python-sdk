@@ -43,6 +43,7 @@
     <Compile Include="test_dates_api.py" />
     <Compile Include="test_documents_api.py" />
     <Compile Include="test_frequencies_api.py" />
+    <Compile Include="test_spar_benchmark_api.py" />
     <Compile Include="test_groups_api.py" />
     <Compile Include="__init__.py" />
   </ItemGroup>

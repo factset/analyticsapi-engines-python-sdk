@@ -38,6 +38,10 @@ from fds.analyticsapi.engines.models.pa_calculation_parameters import PACalculat
 from fds.analyticsapi.engines.models.pa_component import PAComponent
 from fds.analyticsapi.engines.models.pa_date_parameters import PADateParameters
 from fds.analyticsapi.engines.models.pa_identifier import PAIdentifier
+from fds.analyticsapi.engines.models.pub_calculation_parameters import PubCalculationParameters
+from fds.analyticsapi.engines.models.pub_date_parameters import PubDateParameters
+from fds.analyticsapi.engines.models.pub_identifier import PubIdentifier
+from fds.analyticsapi.engines.models.spar_benchmark import SPARBenchmark
 from fds.analyticsapi.engines.models.spar_calculation_parameters import SPARCalculationParameters
 from fds.analyticsapi.engines.models.spar_date_parameters import SPARDateParameters
 from fds.analyticsapi.engines.models.spar_identifier import SPARIdentifier

@@ -15,7 +15,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "3.0.0"
+__version__ = "4.0.0"
 
 # import apis into sdk package
 from fds.analyticsapi.engines.api.accounts_api import AccountsApi
@@ -29,6 +29,7 @@ from fds.analyticsapi.engines.api.dates_api import DatesApi
 from fds.analyticsapi.engines.api.documents_api import DocumentsApi
 from fds.analyticsapi.engines.api.frequencies_api import FrequenciesApi
 from fds.analyticsapi.engines.api.groups_api import GroupsApi
+from fds.analyticsapi.engines.api.spar_benchmark_api import SPARBenchmarkApi
 from fds.analyticsapi.engines.api.utility_api import UtilityApi
 
 # import ApiClient
@@ -63,6 +64,10 @@ from fds.analyticsapi.engines.models.pa_calculation_parameters import PACalculat
 from fds.analyticsapi.engines.models.pa_component import PAComponent
 from fds.analyticsapi.engines.models.pa_date_parameters import PADateParameters
 from fds.analyticsapi.engines.models.pa_identifier import PAIdentifier
+from fds.analyticsapi.engines.models.pub_calculation_parameters import PubCalculationParameters
+from fds.analyticsapi.engines.models.pub_date_parameters import PubDateParameters
+from fds.analyticsapi.engines.models.pub_identifier import PubIdentifier
+from fds.analyticsapi.engines.models.spar_benchmark import SPARBenchmark
 from fds.analyticsapi.engines.models.spar_calculation_parameters import SPARCalculationParameters
 from fds.analyticsapi.engines.models.spar_date_parameters import SPARDateParameters
 from fds.analyticsapi.engines.models.spar_identifier import SPARIdentifier

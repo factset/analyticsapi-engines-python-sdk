@@ -262,7 +262,7 @@ class Configuration(object):
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: 2\n"\
-               "SDK Package Version: 3.0.0".\
+               "SDK Package Version: 4.0.0".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self):
@@ -272,7 +272,7 @@ class Configuration(object):
         """
         return [
             {
-                'url': "https://api.factset.com/",
+                'url': "https://api.factset.com",
                 'description': "No description provided",
             }
         ]

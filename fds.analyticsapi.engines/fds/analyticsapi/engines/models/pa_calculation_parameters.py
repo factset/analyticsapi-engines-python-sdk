@@ -40,7 +40,8 @@ class PACalculationParameters(object):
         'dates': 'PADateParameters',
         'groups': 'list[PACalculationGroup]',
         'currencyisocode': 'str',
-        'columns': 'list[PACalculationColumn]'
+        'columns': 'list[PACalculationColumn]',
+        'componentdetail': 'str'
     }
 
     attribute_map = {
@@ -50,10 +51,11 @@ class PACalculationParameters(object):
         'dates': 'dates',
         'groups': 'groups',
         'currencyisocode': 'currencyisocode',
-        'columns': 'columns'
+        'columns': 'columns',
+        'componentdetail': 'componentdetail'
     }
 
-    def __init__(self, componentid=None, accounts=None, benchmarks=None, dates=None, groups=None, currencyisocode=None, columns=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, componentid=None, accounts=None, benchmarks=None, dates=None, groups=None, currencyisocode=None, columns=None, componentdetail=None, local_vars_configuration=None):  # noqa: E501
         """PACalculationParameters - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -66,6 +68,7 @@ class PACalculationParameters(object):
         self._groups = None
         self._currencyisocode = None
         self._columns = None
+        self._componentdetail = None
         self.discriminator = None
 
         self.componentid = componentid
@@ -81,6 +84,8 @@ class PACalculationParameters(object):
             self.currencyisocode = currencyisocode
         if columns is not None:
             self.columns = columns
+        if componentdetail is not None:
+            self.componentdetail = componentdetail
 
     @property
     def componentid(self):
@@ -111,6 +116,7 @@ class PACalculationParameters(object):
     def accounts(self):
         """Gets the accounts of this PACalculationParameters.  # noqa: E501
 
+        List of accounts.  # noqa: E501
 
         :return: The accounts of this PACalculationParameters.  # noqa: E501
         :rtype: list[PAIdentifier]
@@ -121,6 +127,7 @@ class PACalculationParameters(object):
     def accounts(self, accounts):
         """Sets the accounts of this PACalculationParameters.
 
+        List of accounts.  # noqa: E501
 
         :param accounts: The accounts of this PACalculationParameters.  # noqa: E501
         :type: list[PAIdentifier]
@@ -132,6 +139,7 @@ class PACalculationParameters(object):
     def benchmarks(self):
         """Gets the benchmarks of this PACalculationParameters.  # noqa: E501
 
+        List of benchmarks.  # noqa: E501
 
         :return: The benchmarks of this PACalculationParameters.  # noqa: E501
         :rtype: list[PAIdentifier]
@@ -142,6 +150,7 @@ class PACalculationParameters(object):
     def benchmarks(self, benchmarks):
         """Sets the benchmarks of this PACalculationParameters.
 
+        List of benchmarks.  # noqa: E501
 
         :param benchmarks: The benchmarks of this PACalculationParameters.  # noqa: E501
         :type: list[PAIdentifier]
@@ -174,6 +183,7 @@ class PACalculationParameters(object):
     def groups(self):
         """Gets the groups of this PACalculationParameters.  # noqa: E501
 
+        List of groupings for the PA calculation. This will take precedence over the groupings saved in the PA document.  # noqa: E501
 
         :return: The groups of this PACalculationParameters.  # noqa: E501
         :rtype: list[PACalculationGroup]
@@ -184,6 +194,7 @@ class PACalculationParameters(object):
     def groups(self, groups):
         """Sets the groups of this PACalculationParameters.
 
+        List of groupings for the PA calculation. This will take precedence over the groupings saved in the PA document.  # noqa: E501
 
         :param groups: The groups of this PACalculationParameters.  # noqa: E501
         :type: list[PACalculationGroup]
@@ -218,6 +229,7 @@ class PACalculationParameters(object):
     def columns(self):
         """Gets the columns of this PACalculationParameters.  # noqa: E501
 
+        List of columns for the PA calculation. This will take precedence over the columns saved in the PA document.  # noqa: E501
 
         :return: The columns of this PACalculationParameters.  # noqa: E501
         :rtype: list[PACalculationColumn]
@@ -228,12 +240,36 @@ class PACalculationParameters(object):
     def columns(self, columns):
         """Sets the columns of this PACalculationParameters.
 
+        List of columns for the PA calculation. This will take precedence over the columns saved in the PA document.  # noqa: E501
 
         :param columns: The columns of this PACalculationParameters.  # noqa: E501
         :type: list[PACalculationColumn]
         """
 
         self._columns = columns
+
+    @property
+    def componentdetail(self):
+        """Gets the componentdetail of this PACalculationParameters.  # noqa: E501
+
+        Component detail type for the PA component. It can be GROUPS or TOTALS.  # noqa: E501
+
+        :return: The componentdetail of this PACalculationParameters.  # noqa: E501
+        :rtype: str
+        """
+        return self._componentdetail
+
+    @componentdetail.setter
+    def componentdetail(self, componentdetail):
+        """Sets the componentdetail of this PACalculationParameters.
+
+        Component detail type for the PA component. It can be GROUPS or TOTALS.  # noqa: E501
+
+        :param componentdetail: The componentdetail of this PACalculationParameters.  # noqa: E501
+        :type: str
+        """
+
+        self._componentdetail = componentdetail
 
     def to_dict(self):
         """Returns the model properties as a dict"""

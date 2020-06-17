@@ -145,6 +145,114 @@ class DocumentsApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def get_pub_documents(self, path, **kwargs):  # noqa: E501
+        """Gets Publisher documents and sub-directories in a directory  # noqa: E501
+
+        This endpoint looks up all Publisher documents and sub-directories in a given directory.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_pub_documents(path, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str path: The directory to get the documents in (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: DocumentDirectories
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.get_pub_documents_with_http_info(path, **kwargs)  # noqa: E501
+
+    def get_pub_documents_with_http_info(self, path, **kwargs):  # noqa: E501
+        """Gets Publisher documents and sub-directories in a directory  # noqa: E501
+
+        This endpoint looks up all Publisher documents and sub-directories in a given directory.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_pub_documents_with_http_info(path, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str path: The directory to get the documents in (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(DocumentDirectories, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ['path']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_pub_documents" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'path' is set
+        if self.api_client.client_side_validation and ('path' not in local_var_params or  # noqa: E501
+                                                        local_var_params['path'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `path` when calling `get_pub_documents`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'path' in local_var_params:
+            path_params['path'] = local_var_params['path']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['Basic']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/analytics/lookups/v2/engines/pub/documents/{path}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='DocumentDirectories',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def get_spar3_documents(self, path, **kwargs):  # noqa: E501
         """Gets SPAR3 documents and sub-directories in a directory  # noqa: E501
 

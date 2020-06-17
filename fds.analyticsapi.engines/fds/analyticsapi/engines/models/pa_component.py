@@ -115,6 +115,7 @@ class PAComponent(object):
     def accounts(self):
         """Gets the accounts of this PAComponent.  # noqa: E501
 
+        List of accounts saved in the PA document.  # noqa: E501
 
         :return: The accounts of this PAComponent.  # noqa: E501
         :rtype: list[PAIdentifier]
@@ -125,6 +126,7 @@ class PAComponent(object):
     def accounts(self, accounts):
         """Sets the accounts of this PAComponent.
 
+        List of accounts saved in the PA document.  # noqa: E501
 
         :param accounts: The accounts of this PAComponent.  # noqa: E501
         :type: list[PAIdentifier]
@@ -136,6 +138,7 @@ class PAComponent(object):
     def benchmarks(self):
         """Gets the benchmarks of this PAComponent.  # noqa: E501
 
+        List of benchmarks saved in the PA document.  # noqa: E501
 
         :return: The benchmarks of this PAComponent.  # noqa: E501
         :rtype: list[PAIdentifier]
@@ -146,6 +149,7 @@ class PAComponent(object):
     def benchmarks(self, benchmarks):
         """Sets the benchmarks of this PAComponent.
 
+        List of benchmarks saved in the PA document.  # noqa: E501
 
         :param benchmarks: The benchmarks of this PAComponent.  # noqa: E501
         :type: list[PAIdentifier]
@@ -199,6 +203,7 @@ class PAComponent(object):
     def snapshot(self):
         """Gets the snapshot of this PAComponent.  # noqa: E501
 
+        Is the component type snapshot or subperiod.  # noqa: E501
 
         :return: The snapshot of this PAComponent.  # noqa: E501
         :rtype: bool
@@ -209,6 +214,7 @@ class PAComponent(object):
     def snapshot(self, snapshot):
         """Sets the snapshot of this PAComponent.
 
+        Is the component type snapshot or subperiod.  # noqa: E501
 
         :param snapshot: The snapshot of this PAComponent.  # noqa: E501
         :type: bool

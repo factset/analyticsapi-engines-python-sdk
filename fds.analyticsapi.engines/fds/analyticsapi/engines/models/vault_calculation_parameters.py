@@ -37,17 +37,19 @@ class VaultCalculationParameters(object):
         'componentid': 'str',
         'account': 'VaultIdentifier',
         'dates': 'VaultDateParameters',
-        'configid': 'str'
+        'configid': 'str',
+        'componentdetail': 'str'
     }
 
     attribute_map = {
         'componentid': 'componentid',
         'account': 'account',
         'dates': 'dates',
-        'configid': 'configid'
+        'configid': 'configid',
+        'componentdetail': 'componentdetail'
     }
 
-    def __init__(self, componentid=None, account=None, dates=None, configid=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, componentid=None, account=None, dates=None, configid=None, componentdetail=None, local_vars_configuration=None):  # noqa: E501
         """VaultCalculationParameters - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -57,6 +59,7 @@ class VaultCalculationParameters(object):
         self._account = None
         self._dates = None
         self._configid = None
+        self._componentdetail = None
         self.discriminator = None
 
         self.componentid = componentid
@@ -64,6 +67,8 @@ class VaultCalculationParameters(object):
         if dates is not None:
             self.dates = dates
         self.configid = configid
+        if componentdetail is not None:
+            self.componentdetail = componentdetail
 
     @property
     def componentid(self):
@@ -158,6 +163,29 @@ class VaultCalculationParameters(object):
             raise ValueError("Invalid value for `configid`, must not be `None`")  # noqa: E501
 
         self._configid = configid
+
+    @property
+    def componentdetail(self):
+        """Gets the componentdetail of this VaultCalculationParameters.  # noqa: E501
+
+        Component detail type for the Vault component. It can be GROUPS or TOTALS.  # noqa: E501
+
+        :return: The componentdetail of this VaultCalculationParameters.  # noqa: E501
+        :rtype: str
+        """
+        return self._componentdetail
+
+    @componentdetail.setter
+    def componentdetail(self, componentdetail):
+        """Sets the componentdetail of this VaultCalculationParameters.
+
+        Component detail type for the Vault component. It can be GROUPS or TOTALS.  # noqa: E501
+
+        :param componentdetail: The componentdetail of this VaultCalculationParameters.  # noqa: E501
+        :type: str
+        """
+
+        self._componentdetail = componentdetail
 
     def to_dict(self):
         """Returns the model properties as a dict"""

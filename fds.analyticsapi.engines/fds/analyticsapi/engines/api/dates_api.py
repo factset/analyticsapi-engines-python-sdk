@@ -40,7 +40,7 @@ class DatesApi(object):
     def convert_pa_dates_to_absolute_format(self, enddate, componentid, account, **kwargs):  # noqa: E501
         """Convert PA dates to absolute format  # noqa: E501
 
-        This endpoint converts the given start and end dates to yyyymmdd format for a PA calculation.  # noqa: E501
+        This endpoint converts the given start and end dates in FactSet date format to yyyymmdd format for a PA calculation. For more information on FactSet date format, please refer to the PA Engine API documentation under the 'API Documentation' section in the developer portal.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.convert_pa_dates_to_absolute_format(enddate, componentid, account, async_req=True)
@@ -68,7 +68,7 @@ class DatesApi(object):
     def convert_pa_dates_to_absolute_format_with_http_info(self, enddate, componentid, account, **kwargs):  # noqa: E501
         """Convert PA dates to absolute format  # noqa: E501
 
-        This endpoint converts the given start and end dates to yyyymmdd format for a PA calculation.  # noqa: E501
+        This endpoint converts the given start and end dates in FactSet date format to yyyymmdd format for a PA calculation. For more information on FactSet date format, please refer to the PA Engine API documentation under the 'API Documentation' section in the developer portal.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.convert_pa_dates_to_absolute_format_with_http_info(enddate, componentid, account, async_req=True)
@@ -168,7 +168,7 @@ class DatesApi(object):
     def convert_vault_dates_to_absolute_format(self, enddate, componentid, account, **kwargs):  # noqa: E501
         """Convert Vault dates to absolute format  # noqa: E501
 
-        This endpoint converts the given start and end dates to yyyymmdd format for a Vault calculation.  # noqa: E501
+        This endpoint converts the given start and end dates in FactSet date format to yyyymmdd format for a Vault calculation. For more information on FactSet date format, please refer to the Vault API documentation under the 'API Documentation' section in the developer portal.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.convert_vault_dates_to_absolute_format(enddate, componentid, account, async_req=True)
@@ -196,7 +196,7 @@ class DatesApi(object):
     def convert_vault_dates_to_absolute_format_with_http_info(self, enddate, componentid, account, **kwargs):  # noqa: E501
         """Convert Vault dates to absolute format  # noqa: E501
 
-        This endpoint converts the given start and end dates to yyyymmdd format for a Vault calculation.  # noqa: E501
+        This endpoint converts the given start and end dates in FactSet date format to yyyymmdd format for a Vault calculation. For more information on FactSet date format, please refer to the Vault API documentation under the 'API Documentation' section in the developer portal.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.convert_vault_dates_to_absolute_format_with_http_info(enddate, componentid, account, async_req=True)

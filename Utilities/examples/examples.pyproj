@@ -22,6 +22,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="multiple_engines_example.py" />
+    <Compile Include="pub_engine_example.py" />
     <Compile Include="pa_engine_example.py">
       <SubType>Code</SubType>
     </Compile>

@@ -35,43 +35,48 @@ class CalculationStatus(object):
     """
     openapi_types = {
         'status': 'str',
-        'points': 'int',
+        'units': 'int',
         'pa': 'dict(str, CalculationUnitStatus)',
         'spar': 'dict(str, CalculationUnitStatus)',
-        'vault': 'dict(str, CalculationUnitStatus)'
+        'vault': 'dict(str, CalculationUnitStatus)',
+        'pub': 'dict(str, CalculationUnitStatus)'
     }
 
     attribute_map = {
         'status': 'status',
-        'points': 'points',
+        'units': 'units',
         'pa': 'pa',
         'spar': 'spar',
-        'vault': 'vault'
+        'vault': 'vault',
+        'pub': 'pub'
     }
 
-    def __init__(self, status=None, points=None, pa=None, spar=None, vault=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, status=None, units=None, pa=None, spar=None, vault=None, pub=None, local_vars_configuration=None):  # noqa: E501
         """CalculationStatus - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._status = None
-        self._points = None
+        self._units = None
         self._pa = None
         self._spar = None
         self._vault = None
+        self._pub = None
         self.discriminator = None
 
         if status is not None:
             self.status = status
-        if points is not None:
-            self.points = points
+        if units is not None:
+            self.units = units
         if pa is not None:
             self.pa = pa
         if spar is not None:
             self.spar = spar
         if vault is not None:
             self.vault = vault
+        if pub is not None:
+            self.pub = pub
 
     @property
     def status(self):
@@ -101,30 +106,33 @@ class CalculationStatus(object):
         self._status = status
 
     @property
-    def points(self):
-        """Gets the points of this CalculationStatus.  # noqa: E501
+    def units(self):
+        """Gets the units of this CalculationStatus.  # noqa: E501
 
+        Number of calculation units in batch.  # noqa: E501
 
-        :return: The points of this CalculationStatus.  # noqa: E501
+        :return: The units of this CalculationStatus.  # noqa: E501
         :rtype: int
         """
-        return self._points
+        return self._units
 
-    @points.setter
-    def points(self, points):
-        """Sets the points of this CalculationStatus.
+    @units.setter
+    def units(self, units):
+        """Sets the units of this CalculationStatus.
 
+        Number of calculation units in batch.  # noqa: E501
 
-        :param points: The points of this CalculationStatus.  # noqa: E501
+        :param units: The units of this CalculationStatus.  # noqa: E501
         :type: int
         """
 
-        self._points = points
+        self._units = units
 
     @property
     def pa(self):
         """Gets the pa of this CalculationStatus.  # noqa: E501
 
+        List of statuses for PA calculation units.  # noqa: E501
 
         :return: The pa of this CalculationStatus.  # noqa: E501
         :rtype: dict(str, CalculationUnitStatus)
@@ -135,6 +143,7 @@ class CalculationStatus(object):
     def pa(self, pa):
         """Sets the pa of this CalculationStatus.
 
+        List of statuses for PA calculation units.  # noqa: E501
 
         :param pa: The pa of this CalculationStatus.  # noqa: E501
         :type: dict(str, CalculationUnitStatus)
@@ -146,6 +155,7 @@ class CalculationStatus(object):
     def spar(self):
         """Gets the spar of this CalculationStatus.  # noqa: E501
 
+        List of statuses for SPAR calculation units.  # noqa: E501
 
         :return: The spar of this CalculationStatus.  # noqa: E501
         :rtype: dict(str, CalculationUnitStatus)
@@ -156,6 +166,7 @@ class CalculationStatus(object):
     def spar(self, spar):
         """Sets the spar of this CalculationStatus.
 
+        List of statuses for SPAR calculation units.  # noqa: E501
 
         :param spar: The spar of this CalculationStatus.  # noqa: E501
         :type: dict(str, CalculationUnitStatus)
@@ -167,6 +178,7 @@ class CalculationStatus(object):
     def vault(self):
         """Gets the vault of this CalculationStatus.  # noqa: E501
 
+        List of statuses for Vault calculation units.  # noqa: E501
 
         :return: The vault of this CalculationStatus.  # noqa: E501
         :rtype: dict(str, CalculationUnitStatus)
@@ -177,12 +189,36 @@ class CalculationStatus(object):
     def vault(self, vault):
         """Sets the vault of this CalculationStatus.
 
+        List of statuses for Vault calculation units.  # noqa: E501
 
         :param vault: The vault of this CalculationStatus.  # noqa: E501
         :type: dict(str, CalculationUnitStatus)
         """
 
         self._vault = vault
+
+    @property
+    def pub(self):
+        """Gets the pub of this CalculationStatus.  # noqa: E501
+
+        List of statuses for Publisher calculation units.  # noqa: E501
+
+        :return: The pub of this CalculationStatus.  # noqa: E501
+        :rtype: dict(str, CalculationUnitStatus)
+        """
+        return self._pub
+
+    @pub.setter
+    def pub(self, pub):
+        """Sets the pub of this CalculationStatus.
+
+        List of statuses for Publisher calculation units.  # noqa: E501
+
+        :param pub: The pub of this CalculationStatus.  # noqa: E501
+        :type: dict(str, CalculationUnitStatus)
+        """
+
+        self._pub = pub
 
     def to_dict(self):
         """Returns the model properties as a dict"""

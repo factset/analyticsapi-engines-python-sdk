@@ -35,34 +35,34 @@ class CalculationStatusSummary(object):
     """
     openapi_types = {
         'status': 'str',
-        'points': 'int',
+        'units': 'int',
         'request_time': 'datetime',
         'last_poll_time': 'datetime'
     }
 
     attribute_map = {
         'status': 'status',
-        'points': 'points',
+        'units': 'units',
         'request_time': 'requestTime',
         'last_poll_time': 'lastPollTime'
     }
 
-    def __init__(self, status=None, points=None, request_time=None, last_poll_time=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, status=None, units=None, request_time=None, last_poll_time=None, local_vars_configuration=None):  # noqa: E501
         """CalculationStatusSummary - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._status = None
-        self._points = None
+        self._units = None
         self._request_time = None
         self._last_poll_time = None
         self.discriminator = None
 
         if status is not None:
             self.status = status
-        if points is not None:
-            self.points = points
+        if units is not None:
+            self.units = units
         if request_time is not None:
             self.request_time = request_time
         if last_poll_time is not None:
@@ -72,6 +72,7 @@ class CalculationStatusSummary(object):
     def status(self):
         """Gets the status of this CalculationStatusSummary.  # noqa: E501
 
+        The status of the calculation.  # noqa: E501
 
         :return: The status of this CalculationStatusSummary.  # noqa: E501
         :rtype: str
@@ -82,6 +83,7 @@ class CalculationStatusSummary(object):
     def status(self, status):
         """Sets the status of this CalculationStatusSummary.
 
+        The status of the calculation.  # noqa: E501
 
         :param status: The status of this CalculationStatusSummary.  # noqa: E501
         :type: str
@@ -96,27 +98,27 @@ class CalculationStatusSummary(object):
         self._status = status
 
     @property
-    def points(self):
-        """Gets the points of this CalculationStatusSummary.  # noqa: E501
+    def units(self):
+        """Gets the units of this CalculationStatusSummary.  # noqa: E501
 
         Number of calculation units in batch.  # noqa: E501
 
-        :return: The points of this CalculationStatusSummary.  # noqa: E501
+        :return: The units of this CalculationStatusSummary.  # noqa: E501
         :rtype: int
         """
-        return self._points
+        return self._units
 
-    @points.setter
-    def points(self, points):
-        """Sets the points of this CalculationStatusSummary.
+    @units.setter
+    def units(self, units):
+        """Sets the units of this CalculationStatusSummary.
 
         Number of calculation units in batch.  # noqa: E501
 
-        :param points: The points of this CalculationStatusSummary.  # noqa: E501
+        :param units: The units of this CalculationStatusSummary.  # noqa: E501
         :type: int
         """
 
-        self._points = points
+        self._units = units
 
     @property
     def request_time(self):

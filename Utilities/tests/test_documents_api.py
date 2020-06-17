@@ -26,5 +26,10 @@ class TestDocumentsApi(unittest.TestCase):
         self.assertEqual(response[1], 200, "Response code should be 200 - Success")
         self.assertEqual(type(response[0]), DocumentDirectories, "Response should be of DocumentDirectories type")
 
+    def test_get_pub_document_list(self):
+        response = self.documents_api.get_pub_documents_with_http_info(common_parameters.default_lookup_directory)
+        self.assertEqual(response[1], 200, "Response code should be 200 - Success")
+        self.assertEqual(type(response[0]), DocumentDirectories, "Response should be of DocumentDirectories type")
+
 if __name__ == '__main__':
     unittest.main()

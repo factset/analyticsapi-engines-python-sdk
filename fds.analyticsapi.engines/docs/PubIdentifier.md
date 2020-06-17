@@ -1,12 +1,10 @@
-# PADateParameters
+# PubIdentifier
 
-The date parameters for PA calculation.
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**startdate** | **str** | Calculation&#39;s start date. | [optional] 
-**enddate** | **str** | Calculation&#39;s end date. | 
-**frequency** | **str** | Calculation&#39;s frequency. | 
+**id** | **str** | User&#39;s FactSet account path OR benchmark. | 
+**holdingsmode** | **str** | Holdings Mode can be B&amp;H, TBR or OMS. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

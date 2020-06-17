@@ -11,8 +11,8 @@ API client library to leverage FactSet's PA Engine, SPAR Engine and Vault API in
 * Python 3.4+
 
 #### Current versions
-* API_VERSION - 2
-* PACKAGE_VERSION - 3.0.0
+* API_VERSION - v2
+* PACKAGE_VERSION - 4.0.0
 
 ## To install the API client library
 * Run the below command.

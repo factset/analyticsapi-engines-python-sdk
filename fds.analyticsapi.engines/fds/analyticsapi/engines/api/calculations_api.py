@@ -228,7 +228,7 @@ class CalculationsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['Basic']  # noqa: E501
@@ -328,7 +328,7 @@ class CalculationsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain', 'application/json', 'text/json'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['Basic']  # noqa: E501
@@ -352,7 +352,7 @@ class CalculationsApi(object):
     def run_calculation(self, **kwargs):  # noqa: E501
         """Run calculation  # noqa: E501
 
-        This endpoint creates a new calculation and runs the set of calculation units specified in the POST body.  This must be used first before get status or cancelling endpoints with a calculation id.   A successful response will contain the URL to check the status of the calculation request.    Remarks:  â¢ Maximum 25 points allowed per calculation and maximum 500 points allowed across all simultaneous calculations. (Refer API documentation for more information)                â¢ Any settings in POST body will act as a one-time override over the settings saved in the PA/SPAR/Vault template.  # noqa: E501
+        This endpoint creates a new calculation and runs the set of calculation units specified in the POST body.  This must be used first before get status or cancelling endpoints with a calculation id.   A successful response will contain the URL to check the status of the calculation request.    Remarks:  * Maximum 500 units allowed across all simultaneous calculations. (Refer API documentation for more information)                * Any settings in POST body will act as a one-time override over the settings saved in the PA/SPAR/Vault template.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.run_calculation(async_req=True)
@@ -377,7 +377,7 @@ class CalculationsApi(object):
     def run_calculation_with_http_info(self, **kwargs):  # noqa: E501
         """Run calculation  # noqa: E501
 
-        This endpoint creates a new calculation and runs the set of calculation units specified in the POST body.  This must be used first before get status or cancelling endpoints with a calculation id.   A successful response will contain the URL to check the status of the calculation request.    Remarks:  â¢ Maximum 25 points allowed per calculation and maximum 500 points allowed across all simultaneous calculations. (Refer API documentation for more information)                â¢ Any settings in POST body will act as a one-time override over the settings saved in the PA/SPAR/Vault template.  # noqa: E501
+        This endpoint creates a new calculation and runs the set of calculation units specified in the POST body.  This must be used first before get status or cancelling endpoints with a calculation id.   A successful response will contain the URL to check the status of the calculation request.    Remarks:  * Maximum 500 units allowed across all simultaneous calculations. (Refer API documentation for more information)                * Any settings in POST body will act as a one-time override over the settings saved in the PA/SPAR/Vault template.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.run_calculation_with_http_info(async_req=True)

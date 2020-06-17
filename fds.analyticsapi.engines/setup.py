@@ -14,7 +14,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "fds.analyticsapi.engines"
-VERSION = "3.0.0"
+VERSION = "4.0.0"
 # To install the library, run the following
 #
 # python setup.py install
@@ -35,7 +35,7 @@ setup(
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,
-    license="The Apache Software License, Version 2.0",
+    license="Apache License 2.0",
     long_description="""\
     Allow clients to fetch Engines Analytics through APIs.  # noqa: E501
     """

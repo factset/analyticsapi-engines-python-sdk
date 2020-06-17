@@ -35,34 +35,29 @@ class CalculationUnitStatus(object):
     """
     openapi_types = {
         'status': 'str',
-        'points': 'int',
         'error': 'str',
         'result': 'str'
     }
 
     attribute_map = {
         'status': 'status',
-        'points': 'points',
         'error': 'error',
         'result': 'result'
     }
 
-    def __init__(self, status=None, points=None, error=None, result=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, status=None, error=None, result=None, local_vars_configuration=None):  # noqa: E501
         """CalculationUnitStatus - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._status = None
-        self._points = None
         self._error = None
         self._result = None
         self.discriminator = None
 
         if status is not None:
             self.status = status
-        if points is not None:
-            self.points = points
         if error is not None:
             self.error = error
         if result is not None:
@@ -72,6 +67,7 @@ class CalculationUnitStatus(object):
     def status(self):
         """Gets the status of this CalculationUnitStatus.  # noqa: E501
 
+        The status of calculation unit.  # noqa: E501
 
         :return: The status of this CalculationUnitStatus.  # noqa: E501
         :rtype: str
@@ -82,6 +78,7 @@ class CalculationUnitStatus(object):
     def status(self, status):
         """Sets the status of this CalculationUnitStatus.
 
+        The status of calculation unit.  # noqa: E501
 
         :param status: The status of this CalculationUnitStatus.  # noqa: E501
         :type: str
@@ -96,30 +93,10 @@ class CalculationUnitStatus(object):
         self._status = status
 
     @property
-    def points(self):
-        """Gets the points of this CalculationUnitStatus.  # noqa: E501
-
-
-        :return: The points of this CalculationUnitStatus.  # noqa: E501
-        :rtype: int
-        """
-        return self._points
-
-    @points.setter
-    def points(self, points):
-        """Sets the points of this CalculationUnitStatus.
-
-
-        :param points: The points of this CalculationUnitStatus.  # noqa: E501
-        :type: int
-        """
-
-        self._points = points
-
-    @property
     def error(self):
         """Gets the error of this CalculationUnitStatus.  # noqa: E501
 
+        The error in a calculation unit.  # noqa: E501
 
         :return: The error of this CalculationUnitStatus.  # noqa: E501
         :rtype: str
@@ -130,6 +107,7 @@ class CalculationUnitStatus(object):
     def error(self, error):
         """Sets the error of this CalculationUnitStatus.
 
+        The error in a calculation unit.  # noqa: E501
 
         :param error: The error of this CalculationUnitStatus.  # noqa: E501
         :type: str
@@ -141,6 +119,7 @@ class CalculationUnitStatus(object):
     def result(self):
         """Gets the result of this CalculationUnitStatus.  # noqa: E501
 
+        The result URL of the calculation.  # noqa: E501
 
         :return: The result of this CalculationUnitStatus.  # noqa: E501
         :rtype: str
@@ -151,6 +130,7 @@ class CalculationUnitStatus(object):
     def result(self, result):
         """Sets the result of this CalculationUnitStatus.
 
+        The result URL of the calculation.  # noqa: E501
 
         :param result: The result of this CalculationUnitStatus.  # noqa: E501
         :type: str

@@ -1,3 +1,23 @@
+4.0.0 (06/17/2020)
+
+Supported API versions:
+* v2
+
+Summary:
+* Adding support for new features
+
+Breaking changes:
+* No changes
+
+Functionality Additions:
+* Publisher API calculation and document lookup
+* New componentdetail parameter for PA and Vault calculation
+
+Bug Fixes:
+* No changes
+
+-----------------------
+
 3.0.0 (12/02/2019)
 
 Supported API versions:

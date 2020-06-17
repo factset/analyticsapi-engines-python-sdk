@@ -1,12 +1,11 @@
-# PADateParameters
+# PubDateParameters
 
-The date parameters for PA calculation.
+The date parameters for Publisher calculation.
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **startdate** | **str** | Calculation&#39;s start date. | [optional] 
-**enddate** | **str** | Calculation&#39;s end date. | 
-**frequency** | **str** | Calculation&#39;s frequency. | 
+**enddate** | **str** | Calculation&#39;s end date or as of date. | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -36,16 +36,18 @@ class Calculation(object):
     openapi_types = {
         'pa': 'dict(str, PACalculationParameters)',
         'spar': 'dict(str, SPARCalculationParameters)',
-        'vault': 'dict(str, VaultCalculationParameters)'
+        'vault': 'dict(str, VaultCalculationParameters)',
+        'pub': 'dict(str, PubCalculationParameters)'
     }
 
     attribute_map = {
         'pa': 'pa',
         'spar': 'spar',
-        'vault': 'vault'
+        'vault': 'vault',
+        'pub': 'pub'
     }
 
-    def __init__(self, pa=None, spar=None, vault=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, pa=None, spar=None, vault=None, pub=None, local_vars_configuration=None):  # noqa: E501
         """Calculation - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -54,6 +56,7 @@ class Calculation(object):
         self._pa = None
         self._spar = None
         self._vault = None
+        self._pub = None
         self.discriminator = None
 
         if pa is not None:
@@ -62,11 +65,14 @@ class Calculation(object):
             self.spar = spar
         if vault is not None:
             self.vault = vault
+        if pub is not None:
+            self.pub = pub
 
     @property
     def pa(self):
         """Gets the pa of this Calculation.  # noqa: E501
 
+        List of PA calculation parameters.  # noqa: E501
 
         :return: The pa of this Calculation.  # noqa: E501
         :rtype: dict(str, PACalculationParameters)
@@ -77,6 +83,7 @@ class Calculation(object):
     def pa(self, pa):
         """Sets the pa of this Calculation.
 
+        List of PA calculation parameters.  # noqa: E501
 
         :param pa: The pa of this Calculation.  # noqa: E501
         :type: dict(str, PACalculationParameters)
@@ -88,6 +95,7 @@ class Calculation(object):
     def spar(self):
         """Gets the spar of this Calculation.  # noqa: E501
 
+        List of SPAR calculation parameters.  # noqa: E501
 
         :return: The spar of this Calculation.  # noqa: E501
         :rtype: dict(str, SPARCalculationParameters)
@@ -98,6 +106,7 @@ class Calculation(object):
     def spar(self, spar):
         """Sets the spar of this Calculation.
 
+        List of SPAR calculation parameters.  # noqa: E501
 
         :param spar: The spar of this Calculation.  # noqa: E501
         :type: dict(str, SPARCalculationParameters)
@@ -109,6 +118,7 @@ class Calculation(object):
     def vault(self):
         """Gets the vault of this Calculation.  # noqa: E501
 
+        List of Vault calculation parameters.  # noqa: E501
 
         :return: The vault of this Calculation.  # noqa: E501
         :rtype: dict(str, VaultCalculationParameters)
@@ -119,12 +129,36 @@ class Calculation(object):
     def vault(self, vault):
         """Sets the vault of this Calculation.
 
+        List of Vault calculation parameters.  # noqa: E501
 
         :param vault: The vault of this Calculation.  # noqa: E501
         :type: dict(str, VaultCalculationParameters)
         """
 
         self._vault = vault
+
+    @property
+    def pub(self):
+        """Gets the pub of this Calculation.  # noqa: E501
+
+        List of Publisher calculation parameters.  # noqa: E501
+
+        :return: The pub of this Calculation.  # noqa: E501
+        :rtype: dict(str, PubCalculationParameters)
+        """
+        return self._pub
+
+    @pub.setter
+    def pub(self, pub):
+        """Sets the pub of this Calculation.
+
+        List of Publisher calculation parameters.  # noqa: E501
+
+        :param pub: The pub of this Calculation.  # noqa: E501
+        :type: dict(str, PubCalculationParameters)
+        """
+
+        self._pub = pub
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -18,14 +18,14 @@ class TestComponentsApi(unittest.TestCase):
     ######################################################################################
 
     def test_get_all_pa_components(self):
-        response = self.components_api.get_pa_components_with_http_info(document=common_parameters.pa_deafult_document)
+        response = self.components_api.get_pa_components_with_http_info(document=common_parameters.pa_default_document)
         component_id = list(response[0].keys())[0]
         self.assertEqual(response[1], 200, "Response should be 200 - Success")
         self.assertEqual(type(response[0]), dict, "Response should be of dictionary type")
         self.assertEqual(type(response[0][component_id]), ComponentSummary, "Response should be of ComponentSummary type")
 
     def test_get_pa_component_by_id(self):
-        components = self.components_api.get_pa_components(document=common_parameters.pa_deafult_document)
+        components = self.components_api.get_pa_components(document=common_parameters.pa_default_document)
         component_id = list(components.keys())[0]
         response = self.components_api.get_pa_component_by_id_with_http_info(component_id)
         self.assertEqual(response[1], 200, "Response should be 200 - Success")
@@ -37,14 +37,14 @@ class TestComponentsApi(unittest.TestCase):
     ######################################################################################
 
     def test_get_all_vault_components(self):
-        response = self.components_api.get_vault_components_with_http_info(document=common_parameters.vault_deafult_document)
+        response = self.components_api.get_vault_components_with_http_info(document=common_parameters.vault_default_document)
         component_id = list(response[0].keys())[0]
         self.assertEqual(response[1], 200, "Response should be 200 - Success")
         self.assertEqual(type(response[0]), dict, "Response should be of dictionary type")
         self.assertEqual(type(response[0][component_id]), ComponentSummary, "Response should be of ComponentSummary type")
 
     def test_get_vault_component_by_id(self):
-        components = self.components_api.get_vault_components(document=common_parameters.vault_deafult_document)
+        components = self.components_api.get_vault_components(document=common_parameters.vault_default_document)
         component_id = list(components.keys())[0]
         response = self.components_api.get_vault_component_by_id_with_http_info(component_id)
         self.assertEqual(response[1], 200, "Response should be 200 - Success")
@@ -56,7 +56,7 @@ class TestComponentsApi(unittest.TestCase):
     ######################################################################################
 
     def test_get_all_spar_components(self):
-        response = self.components_api.get_spar_components_with_http_info(document=common_parameters.spar_deafult_document)
+        response = self.components_api.get_spar_components_with_http_info(document=common_parameters.spar_default_document)
         component_id = list(response[0].keys())[0]
         self.assertEqual(response[1], 200, "Response should be 200 - Success")
         self.assertEqual(type(response[0]), dict, "Response should be of dictionary type")
