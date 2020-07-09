@@ -14,5 +14,8 @@ from fds.analyticsapi.engines.api.dates_api import DatesApi
 from fds.analyticsapi.engines.api.documents_api import DocumentsApi
 from fds.analyticsapi.engines.api.frequencies_api import FrequenciesApi
 from fds.analyticsapi.engines.api.groups_api import GroupsApi
+from fds.analyticsapi.engines.api.pa_calculations_api import PACalculationsApi
 from fds.analyticsapi.engines.api.spar_benchmark_api import SPARBenchmarkApi
+from fds.analyticsapi.engines.api.spar_calculations_api import SPARCalculationsApi
+from fds.analyticsapi.engines.api.vault_calculations_api import VaultCalculationsApi
 from fds.analyticsapi.engines.api.utility_api import UtilityApi

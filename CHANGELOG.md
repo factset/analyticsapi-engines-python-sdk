@@ -7,11 +7,12 @@ Summary:
 * Adding support for new features
 
 Breaking changes:
-* No changes
+* Additional parameter in calculation object constructor
 
 Functionality Additions:
 * Publisher API calculation and document lookup
 * New componentdetail parameter for PA and Vault calculation
+* Interactive endpoints for PA, SPAR and Vault APIs
 
 Bug Fixes:
 * No changes

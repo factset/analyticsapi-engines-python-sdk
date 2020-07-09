@@ -104,7 +104,16 @@ Class | Method | HTTP request | Description
 *FrequenciesApi* | [**get_spar_frequencies**](docs/FrequenciesApi.md#get_spar_frequencies) | **GET** /analytics/lookups/v2/engines/spar/frequencies | Get SPAR frequencies
 *FrequenciesApi* | [**get_vault_frequencies**](docs/FrequenciesApi.md#get_vault_frequencies) | **GET** /analytics/lookups/v2/engines/vault/frequencies | Get Vault frequencies
 *GroupsApi* | [**get_pa_groups**](docs/GroupsApi.md#get_pa_groups) | **GET** /analytics/lookups/v2/engines/pa/groups | Get PA groups
+*PACalculationsApi* | [**cancel_pa_calculation_by_id**](docs/PACalculationsApi.md#cancel_pa_calculation_by_id) | **DELETE** /analytics/engines/pa/v2/calculations/{id} | Cancel PA calculation by id
+*PACalculationsApi* | [**get_pa_calculation_by_id**](docs/PACalculationsApi.md#get_pa_calculation_by_id) | **GET** /analytics/engines/pa/v2/calculations/{id} | Get PA calculation by id
+*PACalculationsApi* | [**run_pa_calculation**](docs/PACalculationsApi.md#run_pa_calculation) | **POST** /analytics/engines/pa/v2/calculations | Run PA Calculation
 *SPARBenchmarkApi* | [**get_spar_benchmark_by_id**](docs/SPARBenchmarkApi.md#get_spar_benchmark_by_id) | **GET** /analytics/lookups/v2/engines/spar/benchmarks | Get SPAR benchmark details
+*SPARCalculationsApi* | [**cancel_spar_calculation_by_id**](docs/SPARCalculationsApi.md#cancel_spar_calculation_by_id) | **DELETE** /analytics/engines/spar/v2/calculations/{id} | Cancel SPAR calculation
+*SPARCalculationsApi* | [**get_spar_calculation_by_id**](docs/SPARCalculationsApi.md#get_spar_calculation_by_id) | **GET** /analytics/engines/spar/v2/calculations/{id} | Get SPAR calculation by id
+*SPARCalculationsApi* | [**run_spar_calculation**](docs/SPARCalculationsApi.md#run_spar_calculation) | **POST** /analytics/engines/spar/v2/calculations | Run SPAR Calculation
+*VaultCalculationsApi* | [**cancel_vault_calculation_by_id**](docs/VaultCalculationsApi.md#cancel_vault_calculation_by_id) | **DELETE** /analytics/engines/vault/v2/calculations/{id} | Cancel Vault calculation by id
+*VaultCalculationsApi* | [**get_vault_calculation_by_id**](docs/VaultCalculationsApi.md#get_vault_calculation_by_id) | **GET** /analytics/engines/vault/v2/calculations/{id} | Get Vault calculation by id
+*VaultCalculationsApi* | [**run_vault_calculation**](docs/VaultCalculationsApi.md#run_vault_calculation) | **POST** /analytics/engines/vault/v2/calculations | Run Vault Calculation
 *UtilityApi* | [**get_by_url**](docs/UtilityApi.md#get_by_url) | **GET** {url} | Get by url
 
 ## Documentation For Models
