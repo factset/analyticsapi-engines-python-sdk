@@ -14,7 +14,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "fds.analyticsapi.engines"
-VERSION = "4.0.0"
+VERSION = "4.1.0"
 # To install the library, run the following
 #
 # python setup.py install
@@ -22,7 +22,7 @@ VERSION = "4.0.0"
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 
-REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil"]
+REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil", "fds.protobuf.stach < 2.0.0", "pandas < 2.0.0"]
 
 setup(
     name=NAME,

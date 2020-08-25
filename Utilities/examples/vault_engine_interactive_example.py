@@ -11,6 +11,7 @@ from fds.analyticsapi.engines.api.vault_calculations_api import VaultCalculation
 from fds.analyticsapi.engines.models.vault_date_parameters import VaultDateParameters
 from fds.analyticsapi.engines.models.vault_calculation_parameters import VaultCalculationParameters
 from fds.analyticsapi.engines.models.vault_identifier import VaultIdentifier
+from fds.analyticsapi.engines.stach_extensions import StachExtensions
 from fds.protobuf.stach.Package_pb2 import Package
 
 from google.protobuf import json_format
@@ -18,23 +19,22 @@ from google.protobuf.json_format import MessageToJson
 from google.protobuf.json_format import MessageToDict
 from urllib3 import Retry
 
-# Copy 'Converting API output to Table Format' snippet to a file with name 'stach_extensions.py' to use below import statement
-from stach_extensions import StachExtensions
 
 def print_result(response):
     # converting the data to Package object
     result = json_format.Parse(json.dumps(response), Package())
     # print(MessageToJson(result)) # To print the result object as a JSON
     # print(MessageToDict(result)) # To print the result object as a Dictionary
-    tables = StachExtensions.convert_to_table_format(result) # To convert result to 2D tables.
-    print(tables[0]) # Prints the result in 2D table format.
-    # StachExtensions.generate_excel(result) # To get the result in table format exported to excel file.
+    tables = StachExtensions.convert_to_table_format(result)  # To convert result to 2D tables.
+    print(tables[0])
+
 
 def print_error(response):
     print("Calculation Failed!!!")
     print("Status Code: " + str(response[1]))
     print("Request Key: " + response[2].get("x-datadirect-request-key"))
     print(response[0])
+
 
 host = "https://api.factset.com"
 username = "<username-serial>"
@@ -57,7 +57,8 @@ config.password = password
 config.verify_ssl = False
 
 # Setting configuration to retry api calls on http status codes of 429 and 503.
-config.retries = Retry(total=3, status=3, status_forcelist=frozenset([429, 503]), backoff_factor=2, raise_on_status=False)
+config.retries = Retry(total=3, status=3, status_forcelist=frozenset([429, 503]), backoff_factor=2,
+                       raise_on_status=False)
 
 api_client = ApiClient(config)
 
@@ -74,12 +75,14 @@ configurations_api = ConfigurationsApi(api_client)
 configurations = configurations_api.get_vault_configurations(vault_default_account)
 configuration_id = list(configurations.keys())[0]
 
-vault_calculation_parameters = VaultCalculationParameters(component_id, vault_account_identifier, vault_dates, configuration_id)
+vault_calculation_parameters = VaultCalculationParameters(component_id, vault_account_identifier, vault_dates,
+                                                          configuration_id)
 
 print(vault_calculation_parameters)
 
 vault_calculations_api = VaultCalculationsApi(api_client)
-run_calculation_response = vault_calculations_api.run_vault_calculation_with_http_info(vault_calculation_parameters=vault_calculation_parameters)
+run_calculation_response = vault_calculations_api.run_vault_calculation_with_http_info(
+    vault_calculation_parameters=vault_calculation_parameters)
 
 if run_calculation_response[1] != 202 and run_calculation_response[1] != 201:
     print_error(run_calculation_response)
@@ -88,7 +91,6 @@ if run_calculation_response[1] != 202 and run_calculation_response[1] != 201:
 if run_calculation_response[1] == 201:
     print_result(run_calculation_response[0])
     sys.exit()
-    
 
 calculation_id = run_calculation_response[2].get("location").split("/")[-1]
 print("Calculation Id: " + calculation_id)

@@ -13,15 +13,13 @@ from fds.analyticsapi.engines.models.calculation import Calculation
 from fds.analyticsapi.engines.models.vault_calculation_parameters import VaultCalculationParameters
 from fds.analyticsapi.engines.models.vault_date_parameters import VaultDateParameters
 from fds.analyticsapi.engines.models.vault_identifier import VaultIdentifier
+from fds.analyticsapi.engines.stach_extensions import StachExtensions
 from fds.protobuf.stach.Package_pb2 import Package
 
 from google.protobuf import json_format
 from google.protobuf.json_format import MessageToJson
 from google.protobuf.json_format import MessageToDict
 from urllib3 import Retry
-
-# Copy 'Converting API output to Table Format' snippet to a file with name 'stach_extensions.py' to use below import statement
-from stach_extensions import StachExtensions
 
 host = "https://api.factset.com"
 username = "<username-serial>"
@@ -96,8 +94,7 @@ def main():
                 # print(MessageToJson(result)) # To print the result object as a JSON
                 # print(MessageToDict(result)) # To print the result object as a Dictionary
                 tables = StachExtensions.convert_to_table_format(result) # To convert result to 2D tables.
-                print(tables[0]) # Prints the result in 2D table format.
-                # StachExtensions.generate_excel(result) # To get the result in table format exported to excel file.
+                print(tables[0])
             else:
                 print("Calculation Unit Id:" + calculation_unit_id + " Failed!!!")
                 print("Error message : " + calculation_unit.error)

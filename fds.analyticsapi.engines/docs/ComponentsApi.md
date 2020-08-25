@@ -27,23 +27,35 @@ import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.rest import ApiException
 from pprint import pprint
-configuration = fds.analyticsapi.engines.Configuration()
+# Defining the host is optional and defaults to https://api.factset.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fds.analyticsapi.engines.Configuration(
+    host = "https://api.factset.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure HTTP basic authorization: Basic
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
+configuration = fds.analyticsapi.engines.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
 
-# Defining host is optional and default to https://api.factset.com
-configuration.host = "https://api.factset.com"
-# Create an instance of the API class
-api_instance = fds.analyticsapi.engines.ComponentsApi(fds.analyticsapi.engines.ApiClient(configuration))
-id = 'id_example' # str | Unique identifier for a PA component
+# Enter a context with an instance of the API client
+with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fds.analyticsapi.engines.ComponentsApi(api_client)
+    id = 'id_example' # str | Unique identifier for a PA component
 
-try:
-    # Get PA component by id
-    api_response = api_instance.get_pa_component_by_id(id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ComponentsApi->get_pa_component_by_id: %s\n" % e)
+    try:
+        # Get PA component by id
+        api_response = api_instance.get_pa_component_by_id(id)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ComponentsApi->get_pa_component_by_id: %s\n" % e)
 ```
 
 ### Parameters
@@ -96,23 +108,35 @@ import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.rest import ApiException
 from pprint import pprint
-configuration = fds.analyticsapi.engines.Configuration()
+# Defining the host is optional and defaults to https://api.factset.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fds.analyticsapi.engines.Configuration(
+    host = "https://api.factset.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure HTTP basic authorization: Basic
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
+configuration = fds.analyticsapi.engines.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
 
-# Defining host is optional and default to https://api.factset.com
-configuration.host = "https://api.factset.com"
-# Create an instance of the API class
-api_instance = fds.analyticsapi.engines.ComponentsApi(fds.analyticsapi.engines.ApiClient(configuration))
-document = 'document_example' # str | Document Name
+# Enter a context with an instance of the API client
+with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fds.analyticsapi.engines.ComponentsApi(api_client)
+    document = 'document_example' # str | Document Name
 
-try:
-    # Get PA components
-    api_response = api_instance.get_pa_components(document)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ComponentsApi->get_pa_components: %s\n" % e)
+    try:
+        # Get PA components
+        api_response = api_instance.get_pa_components(document)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ComponentsApi->get_pa_components: %s\n" % e)
 ```
 
 ### Parameters
@@ -165,23 +189,35 @@ import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.rest import ApiException
 from pprint import pprint
-configuration = fds.analyticsapi.engines.Configuration()
+# Defining the host is optional and defaults to https://api.factset.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fds.analyticsapi.engines.Configuration(
+    host = "https://api.factset.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure HTTP basic authorization: Basic
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
+configuration = fds.analyticsapi.engines.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
 
-# Defining host is optional and default to https://api.factset.com
-configuration.host = "https://api.factset.com"
-# Create an instance of the API class
-api_instance = fds.analyticsapi.engines.ComponentsApi(fds.analyticsapi.engines.ApiClient(configuration))
-document = 'document_example' # str | Document Name
+# Enter a context with an instance of the API client
+with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fds.analyticsapi.engines.ComponentsApi(api_client)
+    document = 'document_example' # str | Document Name
 
-try:
-    # Get SPAR components
-    api_response = api_instance.get_spar_components(document)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ComponentsApi->get_spar_components: %s\n" % e)
+    try:
+        # Get SPAR components
+        api_response = api_instance.get_spar_components(document)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ComponentsApi->get_spar_components: %s\n" % e)
 ```
 
 ### Parameters
@@ -234,23 +270,35 @@ import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.rest import ApiException
 from pprint import pprint
-configuration = fds.analyticsapi.engines.Configuration()
+# Defining the host is optional and defaults to https://api.factset.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fds.analyticsapi.engines.Configuration(
+    host = "https://api.factset.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure HTTP basic authorization: Basic
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
+configuration = fds.analyticsapi.engines.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
 
-# Defining host is optional and default to https://api.factset.com
-configuration.host = "https://api.factset.com"
-# Create an instance of the API class
-api_instance = fds.analyticsapi.engines.ComponentsApi(fds.analyticsapi.engines.ApiClient(configuration))
-id = 'id_example' # str | Unique identifier for a vault component
+# Enter a context with an instance of the API client
+with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fds.analyticsapi.engines.ComponentsApi(api_client)
+    id = 'id_example' # str | Unique identifier for a vault component
 
-try:
-    # Get Vault component by id
-    api_response = api_instance.get_vault_component_by_id(id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ComponentsApi->get_vault_component_by_id: %s\n" % e)
+    try:
+        # Get Vault component by id
+        api_response = api_instance.get_vault_component_by_id(id)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ComponentsApi->get_vault_component_by_id: %s\n" % e)
 ```
 
 ### Parameters
@@ -303,23 +351,35 @@ import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.rest import ApiException
 from pprint import pprint
-configuration = fds.analyticsapi.engines.Configuration()
+# Defining the host is optional and defaults to https://api.factset.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fds.analyticsapi.engines.Configuration(
+    host = "https://api.factset.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure HTTP basic authorization: Basic
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
+configuration = fds.analyticsapi.engines.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
 
-# Defining host is optional and default to https://api.factset.com
-configuration.host = "https://api.factset.com"
-# Create an instance of the API class
-api_instance = fds.analyticsapi.engines.ComponentsApi(fds.analyticsapi.engines.ApiClient(configuration))
-document = 'document_example' # str | Document Name
+# Enter a context with an instance of the API client
+with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fds.analyticsapi.engines.ComponentsApi(api_client)
+    document = 'document_example' # str | Document Name
 
-try:
-    # Get Vault components
-    api_response = api_instance.get_vault_components(document)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ComponentsApi->get_vault_components: %s\n" % e)
+    try:
+        # Get Vault components
+        api_response = api_instance.get_vault_components(document)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ComponentsApi->get_vault_components: %s\n" % e)
 ```
 
 ### Parameters

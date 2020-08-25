@@ -24,26 +24,38 @@ import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.rest import ApiException
 from pprint import pprint
-configuration = fds.analyticsapi.engines.Configuration()
-# Configure HTTP basic authorization: Basic
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
+# Defining the host is optional and defaults to https://api.factset.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fds.analyticsapi.engines.Configuration(
+    host = "https://api.factset.com"
+)
 
-# Defining host is optional and default to https://api.factset.com
-configuration.host = "https://api.factset.com"
-# Create an instance of the API class
-api_instance = fds.analyticsapi.engines.DatesApi(fds.analyticsapi.engines.ApiClient(configuration))
-enddate = 'enddate_example' # str | End Date
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: Basic
+configuration = fds.analyticsapi.engines.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Enter a context with an instance of the API client
+with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fds.analyticsapi.engines.DatesApi(api_client)
+    enddate = 'enddate_example' # str | End Date
 componentid = 'componentid_example' # str | Component Id
 account = 'account_example' # str | Account
 startdate = 'startdate_example' # str | Start Date (optional)
 
-try:
-    # Convert PA dates to absolute format
-    api_response = api_instance.convert_pa_dates_to_absolute_format(enddate, componentid, account, startdate=startdate)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DatesApi->convert_pa_dates_to_absolute_format: %s\n" % e)
+    try:
+        # Convert PA dates to absolute format
+        api_response = api_instance.convert_pa_dates_to_absolute_format(enddate, componentid, account, startdate=startdate)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling DatesApi->convert_pa_dates_to_absolute_format: %s\n" % e)
 ```
 
 ### Parameters
@@ -99,26 +111,38 @@ import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.rest import ApiException
 from pprint import pprint
-configuration = fds.analyticsapi.engines.Configuration()
-# Configure HTTP basic authorization: Basic
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
+# Defining the host is optional and defaults to https://api.factset.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fds.analyticsapi.engines.Configuration(
+    host = "https://api.factset.com"
+)
 
-# Defining host is optional and default to https://api.factset.com
-configuration.host = "https://api.factset.com"
-# Create an instance of the API class
-api_instance = fds.analyticsapi.engines.DatesApi(fds.analyticsapi.engines.ApiClient(configuration))
-enddate = 'enddate_example' # str | End Date
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: Basic
+configuration = fds.analyticsapi.engines.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Enter a context with an instance of the API client
+with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fds.analyticsapi.engines.DatesApi(api_client)
+    enddate = 'enddate_example' # str | End Date
 componentid = 'componentid_example' # str | Vault Component Id
 account = 'account_example' # str | Account
 startdate = 'startdate_example' # str | Start Date (optional)
 
-try:
-    # Convert Vault dates to absolute format
-    api_response = api_instance.convert_vault_dates_to_absolute_format(enddate, componentid, account, startdate=startdate)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DatesApi->convert_vault_dates_to_absolute_format: %s\n" % e)
+    try:
+        # Convert Vault dates to absolute format
+        api_response = api_instance.convert_vault_dates_to_absolute_format(enddate, componentid, account, startdate=startdate)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling DatesApi->convert_vault_dates_to_absolute_format: %s\n" % e)
 ```
 
 ### Parameters

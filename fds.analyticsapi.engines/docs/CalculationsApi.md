@@ -26,22 +26,34 @@ import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.rest import ApiException
 from pprint import pprint
-configuration = fds.analyticsapi.engines.Configuration()
+# Defining the host is optional and defaults to https://api.factset.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fds.analyticsapi.engines.Configuration(
+    host = "https://api.factset.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure HTTP basic authorization: Basic
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
+configuration = fds.analyticsapi.engines.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
 
-# Defining host is optional and default to https://api.factset.com
-configuration.host = "https://api.factset.com"
-# Create an instance of the API class
-api_instance = fds.analyticsapi.engines.CalculationsApi(fds.analyticsapi.engines.ApiClient(configuration))
-id = 'id_example' # str | From url, provided from the location header in the Run Multiple Calculations endpoint.
+# Enter a context with an instance of the API client
+with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fds.analyticsapi.engines.CalculationsApi(api_client)
+    id = 'id_example' # str | From url, provided from the location header in the Run Multiple Calculations endpoint.
 
-try:
-    # Cancel calculation by id
-    api_instance.cancel_calculation_by_id(id)
-except ApiException as e:
-    print("Exception when calling CalculationsApi->cancel_calculation_by_id: %s\n" % e)
+    try:
+        # Cancel calculation by id
+        api_instance.cancel_calculation_by_id(id)
+    except ApiException as e:
+        print("Exception when calling CalculationsApi->cancel_calculation_by_id: %s\n" % e)
 ```
 
 ### Parameters
@@ -93,23 +105,35 @@ import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.rest import ApiException
 from pprint import pprint
-configuration = fds.analyticsapi.engines.Configuration()
+# Defining the host is optional and defaults to https://api.factset.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fds.analyticsapi.engines.Configuration(
+    host = "https://api.factset.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure HTTP basic authorization: Basic
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
+configuration = fds.analyticsapi.engines.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
 
-# Defining host is optional and default to https://api.factset.com
-configuration.host = "https://api.factset.com"
-# Create an instance of the API class
-api_instance = fds.analyticsapi.engines.CalculationsApi(fds.analyticsapi.engines.ApiClient(configuration))
-id = 'id_example' # str | From url, provided from the location header in the Run Multiple Calculations endpoint.
+# Enter a context with an instance of the API client
+with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fds.analyticsapi.engines.CalculationsApi(api_client)
+    id = 'id_example' # str | From url, provided from the location header in the Run Multiple Calculations endpoint.
 
-try:
-    # Get calculation status by id
-    api_response = api_instance.get_calculation_status_by_id(id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling CalculationsApi->get_calculation_status_by_id: %s\n" % e)
+    try:
+        # Get calculation status by id
+        api_response = api_instance.get_calculation_status_by_id(id)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling CalculationsApi->get_calculation_status_by_id: %s\n" % e)
 ```
 
 ### Parameters
@@ -162,22 +186,34 @@ import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.rest import ApiException
 from pprint import pprint
-configuration = fds.analyticsapi.engines.Configuration()
+# Defining the host is optional and defaults to https://api.factset.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fds.analyticsapi.engines.Configuration(
+    host = "https://api.factset.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure HTTP basic authorization: Basic
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
+configuration = fds.analyticsapi.engines.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
 
-# Defining host is optional and default to https://api.factset.com
-configuration.host = "https://api.factset.com"
-# Create an instance of the API class
-api_instance = fds.analyticsapi.engines.CalculationsApi(fds.analyticsapi.engines.ApiClient(configuration))
-
-try:
-    # Get all calculation statuses
-    api_response = api_instance.get_calculation_status_summaries()
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling CalculationsApi->get_calculation_status_summaries: %s\n" % e)
+# Enter a context with an instance of the API client
+with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fds.analyticsapi.engines.CalculationsApi(api_client)
+    
+    try:
+        # Get all calculation statuses
+        api_response = api_instance.get_calculation_status_summaries()
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling CalculationsApi->get_calculation_status_summaries: %s\n" % e)
 ```
 
 ### Parameters
@@ -225,22 +261,34 @@ import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.rest import ApiException
 from pprint import pprint
-configuration = fds.analyticsapi.engines.Configuration()
+# Defining the host is optional and defaults to https://api.factset.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fds.analyticsapi.engines.Configuration(
+    host = "https://api.factset.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure HTTP basic authorization: Basic
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
+configuration = fds.analyticsapi.engines.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
 
-# Defining host is optional and default to https://api.factset.com
-configuration.host = "https://api.factset.com"
-# Create an instance of the API class
-api_instance = fds.analyticsapi.engines.CalculationsApi(fds.analyticsapi.engines.ApiClient(configuration))
-calculation = fds.analyticsapi.engines.Calculation() # Calculation |  (optional)
+# Enter a context with an instance of the API client
+with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fds.analyticsapi.engines.CalculationsApi(api_client)
+    calculation = fds.analyticsapi.engines.Calculation() # Calculation |  (optional)
 
-try:
-    # Run calculation
-    api_instance.run_calculation(calculation=calculation)
-except ApiException as e:
-    print("Exception when calling CalculationsApi->run_calculation: %s\n" % e)
+    try:
+        # Run calculation
+        api_instance.run_calculation(calculation=calculation)
+    except ApiException as e:
+        print("Exception when calling CalculationsApi->run_calculation: %s\n" % e)
 ```
 
 ### Parameters
