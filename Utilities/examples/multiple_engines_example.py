@@ -1,6 +1,8 @@
 import json
 import sys
 import time
+import pandas as pd
+import uuid
 
 from fds.analyticsapi.engines import ComponentSummary, ApiException
 from fds.analyticsapi.engines.api.calculations_api import CalculationsApi
@@ -139,7 +141,8 @@ def main():
 
             status_response = calculations_api.get_calculation_status_by_id_with_http_info(calculation_id)
 
-        for (calculation_unit, calculation_unit_id) in zip(list(status_response[0].pa.values()), list(status_response[0].pa)):
+        for (calculation_unit, calculation_unit_id) in zip(list(status_response[0].pa.values()),
+                                                           list(status_response[0].pa)):
             if calculation_unit.status == "Success":
                 print("Calculation Unit Id: " + calculation_unit_id + " Succeeded!!!")
                 print_result(calculation_unit, api_client)
@@ -147,7 +150,8 @@ def main():
                 print("Calculation Unit Id:" + calculation_unit_id + " Failed!!!")
                 print("Error message : " + calculation_unit.error)
 
-        for (calculation_unit, calculation_unit_id) in zip(list(status_response[0].spar.values()), list(status_response[0].spar)):
+        for (calculation_unit, calculation_unit_id) in zip(list(status_response[0].spar.values()),
+                                                           list(status_response[0].spar)):
             if calculation_unit.status == "Success":
                 print("Calculation Unit Id: " + calculation_unit_id + " Succeeded!!!")
                 print_result(calculation_unit, api_client)
@@ -155,7 +159,8 @@ def main():
                 print("Calculation Unit Id:" + calculation_unit_id + " Failed!!!")
                 print("Error message : " + calculation_unit.error)
 
-        for (calculation_unit, calculation_unit_id) in zip(list(status_response[0].vault.values()), list(status_response[0].vault)):
+        for (calculation_unit, calculation_unit_id) in zip(list(status_response[0].vault.values()),
+                                                           list(status_response[0].vault)):
             if calculation_unit.status == "Success":
                 print("Calculation Unit Id: " + calculation_unit_id + " Succeeded!!!")
                 print_result(calculation_unit, api_client)
@@ -179,9 +184,17 @@ def print_result(calculation_unit, api_client):
     # print(MessageToJson(result)) # To print the result object as a JSON
     # print(MessageToDict(result)) # To print the result object as a Dictionary
     tables = StachExtensions.convert_to_table_format(result)  # To convert result to 2D tables.
-    print(tables[0])
+    print(tables[0])  # Prints the result in 2D table format.
+    # generate_excel(result)  # Uncomment this line to get the result in table format exported to excel file.
+
+
+def generate_excel(package):
+    for table in StachExtensions.convert_to_table_format(package):
+        writer = pd.ExcelWriter(str(uuid.uuid1()) + ".xlsx")
+        table.to_excel(excel_writer=writer)
+        writer.save()
+        writer.close()
 
 
 if __name__ == '__main__':
     main()
-

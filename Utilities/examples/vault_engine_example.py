@@ -1,6 +1,8 @@
 import json
 import sys
 import time
+import pandas as pd
+import uuid
 
 from fds.analyticsapi.engines import ComponentSummary, ApiException
 from fds.analyticsapi.engines.api.calculations_api import CalculationsApi
@@ -44,7 +46,8 @@ def main():
     config.verify_ssl = False
 
     # Setting configuration to retry api calls on http status codes of 429 and 503.
-    config.retries = Retry(total=3, status=3, status_forcelist=frozenset([429, 503]), backoff_factor=2, raise_on_status=False)
+    config.retries = Retry(total=3, status=3, status_forcelist=frozenset([429, 503]), backoff_factor=2,
+                           raise_on_status=False)
 
     api_client = ApiClient(config)
 
@@ -62,7 +65,8 @@ def main():
         configurations = configurations_api.get_vault_configurations(vault_default_account)
         configuration_id = list(configurations.keys())[0]
 
-        vault_calculation_parameters = {"3": VaultCalculationParameters(component_id, vault_account_identifier, vault_dates, configuration_id)}
+        vault_calculation_parameters = {
+            "3": VaultCalculationParameters(component_id, vault_account_identifier, vault_dates, configuration_id)}
 
         calculation = Calculation(vault=vault_calculation_parameters)
 
@@ -93,8 +97,9 @@ def main():
                 result = json_format.Parse(json.dumps(result_response[0]), Package())
                 # print(MessageToJson(result)) # To print the result object as a JSON
                 # print(MessageToDict(result)) # To print the result object as a Dictionary
-                tables = StachExtensions.convert_to_table_format(result) # To convert result to 2D tables.
-                print(tables[0])
+                tables = StachExtensions.convert_to_table_format(result)  # To convert result to 2D tables.
+                print(tables[0])  # Prints the result in 2D table format.
+                # generate_excel(result)  # Uncomment this line to get the result in table format exported to excel file.
             else:
                 print("Calculation Unit Id:" + calculation_unit_id + " Failed!!!")
                 print("Error message : " + calculation_unit.error)
@@ -103,6 +108,14 @@ def main():
         print("Api exception Encountered")
         print(e)
         exit()
+
+
+def generate_excel(package):
+    for table in StachExtensions.convert_to_table_format(package):
+        writer = pd.ExcelWriter(str(uuid.uuid1()) + ".xlsx")
+        table.to_excel(excel_writer=writer)
+        writer.save()
+        writer.close()
 
 
 if __name__ == '__main__':

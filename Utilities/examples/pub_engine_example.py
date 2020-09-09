@@ -40,7 +40,8 @@ def main():
     config.verify_ssl = False
 
     # Setting configuration to retry api calls on http status codes of 429 and 503.
-    config.retries = Retry(total=3, status=3, status_forcelist=frozenset([429, 503]), backoff_factor=2, raise_on_status=False)
+    config.retries = Retry(total=3, status=3, status_forcelist=frozenset([429, 503]), backoff_factor=2,
+                           raise_on_status=False)
 
     api_client = ApiClient(config)
 
@@ -48,7 +49,8 @@ def main():
         pub_account_identifier = PubIdentifier(pub_account_name);
         pub_dates = PubDateParameters(startdate, enddate);
 
-        pub_calculation_parameters = {"1": PubCalculationParameters(pub_document_name, pub_account_identifier, pub_dates)}
+        pub_calculation_parameters = {
+            "1": PubCalculationParameters(pub_document_name, pub_account_identifier, pub_dates)}
 
         calculation = Calculation(pub=pub_calculation_parameters)
 

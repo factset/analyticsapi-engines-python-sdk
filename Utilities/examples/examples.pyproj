@@ -29,9 +29,6 @@
     <Compile Include="spar_engine_example.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="stach_extensions.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="vault_engine_example.py">
       <SubType>Code</SubType>
     </Compile>
