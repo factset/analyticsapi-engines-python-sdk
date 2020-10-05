@@ -1,6 +1,0 @@
-codegen/*.jar
-codegen/*.class
-.idea/
-examples/.idea/
-test/.idea/
-venv/

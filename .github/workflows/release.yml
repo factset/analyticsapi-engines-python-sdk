@@ -1,0 +1,35 @@
+name: Release
+
+env:
+  PYPI_USERNAME: ${{ secrets.PYPI_USERNAME }}
+  PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+
+on:
+  release:
+    types: [ published ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python 3.4
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.4
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install setuptools wheel twine
+
+    - name: Build and publish
+      env:
+        TWINE_USERNAME: ${{ env.PYPI_USERNAME }}
+        TWINE_PASSWORD: ${{ env.PYPI_PASSWORD }}
+      run: |
+        cd auto-generated-sdk
+        python setup.py sdist bdist_wheel
+        twine upload dist/*

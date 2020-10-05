@@ -1,9 +1,0 @@
-{{! This file is picked from the v4.3.1 release of openapi-generator(https://github.com/OpenAPITools/openapi-generator/blob/v4.3.1/modules/openapi-generator/src/main/resources/python/__init__api.mustache) }}
-{{! Changes made: 1) Added import of UtilityApi. }}
-from __future__ import absolute_import
-
-# flake8: noqa
-
-# import apis into api package
-{{#apiInfo}}{{#apis}}from {{apiPackage}}.{{classVarName}} import {{classname}}
-{{/apis}}{{/apiInfo}}from {{apiPackage}}.utility_api import UtilityApi
