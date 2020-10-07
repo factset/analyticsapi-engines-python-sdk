@@ -3,7 +3,7 @@
 """
     Engines API
 
-    Allow clients to fetch Engines Analytics through APIs.  # noqa: E501
+    Allow clients to fetch Analytics through APIs.  # noqa: E501
 
     The version of the OpenAPI document: 2
     Contact: analytics.api.support@factset.com
@@ -14,7 +14,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "fds.analyticsapi.engines"
-VERSION = "4.1.0"
+VERSION = "4.2.0"
 # To install the library, run the following
 #
 # python setup.py install
@@ -37,6 +37,6 @@ setup(
     include_package_data=True,
     license="Apache License 2.0",
     long_description="""\
-    Allow clients to fetch Engines Analytics through APIs.  # noqa: E501
+    Allow clients to fetch Analytics through APIs.  # noqa: E501
     """
 )

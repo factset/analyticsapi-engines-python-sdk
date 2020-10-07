@@ -3,7 +3,7 @@
 """
     Engines API
 
-    Allow clients to fetch Engines Analytics through APIs.  # noqa: E501
+    Allow clients to fetch Analytics through APIs.  # noqa: E501
 
     The version of the OpenAPI document: 2
     Contact: analytics.api.support@factset.com
@@ -350,7 +350,7 @@ conf = fds.analyticsapi.engines.Configuration(
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: 2\n"\
-               "SDK Package Version: 4.1.0".\
+               "SDK Package Version: 4.2.0".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self):

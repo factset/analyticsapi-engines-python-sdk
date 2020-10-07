@@ -2,7 +2,7 @@
 """
     Engines API
 
-    Allow clients to fetch Engines Analytics through APIs.  # noqa: E501
+    Allow clients to fetch Analytics through APIs.  # noqa: E501
 
     The version of the OpenAPI document: 2
     Contact: analytics.api.support@factset.com
@@ -79,7 +79,7 @@ class ApiClient(object):
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'engines-api/4.1.0/python'
+        self.user_agent = 'engines-api/4.2.0/python'
         self.client_side_validation = configuration.client_side_validation
 
     def __enter__(self):

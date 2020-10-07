@@ -3,7 +3,7 @@
 """
     Engines API
 
-    Allow clients to fetch Engines Analytics through APIs.  # noqa: E501
+    Allow clients to fetch Analytics through APIs.  # noqa: E501
 
     The version of the OpenAPI document: 2
     Contact: analytics.api.support@factset.com
@@ -161,9 +161,9 @@ class ColumnsApi(object):
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param str name:
-        :param str category:
-        :param str directory:
+        :param str name: Column name
+        :param str category: Column category
+        :param str directory: The directory to get the columns in
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -188,9 +188,9 @@ class ColumnsApi(object):
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param str name:
-        :param str category:
-        :param str directory:
+        :param str name: Column name
+        :param str category: Column category
+        :param str directory: The directory to get the columns in
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
