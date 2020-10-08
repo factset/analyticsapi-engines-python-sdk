@@ -150,7 +150,7 @@ class SPARCalculationsApi(object):
     def get_spar_calculation_by_id(self, id, **kwargs):  # noqa: E501
         """Get SPAR calculation by id  # noqa: E501
 
-        This is the endpoint to check on the progress of a previously requested calculation.  If the calculation has finished computing, the body of the response will contain the requested document in JSON.  # noqa: E501
+        This is the endpoint to check on the progress of a previously requested calculation. If the calculation has finished computing, the body of the response will contain the requested document in JSON.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_spar_calculation_by_id(id, async_req=True)
@@ -175,7 +175,7 @@ class SPARCalculationsApi(object):
     def get_spar_calculation_by_id_with_http_info(self, id, **kwargs):  # noqa: E501
         """Get SPAR calculation by id  # noqa: E501
 
-        This is the endpoint to check on the progress of a previously requested calculation.  If the calculation has finished computing, the body of the response will contain the requested document in JSON.  # noqa: E501
+        This is the endpoint to check on the progress of a previously requested calculation. If the calculation has finished computing, the body of the response will contain the requested document in JSON.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_spar_calculation_by_id_with_http_info(id, async_req=True)
@@ -264,7 +264,7 @@ class SPARCalculationsApi(object):
     def run_spar_calculation(self, **kwargs):  # noqa: E501
         """Run SPAR Calculation  # noqa: E501
 
-        This endpoint runs the SPAR calculation specified in the POST body parameters.  It must be used first before polling or cancelling endpoints.   A successful response will contain the URL to poll for the result of the calculation.    Remarks:    * Any settings in POST body will act as a one-time override over the settings saved in the SPAR template.  # noqa: E501
+        This endpoint runs the SPAR calculation specified in the POST body parameters. It must be used first before polling or cancelling endpoints.  A successful response will contain the URL to poll for the result of the calculation.  Remarks:  * Any settings in POST body will act as a one-time override over the settings saved in the SPAR template.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.run_spar_calculation(async_req=True)
@@ -289,7 +289,7 @@ class SPARCalculationsApi(object):
     def run_spar_calculation_with_http_info(self, **kwargs):  # noqa: E501
         """Run SPAR Calculation  # noqa: E501
 
-        This endpoint runs the SPAR calculation specified in the POST body parameters.  It must be used first before polling or cancelling endpoints.   A successful response will contain the URL to poll for the result of the calculation.    Remarks:    * Any settings in POST body will act as a one-time override over the settings saved in the SPAR template.  # noqa: E501
+        This endpoint runs the SPAR calculation specified in the POST body parameters. It must be used first before polling or cancelling endpoints.  A successful response will contain the URL to poll for the result of the calculation.  Remarks:  * Any settings in POST body will act as a one-time override over the settings saved in the SPAR template.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.run_spar_calculation_with_http_info(async_req=True)
