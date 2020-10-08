@@ -40,7 +40,7 @@ class CalculationsApi(object):
     def cancel_calculation_by_id(self, id, **kwargs):  # noqa: E501
         """Cancel calculation by id  # noqa: E501
 
-        This is the endpoint to cancel a previously submitted calculation request.\\nInstead of doing a GET on the getCalculationById URL, cancel the calculation by doing a DELETE.\\nAll individual calculation units within the calculation will be canceled if they have not already finished.  # noqa: E501
+        This is the endpoint to cancel a previously submitted calculation request.  Instead of doing a GET on the getCalculationById URL, cancel the calculation by doing a DELETE.  All individual calculation units within the calculation will be canceled if they have not already finished.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.cancel_calculation_by_id(id, async_req=True)
@@ -65,7 +65,7 @@ class CalculationsApi(object):
     def cancel_calculation_by_id_with_http_info(self, id, **kwargs):  # noqa: E501
         """Cancel calculation by id  # noqa: E501
 
-        This is the endpoint to cancel a previously submitted calculation request.\\nInstead of doing a GET on the getCalculationById URL, cancel the calculation by doing a DELETE.\\nAll individual calculation units within the calculation will be canceled if they have not already finished.  # noqa: E501
+        This is the endpoint to cancel a previously submitted calculation request.  Instead of doing a GET on the getCalculationById URL, cancel the calculation by doing a DELETE.  All individual calculation units within the calculation will be canceled if they have not already finished.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.cancel_calculation_by_id_with_http_info(id, async_req=True)
@@ -150,7 +150,7 @@ class CalculationsApi(object):
     def get_calculation_status_by_id(self, id, **kwargs):  # noqa: E501
         """Get calculation status by id  # noqa: E501
 
-        This is the endpoint to check on the progress of a previous calculation request.\\nResponse body contains status information of the entire request and each individual calculation unit.  # noqa: E501
+        This is the endpoint to check on the progress of a previous calculation request.  Response body contains status information of the entire request and each individual calculation unit.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_calculation_status_by_id(id, async_req=True)
@@ -175,7 +175,7 @@ class CalculationsApi(object):
     def get_calculation_status_by_id_with_http_info(self, id, **kwargs):  # noqa: E501
         """Get calculation status by id  # noqa: E501
 
-        This is the endpoint to check on the progress of a previous calculation request.\\nResponse body contains status information of the entire request and each individual calculation unit.  # noqa: E501
+        This is the endpoint to check on the progress of a previous calculation request.  Response body contains status information of the entire request and each individual calculation unit.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_calculation_status_by_id_with_http_info(id, async_req=True)
@@ -369,7 +369,7 @@ class CalculationsApi(object):
     def run_calculation(self, **kwargs):  # noqa: E501
         """Run calculation  # noqa: E501
 
-        This endpoint creates a new calculation and runs the set of calculation units specified in the POST body.\\nThis must be used first before get status or cancelling endpoints with a calculation id. \\nA successful response will contain the URL to check the status of the calculation request.\\n\\nRemarks:\\n* Maximum 500 units allowed across all simultaneous calculations. (Refer API documentation for more information)\\n            \\n* Any settings in POST body will act as a one-time override over the settings saved in the PA/SPAR/Vault template.  # noqa: E501
+        This endpoint creates a new calculation and runs the set of calculation units specified in the POST body.  This must be used first before get status or cancelling endpoints with a calculation id.   A successful response will contain the URL to check the status of the calculation request.    Remarks:  * Maximum 500 units allowed across all simultaneous calculations. (Refer API documentation for more information)                * Any settings in POST body will act as a one-time override over the settings saved in the PA/SPAR/Vault template.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.run_calculation(async_req=True)
@@ -394,7 +394,7 @@ class CalculationsApi(object):
     def run_calculation_with_http_info(self, **kwargs):  # noqa: E501
         """Run calculation  # noqa: E501
 
-        This endpoint creates a new calculation and runs the set of calculation units specified in the POST body.\\nThis must be used first before get status or cancelling endpoints with a calculation id. \\nA successful response will contain the URL to check the status of the calculation request.\\n\\nRemarks:\\n* Maximum 500 units allowed across all simultaneous calculations. (Refer API documentation for more information)\\n            \\n* Any settings in POST body will act as a one-time override over the settings saved in the PA/SPAR/Vault template.  # noqa: E501
+        This endpoint creates a new calculation and runs the set of calculation units specified in the POST body.  This must be used first before get status or cancelling endpoints with a calculation id.   A successful response will contain the URL to check the status of the calculation request.    Remarks:  * Maximum 500 units allowed across all simultaneous calculations. (Refer API documentation for more information)                * Any settings in POST body will act as a one-time override over the settings saved in the PA/SPAR/Vault template.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.run_calculation_with_http_info(async_req=True)
