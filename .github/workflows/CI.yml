@@ -30,12 +30,10 @@ jobs:
         pip install .
 
     - name: Build and Run Tests
-      run: echo "Tests ran successfully" 
-      # run: |
-      #   cd tests 
-      #   if [ -f requirements.txt ]
-      #   then 
-      #     pip install -r requirements.txt
-      #   fi
-      #   python -m unittest discover
-
+      run: |
+        cd tests 
+        if [ -f requirements.txt ]
+        then 
+          pip install -r requirements.txt
+        fi
+        python -m unittest discover
