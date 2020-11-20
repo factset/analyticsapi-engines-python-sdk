@@ -136,7 +136,6 @@ class TestCalculationsApi(unittest.TestCase):
                 else:
                     result_response = utility_api.get_by_url_with_http_info(calc.result, _preload_content=False)
 
-                    # self.assertEqual(result_response[1], 200, "Response should be 200 - Success")
                     self.assertEqual(result_response.status, 200, "Response should be 200 - Success")
                     self.assertEqual(type(result_response), HTTPResponse, "Response should be of HTTPResponse type.")
 
