@@ -17,9 +17,9 @@ from fds.analyticsapi.engines.models.pa_date_parameters import PADateParameters
 from fds.analyticsapi.engines.models.spar_calculation_parameters import SPARCalculationParameters
 from fds.analyticsapi.engines.models.spar_identifier import SPARIdentifier
 from fds.analyticsapi.engines.models.spar_date_parameters import SPARDateParameters
-from fds.analyticsapi.engines.models.vault_calculation_parameters import VaultCalculationParameters
-from fds.analyticsapi.engines.models.vault_identifier import VaultIdentifier
-from fds.analyticsapi.engines.models.vault_date_parameters import VaultDateParameters
+# from fds.analyticsapi.engines.models.vault_calculation_parameters import VaultCalculationParameters
+# from fds.analyticsapi.engines.models.vault_identifier import VaultIdentifier
+# from fds.analyticsapi.engines.models.vault_date_parameters import VaultDateParameters
 from fds.analyticsapi.engines.models.pub_calculation_parameters import PubCalculationParameters
 from fds.analyticsapi.engines.models.pub_identifier import PubIdentifier
 from fds.analyticsapi.engines.models.pub_date_parameters import PubDateParameters
@@ -69,25 +69,26 @@ class TestCalculationsApi(unittest.TestCase):
 
         spar_calculation_parameters = {"2": SPARCalculationParameters(component_id, spar_accounts, spar_benchmark_identifier, spar_dates)}
 
-        components = components_api.get_vault_components(common_parameters.vault_default_document)
-        component_id = list(components.keys())[0]
+        # components = components_api.get_vault_components(common_parameters.vault_default_document)
+        # component_id = list(components.keys())[0]
 
-        vault_account_identifier = VaultIdentifier(common_parameters.vault_default_account)
-        vault_dates = VaultDateParameters(common_parameters.vault_start_date, common_parameters.vault_end_date, common_parameters.default_dates_frequency)
+        # vault_account_identifier = VaultIdentifier(common_parameters.vault_default_account)
+        # vault_dates = VaultDateParameters(common_parameters.vault_start_date, common_parameters.vault_end_date, common_parameters.default_dates_frequency)
 
-        configurations_api = ConfigurationsApi(self.api_client)
-        configurations = configurations_api.get_vault_configurations(common_parameters.vault_default_account)
-        # configuration_id = list(configurations.keys())[0]
-        configuration_id = "c6574f19-77d3-487d-96b1-955dc1a4da28"
+        # configurations_api = ConfigurationsApi(self.api_client)
+        # configurations = configurations_api.get_vault_configurations(common_parameters.vault_default_account)
+        # # configuration_id = list(configurations.keys())[0]
+        # configuration_id = "c6574f19-77d3-487d-96b1-955dc1a4da28"
 
-        vault_calculation_parameters = {"3": VaultCalculationParameters(component_id, vault_account_identifier, vault_dates, configuration_id)}
+        # vault_calculation_parameters = {"3": VaultCalculationParameters(component_id, vault_account_identifier, vault_dates, configuration_id)}
 
         pub_account_identifier = PubIdentifier(common_parameters.pub_account_name);
         pub_dates = PubDateParameters(common_parameters.pub_start_date, common_parameters.pub_end_date);
 
         pub_calculation_parameters = {"4": PubCalculationParameters(common_parameters.pub_document_name, pub_account_identifier, pub_dates)}
 
-        calculation = Calculation(pa_calculation_parameters, spar_calculation_parameters, vault_calculation_parameters, pub_calculation_parameters)
+        # calculation = Calculation(pa_calculation_parameters, spar_calculation_parameters, vault_calculation_parameters, pub_calculation_parameters)
+        calculation = Calculation(pa_calculation_parameters, spar_calculation_parameters, pub_calculation_parameters)
         return self.calculations_api.run_calculation_with_http_info(calculation=calculation)
 
     def test_create_calculation(self):
@@ -117,7 +118,8 @@ class TestCalculationsApi(unittest.TestCase):
         self.assertEqual(self.status_response[0].status, "Completed", "Calculation status should be completed")
         self.assertEqual(type(self.status_response[0]), CalculationStatus, "Response should be of CalculationStatus type")
 
-        engines = ["pa", "spar", "vault", "pub"]
+        # engines = ["pa", "spar", "vault", "pub"]
+        engines = ["pa", "spar", "pub"]
 
         for engine in engines:
             calculations = getattr(self.status_response[0], engine).values()
