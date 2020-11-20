@@ -88,7 +88,7 @@ class TestCalculationsApi(unittest.TestCase):
         pub_calculation_parameters = {"4": PubCalculationParameters(common_parameters.pub_document_name, pub_account_identifier, pub_dates)}
 
         # calculation = Calculation(pa_calculation_parameters, spar_calculation_parameters, vault_calculation_parameters, pub_calculation_parameters)
-        calculation = Calculation(pa_calculation_parameters, spar_calculation_parameters, pub_calculation_parameters)
+        calculation = Calculation(pa_calculation_parameters, spar_calculation_parameters, None, pub_calculation_parameters)
         return self.calculations_api.run_calculation_with_http_info(calculation=calculation)
 
     def test_create_calculation(self):
