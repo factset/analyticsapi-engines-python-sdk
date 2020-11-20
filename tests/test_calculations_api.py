@@ -77,7 +77,8 @@ class TestCalculationsApi(unittest.TestCase):
 
         configurations_api = ConfigurationsApi(self.api_client)
         configurations = configurations_api.get_vault_configurations(common_parameters.vault_default_account)
-        configuration_id = list(configurations.keys())[0]
+        # configuration_id = list(configurations.keys())[0]
+        configuration_id = "c6574f19-77d3-487d-96b1-955dc1a4da28"
 
         vault_calculation_parameters = {"3": VaultCalculationParameters(component_id, vault_account_identifier, vault_dates, configuration_id)}
 
