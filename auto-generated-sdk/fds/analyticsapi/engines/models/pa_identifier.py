@@ -3,7 +3,7 @@
 """
     Engines API
 
-    Allow clients to fetch Engines Analytics through APIs.  # noqa: E501
+    Allow clients to fetch Analytics through APIs.  # noqa: E501
 
     The version of the OpenAPI document: 2
     Contact: analytics.api.support@factset.com
@@ -86,7 +86,7 @@ class PAIdentifier(object):
     def holdingsmode(self):
         """Gets the holdingsmode of this PAIdentifier.  # noqa: E501
 
-        Holdings Mode can be B&H, TBR or OMS.  # noqa: E501
+        Holdings Mode can be B&H, TBR, OMS or EXT.  # noqa: E501
 
         :return: The holdingsmode of this PAIdentifier.  # noqa: E501
         :rtype: str
@@ -97,7 +97,7 @@ class PAIdentifier(object):
     def holdingsmode(self, holdingsmode):
         """Sets the holdingsmode of this PAIdentifier.
 
-        Holdings Mode can be B&H, TBR or OMS.  # noqa: E501
+        Holdings Mode can be B&H, TBR, OMS or EXT.  # noqa: E501
 
         :param holdingsmode: The holdingsmode of this PAIdentifier.  # noqa: E501
         :type: str

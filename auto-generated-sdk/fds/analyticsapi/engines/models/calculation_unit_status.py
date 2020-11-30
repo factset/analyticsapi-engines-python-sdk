@@ -3,7 +3,7 @@
 """
     Engines API
 
-    Allow clients to fetch Engines Analytics through APIs.  # noqa: E501
+    Allow clients to fetch Analytics through APIs.  # noqa: E501
 
     The version of the OpenAPI document: 2
     Contact: analytics.api.support@factset.com
@@ -36,16 +36,18 @@ class CalculationUnitStatus(object):
     openapi_types = {
         'status': 'str',
         'error': 'str',
-        'result': 'str'
+        'result': 'str',
+        'progress': 'str'
     }
 
     attribute_map = {
         'status': 'status',
         'error': 'error',
-        'result': 'result'
+        'result': 'result',
+        'progress': 'progress'
     }
 
-    def __init__(self, status=None, error=None, result=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, status=None, error=None, result=None, progress=None, local_vars_configuration=None):  # noqa: E501
         """CalculationUnitStatus - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -54,6 +56,7 @@ class CalculationUnitStatus(object):
         self._status = None
         self._error = None
         self._result = None
+        self._progress = None
         self.discriminator = None
 
         if status is not None:
@@ -62,6 +65,8 @@ class CalculationUnitStatus(object):
             self.error = error
         if result is not None:
             self.result = result
+        if progress is not None:
+            self.progress = progress
 
     @property
     def status(self):
@@ -137,6 +142,29 @@ class CalculationUnitStatus(object):
         """
 
         self._result = result
+
+    @property
+    def progress(self):
+        """Gets the progress of this CalculationUnitStatus.  # noqa: E501
+
+        The progress of the calculation unit.  # noqa: E501
+
+        :return: The progress of this CalculationUnitStatus.  # noqa: E501
+        :rtype: str
+        """
+        return self._progress
+
+    @progress.setter
+    def progress(self, progress):
+        """Sets the progress of this CalculationUnitStatus.
+
+        The progress of the calculation unit.  # noqa: E501
+
+        :param progress: The progress of this CalculationUnitStatus.  # noqa: E501
+        :type: str
+        """
+
+        self._progress = progress
 
     def to_dict(self):
         """Returns the model properties as a dict"""
