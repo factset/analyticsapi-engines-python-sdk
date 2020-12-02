@@ -43,7 +43,7 @@ class TestOptimizerApi(unittest.TestCase):
 
             self.assertEqual(response[2].get("content-type"), "application/json")
         else:
-            self.fail("Optimizer workflow did not succeed")
+            assert False, "Optimizer workflow did not succeed"
 
 if __name__ == '__main__':
     unittest.main()
