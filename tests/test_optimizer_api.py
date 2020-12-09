@@ -20,10 +20,12 @@ class TestOptimizerApi(unittest.TestCase):
 
     def test_normal_workflow(self):
         optimizer_api = OptimizationsApi(self.api_client)
-        strategy = Strategy(id="Client:test")
-        account = Account(id="Client:/analytics/nyim/TEST.ACCT")
-        optimization = Optimization(riskmodeldate="0M", backtestdate="0M")
-        trade_list = TradesList(identifiertype="Asset", includecash=False)
+        strategy = Strategy(id=common_parameters.axp_optimizer_default_strategy_id)
+        account = Account(id=common_parameters.axp_optimizer_default_account_id)
+        optimization = Optimization(riskmodeldate=common_parameters.axp_optimizer_default_riskmodeldate,
+                                    backtestdate=common_parameters.axp_optimizer_default_backtestdate)
+        trade_list = TradesList(identifiertype=common_parameters.axp_optimizer_default_tradelist_identifiertype,
+                                includecash=common_parameters.axp_optimizer_default_tradelist_includecash)
         output_types = OutputTypes(trades=trade_list)
         parameters = AxiomaEquityOptimizationParameters(strategy=strategy, account=account, optimization=optimization, outputtypes=output_types)
         response = optimizer_api.run_axioma_optimization_with_http_info(axioma_equity_optimization_parameters=parameters)
