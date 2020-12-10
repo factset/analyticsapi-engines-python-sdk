@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
-**status** | **str** | FIAB service batch status integer definitions.  See https://pages.github.factset.com/FactSet/fipa-inf-docs/service/fiab_batch_api.html#lt-uuid-gt. | [optional] 
+**status** | **str** | FIAB service batch status integer definitions.
 **startdatetime** | **datetime** |  | [optional] 
 **completiondatetime** | **datetime** |  | [optional] 
 **progress** | **int** |  | [optional] 
