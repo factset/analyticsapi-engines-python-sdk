@@ -33,3 +33,4 @@ jobs:
         cd auto-generated-sdk
         python setup.py sdist bdist_wheel
         twine upload dist/*
+      #
