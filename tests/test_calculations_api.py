@@ -125,7 +125,7 @@ class TestCalculationsApi(unittest.TestCase):
             calculations = getattr(self.status_response[0], engine).values()
             for calc in calculations:
                 self.assertEqual(type(calc), CalculationUnitStatus, "Response should be of CalculationUnitStatus type")
-                self.assertEqual(calc.status, "Success", "Calculation should be successful")
+                self.assertEqual(calc.status, "Success", "Calculation should be successful for " + engine)
                 self.assertNotEqual(calc.result, None, "Response result should not be null")
 
                 utility_api = UtilityApi(self.api_client)
