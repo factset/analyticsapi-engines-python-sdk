@@ -6,6 +6,7 @@ from google.protobuf import json_format
 from fds.protobuf.stach.Package_pb2 import Package
 from urllib3.response import HTTPResponse
 
+from fds.analyticsapi.engines import ComponentSummary
 from fds.analyticsapi.engines.api.components_api import ComponentsApi
 from fds.analyticsapi.engines.api.configurations_api import ConfigurationsApi
 from fds.analyticsapi.engines.api.calculations_api import CalculationsApi
@@ -41,7 +42,8 @@ class TestCalculationsApi(unittest.TestCase):
     def run_calculation(self):
         components_api = ComponentsApi(self.api_client)
         components = components_api.get_pa_components(common_parameters.pa_default_document)
-        component_id = list(components.keys())[0]
+        component_desc = ComponentSummary(name=common_parameters.pa_default_component_name, category=common_parameters.pa_default_component_category)
+        component_id = [id for id in list(components.keys()) if components[id] == component_desc][0]
 
         pa_account_identifier = PAIdentifier(common_parameters.pa_benchmark_sp500)
         pa_accounts = [pa_account_identifier]
