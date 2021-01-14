@@ -6,6 +6,7 @@ from google.protobuf import json_format
 from fds.protobuf.stach.Package_pb2 import Package
 from urllib3.response import HTTPResponse
 
+from fds.analyticsapi.engines import ComponentSummary
 from fds.analyticsapi.engines.api.components_api import ComponentsApi
 from fds.analyticsapi.engines.api.configurations_api import ConfigurationsApi
 from fds.analyticsapi.engines.api.calculations_api import CalculationsApi
@@ -17,7 +18,7 @@ from fds.analyticsapi.engines.models.pa_date_parameters import PADateParameters
 from fds.analyticsapi.engines.models.spar_calculation_parameters import SPARCalculationParameters
 from fds.analyticsapi.engines.models.spar_identifier import SPARIdentifier
 from fds.analyticsapi.engines.models.spar_date_parameters import SPARDateParameters
-# from fds.analyticsapi.engines.models.vault_calculation_parameters import VaultCalculationParameters
+## from fds.analyticsapi.engines.models.vault_calculation_parameters import VaultCalculationParameters
 # from fds.analyticsapi.engines.models.vault_identifier import VaultIdentifier
 # from fds.analyticsapi.engines.models.vault_date_parameters import VaultDateParameters
 from fds.analyticsapi.engines.models.pub_calculation_parameters import PubCalculationParameters
@@ -41,7 +42,8 @@ class TestCalculationsApi(unittest.TestCase):
     def run_calculation(self):
         components_api = ComponentsApi(self.api_client)
         components = components_api.get_pa_components(common_parameters.pa_default_document)
-        component_id = list(components.keys())[0]
+        component_desc = ComponentSummary(name=common_parameters.pa_default_component_name, category=common_parameters.pa_default_component_category)
+        component_id = [id for id in list(components.keys()) if components[id] == component_desc][0]
 
         pa_account_identifier = PAIdentifier(common_parameters.pa_benchmark_sp500)
         pa_accounts = [pa_account_identifier]
@@ -125,7 +127,7 @@ class TestCalculationsApi(unittest.TestCase):
             calculations = getattr(self.status_response[0], engine).values()
             for calc in calculations:
                 self.assertEqual(type(calc), CalculationUnitStatus, "Response should be of CalculationUnitStatus type")
-                self.assertEqual(calc.status, "Success", "Calculation should be successful")
+                self.assertEqual(calc.status, "Success", "Calculation should be successful for " + engine)
                 self.assertNotEqual(calc.result, None, "Response result should not be null")
 
                 utility_api = UtilityApi(self.api_client)

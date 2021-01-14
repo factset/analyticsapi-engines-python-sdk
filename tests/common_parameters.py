@@ -9,6 +9,8 @@ password = os.getenv("ANALYTICS_API_PASSWORD")
 base_url = 'https://api.factset.com' if not os.getenv("ANALYTICS_API_URL") else os.getenv("ANALYTICS_API_URL")
 
 pa_default_document = "PA_DOCUMENTS:DEFAULT"
+pa_default_component_name = "Weights"
+pa_default_component_category = "Weights / Exposures"
 pa_benchmark_sp500 = "BENCH:SP50"
 pa_benchmark_r1000 = "BENCH:R.1000"
 spar_default_document = "pmw_root:/spar_documents/Factset Default Document"
