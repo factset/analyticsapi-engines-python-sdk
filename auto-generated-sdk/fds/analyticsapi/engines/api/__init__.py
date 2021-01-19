@@ -12,10 +12,14 @@ from fds.analyticsapi.engines.api.configurations_api import ConfigurationsApi
 from fds.analyticsapi.engines.api.currencies_api import CurrenciesApi
 from fds.analyticsapi.engines.api.dates_api import DatesApi
 from fds.analyticsapi.engines.api.documents_api import DocumentsApi
+from fds.analyticsapi.engines.api.fiab_calculations_api import FIABCalculationsApi
+from fds.analyticsapi.engines.api.fi_calculations_api import FICalculationsApi
 from fds.analyticsapi.engines.api.frequencies_api import FrequenciesApi
 from fds.analyticsapi.engines.api.groups_api import GroupsApi
+from fds.analyticsapi.engines.api.optimizations_api import OptimizationsApi
 from fds.analyticsapi.engines.api.pa_calculations_api import PACalculationsApi
 from fds.analyticsapi.engines.api.spar_benchmark_api import SPARBenchmarkApi
 from fds.analyticsapi.engines.api.spar_calculations_api import SPARCalculationsApi
+from fds.analyticsapi.engines.api.strategy_documents_api import StrategyDocumentsApi
 from fds.analyticsapi.engines.api.vault_calculations_api import VaultCalculationsApi
 from fds.analyticsapi.engines.api.utility_api import UtilityApi

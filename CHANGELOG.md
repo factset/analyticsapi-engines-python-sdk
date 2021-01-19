@@ -1,3 +1,23 @@
+4.2.0 (01/19/2021)
+
+Supported API versions:
+* v2:[pa,spar,vault,pub],v1:[fiab,fi]
+
+Summary:
+* Adding support for fixed income and fixed income analytics batcher with examples and tests
+
+Breaking changes:
+* No changes
+
+Functionality Additions:
+* Fixed Income API
+* Fixed Income Analytics Batcher API
+
+Bug Fixes:
+* No changes
+
+-----------------------
+
 4.0.0 (06/17/2020)
 
 Supported API versions:
