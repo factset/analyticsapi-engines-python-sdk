@@ -49,12 +49,20 @@ First, clone the repo locally and `cd` into the directory.
 
 ```sh
 git clone https://github.com/factset/analyticsapi-engines-python-sdk.git
-cd tests
 ```
 
-Next, install dependencies.
+Then, to make local package in `auto-generated-sdk` accessible to the tests, you have to build and register them in pip
 
 ```sh
+cd auto-generated-sdk/
+python setup.py sdist
+pip install .
+```
+
+Next, install dependencies that the tests directory needs.
+
+```sh
+cd tests/
 pip install -r requirements.txt
 ```
 
@@ -69,6 +77,15 @@ Run the tests with below command.
 
 ```sh
 python -m test
+```
+
+**note when checking out different branches, you will have to re-install the auto-generated-sdk directory before running tests again
+```sh
+cd auto-generated-sdk/
+pip list # to view what version of fds.analyticsapi.engines is installed
+pip uninstall fds.analyticsapi.engines <version>
+python setup.py sdist
+pip install .
 ```
 
 ## Contributing
