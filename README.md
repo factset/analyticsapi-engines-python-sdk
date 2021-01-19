@@ -45,7 +45,7 @@ Refer [examples](examples) project for sample code snippets to quickly get start
 
 ## Tests
 
-First, clone the repo locally.
+First, clone the repo locally and `cd` into the directory
 
 ```sh
 git clone https://github.com/factset/analyticsapi-engines-python-sdk.git
