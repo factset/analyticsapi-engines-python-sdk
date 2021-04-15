@@ -23,10 +23,10 @@ This is the endpoint to cancel a previously submitted calculation.
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import spar_calculations_api
+from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -48,21 +48,23 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.SPARCalculationsApi(api_client)
-    id = 'id_example' # str | from url, provided from the location header in the Create and Run SPAR calculation endpoint
+    api_instance = spar_calculations_api.SPARCalculationsApi(api_client)
+    id = "id_example" # str | from url, provided from the location header in the Create and Run SPAR calculation endpoint
 
+    # example passing only required values which don't have defaults set
     try:
         # Cancel SPAR calculation
         api_instance.cancel_calculation_by_id(id)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling SPARCalculationsApi->cancel_calculation_by_id: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| from url, provided from the location header in the Create and Run SPAR calculation endpoint | 
+ **id** | **str**| from url, provided from the location header in the Create and Run SPAR calculation endpoint |
 
 ### Return type
 
@@ -76,6 +78,7 @@ void (empty response body)
 
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -101,10 +104,11 @@ This is the endpoint that returns the calculation parameters passed for a calcul
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import spar_calculations_api
+from fds.analyticsapi.engines.model.spar_calculation_parameters_root import SPARCalculationParametersRoot
+from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -126,22 +130,24 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.SPARCalculationsApi(api_client)
-    id = 'id_example' # str | from url, provided from the location header in the Create and Run SPAR calculation endpoint
+    api_instance = spar_calculations_api.SPARCalculationsApi(api_client)
+    id = "id_example" # str | from url, provided from the location header in the Create and Run SPAR calculation endpoint
 
+    # example passing only required values which don't have defaults set
     try:
         # Get SPAR calculation parameters by id
         api_response = api_instance.get_calculation_parameters(id)
         pprint(api_response)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling SPARCalculationsApi->get_calculation_parameters: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| from url, provided from the location header in the Create and Run SPAR calculation endpoint | 
+ **id** | **str**| from url, provided from the location header in the Create and Run SPAR calculation endpoint |
 
 ### Return type
 
@@ -155,6 +161,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -180,10 +187,11 @@ This is the endpoint to check on the progress of a previously requested calculat
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import spar_calculations_api
+from fds.analyticsapi.engines.model.calculation_status_root import CalculationStatusRoot
+from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -205,22 +213,24 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.SPARCalculationsApi(api_client)
-    id = 'id_example' # str | from url, provided from the location header in the Create and Run SPAR calculation endpoint
+    api_instance = spar_calculations_api.SPARCalculationsApi(api_client)
+    id = "id_example" # str | from url, provided from the location header in the Create and Run SPAR calculation endpoint
 
+    # example passing only required values which don't have defaults set
     try:
         # Get SPAR calculation status by id
         api_response = api_instance.get_calculation_status_by_id(id)
         pprint(api_response)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling SPARCalculationsApi->get_calculation_status_by_id: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| from url, provided from the location header in the Create and Run SPAR calculation endpoint | 
+ **id** | **str**| from url, provided from the location header in the Create and Run SPAR calculation endpoint |
 
 ### Return type
 
@@ -234,6 +244,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -250,7 +261,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_calculation_unit_result_by_id**
-> ObjectRoot get_calculation_unit_result_by_id(id, unit_id, accept=accept)
+> ObjectRoot get_calculation_unit_result_by_id(id, unit_id)
 
 Get SPAR calculation result by id
 
@@ -260,10 +271,11 @@ This is the endpoint to get the result of a previously requested calculation.  I
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import spar_calculations_api
+from fds.analyticsapi.engines.model.object_root import ObjectRoot
+from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -285,26 +297,37 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.SPARCalculationsApi(api_client)
-    id = 'id_example' # str | from url, provided from the location header in the Get SPAR calculation status by id endpoint
-unit_id = 'unit_id_example' # str | from url, provided from the location header in the Get SPAR calculation status by id endpoint
-accept = 'accept_example' # str | Standard HTTP header. Value can be gzip, compress, deflate, br, identity and/or * (optional)
+    api_instance = spar_calculations_api.SPARCalculationsApi(api_client)
+    id = "id_example" # str | from url, provided from the location header in the Get SPAR calculation status by id endpoint
+    unit_id = "unitId_example" # str | from url, provided from the location header in the Get SPAR calculation status by id endpoint
+    accept = "Accept_example" # str | Standard HTTP header. Value can be gzip, compress, deflate, br, identity and/or * (optional)
 
+    # example passing only required values which don't have defaults set
+    try:
+        # Get SPAR calculation result by id
+        api_response = api_instance.get_calculation_unit_result_by_id(id, unit_id)
+        pprint(api_response)
+    except fds.analyticsapi.engines.ApiException as e:
+        print("Exception when calling SPARCalculationsApi->get_calculation_unit_result_by_id: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Get SPAR calculation result by id
         api_response = api_instance.get_calculation_unit_result_by_id(id, unit_id, accept=accept)
         pprint(api_response)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling SPARCalculationsApi->get_calculation_unit_result_by_id: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| from url, provided from the location header in the Get SPAR calculation status by id endpoint | 
- **unit_id** | **str**| from url, provided from the location header in the Get SPAR calculation status by id endpoint | 
- **accept** | **str**| Standard HTTP header. Value can be gzip, compress, deflate, br, identity and/or * | [optional] 
+ **id** | **str**| from url, provided from the location header in the Get SPAR calculation status by id endpoint |
+ **unit_id** | **str**| from url, provided from the location header in the Get SPAR calculation status by id endpoint |
+ **accept** | **str**| Standard HTTP header. Value can be gzip, compress, deflate, br, identity and/or * | [optional]
 
 ### Return type
 
@@ -318,6 +341,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json, application/x-protobuf
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -333,7 +357,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_and_calculate**
-> CalculationStatusRoot post_and_calculate(x_fact_set_api_long_running_deadline=x_fact_set_api_long_running_deadline, cache_control=cache_control, spar_calculation_parameters_root=spar_calculation_parameters_root)
+> CalculationStatusRoot post_and_calculate()
 
 Create and Run SPAR calculation
 
@@ -343,10 +367,13 @@ This endpoint runs the SPAR calculation specified in the POST body parameters.  
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import spar_calculations_api
+from fds.analyticsapi.engines.model.calculation_status_root import CalculationStatusRoot
+from fds.analyticsapi.engines.model.object_root import ObjectRoot
+from fds.analyticsapi.engines.model.spar_calculation_parameters_root import SPARCalculationParametersRoot
+from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -368,26 +395,56 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.SPARCalculationsApi(api_client)
-    x_fact_set_api_long_running_deadline = 56 # int | Long running deadline in seconds when only one unit is passed in the POST body. (optional)
-cache_control = 'cache_control_example' # str | Standard HTTP header.  Accepts no-cache, no-store, max-age, max-stale. (optional)
-spar_calculation_parameters_root = fds.analyticsapi.engines.SPARCalculationParametersRoot() # SPARCalculationParametersRoot | Calculation Parameters (optional)
+    api_instance = spar_calculations_api.SPARCalculationsApi(api_client)
+    x_fact_set_api_long_running_deadline = 1 # int | Long running deadline in seconds when only one unit is passed in the POST body. (optional)
+    cache_control = "Cache-Control_example" # str | Standard HTTP header.  Accepts no-cache, no-store, max-age, max-stale. (optional)
+    spar_calculation_parameters_root = SPARCalculationParametersRoot(
+        data={
+            "key": SPARCalculationParameters(
+                componentid="componentid_example",
+                accounts=[
+                    SPARIdentifier(
+                        id="id_example",
+                        returntype="returntype_example",
+                        prefix="prefix_example",
+                    ),
+                ],
+                benchmark=SPARIdentifier(
+                    id="id_example",
+                    returntype="returntype_example",
+                    prefix="prefix_example",
+                ),
+                dates=SPARDateParameters(
+                    startdate="startdate_example",
+                    enddate="enddate_example",
+                    frequency="frequency_example",
+                ),
+            ),
+        },
+        meta=CalculationMeta(
+            contentorganization="SimplifiedRow",
+            contenttype="Json",
+        ),
+    ) # SPARCalculationParametersRoot | Calculation Parameters (optional)
 
+    # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Create and Run SPAR calculation
         api_response = api_instance.post_and_calculate(x_fact_set_api_long_running_deadline=x_fact_set_api_long_running_deadline, cache_control=cache_control, spar_calculation_parameters_root=spar_calculation_parameters_root)
         pprint(api_response)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling SPARCalculationsApi->post_and_calculate: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_fact_set_api_long_running_deadline** | **int**| Long running deadline in seconds when only one unit is passed in the POST body. | [optional] 
- **cache_control** | **str**| Standard HTTP header.  Accepts no-cache, no-store, max-age, max-stale. | [optional] 
- **spar_calculation_parameters_root** | [**SPARCalculationParametersRoot**](SPARCalculationParametersRoot.md)| Calculation Parameters | [optional] 
+ **x_fact_set_api_long_running_deadline** | **int**| Long running deadline in seconds when only one unit is passed in the POST body. | [optional]
+ **cache_control** | **str**| Standard HTTP header.  Accepts no-cache, no-store, max-age, max-stale. | [optional]
+ **spar_calculation_parameters_root** | [**SPARCalculationParametersRoot**](SPARCalculationParametersRoot.md)| Calculation Parameters | [optional]
 
 ### Return type
 
@@ -401,6 +458,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json, application/x-protobuf
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -420,7 +478,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_and_calculate**
-> CalculationStatusRoot put_and_calculate(id, x_fact_set_api_long_running_deadline=x_fact_set_api_long_running_deadline, cache_control=cache_control, spar_calculation_parameters_root=spar_calculation_parameters_root)
+> CalculationStatusRoot put_and_calculate(id)
 
 Create or Update SPAR calculation and run it.
 
@@ -430,10 +488,13 @@ This endpoint updates and run the SPAR calculation specified in the PUT body par
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import spar_calculations_api
+from fds.analyticsapi.engines.model.calculation_status_root import CalculationStatusRoot
+from fds.analyticsapi.engines.model.object_root import ObjectRoot
+from fds.analyticsapi.engines.model.spar_calculation_parameters_root import SPARCalculationParametersRoot
+from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -455,28 +516,66 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.SPARCalculationsApi(api_client)
-    id = 'id_example' # str | from url, provided from the location header in the Create and Run SPAR calculation endpoint
-x_fact_set_api_long_running_deadline = 56 # int | Long running deadline in seconds when only one unit is passed in the PUT body. (optional)
-cache_control = 'cache_control_example' # str | Standard HTTP header.  Accepts no-cache, no-store, max-age, max-stale. (optional)
-spar_calculation_parameters_root = fds.analyticsapi.engines.SPARCalculationParametersRoot() # SPARCalculationParametersRoot | Calculation Parameters (optional)
+    api_instance = spar_calculations_api.SPARCalculationsApi(api_client)
+    id = "id_example" # str | from url, provided from the location header in the Create and Run SPAR calculation endpoint
+    x_fact_set_api_long_running_deadline = 1 # int | Long running deadline in seconds when only one unit is passed in the PUT body. (optional)
+    cache_control = "Cache-Control_example" # str | Standard HTTP header.  Accepts no-cache, no-store, max-age, max-stale. (optional)
+    spar_calculation_parameters_root = SPARCalculationParametersRoot(
+        data={
+            "key": SPARCalculationParameters(
+                componentid="componentid_example",
+                accounts=[
+                    SPARIdentifier(
+                        id="id_example",
+                        returntype="returntype_example",
+                        prefix="prefix_example",
+                    ),
+                ],
+                benchmark=SPARIdentifier(
+                    id="id_example",
+                    returntype="returntype_example",
+                    prefix="prefix_example",
+                ),
+                dates=SPARDateParameters(
+                    startdate="startdate_example",
+                    enddate="enddate_example",
+                    frequency="frequency_example",
+                ),
+            ),
+        },
+        meta=CalculationMeta(
+            contentorganization="SimplifiedRow",
+            contenttype="Json",
+        ),
+    ) # SPARCalculationParametersRoot | Calculation Parameters (optional)
 
+    # example passing only required values which don't have defaults set
+    try:
+        # Create or Update SPAR calculation and run it.
+        api_response = api_instance.put_and_calculate(id)
+        pprint(api_response)
+    except fds.analyticsapi.engines.ApiException as e:
+        print("Exception when calling SPARCalculationsApi->put_and_calculate: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Create or Update SPAR calculation and run it.
         api_response = api_instance.put_and_calculate(id, x_fact_set_api_long_running_deadline=x_fact_set_api_long_running_deadline, cache_control=cache_control, spar_calculation_parameters_root=spar_calculation_parameters_root)
         pprint(api_response)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling SPARCalculationsApi->put_and_calculate: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| from url, provided from the location header in the Create and Run SPAR calculation endpoint | 
- **x_fact_set_api_long_running_deadline** | **int**| Long running deadline in seconds when only one unit is passed in the PUT body. | [optional] 
- **cache_control** | **str**| Standard HTTP header.  Accepts no-cache, no-store, max-age, max-stale. | [optional] 
- **spar_calculation_parameters_root** | [**SPARCalculationParametersRoot**](SPARCalculationParametersRoot.md)| Calculation Parameters | [optional] 
+ **id** | **str**| from url, provided from the location header in the Create and Run SPAR calculation endpoint |
+ **x_fact_set_api_long_running_deadline** | **int**| Long running deadline in seconds when only one unit is passed in the PUT body. | [optional]
+ **cache_control** | **str**| Standard HTTP header.  Accepts no-cache, no-store, max-age, max-stale. | [optional]
+ **spar_calculation_parameters_root** | [**SPARCalculationParametersRoot**](SPARCalculationParametersRoot.md)| Calculation Parameters | [optional]
 
 ### Return type
 
@@ -490,6 +589,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json, application/x-protobuf
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

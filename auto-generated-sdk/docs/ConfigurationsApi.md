@@ -19,10 +19,10 @@ This endpoint returns details for a Vault configuration as well as a list of acc
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import configurations_api
+from fds.analyticsapi.engines.model.vault_configuration_root import VaultConfigurationRoot
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -44,22 +44,24 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.ConfigurationsApi(api_client)
-    id = 'id_example' # str | Vault configuration id to get the details of
+    api_instance = configurations_api.ConfigurationsApi(api_client)
+    id = "id_example" # str | Vault configuration id to get the details of
 
+    # example passing only required values which don't have defaults set
     try:
         # Get Vault configuration by id
         api_response = api_instance.get_vault_configuration_by_id(id)
         pprint(api_response)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling ConfigurationsApi->get_vault_configuration_by_id: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| Vault configuration id to get the details of | 
+ **id** | **str**| Vault configuration id to get the details of |
 
 ### Return type
 
@@ -73,6 +75,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -100,10 +103,10 @@ This endpoint returns all the Vault configurations saved in the provided account
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import configurations_api
+from fds.analyticsapi.engines.model.vault_configuration_summary_root import VaultConfigurationSummaryRoot
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -125,22 +128,24 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.ConfigurationsApi(api_client)
-    account = 'account_example' # str | Required account query parameter to filter configurations for a specific account
+    api_instance = configurations_api.ConfigurationsApi(api_client)
+    account = "account_example" # str | Required account query parameter to filter configurations for a specific account
 
+    # example passing only required values which don't have defaults set
     try:
         # Get Vault configurations
         api_response = api_instance.get_vault_configurations(account)
         pprint(api_response)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling ConfigurationsApi->get_vault_configurations: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **account** | **str**| Required account query parameter to filter configurations for a specific account | 
+ **account** | **str**| Required account query parameter to filter configurations for a specific account |
 
 ### Return type
 
@@ -154,6 +159,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

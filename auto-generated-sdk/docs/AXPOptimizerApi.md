@@ -23,10 +23,10 @@ This is the endpoint to cancel a previously submitted optimization.
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import axp_optimizer_api
+from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -48,21 +48,23 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.AXPOptimizerApi(api_client)
-    id = 'id_example' # str | from url, provided from the location header in the Create and Run Axioma optimization endpoint
+    api_instance = axp_optimizer_api.AXPOptimizerApi(api_client)
+    id = "id_example" # str | from url, provided from the location header in the Create and Run Axioma optimization endpoint
 
+    # example passing only required values which don't have defaults set
     try:
         # Cancel Axioma optimization by id
         api_instance.cancel_optimization_by_id(id)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling AXPOptimizerApi->cancel_optimization_by_id: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| from url, provided from the location header in the Create and Run Axioma optimization endpoint | 
+ **id** | **str**| from url, provided from the location header in the Create and Run Axioma optimization endpoint |
 
 ### Return type
 
@@ -76,6 +78,7 @@ void (empty response body)
 
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -101,10 +104,11 @@ This is the endpoint that returns the optimization parameters passed for a calcu
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import axp_optimizer_api
+from fds.analyticsapi.engines.model.axioma_equity_optimization_parameters_root import AxiomaEquityOptimizationParametersRoot
+from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -126,22 +130,24 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.AXPOptimizerApi(api_client)
-    id = 'id_example' # str | from url, provided from the location header in the Create and Run Axioma optimization endpoint
+    api_instance = axp_optimizer_api.AXPOptimizerApi(api_client)
+    id = "id_example" # str | from url, provided from the location header in the Create and Run Axioma optimization endpoint
 
+    # example passing only required values which don't have defaults set
     try:
         # Get Axioma optimization parameters by id
         api_response = api_instance.get_optimization_parameters(id)
         pprint(api_response)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling AXPOptimizerApi->get_optimization_parameters: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| from url, provided from the location header in the Create and Run Axioma optimization endpoint | 
+ **id** | **str**| from url, provided from the location header in the Create and Run Axioma optimization endpoint |
 
 ### Return type
 
@@ -155,6 +161,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -170,7 +177,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_optimization_result**
-> ObjectRoot get_optimization_result(id, accept=accept)
+> ObjectRoot get_optimization_result(id)
 
 Get Axioma optimization result by id
 
@@ -180,10 +187,11 @@ This is the endpoint to get the result of a previously requested optimization.
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import axp_optimizer_api
+from fds.analyticsapi.engines.model.object_root import ObjectRoot
+from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -205,24 +213,35 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.AXPOptimizerApi(api_client)
-    id = 'id_example' # str | from url, provided from the location header in the Get Axioma optimization status by id endpoint
-accept = 'accept_example' # str | Standard HTTP header. Value can be gzip, compress, deflate, br, identity and/or * (optional)
+    api_instance = axp_optimizer_api.AXPOptimizerApi(api_client)
+    id = "id_example" # str | from url, provided from the location header in the Get Axioma optimization status by id endpoint
+    accept = "Accept_example" # str | Standard HTTP header. Value can be gzip, compress, deflate, br, identity and/or * (optional)
 
+    # example passing only required values which don't have defaults set
+    try:
+        # Get Axioma optimization result by id
+        api_response = api_instance.get_optimization_result(id)
+        pprint(api_response)
+    except fds.analyticsapi.engines.ApiException as e:
+        print("Exception when calling AXPOptimizerApi->get_optimization_result: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Get Axioma optimization result by id
         api_response = api_instance.get_optimization_result(id, accept=accept)
         pprint(api_response)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling AXPOptimizerApi->get_optimization_result: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| from url, provided from the location header in the Get Axioma optimization status by id endpoint | 
- **accept** | **str**| Standard HTTP header. Value can be gzip, compress, deflate, br, identity and/or * | [optional] 
+ **id** | **str**| from url, provided from the location header in the Get Axioma optimization status by id endpoint |
+ **accept** | **str**| Standard HTTP header. Value can be gzip, compress, deflate, br, identity and/or * | [optional]
 
 ### Return type
 
@@ -236,6 +255,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -261,10 +281,11 @@ This is the endpoint to check on the progress of a previously requested optimiza
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import axp_optimizer_api
+from fds.analyticsapi.engines.model.object_root import ObjectRoot
+from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -286,22 +307,24 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.AXPOptimizerApi(api_client)
-    id = 'id_example' # str | from url, provided from the location header in the Create and Run Axioma optimization endpoint
+    api_instance = axp_optimizer_api.AXPOptimizerApi(api_client)
+    id = "id_example" # str | from url, provided from the location header in the Create and Run Axioma optimization endpoint
 
+    # example passing only required values which don't have defaults set
     try:
         # Get Axioma optimization status by id
         api_response = api_instance.get_optimization_status_by_id(id)
         pprint(api_response)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling AXPOptimizerApi->get_optimization_status_by_id: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| from url, provided from the location header in the Create and Run Axioma optimization endpoint | 
+ **id** | **str**| from url, provided from the location header in the Create and Run Axioma optimization endpoint |
 
 ### Return type
 
@@ -315,6 +338,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -331,7 +355,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_and_optimize**
-> ObjectRoot post_and_optimize(x_fact_set_api_long_running_deadline=x_fact_set_api_long_running_deadline, cache_control=cache_control, axioma_equity_optimization_parameters_root=axioma_equity_optimization_parameters_root)
+> ObjectRoot post_and_optimize()
 
 Create and Run Axioma optimization
 
@@ -341,10 +365,13 @@ This endpoint creates and runs Axioma optimization specified in the POST body pa
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import axp_optimizer_api
+from fds.analyticsapi.engines.model.object_root import ObjectRoot
+from fds.analyticsapi.engines.model.axioma_equity_optimization_parameters_root import AxiomaEquityOptimizationParametersRoot
+from fds.analyticsapi.engines.model.calculation_info_root import CalculationInfoRoot
+from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -366,26 +393,77 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.AXPOptimizerApi(api_client)
-    x_fact_set_api_long_running_deadline = 56 # int | Long running deadline in seconds. (optional)
-cache_control = 'cache_control_example' # str | Standard HTTP header.  Accepts no-cache, no-store, max-age, max-stale. (optional)
-axioma_equity_optimization_parameters_root = fds.analyticsapi.engines.AxiomaEquityOptimizationParametersRoot() # AxiomaEquityOptimizationParametersRoot | Calculation Parameters (optional)
+    api_instance = axp_optimizer_api.AXPOptimizerApi(api_client)
+    x_fact_set_api_long_running_deadline = 1 # int | Long running deadline in seconds. (optional)
+    cache_control = "Cache-Control_example" # str | Standard HTTP header.  Accepts no-cache, no-store, max-age, max-stale. (optional)
+    axioma_equity_optimization_parameters_root = AxiomaEquityOptimizationParametersRoot(
+        data=AxiomaEquityOptimizationParameters(
+            strategy=OptimizerStrategy(
+                id="id_example",
+                overrides=OptimizerStrategyOverrides(
+                    tax="tax_example",
+                    objective="objective_example",
+                    constraints={
+                        "Disable": "Disable",
+                    },
+                    alpha="alpha_example",
+                    transaction_cost="transaction_cost_example",
+                ),
+            ),
+            account=OptimizerAccount(
+                id="id_example",
+                overrides=OptimizerAccountOverrides(
+                    portfolio="portfolio_example",
+                    benchmark="benchmark_example",
+                    risk_model_id="risk_model_id_example",
+                    currency="currency_example",
+                ),
+            ),
+            optimization=Optimization(
+                risk_model_date="risk_model_date_example",
+                backtest_date="backtest_date_example",
+                cashflow="cashflow_example",
+            ),
+            output_types=OptimizerOutputTypes(
+                trades=OptimizerTradesList(
+                    identifier_type="Asset",
+                    include_cash=True,
+                ),
+                optimal=OptimizerOptimalHoldings(
+                    identifier_type="Asset",
+                    include_cash=True,
+                    exclude_zero=True,
+                ),
+                account=OptimalPortfolio(
+                    acct_name="acct_name_example",
+                    exclude_zero=True,
+                    archive_date="archive_date_example",
+                    if_acct_exists="abort",
+                    if_ofdb_date_exists="abort",
+                ),
+            ),
+        ),
+        meta={},
+    ) # AxiomaEquityOptimizationParametersRoot | Calculation Parameters (optional)
 
+    # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Create and Run Axioma optimization
         api_response = api_instance.post_and_optimize(x_fact_set_api_long_running_deadline=x_fact_set_api_long_running_deadline, cache_control=cache_control, axioma_equity_optimization_parameters_root=axioma_equity_optimization_parameters_root)
         pprint(api_response)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling AXPOptimizerApi->post_and_optimize: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_fact_set_api_long_running_deadline** | **int**| Long running deadline in seconds. | [optional] 
- **cache_control** | **str**| Standard HTTP header.  Accepts no-cache, no-store, max-age, max-stale. | [optional] 
- **axioma_equity_optimization_parameters_root** | [**AxiomaEquityOptimizationParametersRoot**](AxiomaEquityOptimizationParametersRoot.md)| Calculation Parameters | [optional] 
+ **x_fact_set_api_long_running_deadline** | **int**| Long running deadline in seconds. | [optional]
+ **cache_control** | **str**| Standard HTTP header.  Accepts no-cache, no-store, max-age, max-stale. | [optional]
+ **axioma_equity_optimization_parameters_root** | [**AxiomaEquityOptimizationParametersRoot**](AxiomaEquityOptimizationParametersRoot.md)| Calculation Parameters | [optional]
 
 ### Return type
 
@@ -399,6 +477,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -417,7 +496,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_and_optimize**
-> ObjectRoot put_and_optimize(id, x_fact_set_api_long_running_deadline=x_fact_set_api_long_running_deadline, cache_control=cache_control, axioma_equity_optimization_parameters_root=axioma_equity_optimization_parameters_root)
+> ObjectRoot put_and_optimize(id)
 
 Create or Update Axioma optimization and run it.
 
@@ -427,10 +506,13 @@ This endpoint updates and run the Axioma optimization specified in the PUT body 
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import axp_optimizer_api
+from fds.analyticsapi.engines.model.object_root import ObjectRoot
+from fds.analyticsapi.engines.model.axioma_equity_optimization_parameters_root import AxiomaEquityOptimizationParametersRoot
+from fds.analyticsapi.engines.model.calculation_info_root import CalculationInfoRoot
+from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -452,28 +534,87 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.AXPOptimizerApi(api_client)
-    id = 'id_example' # str | from url, provided from the location header in the Create and Run Axioma optimization endpoint
-x_fact_set_api_long_running_deadline = 56 # int | Long running deadline in seconds. (optional)
-cache_control = 'cache_control_example' # str | Standard HTTP header.  Accepts no-cache, no-store, max-age, max-stale. (optional)
-axioma_equity_optimization_parameters_root = fds.analyticsapi.engines.AxiomaEquityOptimizationParametersRoot() # AxiomaEquityOptimizationParametersRoot | Calculation Parameters (optional)
+    api_instance = axp_optimizer_api.AXPOptimizerApi(api_client)
+    id = "id_example" # str | from url, provided from the location header in the Create and Run Axioma optimization endpoint
+    x_fact_set_api_long_running_deadline = 1 # int | Long running deadline in seconds. (optional)
+    cache_control = "Cache-Control_example" # str | Standard HTTP header.  Accepts no-cache, no-store, max-age, max-stale. (optional)
+    axioma_equity_optimization_parameters_root = AxiomaEquityOptimizationParametersRoot(
+        data=AxiomaEquityOptimizationParameters(
+            strategy=OptimizerStrategy(
+                id="id_example",
+                overrides=OptimizerStrategyOverrides(
+                    tax="tax_example",
+                    objective="objective_example",
+                    constraints={
+                        "Disable": "Disable",
+                    },
+                    alpha="alpha_example",
+                    transaction_cost="transaction_cost_example",
+                ),
+            ),
+            account=OptimizerAccount(
+                id="id_example",
+                overrides=OptimizerAccountOverrides(
+                    portfolio="portfolio_example",
+                    benchmark="benchmark_example",
+                    risk_model_id="risk_model_id_example",
+                    currency="currency_example",
+                ),
+            ),
+            optimization=Optimization(
+                risk_model_date="risk_model_date_example",
+                backtest_date="backtest_date_example",
+                cashflow="cashflow_example",
+            ),
+            output_types=OptimizerOutputTypes(
+                trades=OptimizerTradesList(
+                    identifier_type="Asset",
+                    include_cash=True,
+                ),
+                optimal=OptimizerOptimalHoldings(
+                    identifier_type="Asset",
+                    include_cash=True,
+                    exclude_zero=True,
+                ),
+                account=OptimalPortfolio(
+                    acct_name="acct_name_example",
+                    exclude_zero=True,
+                    archive_date="archive_date_example",
+                    if_acct_exists="abort",
+                    if_ofdb_date_exists="abort",
+                ),
+            ),
+        ),
+        meta={},
+    ) # AxiomaEquityOptimizationParametersRoot | Calculation Parameters (optional)
 
+    # example passing only required values which don't have defaults set
+    try:
+        # Create or Update Axioma optimization and run it.
+        api_response = api_instance.put_and_optimize(id)
+        pprint(api_response)
+    except fds.analyticsapi.engines.ApiException as e:
+        print("Exception when calling AXPOptimizerApi->put_and_optimize: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Create or Update Axioma optimization and run it.
         api_response = api_instance.put_and_optimize(id, x_fact_set_api_long_running_deadline=x_fact_set_api_long_running_deadline, cache_control=cache_control, axioma_equity_optimization_parameters_root=axioma_equity_optimization_parameters_root)
         pprint(api_response)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling AXPOptimizerApi->put_and_optimize: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| from url, provided from the location header in the Create and Run Axioma optimization endpoint | 
- **x_fact_set_api_long_running_deadline** | **int**| Long running deadline in seconds. | [optional] 
- **cache_control** | **str**| Standard HTTP header.  Accepts no-cache, no-store, max-age, max-stale. | [optional] 
- **axioma_equity_optimization_parameters_root** | [**AxiomaEquityOptimizationParametersRoot**](AxiomaEquityOptimizationParametersRoot.md)| Calculation Parameters | [optional] 
+ **id** | **str**| from url, provided from the location header in the Create and Run Axioma optimization endpoint |
+ **x_fact_set_api_long_running_deadline** | **int**| Long running deadline in seconds. | [optional]
+ **cache_control** | **str**| Standard HTTP header.  Accepts no-cache, no-store, max-age, max-stale. | [optional]
+ **axioma_equity_optimization_parameters_root** | [**AxiomaEquityOptimizationParametersRoot**](AxiomaEquityOptimizationParametersRoot.md)| Calculation Parameters | [optional]
 
 ### Return type
 
@@ -487,6 +628,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

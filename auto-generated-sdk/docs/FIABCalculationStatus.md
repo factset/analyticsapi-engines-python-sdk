@@ -1,5 +1,6 @@
 # FIABCalculationStatus
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -8,7 +9,7 @@ Name | Type | Description | Notes
 **startdatetime** | **datetime** |  | [optional] 
 **completiondatetime** | **datetime** |  | [optional] 
 **progress** | **int** |  | [optional] 
-**batchevents** | [**list[EventSummary]**](EventSummary.md) |  | [optional] 
+**batchevents** | [**[EventSummary]**](EventSummary.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

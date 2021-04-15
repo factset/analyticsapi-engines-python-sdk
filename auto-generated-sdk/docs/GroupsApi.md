@@ -18,10 +18,10 @@ This endpoint lists all the PA groups that can be applied to a PA calculation.
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import groups_api
+from fds.analyticsapi.engines.model.group_root import GroupRoot
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -43,15 +43,17 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.GroupsApi(api_client)
-    
+    api_instance = groups_api.GroupsApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
     try:
         # Get PA groups
         api_response = api_instance.get_pa_groups()
         pprint(api_response)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling GroupsApi->get_pa_groups: %s\n" % e)
 ```
+
 
 ### Parameters
 This endpoint does not need any parameter.
@@ -68,6 +70,7 @@ This endpoint does not need any parameter.
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

@@ -10,7 +10,7 @@ For more information, please visit [https://developer.factset.com/contact](https
 
 ## Requirements.
 
-Python 2.7 and 3.4+
+Python >= 3.6
 
 ## Installation & Usage
 ### pip install
@@ -46,12 +46,15 @@ import fds.analyticsapi.engines
 Please follow the [installation procedure](#installation--usage) and then run the following:
 
 ```python
-from __future__ import print_function
+
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
 from pprint import pprint
-
+from fds.analyticsapi.engines.api import axp_optimizer_api
+from fds.analyticsapi.engines.model.axioma_equity_optimization_parameters_root import AxiomaEquityOptimizationParametersRoot
+from fds.analyticsapi.engines.model.calculation_info_root import CalculationInfoRoot
+from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
+from fds.analyticsapi.engines.model.object_root import ObjectRoot
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
@@ -69,18 +72,18 @@ configuration = fds.analyticsapi.engines.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Defining host is optional and default to https://api.factset.com
-configuration.host = "https://api.factset.com"
-# Create an instance of the API class
-api_instance = fds.analyticsapi.engines.AXPOptimizerApi(fds.analyticsapi.engines.ApiClient(configuration))
-id = 'id_example' # str | from url, provided from the location header in the Create and Run Axioma optimization endpoint
 
-try:
-    # Cancel Axioma optimization by id
-    api_instance.cancel_optimization_by_id(id)
-except ApiException as e:
-    print("Exception when calling AXPOptimizerApi->cancel_optimization_by_id: %s\n" % e)
+# Enter a context with an instance of the API client
+with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = axp_optimizer_api.AXPOptimizerApi(api_client)
+    id = "id_example" # str | from url, provided from the location header in the Create and Run Axioma optimization endpoint
 
+    try:
+        # Cancel Axioma optimization by id
+        api_instance.cancel_optimization_by_id(id)
+    except fds.analyticsapi.engines.ApiException as e:
+        print("Exception when calling AXPOptimizerApi->cancel_optimization_by_id: %s\n" % e)
 ```
 
 ## Documentation for API Endpoints
@@ -162,7 +165,7 @@ Class | Method | HTTP request | Description
 *VaultCalculationsApi* | [**get_calculation_unit_result_by_id**](docs/VaultCalculationsApi.md#get_calculation_unit_result_by_id) | **GET** /analytics/engines/vault/v3/calculations/{id}/units/{unitId}/result | Get Vault calculation result by id
 *VaultCalculationsApi* | [**post_and_calculate**](docs/VaultCalculationsApi.md#post_and_calculate) | **POST** /analytics/engines/vault/v3/calculations | Create and Run Vault calculation
 *VaultCalculationsApi* | [**put_and_calculate**](docs/VaultCalculationsApi.md#put_and_calculate) | **PUT** /analytics/engines/vault/v3/calculations/{id} | Create or Update Vault calculation and run it.
-*UtilityApi* | [**get_by_url**](docs/UtilityApi.md#get_by_url) | **GET** {url} | Get by url
+
 
 ## Documentation For Models
 
@@ -263,4 +266,24 @@ Class | Method | HTTP request | Description
 ## Author
 
 analytics.api.support@factset.com
+
+
+## Notes for Large OpenAPI documents
+If the OpenAPI document is large, imports in fds.analyticsapi.engines.apis and fds.analyticsapi.engines.models may fail with a
+RecursionError indicating the maximum recursion limit has been exceeded. In that case, there are a couple of solutions:
+
+Solution 1:
+Use specific imports for apis and models like:
+- `from fds.analyticsapi.engines.api.default_api import DefaultApi`
+- `from fds.analyticsapi.engines.model.pet import Pet`
+
+Solution 2:
+Before importing the package, adjust the maximum recursion limit as shown below:
+```
+import sys
+sys.setrecursionlimit(1500)
+import fds.analyticsapi.engines
+from fds.analyticsapi.engines.apis import *
+from fds.analyticsapi.engines.models import *
+```
 

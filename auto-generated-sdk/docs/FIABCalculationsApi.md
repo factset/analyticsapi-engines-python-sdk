@@ -20,10 +20,10 @@ This is the endpoint to check on the progress of a previously requested calculat
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import fiab_calculations_api
+from fds.analyticsapi.engines.model.fiab_calculation_status import FIABCalculationStatus
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -45,22 +45,24 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.FIABCalculationsApi(api_client)
-    id = 'id_example' # str | from url, provided from the location header in the Run FIAB Calculation endpoint
+    api_instance = fiab_calculations_api.FIABCalculationsApi(api_client)
+    id = "id_example" # str | from url, provided from the location header in the Run FIAB Calculation endpoint
 
+    # example passing only required values which don't have defaults set
     try:
         # Get FIAB calculation by id
         api_response = api_instance.get_calculation_by_id(id)
         pprint(api_response)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling FIABCalculationsApi->get_calculation_by_id: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| from url, provided from the location header in the Run FIAB Calculation endpoint | 
+ **id** | **str**| from url, provided from the location header in the Run FIAB Calculation endpoint |
 
 ### Return type
 
@@ -74,6 +76,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -90,7 +93,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_calculation_status_summaries**
-> dict(str, FIABCalculationStatusSummary) get_calculation_status_summaries()
+> {str: (FIABCalculationStatusSummary,)} get_calculation_status_summaries()
 
 Get all FIAB calculation summaries
 
@@ -100,10 +103,10 @@ This endpoints returns all FIAB calculation requests.
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import fiab_calculations_api
+from fds.analyticsapi.engines.model.fiab_calculation_status_summary import FIABCalculationStatusSummary
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -125,22 +128,24 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.FIABCalculationsApi(api_client)
-    
+    api_instance = fiab_calculations_api.FIABCalculationsApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
     try:
         # Get all FIAB calculation summaries
         api_response = api_instance.get_calculation_status_summaries()
         pprint(api_response)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling FIABCalculationsApi->get_calculation_status_summaries: %s\n" % e)
 ```
+
 
 ### Parameters
 This endpoint does not need any parameter.
 
 ### Return type
 
-[**dict(str, FIABCalculationStatusSummary)**](FIABCalculationStatusSummary.md)
+[**{str: (FIABCalculationStatusSummary,)}**](FIABCalculationStatusSummary.md)
 
 ### Authorization
 
@@ -150,6 +155,7 @@ This endpoint does not need any parameter.
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -165,7 +171,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **run_calculation**
-> run_calculation(fiab_calculation_parameters=fiab_calculation_parameters)
+> run_calculation()
 
 Run FIAB calculation
 
@@ -175,10 +181,10 @@ This endpoint creates a new FIAB calculation.  This must be used first before ge
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import fiab_calculations_api
+from fds.analyticsapi.engines.model.fiab_calculation_parameters import FIABCalculationParameters
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -200,21 +206,35 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.FIABCalculationsApi(api_client)
-    fiab_calculation_parameters = fds.analyticsapi.engines.FIABCalculationParameters() # FIABCalculationParameters |  (optional)
+    api_instance = fiab_calculations_api.FIABCalculationsApi(api_client)
+    fiab_calculation_parameters = FIABCalculationParameters(
+        fiabdocument="fiabdocument_example",
+        account=FIABIdentifier(
+            id="id_example",
+        ),
+        dates=FIABDateParameters(
+            startdate="startdate_example",
+            enddate="enddate_example",
+        ),
+        msl="msl_example",
+        fisettingsdocument="fisettingsdocument_example",
+    ) # FIABCalculationParameters |  (optional)
 
+    # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Run FIAB calculation
         api_instance.run_calculation(fiab_calculation_parameters=fiab_calculation_parameters)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling FIABCalculationsApi->run_calculation: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **fiab_calculation_parameters** | [**FIABCalculationParameters**](FIABCalculationParameters.md)|  | [optional] 
+ **fiab_calculation_parameters** | [**FIABCalculationParameters**](FIABCalculationParameters.md)|  | [optional]
 
 ### Return type
 
@@ -228,6 +248,7 @@ void (empty response body)
 
  - **Content-Type**: application/json
  - **Accept**: Not defined
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
