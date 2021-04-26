@@ -22,6 +22,7 @@ from fds.analyticsapi.engines.model_utils import (  # noqa: F401
     none_type,
     validate_and_convert_types
 )
+from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from fds.analyticsapi.engines.model.spar_benchmark_root import SPARBenchmarkRoot
 
 

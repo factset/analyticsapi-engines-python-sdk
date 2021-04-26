@@ -112,8 +112,8 @@ class FICalculationParameters(ModelNormal):
         """FICalculationParameters - a model defined in OpenAPI
 
         Args:
-            securities ([FISecurity]):
-            calculations ([str]):
+            securities ([FISecurity]): List of securities
+            calculations ([str]): List of calculations
             job_settings (FIJobSettings):
 
         Keyword Args:

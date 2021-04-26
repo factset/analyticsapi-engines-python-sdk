@@ -117,9 +117,9 @@ class FISecurity(ModelNormal):
         """FISecurity - a model defined in OpenAPI
 
         Args:
-            calc_from_method (str):
-            calc_from_value (float):
-            symbol (str):
+            calc_from_method (str): Calculation from method
+            calc_from_value (float): Calculation from value
+            symbol (str): Symbol
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -152,10 +152,10 @@ class FISecurity(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            settlement (str): [optional]  # noqa: E501
-            face (float): [optional] if omitted the server will use the default value of 1  # noqa: E501
-            face_type (str): [optional] if omitted the server will use the default value of "Current"  # noqa: E501
-            discount_curve (str): [optional]  # noqa: E501
+            settlement (str): Settlement date. [optional]  # noqa: E501
+            face (float): Face. [optional] if omitted the server will use the default value of 1  # noqa: E501
+            face_type (str): Face type. [optional] if omitted the server will use the default value of "Current"  # noqa: E501
+            discount_curve (str): Discount curve. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

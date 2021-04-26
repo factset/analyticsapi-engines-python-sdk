@@ -13,6 +13,14 @@ from fds.analyticsapi.engines.model.account_directories import AccountDirectorie
 from fds.analyticsapi.engines.model.account_directories_root import AccountDirectoriesRoot
 from fds.analyticsapi.engines.model.axioma_equity_optimization_parameters import AxiomaEquityOptimizationParameters
 from fds.analyticsapi.engines.model.axioma_equity_optimization_parameters_root import AxiomaEquityOptimizationParametersRoot
+from fds.analyticsapi.engines.model.axioma_equity_optimizer_strategy import AxiomaEquityOptimizerStrategy
+from fds.analyticsapi.engines.model.axioma_equity_optimizer_strategy_overrides import AxiomaEquityOptimizerStrategyOverrides
+from fds.analyticsapi.engines.model.bpm_optimization import BPMOptimization
+from fds.analyticsapi.engines.model.bpm_optimization_parameters import BPMOptimizationParameters
+from fds.analyticsapi.engines.model.bpm_optimization_parameters_root import BPMOptimizationParametersRoot
+from fds.analyticsapi.engines.model.bpm_optimizer_strategy import BPMOptimizerStrategy
+from fds.analyticsapi.engines.model.bpm_optimizer_strategy_alpha_override import BPMOptimizerStrategyAlphaOverride
+from fds.analyticsapi.engines.model.bpm_optimizer_strategy_overrides import BPMOptimizerStrategyOverrides
 from fds.analyticsapi.engines.model.calculation_info import CalculationInfo
 from fds.analyticsapi.engines.model.calculation_info_root import CalculationInfoRoot
 from fds.analyticsapi.engines.model.calculation_meta import CalculationMeta
@@ -29,6 +37,7 @@ from fds.analyticsapi.engines.model.column_summary_root import ColumnSummaryRoot
 from fds.analyticsapi.engines.model.component_summary import ComponentSummary
 from fds.analyticsapi.engines.model.component_summary_root import ComponentSummaryRoot
 from fds.analyticsapi.engines.model.configuration_account import ConfigurationAccount
+from fds.analyticsapi.engines.model.constraint_action import ConstraintAction
 from fds.analyticsapi.engines.model.currency import Currency
 from fds.analyticsapi.engines.model.currency_root import CurrencyRoot
 from fds.analyticsapi.engines.model.date_parameters_summary import DateParametersSummary

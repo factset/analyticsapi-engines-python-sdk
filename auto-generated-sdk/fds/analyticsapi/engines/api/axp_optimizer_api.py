@@ -168,7 +168,7 @@ class AXPOptimizerApi(object):
         ):
             """Get Axioma optimization parameters by id  # noqa: E501
 
-            This is the endpoint that returns the optimization parameters passed for a calculation.  # noqa: E501
+            This is the endpoint that returns the optimization parameters passed for an optimization.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
@@ -298,7 +298,6 @@ class AXPOptimizerApi(object):
                 id (str): from url, provided from the location header in the Get Axioma optimization status by id endpoint
 
             Keyword Args:
-                accept (str): Standard HTTP header. Value can be gzip, compress, deflate, br, identity and/or *. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -361,7 +360,6 @@ class AXPOptimizerApi(object):
             params_map={
                 'all': [
                     'id',
-                    'accept',
                 ],
                 'required': [
                     'id',
@@ -381,16 +379,12 @@ class AXPOptimizerApi(object):
                 'openapi_types': {
                     'id':
                         (str,),
-                    'accept':
-                        (str,),
                 },
                 'attribute_map': {
                     'id': 'id',
-                    'accept': 'Accept',
                 },
                 'location_map': {
                     'id': 'path',
-                    'accept': 'header',
                 },
                 'collection_format_map': {
                 }
@@ -540,8 +534,8 @@ class AXPOptimizerApi(object):
 
             Keyword Args:
                 x_fact_set_api_long_running_deadline (int): Long running deadline in seconds.. [optional]
-                cache_control (str): Standard HTTP header.  Accepts no-cache, no-store, max-age, max-stale.. [optional]
-                axioma_equity_optimization_parameters_root (AxiomaEquityOptimizationParametersRoot): Calculation Parameters. [optional]
+                cache_control (str): Standard HTTP header.  Accepts no-store, max-age, max-stale.. [optional]
+                axioma_equity_optimization_parameters_root (AxiomaEquityOptimizationParametersRoot): Optimization Parameters. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -669,8 +663,8 @@ class AXPOptimizerApi(object):
 
             Keyword Args:
                 x_fact_set_api_long_running_deadline (int): Long running deadline in seconds.. [optional]
-                cache_control (str): Standard HTTP header.  Accepts no-cache, no-store, max-age, max-stale.. [optional]
-                axioma_equity_optimization_parameters_root (AxiomaEquityOptimizationParametersRoot): Calculation Parameters. [optional]
+                cache_control (str): Standard HTTP header.  Accepts no-store, max-age, max-stale.. [optional]
+                axioma_equity_optimization_parameters_root (AxiomaEquityOptimizationParametersRoot): Optimization Parameters. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object

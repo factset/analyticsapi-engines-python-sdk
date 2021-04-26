@@ -154,12 +154,12 @@ class FIABCalculationStatus(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            id (str): [optional]  # noqa: E501
-            status (str): FIAB service batch status integer definitions.  See https://pages.github.factset.com/FactSet/fipa-inf-docs/service/fiab_batch_api.html#lt-uuid-gt.. [optional]  # noqa: E501
-            startdatetime (datetime): [optional]  # noqa: E501
-            completiondatetime (datetime): [optional]  # noqa: E501
-            progress (int): [optional]  # noqa: E501
-            batchevents ([EventSummary]): [optional]  # noqa: E501
+            id (str): Calculation's identifier. [optional]  # noqa: E501
+            status (str): Calculation's status. [optional]  # noqa: E501
+            startdatetime (datetime): Start time. [optional]  # noqa: E501
+            completiondatetime (datetime): Completion time. [optional]  # noqa: E501
+            progress (int): Calculation's progress. [optional]  # noqa: E501
+            batchevents ([EventSummary]): List of batch events. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

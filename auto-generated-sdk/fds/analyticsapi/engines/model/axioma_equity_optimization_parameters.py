@@ -28,14 +28,14 @@ from fds.analyticsapi.engines.model_utils import (  # noqa: F401
 )
 
 def lazy_import():
+    from fds.analyticsapi.engines.model.axioma_equity_optimizer_strategy import AxiomaEquityOptimizerStrategy
     from fds.analyticsapi.engines.model.optimization import Optimization
     from fds.analyticsapi.engines.model.optimizer_account import OptimizerAccount
     from fds.analyticsapi.engines.model.optimizer_output_types import OptimizerOutputTypes
-    from fds.analyticsapi.engines.model.optimizer_strategy import OptimizerStrategy
+    globals()['AxiomaEquityOptimizerStrategy'] = AxiomaEquityOptimizerStrategy
     globals()['Optimization'] = Optimization
     globals()['OptimizerAccount'] = OptimizerAccount
     globals()['OptimizerOutputTypes'] = OptimizerOutputTypes
-    globals()['OptimizerStrategy'] = OptimizerStrategy
 
 
 class AxiomaEquityOptimizationParameters(ModelNormal):
@@ -84,7 +84,7 @@ class AxiomaEquityOptimizationParameters(ModelNormal):
         """
         lazy_import()
         return {
-            'strategy': (OptimizerStrategy,),  # noqa: E501
+            'strategy': (AxiomaEquityOptimizerStrategy,),  # noqa: E501
             'output_types': (OptimizerOutputTypes,),  # noqa: E501
             'account': (OptimizerAccount,),  # noqa: E501
             'optimization': (Optimization,),  # noqa: E501
@@ -118,7 +118,7 @@ class AxiomaEquityOptimizationParameters(ModelNormal):
         """AxiomaEquityOptimizationParameters - a model defined in OpenAPI
 
         Args:
-            strategy (OptimizerStrategy):
+            strategy (AxiomaEquityOptimizerStrategy):
             output_types (OptimizerOutputTypes):
 
         Keyword Args:

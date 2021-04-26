@@ -78,7 +78,6 @@ class OptimizerStrategyOverrides(ModelNormal):
         """
         return {
             'tax': (str,),  # noqa: E501
-            'objective': (str,),  # noqa: E501
             'constraints': ({str: (str,)},),  # noqa: E501
             'alpha': (str,),  # noqa: E501
             'transaction_cost': (str,),  # noqa: E501
@@ -91,7 +90,6 @@ class OptimizerStrategyOverrides(ModelNormal):
 
     attribute_map = {
         'tax': 'tax',  # noqa: E501
-        'objective': 'objective',  # noqa: E501
         'constraints': 'constraints',  # noqa: E501
         'alpha': 'alpha',  # noqa: E501
         'transaction_cost': 'transactionCost',  # noqa: E501
@@ -144,7 +142,6 @@ class OptimizerStrategyOverrides(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             tax (str): Tax. [optional]  # noqa: E501
-            objective (str): Objective. [optional]  # noqa: E501
             constraints ({str: (str,)}): List of constraints. [optional]  # noqa: E501
             alpha (str): Alpha. [optional]  # noqa: E501
             transaction_cost (str): Transaction cost. [optional]  # noqa: E501

@@ -215,21 +215,11 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fi_calculations_api.FICalculationsApi(api_client)
     id = "id_example" # str | from url, provided from the location header in the Get FI calculation status by id endpoint
-    accept = "Accept_example" # str | Standard HTTP header. Value can be gzip, compress, deflate, br, identity and/or * (optional)
 
     # example passing only required values which don't have defaults set
     try:
         # Get FI calculation result by id
         api_response = api_instance.get_calculation_result(id)
-        pprint(api_response)
-    except fds.analyticsapi.engines.ApiException as e:
-        print("Exception when calling FICalculationsApi->get_calculation_result: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        # Get FI calculation result by id
-        api_response = api_instance.get_calculation_result(id, accept=accept)
         pprint(api_response)
     except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling FICalculationsApi->get_calculation_result: %s\n" % e)
@@ -241,7 +231,6 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| from url, provided from the location header in the Get FI calculation status by id endpoint |
- **accept** | **str**| Standard HTTP header. Value can be gzip, compress, deflate, br, identity and/or * | [optional]
 
 ### Return type
 
@@ -395,7 +384,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fi_calculations_api.FICalculationsApi(api_client)
     x_fact_set_api_long_running_deadline = 1 # int | Long running deadline in seconds. (optional)
-    cache_control = "Cache-Control_example" # str | Standard HTTP header.  Accepts no-cache, no-store, max-age, max-stale. (optional)
+    cache_control = "Cache-Control_example" # str | Standard HTTP header.  Accepts no-store, max-age, max-stale. (optional)
     fi_calculation_parameters_root = FICalculationParametersRoot(
         data=FICalculationParameters(
             securities=[
@@ -441,7 +430,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **x_fact_set_api_long_running_deadline** | **int**| Long running deadline in seconds. | [optional]
- **cache_control** | **str**| Standard HTTP header.  Accepts no-cache, no-store, max-age, max-stale. | [optional]
+ **cache_control** | **str**| Standard HTTP header.  Accepts no-store, max-age, max-stale. | [optional]
  **fi_calculation_parameters_root** | [**FICalculationParametersRoot**](FICalculationParametersRoot.md)| Calculation Parameters | [optional]
 
 ### Return type
@@ -516,7 +505,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     api_instance = fi_calculations_api.FICalculationsApi(api_client)
     id = "id_example" # str | from url, provided from the location header in the Create and Run FI calculation endpoint
     x_fact_set_api_long_running_deadline = 1 # int | Long running deadline in seconds. (optional)
-    cache_control = "Cache-Control_example" # str | Standard HTTP header.  Accepts no-cache, no-store, max-age, max-stale. (optional)
+    cache_control = "Cache-Control_example" # str | Standard HTTP header.  Accepts no-store, max-age, max-stale. (optional)
     fi_calculation_parameters_root = FICalculationParametersRoot(
         data=FICalculationParameters(
             securities=[
@@ -571,7 +560,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| from url, provided from the location header in the Create and Run FI calculation endpoint |
  **x_fact_set_api_long_running_deadline** | **int**| Long running deadline in seconds. | [optional]
- **cache_control** | **str**| Standard HTTP header.  Accepts no-cache, no-store, max-age, max-stale. | [optional]
+ **cache_control** | **str**| Standard HTTP header.  Accepts no-store, max-age, max-stale. | [optional]
  **fi_calculation_parameters_root** | [**FICalculationParametersRoot**](FICalculationParametersRoot.md)| Calculation Parameters | [optional]
 
 ### Return type
@@ -595,6 +584,7 @@ Name | Type | Description  | Notes
 **201** | Expected response if calculation is completed in a short span, returns JSON in the format specified in the Calculation parameters. |  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  * X-FactSet-Api-RateLimit-Limit - Number of allowed requests for the time window. <br>  * X-FactSet-Api-RateLimit-Remaining - Number of requests left for the time window. <br>  * X-FactSet-Api-RateLimit-Reset - Number of seconds remaining till rate limit resets. <br>  |
 **400** | Invalid Calculation Parameters. |  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  * X-FactSet-Api-RateLimit-Limit - Number of allowed requests for the time window. <br>  * X-FactSet-Api-RateLimit-Remaining - Number of requests left for the time window. <br>  * X-FactSet-Api-RateLimit-Reset - Number of seconds remaining till rate limit resets. <br>  |
 **404** | One or more calculation settings were unavailable. |  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  * X-FactSet-Api-RateLimit-Limit - Number of allowed requests for the time window. <br>  * X-FactSet-Api-RateLimit-Remaining - Number of requests left for the time window. <br>  * X-FactSet-Api-RateLimit-Reset - Number of seconds remaining till rate limit resets. <br>  |
+**409** | Duplicate calculation exists with same parameters. |  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  * X-FactSet-Api-RateLimit-Limit - Number of allowed requests for the time window. <br>  * X-FactSet-Api-RateLimit-Remaining - Number of requests left for the time window. <br>  * X-FactSet-Api-RateLimit-Reset - Number of seconds remaining till rate limit resets. <br>  |
 **401** | Missing or invalid authentication. |  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  |
 **403** | User is forbidden with current credentials |  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  * X-FactSet-Api-RateLimit-Limit - Number of allowed requests for the time window. <br>  * X-FactSet-Api-RateLimit-Remaining - Number of requests left for the time window. <br>  * X-FactSet-Api-RateLimit-Reset - Number of seconds remaining till rate limit resets. <br>  |
 **415** | Missing/Invalid Content-Type header. Header needs to be set to application/json. |  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  * X-FactSet-Api-RateLimit-Limit - Number of allowed requests for the time window. <br>  * X-FactSet-Api-RateLimit-Remaining - Number of requests left for the time window. <br>  * X-FactSet-Api-RateLimit-Reset - Number of seconds remaining till rate limit resets. <br>  |

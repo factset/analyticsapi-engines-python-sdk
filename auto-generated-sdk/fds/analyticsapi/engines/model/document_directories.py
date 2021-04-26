@@ -133,7 +133,7 @@ class DocumentDirectories(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            documents ([str]): [optional]  # noqa: E501
+            documents ([str]): List of documents. [optional]  # noqa: E501
             directories ([str]): List of directories.. [optional]  # noqa: E501
         """
 

@@ -298,7 +298,6 @@ class FICalculationsApi(object):
                 id (str): from url, provided from the location header in the Get FI calculation status by id endpoint
 
             Keyword Args:
-                accept (str): Standard HTTP header. Value can be gzip, compress, deflate, br, identity and/or *. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -361,7 +360,6 @@ class FICalculationsApi(object):
             params_map={
                 'all': [
                     'id',
-                    'accept',
                 ],
                 'required': [
                     'id',
@@ -381,16 +379,12 @@ class FICalculationsApi(object):
                 'openapi_types': {
                     'id':
                         (str,),
-                    'accept':
-                        (str,),
                 },
                 'attribute_map': {
                     'id': 'id',
-                    'accept': 'Accept',
                 },
                 'location_map': {
                     'id': 'path',
-                    'accept': 'header',
                 },
                 'collection_format_map': {
                 }
@@ -542,7 +536,7 @@ class FICalculationsApi(object):
 
             Keyword Args:
                 x_fact_set_api_long_running_deadline (int): Long running deadline in seconds.. [optional]
-                cache_control (str): Standard HTTP header.  Accepts no-cache, no-store, max-age, max-stale.. [optional]
+                cache_control (str): Standard HTTP header.  Accepts no-store, max-age, max-stale.. [optional]
                 fi_calculation_parameters_root (FICalculationParametersRoot): Calculation Parameters. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
@@ -672,7 +666,7 @@ class FICalculationsApi(object):
 
             Keyword Args:
                 x_fact_set_api_long_running_deadline (int): Long running deadline in seconds.. [optional]
-                cache_control (str): Standard HTTP header.  Accepts no-cache, no-store, max-age, max-stale.. [optional]
+                cache_control (str): Standard HTTP header.  Accepts no-store, max-age, max-stale.. [optional]
                 fi_calculation_parameters_root (FICalculationParametersRoot): Calculation Parameters. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.

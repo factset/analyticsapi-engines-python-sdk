@@ -99,6 +99,12 @@ Class | Method | HTTP request | Description
 *AXPOptimizerApi* | [**post_and_optimize**](docs/AXPOptimizerApi.md#post_and_optimize) | **POST** /analytics/engines/axp/v3/optimizations | Create and Run Axioma optimization
 *AXPOptimizerApi* | [**put_and_optimize**](docs/AXPOptimizerApi.md#put_and_optimize) | **PUT** /analytics/engines/axp/v3/optimizations/{id} | Create or Update Axioma optimization and run it.
 *AccountsApi* | [**get_accounts**](docs/AccountsApi.md#get_accounts) | **GET** /analytics/lookups/v3/accounts/{path} | Get accounts and sub-directories in a directory
+*BPMOptimizerApi* | [**cancel_optimization_by_id**](docs/BPMOptimizerApi.md#cancel_optimization_by_id) | **DELETE** /analytics/engines/bpm/v3/optimizations/{id} | Cancel BPM optimization by id
+*BPMOptimizerApi* | [**get_optimization_parameters**](docs/BPMOptimizerApi.md#get_optimization_parameters) | **GET** /analytics/engines/bpm/v3/optimizations/{id} | Get BPM optimization parameters by id
+*BPMOptimizerApi* | [**get_optimization_result**](docs/BPMOptimizerApi.md#get_optimization_result) | **GET** /analytics/engines/bpm/v3/optimizations/{id}/result | Get BPM optimization result by id
+*BPMOptimizerApi* | [**get_optimization_status_by_id**](docs/BPMOptimizerApi.md#get_optimization_status_by_id) | **GET** /analytics/engines/bpm/v3/optimizations/{id}/status | Get BPM optimization status by id
+*BPMOptimizerApi* | [**post_and_optimize**](docs/BPMOptimizerApi.md#post_and_optimize) | **POST** /analytics/engines/bpm/v3/optimizations | Create and Run BPM optimization
+*BPMOptimizerApi* | [**put_and_optimize**](docs/BPMOptimizerApi.md#put_and_optimize) | **PUT** /analytics/engines/bpm/v3/optimizations/{id} | Create or Update BPM optimization and run it.
 *BenchmarksApi* | [**get_spar_benchmark_by_id**](docs/BenchmarksApi.md#get_spar_benchmark_by_id) | **GET** /analytics/engines/spar/v3/benchmarks | Get SPAR benchmark details
 *ColumnStatisticsApi* | [**get_pa_column_statistics**](docs/ColumnStatisticsApi.md#get_pa_column_statistics) | **GET** /analytics/engines/pa/v3/columnstatistics | Get PA column statistics
 *ColumnsApi* | [**get_pa_column_by_id**](docs/ColumnsApi.md#get_pa_column_by_id) | **GET** /analytics/engines/pa/v3/columns/{id} | Get PA column settings
@@ -173,6 +179,14 @@ Class | Method | HTTP request | Description
  - [AccountDirectoriesRoot](docs/AccountDirectoriesRoot.md)
  - [AxiomaEquityOptimizationParameters](docs/AxiomaEquityOptimizationParameters.md)
  - [AxiomaEquityOptimizationParametersRoot](docs/AxiomaEquityOptimizationParametersRoot.md)
+ - [AxiomaEquityOptimizerStrategy](docs/AxiomaEquityOptimizerStrategy.md)
+ - [AxiomaEquityOptimizerStrategyOverrides](docs/AxiomaEquityOptimizerStrategyOverrides.md)
+ - [BPMOptimization](docs/BPMOptimization.md)
+ - [BPMOptimizationParameters](docs/BPMOptimizationParameters.md)
+ - [BPMOptimizationParametersRoot](docs/BPMOptimizationParametersRoot.md)
+ - [BPMOptimizerStrategy](docs/BPMOptimizerStrategy.md)
+ - [BPMOptimizerStrategyAlphaOverride](docs/BPMOptimizerStrategyAlphaOverride.md)
+ - [BPMOptimizerStrategyOverrides](docs/BPMOptimizerStrategyOverrides.md)
  - [CalculationInfo](docs/CalculationInfo.md)
  - [CalculationInfoRoot](docs/CalculationInfoRoot.md)
  - [CalculationMeta](docs/CalculationMeta.md)
@@ -189,6 +203,7 @@ Class | Method | HTTP request | Description
  - [ComponentSummary](docs/ComponentSummary.md)
  - [ComponentSummaryRoot](docs/ComponentSummaryRoot.md)
  - [ConfigurationAccount](docs/ConfigurationAccount.md)
+ - [ConstraintAction](docs/ConstraintAction.md)
  - [Currency](docs/Currency.md)
  - [CurrencyRoot](docs/CurrencyRoot.md)
  - [DateParametersSummary](docs/DateParametersSummary.md)

@@ -103,7 +103,7 @@ class FIJobSettings(ModelNormal):
         """FIJobSettings - a model defined in OpenAPI
 
         Args:
-            as_of_date (str):
+            as_of_date (str): As of date
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -136,7 +136,7 @@ class FIJobSettings(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            partial_duration_months ([int]): [optional]  # noqa: E501
+            partial_duration_months ([int]): Partial duration months. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

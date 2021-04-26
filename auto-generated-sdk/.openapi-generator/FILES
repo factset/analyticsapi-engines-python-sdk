@@ -9,6 +9,15 @@ docs/AccountDirectoriesRoot.md
 docs/AccountsApi.md
 docs/AxiomaEquityOptimizationParameters.md
 docs/AxiomaEquityOptimizationParametersRoot.md
+docs/AxiomaEquityOptimizerStrategy.md
+docs/AxiomaEquityOptimizerStrategyOverrides.md
+docs/BPMOptimization.md
+docs/BPMOptimizationParameters.md
+docs/BPMOptimizationParametersRoot.md
+docs/BPMOptimizerApi.md
+docs/BPMOptimizerStrategy.md
+docs/BPMOptimizerStrategyAlphaOverride.md
+docs/BPMOptimizerStrategyOverrides.md
 docs/BenchmarksApi.md
 docs/CalculationInfo.md
 docs/CalculationInfoRoot.md
@@ -30,6 +39,7 @@ docs/ComponentSummaryRoot.md
 docs/ComponentsApi.md
 docs/ConfigurationAccount.md
 docs/ConfigurationsApi.md
+docs/ConstraintAction.md
 docs/CurrenciesApi.md
 docs/Currency.md
 docs/CurrencyRoot.md
@@ -115,6 +125,7 @@ fds/analyticsapi/engines/api/__init__.py
 fds/analyticsapi/engines/api/accounts_api.py
 fds/analyticsapi/engines/api/axp_optimizer_api.py
 fds/analyticsapi/engines/api/benchmarks_api.py
+fds/analyticsapi/engines/api/bpm_optimizer_api.py
 fds/analyticsapi/engines/api/column_statistics_api.py
 fds/analyticsapi/engines/api/columns_api.py
 fds/analyticsapi/engines/api/components_api.py
@@ -142,6 +153,14 @@ fds/analyticsapi/engines/model/account_directories.py
 fds/analyticsapi/engines/model/account_directories_root.py
 fds/analyticsapi/engines/model/axioma_equity_optimization_parameters.py
 fds/analyticsapi/engines/model/axioma_equity_optimization_parameters_root.py
+fds/analyticsapi/engines/model/axioma_equity_optimizer_strategy.py
+fds/analyticsapi/engines/model/axioma_equity_optimizer_strategy_overrides.py
+fds/analyticsapi/engines/model/bpm_optimization.py
+fds/analyticsapi/engines/model/bpm_optimization_parameters.py
+fds/analyticsapi/engines/model/bpm_optimization_parameters_root.py
+fds/analyticsapi/engines/model/bpm_optimizer_strategy.py
+fds/analyticsapi/engines/model/bpm_optimizer_strategy_alpha_override.py
+fds/analyticsapi/engines/model/bpm_optimizer_strategy_overrides.py
 fds/analyticsapi/engines/model/calculation_info.py
 fds/analyticsapi/engines/model/calculation_info_root.py
 fds/analyticsapi/engines/model/calculation_meta.py
@@ -158,6 +177,7 @@ fds/analyticsapi/engines/model/column_summary_root.py
 fds/analyticsapi/engines/model/component_summary.py
 fds/analyticsapi/engines/model/component_summary_root.py
 fds/analyticsapi/engines/model/configuration_account.py
+fds/analyticsapi/engines/model/constraint_action.py
 fds/analyticsapi/engines/model/currency.py
 fds/analyticsapi/engines/model/currency_root.py
 fds/analyticsapi/engines/model/date_parameters_summary.py

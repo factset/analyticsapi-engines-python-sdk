@@ -23,6 +23,7 @@ from fds.analyticsapi.engines.model_utils import (  # noqa: F401
     validate_and_convert_types
 )
 from fds.analyticsapi.engines.model.account_directories_root import AccountDirectoriesRoot
+from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 
 
 class AccountsApi(object):

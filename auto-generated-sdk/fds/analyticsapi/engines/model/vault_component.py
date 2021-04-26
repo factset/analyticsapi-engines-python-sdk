@@ -152,12 +152,12 @@ class VaultComponent(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            id (str): [optional]  # noqa: E501
+            id (str): Vault component identifier. [optional]  # noqa: E501
             account (VaultIdentifier): [optional]  # noqa: E501
             benchmark (VaultIdentifier): [optional]  # noqa: E501
-            currencyisocode (str): [optional]  # noqa: E501
+            currencyisocode (str): Currency iso code saved in the document. [optional]  # noqa: E501
             dates (VaultDateParameters): [optional]  # noqa: E501
-            snapshot (bool): [optional]  # noqa: E501
+            snapshot (bool): Snapshot. [optional]  # noqa: E501
             name (str): Component name.. [optional]  # noqa: E501
             category (str): Component category.. [optional]  # noqa: E501
         """

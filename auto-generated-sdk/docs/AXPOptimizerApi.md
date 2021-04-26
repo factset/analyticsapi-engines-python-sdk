@@ -98,7 +98,7 @@ void (empty response body)
 
 Get Axioma optimization parameters by id
 
-This is the endpoint that returns the optimization parameters passed for a calculation.
+This is the endpoint that returns the optimization parameters passed for an optimization.
 
 ### Example
 
@@ -215,21 +215,11 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = axp_optimizer_api.AXPOptimizerApi(api_client)
     id = "id_example" # str | from url, provided from the location header in the Get Axioma optimization status by id endpoint
-    accept = "Accept_example" # str | Standard HTTP header. Value can be gzip, compress, deflate, br, identity and/or * (optional)
 
     # example passing only required values which don't have defaults set
     try:
         # Get Axioma optimization result by id
         api_response = api_instance.get_optimization_result(id)
-        pprint(api_response)
-    except fds.analyticsapi.engines.ApiException as e:
-        print("Exception when calling AXPOptimizerApi->get_optimization_result: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        # Get Axioma optimization result by id
-        api_response = api_instance.get_optimization_result(id, accept=accept)
         pprint(api_response)
     except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling AXPOptimizerApi->get_optimization_result: %s\n" % e)
@@ -241,7 +231,6 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| from url, provided from the location header in the Get Axioma optimization status by id endpoint |
- **accept** | **str**| Standard HTTP header. Value can be gzip, compress, deflate, br, identity and/or * | [optional]
 
 ### Return type
 
@@ -395,20 +384,20 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = axp_optimizer_api.AXPOptimizerApi(api_client)
     x_fact_set_api_long_running_deadline = 1 # int | Long running deadline in seconds. (optional)
-    cache_control = "Cache-Control_example" # str | Standard HTTP header.  Accepts no-cache, no-store, max-age, max-stale. (optional)
+    cache_control = "Cache-Control_example" # str | Standard HTTP header.  Accepts no-store, max-age, max-stale. (optional)
     axioma_equity_optimization_parameters_root = AxiomaEquityOptimizationParametersRoot(
         data=AxiomaEquityOptimizationParameters(
-            strategy=OptimizerStrategy(
-                id="id_example",
-                overrides=OptimizerStrategyOverrides(
-                    tax="tax_example",
+            strategy=AxiomaEquityOptimizerStrategy(
+                overrides=AxiomaEquityOptimizerStrategyOverrides(
                     objective="objective_example",
+                    tax="tax_example",
                     constraints={
                         "Disable": "Disable",
                     },
                     alpha="alpha_example",
                     transaction_cost="transaction_cost_example",
                 ),
+                id="id_example",
             ),
             account=OptimizerAccount(
                 id="id_example",
@@ -444,7 +433,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
             ),
         ),
         meta={},
-    ) # AxiomaEquityOptimizationParametersRoot | Calculation Parameters (optional)
+    ) # AxiomaEquityOptimizationParametersRoot | Optimization Parameters (optional)
 
     # example passing only required values which don't have defaults set
     # and optional values
@@ -462,8 +451,8 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **x_fact_set_api_long_running_deadline** | **int**| Long running deadline in seconds. | [optional]
- **cache_control** | **str**| Standard HTTP header.  Accepts no-cache, no-store, max-age, max-stale. | [optional]
- **axioma_equity_optimization_parameters_root** | [**AxiomaEquityOptimizationParametersRoot**](AxiomaEquityOptimizationParametersRoot.md)| Calculation Parameters | [optional]
+ **cache_control** | **str**| Standard HTTP header.  Accepts no-store, max-age, max-stale. | [optional]
+ **axioma_equity_optimization_parameters_root** | [**AxiomaEquityOptimizationParametersRoot**](AxiomaEquityOptimizationParametersRoot.md)| Optimization Parameters | [optional]
 
 ### Return type
 
@@ -537,20 +526,20 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     api_instance = axp_optimizer_api.AXPOptimizerApi(api_client)
     id = "id_example" # str | from url, provided from the location header in the Create and Run Axioma optimization endpoint
     x_fact_set_api_long_running_deadline = 1 # int | Long running deadline in seconds. (optional)
-    cache_control = "Cache-Control_example" # str | Standard HTTP header.  Accepts no-cache, no-store, max-age, max-stale. (optional)
+    cache_control = "Cache-Control_example" # str | Standard HTTP header.  Accepts no-store, max-age, max-stale. (optional)
     axioma_equity_optimization_parameters_root = AxiomaEquityOptimizationParametersRoot(
         data=AxiomaEquityOptimizationParameters(
-            strategy=OptimizerStrategy(
-                id="id_example",
-                overrides=OptimizerStrategyOverrides(
-                    tax="tax_example",
+            strategy=AxiomaEquityOptimizerStrategy(
+                overrides=AxiomaEquityOptimizerStrategyOverrides(
                     objective="objective_example",
+                    tax="tax_example",
                     constraints={
                         "Disable": "Disable",
                     },
                     alpha="alpha_example",
                     transaction_cost="transaction_cost_example",
                 ),
+                id="id_example",
             ),
             account=OptimizerAccount(
                 id="id_example",
@@ -586,7 +575,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
             ),
         ),
         meta={},
-    ) # AxiomaEquityOptimizationParametersRoot | Calculation Parameters (optional)
+    ) # AxiomaEquityOptimizationParametersRoot | Optimization Parameters (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -613,8 +602,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| from url, provided from the location header in the Create and Run Axioma optimization endpoint |
  **x_fact_set_api_long_running_deadline** | **int**| Long running deadline in seconds. | [optional]
- **cache_control** | **str**| Standard HTTP header.  Accepts no-cache, no-store, max-age, max-stale. | [optional]
- **axioma_equity_optimization_parameters_root** | [**AxiomaEquityOptimizationParametersRoot**](AxiomaEquityOptimizationParametersRoot.md)| Calculation Parameters | [optional]
+ **cache_control** | **str**| Standard HTTP header.  Accepts no-store, max-age, max-stale. | [optional]
+ **axioma_equity_optimization_parameters_root** | [**AxiomaEquityOptimizationParametersRoot**](AxiomaEquityOptimizationParametersRoot.md)| Optimization Parameters | [optional]
 
 ### Return type
 
@@ -633,10 +622,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**202** | Expected response, contains the poll URL in the Location header. |  * Location - URL to poll for the resulting calculation <br>  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  * X-FactSet-Api-RateLimit-Limit - Number of allowed requests for the time window. <br>  * X-FactSet-Api-RateLimit-Remaining - Number of requests left for the time window. <br>  * X-FactSet-Api-RateLimit-Reset - Number of seconds remaining till rate limit resets. <br>  |
+**202** | Expected response, contains the poll URL in the Location header. |  * Location - URL to poll for the resulting optimization <br>  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  * X-FactSet-Api-RateLimit-Limit - Number of allowed requests for the time window. <br>  * X-FactSet-Api-RateLimit-Remaining - Number of requests left for the time window. <br>  * X-FactSet-Api-RateLimit-Reset - Number of seconds remaining till rate limit resets. <br>  |
 **201** | Expected response, returns json if optimization is completed in a short span. |  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  * X-FactSet-Api-RateLimit-Limit - Number of allowed requests for the time window. <br>  * X-FactSet-Api-RateLimit-Remaining - Number of requests left for the time window. <br>  * X-FactSet-Api-RateLimit-Reset - Number of seconds remaining till rate limit resets. <br>  |
 **400** | Invalid Optimization Parameters. |  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  * X-FactSet-Api-RateLimit-Limit - Number of allowed requests for the time window. <br>  * X-FactSet-Api-RateLimit-Remaining - Number of requests left for the time window. <br>  * X-FactSet-Api-RateLimit-Reset - Number of seconds remaining till rate limit resets. <br>  |
 **404** | One or more optimization settings were unavailable. |  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  * X-FactSet-Api-RateLimit-Limit - Number of allowed requests for the time window. <br>  * X-FactSet-Api-RateLimit-Remaining - Number of requests left for the time window. <br>  * X-FactSet-Api-RateLimit-Reset - Number of seconds remaining till rate limit resets. <br>  |
+**409** | Duplicate optimization exists with same parameters. |  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  * X-FactSet-Api-RateLimit-Limit - Number of allowed requests for the time window. <br>  * X-FactSet-Api-RateLimit-Remaining - Number of requests left for the time window. <br>  * X-FactSet-Api-RateLimit-Reset - Number of seconds remaining till rate limit resets. <br>  |
 **401** | Missing or invalid authentication. |  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  |
 **403** | User is forbidden with current credentials |  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  * X-FactSet-Api-RateLimit-Limit - Number of allowed requests for the time window. <br>  * X-FactSet-Api-RateLimit-Remaining - Number of requests left for the time window. <br>  * X-FactSet-Api-RateLimit-Reset - Number of seconds remaining till rate limit resets. <br>  |
 **415** | Missing/Invalid Content-Type header. Header needs to be set to application/json. |  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  * X-FactSet-Api-RateLimit-Limit - Number of allowed requests for the time window. <br>  * X-FactSet-Api-RateLimit-Remaining - Number of requests left for the time window. <br>  * X-FactSet-Api-RateLimit-Reset - Number of seconds remaining till rate limit resets. <br>  |

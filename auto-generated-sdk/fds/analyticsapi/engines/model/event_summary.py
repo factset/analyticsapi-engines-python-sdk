@@ -135,9 +135,9 @@ class EventSummary(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            message (str): [optional]  # noqa: E501
-            submissiondatetime (datetime): [optional]  # noqa: E501
-            type (str): [optional]  # noqa: E501
+            message (str): Event's message. [optional]  # noqa: E501
+            submissiondatetime (datetime): Event's submission time. [optional]  # noqa: E501
+            type (str): Event's type. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

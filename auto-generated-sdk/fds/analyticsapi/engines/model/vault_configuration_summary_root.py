@@ -102,8 +102,11 @@ class VaultConfigurationSummaryRoot(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, *args, **kwargs):  # noqa: E501
+    def __init__(self, data, *args, **kwargs):  # noqa: E501
         """VaultConfigurationSummaryRoot - a model defined in OpenAPI
+
+        Args:
+            data ({str: (VaultConfigurationSummary,)}):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -136,7 +139,6 @@ class VaultConfigurationSummaryRoot(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            data ({str: (VaultConfigurationSummary,)}): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -162,6 +164,7 @@ class VaultConfigurationSummaryRoot(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.data = data
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

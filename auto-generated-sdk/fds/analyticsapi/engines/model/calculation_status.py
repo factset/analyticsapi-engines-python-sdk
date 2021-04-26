@@ -146,8 +146,8 @@ class CalculationStatus(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            calculationid (str): [optional]  # noqa: E501
-            status (str): [optional]  # noqa: E501
+            calculationid (str): Calculation's identifier. [optional]  # noqa: E501
+            status (str): Calculation's status. [optional]  # noqa: E501
             units ({str: (CalculationUnitStatus,)}): Number of calculation units in batch.. [optional]  # noqa: E501
         """
 

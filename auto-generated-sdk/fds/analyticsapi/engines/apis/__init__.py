@@ -16,6 +16,7 @@
 # Import APIs into API package:
 from fds.analyticsapi.engines.api.axp_optimizer_api import AXPOptimizerApi
 from fds.analyticsapi.engines.api.accounts_api import AccountsApi
+from fds.analyticsapi.engines.api.bpm_optimizer_api import BPMOptimizerApi
 from fds.analyticsapi.engines.api.benchmarks_api import BenchmarksApi
 from fds.analyticsapi.engines.api.column_statistics_api import ColumnStatisticsApi
 from fds.analyticsapi.engines.api.columns_api import ColumnsApi

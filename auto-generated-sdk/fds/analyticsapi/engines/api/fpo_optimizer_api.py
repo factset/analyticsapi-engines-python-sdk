@@ -168,7 +168,7 @@ class FPOOptimizerApi(object):
         ):
             """Get FPO optimization parameters by id  # noqa: E501
 
-            This is the endpoint that returns the optimization parameters passed for a calculation.  # noqa: E501
+            This is the endpoint that returns the optimization parameters passed for an optimization.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
@@ -540,8 +540,8 @@ class FPOOptimizerApi(object):
 
             Keyword Args:
                 x_fact_set_api_long_running_deadline (int): Long running deadline in seconds.. [optional]
-                cache_control (str): Standard HTTP header.  Accepts no-cache, no-store, max-age, max-stale.. [optional]
-                fpo_optimization_parameters_root (FPOOptimizationParametersRoot): Calculation Parameters. [optional]
+                cache_control (str): Standard HTTP header.  Accepts no-store, max-age, max-stale.. [optional]
+                fpo_optimization_parameters_root (FPOOptimizationParametersRoot): Optimization Parameters. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -669,8 +669,8 @@ class FPOOptimizerApi(object):
 
             Keyword Args:
                 x_fact_set_api_long_running_deadline (int): Long running deadline in seconds.. [optional]
-                cache_control (str): Standard HTTP header.  Accepts no-cache, no-store, max-age, max-stale.. [optional]
-                fpo_optimization_parameters_root (FPOOptimizationParametersRoot): Calculation Parameters. [optional]
+                cache_control (str): Standard HTTP header.  Accepts no-store, max-age, max-stale.. [optional]
+                fpo_optimization_parameters_root (FPOOptimizationParametersRoot): Optimization Parameters. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
