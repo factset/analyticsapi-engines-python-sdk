@@ -1,6 +1,7 @@
 # ColumnSummary
 
 Column settings (name, directory, category)
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

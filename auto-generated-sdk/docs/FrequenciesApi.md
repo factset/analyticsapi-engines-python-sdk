@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **get_pa_frequencies**
-> dict(str, Frequency) get_pa_frequencies()
+> {str: (Frequency,)} get_pa_frequencies()
 
 Get PA frequencies
 
@@ -20,10 +20,10 @@ This endpoint lists all the frequencies that can be applied to a PA calculation.
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import frequencies_api
+from fds.analyticsapi.engines.model.frequency import Frequency
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -45,22 +45,24 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.FrequenciesApi(api_client)
-    
+    api_instance = frequencies_api.FrequenciesApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
     try:
         # Get PA frequencies
         api_response = api_instance.get_pa_frequencies()
         pprint(api_response)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling FrequenciesApi->get_pa_frequencies: %s\n" % e)
 ```
+
 
 ### Parameters
 This endpoint does not need any parameter.
 
 ### Return type
 
-[**dict(str, Frequency)**](Frequency.md)
+[**{str: (Frequency,)}**](Frequency.md)
 
 ### Authorization
 
@@ -70,6 +72,7 @@ This endpoint does not need any parameter.
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -85,7 +88,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_spar_frequencies**
-> dict(str, Frequency) get_spar_frequencies()
+> {str: (Frequency,)} get_spar_frequencies()
 
 Get SPAR frequencies
 
@@ -95,10 +98,10 @@ This endpoint lists all the frequencies that can be applied to a SPAR calculatio
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import frequencies_api
+from fds.analyticsapi.engines.model.frequency import Frequency
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -120,22 +123,24 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.FrequenciesApi(api_client)
-    
+    api_instance = frequencies_api.FrequenciesApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
     try:
         # Get SPAR frequencies
         api_response = api_instance.get_spar_frequencies()
         pprint(api_response)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling FrequenciesApi->get_spar_frequencies: %s\n" % e)
 ```
+
 
 ### Parameters
 This endpoint does not need any parameter.
 
 ### Return type
 
-[**dict(str, Frequency)**](Frequency.md)
+[**{str: (Frequency,)}**](Frequency.md)
 
 ### Authorization
 
@@ -145,6 +150,7 @@ This endpoint does not need any parameter.
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -160,7 +166,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_vault_frequencies**
-> dict(str, Frequency) get_vault_frequencies()
+> {str: (Frequency,)} get_vault_frequencies()
 
 Get Vault frequencies
 
@@ -170,10 +176,10 @@ This endpoint lists all the frequencies that can be applied to a Vault calculati
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import frequencies_api
+from fds.analyticsapi.engines.model.frequency import Frequency
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -195,22 +201,24 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.FrequenciesApi(api_client)
-    
+    api_instance = frequencies_api.FrequenciesApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
     try:
         # Get Vault frequencies
         api_response = api_instance.get_vault_frequencies()
         pprint(api_response)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling FrequenciesApi->get_vault_frequencies: %s\n" % e)
 ```
+
 
 ### Parameters
 This endpoint does not need any parameter.
 
 ### Return type
 
-[**dict(str, Frequency)**](Frequency.md)
+[**{str: (Frequency,)}**](Frequency.md)
 
 ### Authorization
 
@@ -220,6 +228,7 @@ This endpoint does not need any parameter.
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
