@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **convert_pa_dates_to_absolute_format**
-> DateParametersSummary convert_pa_dates_to_absolute_format(enddate, componentid, account, startdate=startdate)
+> DateParametersSummary convert_pa_dates_to_absolute_format(enddate, componentid, account)
 
 Convert PA dates to absolute format
 
@@ -19,10 +19,10 @@ This endpoint converts the given start and end dates in FactSet date format to y
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import dates_api
+from fds.analyticsapi.engines.model.date_parameters_summary import DateParametersSummary
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -44,28 +44,39 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.DatesApi(api_client)
-    enddate = 'enddate_example' # str | End Date
-componentid = 'componentid_example' # str | Component Id
-account = 'account_example' # str | Account
-startdate = 'startdate_example' # str | Start Date (optional)
+    api_instance = dates_api.DatesApi(api_client)
+    enddate = "enddate_example" # str | End Date
+    componentid = "componentid_example" # str | Component Id
+    account = "account_example" # str | Account
+    startdate = "startdate_example" # str | Start Date (optional)
 
+    # example passing only required values which don't have defaults set
+    try:
+        # Convert PA dates to absolute format
+        api_response = api_instance.convert_pa_dates_to_absolute_format(enddate, componentid, account)
+        pprint(api_response)
+    except fds.analyticsapi.engines.ApiException as e:
+        print("Exception when calling DatesApi->convert_pa_dates_to_absolute_format: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Convert PA dates to absolute format
         api_response = api_instance.convert_pa_dates_to_absolute_format(enddate, componentid, account, startdate=startdate)
         pprint(api_response)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling DatesApi->convert_pa_dates_to_absolute_format: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **enddate** | **str**| End Date | 
- **componentid** | **str**| Component Id | 
- **account** | **str**| Account | 
- **startdate** | **str**| Start Date | [optional] 
+ **enddate** | **str**| End Date |
+ **componentid** | **str**| Component Id |
+ **account** | **str**| Account |
+ **startdate** | **str**| Start Date | [optional]
 
 ### Return type
 
@@ -79,6 +90,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -96,7 +108,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **convert_vault_dates_to_absolute_format**
-> DateParametersSummary convert_vault_dates_to_absolute_format(enddate, componentid, account, startdate=startdate)
+> DateParametersSummary convert_vault_dates_to_absolute_format(enddate, componentid, account)
 
 Convert Vault dates to absolute format
 
@@ -106,10 +118,10 @@ This endpoint converts the given start and end dates in FactSet date format to y
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import dates_api
+from fds.analyticsapi.engines.model.date_parameters_summary import DateParametersSummary
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -131,28 +143,39 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.DatesApi(api_client)
-    enddate = 'enddate_example' # str | End Date
-componentid = 'componentid_example' # str | Vault Component Id
-account = 'account_example' # str | Account
-startdate = 'startdate_example' # str | Start Date (optional)
+    api_instance = dates_api.DatesApi(api_client)
+    enddate = "enddate_example" # str | End Date
+    componentid = "componentid_example" # str | Vault Component Id
+    account = "account_example" # str | Account
+    startdate = "startdate_example" # str | Start Date (optional)
 
+    # example passing only required values which don't have defaults set
+    try:
+        # Convert Vault dates to absolute format
+        api_response = api_instance.convert_vault_dates_to_absolute_format(enddate, componentid, account)
+        pprint(api_response)
+    except fds.analyticsapi.engines.ApiException as e:
+        print("Exception when calling DatesApi->convert_vault_dates_to_absolute_format: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Convert Vault dates to absolute format
         api_response = api_instance.convert_vault_dates_to_absolute_format(enddate, componentid, account, startdate=startdate)
         pprint(api_response)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling DatesApi->convert_vault_dates_to_absolute_format: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **enddate** | **str**| End Date | 
- **componentid** | **str**| Vault Component Id | 
- **account** | **str**| Account | 
- **startdate** | **str**| Start Date | [optional] 
+ **enddate** | **str**| End Date |
+ **componentid** | **str**| Vault Component Id |
+ **account** | **str**| Account |
+ **startdate** | **str**| Start Date | [optional]
 
 ### Return type
 
@@ -166,6 +189,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
