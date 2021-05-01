@@ -63,6 +63,7 @@ from fds.analyticsapi.engines.model.frequency import Frequency
 from fds.analyticsapi.engines.model.frequency_root import FrequencyRoot
 from fds.analyticsapi.engines.model.group import Group
 from fds.analyticsapi.engines.model.group_root import GroupRoot
+from fds.analyticsapi.engines.model.object_root import ObjectRoot
 from fds.analyticsapi.engines.model.optimal_portfolio import OptimalPortfolio
 from fds.analyticsapi.engines.model.optimization import Optimization
 from fds.analyticsapi.engines.model.optimizer_account import OptimizerAccount
@@ -91,7 +92,6 @@ from fds.analyticsapi.engines.model.spar_calculation_parameters import SPARCalcu
 from fds.analyticsapi.engines.model.spar_calculation_parameters_root import SPARCalculationParametersRoot
 from fds.analyticsapi.engines.model.spar_date_parameters import SPARDateParameters
 from fds.analyticsapi.engines.model.spar_identifier import SPARIdentifier
-from fds.analyticsapi.engines.model.string_root import StringRoot
 from fds.analyticsapi.engines.model.vault_calculation_parameters import VaultCalculationParameters
 from fds.analyticsapi.engines.model.vault_calculation_parameters_root import VaultCalculationParametersRoot
 from fds.analyticsapi.engines.model.vault_component import VaultComponent

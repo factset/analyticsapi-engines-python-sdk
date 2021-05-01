@@ -177,7 +177,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_calculation_result**
-> StringRoot get_calculation_result(id)
+> ObjectRoot get_calculation_result(id)
 
 Get FI calculation result by id
 
@@ -190,7 +190,7 @@ This is the endpoint to get the result of a previously requested calculation.  I
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import fi_calculations_api
-from fds.analyticsapi.engines.model.string_root import StringRoot
+from fds.analyticsapi.engines.model.object_root import ObjectRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
@@ -234,7 +234,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**StringRoot**](StringRoot.md)
+[**ObjectRoot**](ObjectRoot.md)
 
 ### Authorization
 
@@ -260,7 +260,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_calculation_status_by_id**
-> StringRoot get_calculation_status_by_id(id)
+> ObjectRoot get_calculation_status_by_id(id)
 
 Get FI calculation status by id
 
@@ -273,7 +273,7 @@ This is the endpoint to check on the progress of a previously requested calculat
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import fi_calculations_api
-from fds.analyticsapi.engines.model.string_root import StringRoot
+from fds.analyticsapi.engines.model.object_root import ObjectRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
@@ -317,7 +317,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**StringRoot**](StringRoot.md)
+[**ObjectRoot**](ObjectRoot.md)
 
 ### Authorization
 
@@ -344,7 +344,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_and_calculate**
-> StringRoot post_and_calculate()
+> ObjectRoot post_and_calculate()
 
 Create and Run FI calculation
 
@@ -358,7 +358,7 @@ import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import fi_calculations_api
 from fds.analyticsapi.engines.model.fi_calculation_parameters_root import FICalculationParametersRoot
-from fds.analyticsapi.engines.model.string_root import StringRoot
+from fds.analyticsapi.engines.model.object_root import ObjectRoot
 from fds.analyticsapi.engines.model.calculation_info_root import CalculationInfoRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
@@ -435,7 +435,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**StringRoot**](StringRoot.md)
+[**ObjectRoot**](ObjectRoot.md)
 
 ### Authorization
 
@@ -464,7 +464,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_and_calculate**
-> StringRoot put_and_calculate(id)
+> ObjectRoot put_and_calculate(id)
 
 Create or Update FI calculation and run it.
 
@@ -478,7 +478,7 @@ import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import fi_calculations_api
 from fds.analyticsapi.engines.model.fi_calculation_parameters_root import FICalculationParametersRoot
-from fds.analyticsapi.engines.model.string_root import StringRoot
+from fds.analyticsapi.engines.model.object_root import ObjectRoot
 from fds.analyticsapi.engines.model.calculation_info_root import CalculationInfoRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
@@ -565,7 +565,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**StringRoot**](StringRoot.md)
+[**ObjectRoot**](ObjectRoot.md)
 
 ### Authorization
 

@@ -177,7 +177,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_optimization_result**
-> StringRoot get_optimization_result(id)
+> ObjectRoot get_optimization_result(id)
 
 Get FPO optimization result by id
 
@@ -190,7 +190,7 @@ This is the endpoint to get the result of a previously requested optimization.  
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import fpo_optimizer_api
-from fds.analyticsapi.engines.model.string_root import StringRoot
+from fds.analyticsapi.engines.model.object_root import ObjectRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
@@ -245,7 +245,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**StringRoot**](StringRoot.md)
+[**ObjectRoot**](ObjectRoot.md)
 
 ### Authorization
 
@@ -271,7 +271,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_optimization_status_by_id**
-> StringRoot get_optimization_status_by_id(id)
+> ObjectRoot get_optimization_status_by_id(id)
 
 Get FPO optimization status by id
 
@@ -284,7 +284,7 @@ This is the endpoint to check on the progress of a previously requested optimiza
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import fpo_optimizer_api
-from fds.analyticsapi.engines.model.string_root import StringRoot
+from fds.analyticsapi.engines.model.object_root import ObjectRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
@@ -328,7 +328,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**StringRoot**](StringRoot.md)
+[**ObjectRoot**](ObjectRoot.md)
 
 ### Authorization
 
@@ -355,7 +355,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_and_optimize**
-> StringRoot post_and_optimize()
+> ObjectRoot post_and_optimize()
 
 Create and Run FPO optimization
 
@@ -368,7 +368,7 @@ This endpoint runs FPO optimization specified in the POST body parameters.      
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import fpo_optimizer_api
-from fds.analyticsapi.engines.model.string_root import StringRoot
+from fds.analyticsapi.engines.model.object_root import ObjectRoot
 from fds.analyticsapi.engines.model.calculation_info_root import CalculationInfoRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from fds.analyticsapi.engines.model.fpo_optimization_parameters_root import FPOOptimizationParametersRoot
@@ -469,7 +469,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**StringRoot**](StringRoot.md)
+[**ObjectRoot**](ObjectRoot.md)
 
 ### Authorization
 
@@ -498,7 +498,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_and_optimize**
-> StringRoot put_and_optimize(id)
+> ObjectRoot put_and_optimize(id)
 
 Create or Update FPO optimization and run it.
 
@@ -511,7 +511,7 @@ This endpoint updates and run the FPO optimization specified in the PUT body par
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import fpo_optimizer_api
-from fds.analyticsapi.engines.model.string_root import StringRoot
+from fds.analyticsapi.engines.model.object_root import ObjectRoot
 from fds.analyticsapi.engines.model.calculation_info_root import CalculationInfoRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from fds.analyticsapi.engines.model.fpo_optimization_parameters_root import FPOOptimizationParametersRoot
@@ -622,7 +622,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**StringRoot**](StringRoot.md)
+[**ObjectRoot**](ObjectRoot.md)
 
 ### Authorization
 

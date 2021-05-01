@@ -24,8 +24,8 @@ from fds.analyticsapi.engines.model_utils import (  # noqa: F401
 )
 from fds.analyticsapi.engines.model.calculation_status_root import CalculationStatusRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
+from fds.analyticsapi.engines.model.object_root import ObjectRoot
 from fds.analyticsapi.engines.model.spar_calculation_parameters_root import SPARCalculationParametersRoot
-from fds.analyticsapi.engines.model.string_root import StringRoot
 
 
 class SPARCalculationsApi(object):
@@ -440,7 +440,7 @@ class SPARCalculationsApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                StringRoot
+                ObjectRoot
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -471,7 +471,7 @@ class SPARCalculationsApi(object):
 
         self.get_calculation_unit_result_by_id = _Endpoint(
             settings={
-                'response_type': (StringRoot,),
+                'response_type': (ObjectRoot,),
                 'auth': [
                     'Basic'
                 ],

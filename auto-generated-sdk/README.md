@@ -54,7 +54,7 @@ from fds.analyticsapi.engines.api import axp_optimizer_api
 from fds.analyticsapi.engines.model.axioma_equity_optimization_parameters_root import AxiomaEquityOptimizationParametersRoot
 from fds.analyticsapi.engines.model.calculation_info_root import CalculationInfoRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
-from fds.analyticsapi.engines.model.string_root import StringRoot
+from fds.analyticsapi.engines.model.object_root import ObjectRoot
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
@@ -229,6 +229,7 @@ Class | Method | HTTP request | Description
  - [FrequencyRoot](docs/FrequencyRoot.md)
  - [Group](docs/Group.md)
  - [GroupRoot](docs/GroupRoot.md)
+ - [ObjectRoot](docs/ObjectRoot.md)
  - [OptimalPortfolio](docs/OptimalPortfolio.md)
  - [Optimization](docs/Optimization.md)
  - [OptimizerAccount](docs/OptimizerAccount.md)
@@ -257,7 +258,6 @@ Class | Method | HTTP request | Description
  - [SPARCalculationParametersRoot](docs/SPARCalculationParametersRoot.md)
  - [SPARDateParameters](docs/SPARDateParameters.md)
  - [SPARIdentifier](docs/SPARIdentifier.md)
- - [StringRoot](docs/StringRoot.md)
  - [VaultCalculationParameters](docs/VaultCalculationParameters.md)
  - [VaultCalculationParametersRoot](docs/VaultCalculationParametersRoot.md)
  - [VaultComponent](docs/VaultComponent.md)

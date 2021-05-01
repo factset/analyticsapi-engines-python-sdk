@@ -25,7 +25,7 @@ from fds.analyticsapi.engines.model_utils import (  # noqa: F401
 from fds.analyticsapi.engines.model.bpm_optimization_parameters_root import BPMOptimizationParametersRoot
 from fds.analyticsapi.engines.model.calculation_info_root import CalculationInfoRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
-from fds.analyticsapi.engines.model.string_root import StringRoot
+from fds.analyticsapi.engines.model.object_root import ObjectRoot
 
 
 class BPMOptimizerApi(object):
@@ -319,7 +319,7 @@ class BPMOptimizerApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                StringRoot
+                ObjectRoot
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -348,7 +348,7 @@ class BPMOptimizerApi(object):
 
         self.get_optimization_result = _Endpoint(
             settings={
-                'response_type': (StringRoot,),
+                'response_type': (ObjectRoot,),
                 'auth': [
                     'Basic'
                 ],
@@ -438,7 +438,7 @@ class BPMOptimizerApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                StringRoot
+                ObjectRoot
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -467,7 +467,7 @@ class BPMOptimizerApi(object):
 
         self.get_optimization_status_by_id = _Endpoint(
             settings={
-                'response_type': (StringRoot,),
+                'response_type': (ObjectRoot,),
                 'auth': [
                     'Basic'
                 ],
@@ -557,7 +557,7 @@ class BPMOptimizerApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                StringRoot
+                ObjectRoot
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -584,7 +584,7 @@ class BPMOptimizerApi(object):
 
         self.post_and_optimize = _Endpoint(
             settings={
-                'response_type': (StringRoot,),
+                'response_type': (ObjectRoot,),
                 'auth': [
                     'Basic'
                 ],
@@ -686,7 +686,7 @@ class BPMOptimizerApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                StringRoot
+                ObjectRoot
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -715,7 +715,7 @@ class BPMOptimizerApi(object):
 
         self.put_and_optimize = _Endpoint(
             settings={
-                'response_type': (StringRoot,),
+                'response_type': (ObjectRoot,),
                 'auth': [
                     'Basic'
                 ],

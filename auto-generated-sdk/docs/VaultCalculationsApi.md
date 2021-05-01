@@ -261,7 +261,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_calculation_unit_result_by_id**
-> StringRoot get_calculation_unit_result_by_id(id, unit_id)
+> ObjectRoot get_calculation_unit_result_by_id(id, unit_id)
 
 Get Vault calculation result by id
 
@@ -274,7 +274,7 @@ This is the endpoint to get the result of a previously requested calculation.  I
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import vault_calculations_api
-from fds.analyticsapi.engines.model.string_root import StringRoot
+from fds.analyticsapi.engines.model.object_root import ObjectRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
@@ -320,7 +320,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**StringRoot**](StringRoot.md)
+[**ObjectRoot**](ObjectRoot.md)
 
 ### Authorization
 
@@ -361,7 +361,7 @@ import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import vault_calculations_api
 from fds.analyticsapi.engines.model.calculation_status_root import CalculationStatusRoot
 from fds.analyticsapi.engines.model.vault_calculation_parameters_root import VaultCalculationParametersRoot
-from fds.analyticsapi.engines.model.string_root import StringRoot
+from fds.analyticsapi.engines.model.object_root import ObjectRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
@@ -475,7 +475,7 @@ import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import vault_calculations_api
 from fds.analyticsapi.engines.model.calculation_status_root import CalculationStatusRoot
 from fds.analyticsapi.engines.model.vault_calculation_parameters_root import VaultCalculationParametersRoot
-from fds.analyticsapi.engines.model.string_root import StringRoot
+from fds.analyticsapi.engines.model.object_root import ObjectRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
