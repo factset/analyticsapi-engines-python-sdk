@@ -439,7 +439,7 @@ class PubCalculationsApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                str
+                file_type
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -470,7 +470,7 @@ class PubCalculationsApi(object):
 
         self.get_calculation_unit_result_by_id = _Endpoint(
             settings={
-                'response_type': (str,),
+                'response_type': (file_type,),
                 'auth': [
                     'Basic'
                 ],

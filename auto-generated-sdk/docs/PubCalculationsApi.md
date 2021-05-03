@@ -261,7 +261,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_calculation_unit_result_by_id**
-> str get_calculation_unit_result_by_id(id, unit_id)
+> file_type get_calculation_unit_result_by_id(id, unit_id)
 
 Get Pub calculation result by id
 
@@ -319,7 +319,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**str**
+**file_type**
 
 ### Authorization
 
