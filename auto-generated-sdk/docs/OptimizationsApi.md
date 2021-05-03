@@ -20,10 +20,9 @@ This is the endpoint to cancel a previously submitted optimization. Instead of d
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import optimizations_api
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -45,21 +44,23 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.OptimizationsApi(api_client)
-    id = 'id_example' # str | from url, provided from the location header in the Run Optimization endpoint
+    api_instance = optimizations_api.OptimizationsApi(api_client)
+    id = "id_example" # str | from url, provided from the location header in the Run Optimization endpoint
 
+    # example passing only required values which don't have defaults set
     try:
         # Cancel Axioma optimization by id
         api_instance.cancel_axioma_optimization_by_id(id)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling OptimizationsApi->cancel_axioma_optimization_by_id: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| from url, provided from the location header in the Run Optimization endpoint | 
+ **id** | **str**| from url, provided from the location header in the Run Optimization endpoint |
 
 ### Return type
 
@@ -73,6 +74,7 @@ void (empty response body)
 
  - **Content-Type**: Not defined
  - **Accept**: Not defined
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -98,10 +100,9 @@ This is the endpoint to check on the progress of a previously requested optimiza
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import optimizations_api
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -123,21 +124,23 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.OptimizationsApi(api_client)
-    id = 'id_example' # str | from url, provided from the location header in the Run Optimization endpoint
+    api_instance = optimizations_api.OptimizationsApi(api_client)
+    id = "id_example" # str | from url, provided from the location header in the Run Optimization endpoint
 
+    # example passing only required values which don't have defaults set
     try:
         # Get Axioma optimization by id
         api_instance.get_axioma_optimization_by_id(id)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling OptimizationsApi->get_axioma_optimization_by_id: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| from url, provided from the location header in the Run Optimization endpoint | 
+ **id** | **str**| from url, provided from the location header in the Run Optimization endpoint |
 
 ### Return type
 
@@ -151,6 +154,7 @@ void (empty response body)
 
  - **Content-Type**: Not defined
  - **Accept**: Not defined
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -167,7 +171,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **run_axioma_optimization**
-> run_axioma_optimization(axioma_equity_optimization_parameters=axioma_equity_optimization_parameters)
+> run_axioma_optimization()
 
 Run Axioma optimization
 
@@ -177,10 +181,10 @@ This endpoint runs Axioma optimization specified in the POST body parameters.  I
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import optimizations_api
+from fds.analyticsapi.engines.model.axioma_equity_optimization_parameters import AxiomaEquityOptimizationParameters
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -202,21 +206,68 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.OptimizationsApi(api_client)
-    axioma_equity_optimization_parameters = fds.analyticsapi.engines.AxiomaEquityOptimizationParameters() # AxiomaEquityOptimizationParameters |  (optional)
+    api_instance = optimizations_api.OptimizationsApi(api_client)
+    axioma_equity_optimization_parameters = AxiomaEquityOptimizationParameters(
+        strategy=OptimizerStrategy(
+            id="id_example",
+            overrides=OptimizerStrategyOverrides(
+                objective="objective_example",
+                constraints={
+                    "Disable": "Disable",
+                },
+                alpha="alpha_example",
+                transactioncost="transactioncost_example",
+                tax="tax_example",
+            ),
+        ),
+        account=OptimizerAccount(
+            id="id_example",
+            overrides=OptimizerAccountOverrides(
+                portfolio="portfolio_example",
+                benchmark="benchmark_example",
+                riskmodelid="riskmodelid_example",
+                currency="currency_example",
+            ),
+        ),
+        optimization=Optimization(
+            riskmodeldate="riskmodeldate_example",
+            backtestdate="backtestdate_example",
+            cashflow="cashflow_example",
+        ),
+        outputtypes=OptimizerOutputTypes(
+            trades=OptimizerTradesList(
+                identifiertype="Asset",
+                includecash=True,
+            ),
+            optimal=OptimizerOptimalHoldings(
+                identifiertype="Asset",
+                includecash=True,
+                excludezero=True,
+            ),
+            account=OptimalPortfolio(
+                acctname="acctname_example",
+                excludezero=True,
+                archivedate="archivedate_example",
+                ifexists="Overwrite",
+            ),
+        ),
+    ) # AxiomaEquityOptimizationParameters |  (optional)
 
+    # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Run Axioma optimization
         api_instance.run_axioma_optimization(axioma_equity_optimization_parameters=axioma_equity_optimization_parameters)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling OptimizationsApi->run_axioma_optimization: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **axioma_equity_optimization_parameters** | [**AxiomaEquityOptimizationParameters**](AxiomaEquityOptimizationParameters.md)|  | [optional] 
+ **axioma_equity_optimization_parameters** | [**AxiomaEquityOptimizationParameters**](AxiomaEquityOptimizationParameters.md)|  | [optional]
 
 ### Return type
 
@@ -230,6 +281,7 @@ void (empty response body)
 
  - **Content-Type**: application/json
  - **Accept**: Not defined
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

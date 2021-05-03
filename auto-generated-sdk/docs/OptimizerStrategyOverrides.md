@@ -1,10 +1,11 @@
 # OptimizerStrategyOverrides
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **objective** | **str** | Objective | [optional] 
-**constraints** | **dict(str, str)** | List of constraints | [optional] 
+**constraints** | **{str: (str,)}** | List of constraints | [optional] 
 **alpha** | **str** | Alpha | [optional] 
 **transactioncost** | **str** | Transaction cost | [optional] 
 **tax** | **str** | Tax | [optional] 

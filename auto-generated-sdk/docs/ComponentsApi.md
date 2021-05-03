@@ -22,10 +22,10 @@ This endpoint returns the default settings of a PA component.
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import components_api
+from fds.analyticsapi.engines.model.pa_component import PAComponent
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -47,22 +47,24 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.ComponentsApi(api_client)
-    id = 'id_example' # str | Unique identifier for a PA component
+    api_instance = components_api.ComponentsApi(api_client)
+    id = "id_example" # str | Unique identifier for a PA component
 
+    # example passing only required values which don't have defaults set
     try:
         # Get PA component by id
         api_response = api_instance.get_pa_component_by_id(id)
         pprint(api_response)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling ComponentsApi->get_pa_component_by_id: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| Unique identifier for a PA component | 
+ **id** | **str**| Unique identifier for a PA component |
 
 ### Return type
 
@@ -76,6 +78,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -93,7 +96,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_pa_components**
-> dict(str, ComponentSummary) get_pa_components(document)
+> {str: (ComponentSummary,)} get_pa_components(document)
 
 Get PA components
 
@@ -103,10 +106,10 @@ This endpoint returns the list of PA components in a given PA document.
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import components_api
+from fds.analyticsapi.engines.model.component_summary import ComponentSummary
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -128,26 +131,28 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.ComponentsApi(api_client)
-    document = 'document_example' # str | Document Name
+    api_instance = components_api.ComponentsApi(api_client)
+    document = "document_example" # str | Document Name
 
+    # example passing only required values which don't have defaults set
     try:
         # Get PA components
         api_response = api_instance.get_pa_components(document)
         pprint(api_response)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling ComponentsApi->get_pa_components: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **document** | **str**| Document Name | 
+ **document** | **str**| Document Name |
 
 ### Return type
 
-[**dict(str, ComponentSummary)**](ComponentSummary.md)
+[**{str: (ComponentSummary,)}**](ComponentSummary.md)
 
 ### Authorization
 
@@ -157,6 +162,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -174,7 +180,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_spar_components**
-> dict(str, ComponentSummary) get_spar_components(document)
+> {str: (ComponentSummary,)} get_spar_components(document)
 
 Get SPAR components
 
@@ -184,10 +190,10 @@ This endpoint returns the list of SPAR components in a given SPAR document.
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import components_api
+from fds.analyticsapi.engines.model.component_summary import ComponentSummary
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -209,26 +215,28 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.ComponentsApi(api_client)
-    document = 'document_example' # str | Document Name
+    api_instance = components_api.ComponentsApi(api_client)
+    document = "document_example" # str | Document Name
 
+    # example passing only required values which don't have defaults set
     try:
         # Get SPAR components
         api_response = api_instance.get_spar_components(document)
         pprint(api_response)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling ComponentsApi->get_spar_components: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **document** | **str**| Document Name | 
+ **document** | **str**| Document Name |
 
 ### Return type
 
-[**dict(str, ComponentSummary)**](ComponentSummary.md)
+[**{str: (ComponentSummary,)}**](ComponentSummary.md)
 
 ### Authorization
 
@@ -238,6 +246,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -265,10 +274,10 @@ This endpoint returns the default settings of a Vault component.
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import components_api
+from fds.analyticsapi.engines.model.vault_component import VaultComponent
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -290,22 +299,24 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.ComponentsApi(api_client)
-    id = 'id_example' # str | Unique identifier for a vault component
+    api_instance = components_api.ComponentsApi(api_client)
+    id = "id_example" # str | Unique identifier for a vault component
 
+    # example passing only required values which don't have defaults set
     try:
         # Get Vault component by id
         api_response = api_instance.get_vault_component_by_id(id)
         pprint(api_response)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling ComponentsApi->get_vault_component_by_id: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| Unique identifier for a vault component | 
+ **id** | **str**| Unique identifier for a vault component |
 
 ### Return type
 
@@ -319,6 +330,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -336,7 +348,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_vault_components**
-> dict(str, ComponentSummary) get_vault_components(document)
+> {str: (ComponentSummary,)} get_vault_components(document)
 
 Get Vault components
 
@@ -346,10 +358,10 @@ This endpoint returns the list of Vault components in a given Vault document.
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import components_api
+from fds.analyticsapi.engines.model.component_summary import ComponentSummary
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -371,26 +383,28 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.ComponentsApi(api_client)
-    document = 'document_example' # str | Document Name
+    api_instance = components_api.ComponentsApi(api_client)
+    document = "document_example" # str | Document Name
 
+    # example passing only required values which don't have defaults set
     try:
         # Get Vault components
         api_response = api_instance.get_vault_components(document)
         pprint(api_response)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling ComponentsApi->get_vault_components: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **document** | **str**| Document Name | 
+ **document** | **str**| Document Name |
 
 ### Return type
 
-[**dict(str, ComponentSummary)**](ComponentSummary.md)
+[**{str: (ComponentSummary,)}**](ComponentSummary.md)
 
 ### Authorization
 
@@ -400,6 +414,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
