@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **get_accounts**
-> AccountDirectories get_accounts(path)
+> AccountDirectories get_accounts()
 
 Get accounts and sub-directories in a directory
 
@@ -18,10 +18,10 @@ This endpoint looks up all ACCT and ACTM files and sub-directories in a given di
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import accounts_api
+from fds.analyticsapi.engines.model.account_directories import AccountDirectories
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -43,22 +43,23 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.AccountsApi(api_client)
-    path = '' # str | The directory to get the accounts and sub-directories in (default to '')
+    api_instance = accounts_api.AccountsApi(api_client)
 
+    # example passing only required values which don't have defaults set
     try:
         # Get accounts and sub-directories in a directory
-        api_response = api_instance.get_accounts(path)
+        api_response = api_instance.get_accounts()
         pprint(api_response)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling AccountsApi->get_accounts: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **path** | **str**| The directory to get the accounts and sub-directories in | [default to &#39;&#39;]
+ **path** | **str**| The directory to get the accounts and sub-directories in | defaults to ""
 
 ### Return type
 
@@ -72,6 +73,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

@@ -1,5 +1,6 @@
 # CalculationStatusSummary
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

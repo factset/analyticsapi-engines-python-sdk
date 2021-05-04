@@ -18,10 +18,10 @@ This endpoint returns the details of a given SPAR benchmark identifier.
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import spar_benchmark_api
+from fds.analyticsapi.engines.model.spar_benchmark import SPARBenchmark
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -43,22 +43,24 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.SPARBenchmarkApi(api_client)
-    id = 'id_example' # str | Benchmark Identifier
+    api_instance = spar_benchmark_api.SPARBenchmarkApi(api_client)
+    id = "id_example" # str | Benchmark Identifier
 
+    # example passing only required values which don't have defaults set
     try:
         # Get SPAR benchmark details
         api_response = api_instance.get_spar_benchmark_by_id(id)
         pprint(api_response)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling SPARBenchmarkApi->get_spar_benchmark_by_id: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| Benchmark Identifier | 
+ **id** | **str**| Benchmark Identifier |
 
 ### Return type
 
@@ -72,6 +74,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

@@ -40,3 +40,453 @@ setup(
     Allow clients to fetch Analytics through APIs.  # noqa: E501
     """
 )
+# To install the library, run the following
+#
+# python setup.py install
+#
+# prerequisite: setuptools
+# http://pypi.python.org/pypi/setuptools
+
+REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil", "fds.protobuf.stach < 2.0.0", "pandas < 2.0.0"]
+
+setup(
+    name=NAME,
+    version=VERSION,
+    description="Engines API",
+    author="Analytics API Support",
+    author_email="analytics.api.support@factset.com",
+    url="https://github.com/factset/analyticsapi-engines-python-sdk",
+    keywords=["OpenAPI", "OpenAPI-Generator", "Engines API"],
+    install_requires=REQUIRES,
+    packages=find_packages(exclude=["test", "tests"]),
+    include_package_data=True,
+    license="Apache License 2.0",
+    long_description="""\
+    Allow clients to fetch Analytics through APIs.  # noqa: E501
+    """
+)
+# To install the library, run the following
+#
+# python setup.py install
+#
+# prerequisite: setuptools
+# http://pypi.python.org/pypi/setuptools
+
+REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil", "fds.protobuf.stach < 2.0.0", "pandas < 2.0.0"]
+
+setup(
+    name=NAME,
+    version=VERSION,
+    description="Engines API",
+    author="Analytics API Support",
+    author_email="analytics.api.support@factset.com",
+    url="https://github.com/factset/analyticsapi-engines-python-sdk",
+    keywords=["OpenAPI", "OpenAPI-Generator", "Engines API"],
+    install_requires=REQUIRES,
+    packages=find_packages(exclude=["test", "tests"]),
+    include_package_data=True,
+    license="Apache License 2.0",
+    long_description="""\
+    Allow clients to fetch Analytics through APIs.  # noqa: E501
+    """
+)
+# To install the library, run the following
+#
+# python setup.py install
+#
+# prerequisite: setuptools
+# http://pypi.python.org/pypi/setuptools
+
+REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil", "fds.protobuf.stach < 2.0.0", "pandas < 2.0.0"]
+
+setup(
+    name=NAME,
+    version=VERSION,
+    description="Engines API",
+    author="Analytics API Support",
+    author_email="analytics.api.support@factset.com",
+    url="https://github.com/factset/analyticsapi-engines-python-sdk",
+    keywords=["OpenAPI", "OpenAPI-Generator", "Engines API"],
+    install_requires=REQUIRES,
+    packages=find_packages(exclude=["test", "tests"]),
+    include_package_data=True,
+    license="Apache License 2.0",
+    long_description="""\
+    Allow clients to fetch Analytics through APIs.  # noqa: E501
+    """
+)
+# To install the library, run the following
+#
+# python setup.py install
+#
+# prerequisite: setuptools
+# http://pypi.python.org/pypi/setuptools
+
+REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil", "fds.protobuf.stach < 2.0.0", "pandas < 2.0.0"]
+
+setup(
+    name=NAME,
+    version=VERSION,
+    description="Engines API",
+    author="Analytics API Support",
+    author_email="analytics.api.support@factset.com",
+    url="https://github.com/factset/analyticsapi-engines-python-sdk",
+    keywords=["OpenAPI", "OpenAPI-Generator", "Engines API"],
+    install_requires=REQUIRES,
+    packages=find_packages(exclude=["test", "tests"]),
+    include_package_data=True,
+    license="Apache License 2.0",
+    long_description="""\
+    Allow clients to fetch Analytics through APIs.  # noqa: E501
+    """
+)
+# To install the library, run the following
+#
+# python setup.py install
+#
+# prerequisite: setuptools
+# http://pypi.python.org/pypi/setuptools
+
+REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil", "fds.protobuf.stach < 2.0.0", "pandas < 2.0.0"]
+
+setup(
+    name=NAME,
+    version=VERSION,
+    description="Engines API",
+    author="Analytics API Support",
+    author_email="analytics.api.support@factset.com",
+    url="https://github.com/factset/analyticsapi-engines-python-sdk",
+    keywords=["OpenAPI", "OpenAPI-Generator", "Engines API"],
+    install_requires=REQUIRES,
+    packages=find_packages(exclude=["test", "tests"]),
+    include_package_data=True,
+    license="Apache License 2.0",
+    long_description="""\
+    Allow clients to fetch Analytics through APIs.  # noqa: E501
+    """
+)
+# To install the library, run the following
+#
+# python setup.py install
+#
+# prerequisite: setuptools
+# http://pypi.python.org/pypi/setuptools
+
+REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil", "fds.protobuf.stach < 2.0.0", "pandas < 2.0.0"]
+
+setup(
+    name=NAME,
+    version=VERSION,
+    description="Engines API",
+    author="Analytics API Support",
+    author_email="analytics.api.support@factset.com",
+    url="https://github.com/factset/analyticsapi-engines-python-sdk",
+    keywords=["OpenAPI", "OpenAPI-Generator", "Engines API"],
+    install_requires=REQUIRES,
+    packages=find_packages(exclude=["test", "tests"]),
+    include_package_data=True,
+    license="Apache License 2.0",
+    long_description="""\
+    Allow clients to fetch Analytics through APIs.  # noqa: E501
+    """
+)
+# To install the library, run the following
+#
+# python setup.py install
+#
+# prerequisite: setuptools
+# http://pypi.python.org/pypi/setuptools
+
+REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil", "fds.protobuf.stach < 2.0.0", "pandas < 2.0.0"]
+
+setup(
+    name=NAME,
+    version=VERSION,
+    description="Engines API",
+    author="Analytics API Support",
+    author_email="analytics.api.support@factset.com",
+    url="https://github.com/factset/analyticsapi-engines-python-sdk",
+    keywords=["OpenAPI", "OpenAPI-Generator", "Engines API"],
+    install_requires=REQUIRES,
+    packages=find_packages(exclude=["test", "tests"]),
+    include_package_data=True,
+    license="Apache License 2.0",
+    long_description="""\
+    Allow clients to fetch Analytics through APIs.  # noqa: E501
+    """
+)
+# To install the library, run the following
+#
+# python setup.py install
+#
+# prerequisite: setuptools
+# http://pypi.python.org/pypi/setuptools
+
+REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil", "fds.protobuf.stach < 2.0.0", "pandas < 2.0.0"]
+
+setup(
+    name=NAME,
+    version=VERSION,
+    description="Engines API",
+    author="Analytics API Support",
+    author_email="analytics.api.support@factset.com",
+    url="https://github.com/factset/analyticsapi-engines-python-sdk",
+    keywords=["OpenAPI", "OpenAPI-Generator", "Engines API"],
+    install_requires=REQUIRES,
+    packages=find_packages(exclude=["test", "tests"]),
+    include_package_data=True,
+    license="Apache License 2.0",
+    long_description="""\
+    Allow clients to fetch Analytics through APIs.  # noqa: E501
+    """
+)
+# To install the library, run the following
+#
+# python setup.py install
+#
+# prerequisite: setuptools
+# http://pypi.python.org/pypi/setuptools
+
+REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil", "fds.protobuf.stach < 2.0.0", "pandas < 2.0.0"]
+
+setup(
+    name=NAME,
+    version=VERSION,
+    description="Engines API",
+    author="Analytics API Support",
+    author_email="analytics.api.support@factset.com",
+    url="https://github.com/factset/analyticsapi-engines-python-sdk",
+    keywords=["OpenAPI", "OpenAPI-Generator", "Engines API"],
+    install_requires=REQUIRES,
+    packages=find_packages(exclude=["test", "tests"]),
+    include_package_data=True,
+    license="Apache License 2.0",
+    long_description="""\
+    Allow clients to fetch Analytics through APIs.  # noqa: E501
+    """
+)
+# To install the library, run the following
+#
+# python setup.py install
+#
+# prerequisite: setuptools
+# http://pypi.python.org/pypi/setuptools
+
+REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil", "fds.protobuf.stach < 2.0.0", "pandas < 2.0.0"]
+
+setup(
+    name=NAME,
+    version=VERSION,
+    description="Engines API",
+    author="Analytics API Support",
+    author_email="analytics.api.support@factset.com",
+    url="https://github.com/factset/analyticsapi-engines-python-sdk",
+    keywords=["OpenAPI", "OpenAPI-Generator", "Engines API"],
+    install_requires=REQUIRES,
+    packages=find_packages(exclude=["test", "tests"]),
+    include_package_data=True,
+    license="Apache License 2.0",
+    long_description="""\
+    Allow clients to fetch Analytics through APIs.  # noqa: E501
+    """
+)
+# To install the library, run the following
+#
+# python setup.py install
+#
+# prerequisite: setuptools
+# http://pypi.python.org/pypi/setuptools
+
+REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil", "fds.protobuf.stach < 2.0.0", "pandas < 2.0.0"]
+
+setup(
+    name=NAME,
+    version=VERSION,
+    description="Engines API",
+    author="Analytics API Support",
+    author_email="analytics.api.support@factset.com",
+    url="https://github.com/factset/analyticsapi-engines-python-sdk",
+    keywords=["OpenAPI", "OpenAPI-Generator", "Engines API"],
+    install_requires=REQUIRES,
+    packages=find_packages(exclude=["test", "tests"]),
+    include_package_data=True,
+    license="Apache License 2.0",
+    long_description="""\
+    Allow clients to fetch Analytics through APIs.  # noqa: E501
+    """
+)
+# To install the library, run the following
+#
+# python setup.py install
+#
+# prerequisite: setuptools
+# http://pypi.python.org/pypi/setuptools
+
+REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil", "fds.protobuf.stach < 2.0.0", "pandas < 2.0.0"]
+
+setup(
+    name=NAME,
+    version=VERSION,
+    description="Engines API",
+    author="Analytics API Support",
+    author_email="analytics.api.support@factset.com",
+    url="https://github.com/factset/analyticsapi-engines-python-sdk",
+    keywords=["OpenAPI", "OpenAPI-Generator", "Engines API"],
+    install_requires=REQUIRES,
+    packages=find_packages(exclude=["test", "tests"]),
+    include_package_data=True,
+    license="Apache License 2.0",
+    long_description="""\
+    Allow clients to fetch Analytics through APIs.  # noqa: E501
+    """
+)
+# To install the library, run the following
+#
+# python setup.py install
+#
+# prerequisite: setuptools
+# http://pypi.python.org/pypi/setuptools
+
+REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil", "fds.protobuf.stach < 2.0.0", "pandas < 2.0.0"]
+
+setup(
+    name=NAME,
+    version=VERSION,
+    description="Engines API",
+    author="Analytics API Support",
+    author_email="analytics.api.support@factset.com",
+    url="https://github.com/factset/analyticsapi-engines-python-sdk",
+    keywords=["OpenAPI", "OpenAPI-Generator", "Engines API"],
+    install_requires=REQUIRES,
+    packages=find_packages(exclude=["test", "tests"]),
+    include_package_data=True,
+    license="Apache License 2.0",
+    long_description="""\
+    Allow clients to fetch Analytics through APIs.  # noqa: E501
+    """
+)
+# To install the library, run the following
+#
+# python setup.py install
+#
+# prerequisite: setuptools
+# http://pypi.python.org/pypi/setuptools
+
+REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil", "fds.protobuf.stach < 2.0.0", "pandas < 2.0.0"]
+
+setup(
+    name=NAME,
+    version=VERSION,
+    description="Engines API",
+    author="Analytics API Support",
+    author_email="analytics.api.support@factset.com",
+    url="https://github.com/factset/analyticsapi-engines-python-sdk",
+    keywords=["OpenAPI", "OpenAPI-Generator", "Engines API"],
+    install_requires=REQUIRES,
+    packages=find_packages(exclude=["test", "tests"]),
+    include_package_data=True,
+    license="Apache License 2.0",
+    long_description="""\
+    Allow clients to fetch Analytics through APIs.  # noqa: E501
+    """
+)
+# To install the library, run the following
+#
+# python setup.py install
+#
+# prerequisite: setuptools
+# http://pypi.python.org/pypi/setuptools
+
+REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil", "fds.protobuf.stach < 2.0.0", "pandas < 2.0.0"]
+
+setup(
+    name=NAME,
+    version=VERSION,
+    description="Engines API",
+    author="Analytics API Support",
+    author_email="analytics.api.support@factset.com",
+    url="https://github.com/factset/analyticsapi-engines-python-sdk",
+    keywords=["OpenAPI", "OpenAPI-Generator", "Engines API"],
+    install_requires=REQUIRES,
+    packages=find_packages(exclude=["test", "tests"]),
+    include_package_data=True,
+    license="Apache License 2.0",
+    long_description="""\
+    Allow clients to fetch Analytics through APIs.  # noqa: E501
+    """
+)
+# To install the library, run the following
+#
+# python setup.py install
+#
+# prerequisite: setuptools
+# http://pypi.python.org/pypi/setuptools
+
+REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil", "fds.protobuf.stach < 2.0.0", "pandas < 2.0.0"]
+
+setup(
+    name=NAME,
+    version=VERSION,
+    description="Engines API",
+    author="Analytics API Support",
+    author_email="analytics.api.support@factset.com",
+    url="https://github.com/factset/analyticsapi-engines-python-sdk",
+    keywords=["OpenAPI", "OpenAPI-Generator", "Engines API"],
+    install_requires=REQUIRES,
+    packages=find_packages(exclude=["test", "tests"]),
+    include_package_data=True,
+    license="Apache License 2.0",
+    long_description="""\
+    Allow clients to fetch Analytics through APIs.  # noqa: E501
+    """
+)
+# To install the library, run the following
+#
+# python setup.py install
+#
+# prerequisite: setuptools
+# http://pypi.python.org/pypi/setuptools
+
+REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil", "fds.protobuf.stach < 2.0.0", "pandas < 2.0.0"]
+
+setup(
+    name=NAME,
+    version=VERSION,
+    description="Engines API",
+    author="Analytics API Support",
+    author_email="analytics.api.support@factset.com",
+    url="https://github.com/factset/analyticsapi-engines-python-sdk",
+    keywords=["OpenAPI", "OpenAPI-Generator", "Engines API"],
+    install_requires=REQUIRES,
+    packages=find_packages(exclude=["test", "tests"]),
+    include_package_data=True,
+    license="Apache License 2.0",
+    long_description="""\
+    Allow clients to fetch Analytics through APIs.  # noqa: E501
+    """
+)
+# To install the library, run the following
+#
+# python setup.py install
+#
+# prerequisite: setuptools
+# http://pypi.python.org/pypi/setuptools
+
+REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil", "fds.protobuf.stach < 2.0.0", "pandas < 2.0.0"]
+
+setup(
+    name=NAME,
+    version=VERSION,
+    description="Engines API",
+    author="Analytics API Support",
+    author_email="analytics.api.support@factset.com",
+    url="https://github.com/factset/analyticsapi-engines-python-sdk",
+    keywords=["OpenAPI", "OpenAPI-Generator", "Engines API"],
+    install_requires=REQUIRES,
+    packages=find_packages(exclude=["test", "tests"]),
+    include_package_data=True,
+    license="Apache License 2.0",
+    long_description="""\
+    Allow clients to fetch Analytics through APIs.  # noqa: E501
+    """
+)
