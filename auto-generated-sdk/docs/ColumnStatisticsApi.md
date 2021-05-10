@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **get_pa_column_statistics**
-> dict(str, ColumnStatistic) get_pa_column_statistics()
+> {str: (ColumnStatistic,)} get_pa_column_statistics()
 
 Get PA column statistics
 
@@ -18,10 +18,10 @@ This endpoint lists all the column statistics that can be applied to a PA column
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import column_statistics_api
+from fds.analyticsapi.engines.model.column_statistic import ColumnStatistic
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -43,22 +43,24 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.ColumnStatisticsApi(api_client)
-    
+    api_instance = column_statistics_api.ColumnStatisticsApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
     try:
         # Get PA column statistics
         api_response = api_instance.get_pa_column_statistics()
         pprint(api_response)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling ColumnStatisticsApi->get_pa_column_statistics: %s\n" % e)
 ```
+
 
 ### Parameters
 This endpoint does not need any parameter.
 
 ### Return type
 
-[**dict(str, ColumnStatistic)**](ColumnStatistic.md)
+[**{str: (ColumnStatistic,)}**](ColumnStatistic.md)
 
 ### Authorization
 
@@ -68,6 +70,7 @@ This endpoint does not need any parameter.
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

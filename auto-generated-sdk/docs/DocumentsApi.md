@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **get_pa3_documents**
-> DocumentDirectories get_pa3_documents(path)
+> DocumentDirectories get_pa3_documents()
 
 Get PA3 documents and sub-directories in a directory
 
@@ -21,10 +21,10 @@ This endpoint looks up all PA3 documents and sub-directories in a given director
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import documents_api
+from fds.analyticsapi.engines.model.document_directories import DocumentDirectories
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -46,22 +46,23 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.DocumentsApi(api_client)
-    path = '' # str | The directory to get the documents and sub-directories in (default to '')
+    api_instance = documents_api.DocumentsApi(api_client)
 
+    # example passing only required values which don't have defaults set
     try:
         # Get PA3 documents and sub-directories in a directory
-        api_response = api_instance.get_pa3_documents(path)
+        api_response = api_instance.get_pa3_documents()
         pprint(api_response)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling DocumentsApi->get_pa3_documents: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **path** | **str**| The directory to get the documents and sub-directories in | [default to &#39;&#39;]
+ **path** | **str**| The directory to get the documents and sub-directories in | defaults to ""
 
 ### Return type
 
@@ -75,6 +76,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -92,7 +94,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_pub_documents**
-> DocumentDirectories get_pub_documents(path)
+> DocumentDirectories get_pub_documents()
 
 Gets Publisher documents and sub-directories in a directory
 
@@ -102,10 +104,10 @@ This endpoint looks up all Publisher documents and sub-directories in a given di
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import documents_api
+from fds.analyticsapi.engines.model.document_directories import DocumentDirectories
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -127,22 +129,23 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.DocumentsApi(api_client)
-    path = '' # str | The directory to get the documents in (default to '')
+    api_instance = documents_api.DocumentsApi(api_client)
 
+    # example passing only required values which don't have defaults set
     try:
         # Gets Publisher documents and sub-directories in a directory
-        api_response = api_instance.get_pub_documents(path)
+        api_response = api_instance.get_pub_documents()
         pprint(api_response)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling DocumentsApi->get_pub_documents: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **path** | **str**| The directory to get the documents in | [default to &#39;&#39;]
+ **path** | **str**| The directory to get the documents in | defaults to ""
 
 ### Return type
 
@@ -156,6 +159,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -173,7 +177,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_spar3_documents**
-> DocumentDirectories get_spar3_documents(path)
+> DocumentDirectories get_spar3_documents()
 
 Gets SPAR3 documents and sub-directories in a directory
 
@@ -183,10 +187,10 @@ This endpoint looks up all SPAR3 documents and sub-directories in a given direct
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import documents_api
+from fds.analyticsapi.engines.model.document_directories import DocumentDirectories
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -208,22 +212,23 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.DocumentsApi(api_client)
-    path = '' # str | The directory to get the documents in (default to '')
+    api_instance = documents_api.DocumentsApi(api_client)
 
+    # example passing only required values which don't have defaults set
     try:
         # Gets SPAR3 documents and sub-directories in a directory
-        api_response = api_instance.get_spar3_documents(path)
+        api_response = api_instance.get_spar3_documents()
         pprint(api_response)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling DocumentsApi->get_spar3_documents: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **path** | **str**| The directory to get the documents in | [default to &#39;&#39;]
+ **path** | **str**| The directory to get the documents in | defaults to ""
 
 ### Return type
 
@@ -237,6 +242,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -254,7 +260,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_vault_documents**
-> DocumentDirectories get_vault_documents(path)
+> DocumentDirectories get_vault_documents()
 
 Get Vault documents and sub-directories in a directory
 
@@ -264,10 +270,10 @@ This endpoint looks up all Vault documents and sub-directories in a given direct
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import documents_api
+from fds.analyticsapi.engines.model.document_directories import DocumentDirectories
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -289,22 +295,23 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.DocumentsApi(api_client)
-    path = '' # str | The directory to get the documents in (default to '')
+    api_instance = documents_api.DocumentsApi(api_client)
 
+    # example passing only required values which don't have defaults set
     try:
         # Get Vault documents and sub-directories in a directory
-        api_response = api_instance.get_vault_documents(path)
+        api_response = api_instance.get_vault_documents()
         pprint(api_response)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling DocumentsApi->get_vault_documents: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **path** | **str**| The directory to get the documents in | [default to &#39;&#39;]
+ **path** | **str**| The directory to get the documents in | defaults to ""
 
 ### Return type
 
@@ -318,6 +325,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
