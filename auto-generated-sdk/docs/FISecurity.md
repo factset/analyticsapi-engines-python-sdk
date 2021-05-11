@@ -4,12 +4,13 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**calc_from_method** | **str** |  | 
-**calc_from_value** | **float** |  | 
-**face** | **float** |  | 
-**symbol** | **str** |  | 
-**settlement_date** | **str** |  | 
-**discount_curve** | **str** |  | 
+**calc_from_method** | **str** | Calculation from method | 
+**calc_from_value** | **float** | Calculation from value | 
+**symbol** | **str** | Symbol | 
+**settlement** | **str** | Settlement date | [optional] 
+**face** | **float** | Face | [optional]  if omitted the server will use the default value of 1
+**face_type** | **str** | Face type | [optional]  if omitted the server will use the default value of "Current"
+**discount_curve** | **str** | Discount curve | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
