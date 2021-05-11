@@ -19,10 +19,10 @@ This endpoint returns the default settings of a PA column.
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import columns_api
+from fds.analyticsapi.engines.model.column import Column
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -44,22 +44,24 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.ColumnsApi(api_client)
-    id = 'id_example' # str | Unique identifier for a column
+    api_instance = columns_api.ColumnsApi(api_client)
+    id = "id_example" # str | Unique identifier for a column
 
+    # example passing only required values which don't have defaults set
     try:
         # Get PA column settings
         api_response = api_instance.get_pa_column_by_id(id)
         pprint(api_response)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling ColumnsApi->get_pa_column_by_id: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| Unique identifier for a column | 
+ **id** | **str**| Unique identifier for a column |
 
 ### Return type
 
@@ -73,6 +75,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -90,7 +93,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_pa_columns**
-> dict(str, ColumnSummary) get_pa_columns(name=name, category=category, directory=directory)
+> {str: (ColumnSummary,)} get_pa_columns()
 
 Get PA columns
 
@@ -100,10 +103,10 @@ This endpoint lists all the PA columns that can be applied to a calculation.
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import columns_api
+from fds.analyticsapi.engines.model.column_summary import ColumnSummary
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -125,30 +128,33 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.ColumnsApi(api_client)
-    name = '' # str | Column name (optional) (default to '')
-category = '' # str | Column category (optional) (default to '')
-directory = '' # str | The directory to get the columns in (optional) (default to '')
+    api_instance = columns_api.ColumnsApi(api_client)
+    name = "" # str | Column name (optional) if omitted the server will use the default value of ""
+    category = "" # str | Column category (optional) if omitted the server will use the default value of ""
+    directory = "" # str | The directory to get the columns in (optional) if omitted the server will use the default value of ""
 
+    # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Get PA columns
         api_response = api_instance.get_pa_columns(name=name, category=category, directory=directory)
         pprint(api_response)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling ColumnsApi->get_pa_columns: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**| Column name | [optional] [default to &#39;&#39;]
- **category** | **str**| Column category | [optional] [default to &#39;&#39;]
- **directory** | **str**| The directory to get the columns in | [optional] [default to &#39;&#39;]
+ **name** | **str**| Column name | [optional] if omitted the server will use the default value of ""
+ **category** | **str**| Column category | [optional] if omitted the server will use the default value of ""
+ **directory** | **str**| The directory to get the columns in | [optional] if omitted the server will use the default value of ""
 
 ### Return type
 
-[**dict(str, ColumnSummary)**](ColumnSummary.md)
+[**{str: (ColumnSummary,)}**](ColumnSummary.md)
 
 ### Authorization
 
@@ -158,6 +164,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

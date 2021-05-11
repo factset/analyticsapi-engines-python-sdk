@@ -20,10 +20,9 @@ This is the endpoint to cancel a previously submitted calculation.  Instead of d
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import pa_calculations_api
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -45,21 +44,23 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.PACalculationsApi(api_client)
-    id = 'id_example' # str | from url, provided from the location header in the Run Calculation endpoint
+    api_instance = pa_calculations_api.PACalculationsApi(api_client)
+    id = "id_example" # str | from url, provided from the location header in the Run Calculation endpoint
 
+    # example passing only required values which don't have defaults set
     try:
         # Cancel PA calculation by id
         api_instance.cancel_pa_calculation_by_id(id)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling PACalculationsApi->cancel_pa_calculation_by_id: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| from url, provided from the location header in the Run Calculation endpoint | 
+ **id** | **str**| from url, provided from the location header in the Run Calculation endpoint |
 
 ### Return type
 
@@ -73,6 +74,7 @@ void (empty response body)
 
  - **Content-Type**: Not defined
  - **Accept**: Not defined
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -88,7 +90,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_pa_calculation_by_id**
-> object get_pa_calculation_by_id(id)
+> {str: (bool, date, datetime, dict, float, int, list, str, none_type)} get_pa_calculation_by_id(id)
 
 Get PA calculation by id
 
@@ -98,10 +100,9 @@ This is the endpoint to check on the progress of a previously requested calculat
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import pa_calculations_api
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -123,26 +124,28 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.PACalculationsApi(api_client)
-    id = 'id_example' # str | from url, provided from the location header in the Run Calculation endpoint
+    api_instance = pa_calculations_api.PACalculationsApi(api_client)
+    id = "id_example" # str | from url, provided from the location header in the Run Calculation endpoint
 
+    # example passing only required values which don't have defaults set
     try:
         # Get PA calculation by id
         api_response = api_instance.get_pa_calculation_by_id(id)
         pprint(api_response)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling PACalculationsApi->get_pa_calculation_by_id: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| from url, provided from the location header in the Run Calculation endpoint | 
+ **id** | **str**| from url, provided from the location header in the Run Calculation endpoint |
 
 ### Return type
 
-**object**
+**{str: (bool, date, datetime, dict, float, int, list, str, none_type)}**
 
 ### Authorization
 
@@ -152,6 +155,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -168,7 +172,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **run_pa_calculation**
-> object run_pa_calculation(x_factset_content_organization=x_factset_content_organization, x_factset_content_type=x_factset_content_type, pa_calculation_parameters=pa_calculation_parameters)
+> {str: (bool, date, datetime, dict, float, int, list, str, none_type)} run_pa_calculation()
 
 Run PA Calculation
 
@@ -178,10 +182,10 @@ This endpoint runs the PA calculation specified in the POST body parameters.  It
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import pa_calculations_api
+from fds.analyticsapi.engines.model.pa_calculation_parameters import PACalculationParameters
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -203,30 +207,67 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.PACalculationsApi(api_client)
-    x_factset_content_organization = 'x_factset_content_organization_example' # str | For specifying the format of the calculation result. Accepted values are \"column\" or \"row\" or \"simplifiedrow\" (optional)
-x_factset_content_type = 'x_factset_content_type_example' # str | For specifying the content type of the calculation result. Accepted values are either \"application/json\" or \"application/x-protobuf\" (optional)
-pa_calculation_parameters = fds.analyticsapi.engines.PACalculationParameters() # PACalculationParameters |  (optional)
+    api_instance = pa_calculations_api.PACalculationsApi(api_client)
+    x_factset_content_organization = "x-factset-content-organization_example" # str | For specifying the format of the calculation result. Accepted values are \"column\" or \"row\" or \"simplifiedrow\" (optional)
+    x_factset_content_type = "x-factset-content-type_example" # str | For specifying the content type of the calculation result. Accepted values are either \"application/json\" or \"application/x-protobuf\" (optional)
+    pa_calculation_parameters = PACalculationParameters(
+        componentid="componentid_example",
+        accounts=[
+            PAIdentifier(
+                id="id_example",
+                holdingsmode="holdingsmode_example",
+            ),
+        ],
+        benchmarks=[
+            PAIdentifier(
+                id="id_example",
+                holdingsmode="holdingsmode_example",
+            ),
+        ],
+        dates=PADateParameters(
+            startdate="startdate_example",
+            enddate="enddate_example",
+            frequency="frequency_example",
+        ),
+        groups=[
+            PACalculationGroup(
+                id="id_example",
+            ),
+        ],
+        currencyisocode="currencyisocode_example",
+        columns=[
+            PACalculationColumn(
+                id="id_example",
+                statistics=[
+                    "statistics_example",
+                ],
+            ),
+        ],
+        componentdetail="componentdetail_example",
+    ) # PACalculationParameters |  (optional)
 
+    # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Run PA Calculation
         api_response = api_instance.run_pa_calculation(x_factset_content_organization=x_factset_content_organization, x_factset_content_type=x_factset_content_type, pa_calculation_parameters=pa_calculation_parameters)
         pprint(api_response)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling PACalculationsApi->run_pa_calculation: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_factset_content_organization** | **str**| For specifying the format of the calculation result. Accepted values are \&quot;column\&quot; or \&quot;row\&quot; or \&quot;simplifiedrow\&quot; | [optional] 
- **x_factset_content_type** | **str**| For specifying the content type of the calculation result. Accepted values are either \&quot;application/json\&quot; or \&quot;application/x-protobuf\&quot; | [optional] 
- **pa_calculation_parameters** | [**PACalculationParameters**](PACalculationParameters.md)|  | [optional] 
+ **x_factset_content_organization** | **str**| For specifying the format of the calculation result. Accepted values are \&quot;column\&quot; or \&quot;row\&quot; or \&quot;simplifiedrow\&quot; | [optional]
+ **x_factset_content_type** | **str**| For specifying the content type of the calculation result. Accepted values are either \&quot;application/json\&quot; or \&quot;application/x-protobuf\&quot; | [optional]
+ **pa_calculation_parameters** | [**PACalculationParameters**](PACalculationParameters.md)|  | [optional]
 
 ### Return type
 
-**object**
+**{str: (bool, date, datetime, dict, float, int, list, str, none_type)}**
 
 ### Authorization
 
@@ -236,6 +277,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

@@ -10,7 +10,7 @@ For more information, please visit [https://developer.factset.com/contact](https
 
 ## Requirements.
 
-Python 2.7 and 3.4+
+Python >= 3.6
 
 ## Installation & Usage
 ### pip install
@@ -46,12 +46,12 @@ import fds.analyticsapi.engines
 Please follow the [installation procedure](#installation--usage) and then run the following:
 
 ```python
-from __future__ import print_function
+
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
 from pprint import pprint
-
+from fds.analyticsapi.engines.api import accounts_api
+from fds.analyticsapi.engines.model.account_directories import AccountDirectories
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
@@ -69,19 +69,19 @@ configuration = fds.analyticsapi.engines.Configuration(
     password = 'YOUR_PASSWORD'
 )
 
-# Defining host is optional and default to https://api.factset.com
-configuration.host = "https://api.factset.com"
-# Create an instance of the API class
-api_instance = fds.analyticsapi.engines.AccountsApi(fds.analyticsapi.engines.ApiClient(configuration))
-path = '' # str | The directory to get the accounts and sub-directories in (default to '')
 
-try:
-    # Get accounts and sub-directories in a directory
-    api_response = api_instance.get_accounts(path)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling AccountsApi->get_accounts: %s\n" % e)
+# Enter a context with an instance of the API client
+with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = accounts_api.AccountsApi(api_client)
+    path = "" # str | The directory to get the accounts and sub-directories in (default to "")
 
+    try:
+        # Get accounts and sub-directories in a directory
+        api_response = api_instance.get_accounts(path)
+        pprint(api_response)
+    except fds.analyticsapi.engines.ApiException as e:
+        print("Exception when calling AccountsApi->get_accounts: %s\n" % e)
 ```
 
 ## Documentation for API Endpoints
@@ -140,7 +140,7 @@ Class | Method | HTTP request | Description
 *VaultCalculationsApi* | [**cancel_vault_calculation_by_id**](docs/VaultCalculationsApi.md#cancel_vault_calculation_by_id) | **DELETE** /analytics/engines/vault/v2/calculations/{id} | Cancel Vault calculation by id
 *VaultCalculationsApi* | [**get_vault_calculation_by_id**](docs/VaultCalculationsApi.md#get_vault_calculation_by_id) | **GET** /analytics/engines/vault/v2/calculations/{id} | Get Vault calculation by id
 *VaultCalculationsApi* | [**run_vault_calculation**](docs/VaultCalculationsApi.md#run_vault_calculation) | **POST** /analytics/engines/vault/v2/calculations | Run Vault Calculation
-*UtilityApi* | [**get_by_url**](docs/UtilityApi.md#get_by_url) | **GET** {url} | Get by url
+
 
 ## Documentation For Models
 
@@ -212,4 +212,24 @@ Class | Method | HTTP request | Description
 ## Author
 
 analytics.api.support@factset.com
+
+
+## Notes for Large OpenAPI documents
+If the OpenAPI document is large, imports in fds.analyticsapi.engines.apis and fds.analyticsapi.engines.models may fail with a
+RecursionError indicating the maximum recursion limit has been exceeded. In that case, there are a couple of solutions:
+
+Solution 1:
+Use specific imports for apis and models like:
+- `from fds.analyticsapi.engines.api.default_api import DefaultApi`
+- `from fds.analyticsapi.engines.model.pet import Pet`
+
+Solution 2:
+Before importing the package, adjust the maximum recursion limit as shown below:
+```
+import sys
+sys.setrecursionlimit(1500)
+import fds.analyticsapi.engines
+from fds.analyticsapi.engines.apis import *
+from fds.analyticsapi.engines.models import *
+```
 

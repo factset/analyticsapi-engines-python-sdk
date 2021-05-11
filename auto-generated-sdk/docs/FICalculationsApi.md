@@ -20,10 +20,9 @@ This is the endpoint to cancel a previously submitted calculation.  Instead of d
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import fi_calculations_api
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -45,21 +44,23 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.FICalculationsApi(api_client)
-    id = 'id_example' # str | from url, provided from the location header in the Run FI Calculation endpoint
+    api_instance = fi_calculations_api.FICalculationsApi(api_client)
+    id = "id_example" # str | from url, provided from the location header in the Run FI Calculation endpoint
 
+    # example passing only required values which don't have defaults set
     try:
         # Cancel FI calculation by id
         api_instance.cancel_fi_calculation_by_id(id)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling FICalculationsApi->cancel_fi_calculation_by_id: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| from url, provided from the location header in the Run FI Calculation endpoint | 
+ **id** | **str**| from url, provided from the location header in the Run FI Calculation endpoint |
 
 ### Return type
 
@@ -73,6 +74,7 @@ void (empty response body)
 
  - **Content-Type**: Not defined
  - **Accept**: Not defined
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -88,7 +90,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_fi_calculation_by_id**
-> object get_fi_calculation_by_id(id)
+> {str: (bool, date, datetime, dict, float, int, list, str, none_type)} get_fi_calculation_by_id(id)
 
 Get FI calculation by id
 
@@ -98,10 +100,9 @@ This is the endpoint to check on the progress of a previously requested calculat
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import fi_calculations_api
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -123,26 +124,28 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.FICalculationsApi(api_client)
-    id = 'id_example' # str | from url, provided from the location header in the Run FI Calculation endpoint
+    api_instance = fi_calculations_api.FICalculationsApi(api_client)
+    id = "id_example" # str | from url, provided from the location header in the Run FI Calculation endpoint
 
+    # example passing only required values which don't have defaults set
     try:
         # Get FI calculation by id
         api_response = api_instance.get_fi_calculation_by_id(id)
         pprint(api_response)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling FICalculationsApi->get_fi_calculation_by_id: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| from url, provided from the location header in the Run FI Calculation endpoint | 
+ **id** | **str**| from url, provided from the location header in the Run FI Calculation endpoint |
 
 ### Return type
 
-**object**
+**{str: (bool, date, datetime, dict, float, int, list, str, none_type)}**
 
 ### Authorization
 
@@ -152,6 +155,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -168,7 +172,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **run_fi_calculation**
-> object run_fi_calculation(x_factset_content_organization=x_factset_content_organization, x_factset_content_type=x_factset_content_type, fi_calculation_parameters=fi_calculation_parameters)
+> {str: (bool, date, datetime, dict, float, int, list, str, none_type)} run_fi_calculation()
 
 Run FI calculation
 
@@ -178,10 +182,10 @@ This endpoint creates a new FI calculation.  This must be used first before get 
 
 * Basic Authentication (Basic):
 ```python
-from __future__ import print_function
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.rest import ApiException
+from fds.analyticsapi.engines.api import fi_calculations_api
+from fds.analyticsapi.engines.model.fi_calculation_parameters import FICalculationParameters
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -203,30 +207,53 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fds.analyticsapi.engines.FICalculationsApi(api_client)
-    x_factset_content_organization = 'x_factset_content_organization_example' # str | For specifying the format of the calculation result. Accepted values are \"column\" or \"row\" or \"simplifiedrow\" (optional)
-x_factset_content_type = 'x_factset_content_type_example' # str | For specifying the content type of the calculation result. Accepted values are either \"application/json\" or \"application/x-protobuf\" (optional)
-fi_calculation_parameters = fds.analyticsapi.engines.FICalculationParameters() # FICalculationParameters |  (optional)
+    api_instance = fi_calculations_api.FICalculationsApi(api_client)
+    x_factset_content_organization = "x-factset-content-organization_example" # str | For specifying the format of the calculation result. Accepted values are \"column\" or \"row\" or \"simplifiedrow\" (optional)
+    x_factset_content_type = "x-factset-content-type_example" # str | For specifying the content type of the calculation result. Accepted values are either \"application/json\" or \"application/x-protobuf\" (optional)
+    fi_calculation_parameters = FICalculationParameters(
+        securities=[
+            FISecurity(
+                calc_from_method="calc_from_method_example",
+                calc_from_value=3.14,
+                face=3.14,
+                symbol="symbol_example",
+                settlement_date="settlement_date_example",
+                discount_curve="discount_curve_example",
+            ),
+        ],
+        calculations=[
+            "calculations_example",
+        ],
+        job_settings=FIJobSettings(
+            yield_curve_date="yield_curve_date_example",
+            partial_duration_months=[
+                1,
+            ],
+        ),
+    ) # FICalculationParameters |  (optional)
 
+    # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Run FI calculation
         api_response = api_instance.run_fi_calculation(x_factset_content_organization=x_factset_content_organization, x_factset_content_type=x_factset_content_type, fi_calculation_parameters=fi_calculation_parameters)
         pprint(api_response)
-    except ApiException as e:
+    except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling FICalculationsApi->run_fi_calculation: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_factset_content_organization** | **str**| For specifying the format of the calculation result. Accepted values are \&quot;column\&quot; or \&quot;row\&quot; or \&quot;simplifiedrow\&quot; | [optional] 
- **x_factset_content_type** | **str**| For specifying the content type of the calculation result. Accepted values are either \&quot;application/json\&quot; or \&quot;application/x-protobuf\&quot; | [optional] 
- **fi_calculation_parameters** | [**FICalculationParameters**](FICalculationParameters.md)|  | [optional] 
+ **x_factset_content_organization** | **str**| For specifying the format of the calculation result. Accepted values are \&quot;column\&quot; or \&quot;row\&quot; or \&quot;simplifiedrow\&quot; | [optional]
+ **x_factset_content_type** | **str**| For specifying the content type of the calculation result. Accepted values are either \&quot;application/json\&quot; or \&quot;application/x-protobuf\&quot; | [optional]
+ **fi_calculation_parameters** | [**FICalculationParameters**](FICalculationParameters.md)|  | [optional]
 
 ### Return type
 
-**object**
+**{str: (bool, date, datetime, dict, float, int, list, str, none_type)}**
 
 ### Authorization
 
@@ -236,6 +263,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

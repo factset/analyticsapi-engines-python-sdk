@@ -1,5 +1,6 @@
 # PubIdentifier
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
