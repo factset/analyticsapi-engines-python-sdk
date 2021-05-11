@@ -15,7 +15,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "4.2.0"
+__version__ = "5.0.0"
 
 # import apis into sdk package
 from fds.analyticsapi.engines.api.axp_optimizer_api import AXPOptimizerApi

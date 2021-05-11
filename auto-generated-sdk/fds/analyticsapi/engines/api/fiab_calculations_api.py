@@ -22,6 +22,7 @@ from fds.analyticsapi.engines.model_utils import (  # noqa: F401
     none_type,
     validate_and_convert_types
 )
+from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from fds.analyticsapi.engines.model.fiab_calculation_parameters import FIABCalculationParameters
 from fds.analyticsapi.engines.model.fiab_calculation_status import FIABCalculationStatus
 from fds.analyticsapi.engines.model.fiab_calculation_status_summary import FIABCalculationStatusSummary
@@ -368,7 +369,11 @@ class FIABCalculationsApi(object):
                 }
             },
             headers_map={
-                'accept': [],
+                'accept': [
+                    'text/plain',
+                    'application/json',
+                    'text/json'
+                ],
                 'content_type': [
                     'application/json'
                 ]
