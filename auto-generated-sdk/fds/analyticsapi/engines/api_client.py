@@ -236,6 +236,133 @@ class ApiClient(object):
             return (return_data, response_data.status,
                     response_data.getheaders())
 
+    def __call_api_with_return_dict(
+        self,
+        resource_path: str,
+        method: str,
+        path_params: typing.Optional[typing.Dict[str, typing.Any]] = None,
+        query_params: typing.Optional[typing.List[typing.Tuple[str, typing.Any]]] = None,
+        header_params: typing.Optional[typing.Dict[str, typing.Any]] = None,
+        body: typing.Optional[typing.Any] = None,
+        post_params: typing.Optional[typing.List[typing.Tuple[str, typing.Any]]] = None,
+        files: typing.Optional[typing.Dict[str, typing.List[io.IOBase]]] = None,
+        response_type_dict: typing.Optional[typing.Dict[int, typing.Any]] = None,
+        auth_settings: typing.Optional[typing.List[str]] = None,
+        _return_http_data_only: typing.Optional[bool] = None,
+        collection_formats: typing.Optional[typing.Dict[str, str]] = None,
+        _preload_content: bool = True,
+        _request_timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        _host: typing.Optional[str] = None,
+        _check_type: typing.Optional[bool] = None
+    ):
+
+        config = self.configuration
+
+        # header parameters
+        header_params = header_params or {}
+        header_params.update(self.default_headers)
+        if self.cookie:
+            header_params['Cookie'] = self.cookie
+        if header_params:
+            header_params = self.sanitize_for_serialization(header_params)
+            header_params = dict(self.parameters_to_tuples(header_params,
+                                                           collection_formats))
+
+        # path parameters
+        if path_params:
+            path_params = self.sanitize_for_serialization(path_params)
+            path_params = self.parameters_to_tuples(path_params,
+                                                    collection_formats)
+            for k, v in path_params:
+                # specified safe chars, encode everything
+                resource_path = resource_path.replace(
+                    '{%s}' % k,
+                    quote(str(v), safe=config.safe_chars_for_path_param)
+                )
+
+        # query parameters
+        if query_params:
+            query_params = self.sanitize_for_serialization(query_params)
+            query_params = self.parameters_to_tuples(query_params,
+                                                     collection_formats)
+
+        # post parameters
+        if post_params or files:
+            post_params = post_params if post_params else []
+            post_params = self.sanitize_for_serialization(post_params)
+            post_params = self.parameters_to_tuples(post_params,
+                                                    collection_formats)
+            post_params.extend(self.files_parameters(files))
+            if header_params['Content-Type'].startswith("multipart"):
+                post_params = self.parameters_to_multipart(post_params,
+                                                          (dict) )
+
+        # body
+        if body:
+            body = self.sanitize_for_serialization(body)
+
+        # auth setting
+        self.update_params_for_auth(header_params, query_params,
+                                    auth_settings, resource_path, method, body)
+
+        # request url
+        if _host is None:
+            url = self.configuration.host + resource_path
+        else:
+            # use server/host defined in path or operation instead
+            url = _host + resource_path
+
+        try:
+            # perform request and return response
+            response_data = self.request(
+                method, url, query_params=query_params, headers=header_params,
+                post_params=post_params, body=body,
+                _preload_content=_preload_content,
+                _request_timeout=_request_timeout)
+        except ApiException as e:
+            e.body = e.body.decode('utf-8')
+            raise e
+
+        self.last_response = response_data
+
+        return_data = response_data
+
+        if not _preload_content:
+            return (return_data)
+            return return_data
+
+        # deserialize response data with response code to type serialization mapping
+
+        # check for responses that shouldn't include a body
+        if return_data.status in (204, 304) or 100 <= return_data.status < 200:
+            return_data = None
+
+        if response_type_dict[return_data.status]:
+            response_type = response_type_dict[return_data.status]
+            if response_type != (file_type,):
+                encoding = "utf-8"
+                content_type = response_data.getheader('content-type')
+                if content_type is not None:
+                    match = re.search(r"charset=([a-zA-Z\-\d]+)[\s\;]?", content_type)
+                    if match:
+                        encoding = match.group(1)
+                response_data.data = response_data.data.decode(encoding)
+
+            return_data = self.deserialize(
+                response_data,
+                response_type,
+                _check_type
+            )
+        else:
+            return_data = None
+
+        if _return_http_data_only:
+            return (return_data)
+        else:
+            return (return_data, response_data.status,
+                    response_data.getheaders())
+
+
     def parameters_to_multipart(self, params, collection_types):
         """Get parameters as list of tuples, formatting as json if value is collection_types
 
@@ -421,6 +548,101 @@ class ApiClient(object):
                                                        header_params, body,
                                                        post_params, files,
                                                        response_type,
+                                                       auth_settings,
+                                                       _return_http_data_only,
+                                                       collection_formats,
+                                                       _preload_content,
+                                                       _request_timeout,
+                                                       _host, _check_type))
+
+    def call_api_with_return_dict(
+        self,
+        resource_path: str,
+        method: str,
+        path_params: typing.Optional[typing.Dict[str, typing.Any]] = None,
+        query_params: typing.Optional[typing.List[typing.Tuple[str, typing.Any]]] = None,
+        header_params: typing.Optional[typing.Dict[str, typing.Any]] = None,
+        body: typing.Optional[typing.Any] = None,
+        post_params: typing.Optional[typing.List[typing.Tuple[str, typing.Any]]] = None,
+        files: typing.Optional[typing.Dict[str, typing.List[io.IOBase]]] = None,
+        response_type_dict: typing.Optional[typing.Dict[int, typing.Any]] = None,
+        auth_settings: typing.Optional[typing.List[str]] = None,
+        async_req: typing.Optional[bool] = None,
+        _return_http_data_only: typing.Optional[bool] = None,
+        collection_formats: typing.Optional[typing.Dict[str, str]] = None,
+        _preload_content: bool = True,
+        _request_timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        _host: typing.Optional[str] = None,
+        _check_type: typing.Optional[bool] = None
+    ):
+        """Makes the HTTP request (synchronous) and returns deserialized data.
+
+        To make an async_req request, set the async_req parameter.
+
+        :param resource_path: Path to method endpoint.
+        :param method: Method to call.
+        :param path_params: Path parameters in the url.
+        :param query_params: Query parameters in the url.
+        :param header_params: Header parameters to be
+            placed in the request header.
+        :param body: Request body.
+        :param post_params dict: Request post form parameters,
+            for `application/x-www-form-urlencoded`, `multipart/form-data`.
+        :param auth_settings list: Auth Settings names for the request.
+        :param response_type_dict: A dictionary which maps status code as key to tuple as value for the response, a tuple containing:
+            valid classes
+            a list containing valid classes (for list schemas)
+            a dict containing a tuple of valid classes as the value
+            Example values:
+            { 202: (str,) }
+            { 200: (Pet,) }
+            { 201: (float, none_type) }
+            { 200: ([int, none_type],) }
+            { 202: ({str: (bool, str, int, float, date, datetime, str, none_type)},) }
+        :param files: key -> field name, value -> a list of open file
+            objects for `multipart/form-data`.
+        :type files: dict
+        :param async_req bool: execute request asynchronously
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param collection_formats: dict of collection formats for path, query,
+            header, and post parameters.
+        :type collection_formats: dict, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _check_type: boolean describing if the data back from the server
+            should have its type checked.
+        :type _check_type: bool, optional
+        :return:
+            If async_req parameter is True,
+            the request will be called asynchronously.
+            The method will return the request thread.
+            If parameter async_req is False or missing,
+            then the method will return the response directly.
+        """
+        if not async_req:
+            return self.__call_api_with_return_dict(resource_path, method,
+                                   path_params, query_params, header_params,
+                                   body, post_params, files,
+                                   response_type_dict, auth_settings,
+                                   _return_http_data_only, collection_formats,
+                                   _preload_content, _request_timeout, _host,
+                                   _check_type)
+
+        return self.pool.apply_async(self.__call_api_with_return_dict, (resource_path,
+                                                       method, path_params,
+                                                       query_params,
+                                                       header_params, body,
+                                                       post_params, files,
+                                                       response_type_dict,
                                                        auth_settings,
                                                        _return_http_data_only,
                                                        collection_formats,
