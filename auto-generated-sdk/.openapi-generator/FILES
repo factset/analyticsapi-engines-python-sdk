@@ -106,7 +106,6 @@ docs/SPARCalculationsApi.md
 docs/SPARDateParameters.md
 docs/SPARIdentifier.md
 docs/StrategyDocumentsApi.md
-docs/UtilityApi.md
 docs/VaultCalculationParameters.md
 docs/VaultCalculationParametersRoot.md
 docs/VaultCalculationsApi.md
@@ -142,7 +141,6 @@ fds/analyticsapi/engines/api/pa_calculations_api.py
 fds/analyticsapi/engines/api/pub_calculations_api.py
 fds/analyticsapi/engines/api/spar_calculations_api.py
 fds/analyticsapi/engines/api/strategy_documents_api.py
-fds/analyticsapi/engines/api/utility_api.py
 fds/analyticsapi/engines/api/vault_calculations_api.py
 fds/analyticsapi/engines/api_client.py
 fds/analyticsapi/engines/apis/__init__.py
@@ -246,7 +244,6 @@ fds/analyticsapi/engines/model_utils.py
 fds/analyticsapi/engines/models/__init__.py
 fds/analyticsapi/engines/models/__init__.py
 fds/analyticsapi/engines/rest.py
-fds/analyticsapi/engines/stach_extensions.py
 git_push.sh
 requirements.txt
 setup.cfg
