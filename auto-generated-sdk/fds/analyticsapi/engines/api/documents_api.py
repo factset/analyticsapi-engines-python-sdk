@@ -107,7 +107,7 @@ class DocumentsApi(object):
 
         self.get_pa3_documents = _Endpoint(
             settings={
-                'response_type': (DocumentDirectoriesRoot,),
+                'response_type': (DocumentDirectoriesRoot, ),
                 'auth': [
                     'Basic'
                 ],
@@ -226,7 +226,7 @@ class DocumentsApi(object):
 
         self.get_pub_documents = _Endpoint(
             settings={
-                'response_type': (DocumentDirectoriesRoot,),
+                'response_type': (DocumentDirectoriesRoot, ),
                 'auth': [
                     'Basic'
                 ],
@@ -345,7 +345,7 @@ class DocumentsApi(object):
 
         self.get_spar3_documents = _Endpoint(
             settings={
-                'response_type': (DocumentDirectoriesRoot,),
+                'response_type': (DocumentDirectoriesRoot, ),
                 'auth': [
                     'Basic'
                 ],
@@ -464,7 +464,7 @@ class DocumentsApi(object):
 
         self.get_vault_documents = _Endpoint(
             settings={
-                'response_type': (DocumentDirectoriesRoot,),
+                'response_type': (DocumentDirectoriesRoot, ),
                 'auth': [
                     'Basic'
                 ],

@@ -108,7 +108,7 @@ class ConfigurationsApi(object):
 
         self.get_vault_configuration_by_id = _Endpoint(
             settings={
-                'response_type': (VaultConfigurationRoot,),
+                'response_type': (VaultConfigurationRoot, ),
                 'auth': [
                     'Basic'
                 ],
@@ -227,7 +227,7 @@ class ConfigurationsApi(object):
 
         self.get_vault_configurations = _Endpoint(
             settings={
-                'response_type': (VaultConfigurationSummaryRoot,),
+                'response_type': (VaultConfigurationSummaryRoot, ),
                 'auth': [
                     'Basic'
                 ],

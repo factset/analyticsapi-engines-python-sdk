@@ -229,7 +229,7 @@ class PubCalculationsApi(object):
 
         self.get_calculation_parameters = _Endpoint(
             settings={
-                'response_type': (PubCalculationParametersRoot,),
+                'response_type': (PubCalculationParametersRoot, ),
                 'auth': [
                     'Basic'
                 ],
@@ -348,7 +348,7 @@ class PubCalculationsApi(object):
 
         self.get_calculation_status_by_id = _Endpoint(
             settings={
-                'response_type': (CalculationStatusRoot,),
+                'response_type': (CalculationStatusRoot, ),
                 'auth': [
                     'Basic'
                 ],
@@ -471,7 +471,7 @@ class PubCalculationsApi(object):
 
         self.get_calculation_unit_result_by_id = _Endpoint(
             settings={
-                'response_type': (file_type,),
+                'response_type': (file_type, ),
                 'auth': [
                     'Basic'
                 ],
@@ -569,7 +569,7 @@ class PubCalculationsApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                CalculationStatusRoot
+                (For 202 status - CalculationStatusRoot)(For 200 status - CalculationStatusRoot)(For 201 status - File)
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -596,7 +596,7 @@ class PubCalculationsApi(object):
 
         self.post_and_calculate = _Endpoint(
             settings={
-                'response_type': (CalculationStatusRoot,),
+                'response_type': (CalculationStatusRoot, CalculationStatusRoot, , ),
                 'auth': [
                     'Basic'
                 ],
@@ -699,7 +699,7 @@ class PubCalculationsApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                CalculationStatusRoot
+                (For 202 status - CalculationStatusRoot)(For 200 status - CalculationStatusRoot)(For 201 status - File)
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -728,7 +728,7 @@ class PubCalculationsApi(object):
 
         self.put_and_calculate = _Endpoint(
             settings={
-                'response_type': (CalculationStatusRoot,),
+                'response_type': (CalculationStatusRoot, CalculationStatusRoot, , ),
                 'auth': [
                     'Basic'
                 ],

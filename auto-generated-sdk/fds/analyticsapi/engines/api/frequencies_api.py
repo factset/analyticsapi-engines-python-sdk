@@ -101,7 +101,7 @@ class FrequenciesApi(object):
 
         self.get_pa_frequencies = _Endpoint(
             settings={
-                'response_type': (FrequencyRoot,),
+                'response_type': (FrequencyRoot, ),
                 'auth': [
                     'Basic'
                 ],
@@ -208,7 +208,7 @@ class FrequenciesApi(object):
 
         self.get_spar_frequencies = _Endpoint(
             settings={
-                'response_type': (FrequencyRoot,),
+                'response_type': (FrequencyRoot, ),
                 'auth': [
                     'Basic'
                 ],
@@ -315,7 +315,7 @@ class FrequenciesApi(object):
 
         self.get_vault_frequencies = _Endpoint(
             settings={
-                'response_type': (FrequencyRoot,),
+                'response_type': (FrequencyRoot, ),
                 'auth': [
                     'Basic'
                 ],

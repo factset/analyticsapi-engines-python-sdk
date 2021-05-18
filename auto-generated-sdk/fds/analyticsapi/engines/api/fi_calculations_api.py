@@ -230,7 +230,7 @@ class FICalculationsApi(object):
 
         self.get_calculation_parameters = _Endpoint(
             settings={
-                'response_type': (FICalculationParametersRoot,),
+                'response_type': (FICalculationParametersRoot, ),
                 'auth': [
                     'Basic'
                 ],
@@ -349,7 +349,7 @@ class FICalculationsApi(object):
 
         self.get_calculation_result = _Endpoint(
             settings={
-                'response_type': (ObjectRoot,),
+                'response_type': (ObjectRoot, ),
                 'auth': [
                     'Basic'
                 ],
@@ -440,7 +440,7 @@ class FICalculationsApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                ObjectRoot
+                (For 201 status - ObjectRoot)(For 202 status - None)
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -469,7 +469,7 @@ class FICalculationsApi(object):
 
         self.get_calculation_status_by_id = _Endpoint(
             settings={
-                'response_type': (ObjectRoot,),
+                'response_type': (ObjectRoot, , ),
                 'auth': [
                     'Basic'
                 ],
@@ -560,7 +560,7 @@ class FICalculationsApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                ObjectRoot
+                (For 202 status - CalculationInfoRoot)(For 201 status - ObjectRoot)
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -587,7 +587,7 @@ class FICalculationsApi(object):
 
         self.post_and_calculate = _Endpoint(
             settings={
-                'response_type': (ObjectRoot,),
+                'response_type': (CalculationInfoRoot, ObjectRoot, ),
                 'auth': [
                     'Basic'
                 ],
@@ -690,7 +690,7 @@ class FICalculationsApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                ObjectRoot
+                (For 202 status - CalculationInfoRoot)(For 201 status - ObjectRoot)
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -719,7 +719,7 @@ class FICalculationsApi(object):
 
         self.put_and_calculate = _Endpoint(
             settings={
-                'response_type': (ObjectRoot,),
+                'response_type': (CalculationInfoRoot, ObjectRoot, ),
                 'auth': [
                     'Basic'
                 ],

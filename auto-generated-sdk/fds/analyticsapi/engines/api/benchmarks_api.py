@@ -107,7 +107,7 @@ class BenchmarksApi(object):
 
         self.get_spar_benchmark_by_id = _Endpoint(
             settings={
-                'response_type': (SPARBenchmarkRoot,),
+                'response_type': (SPARBenchmarkRoot, ),
                 'auth': [
                     'Basic'
                 ],

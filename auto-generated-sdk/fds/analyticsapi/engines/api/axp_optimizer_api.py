@@ -230,7 +230,7 @@ class AXPOptimizerApi(object):
 
         self.get_optimization_parameters = _Endpoint(
             settings={
-                'response_type': (AxiomaEquityOptimizationParametersRoot,),
+                'response_type': (AxiomaEquityOptimizationParametersRoot, ),
                 'auth': [
                     'Basic'
                 ],
@@ -349,7 +349,7 @@ class AXPOptimizerApi(object):
 
         self.get_optimization_result = _Endpoint(
             settings={
-                'response_type': (ObjectRoot,),
+                'response_type': (ObjectRoot, ),
                 'auth': [
                     'Basic'
                 ],
@@ -439,7 +439,7 @@ class AXPOptimizerApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                ObjectRoot
+                (For 201 status - ObjectRoot)(For 202 status - None)
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -468,7 +468,7 @@ class AXPOptimizerApi(object):
 
         self.get_optimization_status_by_id = _Endpoint(
             settings={
-                'response_type': (ObjectRoot,),
+                'response_type': (ObjectRoot, , ),
                 'auth': [
                     'Basic'
                 ],
@@ -558,7 +558,7 @@ class AXPOptimizerApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                ObjectRoot
+                (For 202 status - CalculationInfoRoot)(For 201 status - ObjectRoot)
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -585,7 +585,7 @@ class AXPOptimizerApi(object):
 
         self.post_and_optimize = _Endpoint(
             settings={
-                'response_type': (ObjectRoot,),
+                'response_type': (CalculationInfoRoot, ObjectRoot, ),
                 'auth': [
                     'Basic'
                 ],
@@ -687,7 +687,7 @@ class AXPOptimizerApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                ObjectRoot
+                (For 202 status - CalculationInfoRoot)(For 201 status - ObjectRoot)
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -716,7 +716,7 @@ class AXPOptimizerApi(object):
 
         self.put_and_optimize = _Endpoint(
             settings={
-                'response_type': (ObjectRoot,),
+                'response_type': (CalculationInfoRoot, ObjectRoot, ),
                 'auth': [
                     'Basic'
                 ],
