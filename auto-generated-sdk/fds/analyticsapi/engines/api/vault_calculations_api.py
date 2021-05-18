@@ -230,7 +230,7 @@ class VaultCalculationsApi(object):
 
         self.get_calculation_parameters = _Endpoint(
             settings={
-                'response_type': (VaultCalculationParametersRoot, ),
+                'response_type': { VaultCalculationParametersRoot },
                 'auth': [
                     'Basic'
                 ],
@@ -349,7 +349,7 @@ class VaultCalculationsApi(object):
 
         self.get_calculation_status_by_id = _Endpoint(
             settings={
-                'response_type': (CalculationStatusRoot, ),
+                'response_type': { CalculationStatusRoot },
                 'auth': [
                     'Basic'
                 ],
@@ -472,7 +472,7 @@ class VaultCalculationsApi(object):
 
         self.get_calculation_unit_result_by_id = _Endpoint(
             settings={
-                'response_type': (ObjectRoot, ),
+                'response_type': { ObjectRoot },
                 'auth': [
                     'Basic'
                 ],
@@ -596,7 +596,7 @@ class VaultCalculationsApi(object):
 
         self.post_and_calculate = _Endpoint(
             settings={
-                'response_type': (CalculationStatusRoot, CalculationStatusRoot, ObjectRoot, ),
+                'response_type': { 202:CalculationStatusRoot, 200:CalculationStatusRoot, 201:ObjectRoot,  },
                 'auth': [
                     'Basic'
                 ],
@@ -728,7 +728,7 @@ class VaultCalculationsApi(object):
 
         self.put_and_calculate = _Endpoint(
             settings={
-                'response_type': (CalculationStatusRoot, CalculationStatusRoot, ObjectRoot, ),
+                'response_type': { 202:CalculationStatusRoot, 200:CalculationStatusRoot, 201:ObjectRoot,  },
                 'auth': [
                     'Basic'
                 ],

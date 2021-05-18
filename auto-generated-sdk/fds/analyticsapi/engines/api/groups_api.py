@@ -101,7 +101,7 @@ class GroupsApi(object):
 
         self.get_pa_groups = _Endpoint(
             settings={
-                'response_type': (GroupRoot, ),
+                'response_type': { GroupRoot },
                 'auth': [
                     'Basic'
                 ],

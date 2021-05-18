@@ -108,7 +108,7 @@ class ColumnsApi(object):
 
         self.get_pa_column_by_id = _Endpoint(
             settings={
-                'response_type': (ColumnRoot, ),
+                'response_type': { ColumnRoot },
                 'auth': [
                     'Basic'
                 ],
@@ -225,7 +225,7 @@ class ColumnsApi(object):
 
         self.get_pa_columns = _Endpoint(
             settings={
-                'response_type': (ColumnSummaryRoot, ),
+                'response_type': { ColumnSummaryRoot },
                 'auth': [
                     'Basic'
                 ],

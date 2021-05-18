@@ -109,7 +109,7 @@ class FIABCalculationsApi(object):
 
         self.get_calculation_by_id = _Endpoint(
             settings={
-                'response_type': (FIABCalculationStatus, ),
+                'response_type': { FIABCalculationStatus },
                 'auth': [
                     'Basic'
                 ],
@@ -223,7 +223,7 @@ class FIABCalculationsApi(object):
 
         self.get_calculation_status_summaries = _Endpoint(
             settings={
-                'response_type': ({str: (FIABCalculationStatusSummary,)}, ),
+                'response_type': { {str: (FIABCalculationStatusSummary,)} },
                 'auth': [
                     'Basic'
                 ],

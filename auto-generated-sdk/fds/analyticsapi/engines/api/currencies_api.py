@@ -101,7 +101,7 @@ class CurrenciesApi(object):
 
         self.get_currencies = _Endpoint(
             settings={
-                'response_type': (CurrencyRoot, ),
+                'response_type': { CurrencyRoot },
                 'auth': [
                     'Basic'
                 ],

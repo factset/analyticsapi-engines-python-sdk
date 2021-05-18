@@ -101,7 +101,7 @@ class ColumnStatisticsApi(object):
 
         self.get_pa_column_statistics = _Endpoint(
             settings={
-                'response_type': (ColumnStatisticRoot, ),
+                'response_type': { ColumnStatisticRoot },
                 'auth': [
                     'Basic'
                 ],
