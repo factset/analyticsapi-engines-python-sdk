@@ -1062,7 +1062,7 @@ class Endpoint(object):
             body=params['body'],
             post_params=params['form'],
             files=params['file'],
-            response_type=self.settings['response_type'],
+            response_type_dict=self.settings['response_type'],
             auth_settings=self.settings['auth'],
             async_req=kwargs['async_req'],
             _check_type=kwargs['_check_return_type'],

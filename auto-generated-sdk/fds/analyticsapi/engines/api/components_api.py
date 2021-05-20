@@ -109,7 +109,7 @@ class ComponentsApi(object):
 
         self.get_pa_component_by_id = _Endpoint(
             settings={
-                'response_type': { PAComponentRoot },
+                'response_type': dict({ 200:(PAComponentRoot,),  }),
                 'auth': [
                     'Basic'
                 ],
@@ -228,7 +228,7 @@ class ComponentsApi(object):
 
         self.get_pa_components = _Endpoint(
             settings={
-                'response_type': { ComponentSummaryRoot },
+                'response_type': dict({ 200:(ComponentSummaryRoot,),  }),
                 'auth': [
                     'Basic'
                 ],
@@ -347,7 +347,7 @@ class ComponentsApi(object):
 
         self.get_spar_components = _Endpoint(
             settings={
-                'response_type': { ComponentSummaryRoot },
+                'response_type': dict({ 200:(ComponentSummaryRoot,),  }),
                 'auth': [
                     'Basic'
                 ],
@@ -466,7 +466,7 @@ class ComponentsApi(object):
 
         self.get_vault_component_by_id = _Endpoint(
             settings={
-                'response_type': { VaultComponentRoot },
+                'response_type': dict({ 200:(VaultComponentRoot,),  }),
                 'auth': [
                     'Basic'
                 ],
@@ -585,7 +585,7 @@ class ComponentsApi(object):
 
         self.get_vault_components = _Endpoint(
             settings={
-                'response_type': { ComponentSummaryRoot },
+                'response_type': dict({ 200:(ComponentSummaryRoot,),  }),
                 'auth': [
                     'Basic'
                 ],

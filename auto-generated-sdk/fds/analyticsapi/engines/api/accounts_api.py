@@ -107,7 +107,7 @@ class AccountsApi(object):
 
         self.get_accounts = _Endpoint(
             settings={
-                'response_type': { AccountDirectoriesRoot },
+                'response_type': dict({ 200:(AccountDirectoriesRoot,),  }),
                 'auth': [
                     'Basic'
                 ],
