@@ -11,13 +11,14 @@ from fds.analyticsapi.engines.api.components_api import ComponentsApi
 from fds.analyticsapi.engines.api.utility_api import UtilityApi
 from fds.analyticsapi.engines.api_client import ApiClient
 from fds.analyticsapi.engines.configuration import Configuration
-from fds.analyticsapi.engines.models.calculation import Calculation
+from fds.analyticsapi.engines.model.calculation import Calculation
+from fds.analyticsapi.engines.model.calculation_meta import CalculationMeta
 from fds.analyticsapi.engines.model.component_summary import ComponentSummary
 from fds.analyticsapi.engines.model.component_summary_root import ComponentSummaryRoot
 from fds.analyticsapi.engines.model.pa_calculation_parameters_root import PACalculationParametersRoot
-from fds.analyticsapi.engines.models.pa_calculation_parameters import PACalculationParameters
-from fds.analyticsapi.engines.models.pa_date_parameters import PADateParameters
-from fds.analyticsapi.engines.models.pa_identifier import PAIdentifier
+from fds.analyticsapi.engines.model.pa_calculation_parameters import PACalculationParameters
+from fds.analyticsapi.engines.model.pa_date_parameters import PADateParameters
+from fds.analyticsapi.engines.model.pa_identifier import PAIdentifier
 from fds.analyticsapi.engines.stach_extensions import StachExtensions
 from fds.protobuf.stach.Package_pb2 import Package
 
@@ -27,8 +28,8 @@ from google.protobuf.json_format import MessageToDict
 from urllib3 import Retry
 
 host = "https://api.factset.com"
-username = "FDSQAN_C-415271"
-password = "d8UsOH2iGjs4PVpXbjMknQAfkVh8wM9kxxkmhLKG"
+username = ""
+password = ""
 
 
 def main():
@@ -72,7 +73,7 @@ def main():
         # pa_calculation_parameters = {"data": {"hank": PACalculationParameters(componentid=component_id, accounts=pa_accounts,
         #                                                              benchmarks=pa_benchmarks, dates=pa_dates)}}
 
-        pa_calculation_parameter_root = PACalculationParametersRoot(data=pa_calculation_parameters, meta=None)
+        pa_calculation_parameter_root = PACalculationParametersRoot(data=pa_calculation_parameters, meta=CalculationMeta())
 
         pa_calculations_api = PACalculationsApi(api_client)
 
