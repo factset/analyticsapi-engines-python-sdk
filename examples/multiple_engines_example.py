@@ -4,7 +4,7 @@ import time
 import pandas as pd
 import uuid
 
-from fds.analyticsapi.engines import ComponentSummary, ApiException
+from fds.analyticsapi.engines import ApiException
 from fds.analyticsapi.engines.api.calculations_api import CalculationsApi
 from fds.analyticsapi.engines.api.components_api import ComponentsApi
 from fds.analyticsapi.engines.api.configurations_api import ConfigurationsApi
@@ -12,6 +12,7 @@ from fds.analyticsapi.engines.api.utility_api import UtilityApi
 from fds.analyticsapi.engines.api_client import ApiClient
 from fds.analyticsapi.engines.configuration import Configuration
 from fds.analyticsapi.engines.models.calculation import Calculation
+from fds.analyticsapi.engines.model.component_summary_root import ComponentSummaryRoot
 from fds.analyticsapi.engines.models.pa_calculation_parameters import PACalculationParameters
 from fds.analyticsapi.engines.models.pa_date_parameters import PADateParameters
 from fds.analyticsapi.engines.models.pa_identifier import PAIdentifier
@@ -75,7 +76,7 @@ def main():
 
     try:
         components = components_api.get_pa_components(pa_document_name)
-        pa_component_desc = ComponentSummary(name=pa_component_name, category=pa_component_category)
+        pa_component_desc = ComponentSummaryRoot(name=pa_component_name, category=pa_component_category)
         component_id = [id for id in list(components.keys()) if components[id] == pa_component_desc][0]
 
         print("PA Component Id: " + component_id)
@@ -89,7 +90,7 @@ def main():
         pa_calculation_parameters = {"1": PACalculationParameters(component_id, pa_accounts, pa_benchmarks, pa_dates)}
 
         components = components_api.get_spar_components(spar_document_name)
-        spar_component_desc = ComponentSummary(name=spar_component_name, category=spar_component_category)
+        spar_component_desc = ComponentSummaryRoot(name=spar_component_name, category=spar_component_category)
         component_id = [id for id in list(components.keys()) if components[id] == spar_component_desc][0]
 
         print("SPAR Component Id: " + component_id)
@@ -105,7 +106,7 @@ def main():
             "2": SPARCalculationParameters(component_id, spar_accounts, spar_benchmark_identifier, spar_dates)}
 
         components = components_api.get_vault_components(vault_document_name)
-        vault_component_desc = ComponentSummary(name=vault_component_name, category=vault_component_category)
+        vault_component_desc = ComponentSummaryRoot(name=vault_component_name, category=vault_component_category)
         component_id = [id for id in list(components.keys()) if components[id] == vault_component_desc][0]
 
         print("Vault Component Id: " + component_id)

@@ -107,7 +107,7 @@ class StrategyDocumentsApi(object):
 
         self.get_axioma_equity_strategy_documents = _Endpoint(
             settings={
-                'response_type': { DocumentDirectoriesRoot },
+                'response_type': dict({ 200:(DocumentDirectoriesRoot,),  }),
                 'auth': [
                     'Basic'
                 ],
@@ -226,7 +226,7 @@ class StrategyDocumentsApi(object):
 
         self.get_axioma_fi_strategy_documents = _Endpoint(
             settings={
-                'response_type': { DocumentDirectoriesRoot },
+                'response_type': dict({ 200:(DocumentDirectoriesRoot,),  }),
                 'auth': [
                     'Basic'
                 ],
@@ -345,7 +345,7 @@ class StrategyDocumentsApi(object):
 
         self.get_barra_strategy_documents = _Endpoint(
             settings={
-                'response_type': { DocumentDirectoriesRoot },
+                'response_type': dict({ 200:(DocumentDirectoriesRoot,),  }),
                 'auth': [
                     'Basic'
                 ],
@@ -464,7 +464,7 @@ class StrategyDocumentsApi(object):
 
         self.get_fpo_strategy_documents = _Endpoint(
             settings={
-                'response_type': { DocumentDirectoriesRoot },
+                'response_type': dict({ 200:(DocumentDirectoriesRoot,),  }),
                 'auth': [
                     'Basic'
                 ],
@@ -583,7 +583,7 @@ class StrategyDocumentsApi(object):
 
         self.get_northfield_strategy_documents = _Endpoint(
             settings={
-                'response_type': { DocumentDirectoriesRoot },
+                'response_type': dict({ 200:(DocumentDirectoriesRoot,),  }),
                 'auth': [
                     'Basic'
                 ],

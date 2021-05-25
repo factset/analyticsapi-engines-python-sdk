@@ -230,7 +230,7 @@ class FICalculationsApi(object):
 
         self.get_calculation_parameters = _Endpoint(
             settings={
-                'response_type': { FICalculationParametersRoot },
+                'response_type': dict({ 200:(FICalculationParametersRoot,),  }),
                 'auth': [
                     'Basic'
                 ],
@@ -349,7 +349,7 @@ class FICalculationsApi(object):
 
         self.get_calculation_result = _Endpoint(
             settings={
-                'response_type': { ObjectRoot },
+                'response_type': dict({ 200:(ObjectRoot,),  }),
                 'auth': [
                     'Basic'
                 ],
@@ -469,7 +469,7 @@ class FICalculationsApi(object):
 
         self.get_calculation_status_by_id = _Endpoint(
             settings={
-                'response_type': { 201:ObjectRoot, 202:,  },
+                'response_type': dict({ 201:(ObjectRoot,), 202:,  }),
                 'auth': [
                     'Basic'
                 ],
@@ -587,7 +587,7 @@ class FICalculationsApi(object):
 
         self.post_and_calculate = _Endpoint(
             settings={
-                'response_type': { 202:CalculationInfoRoot, 201:ObjectRoot,  },
+                'response_type': dict({ 202:(CalculationInfoRoot,), 201:(ObjectRoot,),  }),
                 'auth': [
                     'Basic'
                 ],
@@ -719,7 +719,7 @@ class FICalculationsApi(object):
 
         self.put_and_calculate = _Endpoint(
             settings={
-                'response_type': { 202:CalculationInfoRoot, 201:ObjectRoot,  },
+                'response_type': dict({ 202:(CalculationInfoRoot,), 201:(ObjectRoot,),  }),
                 'auth': [
                     'Basic'
                 ],

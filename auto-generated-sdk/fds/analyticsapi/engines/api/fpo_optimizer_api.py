@@ -230,7 +230,7 @@ class FPOOptimizerApi(object):
 
         self.get_optimization_parameters = _Endpoint(
             settings={
-                'response_type': { FPOOptimizationParametersRoot },
+                'response_type': dict({ 200:(FPOOptimizationParametersRoot,),  }),
                 'auth': [
                     'Basic'
                 ],
@@ -350,7 +350,7 @@ class FPOOptimizerApi(object):
 
         self.get_optimization_result = _Endpoint(
             settings={
-                'response_type': { ObjectRoot },
+                'response_type': dict({ 200:(ObjectRoot,),  }),
                 'auth': [
                     'Basic'
                 ],
@@ -474,7 +474,7 @@ class FPOOptimizerApi(object):
 
         self.get_optimization_status_by_id = _Endpoint(
             settings={
-                'response_type': { 201:ObjectRoot, 202:,  },
+                'response_type': dict({ 201:(ObjectRoot,), 202:,  }),
                 'auth': [
                     'Basic'
                 ],
@@ -591,7 +591,7 @@ class FPOOptimizerApi(object):
 
         self.post_and_optimize = _Endpoint(
             settings={
-                'response_type': { 202:CalculationInfoRoot, 201:ObjectRoot,  },
+                'response_type': dict({ 202:(CalculationInfoRoot,), 201:(ObjectRoot,),  }),
                 'auth': [
                     'Basic'
                 ],
@@ -722,7 +722,7 @@ class FPOOptimizerApi(object):
 
         self.put_and_optimize = _Endpoint(
             settings={
-                'response_type': { 202:CalculationInfoRoot, 201:ObjectRoot,  },
+                'response_type': dict({ 202:(CalculationInfoRoot,), 201:(ObjectRoot,),  }),
                 'auth': [
                     'Basic'
                 ],

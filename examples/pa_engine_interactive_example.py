@@ -66,8 +66,9 @@ def main():
     print(pa_calculation_parameters)
 
     pa_calculations_api = PACalculationsApi(api_client)
-    run_calculation_response = pa_calculations_api.run_pa_calculation_with_http_info(
-        pa_calculation_parameters=pa_calculation_parameters)
+    #run_calculation_response = pa_calculations_api.run_pa_calculation_with_http_info(
+    #    pa_calculation_parameters=pa_calculation_parameters)
+    run_calculation_response = pa_calculations_api.post_and_calculate(body=pa_calculation_parameters)
 
     if run_calculation_response[1] != 202 and run_calculation_response[1] != 201:
         print_error(run_calculation_response)

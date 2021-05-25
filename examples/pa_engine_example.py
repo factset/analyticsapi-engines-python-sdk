@@ -4,13 +4,17 @@ import time
 import pandas as pd
 import uuid
 
-from fds.analyticsapi.engines import ComponentSummary, ApiException
+from fds.analyticsapi.engines import ApiException
 from fds.analyticsapi.engines.api.calculations_api import CalculationsApi
+from fds.analyticsapi.engines.api.pa_calculations_api import PACalculationsApi
 from fds.analyticsapi.engines.api.components_api import ComponentsApi
 from fds.analyticsapi.engines.api.utility_api import UtilityApi
 from fds.analyticsapi.engines.api_client import ApiClient
 from fds.analyticsapi.engines.configuration import Configuration
 from fds.analyticsapi.engines.models.calculation import Calculation
+from fds.analyticsapi.engines.model.component_summary import ComponentSummary
+from fds.analyticsapi.engines.model.component_summary_root import ComponentSummaryRoot
+from fds.analyticsapi.engines.model.pa_calculation_parameters_root import PACalculationParametersRoot
 from fds.analyticsapi.engines.models.pa_calculation_parameters import PACalculationParameters
 from fds.analyticsapi.engines.models.pa_date_parameters import PADateParameters
 from fds.analyticsapi.engines.models.pa_identifier import PAIdentifier
@@ -23,17 +27,8 @@ from google.protobuf.json_format import MessageToDict
 from urllib3 import Retry
 
 host = "https://api.factset.com"
-username = "<username-serial>"
-password = "<apiKey>"
-
-pa_document_name = "PA_DOCUMENTS:DEFAULT"
-pa_component_name = "Weights"
-pa_component_category = "Weights / Exposures"
-pa_benchmark_sp_50 = "BENCH:SP50"
-pa_benchmark_r_1000 = "BENCH:R.1000"
-startdate = "20180101"
-enddate = "20181231"
-frequency = "Monthly"
+username = "FDSQAN_C-415271"
+password = "d8UsOH2iGjs4PVpXbjMknQAfkVh8wM9kxxkmhLKG"
 
 
 def main():
@@ -54,27 +49,40 @@ def main():
     components_api = ComponentsApi(api_client)
 
     try:
+        pa_document_name = "PA_DOCUMENTS:DEFAULT"
+        pa_component_name = "Weights"
+        pa_component_category = "Weights / Exposures"
+        pa_benchmark_sp_50 = "BENCH:SP50"
+        pa_benchmark_r_1000 = "BENCH:R.1000"
+        startdate = "20180101"
+        enddate = "20181231"
+        frequency = "Monthly"
+
         components = components_api.get_pa_components(pa_document_name)
-        component_desc = ComponentSummary(name=pa_component_name, category=pa_component_category)
-        component_id = [id for id in list(components.keys()) if components[id] == component_desc][0]
+        component_summary = ComponentSummary(name=pa_component_name, category=pa_component_category)
+        component_id = [id for id in list(components.data.keys()) if components.data[id] == component_summary][0]
         print("PA Component Id: " + component_id)
-        pa_account_identifier = PAIdentifier(pa_benchmark_sp_50)
-        pa_accounts = [pa_account_identifier]
-        pa_benchmark_identifier = PAIdentifier(pa_benchmark_r_1000)
-        pa_benchmarks = [pa_benchmark_identifier]
-        pa_dates = PADateParameters(startdate, enddate, frequency)
+        pa_accounts = [PAIdentifier(id=pa_benchmark_sp_50)]
+        pa_benchmarks = [PAIdentifier(id=pa_benchmark_r_1000)]
+        pa_dates = PADateParameters(startdate=startdate, enddate=enddate, frequency=frequency)
 
-        pa_calculation_parameters = {"1": PACalculationParameters(component_id, pa_accounts, pa_benchmarks, pa_dates)}
+        pa_calculation_parameters = {"hank": PACalculationParameters(componentid=component_id, accounts=pa_accounts,
+                                                                       benchmarks=pa_benchmarks, dates=pa_dates)}
 
-        calculation = Calculation(pa=pa_calculation_parameters)
+        # pa_calculation_parameters = {"data": {"hank": PACalculationParameters(componentid=component_id, accounts=pa_accounts,
+        #                                                              benchmarks=pa_benchmarks, dates=pa_dates)}}
 
-        calculations_api = CalculationsApi(api_client)
-        run_calculation_response = calculations_api.run_calculation_with_http_info(calculation=calculation)
+        pa_calculation_parameter_root = PACalculationParametersRoot(data=pa_calculation_parameters, meta=None)
 
-        calculation_id = run_calculation_response[2].get("location").split("/")[-1]
+        pa_calculations_api = PACalculationsApi(api_client)
+
+        post_and_calculate_response = pa_calculations_api.post_and_calculate(pa_calculation_parameters_root=pa_calculation_parameter_root)
+
+        calculation_id = post_and_calculate_response[2].get("location").split("/")[-1]
         print("Calculation Id: " + calculation_id)
 
-        status_response = calculations_api.get_calculation_status_by_id_with_http_info(calculation_id)
+        status_response = pa_calculations_api.get_calculation_status_by_id(id=calculation_id)
+
         while status_response[1] == 200 and (status_response[0].status in ("Queued", "Executing")):
             max_age = '5'
             age_value = status_response[2].get("cache-control")
@@ -82,7 +90,7 @@ def main():
                 max_age = age_value.replace("max-age=", "")
             print('Sleeping: ' + max_age)
             time.sleep(int(max_age))
-            status_response = calculations_api.get_calculation_status_by_id_with_http_info(calculation_id)
+            status_response = pa_calculations_api.get_calculation_status_by_id_with_http_info(calculation_id)
 
         for (calculation_unit, calculation_unit_id) in zip(status_response[0].pa.values(), status_response[0].pa):
             if calculation_unit.status == "Success":

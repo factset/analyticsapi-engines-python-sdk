@@ -116,7 +116,7 @@ class DatesApi(object):
 
         self.convert_pa_dates_to_absolute_format = _Endpoint(
             settings={
-                'response_type': { DateParametersSummaryRoot },
+                'response_type': dict({ 200:(DateParametersSummaryRoot,),  }),
                 'auth': [
                     'Basic'
                 ],
@@ -261,7 +261,7 @@ class DatesApi(object):
 
         self.convert_vault_dates_to_absolute_format = _Endpoint(
             settings={
-                'response_type': { DateParametersSummaryRoot },
+                'response_type': dict({ 200:(DateParametersSummaryRoot,),  }),
                 'auth': [
                     'Basic'
                 ],
