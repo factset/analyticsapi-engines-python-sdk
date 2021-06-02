@@ -474,7 +474,7 @@ class FPOOptimizerApi(object):
 
         self.get_optimization_status_by_id = _Endpoint(
             settings={
-                'response_type': dict({ 201:(ObjectRoot,), 202:,  }),
+                'response_type': dict({ 201:(ObjectRoot,), 202:None,  }),
                 'auth': [
                     'Basic'
                 ],
