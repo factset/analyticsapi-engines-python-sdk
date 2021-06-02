@@ -469,7 +469,7 @@ class FICalculationsApi(object):
 
         self.get_calculation_status_by_id = _Endpoint(
             settings={
-                'response_type': dict({ 201:(ObjectRoot,), 202:,  }),
+                'response_type': dict({ 201:(ObjectRoot,), 202:None,  }),
                 'auth': [
                     'Basic'
                 ],

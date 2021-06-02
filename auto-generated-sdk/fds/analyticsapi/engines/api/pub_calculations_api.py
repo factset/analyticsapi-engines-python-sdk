@@ -596,7 +596,7 @@ class PubCalculationsApi(object):
 
         self.post_and_calculate = _Endpoint(
             settings={
-                'response_type': dict({ 202:(CalculationStatusRoot,), 200:(CalculationStatusRoot,), 201:,  }),
+                'response_type': dict({ 202:(CalculationStatusRoot,), 200:(CalculationStatusRoot,), 201:None,  }),
                 'auth': [
                     'Basic'
                 ],
@@ -728,7 +728,7 @@ class PubCalculationsApi(object):
 
         self.put_and_calculate = _Endpoint(
             settings={
-                'response_type': dict({ 202:(CalculationStatusRoot,), 200:(CalculationStatusRoot,), 201:,  }),
+                'response_type': dict({ 202:(CalculationStatusRoot,), 200:(CalculationStatusRoot,), 201:None,  }),
                 'auth': [
                     'Basic'
                 ],
