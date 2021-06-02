@@ -12,8 +12,6 @@ from fds.analyticsapi.engines.model.bpm_optimization_parameters import BPMOptimi
 from fds.analyticsapi.engines.model.bpm_optimization_parameters_root import BPMOptimizationParametersRoot
 from fds.analyticsapi.engines.model.optimizer_output_types import OptimizerOutputTypes
 from fds.analyticsapi.engines.model.optimizer_trades_list import OptimizerTradesList
-from fds.protobuf.stach.extensions.StachVersion import StachVersion
-from fds.protobuf.stach.extensions.StachExtensionFactory import StachExtensionFactory
 
 from urllib3 import Retry
 
