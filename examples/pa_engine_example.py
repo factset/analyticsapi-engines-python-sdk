@@ -1,39 +1,25 @@
-import json
-import sys
 import time
 import pandas as pd
 import uuid
 
-from fds.analyticsapi.engines import ComponentSummary, ApiException
-from fds.analyticsapi.engines.api.calculations_api import CalculationsApi
+from fds.analyticsapi.engines import ApiException
+from fds.analyticsapi.engines.api.pa_calculations_api import PACalculationsApi
 from fds.analyticsapi.engines.api.components_api import ComponentsApi
-from fds.analyticsapi.engines.api.utility_api import UtilityApi
 from fds.analyticsapi.engines.api_client import ApiClient
 from fds.analyticsapi.engines.configuration import Configuration
-from fds.analyticsapi.engines.models.calculation import Calculation
-from fds.analyticsapi.engines.models.pa_calculation_parameters import PACalculationParameters
-from fds.analyticsapi.engines.models.pa_date_parameters import PADateParameters
-from fds.analyticsapi.engines.models.pa_identifier import PAIdentifier
-from fds.analyticsapi.engines.stach_extensions import StachExtensions
-from fds.protobuf.stach.Package_pb2 import Package
+from fds.analyticsapi.engines.model.component_summary import ComponentSummary
+from fds.analyticsapi.engines.model.pa_calculation_parameters_root import PACalculationParametersRoot
+from fds.analyticsapi.engines.model.pa_calculation_parameters import PACalculationParameters
+from fds.analyticsapi.engines.model.pa_date_parameters import PADateParameters
+from fds.analyticsapi.engines.model.pa_identifier import PAIdentifier
+from fds.protobuf.stach.extensions.StachVersion import StachVersion
+from fds.protobuf.stach.extensions.StachExtensionFactory import StachExtensionFactory
 
-from google.protobuf import json_format
-from google.protobuf.json_format import MessageToJson
-from google.protobuf.json_format import MessageToDict
 from urllib3 import Retry
 
 host = "https://api.factset.com"
-username = "<username-serial>"
-password = "<apiKey>"
-
-pa_document_name = "PA_DOCUMENTS:DEFAULT"
-pa_component_name = "Weights"
-pa_component_category = "Weights / Exposures"
-pa_benchmark_sp_50 = "BENCH:SP50"
-pa_benchmark_r_1000 = "BENCH:R.1000"
-startdate = "20180101"
-enddate = "20181231"
-frequency = "Monthly"
+username = ""
+password = ""
 
 
 def main():
@@ -54,67 +40,77 @@ def main():
     components_api = ComponentsApi(api_client)
 
     try:
+        pa_document_name = "PA_DOCUMENTS:DEFAULT"
+        pa_component_name = "Weights"
+        pa_component_category = "Weights / Exposures"
+        pa_benchmark_sp_50 = "BENCH:SP50"
+        pa_benchmark_r_1000 = "BENCH:R.1000"
+        startdate = "20180101"
+        enddate = "20181231"
+        frequency = "Monthly"
+
         components = components_api.get_pa_components(pa_document_name)
-        component_desc = ComponentSummary(name=pa_component_name, category=pa_component_category)
-        component_id = [id for id in list(components.keys()) if components[id] == component_desc][0]
+        component_summary = ComponentSummary(name=pa_component_name, category=pa_component_category)
+        component_id = [id for id in list(components.data.keys()) if components.data[id] == component_summary][0]
         print("PA Component Id: " + component_id)
-        pa_account_identifier = PAIdentifier(pa_benchmark_sp_50)
-        pa_accounts = [pa_account_identifier]
-        pa_benchmark_identifier = PAIdentifier(pa_benchmark_r_1000)
-        pa_benchmarks = [pa_benchmark_identifier]
-        pa_dates = PADateParameters(startdate, enddate, frequency)
+        pa_accounts = [PAIdentifier(id=pa_benchmark_sp_50)]
+        pa_benchmarks = [PAIdentifier(id=pa_benchmark_r_1000)]
+        pa_dates = PADateParameters(startdate=startdate, enddate=enddate, frequency=frequency)
 
-        pa_calculation_parameters = {"1": PACalculationParameters(component_id, pa_accounts, pa_benchmarks, pa_dates)}
+        pa_calculation_parameters = {"hank": PACalculationParameters(componentid=component_id, accounts=pa_accounts,
+                                                                       benchmarks=pa_benchmarks, dates=pa_dates)}
 
-        calculation = Calculation(pa=pa_calculation_parameters)
+        pa_calculation_parameter_root = PACalculationParametersRoot(data=pa_calculation_parameters)
 
-        calculations_api = CalculationsApi(api_client)
-        run_calculation_response = calculations_api.run_calculation_with_http_info(calculation=calculation)
+        pa_calculations_api = PACalculationsApi(api_client)
 
-        calculation_id = run_calculation_response[2].get("location").split("/")[-1]
-        print("Calculation Id: " + calculation_id)
+        post_and_calculate_response = pa_calculations_api.post_and_calculate(pa_calculation_parameters_root=pa_calculation_parameter_root, _return_http_data_only=False)
 
-        status_response = calculations_api.get_calculation_status_by_id_with_http_info(calculation_id)
-        while status_response[1] == 200 and (status_response[0].status in ("Queued", "Executing")):
-            max_age = '5'
-            age_value = status_response[2].get("cache-control")
-            if age_value is not None:
-                max_age = age_value.replace("max-age=", "")
-            print('Sleeping: ' + max_age)
-            time.sleep(int(max_age))
-            status_response = calculations_api.get_calculation_status_by_id_with_http_info(calculation_id)
+        if post_and_calculate_response[1] == 201:
+            output_calculation_result(post_and_calculate_response[0]['data'])
+        else:
+            calculation_id = post_and_calculate_response[0].data.calculationid
+            print("Calculation Id: " + calculation_id)
 
-        for (calculation_unit, calculation_unit_id) in zip(status_response[0].pa.values(), status_response[0].pa):
-            if calculation_unit.status == "Success":
-                print("Calculation Unit Id: " + calculation_unit_id + " Succeeded!!!")
-                utility_api = UtilityApi(api_client)
-                result_response = utility_api.get_by_url_with_http_info(calculation_unit.result)
+            status_response = pa_calculations_api.get_calculation_status_by_id(id=calculation_id, _return_http_data_only=False)
 
-                print("Calculation Result")
-                # converting the data to Package object
-                result = json_format.Parse(json.dumps(result_response[0]), Package())
-                # print(MessageToJson(result)) # To print the result object as a JSON
-                # print(MessageToDict(result)) # To print the result object as a Dictionary
-                tables = StachExtensions.convert_to_table_format(result)  # To convert result to 2D tables.
-                print(tables[0])  # Prints the result in 2D table format.
-                # generate_excel(result)  # Uncomment this line to get the result in table format exported to excel file.
-            else:
-                print("Calculation Unit Id:" + calculation_unit_id + " Failed!!!")
-                print("Error message : " + calculation_unit.error)
+            while status_response[1] == 202 and (status_response[0].data.status in ("Queued", "Executing")):
+                max_age = '5'
+                age_value = status_response[2].get("cache-control")
+                if age_value is not None:
+                    max_age = age_value.replace("max-age=", "")
+                print('Sleeping: ' + max_age)
+                time.sleep(int(max_age))
+                status_response = pa_calculations_api.get_calculation_status_by_id(calculation_id, _return_http_data_only=False)
+
+            for (calculation_unit_id, calculation_unit) in status_response[0].data.units.items():
+                if calculation_unit.status == "Success":
+                    print("Calculation Unit Id: " + calculation_unit_id + " Succeeded!!!")
+                    result_response = pa_calculations_api.get_calculation_unit_result_by_id(id=calculation_id, unit_id=calculation_unit_id, _return_http_data_only=False)
+                    output_calculation_result(result_response[0]['data'])
+                else:
+                    print("Calculation Unit Id:" + calculation_unit_id + " Failed!!!")
+                    print("Error message : " + calculation_unit.error)
 
     except ApiException as e:
         print("Api exception Encountered")
         print(e)
         exit()
 
+def output_calculation_result(result):
+    print("Calculation Result")
+    stachBuilder = StachExtensionFactory.get_row_organized_builder(StachVersion.V2)
+    stachExtension = stachBuilder.set_package(result).build()
+    dataFramesList = stachExtension.convert_to_dataframe()
+    print(dataFramesList)
+    # generate_excel(dataFramesList)  # Uncomment this line to get the result in table format exported to excel file.
 
-def generate_excel(package):
-    for table in StachExtensions.convert_to_table_format(package):
+def generate_excel(data_frames_list):
+    for dataFrame in data_frames_list:
         writer = pd.ExcelWriter(str(uuid.uuid1()) + ".xlsx")
-        table.to_excel(excel_writer=writer)
+        dataFrame.to_excel(excel_writer=writer)
         writer.save()
         writer.close()
-
 
 if __name__ == '__main__':
     main()
