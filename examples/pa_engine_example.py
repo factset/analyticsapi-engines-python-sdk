@@ -1,5 +1,6 @@
 import time
 import pandas as pd
+import os
 import uuid
 
 from fds.analyticsapi.engines import ApiException
@@ -18,8 +19,8 @@ from fds.protobuf.stach.extensions.StachExtensionFactory import StachExtensionFa
 from urllib3 import Retry
 
 host = "https://api.factset.com"
-username = ""
-password = ""
+username = os.environ["ANALYTICS_API_USERNAME_SERIAL"]
+password = os.environ["ANALYTICS_API_PASSWORD"]
 
 
 def main():
@@ -105,12 +106,14 @@ def output_calculation_result(result):
     print(dataFramesList)
     # generate_excel(dataFramesList)  # Uncomment this line to get the result in table format exported to excel file.
 
+
 def generate_excel(data_frames_list):
     for dataFrame in data_frames_list:
         writer = pd.ExcelWriter(str(uuid.uuid1()) + ".xlsx")
         dataFrame.to_excel(excel_writer=writer)
         writer.save()
         writer.close()
+
 
 if __name__ == '__main__':
     main()
