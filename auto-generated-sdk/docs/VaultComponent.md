@@ -1,14 +1,15 @@
 # VaultComponent
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [optional] 
+**id** | **str** | Vault component identifier | [optional] 
 **account** | [**VaultIdentifier**](VaultIdentifier.md) |  | [optional] 
 **benchmark** | [**VaultIdentifier**](VaultIdentifier.md) |  | [optional] 
-**currencyisocode** | **str** |  | [optional] 
+**currencyisocode** | **str** | Currency iso code saved in the document | [optional] 
 **dates** | [**VaultDateParameters**](VaultDateParameters.md) |  | [optional] 
-**snapshot** | **bool** |  | [optional] 
+**snapshot** | **bool** | Snapshot | [optional] 
 **name** | **str** | Component name. | [optional] 
 **category** | **str** | Component category. | [optional] 
 
