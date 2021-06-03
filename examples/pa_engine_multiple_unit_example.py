@@ -58,22 +58,24 @@ def main():
         pa_benchmarks = [PAIdentifier(id=pa_benchmark_r_1000)]
         pa_dates = PADateParameters(startdate=startdate, enddate=enddate, frequency=frequency)
 
-        pa_calculation_parameters = {"hank": PACalculationParameters(componentid=component_id, accounts=pa_accounts,
-                                                                       benchmarks=pa_benchmarks, dates=pa_dates)}
+        pa_calculation_parameters = {"1": PACalculationParameters(componentid=component_id, accounts=pa_accounts,
+                                                                  benchmarks=pa_benchmarks, dates=pa_dates),
+                                     "2": PACalculationParameters(componentid=component_id, accounts=pa_accounts,
+                                                                  benchmarks=pa_benchmarks, dates=pa_dates)}
 
         pa_calculation_parameter_root = PACalculationParametersRoot(data=pa_calculation_parameters)
 
         pa_calculations_api = PACalculationsApi(api_client)
 
-        post_and_calculate_response = pa_calculations_api.post_and_calculate(pa_calculation_parameters_root=pa_calculation_parameter_root, _return_http_data_only=False)
+        post_and_calculate_response = pa_calculations_api.post_and_calculate(
+            pa_calculation_parameters_root=pa_calculation_parameter_root, _return_http_data_only=False)
 
-        if post_and_calculate_response[1] == 201:
-            output_calculation_result(post_and_calculate_response[0]['data'])
-        else:
+        if post_and_calculate_response[1] == 202:
             calculation_id = post_and_calculate_response[0].data.calculationid
             print("Calculation Id: " + calculation_id)
 
-            status_response = pa_calculations_api.get_calculation_status_by_id(id=calculation_id, _return_http_data_only=False)
+            status_response = pa_calculations_api.get_calculation_status_by_id(id=calculation_id,
+                                                                               _return_http_data_only=False)
 
             while status_response[1] == 202 and (status_response[0].data.status in ("Queued", "Executing")):
                 max_age = '5'
@@ -82,21 +84,29 @@ def main():
                     max_age = age_value.replace("max-age=", "")
                 print('Sleeping: ' + max_age)
                 time.sleep(int(max_age))
-                status_response = pa_calculations_api.get_calculation_status_by_id(calculation_id, _return_http_data_only=False)
+                status_response = pa_calculations_api.get_calculation_status_by_id(calculation_id,
+                                                                                   _return_http_data_only=False)
 
             for (calculation_unit_id, calculation_unit) in status_response[0].data.units.items():
                 if calculation_unit.status == "Success":
                     print("Calculation Unit Id: " + calculation_unit_id + " Succeeded!!!")
-                    result_response = pa_calculations_api.get_calculation_unit_result_by_id(id=calculation_id, unit_id=calculation_unit_id, _return_http_data_only=False)
+                    result_response = pa_calculations_api.get_calculation_unit_result_by_id(id=calculation_id,
+                                                                                            unit_id=calculation_unit_id,
+                                                                                            _return_http_data_only=False)
                     output_calculation_result(result_response[0]['data'])
                 else:
                     print("Calculation Unit Id:" + calculation_unit_id + " Failed!!!")
                     print("Error message : " + calculation_unit.error)
+        else:
+            print("Calculation creation failed")
+            print("Error status : " + post_and_calculate_response[1])
+            print("Error message : " + post_and_calculate_response[0])
 
     except ApiException as e:
         print("Api exception Encountered")
         print(e)
         exit()
+
 
 def output_calculation_result(result):
     print("Calculation Result")
