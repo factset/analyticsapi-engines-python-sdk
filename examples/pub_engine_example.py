@@ -3,31 +3,20 @@ import sys
 import time
 
 from fds.analyticsapi.engines import ApiException
-from fds.analyticsapi.engines.api.calculations_api import CalculationsApi
-from fds.analyticsapi.engines.api.utility_api import UtilityApi
 from fds.analyticsapi.engines.api_client import ApiClient
+from fds.analyticsapi.engines.pub_calculations_api import PubCalculationsApi
 from fds.analyticsapi.engines.configuration import Configuration
-from fds.analyticsapi.engines.models.calculation import Calculation
-from fds.analyticsapi.engines.models.pub_calculation_parameters import PubCalculationParameters
-from fds.analyticsapi.engines.models.pub_identifier import PubIdentifier
-from fds.analyticsapi.engines.models.pub_date_parameters import PubDateParameters
-from fds.protobuf.stach.Package_pb2 import Package
-
-from google.protobuf import json_format
-from google.protobuf.json_format import MessageToJson
-from google.protobuf.json_format import MessageToDict
+from fds.analyticsapi.engines.model.pub_calculation_parameters import PubCalculationParameters
+from fds.analyticsapi.engines.model.pub_calculation_parameters_root import PubCalculationParametersRoot
+from fds.analyticsapi.engines.model.pub_identifier import PubIdentifier
+from fds.analyticsapi.engines.model.pub_date_parameters import PubDateParameters
 
 from urllib3 import Retry
 from pathlib import Path
 
 host = "https://api.factset.com"
-username = "<username-serial>"
-password = "<apiKey>"
-
-pub_document_name = "Super_client:/publisher/Equity Snapshot.PUB_BRIDGE_PDF"
-pub_account_name = "BENCH:SP50"
-startdate = "-1M"
-enddate = "0M"
+username = os.environ["ANALYTICS_API_USERNAME_SERIAL"]
+password = os.environ["ANALYTICS_API_PASSWORD"]
 
 
 def main():
@@ -46,8 +35,13 @@ def main():
     api_client = ApiClient(config)
 
     try:
-        pub_account_identifier = PubIdentifier(pub_account_name);
-        pub_dates = PubDateParameters(startdate, enddate);
+        pub_document_name = "Super_client:/publisher/Equity Snapshot.PUB_BRIDGE_PDF"
+        pub_account_name = "BENCH:SP50"
+        startdate = "-1M"
+        enddate = "0M"
+
+        pub_account_identifier = PubIdentifier(pub_account_name)
+        pub_dates = PubDateParameters(startdate, enddate)
 
         pub_calculation_parameters = {
             "1": PubCalculationParameters(pub_document_name, pub_account_identifier, pub_dates)}
