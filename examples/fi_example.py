@@ -51,12 +51,9 @@ def main():
                     "Effective Duration",
                     "Effective Convexity"]
 
-    # security1 = FISecurity("Price", 100.285, 10000.0, "912828ZG8", "20201202", "UST")
-    # security2 = FISecurity("Price", 101.138, 200000.0, "US037833AR12", "20201203", "UST")
-
     securities = [
-        FISecurity("Price", 100.285, "912828ZG8", settlement="20201202", discount_curve="UST"),
-        FISecurity("Price", 101.138, "US037833AR12", settlement="20201203", discount_curve="UST")
+        FISecurity("Price", 100.285, "912828ZG8", settlement="20201202", discount_curve="UST", face=10000.0),
+        FISecurity("Price", 101.138, "US037833AR12", settlement="20201203", discount_curve="UST", face=200000.0)
     ]
     jobSettings = FIJobSettings("20201201")
     fi_calculation_parameters = FICalculationParameters(securities, calculations, jobSettings)
