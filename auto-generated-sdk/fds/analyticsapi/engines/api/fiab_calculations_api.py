@@ -223,7 +223,7 @@ class FIABCalculationsApi(object):
 
         self.get_calculation_status_summaries = _Endpoint(
             settings={
-                'response_type': dict({ 200: }),
+                'response_type': dict({ 200:None,  }),
                 'auth': [
                     'Basic'
                 ],
