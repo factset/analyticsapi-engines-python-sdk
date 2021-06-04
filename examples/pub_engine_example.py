@@ -1,10 +1,9 @@
-import json
-import sys
+import os
 import time
 
 from fds.analyticsapi.engines import ApiException
 from fds.analyticsapi.engines.api_client import ApiClient
-from fds.analyticsapi.engines.pub_calculations_api import PubCalculationsApi
+from fds.analyticsapi.engines.api.pub_calculations_api import PubCalculationsApi
 from fds.analyticsapi.engines.configuration import Configuration
 from fds.analyticsapi.engines.model.pub_calculation_parameters import PubCalculationParameters
 from fds.analyticsapi.engines.model.pub_calculation_parameters_root import PubCalculationParametersRoot
@@ -36,51 +35,65 @@ def main():
 
     try:
         pub_document_name = "Super_client:/publisher/Equity Snapshot.PUB_BRIDGE_PDF"
-        pub_account_name = "BENCH:SP50"
+        pub_account_id = "BENCH:SP50"
         startdate = "-1M"
         enddate = "0M"
 
-        pub_account_identifier = PubIdentifier(pub_account_name)
-        pub_dates = PubDateParameters(startdate, enddate)
+        pub_account_identifier = PubIdentifier(pub_account_id)
+        pub_dates = PubDateParameters(enddate, startdate=startdate)
 
         pub_calculation_parameters = {
-            "1": PubCalculationParameters(pub_document_name, pub_account_identifier, pub_dates)}
+            "1": PubCalculationParameters(pub_document_name, pub_account_identifier, pub_dates)
+        }
 
-        calculation = Calculation(pub=pub_calculation_parameters)
+        pub_calculation_parameters_root = PubCalculationParametersRoot(data=pub_calculation_parameters)
 
-        calculations_api = CalculationsApi(api_client)
-        run_calculation_response = calculations_api.run_calculation_with_http_info(calculation=calculation)
+        pub_calculations_api = PubCalculationsApi(api_client)
+        post_and_calculate_response = pub_calculations_api.post_and_calculate(
+            pub_calculation_parameters_root=pub_calculation_parameters_root,
+            _return_http_data_only=False)
 
-        calculation_id = run_calculation_response[2].get("location").split("/")[-1]
-        print("Calculation Id: " + calculation_id)
+        if len(pub_calculation_parameters) == 1 and post_and_calculate_response[1] == 201:
+            output_calculation_result(post_and_calculate_response[0])
+        else:
+            calculation_id = post_and_calculate_response[0].data.calculationid
+            print("Calculation Id: " + calculation_id)
 
-        status_response = calculations_api.get_calculation_status_by_id_with_http_info(calculation_id)
-        while status_response[1] == 200 and (status_response[0].status in ("Queued", "Executing")):
-            max_age = '5'
-            age_value = status_response[2].get("cache-control")
-            if age_value is not None:
-                max_age = age_value.replace("max-age=", "")
-            print('Sleeping: ' + max_age)
-            time.sleep(int(max_age))
-            status_response = calculations_api.get_calculation_status_by_id_with_http_info(calculation_id)
+            status_response = pub_calculations_api.get_calculation_status_by_id(
+                id=calculation_id,
+                _return_http_data_only=False)
 
-        for (calculation_unit, calculation_unit_id) in zip(status_response[0].pub.values(), status_response[0].pub):
-            if calculation_unit.status == "Success":
-                print("Calculation Unit Id: " + calculation_unit_id + " Succeeded!!!")
-                utility_api = UtilityApi(api_client)
-                result_response = utility_api.get_by_url_with_http_info(calculation_unit.result, _preload_content=False)
+            while status_response[1] == 202 and (status_response[0].data.status in ("Queued", "Executing")):
+                max_age = '5'
+                age_value = status_response[2].get("cache-control")
+                if age_value is not None:
+                    max_age = age_value.replace("max-age=", "")
+                print('Sleeping: ' + max_age)
+                time.sleep(int(max_age))
+                status_response = pub_calculations_api.get_calculation_status_by_id(calculation_id,
+                                                                                    _return_http_data_only=False)
 
-                print("Calculation Succeeded")
-                filename = Path('Output.pdf')
-                filename.write_bytes(result_response[0].data)
-            else:
-                print("Calculation Unit Id:" + calculation_unit_id + " Failed!!!")
-                print("Error message : " + calculation_unit.error)
+            for (calculation_unit_id, calculation_unit) in status_response[0].data.units.items():
+                if calculation_unit.status == "Success":
+                    print("Calculation Unit Id: " + calculation_unit_id + " Succeeded!!!")
+                    result_response = pub_calculations_api.get_calculation_unit_result_by_id(id=calculation_id,
+                                                                                             unit_id=calculation_unit_id,
+                                                                                             _return_http_data_only=False)
+
+                    output_calculation_result(result_response[0].read())
+                else:
+                    print("Calculation Unit Id:" + calculation_unit_id + " Failed!!!")
+                    print("Error message : " + calculation_unit.error)
 
     except ApiException as e:
         print("Api exception Encountered")
         print(e)
         exit()
+
+
+def output_calculation_result(result):
+    filename = Path('Output.pdf')
+    filename.write_bytes(result)
 
 
 if __name__ == '__main__':
