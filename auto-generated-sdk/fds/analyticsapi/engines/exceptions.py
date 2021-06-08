@@ -111,7 +111,6 @@ class ApiException(OpenApiException):
             self.headers = None
 
         self.client_error_response = client_error_response
-
     def __str__(self):
         """Custom error messages for exception"""
         error_message = "({0})\n"\
