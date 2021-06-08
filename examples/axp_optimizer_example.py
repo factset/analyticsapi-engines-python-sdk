@@ -69,8 +69,8 @@ def main():
         axp_optimizer_trades_list = OptimizerTradesList(identifier_type="SedolChk", include_cash=False)
         axp_optimizer_output_types = OptimizerOutputTypes(trades=axp_optimizer_trades_list)
         axp_optimizer_parameters = AxiomaEquityOptimizationParameters(
-            axp_optimizer_strategy,
-            axp_optimizer_output_types,
+            strategy=axp_optimizer_strategy,
+            output_types=axp_optimizer_output_types,
             account=axp_optimizer_account,
             optimization=axp_optimizer_optimization
         )
