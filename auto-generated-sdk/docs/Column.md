@@ -1,9 +1,10 @@
 # Column
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**defaultstatisticsids** | **list[str]** | Column statistic Id | [optional] 
+**defaultstatisticsids** | **[str]** | Column statistic Id | [optional] 
 **name** | **str** | Column Name | [optional] 
 **directory** | **str** | Column Directory | [optional] 
 **category** | **str** | Column Category | [optional] 
