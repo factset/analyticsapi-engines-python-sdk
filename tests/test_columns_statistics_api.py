@@ -1,7 +1,7 @@
 import unittest
 
 from fds.analyticsapi.engines.api.column_statistics_api import ColumnStatisticsApi
-from fds.analyticsapi.engines.models.column_statistic import ColumnStatistic
+from fds.analyticsapi.engines.model.column_statistic import ColumnStatistic
 
 from common_functions import CommonFunctions
 
