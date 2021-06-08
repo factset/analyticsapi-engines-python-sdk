@@ -1,7 +1,7 @@
 import time
-import pandas as pd
 import os
 import uuid
+import pandas as pd
 
 from fds.analyticsapi.engines import ApiException
 from fds.analyticsapi.engines.api.pa_calculations_api import PACalculationsApi
@@ -115,7 +115,7 @@ def output_calculation_result(result):
 
 def generate_excel(data_frames_list):
     for dataFrame in data_frames_list:
-        writer = pd.ExcelWriter(str(uuid.uuid1()) + ".xlsx")
+        writer = pd.ExcelWriter(str(uuid.uuid1()) + ".xlsx") # pylint: disable=abstract-class-instantiated
         dataFrame.to_excel(excel_writer=writer)
         writer.save()
         writer.close()

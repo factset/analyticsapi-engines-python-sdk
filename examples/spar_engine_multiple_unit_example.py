@@ -70,9 +70,9 @@ def main():
         spar_dates1 = SPARDateParameters(startdate1, enddate1, frequency1)
         spar_dates2 = SPARDateParameters(startdate2, enddate2, frequency2)
 
-        spar_calculation_parameters = {"1": SPARCalculationParameters(componentid=component_id, accounts=spar_accounts, benchmark=spar_benchmark_identifier,
+        spar_calculation_parameters = {"2018": SPARCalculationParameters(componentid=component_id, accounts=spar_accounts, benchmark=spar_benchmark_identifier,
                                                                       dates=spar_dates1),
-                                       "2": SPARCalculationParameters(componentid=component_id, accounts=spar_accounts, benchmark=spar_benchmark_identifier,
+                                       "2019": SPARCalculationParameters(componentid=component_id, accounts=spar_accounts, benchmark=spar_benchmark_identifier,
                                                                       dates=spar_dates2)}
 
         spar_calculation_parameter_root = SPARCalculationParametersRoot(
@@ -82,7 +82,7 @@ def main():
         post_and_calculate_response = spar_calculations_api.post_and_calculate(
             spar_calculation_parameters_root=spar_calculation_parameter_root, _return_http_data_only=False)
 
-        if post_and_calculate_response[1] == 202:
+        if post_and_calculate_response[1] == 202 or post_and_calculate_response[1] == 200:
             calculation_id = post_and_calculate_response[0].data.calculationid
             print("Calculation Id: " + calculation_id)
 
@@ -113,8 +113,8 @@ def main():
                     print("Error message : " + calculation_unit.error)
         else:
             print("Calculation creation failed")
-            print("Error status : " + post_and_calculate_response[1])
-            print("Error message : " + post_and_calculate_response[0])
+            print("Error status : " + str(post_and_calculate_response[1]))
+            print("Error message : " + str(post_and_calculate_response[0]))
 
     except ApiException as e:
         print("Api exception Encountered")
@@ -134,7 +134,7 @@ def output_calculation_result(result):
 
 def generate_excel(data_frames_list):
     for dataFrame in data_frames_list:
-        writer = pd.ExcelWriter(str(uuid.uuid1()) + ".xlsx")
+        writer = pd.ExcelWriter(str(uuid.uuid1()) + ".xlsx") # pylint: disable=abstract-class-instantiated
         dataFrame.to_excel(excel_writer=writer)
         writer.save()
         writer.close()

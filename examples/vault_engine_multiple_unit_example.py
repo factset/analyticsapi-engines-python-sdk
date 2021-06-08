@@ -1,18 +1,19 @@
 import time
-import pandas as pd
 import os
 import uuid
+import pandas as pd
 
 from fds.analyticsapi.engines import ApiException
-from fds.analyticsapi.engines.api.pa_calculations_api import PACalculationsApi
+from fds.analyticsapi.engines.api.vault_calculations_api import VaultCalculationsApi
 from fds.analyticsapi.engines.api.components_api import ComponentsApi
+from fds.analyticsapi.engines.api.configurations_api import ConfigurationsApi
 from fds.analyticsapi.engines.api_client import ApiClient
 from fds.analyticsapi.engines.configuration import Configuration
 from fds.analyticsapi.engines.model.component_summary import ComponentSummary
-from fds.analyticsapi.engines.model.pa_calculation_parameters_root import PACalculationParametersRoot
-from fds.analyticsapi.engines.model.pa_calculation_parameters import PACalculationParameters
-from fds.analyticsapi.engines.model.pa_date_parameters import PADateParameters
-from fds.analyticsapi.engines.model.pa_identifier import PAIdentifier
+from fds.analyticsapi.engines.model.vault_calculation_parameters_root import VaultCalculationParametersRoot
+from fds.analyticsapi.engines.model.vault_calculation_parameters import VaultCalculationParameters
+from fds.analyticsapi.engines.model.vault_date_parameters import VaultDateParameters
+from fds.analyticsapi.engines.model.vault_identifier import VaultIdentifier
 from fds.protobuf.stach.extensions.StachVersion import StachVersion
 from fds.protobuf.stach.extensions.StachExtensionFactory import StachExtensionFactory
 
@@ -21,6 +22,7 @@ from urllib3 import Retry
 host = "https://api.factset.com"
 username = os.environ["ANALYTICS_API_USERNAME_SERIAL"]
 password = os.environ["ANALYTICS_API_PASSWORD"]
+
 
 
 def main():
@@ -41,40 +43,47 @@ def main():
     components_api = ComponentsApi(api_client)
 
     try:
-        pa_document_name = "PA_DOCUMENTS:DEFAULT"
-        pa_component_name = "Weights"
-        pa_component_category = "Weights / Exposures"
-        pa_benchmark_sp_50 = "BENCH:SP50"
-        pa_benchmark_r_1000 = "BENCH:R.1000"
-        startdate = "20180101"
-        enddate = "20181231"
+        vault_document_name = "Client:/aapi/VAULT_QA_PI_DEFAULT_LOCKED"
+        vault_component_total_returns = "Total Returns"
+        vault_component_performance = "Performance Over Time"
+        vault_component_category = "Performance / Performance Relative Dates"
+        vault_default_account = "CLIENT:/BISAM/REPOSITORY/QA/SMALL_PORT.ACCT"
+        vault_startdate = "20180101"
+        vault_enddate = "20180329"
         frequency = "Monthly"
 
-        components = components_api.get_pa_components(pa_document_name)
-        component_summary = ComponentSummary(name=pa_component_name, category=pa_component_category)
-        component_id = [id for id in list(components.data.keys()) if components.data[id] == component_summary][0]
-        print("PA Component Id: " + component_id)
-        pa_accounts = [PAIdentifier(id=pa_benchmark_sp_50)]
-        pa_benchmarks = [PAIdentifier(id=pa_benchmark_r_1000)]
-        pa_dates = PADateParameters(startdate=startdate, enddate=enddate, frequency=frequency)
+        components = components_api.get_vault_components(vault_document_name)
+        component_total_returns_summary = ComponentSummary(name=vault_component_total_returns, category=vault_component_category)
+        component_total_returns_id = [id for id in list(components.data.keys()) if components.data[id] == component_total_returns_summary][0]
+        print("Vault Total Returns Component Id: " + component_total_returns_id)
 
-        pa_calculation_parameters = {"1": PACalculationParameters(componentid=component_id, accounts=pa_accounts,
-                                                                  benchmarks=pa_benchmarks, dates=pa_dates),
-                                     "2": PACalculationParameters(componentid=component_id, accounts=pa_accounts,
-                                                                  benchmarks=pa_benchmarks, dates=pa_dates)}
+        component_performance_summary = ComponentSummary(name=vault_component_performance, category=vault_component_category)
+        component_performance_id = [id for id in list(components.data.keys()) if components.data[id] == component_performance_summary][0]
+        print("Vault Performance Over Time Component Id: " + component_performance_id)
 
-        pa_calculation_parameter_root = PACalculationParametersRoot(data=pa_calculation_parameters)
+        vault_account_identifier = VaultIdentifier(vault_default_account)
+        vault_dates = VaultDateParameters(startdate=vault_startdate, enddate=vault_enddate, frequency=frequency)
 
-        pa_calculations_api = PACalculationsApi(api_client)
+        configurations_api = ConfigurationsApi(api_client)
+        configurations = configurations_api.get_vault_configurations(vault_default_account)
+        configuration_id = list(configurations.data.keys())[0]
 
-        post_and_calculate_response = pa_calculations_api.post_and_calculate(
-            pa_calculation_parameters_root=pa_calculation_parameter_root, _return_http_data_only=False)
+        vault_calculation_parameters = {
+            "total_returns": VaultCalculationParameters(componentid=component_total_returns_id, account=vault_account_identifier, dates=vault_dates, configid=configuration_id),
+            "performance_over_time": VaultCalculationParameters(componentid=component_performance_id, account=vault_account_identifier, dates=vault_dates, configid=configuration_id)}
+
+        vault_calculation_parameters_root = VaultCalculationParametersRoot(data=vault_calculation_parameters)
+
+        vault_calculations_api = VaultCalculationsApi(api_client)
+
+        post_and_calculate_response = vault_calculations_api.post_and_calculate(
+            vault_calculation_parameters_root=vault_calculation_parameters_root, _return_http_data_only=False)
 
         if post_and_calculate_response[1] == 202 or post_and_calculate_response[1] == 200:
             calculation_id = post_and_calculate_response[0].data.calculationid
             print("Calculation Id: " + calculation_id)
 
-            status_response = pa_calculations_api.get_calculation_status_by_id(id=calculation_id,
+            status_response = vault_calculations_api.get_calculation_status_by_id(id=calculation_id,
                                                                                _return_http_data_only=False)
 
             while status_response[1] == 202 and (status_response[0].data.status in ("Queued", "Executing")):
@@ -84,13 +93,13 @@ def main():
                     max_age = age_value.replace("max-age=", "")
                 print('Sleeping: ' + max_age)
                 time.sleep(int(max_age))
-                status_response = pa_calculations_api.get_calculation_status_by_id(calculation_id,
+                status_response = vault_calculations_api.get_calculation_status_by_id(calculation_id,
                                                                                    _return_http_data_only=False)
 
             for (calculation_unit_id, calculation_unit) in status_response[0].data.units.items():
                 if calculation_unit.status == "Success":
                     print("Calculation Unit Id: " + calculation_unit_id + " Succeeded!!!")
-                    result_response = pa_calculations_api.get_calculation_unit_result_by_id(id=calculation_id,
+                    result_response = vault_calculations_api.get_calculation_unit_result_by_id(id=calculation_id,
                                                                                             unit_id=calculation_unit_id,
                                                                                             _return_http_data_only=False)
                     output_calculation_result(result_response[0]['data'])
