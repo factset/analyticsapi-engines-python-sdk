@@ -43,7 +43,8 @@ def main():
         pub_dates = PubDateParameters(enddate, startdate=startdate)
 
         pub_calculation_parameters = {
-            "1": PubCalculationParameters(pub_document_name, pub_account_identifier, pub_dates)
+            "1": PubCalculationParameters(pub_document_name, pub_account_identifier, pub_dates),
+            "2": PubCalculationParameters(pub_document_name, pub_account_identifier, pub_dates)
         }
 
         pub_calculation_parameters_root = PubCalculationParametersRoot(data=pub_calculation_parameters)
@@ -53,15 +54,12 @@ def main():
             pub_calculation_parameters_root=pub_calculation_parameters_root,
             _return_http_data_only=False)
 
-        if len(pub_calculation_parameters) == 1 and post_and_calculate_response[1] == 201:
-            output_calculation_result(post_and_calculate_response[0])
-        else:
+        if post_and_calculate_response[1] == 202 or post_and_calculate_response[1] == 200:
             calculation_id = post_and_calculate_response[0].data.calculationid
             print("Calculation Id: " + calculation_id)
 
-            status_response = pub_calculations_api.get_calculation_status_by_id(
-                id=calculation_id,
-                _return_http_data_only=False)
+            status_response = pub_calculations_api.get_calculation_status_by_id(id=calculation_id,
+                                                                                _return_http_data_only=False)
 
             while status_response[1] == 202 and (status_response[0].data.status in ("Queued", "Executing")):
                 max_age = '5'
@@ -79,11 +77,14 @@ def main():
                     result_response = pub_calculations_api.get_calculation_unit_result_by_id(id=calculation_id,
                                                                                              unit_id=calculation_unit_id,
                                                                                              _return_http_data_only=False)
-
-                    output_calculation_result(result_response[0].read())
+                    output_calculation_result(calculation_unit_id, (result_response[0].read()))
                 else:
                     print("Calculation Unit Id:" + calculation_unit_id + " Failed!!!")
                     print("Error message : " + calculation_unit.error)
+        else:
+            print("Calculation creation failed")
+            print("Error status : " + str(post_and_calculate_response[1]))
+            print("Error message : " + str(post_and_calculate_response[0]))
 
     except ApiException as e:
         print("Api exception Encountered")
@@ -91,8 +92,9 @@ def main():
         exit()
 
 
-def output_calculation_result(result):
-    filename = Path('Output.pdf')
+def output_calculation_result(output_prefix, result):
+    filename = Path(f'{output_prefix}-Output.pdf')
+    print(f'Writing output to {filename}')
     filename.write_bytes(result)
 
 
