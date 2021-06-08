@@ -52,10 +52,20 @@ def main():
                     "Effective Convexity"]
 
     securities = [
-        FISecurity("Price", 100.285, "912828ZG8", settlement="20201202", discount_curve="UST", face=10000.0),
-        FISecurity("Price", 101.138, "US037833AR12", settlement="20201203", discount_curve="UST", face=200000.0)
+        FISecurity(calc_from_method="Price",
+                   calc_from_value=100.285,
+                   symbol="912828ZG8",
+                   settlement="20201202",
+                   discount_curve="UST",
+                   face=10000.0),
+        FISecurity(calc_from_method="Price",
+                   calc_from_value=101.138,
+                   symbol="US037833AR12",
+                   settlement="20201203",
+                   discount_curve="UST",
+                   face=200000.0)
     ]
-    jobSettings = FIJobSettings("20201201")
+    jobSettings = FIJobSettings(as_of_date="20201201")
     fi_calculation_parameters = FICalculationParameters(securities, calculations, jobSettings)
     fi_calculation_parameters_root = FICalculationParametersRoot(data=fi_calculation_parameters)
 
