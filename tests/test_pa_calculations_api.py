@@ -30,20 +30,19 @@ from common_functions import CommonFunctions
 
 class TestPaCalculationsApi(unittest.TestCase):
     def setUp(self):
-        self.api_client = CommonFunctions.build_api_client()
-        self.calculations_api = PACalculationsApi(self.api_client)
+        self.calculations_api = PACalculationsApi(CommonFunctions.build_api_client())
 
     def test_single_unit_scenario(self):
         workflow_specification = {}
-        current_request = {}
+        starting_request = workflow_specification['create_calculation']
         environment = {}
-        self.run_api_workflow_with_assertions()
+        self.run_api_workflow_with_assertions(workflow_specification, starting_request, environment)
 
     def test_multiple_unit_scenario(self):
         workflow_specification = {}
-        current_request = {}
+        starting_request = workflow_specification['create_calculation']
         environment = {}
-        self.run_api_workflow_with_assertions()
+        self.run_api_workflow_with_assertions(workflow_specification, starting_request, environment)
 
     def run_api_workflow_with_assertions(self, workflow_specification, current_request, environment):
         print("something")

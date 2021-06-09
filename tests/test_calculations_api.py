@@ -28,6 +28,7 @@ import common_parameters
 from common_functions import CommonFunctions
 
 
+@unittest.skip("Outdated for v3")
 class TestCalculationsApi(unittest.TestCase):
 
     def setUp(self):
