@@ -7,6 +7,7 @@ from fds.protobuf.stach.Package_pb2 import Package
 from urllib3.response import HTTPResponse
 
 from fds.analyticsapi.engines.api.components_api import ComponentsApi
+from fds.analyticsapi.engines.api.pa_calculations_api import PACalculationsApi
 from fds.analyticsapi.engines.api.configurations_api import ConfigurationsApi
 from fds.analyticsapi.engines.model.pa_calculation_parameters import PACalculationParameters
 from fds.analyticsapi.engines.model.pa_identifier import PAIdentifier
@@ -22,16 +23,30 @@ from fds.analyticsapi.engines.model.pub_identifier import PubIdentifier
 from fds.analyticsapi.engines.model.pub_date_parameters import PubDateParameters
 from fds.analyticsapi.engines.model.calculation_status import CalculationStatus
 from fds.analyticsapi.engines.model.calculation_unit_status import CalculationUnitStatus
-from fds.analyticsapi.engines.model.calculation_status_summary import CalculationStatusSummary
-
 
 import common_parameters
 from common_functions import CommonFunctions
 
 
-class MyTestCase(unittest.TestCase):
-    def test_something(self):
-        self.assertEqual(True, False)
+class TestPaCalculationsApi(unittest.TestCase):
+    def setUp(self):
+        self.api_client = CommonFunctions.build_api_client()
+        self.calculations_api = PACalculationsApi(self.api_client)
+
+    def test_single_unit_scenario(self):
+        workflow_specification = {}
+        current_request = {}
+        environment = {}
+        self.run_api_workflow_with_assertions()
+
+    def test_multiple_unit_scenario(self):
+        workflow_specification = {}
+        current_request = {}
+        environment = {}
+        self.run_api_workflow_with_assertions()
+
+    def run_api_workflow_with_assertions(self, workflow_specification, current_request, environment):
+        print("something")
 
 
 if __name__ == '__main__':
