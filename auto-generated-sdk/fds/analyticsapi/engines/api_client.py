@@ -362,7 +362,7 @@ class ApiClient(object):
                     response_data.getheaders())
 
 
-def parameters_to_multipart(self, params, collection_types):
+    def parameters_to_multipart(self, params, collection_types):
         """Get parameters as list of tuples, formatting as json if value is collection_types
 
         :param params: Parameters as list of two-tuples
