@@ -6,30 +6,27 @@ from google.protobuf import json_format
 from fds.protobuf.stach.Package_pb2 import Package
 from urllib3.response import HTTPResponse
 
-from fds.analyticsapi.engines import ComponentSummary
 from fds.analyticsapi.engines.api.components_api import ComponentsApi
 from fds.analyticsapi.engines.api.configurations_api import ConfigurationsApi
-from fds.analyticsapi.engines.api.calculations_api import CalculationsApi
-from fds.analyticsapi.engines.api.utility_api import UtilityApi
-from fds.analyticsapi.engines.models.calculation import Calculation
-from fds.analyticsapi.engines.models.pa_calculation_parameters import PACalculationParameters
-from fds.analyticsapi.engines.models.pa_identifier import PAIdentifier
-from fds.analyticsapi.engines.models.pa_date_parameters import PADateParameters
-from fds.analyticsapi.engines.models.spar_calculation_parameters import SPARCalculationParameters
-from fds.analyticsapi.engines.models.spar_identifier import SPARIdentifier
-from fds.analyticsapi.engines.models.spar_date_parameters import SPARDateParameters
-## from fds.analyticsapi.engines.models.vault_calculation_parameters import VaultCalculationParameters
-# from fds.analyticsapi.engines.models.vault_identifier import VaultIdentifier
-# from fds.analyticsapi.engines.models.vault_date_parameters import VaultDateParameters
-from fds.analyticsapi.engines.models.pub_calculation_parameters import PubCalculationParameters
-from fds.analyticsapi.engines.models.pub_identifier import PubIdentifier
-from fds.analyticsapi.engines.models.pub_date_parameters import PubDateParameters
-from fds.analyticsapi.engines.models.calculation_status import CalculationStatus
-from fds.analyticsapi.engines.models.calculation_unit_status import CalculationUnitStatus
-from fds.analyticsapi.engines.models.calculation_status_summary import CalculationStatusSummary
+from fds.analyticsapi.engines.model.pa_calculation_parameters import PACalculationParameters
+from fds.analyticsapi.engines.model.pa_identifier import PAIdentifier
+from fds.analyticsapi.engines.model.pa_date_parameters import PADateParameters
+from fds.analyticsapi.engines.model.spar_calculation_parameters import SPARCalculationParameters
+from fds.analyticsapi.engines.model.spar_identifier import SPARIdentifier
+from fds.analyticsapi.engines.model.spar_date_parameters import SPARDateParameters
+from fds.analyticsapi.engines.model.vault_calculation_parameters import VaultCalculationParameters
+from fds.analyticsapi.engines.model.vault_identifier import VaultIdentifier
+from fds.analyticsapi.engines.model.vault_date_parameters import VaultDateParameters
+from fds.analyticsapi.engines.model.pub_calculation_parameters import PubCalculationParameters
+from fds.analyticsapi.engines.model.pub_identifier import PubIdentifier
+from fds.analyticsapi.engines.model.pub_date_parameters import PubDateParameters
+from fds.analyticsapi.engines.model.calculation_status import CalculationStatus
+from fds.analyticsapi.engines.model.calculation_unit_status import CalculationUnitStatus
+from fds.analyticsapi.engines.model.calculation_status_summary import CalculationStatusSummary
 
 import common_parameters
 from common_functions import CommonFunctions
+
 
 class TestCalculationsApi(unittest.TestCase):
 
@@ -156,6 +153,7 @@ class TestCalculationsApi(unittest.TestCase):
         self.assertEqual(type(response[0]), dict, "Response should be of dictionary type")
         first_key = list(response[0].keys())[0]
         self.assertEqual(type(response[0][first_key]), CalculationStatusSummary, "Response should be of CalculationStatusSummary type")
+
 
 if __name__ == '__main__':
     unittest.main()

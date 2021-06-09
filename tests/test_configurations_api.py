@@ -1,8 +1,8 @@
 import unittest
 
 from fds.analyticsapi.engines.api.configurations_api import ConfigurationsApi
-from fds.analyticsapi.engines.models.vault_configuration_summary import VaultConfigurationSummary
-from fds.analyticsapi.engines.models.vault_configuration import VaultConfiguration
+from fds.analyticsapi.engines.model.vault_configuration_summary import VaultConfigurationSummary
+from fds.analyticsapi.engines.model.vault_configuration import VaultConfiguration
 
 import common_parameters
 from common_functions import CommonFunctions
