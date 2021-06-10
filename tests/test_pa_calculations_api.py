@@ -1,52 +1,116 @@
 import unittest
 import time
-import json
-
-from google.protobuf import json_format
-from fds.protobuf.stach.Package_pb2 import Package
-from urllib3.response import HTTPResponse
 
 from fds.analyticsapi.engines.api.components_api import ComponentsApi
+from fds.analyticsapi.engines.model.component_summary import ComponentSummary
 from fds.analyticsapi.engines.api.pa_calculations_api import PACalculationsApi
-from fds.analyticsapi.engines.api.configurations_api import ConfigurationsApi
 from fds.analyticsapi.engines.model.pa_calculation_parameters import PACalculationParameters
+from fds.analyticsapi.engines.model.pa_calculation_parameters_root import PACalculationParametersRoot
 from fds.analyticsapi.engines.model.pa_identifier import PAIdentifier
 from fds.analyticsapi.engines.model.pa_date_parameters import PADateParameters
-from fds.analyticsapi.engines.model.spar_calculation_parameters import SPARCalculationParameters
-from fds.analyticsapi.engines.model.spar_identifier import SPARIdentifier
-from fds.analyticsapi.engines.model.spar_date_parameters import SPARDateParameters
-from fds.analyticsapi.engines.model.vault_calculation_parameters import VaultCalculationParameters
-from fds.analyticsapi.engines.model.vault_identifier import VaultIdentifier
-from fds.analyticsapi.engines.model.vault_date_parameters import VaultDateParameters
-from fds.analyticsapi.engines.model.pub_calculation_parameters import PubCalculationParameters
-from fds.analyticsapi.engines.model.pub_identifier import PubIdentifier
-from fds.analyticsapi.engines.model.pub_date_parameters import PubDateParameters
-from fds.analyticsapi.engines.model.calculation_status import CalculationStatus
-from fds.analyticsapi.engines.model.calculation_unit_status import CalculationUnitStatus
 
-import common_parameters
 from common_functions import CommonFunctions
 
 
 class TestPaCalculationsApi(unittest.TestCase):
     def setUp(self):
-        self.calculations_api = PACalculationsApi(CommonFunctions.build_api_client())
+        api_client = CommonFunctions.build_api_client()
+        self.pa_calculations_api = PACalculationsApi(api_client)
+        self.components_api = ComponentsApi(api_client)
 
     def test_single_unit_scenario(self):
-        workflow_specification = {}
-        starting_request = workflow_specification['create_calculation']
-        environment = {}
-        self.run_api_workflow_with_assertions(workflow_specification, starting_request, environment)
+        create_step_name = "create_calculation"
+        read_status_step_name = "read_status"
+        read_result_step_name = "read_result"
 
-    def test_multiple_unit_scenario(self):
-        workflow_specification = {}
-        starting_request = workflow_specification['create_calculation']
-        environment = {}
-        self.run_api_workflow_with_assertions(workflow_specification, starting_request, environment)
+        def create_calculation(context):
+            print("Creating single unit calculation")
+            components = self.components_api.get_pa_components(document="PA_DOCUMENTS:DEFAULT")
+            component_summary = ComponentSummary(name="Weights", category="Weights / Exposures")
+            component_id = [id for id in list(components.data.keys()) if components.data[id] == component_summary][0]
+            pa_accounts = [PAIdentifier(id="BENCH:SP50")]
+            pa_benchmarks = [PAIdentifier(id="BENCH:R.1000")]
+            pa_dates = PADateParameters(startdate="20180101", enddate="20181231", frequency="Monthly")
 
-    def run_api_workflow_with_assertions(self, workflow_specification, current_request, environment):
-        print("something")
+            pa_calculation_parameters = {"1": PACalculationParameters(componentid=component_id, accounts=pa_accounts,
+                                                                      benchmarks=pa_benchmarks, dates=pa_dates)}
+
+            pa_calculation_parameter_root = PACalculationParametersRoot(data=pa_calculation_parameters)
+
+            post_and_calculate_response = self.pa_calculations_api.post_and_calculate(
+                pa_calculation_parameters_root=pa_calculation_parameter_root, _return_http_data_only=False)
+
+            self.assertTrue(post_and_calculate_response[1] == 201 or post_and_calculate_response[1] == 202,
+                            "Response for create_calculation should have been 201 or 202")
+
+            if post_and_calculate_response[1] == 201:
+                return {
+                    "continue_workflow": False,
+                    "next_request": None,
+                    "context": None
+                }
+            elif post_and_calculate_response[1] == 202:
+                context["calculation_id"] = post_and_calculate_response[0].data.calculationid
+                return {
+                    "continue_workflow": True,
+                    "next_request": read_status_step_name,
+                    "context": context
+                }
+
+        def read_calculation_status(context):
+            print("Reading single unit calculation status")
+            calculation_id = context["calculation_id"]
+            print("Calculation Id: " + calculation_id)
+
+            status_response = self.pa_calculations_api.get_calculation_status_by_id(id=calculation_id,
+                                                                               _return_http_data_only=False)
+
+            self.assertTrue(status_response[1] == 202 and (status_response[0].data.status in ("Queued", "Executing")))
+
+            while status_response[1] == 202 and (status_response[0].data.status in ("Queued", "Executing")):
+                max_age = '5'
+                age_value = status_response[2].get("cache-control")
+                if age_value is not None:
+                    max_age = age_value.replace("max-age=", "")
+                print('Sleeping: ' + max_age)
+                time.sleep(int(max_age))
+                status_response = self.pa_calculations_api.get_calculation_status_by_id(id=calculation_id,
+                                                                                   _return_http_data_only=False)
+
+                context["calculation_units"] = status_response[0].data.units.items()[0]
+                return {
+                    "continue_workflow": True,
+                    "next_request": read_result_step_name,
+                    "context": context
+                }
+
+        def read_calculation_unit_result(context):
+            calculation_id = context["calculation_id"]
+            for (calculation_unit_id, calculation_unit) in context.calculation_units:
+                result_response = self.pa_calculations_api.get_calculation_unit_result_by_id(id=calculation_id,
+                                                                                             unit_id=calculation_unit_id,
+                                                                                             _return_http_data_only=False)
+                self.assertEqual(result_response[1], 200, "Get calculation result should have succeeded")
+
+        workflow_specification = {
+            create_step_name: create_calculation,
+            read_status_step_name: read_calculation_status,
+            read_result_step_name: read_calculation_unit_result
+        }
+        starting_request = workflow_specification['create_calculation']
+        context = {}
+        run_api_workflow_with_assertions(workflow_specification, starting_request, context)
+
+
+def run_api_workflow_with_assertions(workflow_specification, current_request, context):
+    current_request_result = current_request(context)
+    if current_request_result["continue_workflow"]:
+        run_api_workflow_with_assertions(
+            workflow_specification,
+            current_request_result.next_request,
+            current_request_result.context
+        )
 
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main(failfast=True)
