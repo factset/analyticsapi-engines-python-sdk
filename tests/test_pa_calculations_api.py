@@ -23,7 +23,7 @@ class TestPaCalculationsApi(unittest.TestCase):
         read_status_step_name = "read_status"
         read_result_step_name = "read_result"
 
-        def create_calculation(context):
+        def create_calculation(test_context):
             print("Creating single unit calculation")
             components = self.components_api.get_pa_components(document="PA_DOCUMENTS:DEFAULT")
             component_summary = ComponentSummary(name="Weights", category="Weights / Exposures")
@@ -47,19 +47,19 @@ class TestPaCalculationsApi(unittest.TestCase):
                 return {
                     "continue_workflow": False,
                     "next_request": None,
-                    "context": None
+                    "test_context": None
                 }
             elif post_and_calculate_response[1] == 202:
-                context["calculation_id"] = post_and_calculate_response[0].data.calculationid
+                test_context["calculation_id"] = post_and_calculate_response[0].data.calculationid
                 return {
                     "continue_workflow": True,
                     "next_request": read_status_step_name,
-                    "context": context
+                    "test_context": test_context
                 }
 
-        def read_calculation_status(context):
+        def read_calculation_status(test_context):
             print("Reading single unit calculation status")
-            calculation_id = context["calculation_id"]
+            calculation_id = test_context["calculation_id"]
             print("Calculation Id: " + calculation_id)
 
             status_response = self.pa_calculations_api.get_calculation_status_by_id(id=calculation_id,
@@ -77,16 +77,16 @@ class TestPaCalculationsApi(unittest.TestCase):
                 status_response = self.pa_calculations_api.get_calculation_status_by_id(id=calculation_id,
                                                                                    _return_http_data_only=False)
 
-                context["calculation_units"] = status_response[0].data.units.items()[0]
+                test_context["calculation_units"] = status_response[0].data.units.items()[0]
                 return {
                     "continue_workflow": True,
                     "next_request": read_result_step_name,
-                    "context": context
+                    "test_context": test_context
                 }
 
-        def read_calculation_unit_result(context):
-            calculation_id = context["calculation_id"]
-            for (calculation_unit_id, calculation_unit) in context.calculation_units:
+        def read_calculation_unit_result(test_context):
+            calculation_id = test_context["calculation_id"]
+            for (calculation_unit_id, calculation_unit) in test_context.calculation_units:
                 result_response = self.pa_calculations_api.get_calculation_unit_result_by_id(id=calculation_id,
                                                                                              unit_id=calculation_unit_id,
                                                                                              _return_http_data_only=False)
@@ -98,17 +98,17 @@ class TestPaCalculationsApi(unittest.TestCase):
             read_result_step_name: read_calculation_unit_result
         }
         starting_request = workflow_specification['create_calculation']
-        context = {}
-        run_api_workflow_with_assertions(workflow_specification, starting_request, context)
+        test_context = {}
+        run_api_workflow_with_assertions(workflow_specification, starting_request, test_context)
 
 
-def run_api_workflow_with_assertions(workflow_specification, current_request, context):
-    current_request_result = current_request(context)
+def run_api_workflow_with_assertions(workflow_specification, current_request, test_context):
+    current_request_result = current_request(test_context)
     if current_request_result["continue_workflow"]:
         run_api_workflow_with_assertions(
             workflow_specification,
             current_request_result.next_request,
-            current_request_result.context
+            current_request_result.test_context
         )
 
 
