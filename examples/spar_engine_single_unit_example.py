@@ -72,6 +72,10 @@ def main():
 
         if post_and_calculate_response[1] == 201:
             output_calculation_result(post_and_calculate_response[0]['data'])
+        elif post_and_calculate_response[1] == 200:
+            for (calculation_unit_id, calculation_unit) in post_and_calculate_response[0].data.units.items():
+                print("Calculation Unit Id:" + calculation_unit_id + " Failed!!!")
+                print("Error message : " + str(calculation_unit.errors))
         else:
             calculation_id = post_and_calculate_response[0].data.calculationid
             print("Calculation Id: " + calculation_id)
@@ -98,7 +102,7 @@ def main():
                     output_calculation_result(result_response[0]['data'])
                 else:
                     print("Calculation Unit Id:" + calculation_unit_id + " Failed!!!")
-                    print("Error message : " + calculation_unit.error)
+                    print("Error message : " + str(calculation_unit.errors))
     except ApiException as e:
         print("Api exception Encountered")
         print(e)
