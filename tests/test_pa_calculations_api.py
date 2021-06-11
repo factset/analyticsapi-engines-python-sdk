@@ -98,8 +98,8 @@ class TestPaCalculationsApi(unittest.TestCase):
             read_result_step_name: read_calculation_unit_result
         }
         starting_request = workflow_specification['create_calculation']
-        test_context = {}
-        run_api_workflow_with_assertions(workflow_specification, starting_request, test_context)
+        starting_test_context = {}
+        run_api_workflow_with_assertions(workflow_specification, starting_request, starting_test_context)
 
 
 def run_api_workflow_with_assertions(workflow_specification, current_request, test_context):
@@ -108,7 +108,7 @@ def run_api_workflow_with_assertions(workflow_specification, current_request, te
         run_api_workflow_with_assertions(
             workflow_specification,
             current_request_result["next_request"],
-            current_request_result.test_context
+            current_request_result["test_context"]
         )
 
 
