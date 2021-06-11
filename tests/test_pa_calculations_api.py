@@ -107,7 +107,7 @@ def run_api_workflow_with_assertions(workflow_specification, current_request, te
     if current_request_result["continue_workflow"]:
         run_api_workflow_with_assertions(
             workflow_specification,
-            current_request_result.next_request,
+            current_request_result["next_request"],
             current_request_result.test_context
         )
 
