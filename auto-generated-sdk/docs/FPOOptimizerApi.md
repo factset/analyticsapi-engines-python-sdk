@@ -396,7 +396,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fpo_optimizer_api.FPOOptimizerApi(api_client)
     x_fact_set_api_long_running_deadline = 1 # int | Long running deadline in seconds. (optional)
-    cache_control = "Cache-Control_example" # str | Standard HTTP header.  Accepts no-store, max-age, max-stale. (optional)
+    cache_control = "Cache-Control_example" # str | Standard HTTP header.  Accepts max-stale. (optional)
     fpo_optimization_parameters_root = FPOOptimizationParametersRoot(
         data=FPOOptimizationParameters(
             account=FPOAccount(
@@ -465,7 +465,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **x_fact_set_api_long_running_deadline** | **int**| Long running deadline in seconds. | [optional]
- **cache_control** | **str**| Standard HTTP header.  Accepts no-store, max-age, max-stale. | [optional]
+ **cache_control** | **str**| Standard HTTP header.  Accepts max-stale. | [optional]
  **fpo_optimization_parameters_root** | [**FPOOptimizationParametersRoot**](FPOOptimizationParametersRoot.md)| Optimization Parameters | [optional]
 
 ### Return type
@@ -540,7 +540,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     api_instance = fpo_optimizer_api.FPOOptimizerApi(api_client)
     id = "id_example" # str | from url, provided from the location header in the Create and Run FPO optimization endpoint
     x_fact_set_api_long_running_deadline = 1 # int | Long running deadline in seconds. (optional)
-    cache_control = "Cache-Control_example" # str | Standard HTTP header.  Accepts no-store, max-age, max-stale. (optional)
+    cache_control = "Cache-Control_example" # str | Standard HTTP header.  Accepts max-stale. (optional)
     fpo_optimization_parameters_root = FPOOptimizationParametersRoot(
         data=FPOOptimizationParameters(
             account=FPOAccount(
@@ -618,7 +618,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| from url, provided from the location header in the Create and Run FPO optimization endpoint |
  **x_fact_set_api_long_running_deadline** | **int**| Long running deadline in seconds. | [optional]
- **cache_control** | **str**| Standard HTTP header.  Accepts no-store, max-age, max-stale. | [optional]
+ **cache_control** | **str**| Standard HTTP header.  Accepts max-stale. | [optional]
  **fpo_optimization_parameters_root** | [**FPOOptimizationParametersRoot**](FPOOptimizationParametersRoot.md)| Optimization Parameters | [optional]
 
 ### Return type

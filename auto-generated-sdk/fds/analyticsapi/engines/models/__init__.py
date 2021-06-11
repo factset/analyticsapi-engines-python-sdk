@@ -9,6 +9,10 @@
 # import sys
 # sys.setrecursionlimit(n)
 
+from fds.analyticsapi.engines.model.afi_optimization_parameters import AFIOptimizationParameters
+from fds.analyticsapi.engines.model.afi_optimization_parameters_root import AFIOptimizationParametersRoot
+from fds.analyticsapi.engines.model.afi_optimizer_strategy import AFIOptimizerStrategy
+from fds.analyticsapi.engines.model.afi_optimizer_strategy_overrides import AFIOptimizerStrategyOverrides
 from fds.analyticsapi.engines.model.account_directories import AccountDirectories
 from fds.analyticsapi.engines.model.account_directories_root import AccountDirectoriesRoot
 from fds.analyticsapi.engines.model.axioma_equity_optimization_parameters import AxiomaEquityOptimizationParameters
@@ -40,6 +44,7 @@ from fds.analyticsapi.engines.model.configuration_account import ConfigurationAc
 from fds.analyticsapi.engines.model.constraint_action import ConstraintAction
 from fds.analyticsapi.engines.model.currency import Currency
 from fds.analyticsapi.engines.model.currency_root import CurrencyRoot
+from fds.analyticsapi.engines.model.date_list import DateList
 from fds.analyticsapi.engines.model.date_parameters_summary import DateParametersSummary
 from fds.analyticsapi.engines.model.date_parameters_summary_root import DateParametersSummaryRoot
 from fds.analyticsapi.engines.model.document_directories import DocumentDirectories
@@ -59,10 +64,17 @@ from fds.analyticsapi.engines.model.fi_security import FISecurity
 from fds.analyticsapi.engines.model.fpo_account import FPOAccount
 from fds.analyticsapi.engines.model.fpo_optimization_parameters import FPOOptimizationParameters
 from fds.analyticsapi.engines.model.fpo_optimization_parameters_root import FPOOptimizationParametersRoot
+from fds.analyticsapi.engines.model.fds_date import FdsDate
+from fds.analyticsapi.engines.model.fql_expression import FqlExpression
 from fds.analyticsapi.engines.model.frequency import Frequency
 from fds.analyticsapi.engines.model.frequency_root import FrequencyRoot
 from fds.analyticsapi.engines.model.group import Group
 from fds.analyticsapi.engines.model.group_root import GroupRoot
+from fds.analyticsapi.engines.model.identifier_universe import IdentifierUniverse
+from fds.analyticsapi.engines.model.npo_optimization_parameters import NPOOptimizationParameters
+from fds.analyticsapi.engines.model.npo_optimization_parameters_root import NPOOptimizationParametersRoot
+from fds.analyticsapi.engines.model.npo_optimizer_strategy import NPOOptimizerStrategy
+from fds.analyticsapi.engines.model.npo_optimizer_strategy_overrides import NPOOptimizerStrategyOverrides
 from fds.analyticsapi.engines.model.object_root import ObjectRoot
 from fds.analyticsapi.engines.model.optimal_portfolio import OptimalPortfolio
 from fds.analyticsapi.engines.model.optimization import Optimization
@@ -86,12 +98,19 @@ from fds.analyticsapi.engines.model.pub_calculation_parameters import PubCalcula
 from fds.analyticsapi.engines.model.pub_calculation_parameters_root import PubCalculationParametersRoot
 from fds.analyticsapi.engines.model.pub_date_parameters import PubDateParameters
 from fds.analyticsapi.engines.model.pub_identifier import PubIdentifier
+from fds.analyticsapi.engines.model.quant_calculation_meta import QuantCalculationMeta
+from fds.analyticsapi.engines.model.quant_calculation_parameters import QuantCalculationParameters
+from fds.analyticsapi.engines.model.quant_calculation_parameters_root import QuantCalculationParametersRoot
 from fds.analyticsapi.engines.model.spar_benchmark import SPARBenchmark
 from fds.analyticsapi.engines.model.spar_benchmark_root import SPARBenchmarkRoot
 from fds.analyticsapi.engines.model.spar_calculation_parameters import SPARCalculationParameters
 from fds.analyticsapi.engines.model.spar_calculation_parameters_root import SPARCalculationParametersRoot
 from fds.analyticsapi.engines.model.spar_date_parameters import SPARDateParameters
 from fds.analyticsapi.engines.model.spar_identifier import SPARIdentifier
+from fds.analyticsapi.engines.model.screening_expression import ScreeningExpression
+from fds.analyticsapi.engines.model.screening_expression_universe import ScreeningExpressionUniverse
+from fds.analyticsapi.engines.model.universal_screen_parameter import UniversalScreenParameter
+from fds.analyticsapi.engines.model.universal_screen_universe import UniversalScreenUniverse
 from fds.analyticsapi.engines.model.vault_calculation_parameters import VaultCalculationParameters
 from fds.analyticsapi.engines.model.vault_calculation_parameters_root import VaultCalculationParametersRoot
 from fds.analyticsapi.engines.model.vault_component import VaultComponent

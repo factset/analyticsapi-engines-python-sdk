@@ -387,7 +387,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = spar_calculations_api.SPARCalculationsApi(api_client)
     x_fact_set_api_long_running_deadline = 1 # int | Long running deadline in seconds when only one unit is passed in the POST body. (optional)
-    cache_control = "Cache-Control_example" # str | Standard HTTP header.  Accepts no-store, max-age, max-stale. (optional)
+    cache_control = "Cache-Control_example" # str | Standard HTTP header.  Accepts max-stale. (optional)
     spar_calculation_parameters_root = SPARCalculationParametersRoot(
         data={
             "key": SPARCalculationParameters(
@@ -433,7 +433,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **x_fact_set_api_long_running_deadline** | **int**| Long running deadline in seconds when only one unit is passed in the POST body. | [optional]
- **cache_control** | **str**| Standard HTTP header.  Accepts no-store, max-age, max-stale. | [optional]
+ **cache_control** | **str**| Standard HTTP header.  Accepts max-stale. | [optional]
  **spar_calculation_parameters_root** | [**SPARCalculationParametersRoot**](SPARCalculationParametersRoot.md)| Calculation Parameters | [optional]
 
 ### Return type
@@ -509,7 +509,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     api_instance = spar_calculations_api.SPARCalculationsApi(api_client)
     id = "id_example" # str | from url, provided from the location header in the Create and Run SPAR calculation endpoint
     x_fact_set_api_long_running_deadline = 1 # int | Long running deadline in seconds when only one unit is passed in the PUT body. (optional)
-    cache_control = "Cache-Control_example" # str | Standard HTTP header.  Accepts no-store, max-age, max-stale. (optional)
+    cache_control = "Cache-Control_example" # str | Standard HTTP header.  Accepts max-stale. (optional)
     spar_calculation_parameters_root = SPARCalculationParametersRoot(
         data={
             "key": SPARCalculationParameters(
@@ -564,7 +564,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| from url, provided from the location header in the Create and Run SPAR calculation endpoint |
  **x_fact_set_api_long_running_deadline** | **int**| Long running deadline in seconds when only one unit is passed in the PUT body. | [optional]
- **cache_control** | **str**| Standard HTTP header.  Accepts no-store, max-age, max-stale. | [optional]
+ **cache_control** | **str**| Standard HTTP header.  Accepts max-stale. | [optional]
  **spar_calculation_parameters_root** | [**SPARCalculationParametersRoot**](SPARCalculationParametersRoot.md)| Calculation Parameters | [optional]
 
 ### Return type

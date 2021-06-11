@@ -1,5 +1,6 @@
 import os
 import time
+from pathlib import Path
 
 from fds.analyticsapi.engines import ApiException
 from fds.analyticsapi.engines.api_client import ApiClient
@@ -11,7 +12,6 @@ from fds.analyticsapi.engines.model.pub_identifier import PubIdentifier
 from fds.analyticsapi.engines.model.pub_date_parameters import PubDateParameters
 
 from urllib3 import Retry
-from pathlib import Path
 
 host = "https://api.factset.com"
 username = os.environ["ANALYTICS_API_USERNAME_SERIAL"]
@@ -55,6 +55,10 @@ def main():
 
         if post_and_calculate_response[1] == 201:
             output_calculation_result("single_unit", (post_and_calculate_response[0].read()))
+        elif post_and_calculate_response[1] == 200:
+            for (calculation_unit_id, calculation_unit) in post_and_calculate_response[0].data.units.items():
+                print("Calculation Unit Id:" + calculation_unit_id + " Failed!!!")
+                print("Error message : " + str(calculation_unit.errors))
         else:
             calculation_id = post_and_calculate_response[0].data.calculationid
             print("Calculation Id: " + calculation_id)
@@ -83,7 +87,7 @@ def main():
                     output_calculation_result("single_unit", (result_response[0].read()))
                 else:
                     print("Calculation Unit Id:" + calculation_unit_id + " Failed!!!")
-                    print("Error message : " + calculation_unit.error)
+                    print("Error message : " + str(calculation_unit.errors))
 
     except ApiException as e:
         print("Api exception Encountered")
