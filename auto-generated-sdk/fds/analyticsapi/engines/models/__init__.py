@@ -29,8 +29,10 @@ from fds.analyticsapi.engines.model.calculation_info import CalculationInfo
 from fds.analyticsapi.engines.model.calculation_info_root import CalculationInfoRoot
 from fds.analyticsapi.engines.model.calculation_meta import CalculationMeta
 from fds.analyticsapi.engines.model.calculation_status import CalculationStatus
+from fds.analyticsapi.engines.model.calculation_status_meta import CalculationStatusMeta
 from fds.analyticsapi.engines.model.calculation_status_root import CalculationStatusRoot
 from fds.analyticsapi.engines.model.calculation_unit_status import CalculationUnitStatus
+from fds.analyticsapi.engines.model.calculation_unit_status_meta import CalculationUnitStatusMeta
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from fds.analyticsapi.engines.model.column import Column
 from fds.analyticsapi.engines.model.column_root import ColumnRoot

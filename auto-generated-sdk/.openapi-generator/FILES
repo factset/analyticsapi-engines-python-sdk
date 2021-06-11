@@ -28,8 +28,10 @@ docs/CalculationInfo.md
 docs/CalculationInfoRoot.md
 docs/CalculationMeta.md
 docs/CalculationStatus.md
+docs/CalculationStatusMeta.md
 docs/CalculationStatusRoot.md
 docs/CalculationUnitStatus.md
+docs/CalculationUnitStatusMeta.md
 docs/ClientErrorResponse.md
 docs/Column.md
 docs/ColumnRoot.md
@@ -192,8 +194,10 @@ fds/analyticsapi/engines/model/calculation_info.py
 fds/analyticsapi/engines/model/calculation_info_root.py
 fds/analyticsapi/engines/model/calculation_meta.py
 fds/analyticsapi/engines/model/calculation_status.py
+fds/analyticsapi/engines/model/calculation_status_meta.py
 fds/analyticsapi/engines/model/calculation_status_root.py
 fds/analyticsapi/engines/model/calculation_unit_status.py
+fds/analyticsapi/engines/model/calculation_unit_status_meta.py
 fds/analyticsapi/engines/model/client_error_response.py
 fds/analyticsapi/engines/model/column.py
 fds/analyticsapi/engines/model/column_root.py
