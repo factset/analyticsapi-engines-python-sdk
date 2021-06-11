@@ -336,7 +336,7 @@ class ApiClient(object):
         if return_data.status in (204, 304) or 100 <= return_data.status < 200:
             return_data = None
 
-        if response_type_dict[return_data.status]:
+        if response_type_dict is not None and response_type_dict[return_data.status]:
             response_type = response_type_dict[return_data.status]
             if response_type != (file_type,):
                 encoding = "utf-8"
