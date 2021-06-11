@@ -9,6 +9,10 @@
 # import sys
 # sys.setrecursionlimit(n)
 
+from fds.analyticsapi.engines.model.afi_optimization_parameters import AFIOptimizationParameters
+from fds.analyticsapi.engines.model.afi_optimization_parameters_root import AFIOptimizationParametersRoot
+from fds.analyticsapi.engines.model.afi_optimizer_strategy import AFIOptimizerStrategy
+from fds.analyticsapi.engines.model.afi_optimizer_strategy_overrides import AFIOptimizerStrategyOverrides
 from fds.analyticsapi.engines.model.account_directories import AccountDirectories
 from fds.analyticsapi.engines.model.account_directories_root import AccountDirectoriesRoot
 from fds.analyticsapi.engines.model.axioma_equity_optimization_parameters import AxiomaEquityOptimizationParameters
@@ -63,6 +67,10 @@ from fds.analyticsapi.engines.model.frequency import Frequency
 from fds.analyticsapi.engines.model.frequency_root import FrequencyRoot
 from fds.analyticsapi.engines.model.group import Group
 from fds.analyticsapi.engines.model.group_root import GroupRoot
+from fds.analyticsapi.engines.model.npo_optimization_parameters import NPOOptimizationParameters
+from fds.analyticsapi.engines.model.npo_optimization_parameters_root import NPOOptimizationParametersRoot
+from fds.analyticsapi.engines.model.npo_optimizer_strategy import NPOOptimizerStrategy
+from fds.analyticsapi.engines.model.npo_optimizer_strategy_overrides import NPOOptimizerStrategyOverrides
 from fds.analyticsapi.engines.model.object_root import ObjectRoot
 from fds.analyticsapi.engines.model.optimal_portfolio import OptimalPortfolio
 from fds.analyticsapi.engines.model.optimization import Optimization
@@ -86,6 +94,17 @@ from fds.analyticsapi.engines.model.pub_calculation_parameters import PubCalcula
 from fds.analyticsapi.engines.model.pub_calculation_parameters_root import PubCalculationParametersRoot
 from fds.analyticsapi.engines.model.pub_date_parameters import PubDateParameters
 from fds.analyticsapi.engines.model.pub_identifier import PubIdentifier
+from fds.analyticsapi.engines.model.quant_calculation_meta import QuantCalculationMeta
+from fds.analyticsapi.engines.model.quant_calculation_parameters import QuantCalculationParameters
+from fds.analyticsapi.engines.model.quant_calculation_parameters_root import QuantCalculationParametersRoot
+from fds.analyticsapi.engines.model.quant_date_list import QuantDateList
+from fds.analyticsapi.engines.model.quant_fds_date import QuantFdsDate
+from fds.analyticsapi.engines.model.quant_fql_expression import QuantFqlExpression
+from fds.analyticsapi.engines.model.quant_identifier_universe import QuantIdentifierUniverse
+from fds.analyticsapi.engines.model.quant_screening_expression import QuantScreeningExpression
+from fds.analyticsapi.engines.model.quant_screening_expression_universe import QuantScreeningExpressionUniverse
+from fds.analyticsapi.engines.model.quant_universal_screen_parameter import QuantUniversalScreenParameter
+from fds.analyticsapi.engines.model.quant_universal_screen_universe import QuantUniversalScreenUniverse
 from fds.analyticsapi.engines.model.spar_benchmark import SPARBenchmark
 from fds.analyticsapi.engines.model.spar_benchmark_root import SPARBenchmarkRoot
 from fds.analyticsapi.engines.model.spar_calculation_parameters import SPARCalculationParameters

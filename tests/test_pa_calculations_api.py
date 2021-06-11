@@ -10,6 +10,7 @@ from fds.analyticsapi.engines.model.pa_identifier import PAIdentifier
 from fds.analyticsapi.engines.model.pa_date_parameters import PADateParameters
 
 from common_functions import CommonFunctions
+from api_workflow import run_api_workflow_with_assertions
 
 
 class TestPaCalculationsApi(unittest.TestCase):
@@ -98,18 +99,8 @@ class TestPaCalculationsApi(unittest.TestCase):
             read_result_step_name: read_calculation_unit_result
         }
         starting_request = workflow_specification['create_calculation']
-        test_context = {}
-        run_api_workflow_with_assertions(workflow_specification, starting_request, test_context)
-
-
-def run_api_workflow_with_assertions(workflow_specification, current_request, test_context):
-    current_request_result = current_request(test_context)
-    if current_request_result["continue_workflow"]:
-        run_api_workflow_with_assertions(
-            workflow_specification,
-            current_request_result.next_request,
-            current_request_result.test_context
-        )
+        starting_test_context = {}
+        run_api_workflow_with_assertions(workflow_specification, starting_request, starting_test_context)
 
 
 if __name__ == '__main__':

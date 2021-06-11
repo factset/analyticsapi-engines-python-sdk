@@ -110,7 +110,7 @@ def main():
                 else:
                     print("Calculation Unit Id:" +
                           calculation_unit_id + " Failed!!!")
-                    print("Error message : " + calculation_unit.error)
+                    print("Error message : " + str(calculation_unit.errors))
         else:
             print("Calculation creation failed")
             print("Error status : " + str(post_and_calculate_response[1]))
