@@ -47,7 +47,8 @@ def main():
             "2": PubCalculationParameters(pub_document_name, pub_account_identifier, pub_dates)
         }
 
-        pub_calculation_parameters_root = PubCalculationParametersRoot(data=pub_calculation_parameters)
+        pub_calculation_parameters_root = PubCalculationParametersRoot(
+            data=pub_calculation_parameters)
 
         pub_calculations_api = PubCalculationsApi(api_client)
         post_and_calculate_response = pub_calculations_api.post_and_calculate(
@@ -73,13 +74,16 @@ def main():
 
             for (calculation_unit_id, calculation_unit) in status_response[0].data.units.items():
                 if calculation_unit.status == "Success":
-                    print("Calculation Unit Id: " + calculation_unit_id + " Succeeded!!!")
+                    print("Calculation Unit Id: " +
+                          calculation_unit_id + " Succeeded!!!")
                     result_response = pub_calculations_api.get_calculation_unit_result_by_id(id=calculation_id,
                                                                                              unit_id=calculation_unit_id,
                                                                                              _return_http_data_only=False)
-                    output_calculation_result(calculation_unit_id, (result_response[0].read()))
+                    output_calculation_result(
+                        calculation_unit_id, (result_response[0].read()))
                 else:
-                    print("Calculation Unit Id:" + calculation_unit_id + " Failed!!!")
+                    print("Calculation Unit Id:" +
+                          calculation_unit_id + " Failed!!!")
                     print("Error message : " + str(calculation_unit.errors))
         else:
             print("Calculation creation failed")

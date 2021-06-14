@@ -51,20 +51,23 @@ def main():
         enddate = "20181231"
         frequency = "Monthly"
         components = components_api.get_spar_components(spar_document_name)
-        component_summary = ComponentSummary(name=spar_component_name, category=spar_component_category)
-        component_id = [id for id in list(components.data.keys()) if components.data[id] == component_summary][0]
+        component_summary = ComponentSummary(
+            name=spar_component_name, category=spar_component_category)
+        component_id = [id for id in list(
+            components.data.keys()) if components.data[id] == component_summary][0]
         print("SPAR Component Id: " + component_id)
         spar_account_identifier = SPARIdentifier(id=spar_benchmark_r_1000, returntype=spar_benchmark_russell_return_type,
-                                                prefix=spar_benchmark_russell_prefix)
+                                                 prefix=spar_benchmark_russell_prefix)
         spar_accounts = [spar_account_identifier]
         spar_benchmark_identifier = SPARIdentifier(id=spar_benchmark_russell_pr_2000, returntype=spar_benchmark_russell_return_type,
-                                                prefix=spar_benchmark_russell_prefix)
+                                                   prefix=spar_benchmark_russell_prefix)
         spar_dates = SPARDateParameters(startdate, enddate, frequency)
 
         spar_calculation_parameters = {"1": SPARCalculationParameters(componentid=component_id, accounts=spar_accounts, benchmark=spar_benchmark_identifier,
-                                                                dates=spar_dates)}
+                                                                      dates=spar_dates)}
 
-        spar_calculation_parameter_root = SPARCalculationParametersRoot(data=spar_calculation_parameters)
+        spar_calculation_parameter_root = SPARCalculationParametersRoot(
+            data=spar_calculation_parameters)
 
         spar_calculations_api = SPARCalculationsApi(api_client)
         post_and_calculate_response = spar_calculations_api.post_and_calculate(
@@ -74,14 +77,15 @@ def main():
             output_calculation_result(post_and_calculate_response[0]['data'])
         elif post_and_calculate_response[1] == 200:
             for (calculation_unit_id, calculation_unit) in post_and_calculate_response[0].data.units.items():
-                print("Calculation Unit Id:" + calculation_unit_id + " Failed!!!")
+                print("Calculation Unit Id:" +
+                      calculation_unit_id + " Failed!!!")
                 print("Error message : " + str(calculation_unit.errors))
         else:
             calculation_id = post_and_calculate_response[0].data.calculationid
             print("Calculation Id: " + calculation_id)
 
             status_response = spar_calculations_api.get_calculation_status_by_id(id=calculation_id,
-                                                                               _return_http_data_only=False)
+                                                                                 _return_http_data_only=False)
 
             while status_response[1] == 202 and (status_response[0].data.status in ("Queued", "Executing")):
                 max_age = '5'
@@ -91,17 +95,19 @@ def main():
                 print('Sleeping: ' + max_age)
                 time.sleep(int(max_age))
                 status_response = spar_calculations_api.get_calculation_status_by_id(calculation_id,
-                                                                                   _return_http_data_only=False)
+                                                                                     _return_http_data_only=False)
 
             for (calculation_unit_id, calculation_unit) in status_response[0].data.units.items():
                 if calculation_unit.status == "Success":
-                    print("Calculation Unit Id: " + calculation_unit_id + " Succeeded!!!")
+                    print("Calculation Unit Id: " +
+                          calculation_unit_id + " Succeeded!!!")
                     result_response = spar_calculations_api.get_calculation_unit_result_by_id(id=calculation_id,
-                                                                                            unit_id=calculation_unit_id,
-                                                                                            _return_http_data_only=False)
+                                                                                              unit_id=calculation_unit_id,
+                                                                                              _return_http_data_only=False)
                     output_calculation_result(result_response[0]['data'])
                 else:
-                    print("Calculation Unit Id:" + calculation_unit_id + " Failed!!!")
+                    print("Calculation Unit Id:" +
+                          calculation_unit_id + " Failed!!!")
                     print("Error message : " + str(calculation_unit.errors))
     except ApiException as e:
         print("Api exception Encountered")
@@ -109,10 +115,10 @@ def main():
         exit()
 
 
-
 def output_calculation_result(result):
     print("Calculation Result")
-    stachBuilder = StachExtensionFactory.get_row_organized_builder(StachVersion.V2)
+    stachBuilder = StachExtensionFactory.get_row_organized_builder(
+        StachVersion.V2)
     stachExtension = stachBuilder.set_package(result).build()
     dataFramesList = stachExtension.convert_to_dataframe()
     print(dataFramesList)
@@ -121,7 +127,8 @@ def output_calculation_result(result):
 
 def generate_excel(data_frames_list):
     for dataFrame in data_frames_list:
-        writer = pd.ExcelWriter(str(uuid.uuid1()) + ".xlsx") # pylint: disable=abstract-class-instantiated
+        writer = pd.ExcelWriter(  # pylint: disable=abstract-class-instantiated
+            str(uuid.uuid1()) + ".xlsx")
         dataFrame.to_excel(excel_writer=writer)
         writer.save()
         writer.close()

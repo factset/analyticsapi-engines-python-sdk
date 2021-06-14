@@ -59,22 +59,27 @@ def main():
         #         }
         #     }
         # }
-        axp_optimizer_strategy = AxiomaEquityOptimizerStrategy(id="Client:/Optimizer/CN_TEST")
-        axp_optimizer_account = OptimizerAccount(id="CLIENT:/OPTIMIZER/IBM.ACCT")
+        axp_optimizer_strategy = AxiomaEquityOptimizerStrategy(
+            id="Client:/Optimizer/CN_TEST")
+        axp_optimizer_account = OptimizerAccount(
+            id="CLIENT:/OPTIMIZER/IBM.ACCT")
         axp_optimizer_optimization = Optimization(
             risk_model_date="09/01/2020",
             backtest_date="09/01/2020",
             cashflow="0"
         )
-        axp_optimizer_trades_list = OptimizerTradesList(identifier_type="SedolChk", include_cash=False)
-        axp_optimizer_output_types = OptimizerOutputTypes(trades=axp_optimizer_trades_list)
+        axp_optimizer_trades_list = OptimizerTradesList(
+            identifier_type="SedolChk", include_cash=False)
+        axp_optimizer_output_types = OptimizerOutputTypes(
+            trades=axp_optimizer_trades_list)
         axp_optimizer_parameters = AxiomaEquityOptimizationParameters(
             strategy=axp_optimizer_strategy,
             output_types=axp_optimizer_output_types,
             account=axp_optimizer_account,
             optimization=axp_optimizer_optimization
         )
-        axp_optimization_parameters_root = AxiomaEquityOptimizationParametersRoot(data=axp_optimizer_parameters)
+        axp_optimization_parameters_root = AxiomaEquityOptimizationParametersRoot(
+            data=axp_optimizer_parameters)
 
         axp_optimizations_api = AXPOptimizerApi(api_client)
 
@@ -124,7 +129,8 @@ def output_optimization_result(result):
 
 def generate_excel(data_frames_list):
     for dataFrame in data_frames_list:
-        writer = pd.ExcelWriter(str(uuid.uuid1()) + ".xlsx") # pylint: disable=abstract-class-instantiated
+        writer = pd.ExcelWriter(
+            str(uuid.uuid1()) + ".xlsx")  # pylint: disable=abstract-class-instantiated
         dataFrame.to_excel(excel_writer=writer)
         writer.save()
         writer.close()

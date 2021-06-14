@@ -51,19 +51,23 @@ def main():
         frequency = "Monthly"
 
         components = components_api.get_pa_components(pa_document_name)
-        component_summary = ComponentSummary(name=pa_component_name, category=pa_component_category)
-        component_id = [id for id in list(components.data.keys()) if components.data[id] == component_summary][0]
+        component_summary = ComponentSummary(
+            name=pa_component_name, category=pa_component_category)
+        component_id = [id for id in list(
+            components.data.keys()) if components.data[id] == component_summary][0]
         print("PA Component Id: " + component_id)
         pa_accounts = [PAIdentifier(id=pa_benchmark_sp_50)]
         pa_benchmarks = [PAIdentifier(id=pa_benchmark_r_1000)]
-        pa_dates = PADateParameters(startdate=startdate, enddate=enddate, frequency=frequency)
+        pa_dates = PADateParameters(
+            startdate=startdate, enddate=enddate, frequency=frequency)
 
         pa_calculation_parameters = {"1": PACalculationParameters(componentid=component_id, accounts=pa_accounts,
                                                                   benchmarks=pa_benchmarks, dates=pa_dates),
                                      "2": PACalculationParameters(componentid=component_id, accounts=pa_accounts,
                                                                   benchmarks=pa_benchmarks, dates=pa_dates)}
 
-        pa_calculation_parameter_root = PACalculationParametersRoot(data=pa_calculation_parameters)
+        pa_calculation_parameter_root = PACalculationParametersRoot(
+            data=pa_calculation_parameters)
 
         pa_calculations_api = PACalculationsApi(api_client)
 
@@ -89,13 +93,15 @@ def main():
 
             for (calculation_unit_id, calculation_unit) in status_response[0].data.units.items():
                 if calculation_unit.status == "Success":
-                    print("Calculation Unit Id: " + calculation_unit_id + " Succeeded!!!")
+                    print("Calculation Unit Id: " +
+                          calculation_unit_id + " Succeeded!!!")
                     result_response = pa_calculations_api.get_calculation_unit_result_by_id(id=calculation_id,
                                                                                             unit_id=calculation_unit_id,
                                                                                             _return_http_data_only=False)
                     output_calculation_result(result_response[0]['data'])
                 else:
-                    print("Calculation Unit Id:" + calculation_unit_id + " Failed!!!")
+                    print("Calculation Unit Id:" +
+                          calculation_unit_id + " Failed!!!")
                     print("Error message : " + str(calculation_unit.errors))
         else:
             print("Calculation creation failed")
@@ -110,7 +116,8 @@ def main():
 
 def output_calculation_result(result):
     print("Calculation Result")
-    stachBuilder = StachExtensionFactory.get_row_organized_builder(StachVersion.V2)
+    stachBuilder = StachExtensionFactory.get_row_organized_builder(
+        StachVersion.V2)
     stachExtension = stachBuilder.set_package(result).build()
     dataFramesList = stachExtension.convert_to_dataframe()
     print(dataFramesList)
@@ -119,7 +126,8 @@ def output_calculation_result(result):
 
 def generate_excel(data_frames_list):
     for dataFrame in data_frames_list:
-        writer = pd.ExcelWriter(str(uuid.uuid1()) + ".xlsx") # pylint: disable=abstract-class-instantiated
+        writer = pd.ExcelWriter(  # pylint: disable=abstract-class-instantiated
+            str(uuid.uuid1()) + ".xlsx")
         dataFrame.to_excel(excel_writer=writer)
         writer.save()
         writer.close()

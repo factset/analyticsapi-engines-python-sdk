@@ -71,9 +71,9 @@ def main():
         spar_dates2 = SPARDateParameters(startdate2, enddate2, frequency2)
 
         spar_calculation_parameters = {"2018": SPARCalculationParameters(componentid=component_id, accounts=spar_accounts, benchmark=spar_benchmark_identifier,
-                                                                      dates=spar_dates1),
+                                                                         dates=spar_dates1),
                                        "2019": SPARCalculationParameters(componentid=component_id, accounts=spar_accounts, benchmark=spar_benchmark_identifier,
-                                                                      dates=spar_dates2)}
+                                                                         dates=spar_dates2)}
 
         spar_calculation_parameter_root = SPARCalculationParametersRoot(
             data=spar_calculation_parameters)
@@ -134,7 +134,8 @@ def output_calculation_result(result):
 
 def generate_excel(data_frames_list):
     for dataFrame in data_frames_list:
-        writer = pd.ExcelWriter(str(uuid.uuid1()) + ".xlsx") # pylint: disable=abstract-class-instantiated
+        writer = pd.ExcelWriter(  # pylint: disable=abstract-class-instantiated
+            str(uuid.uuid1()) + ".xlsx")
         dataFrame.to_excel(excel_writer=writer)
         writer.save()
         writer.close()

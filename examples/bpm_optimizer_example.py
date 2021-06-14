@@ -49,11 +49,16 @@ def main():
         #       }
         #   }
         # }
-        bpm_optimizer_strategy = BPMOptimizerStrategy(id="CLIENT:/Aapi/BPMAPISIMPLE")
-        bpm_optimizer_trades_list = OptimizerTradesList(identifier_type="Asset", include_cash=False)
-        bpm_optimizer_output_types = OptimizerOutputTypes(trades=bpm_optimizer_trades_list)
-        bpm_optimization_parameters = BPMOptimizationParameters(bpm_optimizer_strategy, bpm_optimizer_output_types)
-        bpm_optimization_parameters_root = BPMOptimizationParametersRoot(data=bpm_optimization_parameters)
+        bpm_optimizer_strategy = BPMOptimizerStrategy(
+            id="CLIENT:/Aapi/BPMAPISIMPLE")
+        bpm_optimizer_trades_list = OptimizerTradesList(
+            identifier_type="Asset", include_cash=False)
+        bpm_optimizer_output_types = OptimizerOutputTypes(
+            trades=bpm_optimizer_trades_list)
+        bpm_optimization_parameters = BPMOptimizationParameters(
+            bpm_optimizer_strategy, bpm_optimizer_output_types)
+        bpm_optimization_parameters_root = BPMOptimizationParametersRoot(
+            data=bpm_optimization_parameters)
 
         bpm_optimizations_api = BPMOptimizerApi(api_client)
 
@@ -103,7 +108,8 @@ def output_optimization_result(result):
 
 def generate_excel(data_frames_list):
     for dataFrame in data_frames_list:
-        writer = pd.ExcelWriter(str(uuid.uuid1()) + ".xlsx") # pylint: disable=abstract-class-instantiated
+        writer = pd.ExcelWriter(
+            str(uuid.uuid1()) + ".xlsx")  # pylint: disable=abstract-class-instantiated
         dataFrame.to_excel(excel_writer=writer)
         writer.save()
         writer.close()

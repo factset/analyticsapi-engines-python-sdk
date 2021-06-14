@@ -46,7 +46,8 @@ def main():
             "1": PubCalculationParameters(pub_document_name, pub_account_identifier, pub_dates)
         }
 
-        pub_calculation_parameters_root = PubCalculationParametersRoot(data=pub_calculation_parameters)
+        pub_calculation_parameters_root = PubCalculationParametersRoot(
+            data=pub_calculation_parameters)
 
         pub_calculations_api = PubCalculationsApi(api_client)
         post_and_calculate_response = pub_calculations_api.post_and_calculate(
@@ -54,10 +55,12 @@ def main():
             _return_http_data_only=False)
 
         if post_and_calculate_response[1] == 201:
-            output_calculation_result("single_unit", (post_and_calculate_response[0].read()))
+            output_calculation_result(
+                "single_unit", (post_and_calculate_response[0].read()))
         elif post_and_calculate_response[1] == 200:
             for (calculation_unit_id, calculation_unit) in post_and_calculate_response[0].data.units.items():
-                print("Calculation Unit Id:" + calculation_unit_id + " Failed!!!")
+                print("Calculation Unit Id:" +
+                      calculation_unit_id + " Failed!!!")
                 print("Error message : " + str(calculation_unit.errors))
         else:
             calculation_id = post_and_calculate_response[0].data.calculationid
@@ -79,14 +82,17 @@ def main():
 
             for (calculation_unit_id, calculation_unit) in status_response[0].data.units.items():
                 if calculation_unit.status == "Success":
-                    print("Calculation Unit Id: " + calculation_unit_id + " Succeeded!!!")
+                    print("Calculation Unit Id: " +
+                          calculation_unit_id + " Succeeded!!!")
                     result_response = pub_calculations_api.get_calculation_unit_result_by_id(id=calculation_id,
                                                                                              unit_id=calculation_unit_id,
                                                                                              _return_http_data_only=False)
 
-                    output_calculation_result("single_unit", (result_response[0].read()))
+                    output_calculation_result(
+                        "single_unit", (result_response[0].read()))
                 else:
-                    print("Calculation Unit Id:" + calculation_unit_id + " Failed!!!")
+                    print("Calculation Unit Id:" +
+                          calculation_unit_id + " Failed!!!")
                     print("Error message : " + str(calculation_unit.errors))
 
     except ApiException as e:
