@@ -267,6 +267,6 @@ __pycache__/
 .vscode
 
 # Python Environments
-env/
+*env/
 examples-env/
 test-env/

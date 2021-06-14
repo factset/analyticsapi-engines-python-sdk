@@ -25,17 +25,22 @@ class TestSparCalculationsApi(unittest.TestCase):
 
         def create_calculation(test_context):
             print("Creating single unit calculation")
-            components = self.components_api.get_spar_components(document="pmw_root:/spar_documents/Factset Default Document")
-            component_summary = ComponentSummary(name="Returns Table", category="Raw Data / Returns")
-            component_id = [id for id in list(components.data.keys()) if components.data[id] == component_summary][0]
+            components = self.components_api.get_spar_components(
+                document="SPAR_DOCUMENTS:/Factset Default Document")
+            component_summary = ComponentSummary(
+                name="Returns Table", category="Raw Data / Returns")
+            component_id = [id for id in list(
+                components.data.keys()) if components.data[id] == component_summary][0]
             spar_accounts = [SPARIdentifier(id="R.1000")]
             spar_benchmarks = SPARIdentifier(id="RUSSELL_P:R.2000")
-            spar_dates = SPARDateParameters(startdate="20180101", enddate="20181231", frequency="Monthly")
+            spar_dates = SPARDateParameters(
+                startdate="20180101", enddate="20181231", frequency="Monthly")
 
             spar_calculation_parameters = {"1": SPARCalculationParameters(componentid=component_id, accounts=spar_accounts,
-                                                                      benchmark=spar_benchmarks, dates=spar_dates)}
+                                                                          benchmark=spar_benchmarks, dates=spar_dates)}
 
-            spar_calculation_parameter_root = SPARCalculationParametersRoot(data=spar_calculation_parameters)
+            spar_calculation_parameter_root = SPARCalculationParametersRoot(
+                data=spar_calculation_parameters)
 
             post_and_calculate_response = self.spar_calculations_api.post_and_calculate(
                 spar_calculation_parameters_root=spar_calculation_parameter_root, _return_http_data_only=False)
@@ -63,9 +68,10 @@ class TestSparCalculationsApi(unittest.TestCase):
             print("Calculation Id: " + calculation_id)
 
             status_response = self.spar_calculations_api.get_calculation_status_by_id(id=calculation_id,
-                                                                               _return_http_data_only=False)
+                                                                                      _return_http_data_only=False)
 
-            self.assertTrue(status_response[1] == 202 and (status_response[0].data.status in ("Queued", "Executing")))
+            self.assertTrue(status_response[1] == 202 and (
+                status_response[0].data.status in ("Queued", "Executing")))
 
             while status_response[1] == 202 and (status_response[0].data.status in ("Queued", "Executing")):
                 max_age = '5'
@@ -75,9 +81,10 @@ class TestSparCalculationsApi(unittest.TestCase):
                 print('Sleeping: ' + max_age)
                 time.sleep(int(max_age))
                 status_response = self.spar_calculations_api.get_calculation_status_by_id(id=calculation_id,
-                                                                                   _return_http_data_only=False)
+                                                                                          _return_http_data_only=False)
 
-                test_context["calculation_units"] = status_response[0].data.units.items()[0]
+                test_context["calculation_units"] = status_response[0].data.units.items()[
+                    0]
                 return {
                     "continue_workflow": True,
                     "next_request": read_result_step_name,
@@ -88,9 +95,10 @@ class TestSparCalculationsApi(unittest.TestCase):
             calculation_id = test_context["calculation_id"]
             for (calculation_unit_id, calculation_unit) in test_context.calculation_units:
                 result_response = self.spar_calculations_api.get_calculation_unit_result_by_id(id=calculation_id,
-                                                                                             unit_id=calculation_unit_id,
-                                                                                             _return_http_data_only=False)
-                self.assertEqual(result_response[1], 200, "Get calculation result should have succeeded")
+                                                                                               unit_id=calculation_unit_id,
+                                                                                               _return_http_data_only=False)
+                self.assertEqual(
+                    result_response[1], 200, "Get calculation result should have succeeded")
 
         workflow_specification = {
             create_step_name: create_calculation,
@@ -99,7 +107,8 @@ class TestSparCalculationsApi(unittest.TestCase):
         }
         starting_request = workflow_specification['create_calculation']
         test_context = {}
-        run_api_workflow_with_assertions(workflow_specification, starting_request, test_context)
+        run_api_workflow_with_assertions(
+            workflow_specification, starting_request, test_context)
 
 
 def run_api_workflow_with_assertions(workflow_specification, current_request, test_context):
@@ -110,6 +119,7 @@ def run_api_workflow_with_assertions(workflow_specification, current_request, te
             current_request_result.next_request,
             current_request_result.test_context
         )
+
 
 if __name__ == '__main__':
     unittest.main(failfast=True)

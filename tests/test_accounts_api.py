@@ -3,8 +3,8 @@ import unittest
 from fds.analyticsapi.engines.api.accounts_api import AccountsApi
 from fds.analyticsapi.engines.model.account_directories_root import AccountDirectoriesRoot
 
-import common_parameters
 from common_functions import CommonFunctions
+import common_parameters
 
 
 class TestAccountsApi(unittest.TestCase):

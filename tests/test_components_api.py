@@ -17,7 +17,7 @@ class TestComponentsApi(unittest.TestCase):
         self.components_api = ComponentsApi(CommonFunctions.build_api_client())
 
     ######################################################################################
-                                   # PA Components Test Cases
+        # PA Components Test Cases
     ######################################################################################
 
     def test_get_all_pa_components(self):
@@ -27,20 +27,27 @@ class TestComponentsApi(unittest.TestCase):
         )
         component_id = list(response[0]['data'].keys())[0]
         self.assertEqual(response[1], 200, "Response should be 200 - Success")
-        self.assertEqual(type(response[0]), ComponentSummaryRoot, "Response should be of dictionary type")
-        self.assertEqual(type(response[0]['data'][component_id]), ComponentSummary, "Response should be of ComponentSummary type")
+        self.assertEqual(
+            type(response[0]), ComponentSummaryRoot, "Response should be of dictionary type")
+        self.assertEqual(type(response[0]['data'][component_id]),
+                         ComponentSummary, "Response should be of ComponentSummary type")
 
     # This test encounters ApiTypeException due to response having fields set to null instead of being hidden
     @unittest.skip("Skip until fix API behavior where null property is returned instead of hidden")
     def test_get_pa_component_by_id(self):
-        components = self.components_api.get_pa_components(document=common_parameters.pa_default_document)
+        components = self.components_api.get_pa_components(
+            document=common_parameters.pa_default_document)
         component_id = list(components['data'].keys())[0]
-        response = self.components_api.get_pa_component_by_id(id=component_id, _return_http_data_only=False)
+        response = self.components_api.get_pa_component_by_id(
+            id=component_id, _return_http_data_only=False)
         self.assertEqual(response[1], 200, "Response should be 200 - Success")
-        self.assertEqual(type(response[0]), PAComponentRoot, "Response should be of PAComponentRoot type.")
+        self.assertEqual(type(
+            response[0]), PAComponentRoot, "Response should be of PAComponentRoot type.")
+        self.assertEqual(type(response[0]['data'][component_id]),
+                         ComponentSummary, "Response should be of ComponentSummary type")
 
     ######################################################################################
-                                   # Vault Components Test Cases
+        # Vault Components Test Cases
     ######################################################################################
 
     def test_get_all_vault_components(self):
@@ -50,21 +57,26 @@ class TestComponentsApi(unittest.TestCase):
         )
         component_id = list(response[0]['data'].keys())[0]
         self.assertEqual(response[1], 200, "Response should be 200 - Success")
-        self.assertEqual(type(response[0]), ComponentSummaryRoot, "Response should be of dictionary type")
-        self.assertEqual(type(response[0]['data'][component_id]), ComponentSummary, "Response should be of ComponentSummary type")
+        self.assertEqual(
+            type(response[0]), ComponentSummaryRoot, "Response should be of dictionary type")
+        self.assertEqual(type(response[0]['data'][component_id]),
+                         ComponentSummary, "Response should be of ComponentSummary type")
 
     # This test encounters ApiTypeException due to response having fields set to null instead of being hidden
     @unittest.skip("Skip until fix API behavior where null property is returned instead of hidden")
     def test_get_vault_component_by_id(self):
-        components = self.components_api.get_vault_components(document=common_parameters.vault_default_document)
+        components = self.components_api.get_vault_components(
+            document=common_parameters.vault_default_document)
         component_id = list(components['data'].keys())[0]
-        response = self.components_api.get_vault_component_by_id(component_id, _return_http_data_only=False)
+        response = self.components_api.get_vault_component_by_id(
+            component_id, _return_http_data_only=False)
         component_id = list(response[0]['data'].keys())[0]
         self.assertEqual(response[1], 200, "Response should be 200 - Success")
-        self.assertEqual(type(response[0]['data']), VaultComponent, "Response should be of VaultComponent type.")
+        self.assertEqual(type(response[0]['data']), VaultComponent,
+                         "Response should be of VaultComponent type.")
 
     ######################################################################################
-                                   # Spar Components Test Cases
+        # Spar Components Test Cases
     ######################################################################################
 
     def test_get_all_spar_components(self):
@@ -74,8 +86,10 @@ class TestComponentsApi(unittest.TestCase):
         )
         component_id = list(response[0]['data'].keys())[0]
         self.assertEqual(response[1], 200, "Response should be 200 - Success")
-        self.assertEqual(type(response[0]), ComponentSummaryRoot, "Response should be of dictionary type")
-        self.assertEqual(type(response[0]['data'][component_id]), ComponentSummary, "Response should be of ComponentSummary type")
+        self.assertEqual(
+            type(response[0]), ComponentSummaryRoot, "Response should be of dictionary type")
+        self.assertEqual(type(response[0]['data'][component_id]),
+                         ComponentSummary, "Response should be of ComponentSummary type")
 
 
 if __name__ == '__main__':

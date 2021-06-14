@@ -26,17 +26,22 @@ class TestPaCalculationsApi(unittest.TestCase):
 
         def create_calculation(test_context):
             print("Creating single unit calculation")
-            components = self.components_api.get_pa_components(document="PA_DOCUMENTS:DEFAULT")
-            component_summary = ComponentSummary(name="Weights", category="Weights / Exposures")
-            component_id = [id for id in list(components.data.keys()) if components.data[id] == component_summary][0]
+            components = self.components_api.get_pa_components(
+                document="PA_DOCUMENTS:DEFAULT")
+            component_summary = ComponentSummary(
+                name="Weights", category="Weights / Exposures")
+            component_id = [id for id in list(
+                components.data.keys()) if components.data[id] == component_summary][0]
             pa_accounts = [PAIdentifier(id="BENCH:SP50")]
             pa_benchmarks = [PAIdentifier(id="BENCH:R.1000")]
-            pa_dates = PADateParameters(startdate="20180101", enddate="20181231", frequency="Monthly")
+            pa_dates = PADateParameters(
+                startdate="20180101", enddate="20181231", frequency="Monthly")
 
             pa_calculation_parameters = {"1": PACalculationParameters(componentid=component_id, accounts=pa_accounts,
                                                                       benchmarks=pa_benchmarks, dates=pa_dates)}
 
-            pa_calculation_parameter_root = PACalculationParametersRoot(data=pa_calculation_parameters)
+            pa_calculation_parameter_root = PACalculationParametersRoot(
+                data=pa_calculation_parameters)
 
             post_and_calculate_response = self.pa_calculations_api.post_and_calculate(
                 pa_calculation_parameters_root=pa_calculation_parameter_root, _return_http_data_only=False)
@@ -64,9 +69,10 @@ class TestPaCalculationsApi(unittest.TestCase):
             print("Calculation Id: " + calculation_id)
 
             status_response = self.pa_calculations_api.get_calculation_status_by_id(id=calculation_id,
-                                                                               _return_http_data_only=False)
+                                                                                    _return_http_data_only=False)
 
-            self.assertTrue(status_response[1] == 202 and (status_response[0].data.status in ("Queued", "Executing")))
+            self.assertTrue(status_response[1] == 202 and (
+                status_response[0].data.status in ("Queued", "Executing")))
 
             while status_response[1] == 202 and (status_response[0].data.status in ("Queued", "Executing")):
                 max_age = '5'
@@ -76,9 +82,10 @@ class TestPaCalculationsApi(unittest.TestCase):
                 print('Sleeping: ' + max_age)
                 time.sleep(int(max_age))
                 status_response = self.pa_calculations_api.get_calculation_status_by_id(id=calculation_id,
-                                                                                   _return_http_data_only=False)
+                                                                                        _return_http_data_only=False)
 
-                test_context["calculation_units"] = status_response[0].data.units.items()[0]
+                test_context["calculation_units"] = status_response[0].data.units.items()[
+                    0]
                 return {
                     "continue_workflow": True,
                     "next_request": read_result_step_name,
@@ -91,7 +98,8 @@ class TestPaCalculationsApi(unittest.TestCase):
                 result_response = self.pa_calculations_api.get_calculation_unit_result_by_id(id=calculation_id,
                                                                                              unit_id=calculation_unit_id,
                                                                                              _return_http_data_only=False)
-                self.assertEqual(result_response[1], 200, "Get calculation result should have succeeded")
+                self.assertEqual(
+                    result_response[1], 200, "Get calculation result should have succeeded")
 
         workflow_specification = {
             create_step_name: create_calculation,
@@ -100,7 +108,8 @@ class TestPaCalculationsApi(unittest.TestCase):
         }
         starting_request = workflow_specification['create_calculation']
         starting_test_context = {}
-        run_api_workflow_with_assertions(workflow_specification, starting_request, starting_test_context)
+        run_api_workflow_with_assertions(
+            workflow_specification, starting_request, starting_test_context)
 
 
 if __name__ == '__main__':

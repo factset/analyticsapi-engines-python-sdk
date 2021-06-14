@@ -51,8 +51,10 @@ class TestFICalculationsApi(unittest.TestCase):
 
         jobSettings = FIJobSettings(as_of_date="20201201")
 
-        fi_calculation_parameters = FICalculationParameters(securities, calculations, jobSettings)
-        fi_calculation_parameters_root = FICalculationParametersRoot(data=fi_calculation_parameters)
+        fi_calculation_parameters = FICalculationParameters(
+            securities, calculations, jobSettings)
+        fi_calculation_parameters_root = FICalculationParametersRoot(
+            data=fi_calculation_parameters)
 
         return self.calculations_api.post_and_calculate(
             fi_calculation_parameters_root=fi_calculation_parameters_root,
@@ -62,7 +64,8 @@ class TestFICalculationsApi(unittest.TestCase):
     def test_calculation_success(self):
         if self.run_response[1] == 202:
             calculation_id = self.run_response[0].data.id
-            self.run_response = self.calculations_api.get_calculation_status_by_id(id=calculation_id, _return_http_data_only=False)
+            self.run_response = self.calculations_api.get_calculation_status_by_id(
+                id=calculation_id, _return_http_data_only=False)
             while self.run_response[1] == 202:
                 age_value = self.run_response[2].get("cache-control")
                 if age_value is not None:
@@ -70,9 +73,11 @@ class TestFICalculationsApi(unittest.TestCase):
                     time.sleep(int(max_age))
                 else:
                     time.sleep(5)
-                self.run_response = self.calculations_api.get_calculation_status_by_id(id=calculation_id, _return_http_data_only=False)
+                self.run_response = self.calculations_api.get_calculation_status_by_id(
+                    id=calculation_id, _return_http_data_only=False)
 
-        self.assertTrue(self.run_response[1] == 200 or self.run_response[1] == 201, "Calculation should be completed")
+        self.assertTrue(
+            self.run_response[1] == 200 or self.run_response[1] == 201, "Calculation should be completed")
 
 
 if __name__ == '__main__':

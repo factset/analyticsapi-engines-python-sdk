@@ -23,12 +23,14 @@ class TestDatesApi(unittest.TestCase):
             _return_http_data_only=False
         )
         self.assertEqual(response[1], 200, "Response should be 200 - Success")
-        self.assertNotEqual(response[0], None, "Response data should not be null")
+        self.assertNotEqual(response[0], None,
+                            "Response data should not be null")
 
     def test_convert_vault_date_to_absolute_format(self):
         end_date = "-1M"
         components_api = ComponentsApi(CommonFunctions.build_api_client())
-        components = components_api.get_vault_components(document=common_parameters.vault_default_document)
+        components = components_api.get_vault_components(
+            document=common_parameters.vault_default_document)
         component_id = list(components['data'].keys())[0]
         account = common_parameters.default_dates_account
         response = self.dates_api.convert_vault_dates_to_absolute_format(
@@ -38,7 +40,8 @@ class TestDatesApi(unittest.TestCase):
             _return_http_data_only=False
         )
         self.assertEqual(response[1], 200, "Response should be 200 - Success")
-        self.assertNotEqual(response[0], None, "Response data should not be null")
+        self.assertNotEqual(response[0], None,
+                            "Response data should not be null")
 
 
 if __name__ == '__main__':
