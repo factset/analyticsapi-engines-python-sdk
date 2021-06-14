@@ -181,7 +181,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_calculation_unit_info_by_id**
-> ObjectRoot get_calculation_unit_info_by_id(id, unit_id)
+> file_type get_calculation_unit_info_by_id(id, unit_id)
 
 Get Quant Engine calculation metadata information by id
 
@@ -194,7 +194,6 @@ This is the endpoint to get the metadata information of a previously requested c
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import quant_calculations_api
-from fds.analyticsapi.engines.model.object_root import ObjectRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
@@ -240,7 +239,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ObjectRoot**](ObjectRoot.md)
+**file_type**
 
 ### Authorization
 
@@ -249,7 +248,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, application/x-protobuf
+ - **Accept**: application/json, application/x-protobuf, application/octet-stream
 
 
 ### HTTP response details
@@ -266,7 +265,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_calculation_unit_result_by_id**
-> ObjectRoot get_calculation_unit_result_by_id(id, unit_id)
+> file_type get_calculation_unit_result_by_id(id, unit_id)
 
 Get Quant Engine calculation result by id
 
@@ -279,7 +278,6 @@ This is the endpoint to get the result of a previously requested calculation.  I
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import quant_calculations_api
-from fds.analyticsapi.engines.model.object_root import ObjectRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
@@ -325,7 +323,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ObjectRoot**](ObjectRoot.md)
+**file_type**
 
 ### Authorization
 
@@ -334,7 +332,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, application/x-protobuf
+ - **Accept**: application/json, application/x-protobuf, application/octet-stream
 
 
 ### HTTP response details
