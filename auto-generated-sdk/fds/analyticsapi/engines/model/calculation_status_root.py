@@ -29,7 +29,9 @@ from fds.analyticsapi.engines.model_utils import (  # noqa: F401
 
 def lazy_import():
     from fds.analyticsapi.engines.model.calculation_status import CalculationStatus
+    from fds.analyticsapi.engines.model.calculation_status_meta import CalculationStatusMeta
     globals()['CalculationStatus'] = CalculationStatus
+    globals()['CalculationStatusMeta'] = CalculationStatusMeta
 
 
 class CalculationStatusRoot(ModelNormal):
@@ -79,6 +81,7 @@ class CalculationStatusRoot(ModelNormal):
         lazy_import()
         return {
             'data': (CalculationStatus,),  # noqa: E501
+            'meta': (CalculationStatusMeta,),  # noqa: E501
         }
 
     @cached_property
@@ -88,6 +91,7 @@ class CalculationStatusRoot(ModelNormal):
 
     attribute_map = {
         'data': 'data',  # noqa: E501
+        'meta': 'meta',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -139,6 +143,7 @@ class CalculationStatusRoot(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            meta (CalculationStatusMeta): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

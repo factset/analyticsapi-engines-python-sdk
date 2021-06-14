@@ -1,13 +1,10 @@
-# FdsDate
+# QuantUniversalScreenUniverse
 
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**start_date** | **str** |  | 
-**end_date** | **str** |  | 
-**frequency** | **str** |  | 
-**calendar** | **str** |  | 
+**screen** | **str** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
