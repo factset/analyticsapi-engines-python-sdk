@@ -82,7 +82,7 @@ def main():
         sys.exit()
 
     if run_calculation_response[1] == 201:
-        output_calculation_result(run_calculation_response[0])
+        output_calculation_result(run_calculation_response[0].data)
         sys.exit()
 
     calculation_id = run_calculation_response[0].data.id
@@ -102,7 +102,7 @@ def main():
         print_error(status_response)
         sys.exit()
 
-    output_calculation_result(status_response[0])
+    output_calculation_result(status_response[0].data)
 
 
 def output_calculation_result(result):
