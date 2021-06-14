@@ -74,7 +74,6 @@ class ObjectRoot(ModelNormal):
         """
         return {
             'data': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
-            'meta': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
         }
 
     @cached_property
@@ -84,7 +83,6 @@ class ObjectRoot(ModelNormal):
 
     attribute_map = {
         'data': 'data',  # noqa: E501
-        'meta': 'meta',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -136,7 +134,6 @@ class ObjectRoot(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            meta ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

@@ -1,10 +1,11 @@
-# CalculationUnitStatusMeta
+# FqlExpression
 
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**info** | **str** | The Info URL of the calculation. | [optional] 
+**expr** | **str** |  | 
+**name** | **str** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
