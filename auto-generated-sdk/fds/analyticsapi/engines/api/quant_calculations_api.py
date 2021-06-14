@@ -319,7 +319,7 @@ class QuantCalculationsApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                ObjectRoot
+                file_type
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -350,7 +350,7 @@ class QuantCalculationsApi(object):
 
         self.get_calculation_unit_info_by_id = _Endpoint(
             settings={
-                'response_type': dict({ 200:(ObjectRoot,),  }),
+                'response_type': dict({ 200:(file_type,),  }),
                 'auth': [
                     'Basic'
                 ],
@@ -400,7 +400,8 @@ class QuantCalculationsApi(object):
             headers_map={
                 'accept': [
                     'application/json',
-                    'application/x-protobuf'
+                    'application/x-protobuf',
+                    'application/octet-stream'
                 ],
                 'content_type': [],
             },
@@ -449,7 +450,7 @@ class QuantCalculationsApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                ObjectRoot
+                file_type
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -480,7 +481,7 @@ class QuantCalculationsApi(object):
 
         self.get_calculation_unit_result_by_id = _Endpoint(
             settings={
-                'response_type': dict({ 200:(ObjectRoot,),  }),
+                'response_type': dict({ 200:(file_type,),  }),
                 'auth': [
                     'Basic'
                 ],
@@ -530,7 +531,8 @@ class QuantCalculationsApi(object):
             headers_map={
                 'accept': [
                     'application/json',
-                    'application/x-protobuf'
+                    'application/x-protobuf',
+                    'application/octet-stream'
                 ],
                 'content_type': [],
             },
