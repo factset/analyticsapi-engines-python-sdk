@@ -3,19 +3,21 @@ import time
 
 from fds.analyticsapi.engines.api.components_api import ComponentsApi
 from fds.analyticsapi.engines.model.component_summary import ComponentSummary
-from fds.analyticsapi.engines.api.spar_calculations_api import SPARCalculationsApi
-from fds.analyticsapi.engines.model.spar_calculation_parameters import SPARCalculationParameters
-from fds.analyticsapi.engines.model.spar_calculation_parameters_root import SPARCalculationParametersRoot
-from fds.analyticsapi.engines.model.spar_identifier import SPARIdentifier
-from fds.analyticsapi.engines.model.spar_date_parameters import SPARDateParameters
+from fds.analyticsapi.engines.api.configurations_api import ConfigurationsApi
+from fds.analyticsapi.engines.api.vault_calculations_api import VaultCalculationsApi
+from fds.analyticsapi.engines.model.vault_calculation_parameters import VaultCalculationParameters
+from fds.analyticsapi.engines.model.vault_calculation_parameters_root import VaultCalculationParametersRoot
+from fds.analyticsapi.engines.model.vault_identifier import VaultIdentifier
+from fds.analyticsapi.engines.model.vault_date_parameters import VaultDateParameters
 
 from common_functions import CommonFunctions
 
 
-class TestSparCalculationsApi(unittest.TestCase):
+class TestVaultCalculationsApi(unittest.TestCase):
     def setUp(self):
         api_client = CommonFunctions.build_api_client()
-        self.spar_calculations_api = SPARCalculationsApi(api_client)
+        self.vault_calculations_api = VaultCalculationsApi(api_client)
+        self.configurations_api = ConfigurationsApi(api_client)
         self.components_api = ComponentsApi(api_client)
 
     def test_single_unit_scenario(self):
@@ -25,20 +27,23 @@ class TestSparCalculationsApi(unittest.TestCase):
 
         def create_calculation(test_context):
             print("Creating single unit calculation")
-            components = self.components_api.get_spar_components(document="pmw_root:/spar_documents/Factset Default Document")
-            component_summary = ComponentSummary(name="Returns Table", category="Raw Data / Returns")
+            components = self.components_api.get_vault_components(document="Client:/aapi/VAULT_QA_PI_DEFAULT_LOCKED")
+            component_summary = ComponentSummary(name="Total Returns", category="Performance / Performance Relative Dates")
             component_id = [id for id in list(components.data.keys()) if components.data[id] == component_summary][0]
-            spar_accounts = [SPARIdentifier(id="R.1000")]
-            spar_benchmarks = SPARIdentifier(id="RUSSELL_P:R.2000")
-            spar_dates = SPARDateParameters(startdate="20180101", enddate="20181231", frequency="Monthly")
+            account = "CLIENT:/BISAM/REPOSITORY/QA/SMALL_PORT.ACCT"
+            vault_account = VaultIdentifier(id=account)
+            vault_dates = VaultDateParameters(startdate="20180101", enddate="20180329", frequency="Monthly")
 
-            spar_calculation_parameters = {"1": SPARCalculationParameters(componentid=component_id, accounts=spar_accounts,
-                                                                      benchmark=spar_benchmarks, dates=spar_dates)}
+            configurations = self.configurations_api.get_vault_configurations(account)
+            configuration_id = list(configurations.data.keys())[0]
 
-            spar_calculation_parameter_root = SPARCalculationParametersRoot(data=spar_calculation_parameters)
+            vault_calculation_parameters = {"1": VaultCalculationParameters(componentid=component_id, account=vault_account,
+                                                                      dates=vault_dates, configid=configuration_id)}
 
-            post_and_calculate_response = self.spar_calculations_api.post_and_calculate(
-                spar_calculation_parameters_root=spar_calculation_parameter_root, _return_http_data_only=False)
+            vault_calculation_parameter_root = VaultCalculationParametersRoot(data=vault_calculation_parameters)
+
+            post_and_calculate_response = self.vault_calculations_api.post_and_calculate(
+                vault_calculation_parameters_root=vault_calculation_parameter_root, _return_http_data_only=False)
 
             self.assertTrue(post_and_calculate_response[1] == 201 or post_and_calculate_response[1] == 202,
                             "Response for create_calculation should have been 201 or 202")
@@ -62,7 +67,7 @@ class TestSparCalculationsApi(unittest.TestCase):
             calculation_id = test_context["calculation_id"]
             print("Calculation Id: " + calculation_id)
 
-            status_response = self.spar_calculations_api.get_calculation_status_by_id(id=calculation_id,
+            status_response = self.vault_calculations_api.get_calculation_status_by_id(id=calculation_id,
                                                                                _return_http_data_only=False)
 
             self.assertTrue(status_response[1] == 202 and (status_response[0].data.status in ("Queued", "Executing")))
@@ -74,7 +79,7 @@ class TestSparCalculationsApi(unittest.TestCase):
                     max_age = age_value.replace("max-age=", "")
                 print('Sleeping: ' + max_age)
                 time.sleep(int(max_age))
-                status_response = self.spar_calculations_api.get_calculation_status_by_id(id=calculation_id,
+                status_response = self.vault_calculations_api.get_calculation_status_by_id(id=calculation_id,
                                                                                    _return_http_data_only=False)
 
                 test_context["calculation_units"] = status_response[0].data.units.items()[0]
@@ -87,7 +92,7 @@ class TestSparCalculationsApi(unittest.TestCase):
         def read_calculation_unit_result(test_context):
             calculation_id = test_context["calculation_id"]
             for (calculation_unit_id, calculation_unit) in test_context.calculation_units:
-                result_response = self.spar_calculations_api.get_calculation_unit_result_by_id(id=calculation_id,
+                result_response = self.vault_calculations_api.get_calculation_unit_result_by_id(id=calculation_id,
                                                                                              unit_id=calculation_unit_id,
                                                                                              _return_http_data_only=False)
                 self.assertEqual(result_response[1], 200, "Get calculation result should have succeeded")
@@ -110,6 +115,7 @@ def run_api_workflow_with_assertions(workflow_specification, current_request, te
             current_request_result.next_request,
             current_request_result.test_context
         )
+
 
 if __name__ == '__main__':
     unittest.main(failfast=True)
