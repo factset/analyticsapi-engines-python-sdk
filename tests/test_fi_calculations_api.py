@@ -12,7 +12,6 @@ from common_functions import CommonFunctions
 
 
 class TestFICalculationsApi(unittest.TestCase):
-    # @unittest.skip("Until FI calculation is fixed")
     def setUp(self):
         self.api_client = CommonFunctions.build_api_client()
         self.calculations_api = FICalculationsApi(self.api_client)
