@@ -45,7 +45,7 @@ def main():
         screeningExpression = [QuantScreeningExpression(
             expr="P_PRICE", name="Price (SCR)")]
         fqlExpression = [QuantFqlExpression(
-            expr="P_PRICEP_PRICE(#DATE,#DATE,#FREQ)", name="Price (FQL)")]
+            expr="P_PRICE(#DATE,#DATE,#FREQ)", name="Price (FQL)")]
 
         quant_calculation_parameters = {"1": QuantCalculationParameters(
             screening_expression_universe=screeningExpressionUniverse,
