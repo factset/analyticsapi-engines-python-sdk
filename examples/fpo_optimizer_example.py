@@ -15,6 +15,8 @@ from fds.analyticsapi.engines.model.fpo_optimization_parameters import FPOOptimi
 from fds.analyticsapi.engines.model.optimizer_output_types import OptimizerOutputTypes
 from fds.analyticsapi.engines.model.optimizer_trades_list import OptimizerTradesList
 from fds.analyticsapi.engines.model.optimization import Optimization
+from fds.protobuf.stach.extensions.StachExtensionFactory import StachExtensionFactory
+from fds.protobuf.stach.extensions.StachVersion import StachVersion
 
 from urllib3 import Retry
 
@@ -125,7 +127,12 @@ def main():
 
 def output_optimization_result(result):
     print("Optimization Result")
-    print(result)
+    stachBuilder = StachExtensionFactory.get_row_organized_builder(
+        StachVersion.V2)
+    stachExtension = stachBuilder.add_table("tradesTable", result['trades']).build()
+    # stachExtension = stachBuilder.add_table("optimalsTable", result['trades']).build()
+    dataFramesList = stachExtension.convert_to_dataframe()
+    print(dataFramesList)
 
 
 def generate_excel(data_frames_list):
