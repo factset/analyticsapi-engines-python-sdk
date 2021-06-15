@@ -50,14 +50,30 @@ def main():
                     "Yield to No Call",
                     "OAS",
                     "Effective Duration",
-                    "Effective Convexity"]
+                    "Effective Convexity",
+                    "CF Coupon"]
 
-    security1 = FISecurity("Price", 100.285, 10000.0, "912828ZG8", "20201202", "UST")
-    security2 = FISecurity("Price", 101.138, 200000.0, "US037833AR12", "20201203", "UST")
+    security1 = FISecurity(
+        calc_from_method = "Price",
+        calc_from_value = 100.285,
+        face = 10000.0,
+        symbol = "912828ZG8",
+        settlement_date = "20201202",
+        discount_curve = "UST"
+    )
+    security2 = FISecurity(
+        calc_from_method = "Price",
+        calc_from_value = 101.138,
+        face = 200000.0,
+        symbol = "US037833AR12",
+        settlement_date = "20201203",
+        discount_curve = "UST"
+    )
 
     securities = [security1, security2]
 
-    jobSettings = FIJobSettings("20201201")
+    jobSettings = FIJobSettings(yield_curve_date = "20201201",
+                                partial_duration_months = [1,3,6])
 
     fi_calculation_parameters = FICalculationParameters(securities, calculations, jobSettings)
 
