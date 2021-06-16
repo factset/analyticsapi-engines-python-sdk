@@ -49,30 +49,34 @@ def main():
                     "Yield to No Call",
                     "OAS",
                     "Effective Duration",
-                    "Effective Convexity"]
+                    "Effective Convexity",
+                    "CF Coupon"]
 
-    securities = [
-        FISecurity(calc_from_method="Price",
-                   calc_from_value=100.285,
-                   symbol="912828ZG8",
-                   settlement="20201202",
-                   discount_curve="UST",
-                   face=10000.0),
-        FISecurity(calc_from_method="Price",
-                   calc_from_value=101.138,
-                   symbol="US037833AR12",
-                   settlement="20201203",
-                   discount_curve="UST",
-                   face=200000.0)
-    ]
-    jobSettings = FIJobSettings(as_of_date="20201201")
-    fi_calculation_parameters = FICalculationParameters(
-        securities, calculations, jobSettings)
-    fi_calculation_parameters_root = FICalculationParametersRoot(
-        data=fi_calculation_parameters)
+    security1 = FISecurity(
+        calc_from_method = "Price",
+        calc_from_value = 100.285,
+        face = 10000.0,
+        symbol = "912828ZG8",
+        settlement_date = "20201202",
+        discount_curve = "UST"
+    )
+    security2 = FISecurity(
+        calc_from_method = "Price",
+        calc_from_value = 101.138,
+        face = 200000.0,
+        symbol = "US037833AR12",
+        settlement_date = "20201203",
+        discount_curve = "UST"
+    )
 
-    print("FI Calculation Parameters Root:")
-    print(fi_calculation_parameters_root)
+    securities = [security1, security2]
+
+    jobSettings = FIJobSettings(yield_curve_date = "20201201",
+                                partial_duration_months = [1,3,6])
+
+    fi_calculation_parameters = FICalculationParameters(securities, calculations, jobSettings)
+
+    print(fi_calculation_parameters)
 
     fi_calculations_api = FICalculationsApi(api_client)
     run_calculation_response = fi_calculations_api.post_and_calculate(
