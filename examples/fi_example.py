@@ -90,7 +90,7 @@ def main():
         output_calculation_result(run_calculation_response[0].data)
         sys.exit()
 
-    calculation_id = run_calculation_response[0].data.calculation_id
+    calculation_id = run_calculation_response[2]["X-Factset-Api-Calculation-Id"]
     print("Calculation Id: " + calculation_id)
 
     status_response = fi_calculations_api.get_calculation_status_by_id(
