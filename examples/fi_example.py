@@ -1,8 +1,8 @@
 import sys
 import time
-import pandas as pd
 import uuid
 import os
+import pandas as pd
 
 from fds.analyticsapi.engines.api.fi_calculations_api import FICalculationsApi
 from fds.analyticsapi.engines.api_client import ApiClient
@@ -49,28 +49,34 @@ def main():
                     "Yield to No Call",
                     "OAS",
                     "Effective Duration",
-                    "Effective Convexity"]
+                    "Effective Convexity",
+                    "CF Coupon"]
 
-    securities = [
-        FISecurity(calc_from_method="Price",
-                   calc_from_value=100.285,
-                   symbol="912828ZG8",
-                   settlement="20201202",
-                   discount_curve="UST",
-                   face=10000.0),
-        FISecurity(calc_from_method="Price",
-                   calc_from_value=101.138,
-                   symbol="US037833AR12",
-                   settlement="20201203",
-                   discount_curve="UST",
-                   face=200000.0)
-    ]
-    jobSettings = FIJobSettings(as_of_date="20201201")
+    security1 = FISecurity(
+        calc_from_method = "Price",
+        calc_from_value = 100.285,
+        face = 10000.0,
+        symbol = "912828ZG8",
+        settlement_date = "20201202",
+        discount_curve = "UST"
+    )
+    security2 = FISecurity(
+        calc_from_method = "Price",
+        calc_from_value = 101.138,
+        face = 200000.0,
+        symbol = "US037833AR12",
+        settlement_date = "20201203",
+        discount_curve = "UST"
+    )
+
+    securities = [security1, security2]
+
+    jobSettings = FIJobSettings(yield_curve_date = "20201201",
+                                partial_duration_months = [1,3,6])
+
     fi_calculation_parameters = FICalculationParameters(securities, calculations, jobSettings)
-    fi_calculation_parameters_root = FICalculationParametersRoot(data=fi_calculation_parameters)
 
-    print("FI Calculation Parameters Root:")
-    print(fi_calculation_parameters_root)
+    print(fi_calculation_parameters)
 
     fi_calculations_api = FICalculationsApi(api_client)
     run_calculation_response = fi_calculations_api.post_and_calculate(
@@ -88,7 +94,8 @@ def main():
     calculation_id = run_calculation_response[0].data.id
     print("Calculation Id: " + calculation_id)
 
-    status_response = fi_calculations_api.get_calculation_status_by_id(id=calculation_id)
+    status_response = fi_calculations_api.get_calculation_status_by_id(
+        id=calculation_id)
     while status_response[1] == 202:
         max_age = '5'
         age_value = status_response[2].get("cache-control")
@@ -96,7 +103,8 @@ def main():
             max_age = age_value.replace("max-age=", "")
         print('Sleeping: ' + max_age)
         time.sleep(int(max_age))
-        status_response = fi_calculations_api.get_calculation_status_by_id(id=calculation_id)
+        status_response = fi_calculations_api.get_calculation_status_by_id(
+            id=calculation_id)
 
     if status_response[1] != 201:
         print_error(status_response)
@@ -107,7 +115,8 @@ def main():
 
 def output_calculation_result(result):
     print("Calculation Result")
-    stachBuilder = StachExtensionFactory.get_row_organized_builder(StachVersion.V2)
+    stachBuilder = StachExtensionFactory.get_row_organized_builder(
+        StachVersion.V2)
     stachExtension = stachBuilder.set_package(result).build()
     dataFramesList = stachExtension.convert_to_dataframe()
     print(dataFramesList)
@@ -116,7 +125,8 @@ def output_calculation_result(result):
 
 def generate_excel(data_frames_list):
     for dataFrame in data_frames_list:
-        writer = pd.ExcelWriter(str(uuid.uuid1()) + ".xlsx") # pylint: disable=abstract-class-instantiated
+        writer = pd.ExcelWriter(  # pylint: disable=abstract-class-instantiated
+            str(uuid.uuid1()) + ".xlsx")
         dataFrame.to_excel(excel_writer=writer)
         writer.save()
         writer.close()

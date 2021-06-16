@@ -1,7 +1,7 @@
 import time
-import pandas as pd
 import os
 import uuid
+import pandas as pd
 
 from fds.analyticsapi.engines import ApiException
 from fds.analyticsapi.engines.api.bpm_optimizer_api import BPMOptimizerApi
@@ -12,6 +12,8 @@ from fds.analyticsapi.engines.model.bpm_optimization_parameters import BPMOptimi
 from fds.analyticsapi.engines.model.bpm_optimization_parameters_root import BPMOptimizationParametersRoot
 from fds.analyticsapi.engines.model.optimizer_output_types import OptimizerOutputTypes
 from fds.analyticsapi.engines.model.optimizer_trades_list import OptimizerTradesList
+from fds.protobuf.stach.extensions.StachExtensionFactory import StachExtensionFactory
+from fds.protobuf.stach.extensions.StachVersion import StachVersion
 
 from urllib3 import Retry
 
@@ -49,11 +51,16 @@ def main():
         #       }
         #   }
         # }
-        bpm_optimizer_strategy = BPMOptimizerStrategy(id="CLIENT:/Aapi/BPMAPISIMPLE")
-        bpm_optimizer_trades_list = OptimizerTradesList(identifier_type="Asset", include_cash=False)
-        bpm_optimizer_output_types = OptimizerOutputTypes(trades=bpm_optimizer_trades_list)
-        bpm_optimization_parameters = BPMOptimizationParameters(bpm_optimizer_strategy, bpm_optimizer_output_types)
-        bpm_optimization_parameters_root = BPMOptimizationParametersRoot(data=bpm_optimization_parameters)
+        bpm_optimizer_strategy = BPMOptimizerStrategy(
+            id="CLIENT:/Aapi/BPMAPISIMPLE")
+        bpm_optimizer_trades_list = OptimizerTradesList(
+            identifier_type="Asset", include_cash=False)
+        bpm_optimizer_output_types = OptimizerOutputTypes(
+            trades=bpm_optimizer_trades_list)
+        bpm_optimization_parameters = BPMOptimizationParameters(
+            bpm_optimizer_strategy, bpm_optimizer_output_types)
+        bpm_optimization_parameters_root = BPMOptimizationParametersRoot(
+            data=bpm_optimization_parameters)
 
         bpm_optimizations_api = BPMOptimizerApi(api_client)
 
@@ -98,12 +105,18 @@ def main():
 
 def output_optimization_result(result):
     print("Optimization Result")
-    print(result)
+    stachBuilder = StachExtensionFactory.get_row_organized_builder(
+        StachVersion.V2)
+    stachExtension = stachBuilder.add_table("tradesTable", result['trades']).build()
+    # stachExtension = stachBuilder.add_table("optimalsTable", result['trades']).build()
+    dataFramesList = stachExtension.convert_to_dataframe()
+    print(dataFramesList)
 
 
 def generate_excel(data_frames_list):
     for dataFrame in data_frames_list:
-        writer = pd.ExcelWriter(str(uuid.uuid1()) + ".xlsx") # pylint: disable=abstract-class-instantiated
+        writer = pd.ExcelWriter(  # pylint: disable=abstract-class-instantiated
+            str(uuid.uuid1()) + ".xlsx")
         dataFrame.to_excel(excel_writer=writer)
         writer.save()
         writer.close()

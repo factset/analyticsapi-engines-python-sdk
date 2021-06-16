@@ -73,7 +73,7 @@ class CalculationInfo(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'id': (str,),  # noqa: E501
+            'calculation_id': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -82,7 +82,7 @@ class CalculationInfo(ModelNormal):
 
 
     attribute_map = {
-        'id': 'id',  # noqa: E501
+        'calculation_id': 'calculationId',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -131,7 +131,7 @@ class CalculationInfo(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            id (str): Calculation identifier. [optional]  # noqa: E501
+            calculation_id (str): Calculation identifier. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

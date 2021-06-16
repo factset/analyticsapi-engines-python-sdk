@@ -24,7 +24,6 @@ username = os.environ["ANALYTICS_API_USERNAME_SERIAL"]
 password = os.environ["ANALYTICS_API_PASSWORD"]
 
 
-
 def main():
     config = Configuration()
     config.host = host
@@ -53,26 +52,34 @@ def main():
         frequency = "Monthly"
 
         components = components_api.get_vault_components(vault_document_name)
-        component_total_returns_summary = ComponentSummary(name=vault_component_total_returns, category=vault_component_category)
-        component_total_returns_id = [id for id in list(components.data.keys()) if components.data[id] == component_total_returns_summary][0]
+        component_total_returns_summary = ComponentSummary(
+            name=vault_component_total_returns, category=vault_component_category)
+        component_total_returns_id = [id for id in list(components.data.keys(
+        )) if components.data[id] == component_total_returns_summary][0]
         print("Vault Total Returns Component Id: " + component_total_returns_id)
 
-        component_performance_summary = ComponentSummary(name=vault_component_performance, category=vault_component_category)
-        component_performance_id = [id for id in list(components.data.keys()) if components.data[id] == component_performance_summary][0]
-        print("Vault Performance Over Time Component Id: " + component_performance_id)
+        component_performance_summary = ComponentSummary(
+            name=vault_component_performance, category=vault_component_category)
+        component_performance_id = [id for id in list(components.data.keys(
+        )) if components.data[id] == component_performance_summary][0]
+        print("Vault Performance Over Time Component Id: " +
+              component_performance_id)
 
         vault_account_identifier = VaultIdentifier(vault_default_account)
-        vault_dates = VaultDateParameters(startdate=vault_startdate, enddate=vault_enddate, frequency=frequency)
+        vault_dates = VaultDateParameters(
+            startdate=vault_startdate, enddate=vault_enddate, frequency=frequency)
 
         configurations_api = ConfigurationsApi(api_client)
-        configurations = configurations_api.get_vault_configurations(vault_default_account)
+        configurations = configurations_api.get_vault_configurations(
+            vault_default_account)
         configuration_id = list(configurations.data.keys())[0]
 
         vault_calculation_parameters = {
             "total_returns": VaultCalculationParameters(componentid=component_total_returns_id, account=vault_account_identifier, dates=vault_dates, configid=configuration_id),
             "performance_over_time": VaultCalculationParameters(componentid=component_performance_id, account=vault_account_identifier, dates=vault_dates, configid=configuration_id)}
 
-        vault_calculation_parameters_root = VaultCalculationParametersRoot(data=vault_calculation_parameters)
+        vault_calculation_parameters_root = VaultCalculationParametersRoot(
+            data=vault_calculation_parameters)
 
         vault_calculations_api = VaultCalculationsApi(api_client)
 
@@ -84,7 +91,7 @@ def main():
             print("Calculation Id: " + calculation_id)
 
             status_response = vault_calculations_api.get_calculation_status_by_id(id=calculation_id,
-                                                                               _return_http_data_only=False)
+                                                                                  _return_http_data_only=False)
 
             while status_response[1] == 202 and (status_response[0].data.status in ("Queued", "Executing")):
                 max_age = '5'
@@ -94,17 +101,19 @@ def main():
                 print('Sleeping: ' + max_age)
                 time.sleep(int(max_age))
                 status_response = vault_calculations_api.get_calculation_status_by_id(calculation_id,
-                                                                                   _return_http_data_only=False)
+                                                                                      _return_http_data_only=False)
 
             for (calculation_unit_id, calculation_unit) in status_response[0].data.units.items():
                 if calculation_unit.status == "Success":
-                    print("Calculation Unit Id: " + calculation_unit_id + " Succeeded!!!")
+                    print("Calculation Unit Id: " +
+                          calculation_unit_id + " Succeeded!!!")
                     result_response = vault_calculations_api.get_calculation_unit_result_by_id(id=calculation_id,
-                                                                                            unit_id=calculation_unit_id,
-                                                                                            _return_http_data_only=False)
+                                                                                               unit_id=calculation_unit_id,
+                                                                                               _return_http_data_only=False)
                     output_calculation_result(result_response[0]['data'])
                 else:
-                    print("Calculation Unit Id:" + calculation_unit_id + " Failed!!!")
+                    print("Calculation Unit Id:" +
+                          calculation_unit_id + " Failed!!!")
                     print("Error message : " + str(calculation_unit.errors))
         else:
             print("Calculation creation failed")
@@ -119,7 +128,8 @@ def main():
 
 def output_calculation_result(result):
     print("Calculation Result")
-    stachBuilder = StachExtensionFactory.get_row_organized_builder(StachVersion.V2)
+    stachBuilder = StachExtensionFactory.get_row_organized_builder(
+        StachVersion.V2)
     stachExtension = stachBuilder.set_package(result).build()
     dataFramesList = stachExtension.convert_to_dataframe()
     print(dataFramesList)
@@ -128,7 +138,8 @@ def output_calculation_result(result):
 
 def generate_excel(data_frames_list):
     for dataFrame in data_frames_list:
-        writer = pd.ExcelWriter(str(uuid.uuid1()) + ".xlsx") # pylint: disable=abstract-class-instantiated
+        writer = pd.ExcelWriter(  # pylint: disable=abstract-class-instantiated
+            str(uuid.uuid1()) + ".xlsx")
         dataFrame.to_excel(excel_writer=writer)
         writer.save()
         writer.close()

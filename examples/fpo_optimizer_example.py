@@ -1,7 +1,7 @@
 import time
-import pandas as pd
 import os
 import uuid
+import pandas as pd
 
 from fds.analyticsapi.engines import ApiException
 from fds.analyticsapi.engines.api.fpo_optimizer_api import FPOOptimizerApi
@@ -15,6 +15,8 @@ from fds.analyticsapi.engines.model.fpo_optimization_parameters import FPOOptimi
 from fds.analyticsapi.engines.model.optimizer_output_types import OptimizerOutputTypes
 from fds.analyticsapi.engines.model.optimizer_trades_list import OptimizerTradesList
 from fds.analyticsapi.engines.model.optimization import Optimization
+from fds.protobuf.stach.extensions.StachExtensionFactory import StachExtensionFactory
+from fds.protobuf.stach.extensions.StachVersion import StachVersion
 
 from urllib3 import Retry
 
@@ -60,22 +62,27 @@ def main():
         #         }
         #     }
         # }
-        fpo_optimizer_strategy = OptimizerStrategy(id="Client:/analytics_api/dbui_simple_strategy")
+        fpo_optimizer_strategy = OptimizerStrategy(
+            id="Client:/analytics_api/dbui_simple_strategy")
         fpo_pa_doc = PaDoc("CLIENT:/FPO/FPO_MASTER")
-        fpo_optimizer_account = FPOAccount(fpo_pa_doc, id="CLIENT:/FPO/1K_MAC_AMZN_AAPL.ACCT")
+        fpo_optimizer_account = FPOAccount(
+            fpo_pa_doc, id="CLIENT:/FPO/1K_MAC_AMZN_AAPL.ACCT")
         fpo_optimizer_optimization = Optimization(
             risk_model_date="0M",
             backtest_date="0M",
         )
-        fpo_optimizer_trades_list = OptimizerTradesList(identifier_type="Asset", include_cash=False)
-        fpo_optimizer_output_types = OptimizerOutputTypes(trades=fpo_optimizer_trades_list)
+        fpo_optimizer_trades_list = OptimizerTradesList(
+            identifier_type="Asset", include_cash=False)
+        fpo_optimizer_output_types = OptimizerOutputTypes(
+            trades=fpo_optimizer_trades_list)
         fpo_optimizer_parameters = FPOOptimizationParameters(
             fpo_optimizer_strategy,
             fpo_optimizer_output_types,
             account=fpo_optimizer_account,
             optimization=fpo_optimizer_optimization
         )
-        fpo_optimization_parameters_root = FPOOptimizationParametersRoot(data=fpo_optimizer_parameters)
+        fpo_optimization_parameters_root = FPOOptimizationParametersRoot(
+            data=fpo_optimizer_parameters)
 
         fpo_optimizations_api = FPOOptimizerApi(api_client)
 
@@ -120,12 +127,18 @@ def main():
 
 def output_optimization_result(result):
     print("Optimization Result")
-    print(result)
+    stachBuilder = StachExtensionFactory.get_row_organized_builder(
+        StachVersion.V2)
+    stachExtension = stachBuilder.add_table("tradesTable", result['trades']).build()
+    # stachExtension = stachBuilder.add_table("optimalsTable", result['trades']).build()
+    dataFramesList = stachExtension.convert_to_dataframe()
+    print(dataFramesList)
 
 
 def generate_excel(data_frames_list):
     for dataFrame in data_frames_list:
-        writer = pd.ExcelWriter(str(uuid.uuid1()) + ".xlsx") # pylint: disable=abstract-class-instantiated
+        writer = pd.ExcelWriter(  # pylint: disable=abstract-class-instantiated
+            str(uuid.uuid1()) + ".xlsx")
         dataFrame.to_excel(excel_writer=writer)
         writer.save()
         writer.close()

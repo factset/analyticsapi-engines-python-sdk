@@ -1,6 +1,6 @@
 import time
 import os
-import uuid
+from pathlib import Path
 import pandas as pd
 
 from fds.analyticsapi.engines import ApiException
@@ -9,12 +9,11 @@ from fds.analyticsapi.engines.api_client import ApiClient
 from fds.analyticsapi.engines.configuration import Configuration
 from fds.analyticsapi.engines.model.quant_calculation_parameters_root import QuantCalculationParametersRoot
 from fds.analyticsapi.engines.model.quant_calculation_parameters import QuantCalculationParameters
+from fds.analyticsapi.engines.model.quant_calculation_meta import QuantCalculationMeta
 from fds.analyticsapi.engines.model.quant_screening_expression_universe import QuantScreeningExpressionUniverse
 from fds.analyticsapi.engines.model.quant_fds_date import QuantFdsDate
 from fds.analyticsapi.engines.model.quant_screening_expression import QuantScreeningExpression
 from fds.analyticsapi.engines.model.quant_fql_expression import QuantFqlExpression
-from fds.protobuf.stach.extensions.StachVersion import StachVersion
-from fds.protobuf.stach.extensions.StachExtensionFactory import StachExtensionFactory
 
 from urllib3 import Retry
 
@@ -46,13 +45,19 @@ def main():
         screeningExpression = [QuantScreeningExpression(
             expr="P_PRICE", name="Price (SCR)")]
         fqlExpression = [QuantFqlExpression(
-            expr="P_PRICE", name="Price (SCR)")]
+            expr="P_PRICE(#DATE,#DATE,#FREQ)", name="Price (FQL)")]
 
-        quant_calculation_parameters = {"1": QuantCalculationParameters(screening_expression_universe=screeningExpressionUniverse,
-                                        fds_date=fdsDate, screening_expression=screeningExpression, fql_expression=fqlExpression)}
+        quant_calculation_parameters = {"1": QuantCalculationParameters(
+            screening_expression_universe=screeningExpressionUniverse,
+            fds_date=fdsDate,
+            screening_expression=screeningExpression,
+            fql_expression=fqlExpression)
+        }
+
+        quant_calculations_meta = QuantCalculationMeta(format='Feather')
 
         quant_calculation_parameter_root = QuantCalculationParametersRoot(
-            data=quant_calculation_parameters)
+            data=quant_calculation_parameters, meta=quant_calculations_meta)
 
         quant_calculations_api = QuantCalculationsApi(api_client)
 
@@ -60,7 +65,7 @@ def main():
             quant_calculation_parameters_root=quant_calculation_parameter_root, _return_http_data_only=False)
 
         if post_and_calculate_response[1] == 201:
-            output_calculation_result(post_and_calculate_response[0]['data'])
+            output_calculation_result('data', post_and_calculate_response[0])
         else:
             calculation_id = post_and_calculate_response[0].data.calculationid
             print("Calculation Id: " + calculation_id)
@@ -86,12 +91,14 @@ def main():
                                                                                                unit_id=calculation_unit_id,
                                                                                                _return_http_data_only=False)
                     print("Calculation Data")
-                    output_calculation_result(result_response[0]['data'])
+                    output_calculation_result(
+                        'data', result_response[0].read())
                     result_response = quant_calculations_api.get_calculation_unit_info_by_id(id=calculation_id,
                                                                                              unit_id=calculation_unit_id,
                                                                                              _return_http_data_only=False)
                     print("Calculation Info")
-                    output_calculation_result(result_response[0]['data'])
+                    output_calculation_result(
+                        'info', result_response[0].read())
                 else:
                     print("Calculation Unit Id:" +
                           calculation_unit_id + " Failed!!!")
@@ -103,22 +110,12 @@ def main():
         exit()
 
 
-def output_calculation_result(result):
-    stachBuilder = StachExtensionFactory.get_row_organized_builder(
-        StachVersion.V2)
-    stachExtension = stachBuilder.set_package(result).build()
-    dataFramesList = stachExtension.convert_to_dataframe()
-    print(dataFramesList)
-    # generate_excel(dataFramesList)  # Uncomment this line to get the result in table format exported to excel file.
-
-
-def generate_excel(data_frames_list):
-    for dataFrame in data_frames_list:
-        writer = pd.ExcelWriter(  # pylint: disable=abstract-class-instantiated
-            str(uuid.uuid1()) + ".xlsx")
-        dataFrame.to_excel(excel_writer=writer)
-        writer.save()
-        writer.close()
+def output_calculation_result(output_prefix, result):
+    filename = Path(f'{output_prefix}-Output.ftr')
+    print(f'Writing output to {filename}')
+    filename.write_bytes(result)
+    df = pd.read_feather(filename)
+    print(df)
 
 
 if __name__ == '__main__':

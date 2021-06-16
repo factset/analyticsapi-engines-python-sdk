@@ -1,7 +1,7 @@
 import time
-import pandas as pd
 import os
 import uuid
+import pandas as pd
 
 from fds.analyticsapi.engines import ApiException
 from fds.analyticsapi.engines.api.axp_optimizer_api import AXPOptimizerApi
@@ -14,6 +14,8 @@ from fds.analyticsapi.engines.model.axioma_equity_optimization_parameters import
 from fds.analyticsapi.engines.model.optimizer_output_types import OptimizerOutputTypes
 from fds.analyticsapi.engines.model.optimizer_trades_list import OptimizerTradesList
 from fds.analyticsapi.engines.model.optimization import Optimization
+from fds.protobuf.stach.extensions.StachExtensionFactory import StachExtensionFactory
+from fds.protobuf.stach.extensions.StachVersion import StachVersion
 
 from urllib3 import Retry
 
@@ -59,22 +61,27 @@ def main():
         #         }
         #     }
         # }
-        axp_optimizer_strategy = AxiomaEquityOptimizerStrategy(id="Client:/Optimizer/CN_TEST")
-        axp_optimizer_account = OptimizerAccount(id="CLIENT:/OPTIMIZER/IBM.ACCT")
+        axp_optimizer_strategy = AxiomaEquityOptimizerStrategy(
+            id="Client:/Optimizer/CN_TEST")
+        axp_optimizer_account = OptimizerAccount(
+            id="CLIENT:/OPTIMIZER/IBM.ACCT")
         axp_optimizer_optimization = Optimization(
             risk_model_date="09/01/2020",
             backtest_date="09/01/2020",
             cashflow="0"
         )
-        axp_optimizer_trades_list = OptimizerTradesList(identifier_type="SedolChk", include_cash=False)
-        axp_optimizer_output_types = OptimizerOutputTypes(trades=axp_optimizer_trades_list)
+        axp_optimizer_trades_list = OptimizerTradesList(
+            identifier_type="SedolChk", include_cash=False)
+        axp_optimizer_output_types = OptimizerOutputTypes(
+            trades=axp_optimizer_trades_list)
         axp_optimizer_parameters = AxiomaEquityOptimizationParameters(
             strategy=axp_optimizer_strategy,
             output_types=axp_optimizer_output_types,
             account=axp_optimizer_account,
             optimization=axp_optimizer_optimization
         )
-        axp_optimization_parameters_root = AxiomaEquityOptimizationParametersRoot(data=axp_optimizer_parameters)
+        axp_optimization_parameters_root = AxiomaEquityOptimizationParametersRoot(
+            data=axp_optimizer_parameters)
 
         axp_optimizations_api = AXPOptimizerApi(api_client)
 
@@ -119,12 +126,18 @@ def main():
 
 def output_optimization_result(result):
     print("Optimization Result")
-    print(result)
+    stachBuilder = StachExtensionFactory.get_row_organized_builder(
+        StachVersion.V2)
+    stachExtension = stachBuilder.add_table("tradesTable", result['trades']).build()
+    # stachExtension = stachBuilder.add_table("optimalsTable", result['trades']).build()
+    dataFramesList = stachExtension.convert_to_dataframe()
+    print(dataFramesList)
 
 
 def generate_excel(data_frames_list):
     for dataFrame in data_frames_list:
-        writer = pd.ExcelWriter(str(uuid.uuid1()) + ".xlsx") # pylint: disable=abstract-class-instantiated
+        writer = pd.ExcelWriter(  # pylint: disable=abstract-class-instantiated
+            str(uuid.uuid1()) + ".xlsx")
         dataFrame.to_excel(excel_writer=writer)
         writer.save()
         writer.close()
