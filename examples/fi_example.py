@@ -76,8 +76,6 @@ def main():
 
     fi_calculation_parameters = FICalculationParameters(securities, calculations, jobSettings)
 
-    print(fi_calculation_parameters)
-
     fi_calculation_parameters_root = FICalculationParametersRoot(data=fi_calculation_parameters)
 
     fi_calculations_api = FICalculationsApi(api_client)

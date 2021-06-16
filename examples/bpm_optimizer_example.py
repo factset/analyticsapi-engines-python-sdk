@@ -72,7 +72,7 @@ def main():
         if post_and_optimize_response[1] == 201:
             output_optimization_result(post_and_optimize_response[0]['data'])
         else:
-            optimization_id = post_and_optimize_response[0].data.id
+            optimization_id = post_and_optimize_response[0].data.calculation_id
             print("Calculation Id: " + optimization_id)
 
             status_response = bpm_optimizations_api.get_optimization_status_by_id(id=optimization_id,
