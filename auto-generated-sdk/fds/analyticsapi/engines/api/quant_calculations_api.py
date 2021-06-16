@@ -59,7 +59,7 @@ class QuantCalculationsApi(object):
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
+                    code and headers. Default is False.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
                     will be returned without reading/decoding response data.
                     Default is True.
@@ -87,7 +87,7 @@ class QuantCalculationsApi(object):
                 'async_req', False
             )
             kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
+                '_return_http_data_only', False
             )
             kwargs['_preload_content'] = kwargs.get(
                 '_preload_content', True
@@ -178,7 +178,7 @@ class QuantCalculationsApi(object):
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
+                    code and headers. Default is False.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
                     will be returned without reading/decoding response data.
                     Default is True.
@@ -206,7 +206,7 @@ class QuantCalculationsApi(object):
                 'async_req', False
             )
             kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
+                '_return_http_data_only', False
             )
             kwargs['_preload_content'] = kwargs.get(
                 '_preload_content', True
@@ -299,7 +299,7 @@ class QuantCalculationsApi(object):
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
+                    code and headers. Default is False.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
                     will be returned without reading/decoding response data.
                     Default is True.
@@ -327,7 +327,7 @@ class QuantCalculationsApi(object):
                 'async_req', False
             )
             kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
+                '_return_http_data_only', False
             )
             kwargs['_preload_content'] = kwargs.get(
                 '_preload_content', True
@@ -430,7 +430,7 @@ class QuantCalculationsApi(object):
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
+                    code and headers. Default is False.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
                     will be returned without reading/decoding response data.
                     Default is True.
@@ -458,7 +458,7 @@ class QuantCalculationsApi(object):
                 'async_req', False
             )
             kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
+                '_return_http_data_only', False
             )
             kwargs['_preload_content'] = kwargs.get(
                 '_preload_content', True
@@ -558,7 +558,7 @@ class QuantCalculationsApi(object):
                 cache_control (str): Standard HTTP header.  Accepts no-store, max-age, max-stale.. [optional]
                 quant_calculation_parameters_root (QuantCalculationParametersRoot): [optional]
                 _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
+                    code and headers. Default is False.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
                     will be returned without reading/decoding response data.
                     Default is True.
@@ -586,7 +586,7 @@ class QuantCalculationsApi(object):
                 'async_req', False
             )
             kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
+                '_return_http_data_only', False
             )
             kwargs['_preload_content'] = kwargs.get(
                 '_preload_content', True
@@ -682,7 +682,7 @@ class QuantCalculationsApi(object):
                 cache_control (str): Standard HTTP header.  Accepts no-store, max-age, max-stale.. [optional]
                 quant_calculation_parameters_root (QuantCalculationParametersRoot): Calculation Parameters. [optional]
                 _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
+                    code and headers. Default is False.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
                     will be returned without reading/decoding response data.
                     Default is True.
@@ -710,7 +710,7 @@ class QuantCalculationsApi(object):
                 'async_req', False
             )
             kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
+                '_return_http_data_only', False
             )
             kwargs['_preload_content'] = kwargs.get(
                 '_preload_content', True

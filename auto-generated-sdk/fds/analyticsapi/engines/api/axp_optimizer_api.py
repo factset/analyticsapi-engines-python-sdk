@@ -59,7 +59,7 @@ class AXPOptimizerApi(object):
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
+                    code and headers. Default is False.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
                     will be returned without reading/decoding response data.
                     Default is True.
@@ -87,7 +87,7 @@ class AXPOptimizerApi(object):
                 'async_req', False
             )
             kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
+                '_return_http_data_only', False
             )
             kwargs['_preload_content'] = kwargs.get(
                 '_preload_content', True
@@ -180,7 +180,7 @@ class AXPOptimizerApi(object):
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
+                    code and headers. Default is False.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
                     will be returned without reading/decoding response data.
                     Default is True.
@@ -208,7 +208,7 @@ class AXPOptimizerApi(object):
                 'async_req', False
             )
             kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
+                '_return_http_data_only', False
             )
             kwargs['_preload_content'] = kwargs.get(
                 '_preload_content', True
@@ -299,7 +299,7 @@ class AXPOptimizerApi(object):
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
+                    code and headers. Default is False.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
                     will be returned without reading/decoding response data.
                     Default is True.
@@ -327,7 +327,7 @@ class AXPOptimizerApi(object):
                 'async_req', False
             )
             kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
+                '_return_http_data_only', False
             )
             kwargs['_preload_content'] = kwargs.get(
                 '_preload_content', True
@@ -418,7 +418,7 @@ class AXPOptimizerApi(object):
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
+                    code and headers. Default is False.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
                     will be returned without reading/decoding response data.
                     Default is True.
@@ -446,7 +446,7 @@ class AXPOptimizerApi(object):
                 'async_req', False
             )
             kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
+                '_return_http_data_only', False
             )
             kwargs['_preload_content'] = kwargs.get(
                 '_preload_content', True
@@ -537,7 +537,7 @@ class AXPOptimizerApi(object):
                 cache_control (str): Standard HTTP header.  Accepts max-stale.. [optional]
                 axioma_equity_optimization_parameters_root (AxiomaEquityOptimizationParametersRoot): Optimization Parameters. [optional]
                 _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
+                    code and headers. Default is False.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
                     will be returned without reading/decoding response data.
                     Default is True.
@@ -565,7 +565,7 @@ class AXPOptimizerApi(object):
                 'async_req', False
             )
             kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
+                '_return_http_data_only', False
             )
             kwargs['_preload_content'] = kwargs.get(
                 '_preload_content', True
@@ -666,7 +666,7 @@ class AXPOptimizerApi(object):
                 cache_control (str): Standard HTTP header.  Accepts max-stale.. [optional]
                 axioma_equity_optimization_parameters_root (AxiomaEquityOptimizationParametersRoot): Optimization Parameters. [optional]
                 _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
+                    code and headers. Default is False.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
                     will be returned without reading/decoding response data.
                     Default is True.
@@ -694,7 +694,7 @@ class AXPOptimizerApi(object):
                 'async_req', False
             )
             kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
+                '_return_http_data_only', False
             )
             kwargs['_preload_content'] = kwargs.get(
                 '_preload_content', True
