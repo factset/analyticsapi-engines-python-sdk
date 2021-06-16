@@ -247,7 +247,7 @@ class ApiClient(object):
         files: typing.Optional[typing.Dict[str, typing.List[io.IOBase]]] = None,
         response_type_dict: typing.Optional[typing.Dict[int, typing.Any]] = None,
         auth_settings: typing.Optional[typing.List[str]] = None,
-        _return_http_data_only: typing.Optional[bool] = None,
+        _return_http_data_only: typing.Optional[bool] = True,
         collection_formats: typing.Optional[typing.Dict[str, str]] = None,
         _preload_content: bool = True,
         _request_timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
