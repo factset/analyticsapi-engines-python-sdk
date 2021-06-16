@@ -59,7 +59,7 @@ class FPOOptimizerApi(object):
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
+                    code and headers. Default is False.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
                     will be returned without reading/decoding response data.
                     Default is True.
@@ -87,7 +87,7 @@ class FPOOptimizerApi(object):
                 'async_req', False
             )
             kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
+                '_return_http_data_only', False
             )
             kwargs['_preload_content'] = kwargs.get(
                 '_preload_content', True
@@ -180,7 +180,7 @@ class FPOOptimizerApi(object):
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
+                    code and headers. Default is False.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
                     will be returned without reading/decoding response data.
                     Default is True.
@@ -208,7 +208,7 @@ class FPOOptimizerApi(object):
                 'async_req', False
             )
             kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
+                '_return_http_data_only', False
             )
             kwargs['_preload_content'] = kwargs.get(
                 '_preload_content', True
@@ -300,7 +300,7 @@ class FPOOptimizerApi(object):
             Keyword Args:
                 accept (str): Standard HTTP header. Value can be gzip, compress, deflate, br, identity and/or *. [optional]
                 _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
+                    code and headers. Default is False.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
                     will be returned without reading/decoding response data.
                     Default is True.
@@ -328,7 +328,7 @@ class FPOOptimizerApi(object):
                 'async_req', False
             )
             kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
+                '_return_http_data_only', False
             )
             kwargs['_preload_content'] = kwargs.get(
                 '_preload_content', True
@@ -424,7 +424,7 @@ class FPOOptimizerApi(object):
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
+                    code and headers. Default is False.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
                     will be returned without reading/decoding response data.
                     Default is True.
@@ -452,7 +452,7 @@ class FPOOptimizerApi(object):
                 'async_req', False
             )
             kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
+                '_return_http_data_only', False
             )
             kwargs['_preload_content'] = kwargs.get(
                 '_preload_content', True
@@ -543,7 +543,7 @@ class FPOOptimizerApi(object):
                 cache_control (str): Standard HTTP header.  Accepts max-stale.. [optional]
                 fpo_optimization_parameters_root (FPOOptimizationParametersRoot): Optimization Parameters. [optional]
                 _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
+                    code and headers. Default is False.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
                     will be returned without reading/decoding response data.
                     Default is True.
@@ -571,7 +571,7 @@ class FPOOptimizerApi(object):
                 'async_req', False
             )
             kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
+                '_return_http_data_only', False
             )
             kwargs['_preload_content'] = kwargs.get(
                 '_preload_content', True
@@ -672,7 +672,7 @@ class FPOOptimizerApi(object):
                 cache_control (str): Standard HTTP header.  Accepts max-stale.. [optional]
                 fpo_optimization_parameters_root (FPOOptimizationParametersRoot): Optimization Parameters. [optional]
                 _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
+                    code and headers. Default is False.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
                     will be returned without reading/decoding response data.
                     Default is True.
@@ -700,7 +700,7 @@ class FPOOptimizerApi(object):
                 'async_req', False
             )
             kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
+                '_return_http_data_only', False
             )
             kwargs['_preload_content'] = kwargs.get(
                 '_preload_content', True

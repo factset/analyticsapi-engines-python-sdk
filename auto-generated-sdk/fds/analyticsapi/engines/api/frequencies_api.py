@@ -53,7 +53,7 @@ class FrequenciesApi(object):
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
+                    code and headers. Default is False.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
                     will be returned without reading/decoding response data.
                     Default is True.
@@ -81,7 +81,7 @@ class FrequenciesApi(object):
                 'async_req', False
             )
             kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
+                '_return_http_data_only', False
             )
             kwargs['_preload_content'] = kwargs.get(
                 '_preload_content', True
@@ -160,7 +160,7 @@ class FrequenciesApi(object):
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
+                    code and headers. Default is False.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
                     will be returned without reading/decoding response data.
                     Default is True.
@@ -188,7 +188,7 @@ class FrequenciesApi(object):
                 'async_req', False
             )
             kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
+                '_return_http_data_only', False
             )
             kwargs['_preload_content'] = kwargs.get(
                 '_preload_content', True
@@ -267,7 +267,7 @@ class FrequenciesApi(object):
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
+                    code and headers. Default is False.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
                     will be returned without reading/decoding response data.
                     Default is True.
@@ -295,7 +295,7 @@ class FrequenciesApi(object):
                 'async_req', False
             )
             kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
+                '_return_http_data_only', False
             )
             kwargs['_preload_content'] = kwargs.get(
                 '_preload_content', True
