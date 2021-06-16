@@ -72,14 +72,13 @@ def main():
         pa_calculations_api = PACalculationsApi(api_client)
 
         post_and_calculate_response = pa_calculations_api.post_and_calculate(
-            pa_calculation_parameters_root=pa_calculation_parameter_root, _return_http_data_only=False)
+            pa_calculation_parameters_root=pa_calculation_parameter_root)
 
         if post_and_calculate_response[1] == 202 or post_and_calculate_response[1] == 200:
             calculation_id = post_and_calculate_response[0].data.calculationid
             print("Calculation Id: " + calculation_id)
 
-            status_response = pa_calculations_api.get_calculation_status_by_id(id=calculation_id,
-                                                                               _return_http_data_only=False)
+            status_response = pa_calculations_api.get_calculation_status_by_id(id=calculation_id)
 
             while status_response[1] == 202 and (status_response[0].data.status in ("Queued", "Executing")):
                 max_age = '5'
@@ -88,16 +87,14 @@ def main():
                     max_age = age_value.replace("max-age=", "")
                 print('Sleeping: ' + max_age)
                 time.sleep(int(max_age))
-                status_response = pa_calculations_api.get_calculation_status_by_id(calculation_id,
-                                                                                   _return_http_data_only=False)
+                status_response = pa_calculations_api.get_calculation_status_by_id(calculation_id)
 
             for (calculation_unit_id, calculation_unit) in status_response[0].data.units.items():
                 if calculation_unit.status == "Success":
                     print("Calculation Unit Id: " +
                           calculation_unit_id + " Succeeded!!!")
                     result_response = pa_calculations_api.get_calculation_unit_result_by_id(id=calculation_id,
-                                                                                            unit_id=calculation_unit_id,
-                                                                                            _return_http_data_only=False)
+                                                                                            unit_id=calculation_unit_id)
                     output_calculation_result(result_response[0]['data'])
                 else:
                     print("Calculation Unit Id:" +

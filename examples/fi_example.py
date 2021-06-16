@@ -80,8 +80,7 @@ def main():
 
     fi_calculations_api = FICalculationsApi(api_client)
     run_calculation_response = fi_calculations_api.post_and_calculate(
-        fi_calculation_parameters_root=fi_calculation_parameters_root,
-        _return_http_data_only=False)
+        fi_calculation_parameters_root=fi_calculation_parameters_root)
 
     if run_calculation_response[1] != 202 and run_calculation_response[1] != 201:
         print_error(run_calculation_response)
@@ -91,7 +90,7 @@ def main():
         output_calculation_result(run_calculation_response[0].data)
         sys.exit()
 
-    calculation_id = run_calculation_response[0].data.id
+    calculation_id = run_calculation_response[0].data.calculation_id
     print("Calculation Id: " + calculation_id)
 
     status_response = fi_calculations_api.get_calculation_status_by_id(
