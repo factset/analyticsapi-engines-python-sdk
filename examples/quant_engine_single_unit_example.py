@@ -60,7 +60,7 @@ def main():
             quant_calculation_parameters_root=quant_calculation_parameter_root, _return_http_data_only=False)
 
         if post_and_calculate_response[1] == 201:
-            output_calculation_result(post_and_calculate_response[0]['data'])
+            output_calculation_result(post_and_calculate_response[0].read())
         else:
             calculation_id = post_and_calculate_response[0].data.calculationid
             print("Calculation Id: " + calculation_id)
@@ -86,12 +86,12 @@ def main():
                                                                                                unit_id=calculation_unit_id,
                                                                                                _return_http_data_only=False)
                     print("Calculation Data")
-                    output_calculation_result(result_response[0]['data'])
+                    output_calculation_result(result_response[0].read())
                     result_response = quant_calculations_api.get_calculation_unit_info_by_id(id=calculation_id,
                                                                                              unit_id=calculation_unit_id,
                                                                                              _return_http_data_only=False)
                     print("Calculation Info")
-                    output_calculation_result(result_response[0]['data'])
+                    output_calculation_result(result_response[0].read())
                 else:
                     print("Calculation Unit Id:" +
                           calculation_unit_id + " Failed!!!")
