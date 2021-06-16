@@ -65,9 +65,7 @@ def main():
         bpm_optimizations_api = BPMOptimizerApi(api_client)
 
         post_and_optimize_response = bpm_optimizations_api.post_and_optimize(
-            bpm_optimization_parameters_root=bpm_optimization_parameters_root,
-            _return_http_data_only=False
-        )
+            bpm_optimization_parameters_root=bpm_optimization_parameters_root)
 
         if post_and_optimize_response[1] == 201:
             output_optimization_result(post_and_optimize_response[0]['data'])
@@ -75,8 +73,7 @@ def main():
             optimization_id = post_and_optimize_response[0].data.calculation_id
             print("Calculation Id: " + optimization_id)
 
-            status_response = bpm_optimizations_api.get_optimization_status_by_id(id=optimization_id,
-                                                                                  _return_http_data_only=False)
+            status_response = bpm_optimizations_api.get_optimization_status_by_id(id=optimization_id)
 
             while status_response[1] == 202:
                 max_age = '5'
@@ -85,13 +82,11 @@ def main():
                     max_age = age_value.replace("max-age=", "")
                 print('Sleeping: ' + max_age)
                 time.sleep(int(max_age))
-                status_response = bpm_optimizations_api.get_optimization_status_by_id(optimization_id,
-                                                                                      _return_http_data_only=False)
+                status_response = bpm_optimizations_api.get_optimization_status_by_id(optimization_id)
 
             if status_response[1] == 201:
                 print("Optimization Id: " + optimization_id + " Succeeded!!!")
-                result_response = bpm_optimizations_api.get_optimization_result(id=optimization_id,
-                                                                                _return_http_data_only=False)
+                result_response = bpm_optimizations_api.get_optimization_result(id=optimization_id)
                 output_optimization_result(result_response[0]['data'])
             else:
                 print("Optimization Id:" + optimization_id + " Failed!!!")
