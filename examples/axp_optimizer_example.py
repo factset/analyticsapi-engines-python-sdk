@@ -112,7 +112,7 @@ def main():
                 output_optimization_result(result_response[0]['data'])
             else:
                 print("Optimization Id:" + optimization_id + " Failed!!!")
-                print("Error message : " + status_response[0].error)
+                print("Error message : " + status_response[0].errors)
 
     except ApiException as e:
         print("Api exception Encountered")
