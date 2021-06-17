@@ -125,7 +125,7 @@ def output_optimization_result(result):
     stachBuilder = StachExtensionFactory.get_row_organized_builder(
         StachVersion.V2)
     stachExtension = stachBuilder.add_table("tradesTable", result['trades']).build()
-    # stachExtension = stachBuilder.add_table("optimalsTable", result['trades']).build()
+    # stachExtension = stachBuilder.add_table("optimalsTable", result['optimal']).build()
     dataFramesList = stachExtension.convert_to_dataframe()
     print(dataFramesList)
 
