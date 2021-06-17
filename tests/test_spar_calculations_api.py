@@ -26,7 +26,8 @@ class TestSparCalculationsApi(unittest.TestCase):
         def create_calculation(test_context):
             print("Creating single unit calculation")
             components = self.components_api.get_spar_components(
-                document="SPAR_DOCUMENTS:/Factset Default Document")
+                document="SPAR_DOCUMENTS:/Factset Default Document",
+                _return_http_data_only=True)
             component_summary = ComponentSummary(
                 name="Returns Table", category="Raw Data / Returns")
             component_id = [id for id in list(
@@ -43,7 +44,8 @@ class TestSparCalculationsApi(unittest.TestCase):
                 data=spar_calculation_parameters)
 
             post_and_calculate_response = self.spar_calculations_api.post_and_calculate(
-                spar_calculation_parameters_root=spar_calculation_parameter_root, _return_http_data_only=False)
+                spar_calculation_parameters_root=spar_calculation_parameter_root
+            )
 
             self.assertTrue(post_and_calculate_response[1] == 201 or post_and_calculate_response[1] == 202,
                             "Response for create_calculation should have been 201 or 202")
@@ -55,7 +57,7 @@ class TestSparCalculationsApi(unittest.TestCase):
                     "test_context": None
                 }
             elif post_and_calculate_response[1] == 202:
-                test_context["calculation_id"] = post_and_calculate_response[0].data.calculationid
+                test_context["calculation_id"] = post_and_calculate_response[2]["X-Factset-Api-Calculation-Id"]
                 return {
                     "continue_workflow": True,
                     "next_request": read_status_step_name,
@@ -67,8 +69,7 @@ class TestSparCalculationsApi(unittest.TestCase):
             calculation_id = test_context["calculation_id"]
             print("Calculation Id: " + calculation_id)
 
-            status_response = self.spar_calculations_api.get_calculation_status_by_id(id=calculation_id,
-                                                                                      _return_http_data_only=False)
+            status_response = self.spar_calculations_api.get_calculation_status_by_id(id=calculation_id)
 
             self.assertTrue(status_response[1] == 202 and (
                 status_response[0].data.status in ("Queued", "Executing")))
@@ -80,8 +81,7 @@ class TestSparCalculationsApi(unittest.TestCase):
                     max_age = age_value.replace("max-age=", "")
                 print('Sleeping: ' + max_age)
                 time.sleep(int(max_age))
-                status_response = self.spar_calculations_api.get_calculation_status_by_id(id=calculation_id,
-                                                                                          _return_http_data_only=False)
+                status_response = self.spar_calculations_api.get_calculation_status_by_id(id=calculation_id)
 
                 test_context["calculation_units"] = status_response[0].data.units.items()[
                     0]
@@ -95,8 +95,7 @@ class TestSparCalculationsApi(unittest.TestCase):
             calculation_id = test_context["calculation_id"]
             for (calculation_unit_id, calculation_unit) in test_context.calculation_units:
                 result_response = self.spar_calculations_api.get_calculation_unit_result_by_id(id=calculation_id,
-                                                                                               unit_id=calculation_unit_id,
-                                                                                               _return_http_data_only=False)
+                                                                                               unit_id=calculation_unit_id)
                 self.assertEqual(
                     result_response[1], 200, "Get calculation result should have succeeded")
 
@@ -116,8 +115,8 @@ def run_api_workflow_with_assertions(workflow_specification, current_request, te
     if current_request_result["continue_workflow"]:
         run_api_workflow_with_assertions(
             workflow_specification,
-            current_request_result.next_request,
-            current_request_result.test_context
+            current_request_result["next_request"],
+            current_request_result["test_context"]
         )
 
 

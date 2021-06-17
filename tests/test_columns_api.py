@@ -23,7 +23,7 @@ class TestColumnsApi(unittest.TestCase):
                          0]]), ColumnSummary, "Response should be of ColumnSummary type")
 
     def test_get_pa_column_details_by_id(self):
-        columns = self.columns_api.get_pa_columns()
+        columns = self.columns_api.get_pa_columns(_return_http_data_only=True)
         column_id = list(columns.data.keys())[0]
         response = self.columns_api.get_pa_column_by_id(
             column_id, _return_http_data_only=False)

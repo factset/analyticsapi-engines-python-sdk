@@ -41,7 +41,8 @@ class TestBpmOptimizationsApi(unittest.TestCase):
                 data=bpm_calculation_parameters)
 
             post_and_calculate_response = self.bpm_optimizer_api.post_and_optimize(
-                bpm_optimization_parameters_root=bpm_calculation_parameter_root, _return_http_data_only=False)
+                bpm_optimization_parameters_root=bpm_calculation_parameter_root
+            )
 
             self.assertTrue(post_and_calculate_response[1] == 201 or post_and_calculate_response[1] == 202,
                             "Response for create_calculation should have been 201 or 202")
@@ -53,7 +54,7 @@ class TestBpmOptimizationsApi(unittest.TestCase):
                     "test_context": None
                 }
             elif post_and_calculate_response[1] == 202:
-                test_context["calculation_id"] = post_and_calculate_response[0].data.id
+                test_context["calculation_id"] = post_and_calculate_response[2]["X-Factset-Api-Calculation-Id"]
                 return {
                     "continue_workflow": True,
                     "next_request": read_status_step_name,
@@ -65,8 +66,7 @@ class TestBpmOptimizationsApi(unittest.TestCase):
             calculation_id = test_context["calculation_id"]
             print("Calculation Id: " + calculation_id)
 
-            status_response = self.bpm_optimizer_api.get_optimization_status_by_id(id=calculation_id,
-                                                                                    _return_http_data_only=False)
+            status_response = self.bpm_optimizer_api.get_optimization_status_by_id(id=calculation_id)
 
             self.assertTrue(status_response[1] == 202 or status_response[1] == 201)
 
@@ -77,8 +77,7 @@ class TestBpmOptimizationsApi(unittest.TestCase):
                     max_age = age_value.replace("max-age=", "")
                 print('Sleeping: ' + max_age)
                 time.sleep(int(max_age))
-                status_response = self.bpm_optimizer_api.get_optimization_status_by_id(id=calculation_id,
-                                                                                        _return_http_data_only=False)
+                status_response = self.bpm_optimizer_api.get_optimization_status_by_id(id=calculation_id)
 
                 return {
                     "continue_workflow": True,
@@ -88,8 +87,7 @@ class TestBpmOptimizationsApi(unittest.TestCase):
 
         def read_calculation_result(test_context):
             calculation_id = test_context["calculation_id"]
-            result_response = self.bpm_optimizer_api.get_optimization_result(id=calculation_id,
-                                                                            _return_http_data_only=False)
+            result_response = self.bpm_optimizer_api.get_optimization_result(id=calculation_id)
             self.assertEqual(result_response[1], 200, "Get calculation result should have succeeded")
 
         workflow_specification = {

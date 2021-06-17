@@ -33,7 +33,8 @@ class TestPubCalculationsApi(unittest.TestCase):
                 data=pub_calculation_parameters)
 
             post_and_calculate_response = self.pub_calculations_api.post_and_calculate(
-                pub_calculation_parameters_root=pub_calculation_parameter_root, _return_http_data_only=False)
+                pub_calculation_parameters_root=pub_calculation_parameter_root
+            )
 
             self.assertTrue(post_and_calculate_response[1] == 201 or post_and_calculate_response[1] == 202,
                             "Response for create_calculation should have been 201 or 202")
@@ -45,7 +46,7 @@ class TestPubCalculationsApi(unittest.TestCase):
                     "test_context": None
                 }
             elif post_and_calculate_response[1] == 202:
-                test_context["calculation_id"] = post_and_calculate_response[0].data.calculationid
+                test_context["calculation_id"] = post_and_calculate_response[2]["X-Factset-Api-Calculation-Id"]
                 return {
                     "continue_workflow": True,
                     "next_request": read_status_step_name,
@@ -57,8 +58,7 @@ class TestPubCalculationsApi(unittest.TestCase):
             calculation_id = test_context["calculation_id"]
             print("Calculation Id: " + calculation_id)
 
-            status_response = self.pub_calculations_api.get_calculation_status_by_id(id=calculation_id,
-                                                                                    _return_http_data_only=False)
+            status_response = self.pub_calculations_api.get_calculation_status_by_id(id=calculation_id)
 
             self.assertTrue(status_response[1] == 202 and (
                 status_response[0].data.status in ("Queued", "Executing")))
@@ -70,8 +70,7 @@ class TestPubCalculationsApi(unittest.TestCase):
                     max_age = age_value.replace("max-age=", "")
                 print('Sleeping: ' + max_age)
                 time.sleep(int(max_age))
-                status_response = self.pub_calculations_api.get_calculation_status_by_id(id=calculation_id,
-                                                                                        _return_http_data_only=False)
+                status_response = self.pub_calculations_api.get_calculation_status_by_id(id=calculation_id)
 
                 test_context["calculation_units"] = status_response[0].data.units.items()[
                     0]
@@ -85,8 +84,7 @@ class TestPubCalculationsApi(unittest.TestCase):
             calculation_id = test_context["calculation_id"]
             for (calculation_unit_id, calculation_unit) in test_context.calculation_units:
                 result_response = self.pub_calculations_api.get_calculation_unit_result_by_id(id=calculation_id,
-                                                                                             unit_id=calculation_unit_id,
-                                                                                             _return_http_data_only=False)
+                                                                                             unit_id=calculation_unit_id)
                 self.assertEqual(
                     result_response[1], 200, "Get calculation result should have succeeded")
 

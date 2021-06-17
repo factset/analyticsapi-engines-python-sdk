@@ -63,7 +63,7 @@ class TestFICalculationsApi(unittest.TestCase):
 
     def test_calculation_success(self):
         if self.run_response[1] == 202:
-            calculation_id = self.run_response[0].data.id
+            calculation_id = self.run_response[2]["X-Factset-Api-Calculation-Id"]
             self.run_response = self.calculations_api.get_calculation_status_by_id(
                 id=calculation_id, _return_http_data_only=False)
             while self.run_response[1] == 202:

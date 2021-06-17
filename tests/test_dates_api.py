@@ -30,8 +30,9 @@ class TestDatesApi(unittest.TestCase):
         end_date = "-1M"
         components_api = ComponentsApi(CommonFunctions.build_api_client())
         components = components_api.get_vault_components(
-            document=common_parameters.vault_default_document)
-        component_id = list(components['data'].keys())[0]
+            document=common_parameters.vault_default_document,
+            _return_http_data_only=True)
+        component_id = list(components.data.keys())[0]
         account = common_parameters.default_dates_account
         response = self.dates_api.convert_vault_dates_to_absolute_format(
             end_date,

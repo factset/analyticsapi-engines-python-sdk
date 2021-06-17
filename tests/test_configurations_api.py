@@ -27,7 +27,8 @@ class TestVaultConfigurations(unittest.TestCase):
 
     def test_get_vault_configuration_by_id(self):
         response = self.configurations_api.get_vault_configurations(
-            account=common_parameters.vault_default_account)
+            account=common_parameters.vault_default_account,
+            _return_http_data_only=True)
         configuration_id = list(response.data.keys())[0]
         response = self.configurations_api.get_vault_configuration_by_id(configuration_id,
                                                                          _return_http_data_only=False)
