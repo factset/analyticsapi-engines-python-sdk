@@ -1,20 +1,19 @@
-import json
 import sys
 import time
-import pandas as pd
 import uuid
 import os
+import pandas as pd
 
 from fds.analyticsapi.engines.api.fi_calculations_api import FICalculationsApi
 from fds.analyticsapi.engines.api_client import ApiClient
 from fds.analyticsapi.engines.configuration import Configuration
-from fds.analyticsapi.engines.models.fi_calculation_parameters import FICalculationParameters
-from fds.analyticsapi.engines.models.fi_security import FISecurity
-from fds.analyticsapi.engines.models.fi_job_settings import FIJobSettings
-from fds.analyticsapi.engines.stach_extensions import StachExtensions
-from fds.protobuf.stach.Package_pb2 import Package
+from fds.analyticsapi.engines.model.fi_calculation_parameters import FICalculationParameters
+from fds.analyticsapi.engines.model.fi_calculation_parameters_root import FICalculationParametersRoot
+from fds.analyticsapi.engines.model.fi_security import FISecurity
+from fds.analyticsapi.engines.model.fi_job_settings import FIJobSettings
+from fds.protobuf.stach.extensions.StachVersion import StachVersion
+from fds.protobuf.stach.extensions.StachExtensionFactory import StachExtensionFactory
 
-from google.protobuf import json_format
 from urllib3 import Retry
 
 host = "https://api.factset.com"
@@ -58,7 +57,7 @@ def main():
         calc_from_value = 100.285,
         face = 10000.0,
         symbol = "912828ZG8",
-        settlement_date = "20201202",
+        settlement = "20201202",
         discount_curve = "UST"
     )
     security2 = FISecurity(
@@ -66,35 +65,36 @@ def main():
         calc_from_value = 101.138,
         face = 200000.0,
         symbol = "US037833AR12",
-        settlement_date = "20201203",
+        settlement = "20201203",
         discount_curve = "UST"
     )
 
     securities = [security1, security2]
 
-    jobSettings = FIJobSettings(yield_curve_date = "20201201",
+    jobSettings = FIJobSettings(as_of_date="20201201",
                                 partial_duration_months = [1,3,6])
 
     fi_calculation_parameters = FICalculationParameters(securities, calculations, jobSettings)
 
-    print(fi_calculation_parameters)
+    fi_calculation_parameters_root = FICalculationParametersRoot(data=fi_calculation_parameters)
 
     fi_calculations_api = FICalculationsApi(api_client)
-    run_calculation_response = fi_calculations_api.run_fi_calculation_with_http_info(
-        fi_calculation_parameters=fi_calculation_parameters)
+    run_calculation_response = fi_calculations_api.post_and_calculate(
+        fi_calculation_parameters_root=fi_calculation_parameters_root)
 
     if run_calculation_response[1] != 202 and run_calculation_response[1] != 201:
         print_error(run_calculation_response)
         sys.exit()
 
     if run_calculation_response[1] == 201:
-        print_result(run_calculation_response[0])
+        output_calculation_result(run_calculation_response[0].data)
         sys.exit()
 
-    calculation_id = run_calculation_response[2].get("location").split("/")[-1]
+    calculation_id = run_calculation_response[2]["X-Factset-Api-Calculation-Id"]
     print("Calculation Id: " + calculation_id)
 
-    status_response = fi_calculations_api.get_fi_calculation_by_id_with_http_info(calculation_id)
+    status_response = fi_calculations_api.get_calculation_status_by_id(
+        id=calculation_id)
     while status_response[1] == 202:
         max_age = '5'
         age_value = status_response[2].get("cache-control")
@@ -102,29 +102,31 @@ def main():
             max_age = age_value.replace("max-age=", "")
         print('Sleeping: ' + max_age)
         time.sleep(int(max_age))
-        status_response = fi_calculations_api.get_fi_calculation_by_id_with_http_info(calculation_id)
+        status_response = fi_calculations_api.get_calculation_status_by_id(
+            id=calculation_id)
 
-    if status_response[1] != 200:
+    if status_response[1] != 201:
         print_error(status_response)
         sys.exit()
 
-    print_result(status_response[0])
+    output_calculation_result(status_response[0].data)
 
 
-def print_result(response):
-    # converting the data to Package object
-    result = json_format.Parse(json.dumps(response), Package())
-    # print(MessageToJson(result)) # To print the result object as a JSON
-    # print(MessageToDict(result)) # To print the result object as a Dictionary
-    tables = StachExtensions.convert_to_table_format(result)  # To convert result to 2D tables.
-    print(tables[0])  # Prints the result in 2D table format.
-    # generate_excel(result)  # Uncomment this line to get the result in table format exported to excel file.
+def output_calculation_result(result):
+    print("Calculation Result")
+    stachBuilder = StachExtensionFactory.get_row_organized_builder(
+        StachVersion.V2)
+    stachExtension = stachBuilder.set_package(result).build()
+    dataFramesList = stachExtension.convert_to_dataframe()
+    print(dataFramesList)
+    # generate_excel(dataFramesList)  # Uncomment this line to get the result in table format exported to excel file.
 
 
-def generate_excel(package):
-    for table in StachExtensions.convert_to_table_format(package):
-        writer = pd.ExcelWriter(str(uuid.uuid1()) + ".xlsx")
-        table.to_excel(excel_writer=writer)
+def generate_excel(data_frames_list):
+    for dataFrame in data_frames_list:
+        writer = pd.ExcelWriter(  # pylint: disable=abstract-class-instantiated
+            str(uuid.uuid1()) + ".xlsx")
+        dataFrame.to_excel(excel_writer=writer)
         writer.save()
         writer.close()
 
