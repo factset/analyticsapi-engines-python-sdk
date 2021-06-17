@@ -1,21 +1,11 @@
 import time
-import json
 import unittest
-import sys
-import uuid
 
 from fds.analyticsapi.engines.api.fi_calculations_api import FICalculationsApi
-from fds.analyticsapi.engines.api_client import ApiClient
-from fds.analyticsapi.engines.configuration import Configuration
-from fds.analyticsapi.engines.models.fi_calculation_parameters import FICalculationParameters
-from fds.analyticsapi.engines.models.fi_security import FISecurity
-from fds.analyticsapi.engines.models.fi_job_settings import FIJobSettings
-from fds.analyticsapi.engines.stach_extensions import StachExtensions
-from fds.protobuf.stach.Package_pb2 import Package
-
-from google.protobuf import json_format
-from google.protobuf.json_format import MessageToJson
-from google.protobuf.json_format import MessageToDict
+from fds.analyticsapi.engines.model.fi_calculation_parameters import FICalculationParameters
+from fds.analyticsapi.engines.model.fi_calculation_parameters_root import FICalculationParametersRoot
+from fds.analyticsapi.engines.model.fi_security import FISecurity
+from fds.analyticsapi.engines.model.fi_job_settings import FIJobSettings
 
 import common_parameters
 from common_functions import CommonFunctions
@@ -44,21 +34,38 @@ class TestFICalculationsApi(unittest.TestCase):
                         "Effective Duration",
                         "Effective Convexity"]
 
-        security1 = FISecurity("Price", 100.285, 10000.0, "912828ZG8", "20201202", "UST")
-        security2 = FISecurity("Price", 101.138, 200000.0, "US037833AR12", "20201203", "UST")
+        securities = [
+            FISecurity(calc_from_method="Price",
+                       calc_from_value=100.285,
+                       symbol="912828ZG8",
+                       settlement="20201202",
+                       discount_curve="UST",
+                       face=10000.0),
+            FISecurity(calc_from_method="Price",
+                       calc_from_value=101.138,
+                       symbol="US037833AR12",
+                       settlement="20201203",
+                       discount_curve="UST",
+                       face=200000.0)
+        ]
 
-        securities = [security1, security2]
+        jobSettings = FIJobSettings(as_of_date="20201201")
 
-        jobSettings = FIJobSettings("20201201")
+        fi_calculation_parameters = FICalculationParameters(
+            securities, calculations, jobSettings)
+        fi_calculation_parameters_root = FICalculationParametersRoot(
+            data=fi_calculation_parameters)
 
-        fi_calculation_parameters = FICalculationParameters(securities, calculations, jobSettings)
-        return self.calculations_api.run_fi_calculation_with_http_info(
-            fi_calculation_parameters=fi_calculation_parameters)
+        return self.calculations_api.post_and_calculate(
+            fi_calculation_parameters_root=fi_calculation_parameters_root,
+            _return_http_data_only=False
+        )
 
     def test_calculation_success(self):
         if self.run_response[1] == 202:
-            calculation_id = self.run_response[2].get("location").split("/")[-1]
-            self.run_response = self.calculations_api.get_fi_calculation_by_id_with_http_info(calculation_id)
+            calculation_id = self.run_response[2]["X-Factset-Api-Calculation-Id"]
+            self.run_response = self.calculations_api.get_calculation_status_by_id(
+                id=calculation_id, _return_http_data_only=False)
             while self.run_response[1] == 202:
                 age_value = self.run_response[2].get("cache-control")
                 if age_value is not None:
@@ -66,9 +73,11 @@ class TestFICalculationsApi(unittest.TestCase):
                     time.sleep(int(max_age))
                 else:
                     time.sleep(5)
-                self.run_response = self.calculations_api.get_fi_calculation_by_id_with_http_info(calculation_id)
+                self.run_response = self.calculations_api.get_calculation_status_by_id(
+                    id=calculation_id, _return_http_data_only=False)
 
-        self.assertTrue(self.run_response[1] == 200 or self.run_response[1] == 201, "Calculation should be completed")
+        self.assertTrue(
+            self.run_response[1] == 200 or self.run_response[1] == 201, "Calculation should be completed")
 
 
 if __name__ == '__main__':

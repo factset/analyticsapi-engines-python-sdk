@@ -1,5 +1,6 @@
 # PubCalculationParameters
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
