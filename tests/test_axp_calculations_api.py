@@ -16,7 +16,6 @@ from common_functions import CommonFunctions
 from api_workflow import run_api_workflow_with_assertions
 
 
-@unittest.skip("Skip until can work with QA account")
 class TestAxpOptimizationsApi(unittest.TestCase):
     def setUp(self):
         api_client = CommonFunctions.build_api_client()
@@ -29,8 +28,8 @@ class TestAxpOptimizationsApi(unittest.TestCase):
 
         def create_calculation(test_context):
             print("Creating single unit calculation")
-            axp_strategy = AxiomaEquityOptimizerStrategy(id="Client:/Optimizer/CN_TEST")
-            axp_account = OptimizerAccount(id="CLIENT:/OPTIMIZER/IBM.ACCT")
+            axp_strategy = AxiomaEquityOptimizerStrategy(id="Client:/Optimizer/TAXTEST")
+            axp_account = OptimizerAccount(id="BENCH:SP50")
             optimization = Optimization(risk_model_date="09/01/2020",backtest_date="09/01/2020")
             trades_list = OptimizerTradesList(identifier_type="SedolChk", include_cash=False)
             output_types = OptimizerOutputTypes(trades=trades_list)
