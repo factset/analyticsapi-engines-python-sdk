@@ -51,17 +51,17 @@ def main():
         vault_enddate = "20180329"
         frequency = "Monthly"
 
-        components = components_api.get_vault_components(vault_document_name)
+        get_components_response = components_api.get_vault_components(vault_document_name)
         component_total_returns_summary = ComponentSummary(
             name=vault_component_total_returns, category=vault_component_category)
-        component_total_returns_id = [id for id in list(components.data.keys(
-        )) if components.data[id] == component_total_returns_summary][0]
+        component_total_returns_id = [id for id in list(get_components_response[0].data.keys(
+        )) if get_components_response[0].data[id] == component_total_returns_summary][0]
         print("Vault Total Returns Component Id: " + component_total_returns_id)
 
         component_performance_summary = ComponentSummary(
             name=vault_component_performance, category=vault_component_category)
-        component_performance_id = [id for id in list(components.data.keys(
-        )) if components.data[id] == component_performance_summary][0]
+        component_performance_id = [id for id in list(get_components_response[0].data.keys(
+        )) if get_components_response[0].data[id] == component_performance_summary][0]
         print("Vault Performance Over Time Component Id: " +
               component_performance_id)
 
@@ -70,9 +70,9 @@ def main():
             startdate=vault_startdate, enddate=vault_enddate, frequency=frequency)
 
         configurations_api = ConfigurationsApi(api_client)
-        configurations = configurations_api.get_vault_configurations(
+        get_vault_configurations_response = configurations_api.get_vault_configurations(
             vault_default_account)
-        configuration_id = list(configurations.data.keys())[0]
+        configuration_id = list(get_vault_configurations_response[0].data.keys())[0]
 
         vault_calculation_parameters = {
             "total_returns": VaultCalculationParameters(componentid=component_total_returns_id, account=vault_account_identifier, dates=vault_dates, configid=configuration_id),

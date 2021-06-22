@@ -50,11 +50,11 @@ def main():
         enddate = "20181231"
         frequency = "Monthly"
 
-        components = components_api.get_pa_components(pa_document_name)
+        get_components_response = components_api.get_pa_components(pa_document_name)
         component_summary = ComponentSummary(
             name=pa_component_name, category=pa_component_category)
         component_id = [id for id in list(
-            components.data.keys()) if components.data[id] == component_summary][0]
+            get_components_response[0].data.keys()) if get_components_response[0].data[id] == component_summary][0]
         print("PA Component Id: " + component_id)
         pa_accounts = [PAIdentifier(id=pa_benchmark_sp_50)]
         pa_benchmarks = [PAIdentifier(id=pa_benchmark_r_1000)]
