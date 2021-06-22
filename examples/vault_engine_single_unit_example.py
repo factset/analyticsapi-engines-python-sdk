@@ -50,20 +50,20 @@ def main():
         vault_enddate = "20180329"
         frequency = "Monthly"
 
-        components = components_api.get_vault_components(vault_document_name)
+        get_components_response = components_api.get_vault_components(vault_document_name)
         component_summary = ComponentSummary(
             name=vault_component_name, category=vault_component_category)
         component_id = [id for id in list(
-            components.data.keys()) if components.data[id] == component_summary][0]
+            get_components_response[0].data.keys()) if get_components_response[0].data[id] == component_summary][0]
         print("Vault Component Id: " + component_id)
         vault_account_identifier = VaultIdentifier(vault_default_account)
         vault_dates = VaultDateParameters(
             startdate=vault_startdate, enddate=vault_enddate, frequency=frequency)
 
         configurations_api = ConfigurationsApi(api_client)
-        configurations = configurations_api.get_vault_configurations(
+        get_vault_configurations_response = configurations_api.get_vault_configurations(
             vault_default_account)
-        configuration_id = list(configurations.data.keys())[0]
+        configuration_id = list(get_vault_configurations_response[0].data.keys())[0]
 
         vault_calculation_parameters = {
             "1": VaultCalculationParameters(componentid=component_id, account=vault_account_identifier, dates=vault_dates, configid=configuration_id)}
