@@ -26,8 +26,6 @@ REQUIRES = [
   "urllib3 >= 1.25.3",
   "python-dateutil",
   "fds.protobuf.stach.extensions < 2.0.0",
-  "pandas < 2.0.0",
-  "openpyxl >= 3.0.0",
 ]
 
 setup(
