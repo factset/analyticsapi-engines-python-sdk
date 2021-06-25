@@ -85,11 +85,12 @@ class TestSparCalculationsApi(unittest.TestCase):
 
                 test_context["calculation_units"] = status_response[0].data.units.items()[
                     0]
-                return {
-                    "continue_workflow": True,
-                    "next_request": read_result_step_name,
-                    "test_context": test_context
-                }
+
+            return {
+                "continue_workflow": True,
+                "next_request": read_result_step_name,
+                "test_context": test_context
+            }
 
         def read_calculation_unit_result(test_context):
             calculation_id = test_context["calculation_id"]

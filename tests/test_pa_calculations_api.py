@@ -85,11 +85,12 @@ class TestPaCalculationsApi(unittest.TestCase):
                 status_response = self.pa_calculations_api.get_calculation_status_by_id(id=calculation_id)
 
                 test_context["calculation_units"] = list(status_response[0].data.units)[0]
-                return {
-                    "continue_workflow": True,
-                    "next_request": read_result_step_name,
-                    "test_context": test_context
-                }
+
+            return {
+                "continue_workflow": True,
+                "next_request": read_result_step_name,
+                "test_context": test_context
+            }
 
         def read_calculation_unit_result(test_context):
             calculation_id = test_context["calculation_id"]
