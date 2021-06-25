@@ -1,6 +1,7 @@
 import time
 import os
 import uuid
+import json
 import pandas as pd
 
 from fds.analyticsapi.engines import ApiException
@@ -83,11 +84,11 @@ def main():
                     result_response = quant_calculations_api.get_calculation_unit_result_by_id(id=calculation_id,
                                                                                                unit_id=calculation_unit_id)
                     print("Calculation Data")
-                    output_calculation_result(result_response[0].read())
+                    output_calculation_result(json.loads(result_response[0].read())['data'])
                     result_response = quant_calculations_api.get_calculation_unit_info_by_id(id=calculation_id,
                                                                                              unit_id=calculation_unit_id)
                     print("Calculation Info")
-                    output_calculation_result(result_response[0].read())
+                    output_calculation_result(json.loads(result_response[0].read())['data'])
                 else:
                     print("Calculation Unit Id:" +
                           calculation_unit_id + " Failed!!!")
@@ -100,7 +101,7 @@ def main():
 
 
 def output_calculation_result(result):
-    stachBuilder = StachExtensionFactory.get_row_organized_builder(
+    stachBuilder = StachExtensionFactory.get_column_organized_builder(
         StachVersion.V2)
     stachExtension = stachBuilder.set_package(result).build()
     dataFramesList = stachExtension.convert_to_dataframe()
