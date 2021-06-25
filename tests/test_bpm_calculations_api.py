@@ -79,11 +79,11 @@ class TestBpmOptimizationsApi(unittest.TestCase):
                 time.sleep(int(max_age))
                 status_response = self.bpm_optimizer_api.get_optimization_status_by_id(id=calculation_id)
 
-                return {
-                    "continue_workflow": True,
-                    "next_request": read_result_step_name,
-                    "test_context": test_context
-                }
+            return {
+                "continue_workflow": True,
+                "next_request": read_result_step_name,
+                "test_context": test_context
+            }
 
         def read_calculation_result(test_context):
             calculation_id = test_context["calculation_id"]
