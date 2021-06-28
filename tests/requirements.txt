@@ -1,1 +1,20 @@
-fds.protobuf.stach <2.0.0
+atomicwrites==1.4.0
+attrs==21.2.0
+colorama==0.4.4
+fds.analyticsapi.engines<6.0.0
+fds.protobuf.stach.extensions<2.0.0
+fds.protobuf.stach.v2<2.0.0
+iniconfig==1.1.1
+numpy==1.21.0
+packaging==20.9
+pandas==1.2.5
+pluggy==0.13.1
+protobuf==3.17.3
+py==1.10.0
+pyparsing==2.4.7
+pytest==6.2.4
+python-dateutil==2.8.1
+pytz==2021.1
+six==1.16.0
+toml==0.10.2
+urllib3==1.26.6

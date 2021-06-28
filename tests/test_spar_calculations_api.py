@@ -83,8 +83,7 @@ class TestSparCalculationsApi(unittest.TestCase):
                 time.sleep(int(max_age))
                 status_response = self.spar_calculations_api.get_calculation_status_by_id(id=calculation_id)
 
-                test_context["calculation_units"] = status_response[0].data.units.items()[
-                    0]
+                test_context["calculation_units"] = status_response[0].data.units.items()
 
             return {
                 "continue_workflow": True,
@@ -94,7 +93,7 @@ class TestSparCalculationsApi(unittest.TestCase):
 
         def read_calculation_unit_result(test_context):
             calculation_id = test_context["calculation_id"]
-            for (calculation_unit_id, calculation_unit) in test_context.calculation_units:
+            for (calculation_unit_id, calculation_unit) in test_context["calculation_units"]:
                 result_response = self.spar_calculations_api.get_calculation_unit_result_by_id(id=calculation_id,
                                                                                                unit_id=calculation_unit_id)
                 self.assertEqual(
