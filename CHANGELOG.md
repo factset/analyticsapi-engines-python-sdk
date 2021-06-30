@@ -1,3 +1,17 @@
+5.0.1 (06/30/2021)
+
+Supported API versions:
+
+* v3: [pa,spar,vault,pub,fi,axp,fpo,afi,npo,bpm,quant],v1:[fiab]
+
+Summmary:
+* In POST/PUT engines methods deprecated ContentOrganization and added StachContentOrganization
+* In POST/PUT engines methods deprecated ContentType and added CalculationFormat as replacement
+* The deprecated properties are still available and supported for backwards compatability
+* Deprecated some CalculationFormats that were unused
+
+-----------------------
+
 5.0.0 (06/17/2021)
 
 Supported API versions:
@@ -6,6 +20,12 @@ Supported API versions:
 
 Summmary:
 * Add support for v3 API's
+
+Breaking changes:
+* No changes
+
+Bug Fixes:
+* No changes
 
 -----------------------
 
