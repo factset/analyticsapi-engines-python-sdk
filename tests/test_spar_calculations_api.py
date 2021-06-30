@@ -10,6 +10,7 @@ from fds.analyticsapi.engines.model.spar_identifier import SPARIdentifier
 from fds.analyticsapi.engines.model.spar_date_parameters import SPARDateParameters
 
 from common_functions import CommonFunctions
+from api_workflow import run_api_workflow_with_assertions
 
 
 class TestSparCalculationsApi(unittest.TestCase):
@@ -44,7 +45,8 @@ class TestSparCalculationsApi(unittest.TestCase):
                 data=spar_calculation_parameters)
 
             post_and_calculate_response = self.spar_calculations_api.post_and_calculate(
-                spar_calculation_parameters_root=spar_calculation_parameter_root
+                spar_calculation_parameters_root=spar_calculation_parameter_root,
+                cache_control='max-stale=0'
             )
 
             self.assertTrue(post_and_calculate_response[1] == 201 or post_and_calculate_response[1] == 202,
@@ -108,16 +110,6 @@ class TestSparCalculationsApi(unittest.TestCase):
         test_context = {}
         run_api_workflow_with_assertions(
             workflow_specification, starting_request, test_context)
-
-
-def run_api_workflow_with_assertions(workflow_specification, current_request, test_context):
-    current_request_result = current_request(test_context)
-    if current_request_result["continue_workflow"]:
-        run_api_workflow_with_assertions(
-            workflow_specification,
-            current_request_result["next_request"],
-            current_request_result["test_context"]
-        )
 
 
 if __name__ == '__main__':
