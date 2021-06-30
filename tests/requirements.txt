@@ -10,7 +10,6 @@ iniconfig==1.1.1
 isort==5.9.1
 lazy-object-proxy==1.6.0
 mccabe==0.6.1
-numpy==1.21.0
 packaging==20.9
 pandas==1.2.5
 pluggy==0.13.1
