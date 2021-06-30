@@ -16,4 +16,4 @@ class CommonFunctions:
 
             return ApiClient(config)
 
-        raise ValueError("Please set ANALYTICS_API_USERNAME_SERIAL and ANALYTICS_API_PASSWORD environment variables.")
+        raise ValueError("Please set ANALYTICS_API_QAR_USERNAME_SERIAL and ANALYTICS_API_QAR_PASSWORD environment variables.")

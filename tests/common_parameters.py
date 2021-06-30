@@ -1,8 +1,8 @@
 import os
 
-# Set 'ANALYTICS_API_USERNAME_SERIAL' environment variable with username-serial as value
+# Set 'ANALYTICS_API_QAR_USERNAME_SERIAL' environment variable with username-serial as value
 user_name = os.getenv("ANALYTICS_API_QAR_USERNAME_SERIAL")
-# Set 'ANALYTICS_API_PASSWORD' environment variable with the api key generated on developer portal
+# Set 'ANALYTICS_API_QAR_PASSWORD' environment variable with the api key generated on developer portal
 password = os.getenv("ANALYTICS_API_QAR_PASSWORD")
 
 # Set 'ANALYTICS_API_URL' environment variable with api url as value
