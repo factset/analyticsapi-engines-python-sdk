@@ -59,9 +59,26 @@ class CalculationMeta(ModelNormal):
             'COLUMN': "Column",
             'SIMPLIFIEDROW': "SimplifiedRow",
         },
+        ('stach_content_organization',): {
+            'NONE': "None",
+            'ROW': "Row",
+            'COLUMN': "Column",
+            'SIMPLIFIEDROW': "SimplifiedRow",
+        },
         ('contenttype',): {
             'JSON': "Json",
             'BINARY': "Binary",
+        },
+        ('format',): {
+            'JSONSTACH': "JsonStach",
+            'TABLE': "Table",
+            'TABLEAU': "Tableau",
+            'BINARYSTACH': "BinaryStach",
+            'BISON': "Bison",
+            'BINARY': "Binary",
+            'PDF': "Pdf",
+            'PPTX': "Pptx",
+            'FEATHER': "Feather",
         },
     }
 
@@ -84,7 +101,9 @@ class CalculationMeta(ModelNormal):
         """
         return {
             'contentorganization': (str,),  # noqa: E501
+            'stach_content_organization': (str,),  # noqa: E501
             'contenttype': (str,),  # noqa: E501
+            'format': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -94,7 +113,9 @@ class CalculationMeta(ModelNormal):
 
     attribute_map = {
         'contentorganization': 'contentorganization',  # noqa: E501
+        'stach_content_organization': 'stachContentOrganization',  # noqa: E501
         'contenttype': 'contenttype',  # noqa: E501
+        'format': 'format',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -144,7 +165,9 @@ class CalculationMeta(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             contentorganization (str): [optional] if omitted the server will use the default value of "SimplifiedRow"  # noqa: E501
+            stach_content_organization (str): [optional] if omitted the server will use the default value of "SimplifiedRow"  # noqa: E501
             contenttype (str): [optional] if omitted the server will use the default value of "Json"  # noqa: E501
+            format (str): [optional] if omitted the server will use the default value of "JsonStach"  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

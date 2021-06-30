@@ -428,7 +428,9 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
         },
         meta=CalculationMeta(
             contentorganization="SimplifiedRow",
+            stach_content_organization="SimplifiedRow",
             contenttype="Json",
+            format="JsonStach",
         ),
     ) # PACalculationParametersRoot | Calculation Parameters (optional)
 
@@ -565,7 +567,9 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
         },
         meta=CalculationMeta(
             contentorganization="SimplifiedRow",
+            stach_content_organization="SimplifiedRow",
             contenttype="Json",
+            format="JsonStach",
         ),
     ) # PACalculationParametersRoot | Calculation Parameters (optional)
 
