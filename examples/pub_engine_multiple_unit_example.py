@@ -14,8 +14,8 @@ from urllib3 import Retry
 from pathlib import Path
 
 host = "https://api.factset.com"
-username = os.environ["ANALYTICS_API_USERNAME_SERIAL"]
-password = os.environ["ANALYTICS_API_PASSWORD"]
+username = os.environ["ANALYTICS_API_QAR_USERNAME_SERIAL"]
+password = os.environ["ANALYTICS_API_QAR_PASSWORD"]
 
 
 def main():
