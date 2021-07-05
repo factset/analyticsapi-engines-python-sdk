@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - Response datatype: [**VaultConfigurationRoot**](VaultConfigurationRoot.md)
+ - **Response datatype**: [**VaultConfigurationRoot**](VaultConfigurationRoot.md)
 
 ### Authorization
 
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - Response datatype: [**VaultConfigurationSummaryRoot**](VaultConfigurationSummaryRoot.md)
+ - **Response datatype**: [**VaultConfigurationSummaryRoot**](VaultConfigurationSummaryRoot.md)
 
 ### Authorization
 

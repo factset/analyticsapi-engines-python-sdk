@@ -62,7 +62,7 @@ This endpoint does not need any parameter.
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - Response datatype: [**ColumnStatisticRoot**](ColumnStatisticRoot.md)
+ - **Response datatype**: [**ColumnStatisticRoot**](ColumnStatisticRoot.md)
 
 ### Authorization
 

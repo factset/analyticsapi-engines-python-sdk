@@ -62,7 +62,7 @@ This endpoint does not need any parameter.
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - Response datatype: [**CurrencyRoot**](CurrencyRoot.md)
+ - **Response datatype**: [**CurrencyRoot**](CurrencyRoot.md)
 
 ### Authorization
 

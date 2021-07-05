@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - Response datatype: None (empty response body)
+ - **Response datatype**: None (empty response body)
 
 ### Authorization
 
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - Response datatype: [**FICalculationParametersRoot**](FICalculationParametersRoot.md)
+ - **Response datatype**: [**FICalculationParametersRoot**](FICalculationParametersRoot.md)
 
 ### Authorization
 
@@ -238,7 +238,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - Response datatype: [**ObjectRoot**](ObjectRoot.md)
+ - **Response datatype**: [**ObjectRoot**](ObjectRoot.md)
 
 ### Authorization
 
@@ -322,7 +322,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - Response datatype: (For 201 status - [**ObjectRoot**](ObjectRoot.md))(For 202 status - None (empty response body) )
+ - **Response datatype**: (For 201 status - [**ObjectRoot**](ObjectRoot.md))(For 202 status - None (empty response body) )
 
 ### Authorization
 
@@ -443,7 +443,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - Response datatype: (For 202 status - [**CalculationInfoRoot**](CalculationInfoRoot.md))(For 201 status - [**ObjectRoot**](ObjectRoot.md))
+ - **Response datatype**: (For 202 status - [**CalculationInfoRoot**](CalculationInfoRoot.md))(For 201 status - [**ObjectRoot**](ObjectRoot.md))
 
 ### Authorization
 
@@ -576,7 +576,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - Response datatype: (For 202 status - [**CalculationInfoRoot**](CalculationInfoRoot.md))(For 201 status - [**ObjectRoot**](ObjectRoot.md))
+ - **Response datatype**: (For 202 status - [**CalculationInfoRoot**](CalculationInfoRoot.md))(For 201 status - [**ObjectRoot**](ObjectRoot.md))
 
 ### Authorization
 
