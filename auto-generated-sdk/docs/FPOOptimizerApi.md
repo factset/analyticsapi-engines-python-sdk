@@ -69,7 +69,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+A tuple with response data, HTTP status code and response headers.
+ None (empty response body)
 
 ### Authorization
 
@@ -152,6 +153,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
+A tuple with response data, HTTP status code and response headers.
 [**FPOOptimizationParametersRoot**](FPOOptimizationParametersRoot.md)
 
 ### Authorization
@@ -246,6 +248,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
+A tuple with response data, HTTP status code and response headers.
 [**ObjectRoot**](ObjectRoot.md)
 
 ### Authorization
@@ -329,7 +332,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ObjectRoot**](ObjectRoot.md)
+A tuple with response data, HTTP status code and response headers.
+(For 201 status - [**ObjectRoot**](ObjectRoot.md))(For 202 status -  None (empty response body) )
 
 ### Authorization
 
@@ -470,7 +474,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ObjectRoot**](ObjectRoot.md)
+A tuple with response data, HTTP status code and response headers.
+(For 202 status - [**CalculationInfoRoot**](CalculationInfoRoot.md))(For 201 status - [**ObjectRoot**](ObjectRoot.md))
 
 ### Authorization
 
@@ -623,7 +628,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ObjectRoot**](ObjectRoot.md)
+A tuple with response data, HTTP status code and response headers.
+(For 202 status - [**CalculationInfoRoot**](CalculationInfoRoot.md))(For 201 status - [**ObjectRoot**](ObjectRoot.md))
 
 ### Authorization
 

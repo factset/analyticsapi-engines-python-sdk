@@ -70,6 +70,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
+A tuple with response data, HTTP status code and response headers.
 [**PAComponentRoot**](PAComponentRoot.md)
 
 ### Authorization
@@ -155,6 +156,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
+A tuple with response data, HTTP status code and response headers.
 [**ComponentSummaryRoot**](ComponentSummaryRoot.md)
 
 ### Authorization
@@ -240,6 +242,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
+A tuple with response data, HTTP status code and response headers.
 [**ComponentSummaryRoot**](ComponentSummaryRoot.md)
 
 ### Authorization
@@ -325,6 +328,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
+A tuple with response data, HTTP status code and response headers.
 [**VaultComponentRoot**](VaultComponentRoot.md)
 
 ### Authorization
@@ -410,6 +414,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
+A tuple with response data, HTTP status code and response headers.
 [**ComponentSummaryRoot**](ComponentSummaryRoot.md)
 
 ### Authorization

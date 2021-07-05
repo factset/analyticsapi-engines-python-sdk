@@ -66,6 +66,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
+A tuple with response data, HTTP status code and response headers.
 [**SPARBenchmarkRoot**](SPARBenchmarkRoot.md)
 
 ### Authorization

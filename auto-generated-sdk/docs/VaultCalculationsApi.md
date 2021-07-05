@@ -69,7 +69,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+A tuple with response data, HTTP status code and response headers.
+ None (empty response body)
 
 ### Authorization
 
@@ -152,6 +153,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
+A tuple with response data, HTTP status code and response headers.
 [**VaultCalculationParametersRoot**](VaultCalculationParametersRoot.md)
 
 ### Authorization
@@ -235,6 +237,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
+A tuple with response data, HTTP status code and response headers.
 [**CalculationStatusRoot**](CalculationStatusRoot.md)
 
 ### Authorization
@@ -321,6 +324,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
+A tuple with response data, HTTP status code and response headers.
 [**ObjectRoot**](ObjectRoot.md)
 
 ### Authorization
@@ -433,7 +437,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CalculationStatusRoot**](CalculationStatusRoot.md)
+A tuple with response data, HTTP status code and response headers.
+(For 202 status - [**CalculationStatusRoot**](CalculationStatusRoot.md))(For 200 status - [**CalculationStatusRoot**](CalculationStatusRoot.md))(For 201 status - [**ObjectRoot**](ObjectRoot.md))
 
 ### Authorization
 
@@ -559,7 +564,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CalculationStatusRoot**](CalculationStatusRoot.md)
+A tuple with response data, HTTP status code and response headers.
+(For 202 status - [**CalculationStatusRoot**](CalculationStatusRoot.md))(For 200 status - [**CalculationStatusRoot**](CalculationStatusRoot.md))(For 201 status - [**ObjectRoot**](ObjectRoot.md))
 
 ### Authorization
 

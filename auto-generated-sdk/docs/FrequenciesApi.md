@@ -63,6 +63,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
+A tuple with response data, HTTP status code and response headers.
 [**FrequencyRoot**](FrequencyRoot.md)
 
 ### Authorization
@@ -141,6 +142,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
+A tuple with response data, HTTP status code and response headers.
 [**FrequencyRoot**](FrequencyRoot.md)
 
 ### Authorization
@@ -219,6 +221,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
+A tuple with response data, HTTP status code and response headers.
 [**FrequencyRoot**](FrequencyRoot.md)
 
 ### Authorization
