@@ -67,8 +67,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-A tuple with response data, HTTP status code and response headers.
-[**ColumnRoot**](ColumnRoot.md)
+ - A tuple with response data, HTTP status code and response headers.
+ - Response datatype: [**ColumnRoot**](ColumnRoot.md)
 
 ### Authorization
 
@@ -157,8 +157,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-A tuple with response data, HTTP status code and response headers.
-[**ColumnSummaryRoot**](ColumnSummaryRoot.md)
+ - A tuple with response data, HTTP status code and response headers.
+ - Response datatype: [**ColumnSummaryRoot**](ColumnSummaryRoot.md)
 
 ### Authorization
 

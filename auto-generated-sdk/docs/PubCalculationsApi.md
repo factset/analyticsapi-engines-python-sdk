@@ -69,8 +69,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-A tuple with response data, HTTP status code and response headers.
- None (empty response body)
+ - A tuple with response data, HTTP status code and response headers.
+ - Response datatype: None (empty response body)
 
 ### Authorization
 
@@ -153,8 +153,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-A tuple with response data, HTTP status code and response headers.
-[**PubCalculationParametersRoot**](PubCalculationParametersRoot.md)
+ - A tuple with response data, HTTP status code and response headers.
+ - Response datatype: [**PubCalculationParametersRoot**](PubCalculationParametersRoot.md)
 
 ### Authorization
 
@@ -237,8 +237,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-A tuple with response data, HTTP status code and response headers.
-[**CalculationStatusRoot**](CalculationStatusRoot.md)
+ - A tuple with response data, HTTP status code and response headers.
+ - Response datatype: [**CalculationStatusRoot**](CalculationStatusRoot.md)
 
 ### Authorization
 
@@ -323,8 +323,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-A tuple with response data, HTTP status code and response headers.
-[**file_type**](file_type.md)
+ - A tuple with response data, HTTP status code and response headers.
+ - Response datatype: [**file_type**](file_type.md)
 
 ### Authorization
 
@@ -428,8 +428,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-A tuple with response data, HTTP status code and response headers.
-(For 202 status - [**CalculationStatusRoot**](CalculationStatusRoot.md))(For 200 status - [**CalculationStatusRoot**](CalculationStatusRoot.md))(For 201 status -  File )
+ - A tuple with response data, HTTP status code and response headers.
+ - Response datatype: (For 202 status - [**CalculationStatusRoot**](CalculationStatusRoot.md))(For 200 status - [**CalculationStatusRoot**](CalculationStatusRoot.md))(For 201 status -  File )
 
 ### Authorization
 
@@ -547,8 +547,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-A tuple with response data, HTTP status code and response headers.
-(For 202 status - [**CalculationStatusRoot**](CalculationStatusRoot.md))(For 200 status - [**CalculationStatusRoot**](CalculationStatusRoot.md))(For 201 status -  File )
+ - A tuple with response data, HTTP status code and response headers.
+ - Response datatype: (For 202 status - [**CalculationStatusRoot**](CalculationStatusRoot.md))(For 200 status - [**CalculationStatusRoot**](CalculationStatusRoot.md))(For 201 status -  File )
 
 ### Authorization
 

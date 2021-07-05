@@ -68,8 +68,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-A tuple with response data, HTTP status code and response headers.
-[**FIABCalculationStatus**](FIABCalculationStatus.md)
+ - A tuple with response data, HTTP status code and response headers.
+ - Response datatype: [**FIABCalculationStatus**](FIABCalculationStatus.md)
 
 ### Authorization
 
@@ -148,8 +148,8 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-A tuple with response data, HTTP status code and response headers.
-[**{str: (FIABCalculationStatusSummary,)}**]({str: (FIABCalculationStatusSummary,)}.md)
+ - A tuple with response data, HTTP status code and response headers.
+ - Response datatype: [**{str: (FIABCalculationStatusSummary,)}**]({str: (FIABCalculationStatusSummary,)}.md)
 
 ### Authorization
 
@@ -243,8 +243,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-A tuple with response data, HTTP status code and response headers.
- None (empty response body)
+ - A tuple with response data, HTTP status code and response headers.
+ - Response datatype: None (empty response body)
 
 ### Authorization
 

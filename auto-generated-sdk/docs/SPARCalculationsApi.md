@@ -69,8 +69,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-A tuple with response data, HTTP status code and response headers.
- None (empty response body)
+ - A tuple with response data, HTTP status code and response headers.
+ - Response datatype: None (empty response body)
 
 ### Authorization
 
@@ -153,8 +153,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-A tuple with response data, HTTP status code and response headers.
-[**SPARCalculationParametersRoot**](SPARCalculationParametersRoot.md)
+ - A tuple with response data, HTTP status code and response headers.
+ - Response datatype: [**SPARCalculationParametersRoot**](SPARCalculationParametersRoot.md)
 
 ### Authorization
 
@@ -237,8 +237,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-A tuple with response data, HTTP status code and response headers.
-[**CalculationStatusRoot**](CalculationStatusRoot.md)
+ - A tuple with response data, HTTP status code and response headers.
+ - Response datatype: [**CalculationStatusRoot**](CalculationStatusRoot.md)
 
 ### Authorization
 
@@ -324,8 +324,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-A tuple with response data, HTTP status code and response headers.
-[**ObjectRoot**](ObjectRoot.md)
+ - A tuple with response data, HTTP status code and response headers.
+ - Response datatype: [**ObjectRoot**](ObjectRoot.md)
 
 ### Authorization
 
@@ -444,8 +444,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-A tuple with response data, HTTP status code and response headers.
-(For 202 status - [**CalculationStatusRoot**](CalculationStatusRoot.md))(For 200 status - [**CalculationStatusRoot**](CalculationStatusRoot.md))(For 201 status - [**ObjectRoot**](ObjectRoot.md))
+ - A tuple with response data, HTTP status code and response headers.
+ - Response datatype: (For 202 status - [**CalculationStatusRoot**](CalculationStatusRoot.md))(For 200 status - [**CalculationStatusRoot**](CalculationStatusRoot.md))(For 201 status - [**ObjectRoot**](ObjectRoot.md))
 
 ### Authorization
 
@@ -578,8 +578,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-A tuple with response data, HTTP status code and response headers.
-(For 202 status - [**CalculationStatusRoot**](CalculationStatusRoot.md))(For 200 status - [**CalculationStatusRoot**](CalculationStatusRoot.md))(For 201 status - [**ObjectRoot**](ObjectRoot.md))
+ - A tuple with response data, HTTP status code and response headers.
+ - Response datatype: (For 202 status - [**CalculationStatusRoot**](CalculationStatusRoot.md))(For 200 status - [**CalculationStatusRoot**](CalculationStatusRoot.md))(For 201 status - [**ObjectRoot**](ObjectRoot.md))
 
 ### Authorization
 
