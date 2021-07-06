@@ -443,11 +443,10 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
             ),
         },
         meta=QuantCalculationMeta(
+            format="JsonStach",
             allow_array_data=True,
             contentorganization="SimplifiedRow",
-            stach_content_organization="SimplifiedRow",
             contenttype="Json",
-            format="JsonStach",
         ),
     ) # QuantCalculationParametersRoot |  (optional)
 
@@ -596,11 +595,10 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
             ),
         },
         meta=QuantCalculationMeta(
+            format="JsonStach",
             allow_array_data=True,
             contentorganization="SimplifiedRow",
-            stach_content_organization="SimplifiedRow",
             contenttype="Json",
-            format="JsonStach",
         ),
     ) # QuantCalculationParametersRoot | Calculation Parameters (optional)
 

@@ -53,22 +53,6 @@ class QuantCalculationMeta(ModelNormal):
     """
 
     allowed_values = {
-        ('contentorganization',): {
-            'NONE': "None",
-            'ROW': "Row",
-            'COLUMN': "Column",
-            'SIMPLIFIEDROW': "SimplifiedRow",
-        },
-        ('stach_content_organization',): {
-            'NONE': "None",
-            'ROW': "Row",
-            'COLUMN': "Column",
-            'SIMPLIFIEDROW': "SimplifiedRow",
-        },
-        ('contenttype',): {
-            'JSON': "Json",
-            'BINARY': "Binary",
-        },
         ('format',): {
             'JSONSTACH': "JsonStach",
             'TABLE': "Table",
@@ -79,6 +63,16 @@ class QuantCalculationMeta(ModelNormal):
             'PDF': "Pdf",
             'PPTX': "Pptx",
             'FEATHER': "Feather",
+        },
+        ('contentorganization',): {
+            'NONE': "None",
+            'ROW': "Row",
+            'COLUMN': "Column",
+            'SIMPLIFIEDROW': "SimplifiedRow",
+        },
+        ('contenttype',): {
+            'JSON': "Json",
+            'BINARY': "Binary",
         },
     }
 
@@ -100,11 +94,10 @@ class QuantCalculationMeta(ModelNormal):
                 and the value is attribute type.
         """
         return {
+            'format': (str,),  # noqa: E501
             'allow_array_data': (bool,),  # noqa: E501
             'contentorganization': (str,),  # noqa: E501
-            'stach_content_organization': (str,),  # noqa: E501
             'contenttype': (str,),  # noqa: E501
-            'format': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -113,11 +106,10 @@ class QuantCalculationMeta(ModelNormal):
 
 
     attribute_map = {
+        'format': 'format',  # noqa: E501
         'allow_array_data': 'allowArrayData',  # noqa: E501
         'contentorganization': 'contentorganization',  # noqa: E501
-        'stach_content_organization': 'stachContentOrganization',  # noqa: E501
         'contenttype': 'contenttype',  # noqa: E501
-        'format': 'format',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -166,11 +158,10 @@ class QuantCalculationMeta(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            format (str): [optional]  # noqa: E501
             allow_array_data (bool): [optional]  # noqa: E501
             contentorganization (str): [optional] if omitted the server will use the default value of "SimplifiedRow"  # noqa: E501
-            stach_content_organization (str): [optional] if omitted the server will use the default value of "SimplifiedRow"  # noqa: E501
             contenttype (str): [optional] if omitted the server will use the default value of "Json"  # noqa: E501
-            format (str): [optional] if omitted the server will use the default value of "JsonStach"  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
