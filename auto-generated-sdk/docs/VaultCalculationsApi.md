@@ -69,7 +69,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+ - A tuple with response data, HTTP status code and response headers.
+ - **Response datatype**: None (empty response body)
 
 ### Authorization
 
@@ -152,7 +153,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**VaultCalculationParametersRoot**](VaultCalculationParametersRoot.md)
+ - A tuple with response data, HTTP status code and response headers.
+ - **Response datatype**: [**VaultCalculationParametersRoot**](VaultCalculationParametersRoot.md)
 
 ### Authorization
 
@@ -235,7 +237,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CalculationStatusRoot**](CalculationStatusRoot.md)
+ - A tuple with response data, HTTP status code and response headers.
+ - **Response datatype**: [**CalculationStatusRoot**](CalculationStatusRoot.md)
 
 ### Authorization
 
@@ -321,7 +324,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ObjectRoot**](ObjectRoot.md)
+ - A tuple with response data, HTTP status code and response headers.
+ - **Response datatype**: [**ObjectRoot**](ObjectRoot.md)
 
 ### Authorization
 
@@ -406,7 +410,9 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
         },
         meta=CalculationMeta(
             contentorganization="SimplifiedRow",
+            stach_content_organization="SimplifiedRow",
             contenttype="Json",
+            format="JsonStach",
         ),
     ) # VaultCalculationParametersRoot | Calculation Parameters (optional)
 
@@ -431,7 +437,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CalculationStatusRoot**](CalculationStatusRoot.md)
+ - A tuple with response data, HTTP status code and response headers.
+ - **Response datatype**: (For 202 status - [**CalculationStatusRoot**](CalculationStatusRoot.md))(For 200 status - [**CalculationStatusRoot**](CalculationStatusRoot.md))(For 201 status - [**ObjectRoot**](ObjectRoot.md))
 
 ### Authorization
 
@@ -521,7 +528,9 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
         },
         meta=CalculationMeta(
             contentorganization="SimplifiedRow",
+            stach_content_organization="SimplifiedRow",
             contenttype="Json",
+            format="JsonStach",
         ),
     ) # VaultCalculationParametersRoot | Calculation Parameters (optional)
 
@@ -555,7 +564,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CalculationStatusRoot**](CalculationStatusRoot.md)
+ - A tuple with response data, HTTP status code and response headers.
+ - **Response datatype**: (For 202 status - [**CalculationStatusRoot**](CalculationStatusRoot.md))(For 200 status - [**CalculationStatusRoot**](CalculationStatusRoot.md))(For 201 status - [**ObjectRoot**](ObjectRoot.md))
 
 ### Authorization
 

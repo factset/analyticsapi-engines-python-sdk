@@ -65,7 +65,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountDirectoriesRoot**](AccountDirectoriesRoot.md)
+ - A tuple with response data, HTTP status code and response headers.
+ - **Response datatype**: [**AccountDirectoriesRoot**](AccountDirectoriesRoot.md)
 
 ### Authorization
 
