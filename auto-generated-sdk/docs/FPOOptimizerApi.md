@@ -69,7 +69,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+ - A tuple with response data, HTTP status code and response headers.
+ - **Response datatype**: None (empty response body)
 
 ### Authorization
 
@@ -152,7 +153,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FPOOptimizationParametersRoot**](FPOOptimizationParametersRoot.md)
+ - A tuple with response data, HTTP status code and response headers.
+ - **Response datatype**: [**FPOOptimizationParametersRoot**](FPOOptimizationParametersRoot.md)
 
 ### Authorization
 
@@ -246,7 +248,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ObjectRoot**](ObjectRoot.md)
+ - A tuple with response data, HTTP status code and response headers.
+ - **Response datatype**: [**ObjectRoot**](ObjectRoot.md)
 
 ### Authorization
 
@@ -329,7 +332,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ObjectRoot**](ObjectRoot.md)
+ - A tuple with response data, HTTP status code and response headers.
+ - **Response datatype**: (For 201 status - [**ObjectRoot**](ObjectRoot.md))(For 202 status - None (empty response body) )
 
 ### Authorization
 
@@ -444,6 +448,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                     if_acct_exists="abort",
                     if_ofdb_date_exists="abort",
                 ),
+                stats={},
             ),
         ),
         meta={},
@@ -470,7 +475,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ObjectRoot**](ObjectRoot.md)
+ - A tuple with response data, HTTP status code and response headers.
+ - **Response datatype**: (For 202 status - [**CalculationInfoRoot**](CalculationInfoRoot.md))(For 201 status - [**ObjectRoot**](ObjectRoot.md))
 
 ### Authorization
 
@@ -588,6 +594,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                     if_acct_exists="abort",
                     if_ofdb_date_exists="abort",
                 ),
+                stats={},
             ),
         ),
         meta={},
@@ -623,7 +630,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ObjectRoot**](ObjectRoot.md)
+ - A tuple with response data, HTTP status code and response headers.
+ - **Response datatype**: (For 202 status - [**CalculationInfoRoot**](CalculationInfoRoot.md))(For 201 status - [**ObjectRoot**](ObjectRoot.md))
 
 ### Authorization
 
