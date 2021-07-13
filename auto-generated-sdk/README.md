@@ -166,6 +166,7 @@ Class | Method | HTTP request | Description
 *PubCalculationsApi* | [**get_calculation_unit_result_by_id**](docs/PubCalculationsApi.md#get_calculation_unit_result_by_id) | **GET** /analytics/engines/pub/v3/calculations/{id}/units/{unitId}/result | Get Pub calculation result by id
 *PubCalculationsApi* | [**post_and_calculate**](docs/PubCalculationsApi.md#post_and_calculate) | **POST** /analytics/engines/pub/v3/calculations | Create and Run Pub calculation
 *PubCalculationsApi* | [**put_and_calculate**](docs/PubCalculationsApi.md#put_and_calculate) | **PUT** /analytics/engines/pub/v3/calculations/{id} | Create or Update Pub calculation and run it.
+*QuantCalculationsApi* | [**cancel_calculation_by_id**](docs/QuantCalculationsApi.md#cancel_calculation_by_id) | **DELETE** /analytics/engines/quant/v3/calculations/{id} | Cancel Quant calculation by id
 *QuantCalculationsApi* | [**get_calculation_parameters**](docs/QuantCalculationsApi.md#get_calculation_parameters) | **GET** /analytics/engines/quant/v3/calculations/{id} | Get Quant Engine calculation parameters by id
 *QuantCalculationsApi* | [**get_calculation_status_by_id**](docs/QuantCalculationsApi.md#get_calculation_status_by_id) | **GET** /analytics/engines/quant/v3/calculations/{id}/status | Get Quant Engine calculation status by id
 *QuantCalculationsApi* | [**get_calculation_unit_info_by_id**](docs/QuantCalculationsApi.md#get_calculation_unit_info_by_id) | **GET** /analytics/engines/quant/v3/calculations/{id}/units/{unitId}/info | Get Quant Engine calculation metadata information by id
