@@ -110,7 +110,8 @@ class FIABCalculationsApi(object):
             settings={
                 'response_type': dict({ 200:(FIABCalculationStatus,), 202:(FIABCalculationStatus,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/fiab/v1/calculations/{id}',
                 'operation_id': 'get_calculation_by_id',
@@ -224,7 +225,8 @@ class FIABCalculationsApi(object):
             settings={
                 'response_type': dict({ 200:None,  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/fiab/v1/calculations',
                 'operation_id': 'get_calculation_status_summaries',
@@ -332,7 +334,8 @@ class FIABCalculationsApi(object):
             settings={
                 'response_type': None,
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/fiab/v1/calculations',
                 'operation_id': 'run_calculation',

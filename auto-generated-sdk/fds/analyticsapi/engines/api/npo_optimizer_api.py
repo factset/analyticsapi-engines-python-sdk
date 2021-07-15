@@ -110,7 +110,8 @@ class NPOOptimizerApi(object):
             settings={
                 'response_type': None,
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/npo/v3/optimizations/{id}',
                 'operation_id': 'cancel_optimization_by_id',
@@ -231,7 +232,8 @@ class NPOOptimizerApi(object):
             settings={
                 'response_type': dict({ 200:(NPOOptimizationParametersRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/npo/v3/optimizations/{id}',
                 'operation_id': 'get_optimization_parameters',
@@ -350,7 +352,8 @@ class NPOOptimizerApi(object):
             settings={
                 'response_type': dict({ 200:(ObjectRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/npo/v3/optimizations/{id}/result',
                 'operation_id': 'get_optimization_result',
@@ -469,7 +472,8 @@ class NPOOptimizerApi(object):
             settings={
                 'response_type': dict({ 201:(ObjectRoot,), 202:None,  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/npo/v3/optimizations/{id}/status',
                 'operation_id': 'get_optimization_status_by_id',
@@ -586,7 +590,8 @@ class NPOOptimizerApi(object):
             settings={
                 'response_type': dict({ 202:(CalculationInfoRoot,), 201:(ObjectRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/npo/v3/optimizations',
                 'operation_id': 'post_and_optimize',
@@ -717,7 +722,8 @@ class NPOOptimizerApi(object):
             settings={
                 'response_type': dict({ 202:(CalculationInfoRoot,), 201:(ObjectRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/npo/v3/optimizations/{id}',
                 'operation_id': 'put_and_optimize',

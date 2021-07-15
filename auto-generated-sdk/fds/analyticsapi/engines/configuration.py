@@ -391,6 +391,13 @@ conf = fds.analyticsapi.engines.Configuration(
                 'key': 'Authorization',
                 'value': self.get_basic_auth_token()
             }
+        if self.access_token is not None:
+            auth['Bearer'] = {
+                'type': 'bearer',
+                'in': 'header',
+                'key': 'Authorization',
+                'value': 'Bearer ' + self.access_token
+            }
         return auth
 
     def to_debug_report(self):

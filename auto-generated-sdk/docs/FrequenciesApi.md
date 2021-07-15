@@ -20,6 +20,7 @@ This endpoint lists all the frequencies that can be applied to a PA calculation.
 ### Example
 
 * Basic Authentication (Basic):
+* Bearer Authentication (Bearer):
 ```python
 import time
 import fds.analyticsapi.engines
@@ -41,6 +42,11 @@ configuration = fds.analyticsapi.engines.Configuration(
 configuration = fds.analyticsapi.engines.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization: Bearer
+configuration = fds.analyticsapi.engines.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -68,7 +74,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Basic](../README.md#Basic), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -99,6 +105,7 @@ This endpoint lists all the frequencies that can be applied to a SPAR calculatio
 ### Example
 
 * Basic Authentication (Basic):
+* Bearer Authentication (Bearer):
 ```python
 import time
 import fds.analyticsapi.engines
@@ -120,6 +127,11 @@ configuration = fds.analyticsapi.engines.Configuration(
 configuration = fds.analyticsapi.engines.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization: Bearer
+configuration = fds.analyticsapi.engines.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -147,7 +159,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Basic](../README.md#Basic), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -178,6 +190,7 @@ This endpoint lists all the frequencies that can be applied to a Vault calculati
 ### Example
 
 * Basic Authentication (Basic):
+* Bearer Authentication (Bearer):
 ```python
 import time
 import fds.analyticsapi.engines
@@ -199,6 +212,11 @@ configuration = fds.analyticsapi.engines.Configuration(
 configuration = fds.analyticsapi.engines.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization: Bearer
+configuration = fds.analyticsapi.engines.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -226,7 +244,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Basic](../README.md#Basic), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 

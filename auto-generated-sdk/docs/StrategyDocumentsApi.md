@@ -22,6 +22,7 @@ This endpoint looks up all Axioma Equity strategy documents and sub-directories 
 ### Example
 
 * Basic Authentication (Basic):
+* Bearer Authentication (Bearer):
 ```python
 import time
 import fds.analyticsapi.engines
@@ -44,6 +45,11 @@ configuration = fds.analyticsapi.engines.Configuration(
 configuration = fds.analyticsapi.engines.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization: Bearer
+configuration = fds.analyticsapi.engines.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -74,7 +80,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Basic](../README.md#Basic), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -107,6 +113,7 @@ This endpoint looks up all Axioma FI strategy documents and sub-directories in a
 ### Example
 
 * Basic Authentication (Basic):
+* Bearer Authentication (Bearer):
 ```python
 import time
 import fds.analyticsapi.engines
@@ -129,6 +136,11 @@ configuration = fds.analyticsapi.engines.Configuration(
 configuration = fds.analyticsapi.engines.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization: Bearer
+configuration = fds.analyticsapi.engines.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -159,7 +171,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Basic](../README.md#Basic), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -192,6 +204,7 @@ This endpoint looks up all Barra strategy documents and sub-directories in a giv
 ### Example
 
 * Basic Authentication (Basic):
+* Bearer Authentication (Bearer):
 ```python
 import time
 import fds.analyticsapi.engines
@@ -214,6 +227,11 @@ configuration = fds.analyticsapi.engines.Configuration(
 configuration = fds.analyticsapi.engines.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization: Bearer
+configuration = fds.analyticsapi.engines.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -244,7 +262,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Basic](../README.md#Basic), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -277,6 +295,7 @@ This endpoint looks up all FactSet Portfolio Optimizer strategy documents and su
 ### Example
 
 * Basic Authentication (Basic):
+* Bearer Authentication (Bearer):
 ```python
 import time
 import fds.analyticsapi.engines
@@ -299,6 +318,11 @@ configuration = fds.analyticsapi.engines.Configuration(
 configuration = fds.analyticsapi.engines.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization: Bearer
+configuration = fds.analyticsapi.engines.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -329,7 +353,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Basic](../README.md#Basic), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -362,6 +386,7 @@ This endpoint looks up all Northfield strategy documents and sub-directories in 
 ### Example
 
 * Basic Authentication (Basic):
+* Bearer Authentication (Bearer):
 ```python
 import time
 import fds.analyticsapi.engines
@@ -384,6 +409,11 @@ configuration = fds.analyticsapi.engines.Configuration(
 configuration = fds.analyticsapi.engines.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization: Bearer
+configuration = fds.analyticsapi.engines.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -414,7 +444,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Basic](../README.md#Basic), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 

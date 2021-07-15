@@ -110,7 +110,8 @@ class FICalculationsApi(object):
             settings={
                 'response_type': None,
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/fi/v3/calculations/{id}',
                 'operation_id': 'cancel_calculation_by_id',
@@ -231,7 +232,8 @@ class FICalculationsApi(object):
             settings={
                 'response_type': dict({ 200:(FICalculationParametersRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/fi/v3/calculations/{id}',
                 'operation_id': 'get_calculation_parameters',
@@ -350,7 +352,8 @@ class FICalculationsApi(object):
             settings={
                 'response_type': dict({ 200:(ObjectRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/fi/v3/calculations/{id}/result',
                 'operation_id': 'get_calculation_result',
@@ -470,7 +473,8 @@ class FICalculationsApi(object):
             settings={
                 'response_type': dict({ 201:(ObjectRoot,), 202:None,  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/fi/v3/calculations/{id}/status',
                 'operation_id': 'get_calculation_status_by_id',
@@ -588,7 +592,8 @@ class FICalculationsApi(object):
             settings={
                 'response_type': dict({ 202:(CalculationInfoRoot,), 201:(ObjectRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/fi/v3/calculations',
                 'operation_id': 'post_and_calculate',
@@ -720,7 +725,8 @@ class FICalculationsApi(object):
             settings={
                 'response_type': dict({ 202:(CalculationInfoRoot,), 201:(ObjectRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/fi/v3/calculations/{id}',
                 'operation_id': 'put_and_calculate',

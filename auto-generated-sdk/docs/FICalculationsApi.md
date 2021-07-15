@@ -23,6 +23,7 @@ This is the endpoint to cancel a previously submitted calculation.
 ### Example
 
 * Basic Authentication (Basic):
+* Bearer Authentication (Bearer):
 ```python
 import time
 import fds.analyticsapi.engines
@@ -44,6 +45,11 @@ configuration = fds.analyticsapi.engines.Configuration(
 configuration = fds.analyticsapi.engines.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization: Bearer
+configuration = fds.analyticsapi.engines.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -74,7 +80,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Basic](../README.md#Basic), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -105,6 +111,7 @@ This is the endpoint that returns the calculation parameters passed for a calcul
 ### Example
 
 * Basic Authentication (Basic):
+* Bearer Authentication (Bearer):
 ```python
 import time
 import fds.analyticsapi.engines
@@ -127,6 +134,11 @@ configuration = fds.analyticsapi.engines.Configuration(
 configuration = fds.analyticsapi.engines.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization: Bearer
+configuration = fds.analyticsapi.engines.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -158,7 +170,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Basic](../README.md#Basic), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -189,6 +201,7 @@ This is the endpoint to get the result of a previously requested calculation.  I
 ### Example
 
 * Basic Authentication (Basic):
+* Bearer Authentication (Bearer):
 ```python
 import time
 import fds.analyticsapi.engines
@@ -211,6 +224,11 @@ configuration = fds.analyticsapi.engines.Configuration(
 configuration = fds.analyticsapi.engines.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization: Bearer
+configuration = fds.analyticsapi.engines.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -242,7 +260,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Basic](../README.md#Basic), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -273,6 +291,7 @@ This is the endpoint to check on the progress of a previously requested calculat
 ### Example
 
 * Basic Authentication (Basic):
+* Bearer Authentication (Bearer):
 ```python
 import time
 import fds.analyticsapi.engines
@@ -295,6 +314,11 @@ configuration = fds.analyticsapi.engines.Configuration(
 configuration = fds.analyticsapi.engines.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization: Bearer
+configuration = fds.analyticsapi.engines.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -326,7 +350,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Basic](../README.md#Basic), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -358,6 +382,7 @@ This endpoint creates and runs a new FI calculation specified in the post body.
 ### Example
 
 * Basic Authentication (Basic):
+* Bearer Authentication (Bearer):
 ```python
 import time
 import fds.analyticsapi.engines
@@ -382,6 +407,11 @@ configuration = fds.analyticsapi.engines.Configuration(
 configuration = fds.analyticsapi.engines.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization: Bearer
+configuration = fds.analyticsapi.engines.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -447,7 +477,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Basic](../README.md#Basic), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -481,6 +511,7 @@ This endpoint updates and run the FI optimization specified in the PUT body para
 ### Example
 
 * Basic Authentication (Basic):
+* Bearer Authentication (Bearer):
 ```python
 import time
 import fds.analyticsapi.engines
@@ -505,6 +536,11 @@ configuration = fds.analyticsapi.engines.Configuration(
 configuration = fds.analyticsapi.engines.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization: Bearer
+configuration = fds.analyticsapi.engines.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -580,7 +616,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Basic](../README.md#Basic), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 

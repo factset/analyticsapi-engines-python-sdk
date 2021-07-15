@@ -108,7 +108,8 @@ class DocumentsApi(object):
             settings={
                 'response_type': dict({ 200:(DocumentDirectoriesRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/pa/v3/documents/{path}',
                 'operation_id': 'get_pa3_documents',
@@ -227,7 +228,8 @@ class DocumentsApi(object):
             settings={
                 'response_type': dict({ 200:(DocumentDirectoriesRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/pub/v3/documents/{path}',
                 'operation_id': 'get_pub_documents',
@@ -346,7 +348,8 @@ class DocumentsApi(object):
             settings={
                 'response_type': dict({ 200:(DocumentDirectoriesRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/spar/v3/documents/{path}',
                 'operation_id': 'get_spar3_documents',
@@ -465,7 +468,8 @@ class DocumentsApi(object):
             settings={
                 'response_type': dict({ 200:(DocumentDirectoriesRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/vault/v3/documents/{path}',
                 'operation_id': 'get_vault_documents',
