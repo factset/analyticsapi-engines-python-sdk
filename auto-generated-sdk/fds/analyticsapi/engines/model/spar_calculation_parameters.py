@@ -84,6 +84,7 @@ class SPARCalculationParameters(ModelNormal):
             'accounts': ([SPARIdentifier],),  # noqa: E501
             'benchmark': (SPARIdentifier,),  # noqa: E501
             'dates': (SPARDateParameters,),  # noqa: E501
+            'currencyisocode': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -96,6 +97,7 @@ class SPARCalculationParameters(ModelNormal):
         'accounts': 'accounts',  # noqa: E501
         'benchmark': 'benchmark',  # noqa: E501
         'dates': 'dates',  # noqa: E501
+        'currencyisocode': 'currencyisocode',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -150,6 +152,7 @@ class SPARCalculationParameters(ModelNormal):
             accounts ([SPARIdentifier]): List of accounts for SPAR calculation.. [optional]  # noqa: E501
             benchmark (SPARIdentifier): [optional]  # noqa: E501
             dates (SPARDateParameters): [optional]  # noqa: E501
+            currencyisocode (str): Currency ISO code for calculation.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

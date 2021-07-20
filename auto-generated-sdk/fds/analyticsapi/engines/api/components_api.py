@@ -110,7 +110,8 @@ class ComponentsApi(object):
             settings={
                 'response_type': dict({ 200:(PAComponentRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/pa/v3/components/{id}',
                 'operation_id': 'get_pa_component_by_id',
@@ -229,7 +230,8 @@ class ComponentsApi(object):
             settings={
                 'response_type': dict({ 200:(ComponentSummaryRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/pa/v3/components',
                 'operation_id': 'get_pa_components',
@@ -348,7 +350,8 @@ class ComponentsApi(object):
             settings={
                 'response_type': dict({ 200:(ComponentSummaryRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/spar/v3/components',
                 'operation_id': 'get_spar_components',
@@ -467,7 +470,8 @@ class ComponentsApi(object):
             settings={
                 'response_type': dict({ 200:(VaultComponentRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/vault/v3/components/{id}',
                 'operation_id': 'get_vault_component_by_id',
@@ -586,7 +590,8 @@ class ComponentsApi(object):
             settings={
                 'response_type': dict({ 200:(ComponentSummaryRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/vault/v3/components',
                 'operation_id': 'get_vault_components',

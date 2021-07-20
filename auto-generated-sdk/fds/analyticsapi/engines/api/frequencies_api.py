@@ -102,7 +102,8 @@ class FrequenciesApi(object):
             settings={
                 'response_type': dict({ 200:(FrequencyRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/pa/v3/frequencies',
                 'operation_id': 'get_pa_frequencies',
@@ -209,7 +210,8 @@ class FrequenciesApi(object):
             settings={
                 'response_type': dict({ 200:(FrequencyRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/spar/v3/frequencies',
                 'operation_id': 'get_spar_frequencies',
@@ -316,7 +318,8 @@ class FrequenciesApi(object):
             settings={
                 'response_type': dict({ 200:(FrequencyRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/vault/v3/frequencies',
                 'operation_id': 'get_vault_frequencies',

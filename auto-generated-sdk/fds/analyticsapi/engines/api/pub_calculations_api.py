@@ -109,7 +109,8 @@ class PubCalculationsApi(object):
             settings={
                 'response_type': None,
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/pub/v3/calculations/{id}',
                 'operation_id': 'cancel_calculation_by_id',
@@ -230,7 +231,8 @@ class PubCalculationsApi(object):
             settings={
                 'response_type': dict({ 200:(PubCalculationParametersRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/pub/v3/calculations/{id}',
                 'operation_id': 'get_calculation_parameters',
@@ -349,7 +351,8 @@ class PubCalculationsApi(object):
             settings={
                 'response_type': dict({ 200:(CalculationStatusRoot,), 202:(CalculationStatusRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/pub/v3/calculations/{id}/status',
                 'operation_id': 'get_calculation_status_by_id',
@@ -472,7 +475,8 @@ class PubCalculationsApi(object):
             settings={
                 'response_type': dict({ 200:(file_type,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/pub/v3/calculations/{id}/units/{unitId}/result',
                 'operation_id': 'get_calculation_unit_result_by_id',
@@ -597,7 +601,8 @@ class PubCalculationsApi(object):
             settings={
                 'response_type': dict({ 202:(CalculationStatusRoot,), 200:(CalculationStatusRoot,), 201:(file_type,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/pub/v3/calculations',
                 'operation_id': 'post_and_calculate',
@@ -729,7 +734,8 @@ class PubCalculationsApi(object):
             settings={
                 'response_type': dict({ 202:(CalculationStatusRoot,), 200:(CalculationStatusRoot,), 201:(file_type,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/pub/v3/calculations/{id}',
                 'operation_id': 'put_and_calculate',

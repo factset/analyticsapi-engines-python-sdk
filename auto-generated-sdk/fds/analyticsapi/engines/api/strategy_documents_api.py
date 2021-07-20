@@ -108,7 +108,8 @@ class StrategyDocumentsApi(object):
             settings={
                 'response_type': dict({ 200:(DocumentDirectoriesRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/axp/v3/strategies/{path}',
                 'operation_id': 'get_axioma_equity_strategy_documents',
@@ -227,7 +228,8 @@ class StrategyDocumentsApi(object):
             settings={
                 'response_type': dict({ 200:(DocumentDirectoriesRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/afi/v3/strategies/{path}',
                 'operation_id': 'get_axioma_fi_strategy_documents',
@@ -346,7 +348,8 @@ class StrategyDocumentsApi(object):
             settings={
                 'response_type': dict({ 200:(DocumentDirectoriesRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/bpm/v3/strategies/{path}',
                 'operation_id': 'get_barra_strategy_documents',
@@ -465,7 +468,8 @@ class StrategyDocumentsApi(object):
             settings={
                 'response_type': dict({ 200:(DocumentDirectoriesRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/fpo/v3/strategies/{path}',
                 'operation_id': 'get_fpo_strategy_documents',
@@ -584,7 +588,8 @@ class StrategyDocumentsApi(object):
             settings={
                 'response_type': dict({ 200:(DocumentDirectoriesRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/npo/v3/strategies/{path}',
                 'operation_id': 'get_northfield_strategy_documents',

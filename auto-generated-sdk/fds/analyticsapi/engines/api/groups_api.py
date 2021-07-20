@@ -102,7 +102,8 @@ class GroupsApi(object):
             settings={
                 'response_type': dict({ 200:(GroupRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/pa/v3/groups',
                 'operation_id': 'get_pa_groups',

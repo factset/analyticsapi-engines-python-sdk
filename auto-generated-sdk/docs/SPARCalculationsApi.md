@@ -23,6 +23,7 @@ This is the endpoint to cancel a previously submitted calculation.
 ### Example
 
 * Basic Authentication (Basic):
+* Bearer Authentication (Bearer):
 ```python
 import time
 import fds.analyticsapi.engines
@@ -44,6 +45,11 @@ configuration = fds.analyticsapi.engines.Configuration(
 configuration = fds.analyticsapi.engines.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization: Bearer
+configuration = fds.analyticsapi.engines.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -74,7 +80,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Basic](../README.md#Basic), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -105,6 +111,7 @@ This is the endpoint that returns the calculation parameters passed for a calcul
 ### Example
 
 * Basic Authentication (Basic):
+* Bearer Authentication (Bearer):
 ```python
 import time
 import fds.analyticsapi.engines
@@ -127,6 +134,11 @@ configuration = fds.analyticsapi.engines.Configuration(
 configuration = fds.analyticsapi.engines.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization: Bearer
+configuration = fds.analyticsapi.engines.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -158,7 +170,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Basic](../README.md#Basic), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -189,6 +201,7 @@ This is the endpoint to check on the progress of a previously requested calculat
 ### Example
 
 * Basic Authentication (Basic):
+* Bearer Authentication (Bearer):
 ```python
 import time
 import fds.analyticsapi.engines
@@ -211,6 +224,11 @@ configuration = fds.analyticsapi.engines.Configuration(
 configuration = fds.analyticsapi.engines.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization: Bearer
+configuration = fds.analyticsapi.engines.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -242,7 +260,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Basic](../README.md#Basic), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -274,6 +292,7 @@ This is the endpoint to get the result of a previously requested calculation.  I
 ### Example
 
 * Basic Authentication (Basic):
+* Bearer Authentication (Bearer):
 ```python
 import time
 import fds.analyticsapi.engines
@@ -296,6 +315,11 @@ configuration = fds.analyticsapi.engines.Configuration(
 configuration = fds.analyticsapi.engines.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization: Bearer
+configuration = fds.analyticsapi.engines.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -329,7 +353,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Basic](../README.md#Basic), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -360,6 +384,7 @@ This endpoint runs the SPAR calculation specified in the POST body parameters.  
 ### Example
 
 * Basic Authentication (Basic):
+* Bearer Authentication (Bearer):
 ```python
 import time
 import fds.analyticsapi.engines
@@ -384,6 +409,11 @@ configuration = fds.analyticsapi.engines.Configuration(
 configuration = fds.analyticsapi.engines.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization: Bearer
+configuration = fds.analyticsapi.engines.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -413,6 +443,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                     enddate="enddate_example",
                     frequency="frequency_example",
                 ),
+                currencyisocode="currencyisocode_example",
             ),
         },
         meta=CalculationMeta(
@@ -449,7 +480,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Basic](../README.md#Basic), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -484,6 +515,7 @@ This endpoint updates and run the SPAR calculation specified in the PUT body par
 ### Example
 
 * Basic Authentication (Basic):
+* Bearer Authentication (Bearer):
 ```python
 import time
 import fds.analyticsapi.engines
@@ -508,6 +540,11 @@ configuration = fds.analyticsapi.engines.Configuration(
 configuration = fds.analyticsapi.engines.Configuration(
     username = 'YOUR_USERNAME',
     password = 'YOUR_PASSWORD'
+)
+
+# Configure Bearer authorization: Bearer
+configuration = fds.analyticsapi.engines.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -538,6 +575,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                     enddate="enddate_example",
                     frequency="frequency_example",
                 ),
+                currencyisocode="currencyisocode_example",
             ),
         },
         meta=CalculationMeta(
@@ -583,7 +621,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+[Basic](../README.md#Basic), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 

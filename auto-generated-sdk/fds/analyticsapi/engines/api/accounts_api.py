@@ -108,7 +108,8 @@ class AccountsApi(object):
             settings={
                 'response_type': dict({ 200:(AccountDirectoriesRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/lookups/v3/accounts/{path}',
                 'operation_id': 'get_accounts',

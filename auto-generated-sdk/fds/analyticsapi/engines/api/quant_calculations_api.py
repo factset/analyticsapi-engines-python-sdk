@@ -40,6 +40,128 @@ class QuantCalculationsApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
+        def __cancel_calculation_by_id(
+            self,
+            id,
+            **kwargs
+        ):
+            """Cancel Quant calculation by id  # noqa: E501
+
+            This is the endpoint to cancel a previously submitted calculation.  # noqa: E501
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.cancel_calculation_by_id(id, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                id (str): from url, provided from the location header in the Create and Run Quant calculation endpoint
+
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is False.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                None
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', False
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['id'] = \
+                id
+            return self.call_with_http_info(**kwargs)
+
+        self.cancel_calculation_by_id = _Endpoint(
+            settings={
+                'response_type': None,
+                'auth': [
+                    'Basic',
+                    'Bearer'
+                ],
+                'endpoint_path': '/analytics/engines/quant/v3/calculations/{id}',
+                'operation_id': 'cancel_calculation_by_id',
+                'http_method': 'DELETE',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                },
+                'location_map': {
+                    'id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'text/plain',
+                    'application/json',
+                    'text/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__cancel_calculation_by_id
+        )
+
         def __get_calculation_parameters(
             self,
             id,
@@ -110,7 +232,8 @@ class QuantCalculationsApi(object):
             settings={
                 'response_type': dict({ 200:(QuantCalculationParametersRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/quant/v3/calculations/{id}',
                 'operation_id': 'get_calculation_parameters',
@@ -229,7 +352,8 @@ class QuantCalculationsApi(object):
             settings={
                 'response_type': dict({ 200:(CalculationStatusRoot,), 202:(CalculationStatusRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/quant/v3/calculations/{id}/status',
                 'operation_id': 'get_calculation_status_by_id',
@@ -352,7 +476,8 @@ class QuantCalculationsApi(object):
             settings={
                 'response_type': dict({ 200:(file_type,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/quant/v3/calculations/{id}/units/{unitId}/info',
                 'operation_id': 'get_calculation_unit_info_by_id',
@@ -483,7 +608,8 @@ class QuantCalculationsApi(object):
             settings={
                 'response_type': dict({ 200:(file_type,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/quant/v3/calculations/{id}/units/{unitId}/result',
                 'operation_id': 'get_calculation_unit_result_by_id',
@@ -607,7 +733,8 @@ class QuantCalculationsApi(object):
             settings={
                 'response_type': dict({ 202:(CalculationStatusRoot,), 201:(ObjectRoot,), 200:(CalculationStatusRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/quant/v3/calculations',
                 'operation_id': 'post_and_calculate',
@@ -733,7 +860,8 @@ class QuantCalculationsApi(object):
             settings={
                 'response_type': dict({ 202:(CalculationStatusRoot,), 200:(CalculationStatusRoot,), 201:(ObjectRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/quant/v3/calculations/{id}',
                 'operation_id': 'put_and_calculate',

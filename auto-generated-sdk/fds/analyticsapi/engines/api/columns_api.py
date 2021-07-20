@@ -109,7 +109,8 @@ class ColumnsApi(object):
             settings={
                 'response_type': dict({ 200:(ColumnRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/pa/v3/columns/{id}',
                 'operation_id': 'get_pa_column_by_id',
@@ -226,7 +227,8 @@ class ColumnsApi(object):
             settings={
                 'response_type': dict({ 200:(ColumnSummaryRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/pa/v3/columns',
                 'operation_id': 'get_pa_columns',
