@@ -1,3 +1,15 @@
+5.1.0 (07/20/2021)
+
+Supported API versions:
+
+* v3: [pa,spar,vault,pub,fi,axp,fpo,afi,npo,bpm,quant],v1:[fiab]
+
+Summmary:
+* Support cancelling a quant calculation
+* Add support for Bearer token for Oauth
+
+-----------------------
+
 5.0.1 (06/30/2021)
 
 Supported API versions:
