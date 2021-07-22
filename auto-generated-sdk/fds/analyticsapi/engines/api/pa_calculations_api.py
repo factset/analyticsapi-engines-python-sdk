@@ -110,7 +110,8 @@ class PACalculationsApi(object):
             settings={
                 'response_type': None,
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/pa/v3/calculations/{id}',
                 'operation_id': 'cancel_calculation_by_id',
@@ -231,7 +232,8 @@ class PACalculationsApi(object):
             settings={
                 'response_type': dict({ 200:(PACalculationParametersRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/pa/v3/calculations/{id}',
                 'operation_id': 'get_calculation_parameters',
@@ -350,7 +352,8 @@ class PACalculationsApi(object):
             settings={
                 'response_type': dict({ 200:(CalculationStatusRoot,), 202:(CalculationStatusRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/pa/v3/calculations/{id}/status',
                 'operation_id': 'get_calculation_status_by_id',
@@ -473,7 +476,8 @@ class PACalculationsApi(object):
             settings={
                 'response_type': dict({ 200:(ObjectRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/pa/v3/calculations/{id}/units/{unitId}/result',
                 'operation_id': 'get_calculation_unit_result_by_id',
@@ -597,7 +601,8 @@ class PACalculationsApi(object):
             settings={
                 'response_type': dict({ 202:(CalculationStatusRoot,), 201:(ObjectRoot,), 200:(CalculationStatusRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/pa/v3/calculations',
                 'operation_id': 'post_and_calculate',
@@ -729,7 +734,8 @@ class PACalculationsApi(object):
             settings={
                 'response_type': dict({ 202:(CalculationStatusRoot,), 200:(CalculationStatusRoot,), 201:(ObjectRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/pa/v3/calculations/{id}',
                 'operation_id': 'put_and_calculate',

@@ -108,7 +108,8 @@ class BenchmarksApi(object):
             settings={
                 'response_type': dict({ 200:(SPARBenchmarkRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/spar/v3/benchmarks',
                 'operation_id': 'get_spar_benchmark_by_id',

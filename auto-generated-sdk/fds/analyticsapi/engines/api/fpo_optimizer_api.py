@@ -110,7 +110,8 @@ class FPOOptimizerApi(object):
             settings={
                 'response_type': None,
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/fpo/v3/optimizations/{id}',
                 'operation_id': 'cancel_optimization_by_id',
@@ -231,7 +232,8 @@ class FPOOptimizerApi(object):
             settings={
                 'response_type': dict({ 200:(FPOOptimizationParametersRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/fpo/v3/optimizations/{id}',
                 'operation_id': 'get_optimization_parameters',
@@ -351,7 +353,8 @@ class FPOOptimizerApi(object):
             settings={
                 'response_type': dict({ 200:(ObjectRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/fpo/v3/optimizations/{id}/result',
                 'operation_id': 'get_optimization_result',
@@ -475,7 +478,8 @@ class FPOOptimizerApi(object):
             settings={
                 'response_type': dict({ 201:(ObjectRoot,), 202:None,  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/fpo/v3/optimizations/{id}/status',
                 'operation_id': 'get_optimization_status_by_id',
@@ -592,7 +596,8 @@ class FPOOptimizerApi(object):
             settings={
                 'response_type': dict({ 202:(CalculationInfoRoot,), 201:(ObjectRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/fpo/v3/optimizations',
                 'operation_id': 'post_and_optimize',
@@ -723,7 +728,8 @@ class FPOOptimizerApi(object):
             settings={
                 'response_type': dict({ 202:(CalculationInfoRoot,), 201:(ObjectRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/fpo/v3/optimizations/{id}',
                 'operation_id': 'put_and_optimize',

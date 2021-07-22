@@ -109,7 +109,8 @@ class ConfigurationsApi(object):
             settings={
                 'response_type': dict({ 200:(VaultConfigurationRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/vault/v3/configurations/{id}',
                 'operation_id': 'get_vault_configuration_by_id',
@@ -228,7 +229,8 @@ class ConfigurationsApi(object):
             settings={
                 'response_type': dict({ 200:(VaultConfigurationSummaryRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/vault/v3/configurations',
                 'operation_id': 'get_vault_configurations',

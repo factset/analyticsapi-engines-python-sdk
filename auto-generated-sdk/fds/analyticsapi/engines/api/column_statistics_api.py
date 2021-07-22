@@ -102,7 +102,8 @@ class ColumnStatisticsApi(object):
             settings={
                 'response_type': dict({ 200:(ColumnStatisticRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/pa/v3/columnstatistics',
                 'operation_id': 'get_pa_column_statistics',

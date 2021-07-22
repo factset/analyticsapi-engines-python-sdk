@@ -391,6 +391,13 @@ conf = fds.analyticsapi.engines.Configuration(
                 'key': 'Authorization',
                 'value': self.get_basic_auth_token()
             }
+        if self.access_token is not None:
+            auth['Bearer'] = {
+                'type': 'bearer',
+                'in': 'header',
+                'key': 'Authorization',
+                'value': 'Bearer ' + self.access_token
+            }
         return auth
 
     def to_debug_report(self):
@@ -402,7 +409,7 @@ conf = fds.analyticsapi.engines.Configuration(
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: v3:[pa,spar,vault,pub,quant,fi,axp,afi,npo,bpm,fpo,others],v1:[fiab]\n"\
-               "SDK Package Version: 5.0.1".\
+               "SDK Package Version: 5.1.0".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self):

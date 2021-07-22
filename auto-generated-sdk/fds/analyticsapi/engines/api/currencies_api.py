@@ -102,7 +102,8 @@ class CurrenciesApi(object):
             settings={
                 'response_type': dict({ 200:(CurrencyRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/lookups/v3/currencies',
                 'operation_id': 'get_currencies',

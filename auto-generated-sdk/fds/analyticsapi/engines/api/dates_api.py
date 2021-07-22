@@ -117,7 +117,8 @@ class DatesApi(object):
             settings={
                 'response_type': dict({ 200:(DateParametersSummaryRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/pa/v3/dates',
                 'operation_id': 'convert_pa_dates_to_absolute_format',
@@ -262,7 +263,8 @@ class DatesApi(object):
             settings={
                 'response_type': dict({ 200:(DateParametersSummaryRoot,),  }),
                 'auth': [
-                    'Basic'
+                    'Basic',
+                    'Bearer'
                 ],
                 'endpoint_path': '/analytics/engines/vault/v3/dates',
                 'operation_id': 'convert_vault_dates_to_absolute_format',
