@@ -110,6 +110,7 @@ Class | Method | HTTP request | Description
 *AXPOptimizerApi* | [**post_and_optimize**](docs/AXPOptimizerApi.md#post_and_optimize) | **POST** /analytics/engines/axp/v3/optimizations | Create and Run Axioma optimization
 *AXPOptimizerApi* | [**put_and_optimize**](docs/AXPOptimizerApi.md#put_and_optimize) | **PUT** /analytics/engines/axp/v3/optimizations/{id} | Create or Update Axioma optimization and run it.
 *AccountsApi* | [**get_accounts**](docs/AccountsApi.md#get_accounts) | **GET** /analytics/lookups/v3/accounts/{path} | Get accounts and sub-directories in a directory
+*AccountsApi* | [**get_spar_returns_type**](docs/AccountsApi.md#get_spar_returns_type) | **GET** /analytics/engines/spar/v3/accounts/{accountPath}/returns-type | Get SPAR account returns type details
 *BPMOptimizerApi* | [**cancel_optimization_by_id**](docs/BPMOptimizerApi.md#cancel_optimization_by_id) | **DELETE** /analytics/engines/bpm/v3/optimizations/{id} | Cancel BPM optimization by id
 *BPMOptimizerApi* | [**get_optimization_parameters**](docs/BPMOptimizerApi.md#get_optimization_parameters) | **GET** /analytics/engines/bpm/v3/optimizations/{id} | Get BPM optimization parameters by id
 *BPMOptimizerApi* | [**get_optimization_result**](docs/BPMOptimizerApi.md#get_optimization_result) | **GET** /analytics/engines/bpm/v3/optimizations/{id}/result | Get BPM optimization result by id
@@ -153,6 +154,11 @@ Class | Method | HTTP request | Description
 *FrequenciesApi* | [**get_spar_frequencies**](docs/FrequenciesApi.md#get_spar_frequencies) | **GET** /analytics/engines/spar/v3/frequencies | Get SPAR frequencies
 *FrequenciesApi* | [**get_vault_frequencies**](docs/FrequenciesApi.md#get_vault_frequencies) | **GET** /analytics/engines/vault/v3/frequencies | Get Vault frequencies
 *GroupsApi* | [**get_pa_groups**](docs/GroupsApi.md#get_pa_groups) | **GET** /analytics/engines/pa/v3/groups | Get PA groups
+*LinkedPATemplatesApi* | [**create_linked_pa_templates**](docs/LinkedPATemplatesApi.md#create_linked_pa_templates) | **POST** /analytics/engines/pa/v3/linked-templates | Create a linked PA template
+*LinkedPATemplatesApi* | [**delete_linked_pa_templates**](docs/LinkedPATemplatesApi.md#delete_linked_pa_templates) | **DELETE** /analytics/engines/pa/v3/linked-templates/{id} | Delete a linked PA template.
+*LinkedPATemplatesApi* | [**get_linked_pa_templates**](docs/LinkedPATemplatesApi.md#get_linked_pa_templates) | **GET** /analytics/engines/pa/v3/linked-templates | Get linked PA templates
+*LinkedPATemplatesApi* | [**get_linked_pa_templates_by_id**](docs/LinkedPATemplatesApi.md#get_linked_pa_templates_by_id) | **GET** /analytics/engines/pa/v3/linked-templates/{id} | Get linked PA template by id
+*LinkedPATemplatesApi* | [**update_linked_pa_templates**](docs/LinkedPATemplatesApi.md#update_linked_pa_templates) | **PUT** /analytics/engines/pa/v3/linked-templates/{id} | Update a linked PA template
 *NPOOptimizerApi* | [**cancel_optimization_by_id**](docs/NPOOptimizerApi.md#cancel_optimization_by_id) | **DELETE** /analytics/engines/npo/v3/optimizations/{id} | Cancel NPO optimization by id
 *NPOOptimizerApi* | [**get_optimization_parameters**](docs/NPOOptimizerApi.md#get_optimization_parameters) | **GET** /analytics/engines/npo/v3/optimizations/{id} | Get NPO optimization parameters by id
 *NPOOptimizerApi* | [**get_optimization_result**](docs/NPOOptimizerApi.md#get_optimization_result) | **GET** /analytics/engines/npo/v3/optimizations/{id}/result | Get NPO optimization result by id
@@ -189,6 +195,16 @@ Class | Method | HTTP request | Description
 *StrategyDocumentsApi* | [**get_barra_strategy_documents**](docs/StrategyDocumentsApi.md#get_barra_strategy_documents) | **GET** /analytics/engines/bpm/v3/strategies/{path} | Get Barra strategy documents and sub-directories in a directory
 *StrategyDocumentsApi* | [**get_fpo_strategy_documents**](docs/StrategyDocumentsApi.md#get_fpo_strategy_documents) | **GET** /analytics/engines/fpo/v3/strategies/{path} | Get FactSet Portfolio Optimizer strategy documents and sub-directories in a directory
 *StrategyDocumentsApi* | [**get_northfield_strategy_documents**](docs/StrategyDocumentsApi.md#get_northfield_strategy_documents) | **GET** /analytics/engines/npo/v3/strategies/{path} | Get Northfield strategy documents and sub-directories in a directory
+*TemplatedPAComponentsApi* | [**create_templated_pa_components**](docs/TemplatedPAComponentsApi.md#create_templated_pa_components) | **POST** /analytics/engines/pa/v3/templated-components | Create templated PA component
+*TemplatedPAComponentsApi* | [**delete_templated_pa_components**](docs/TemplatedPAComponentsApi.md#delete_templated_pa_components) | **DELETE** /analytics/engines/pa/v3/templated-components/{id} | Delete templated PA component
+*TemplatedPAComponentsApi* | [**update_templated_pa_components**](docs/TemplatedPAComponentsApi.md#update_templated_pa_components) | **PUT** /analytics/engines/pa/v3/templated-components/{id} | Update templated PA component
+*UnlinkedPATemplatesApi* | [**create_unlinked_pa_templates**](docs/UnlinkedPATemplatesApi.md#create_unlinked_pa_templates) | **POST** /analytics/engines/pa/v3/unlinked-templates | Create unlinked PA template
+*UnlinkedPATemplatesApi* | [**delete_unlinked_pa_templates**](docs/UnlinkedPATemplatesApi.md#delete_unlinked_pa_templates) | **DELETE** /analytics/engines/pa/v3/unlinked-templates/{id} | Delete unlinked PA template
+*UnlinkedPATemplatesApi* | [**get_default_unlinked_pa_template_types**](docs/UnlinkedPATemplatesApi.md#get_default_unlinked_pa_template_types) | **GET** /analytics/engines/pa/v3/unlinked-templates/template-types | Get default unlinked PA template types.
+*UnlinkedPATemplatesApi* | [**get_details_type**](docs/UnlinkedPATemplatesApi.md#get_details_type) | **GET** /analytics/engines/pa/v3/unlinked-templates/template-types/{id} | Get unlinked PA template type details by id.
+*UnlinkedPATemplatesApi* | [**get_unlinked_pa_templates**](docs/UnlinkedPATemplatesApi.md#get_unlinked_pa_templates) | **GET** /analytics/engines/pa/v3/unlinked-templates | Get unlinked PA templates
+*UnlinkedPATemplatesApi* | [**get_unlinked_pa_templates_by_id**](docs/UnlinkedPATemplatesApi.md#get_unlinked_pa_templates_by_id) | **GET** /analytics/engines/pa/v3/unlinked-templates/{id} | Get unlinked PA template details by id
+*UnlinkedPATemplatesApi* | [**update_unlinked_pa_templates**](docs/UnlinkedPATemplatesApi.md#update_unlinked_pa_templates) | **PUT** /analytics/engines/pa/v3/unlinked-templates/{id} | Update unlinked PA template
 *VaultCalculationsApi* | [**cancel_calculation_by_id**](docs/VaultCalculationsApi.md#cancel_calculation_by_id) | **DELETE** /analytics/engines/vault/v3/calculations/{id} | Cancel Vault calculation by id
 *VaultCalculationsApi* | [**get_calculation_parameters**](docs/VaultCalculationsApi.md#get_calculation_parameters) | **GET** /analytics/engines/vault/v3/calculations/{id} | Get Vault calculation parameters by id
 *VaultCalculationsApi* | [**get_calculation_status_by_id**](docs/VaultCalculationsApi.md#get_calculation_status_by_id) | **GET** /analytics/engines/vault/v3/calculations/{id}/status | Get Vault calculation status by id
@@ -259,6 +275,14 @@ Class | Method | HTTP request | Description
  - [FrequencyRoot](docs/FrequencyRoot.md)
  - [Group](docs/Group.md)
  - [GroupRoot](docs/GroupRoot.md)
+ - [LinkedPATemplate](docs/LinkedPATemplate.md)
+ - [LinkedPATemplateParameters](docs/LinkedPATemplateParameters.md)
+ - [LinkedPATemplateParametersRoot](docs/LinkedPATemplateParametersRoot.md)
+ - [LinkedPATemplateRoot](docs/LinkedPATemplateRoot.md)
+ - [LinkedPATemplateSummary](docs/LinkedPATemplateSummary.md)
+ - [LinkedPATemplateSummaryRoot](docs/LinkedPATemplateSummaryRoot.md)
+ - [LinkedPATemplateUpdateParameters](docs/LinkedPATemplateUpdateParameters.md)
+ - [LinkedPATemplateUpdateParametersRoot](docs/LinkedPATemplateUpdateParametersRoot.md)
  - [NPOOptimizationParameters](docs/NPOOptimizationParameters.md)
  - [NPOOptimizationParametersRoot](docs/NPOOptimizationParametersRoot.md)
  - [NPOOptimizerStrategy](docs/NPOOptimizerStrategy.md)
@@ -278,6 +302,7 @@ Class | Method | HTTP request | Description
  - [PACalculationParameters](docs/PACalculationParameters.md)
  - [PACalculationParametersRoot](docs/PACalculationParametersRoot.md)
  - [PAComponent](docs/PAComponent.md)
+ - [PAComponentData](docs/PAComponentData.md)
  - [PAComponentRoot](docs/PAComponentRoot.md)
  - [PADateParameters](docs/PADateParameters.md)
  - [PAIdentifier](docs/PAIdentifier.md)
@@ -297,12 +322,34 @@ Class | Method | HTTP request | Description
  - [QuantScreeningExpressionUniverse](docs/QuantScreeningExpressionUniverse.md)
  - [QuantUniversalScreenParameter](docs/QuantUniversalScreenParameter.md)
  - [QuantUniversalScreenUniverse](docs/QuantUniversalScreenUniverse.md)
+ - [ReturnType](docs/ReturnType.md)
+ - [SPARAccounts](docs/SPARAccounts.md)
+ - [SPARAccountsRoot](docs/SPARAccountsRoot.md)
  - [SPARBenchmark](docs/SPARBenchmark.md)
  - [SPARBenchmarkRoot](docs/SPARBenchmarkRoot.md)
  - [SPARCalculationParameters](docs/SPARCalculationParameters.md)
  - [SPARCalculationParametersRoot](docs/SPARCalculationParametersRoot.md)
  - [SPARDateParameters](docs/SPARDateParameters.md)
  - [SPARIdentifier](docs/SPARIdentifier.md)
+ - [TemplateContentTypes](docs/TemplateContentTypes.md)
+ - [TemplatedPAComponentParameters](docs/TemplatedPAComponentParameters.md)
+ - [TemplatedPAComponentParametersRoot](docs/TemplatedPAComponentParametersRoot.md)
+ - [TemplatedPAComponentSummary](docs/TemplatedPAComponentSummary.md)
+ - [TemplatedPAComponentSummaryRoot](docs/TemplatedPAComponentSummaryRoot.md)
+ - [TemplatedPAComponentUpdateParameters](docs/TemplatedPAComponentUpdateParameters.md)
+ - [TemplatedPAComponentUpdateParametersRoot](docs/TemplatedPAComponentUpdateParametersRoot.md)
+ - [UnlinkedPATemplate](docs/UnlinkedPATemplate.md)
+ - [UnlinkedPATemplateCategoryAndType](docs/UnlinkedPATemplateCategoryAndType.md)
+ - [UnlinkedPATemplateCategoryAndTypeDetails](docs/UnlinkedPATemplateCategoryAndTypeDetails.md)
+ - [UnlinkedPATemplateCategoryAndTypeDetailsRoot](docs/UnlinkedPATemplateCategoryAndTypeDetailsRoot.md)
+ - [UnlinkedPATemplateCategoryAndTypeRoot](docs/UnlinkedPATemplateCategoryAndTypeRoot.md)
+ - [UnlinkedPATemplateParameters](docs/UnlinkedPATemplateParameters.md)
+ - [UnlinkedPATemplateParametersRoot](docs/UnlinkedPATemplateParametersRoot.md)
+ - [UnlinkedPATemplateRoot](docs/UnlinkedPATemplateRoot.md)
+ - [UnlinkedPATemplateSummary](docs/UnlinkedPATemplateSummary.md)
+ - [UnlinkedPATemplateSummaryRoot](docs/UnlinkedPATemplateSummaryRoot.md)
+ - [UnlinkedPATemplateUpdateParameters](docs/UnlinkedPATemplateUpdateParameters.md)
+ - [UnlinkedPATemplateUpdateParametersRoot](docs/UnlinkedPATemplateUpdateParametersRoot.md)
  - [VaultCalculationParameters](docs/VaultCalculationParameters.md)
  - [VaultCalculationParametersRoot](docs/VaultCalculationParametersRoot.md)
  - [VaultComponent](docs/VaultComponent.md)
