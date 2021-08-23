@@ -411,6 +411,8 @@ class ApiClient(object):
         elif isinstance(obj, (list, tuple)):
             return [cls.sanitize_for_serialization(item) for item in obj]
         if isinstance(obj, dict):
+            if(len(obj.items()) == 0):
+                return obj
             return {key: cls.sanitize_for_serialization(val) for key, val in obj.items()}
         raise ApiValueError('Unable to prepare type {} for serialization'.format(obj.__class__.__name__))
 

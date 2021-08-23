@@ -1334,6 +1334,9 @@ def is_valid_type(input_class_simple, valid_classes):
     Returns:
         bool
     """
+    if(object in valid_classes):
+        return True
+
     valid_type = input_class_simple in valid_classes
     if not valid_type and (
             issubclass(input_class_simple, OpenApiModel) or
@@ -1485,6 +1488,10 @@ def model_to_dict(model_instance, serialize=True):
     result = {}
 
     model_instances = [model_instance]
+
+    if model_instance == {}:
+        return result
+
     if model_instance._composed_schemas:
         model_instances.extend(model_instance._composed_instances)
     for model_instance in model_instances:
@@ -1502,6 +1509,8 @@ def model_to_dict(model_instance, serialize=True):
                 else:
                     result[attr] = [model_to_dict(x, serialize=serialize) for x in value]
             elif isinstance(value, dict):
+                if(len(value.items()) == 0):
+                    result[attr] = value
                 result[attr] = dict(map(
                     lambda item: (item[0],
                                   model_to_dict(item[1], serialize=serialize))
