@@ -1,7 +1,7 @@
 
 # fds.analyticsapi.engines.FICalculationsApi
 
-All URIs are relative to *https://api.factset.com*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -30,10 +30,10 @@ import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import fi_calculations_api
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.factset.com
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "https://api.factset.com"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -102,7 +102,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_calculation_parameters**
-> FICalculationParametersRoot get_calculation_parameters(id)
+> FICalculationParametersCalculationMetaInteractiveCalculationParameters get_calculation_parameters(id)
 
 Get FI calculation parameters by id
 
@@ -116,13 +116,13 @@ This is the endpoint that returns the calculation parameters passed for a calcul
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import fi_calculations_api
-from fds.analyticsapi.engines.model.fi_calculation_parameters_root import FICalculationParametersRoot
+from fds.analyticsapi.engines.model.fi_calculation_parameters_calculation_meta_interactive_calculation_parameters import FICalculationParametersCalculationMetaInteractiveCalculationParameters
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.factset.com
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "https://api.factset.com"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -166,7 +166,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**FICalculationParametersRoot**](FICalculationParametersRoot.md)
+ - **Response datatype**: [**FICalculationParametersCalculationMetaInteractiveCalculationParameters**](FICalculationParametersCalculationMetaInteractiveCalculationParameters.md)
 
 ### Authorization
 
@@ -192,7 +192,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_calculation_result**
-> ObjectRoot get_calculation_result(id)
+> ObjectObjectDataAndMetaModel get_calculation_result(id)
 
 Get FI calculation result by id
 
@@ -206,13 +206,13 @@ This is the endpoint to get the result of a previously requested calculation.  I
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import fi_calculations_api
-from fds.analyticsapi.engines.model.object_root import ObjectRoot
+from fds.analyticsapi.engines.model.object_object_data_and_meta_model import ObjectObjectDataAndMetaModel
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.factset.com
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "https://api.factset.com"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -256,7 +256,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**ObjectRoot**](ObjectRoot.md)
+ - **Response datatype**: [**ObjectObjectDataAndMetaModel**](ObjectObjectDataAndMetaModel.md)
 
 ### Authorization
 
@@ -282,7 +282,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_calculation_status_by_id**
-> ObjectRoot get_calculation_status_by_id(id)
+> ObjectObjectDataAndMetaModel get_calculation_status_by_id(id)
 
 Get FI calculation status by id
 
@@ -296,13 +296,13 @@ This is the endpoint to check on the progress of a previously requested calculat
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import fi_calculations_api
-from fds.analyticsapi.engines.model.object_root import ObjectRoot
+from fds.analyticsapi.engines.model.object_object_data_and_meta_model import ObjectObjectDataAndMetaModel
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.factset.com
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "https://api.factset.com"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -346,7 +346,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: (For 201 status - [**ObjectRoot**](ObjectRoot.md))(For 202 status - None (empty response body) )
+ - **Response datatype**: [**ObjectObjectDataAndMetaModel**](ObjectObjectDataAndMetaModel.md)
 
 ### Authorization
 
@@ -373,7 +373,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_and_calculate**
-> ObjectRoot post_and_calculate()
+> ObjectObjectDataAndMetaModel post_and_calculate()
 
 Create and Run FI calculation
 
@@ -387,15 +387,15 @@ This endpoint creates and runs a new FI calculation specified in the post body.
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import fi_calculations_api
-from fds.analyticsapi.engines.model.fi_calculation_parameters_root import FICalculationParametersRoot
-from fds.analyticsapi.engines.model.object_root import ObjectRoot
-from fds.analyticsapi.engines.model.calculation_info_root import CalculationInfoRoot
+from fds.analyticsapi.engines.model.persisted_calculation_info_object_data_and_meta_model import PersistedCalculationInfoObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.object_object_data_and_meta_model import ObjectObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.fi_calculation_parameters_calculation_meta_interactive_calculation_parameters import FICalculationParametersCalculationMetaInteractiveCalculationParameters
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.factset.com
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "https://api.factset.com"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -420,7 +420,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     api_instance = fi_calculations_api.FICalculationsApi(api_client)
     x_fact_set_api_long_running_deadline = 1 # int | Long running deadline in seconds. (optional)
     cache_control = "Cache-Control_example" # str | Standard HTTP header.  Accepts max-stale. (optional)
-    fi_calculation_parameters_root = FICalculationParametersRoot(
+    fi_calculation_parameters_calculation_meta_interactive_calculation_parameters = FICalculationParametersCalculationMetaInteractiveCalculationParameters(
         data=FICalculationParameters(
             securities=[
                 FISecurity(
@@ -453,13 +453,13 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
             contenttype="Json",
             format="JsonStach",
         ),
-    ) # FICalculationParametersRoot | Calculation Parameters (optional)
+    ) # FICalculationParametersCalculationMetaInteractiveCalculationParameters | Calculation Parameters (optional)
 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
         # Create and Run FI calculation
-        api_response = api_instance.post_and_calculate(x_fact_set_api_long_running_deadline=x_fact_set_api_long_running_deadline, cache_control=cache_control, fi_calculation_parameters_root=fi_calculation_parameters_root)
+        api_response = api_instance.post_and_calculate(x_fact_set_api_long_running_deadline=x_fact_set_api_long_running_deadline, cache_control=cache_control, fi_calculation_parameters_calculation_meta_interactive_calculation_parameters=fi_calculation_parameters_calculation_meta_interactive_calculation_parameters)
         pprint(api_response)
     except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling FICalculationsApi->post_and_calculate: %s\n" % e)
@@ -472,12 +472,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **x_fact_set_api_long_running_deadline** | **int**| Long running deadline in seconds. | [optional]
  **cache_control** | **str**| Standard HTTP header.  Accepts max-stale. | [optional]
- **fi_calculation_parameters_root** | [**FICalculationParametersRoot**](FICalculationParametersRoot.md)| Calculation Parameters | [optional]
+ **fi_calculation_parameters_calculation_meta_interactive_calculation_parameters** | [**FICalculationParametersCalculationMetaInteractiveCalculationParameters**](FICalculationParametersCalculationMetaInteractiveCalculationParameters.md)| Calculation Parameters | [optional]
 
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: (For 202 status - [**CalculationInfoRoot**](CalculationInfoRoot.md))(For 201 status - [**ObjectRoot**](ObjectRoot.md))
+ - **Response datatype**: [**ObjectObjectDataAndMetaModel**](ObjectObjectDataAndMetaModel.md)
 
 ### Authorization
 
@@ -506,7 +506,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_and_calculate**
-> ObjectRoot put_and_calculate(id)
+> ObjectObjectDataAndMetaModel put_and_calculate(id)
 
 Create or Update FI calculation and run it.
 
@@ -520,15 +520,15 @@ This endpoint updates and run the FI optimization specified in the PUT body para
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import fi_calculations_api
-from fds.analyticsapi.engines.model.fi_calculation_parameters_root import FICalculationParametersRoot
-from fds.analyticsapi.engines.model.object_root import ObjectRoot
-from fds.analyticsapi.engines.model.calculation_info_root import CalculationInfoRoot
+from fds.analyticsapi.engines.model.persisted_calculation_info_object_data_and_meta_model import PersistedCalculationInfoObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.object_object_data_and_meta_model import ObjectObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.fi_calculation_parameters_calculation_meta_interactive_calculation_parameters import FICalculationParametersCalculationMetaInteractiveCalculationParameters
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.factset.com
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "https://api.factset.com"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -554,7 +554,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     id = "id_example" # str | from url, provided from the location header in the Create and Run FI calculation endpoint
     x_fact_set_api_long_running_deadline = 1 # int | Long running deadline in seconds. (optional)
     cache_control = "Cache-Control_example" # str | Standard HTTP header.  Accepts max-stale. (optional)
-    fi_calculation_parameters_root = FICalculationParametersRoot(
+    fi_calculation_parameters_calculation_meta_interactive_calculation_parameters = FICalculationParametersCalculationMetaInteractiveCalculationParameters(
         data=FICalculationParameters(
             securities=[
                 FISecurity(
@@ -587,7 +587,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
             contenttype="Json",
             format="JsonStach",
         ),
-    ) # FICalculationParametersRoot | Calculation Parameters (optional)
+    ) # FICalculationParametersCalculationMetaInteractiveCalculationParameters | Calculation Parameters (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -601,7 +601,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Create or Update FI calculation and run it.
-        api_response = api_instance.put_and_calculate(id, x_fact_set_api_long_running_deadline=x_fact_set_api_long_running_deadline, cache_control=cache_control, fi_calculation_parameters_root=fi_calculation_parameters_root)
+        api_response = api_instance.put_and_calculate(id, x_fact_set_api_long_running_deadline=x_fact_set_api_long_running_deadline, cache_control=cache_control, fi_calculation_parameters_calculation_meta_interactive_calculation_parameters=fi_calculation_parameters_calculation_meta_interactive_calculation_parameters)
         pprint(api_response)
     except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling FICalculationsApi->put_and_calculate: %s\n" % e)
@@ -615,12 +615,12 @@ Name | Type | Description  | Notes
  **id** | **str**| from url, provided from the location header in the Create and Run FI calculation endpoint |
  **x_fact_set_api_long_running_deadline** | **int**| Long running deadline in seconds. | [optional]
  **cache_control** | **str**| Standard HTTP header.  Accepts max-stale. | [optional]
- **fi_calculation_parameters_root** | [**FICalculationParametersRoot**](FICalculationParametersRoot.md)| Calculation Parameters | [optional]
+ **fi_calculation_parameters_calculation_meta_interactive_calculation_parameters** | [**FICalculationParametersCalculationMetaInteractiveCalculationParameters**](FICalculationParametersCalculationMetaInteractiveCalculationParameters.md)| Calculation Parameters | [optional]
 
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: (For 202 status - [**CalculationInfoRoot**](CalculationInfoRoot.md))(For 201 status - [**ObjectRoot**](ObjectRoot.md))
+ - **Response datatype**: [**ObjectObjectDataAndMetaModel**](ObjectObjectDataAndMetaModel.md)
 
 ### Authorization
 

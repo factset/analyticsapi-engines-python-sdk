@@ -1,7 +1,7 @@
 
 # fds.analyticsapi.engines.BenchmarksApi
 
-All URIs are relative to *https://api.factset.com*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **get_spar_benchmark_by_id**
-> SPARBenchmarkRoot get_spar_benchmark_by_id(id)
+> SPARBenchmarkObjectDataAndMetaModel get_spar_benchmark_by_id(id)
 
 Get SPAR benchmark details
 
@@ -23,13 +23,13 @@ This endpoint returns the details of a given SPAR benchmark identifier.
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import benchmarks_api
-from fds.analyticsapi.engines.model.spar_benchmark_root import SPARBenchmarkRoot
+from fds.analyticsapi.engines.model.spar_benchmark_object_data_and_meta_model import SPARBenchmarkObjectDataAndMetaModel
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.factset.com
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "https://api.factset.com"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**SPARBenchmarkRoot**](SPARBenchmarkRoot.md)
+ - **Response datatype**: [**SPARBenchmarkObjectDataAndMetaModel**](SPARBenchmarkObjectDataAndMetaModel.md)
 
 ### Authorization
 

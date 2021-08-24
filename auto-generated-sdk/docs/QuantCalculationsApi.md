@@ -1,7 +1,7 @@
 
 # fds.analyticsapi.engines.QuantCalculationsApi
 
-All URIs are relative to *https://api.factset.com*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -31,10 +31,10 @@ import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import quant_calculations_api
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.factset.com
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "https://api.factset.com"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -103,7 +103,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_calculation_parameters**
-> QuantCalculationParametersRoot get_calculation_parameters(id)
+> QuantCalculationParametersQuantCalculationMetaCalculationParameters get_calculation_parameters(id)
 
 Get Quant Engine calculation parameters by id
 
@@ -117,13 +117,13 @@ This is the endpoint that returns the calculation parameters passed for a calcul
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import quant_calculations_api
-from fds.analyticsapi.engines.model.quant_calculation_parameters_root import QuantCalculationParametersRoot
+from fds.analyticsapi.engines.model.quant_calculation_parameters_quant_calculation_meta_calculation_parameters import QuantCalculationParametersQuantCalculationMetaCalculationParameters
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.factset.com
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "https://api.factset.com"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -167,7 +167,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**QuantCalculationParametersRoot**](QuantCalculationParametersRoot.md)
+ - **Response datatype**: [**QuantCalculationParametersQuantCalculationMetaCalculationParameters**](QuantCalculationParametersQuantCalculationMetaCalculationParameters.md)
 
 ### Authorization
 
@@ -193,7 +193,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_calculation_status_by_id**
-> CalculationStatusRoot get_calculation_status_by_id(id)
+> CalculationStatusCalculationStatusMetaDataAndMetaModel get_calculation_status_by_id(id)
 
 Get Quant Engine calculation status by id
 
@@ -207,13 +207,13 @@ This is the endpoint to check on the progress of a previously requested calculat
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import quant_calculations_api
-from fds.analyticsapi.engines.model.calculation_status_root import CalculationStatusRoot
+from fds.analyticsapi.engines.model.calculation_status_calculation_status_meta_data_and_meta_model import CalculationStatusCalculationStatusMetaDataAndMetaModel
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.factset.com
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "https://api.factset.com"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -257,7 +257,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**CalculationStatusRoot**](CalculationStatusRoot.md)
+ - **Response datatype**: [**CalculationStatusCalculationStatusMetaDataAndMetaModel**](CalculationStatusCalculationStatusMetaDataAndMetaModel.md)
 
 ### Authorization
 
@@ -300,10 +300,10 @@ import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import quant_calculations_api
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.factset.com
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "https://api.factset.com"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -391,10 +391,10 @@ import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import quant_calculations_api
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.factset.com
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "https://api.factset.com"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -466,7 +466,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_and_calculate**
-> CalculationStatusRoot post_and_calculate()
+> CalculationStatusCalculationStatusMetaDataAndMetaModel post_and_calculate()
 
 Create and Run Quant Engine calculation
 
@@ -480,15 +480,15 @@ This endpoint runs the Quant Engine calculation specified in the POST body param
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import quant_calculations_api
-from fds.analyticsapi.engines.model.calculation_status_root import CalculationStatusRoot
-from fds.analyticsapi.engines.model.object_root import ObjectRoot
-from fds.analyticsapi.engines.model.quant_calculation_parameters_root import QuantCalculationParametersRoot
+from fds.analyticsapi.engines.model.quant_calculation_parameters_quant_calculation_meta_calculation_parameters import QuantCalculationParametersQuantCalculationMetaCalculationParameters
+from fds.analyticsapi.engines.model.calculation_status_calculation_status_meta_data_and_meta_model import CalculationStatusCalculationStatusMetaDataAndMetaModel
+from fds.analyticsapi.engines.model.object_object_data_and_meta_model import ObjectObjectDataAndMetaModel
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.factset.com
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "https://api.factset.com"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -512,11 +512,18 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = quant_calculations_api.QuantCalculationsApi(api_client)
     cache_control = "Cache-Control_example" # str | Standard HTTP header.  Accepts no-store, max-age, max-stale. (optional)
-    quant_calculation_parameters_root = QuantCalculationParametersRoot(
+    quant_calculation_parameters_quant_calculation_meta_calculation_parameters = QuantCalculationParametersQuantCalculationMetaCalculationParameters(
         data={
             "key": QuantCalculationParameters(
-                universe=,
-                dates=,
+                universe=
+                    universe_type="Equity",
+                    identifiers=[
+                        "identifiers_example",
+                    ],
+                ,
+                dates=
+                    dates=[],
+                ,
                 formulas=[
                     ,
                 ],
@@ -580,13 +587,13 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
             contenttype="Json",
             format="JsonStach",
         ),
-    ) # QuantCalculationParametersRoot |  (optional)
+    ) # QuantCalculationParametersQuantCalculationMetaCalculationParameters |  (optional)
 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
         # Create and Run Quant Engine calculation
-        api_response = api_instance.post_and_calculate(cache_control=cache_control, quant_calculation_parameters_root=quant_calculation_parameters_root)
+        api_response = api_instance.post_and_calculate(cache_control=cache_control, quant_calculation_parameters_quant_calculation_meta_calculation_parameters=quant_calculation_parameters_quant_calculation_meta_calculation_parameters)
         pprint(api_response)
     except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling QuantCalculationsApi->post_and_calculate: %s\n" % e)
@@ -598,12 +605,12 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cache_control** | **str**| Standard HTTP header.  Accepts no-store, max-age, max-stale. | [optional]
- **quant_calculation_parameters_root** | [**QuantCalculationParametersRoot**](QuantCalculationParametersRoot.md)|  | [optional]
+ **quant_calculation_parameters_quant_calculation_meta_calculation_parameters** | [**QuantCalculationParametersQuantCalculationMetaCalculationParameters**](QuantCalculationParametersQuantCalculationMetaCalculationParameters.md)|  | [optional]
 
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: (For 202 status - [**CalculationStatusRoot**](CalculationStatusRoot.md))(For 201 status - [**ObjectRoot**](ObjectRoot.md))(For 200 status - [**CalculationStatusRoot**](CalculationStatusRoot.md))
+ - **Response datatype**: [**CalculationStatusCalculationStatusMetaDataAndMetaModel**](CalculationStatusCalculationStatusMetaDataAndMetaModel.md)
 
 ### Authorization
 
@@ -633,7 +640,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_and_calculate**
-> CalculationStatusRoot put_and_calculate(id)
+> CalculationStatusCalculationStatusMetaDataAndMetaModel put_and_calculate(id)
 
 Create or update Quant Engine calculation and run it.
 
@@ -647,15 +654,15 @@ This endpoint updates and runs the Quant Engine calculation specified in the PUT
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import quant_calculations_api
-from fds.analyticsapi.engines.model.calculation_status_root import CalculationStatusRoot
-from fds.analyticsapi.engines.model.object_root import ObjectRoot
-from fds.analyticsapi.engines.model.quant_calculation_parameters_root import QuantCalculationParametersRoot
+from fds.analyticsapi.engines.model.quant_calculation_parameters_quant_calculation_meta_calculation_parameters import QuantCalculationParametersQuantCalculationMetaCalculationParameters
+from fds.analyticsapi.engines.model.calculation_status_calculation_status_meta_data_and_meta_model import CalculationStatusCalculationStatusMetaDataAndMetaModel
+from fds.analyticsapi.engines.model.object_object_data_and_meta_model import ObjectObjectDataAndMetaModel
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.factset.com
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "https://api.factset.com"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -680,11 +687,18 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     api_instance = quant_calculations_api.QuantCalculationsApi(api_client)
     id = "id_example" # str | from url, provided from the location header in the Create and Run Quant Engine calculation endpoint
     cache_control = "Cache-Control_example" # str | Standard HTTP header.  Accepts no-store, max-age, max-stale. (optional)
-    quant_calculation_parameters_root = QuantCalculationParametersRoot(
+    quant_calculation_parameters_quant_calculation_meta_calculation_parameters = QuantCalculationParametersQuantCalculationMetaCalculationParameters(
         data={
             "key": QuantCalculationParameters(
-                universe=,
-                dates=,
+                universe=
+                    universe_type="Equity",
+                    identifiers=[
+                        "identifiers_example",
+                    ],
+                ,
+                dates=
+                    dates=[],
+                ,
                 formulas=[
                     ,
                 ],
@@ -748,7 +762,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
             contenttype="Json",
             format="JsonStach",
         ),
-    ) # QuantCalculationParametersRoot | Calculation Parameters (optional)
+    ) # QuantCalculationParametersQuantCalculationMetaCalculationParameters | Calculation Parameters (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -762,7 +776,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Create or update Quant Engine calculation and run it.
-        api_response = api_instance.put_and_calculate(id, cache_control=cache_control, quant_calculation_parameters_root=quant_calculation_parameters_root)
+        api_response = api_instance.put_and_calculate(id, cache_control=cache_control, quant_calculation_parameters_quant_calculation_meta_calculation_parameters=quant_calculation_parameters_quant_calculation_meta_calculation_parameters)
         pprint(api_response)
     except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling QuantCalculationsApi->put_and_calculate: %s\n" % e)
@@ -775,12 +789,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| from url, provided from the location header in the Create and Run Quant Engine calculation endpoint |
  **cache_control** | **str**| Standard HTTP header.  Accepts no-store, max-age, max-stale. | [optional]
- **quant_calculation_parameters_root** | [**QuantCalculationParametersRoot**](QuantCalculationParametersRoot.md)| Calculation Parameters | [optional]
+ **quant_calculation_parameters_quant_calculation_meta_calculation_parameters** | [**QuantCalculationParametersQuantCalculationMetaCalculationParameters**](QuantCalculationParametersQuantCalculationMetaCalculationParameters.md)| Calculation Parameters | [optional]
 
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: (For 202 status - [**CalculationStatusRoot**](CalculationStatusRoot.md))(For 200 status - [**CalculationStatusRoot**](CalculationStatusRoot.md))(For 201 status - [**ObjectRoot**](ObjectRoot.md))
+ - **Response datatype**: [**CalculationStatusCalculationStatusMetaDataAndMetaModel**](CalculationStatusCalculationStatusMetaDataAndMetaModel.md)
 
 ### Authorization
 

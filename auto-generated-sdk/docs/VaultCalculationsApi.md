@@ -1,7 +1,7 @@
 
 # fds.analyticsapi.engines.VaultCalculationsApi
 
-All URIs are relative to *https://api.factset.com*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -30,10 +30,10 @@ import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import vault_calculations_api
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.factset.com
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "https://api.factset.com"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -102,7 +102,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_calculation_parameters**
-> VaultCalculationParametersRoot get_calculation_parameters(id)
+> VaultCalculationParametersCalculationMetaCalculationParameters get_calculation_parameters(id)
 
 Get Vault calculation parameters by id
 
@@ -116,13 +116,13 @@ This is the endpoint that returns the calculation parameters passed for a calcul
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import vault_calculations_api
-from fds.analyticsapi.engines.model.vault_calculation_parameters_root import VaultCalculationParametersRoot
+from fds.analyticsapi.engines.model.vault_calculation_parameters_calculation_meta_calculation_parameters import VaultCalculationParametersCalculationMetaCalculationParameters
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.factset.com
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "https://api.factset.com"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -166,7 +166,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**VaultCalculationParametersRoot**](VaultCalculationParametersRoot.md)
+ - **Response datatype**: [**VaultCalculationParametersCalculationMetaCalculationParameters**](VaultCalculationParametersCalculationMetaCalculationParameters.md)
 
 ### Authorization
 
@@ -192,7 +192,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_calculation_status_by_id**
-> CalculationStatusRoot get_calculation_status_by_id(id)
+> CalculationStatusCalculationStatusMetaDataAndMetaModel get_calculation_status_by_id(id)
 
 Get Vault calculation status by id
 
@@ -206,13 +206,13 @@ This is the endpoint to check on the progress of a previously requested calculat
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import vault_calculations_api
-from fds.analyticsapi.engines.model.calculation_status_root import CalculationStatusRoot
+from fds.analyticsapi.engines.model.calculation_status_calculation_status_meta_data_and_meta_model import CalculationStatusCalculationStatusMetaDataAndMetaModel
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.factset.com
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "https://api.factset.com"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -256,7 +256,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**CalculationStatusRoot**](CalculationStatusRoot.md)
+ - **Response datatype**: [**CalculationStatusCalculationStatusMetaDataAndMetaModel**](CalculationStatusCalculationStatusMetaDataAndMetaModel.md)
 
 ### Authorization
 
@@ -283,7 +283,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_calculation_unit_result_by_id**
-> ObjectRoot get_calculation_unit_result_by_id(id, unit_id)
+> ObjectObjectDataAndMetaModel get_calculation_unit_result_by_id(id, unit_id)
 
 Get Vault calculation result by id
 
@@ -297,13 +297,13 @@ This is the endpoint to get the result of a previously requested calculation.  I
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import vault_calculations_api
-from fds.analyticsapi.engines.model.object_root import ObjectRoot
+from fds.analyticsapi.engines.model.object_object_data_and_meta_model import ObjectObjectDataAndMetaModel
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.factset.com
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "https://api.factset.com"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -349,7 +349,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**ObjectRoot**](ObjectRoot.md)
+ - **Response datatype**: [**ObjectObjectDataAndMetaModel**](ObjectObjectDataAndMetaModel.md)
 
 ### Authorization
 
@@ -375,7 +375,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_and_calculate**
-> CalculationStatusRoot post_and_calculate()
+> CalculationStatusCalculationStatusMetaDataAndMetaModel post_and_calculate()
 
 Create and Run Vault calculation
 
@@ -389,15 +389,15 @@ This endpoint runs the Vault calculation specified in the POST body parameters. 
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import vault_calculations_api
-from fds.analyticsapi.engines.model.calculation_status_root import CalculationStatusRoot
-from fds.analyticsapi.engines.model.vault_calculation_parameters_root import VaultCalculationParametersRoot
-from fds.analyticsapi.engines.model.object_root import ObjectRoot
+from fds.analyticsapi.engines.model.calculation_status_calculation_status_meta_data_and_meta_model import CalculationStatusCalculationStatusMetaDataAndMetaModel
+from fds.analyticsapi.engines.model.object_object_data_and_meta_model import ObjectObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.vault_calculation_parameters_calculation_meta_calculation_parameters import VaultCalculationParametersCalculationMetaCalculationParameters
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.factset.com
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "https://api.factset.com"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -422,7 +422,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     api_instance = vault_calculations_api.VaultCalculationsApi(api_client)
     x_fact_set_api_long_running_deadline = 1 # int | Long running deadline in seconds when only one unit is passed in the POST body. (optional)
     cache_control = "Cache-Control_example" # str | Standard HTTP header.  Accepts max-stale. (optional)
-    vault_calculation_parameters_root = VaultCalculationParametersRoot(
+    vault_calculation_parameters_calculation_meta_calculation_parameters = VaultCalculationParametersCalculationMetaCalculationParameters(
         data={
             "key": VaultCalculationParameters(
                 componentid="componentid_example",
@@ -444,13 +444,13 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
             contenttype="Json",
             format="JsonStach",
         ),
-    ) # VaultCalculationParametersRoot | Calculation Parameters (optional)
+    ) # VaultCalculationParametersCalculationMetaCalculationParameters | Calculation Parameters (optional)
 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
         # Create and Run Vault calculation
-        api_response = api_instance.post_and_calculate(x_fact_set_api_long_running_deadline=x_fact_set_api_long_running_deadline, cache_control=cache_control, vault_calculation_parameters_root=vault_calculation_parameters_root)
+        api_response = api_instance.post_and_calculate(x_fact_set_api_long_running_deadline=x_fact_set_api_long_running_deadline, cache_control=cache_control, vault_calculation_parameters_calculation_meta_calculation_parameters=vault_calculation_parameters_calculation_meta_calculation_parameters)
         pprint(api_response)
     except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling VaultCalculationsApi->post_and_calculate: %s\n" % e)
@@ -463,12 +463,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **x_fact_set_api_long_running_deadline** | **int**| Long running deadline in seconds when only one unit is passed in the POST body. | [optional]
  **cache_control** | **str**| Standard HTTP header.  Accepts max-stale. | [optional]
- **vault_calculation_parameters_root** | [**VaultCalculationParametersRoot**](VaultCalculationParametersRoot.md)| Calculation Parameters | [optional]
+ **vault_calculation_parameters_calculation_meta_calculation_parameters** | [**VaultCalculationParametersCalculationMetaCalculationParameters**](VaultCalculationParametersCalculationMetaCalculationParameters.md)| Calculation Parameters | [optional]
 
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: (For 202 status - [**CalculationStatusRoot**](CalculationStatusRoot.md))(For 200 status - [**CalculationStatusRoot**](CalculationStatusRoot.md))(For 201 status - [**ObjectRoot**](ObjectRoot.md))
+ - **Response datatype**: [**CalculationStatusCalculationStatusMetaDataAndMetaModel**](CalculationStatusCalculationStatusMetaDataAndMetaModel.md)
 
 ### Authorization
 
@@ -498,7 +498,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_and_calculate**
-> CalculationStatusRoot put_and_calculate(id)
+> CalculationStatusCalculationStatusMetaDataAndMetaModel put_and_calculate(id)
 
 Create or Update Vault calculation and run it.
 
@@ -512,15 +512,15 @@ This endpoint updates and run the Vault calculation specified in the PUT body pa
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import vault_calculations_api
-from fds.analyticsapi.engines.model.calculation_status_root import CalculationStatusRoot
-from fds.analyticsapi.engines.model.vault_calculation_parameters_root import VaultCalculationParametersRoot
-from fds.analyticsapi.engines.model.object_root import ObjectRoot
+from fds.analyticsapi.engines.model.calculation_status_calculation_status_meta_data_and_meta_model import CalculationStatusCalculationStatusMetaDataAndMetaModel
+from fds.analyticsapi.engines.model.object_object_data_and_meta_model import ObjectObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.vault_calculation_parameters_calculation_meta_calculation_parameters import VaultCalculationParametersCalculationMetaCalculationParameters
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.factset.com
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "https://api.factset.com"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -546,7 +546,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     id = "id_example" # str | from url, provided from the location header in the Create and Run Vault calculation endpoint
     x_fact_set_api_long_running_deadline = 1 # int | Long running deadline in seconds when only one unit is passed in the PUT body. (optional)
     cache_control = "Cache-Control_example" # str | Standard HTTP header.  Accepts max-stale. (optional)
-    vault_calculation_parameters_root = VaultCalculationParametersRoot(
+    vault_calculation_parameters_calculation_meta_calculation_parameters = VaultCalculationParametersCalculationMetaCalculationParameters(
         data={
             "key": VaultCalculationParameters(
                 componentid="componentid_example",
@@ -568,7 +568,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
             contenttype="Json",
             format="JsonStach",
         ),
-    ) # VaultCalculationParametersRoot | Calculation Parameters (optional)
+    ) # VaultCalculationParametersCalculationMetaCalculationParameters | Calculation Parameters (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -582,7 +582,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Create or Update Vault calculation and run it.
-        api_response = api_instance.put_and_calculate(id, x_fact_set_api_long_running_deadline=x_fact_set_api_long_running_deadline, cache_control=cache_control, vault_calculation_parameters_root=vault_calculation_parameters_root)
+        api_response = api_instance.put_and_calculate(id, x_fact_set_api_long_running_deadline=x_fact_set_api_long_running_deadline, cache_control=cache_control, vault_calculation_parameters_calculation_meta_calculation_parameters=vault_calculation_parameters_calculation_meta_calculation_parameters)
         pprint(api_response)
     except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling VaultCalculationsApi->put_and_calculate: %s\n" % e)
@@ -596,12 +596,12 @@ Name | Type | Description  | Notes
  **id** | **str**| from url, provided from the location header in the Create and Run Vault calculation endpoint |
  **x_fact_set_api_long_running_deadline** | **int**| Long running deadline in seconds when only one unit is passed in the PUT body. | [optional]
  **cache_control** | **str**| Standard HTTP header.  Accepts max-stale. | [optional]
- **vault_calculation_parameters_root** | [**VaultCalculationParametersRoot**](VaultCalculationParametersRoot.md)| Calculation Parameters | [optional]
+ **vault_calculation_parameters_calculation_meta_calculation_parameters** | [**VaultCalculationParametersCalculationMetaCalculationParameters**](VaultCalculationParametersCalculationMetaCalculationParameters.md)| Calculation Parameters | [optional]
 
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: (For 202 status - [**CalculationStatusRoot**](CalculationStatusRoot.md))(For 200 status - [**CalculationStatusRoot**](CalculationStatusRoot.md))(For 201 status - [**ObjectRoot**](ObjectRoot.md))
+ - **Response datatype**: [**CalculationStatusCalculationStatusMetaDataAndMetaModel**](CalculationStatusCalculationStatusMetaDataAndMetaModel.md)
 
 ### Authorization
 

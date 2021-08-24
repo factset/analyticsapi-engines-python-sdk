@@ -1,7 +1,7 @@
 
 # fds.analyticsapi.engines.TemplatedPAComponentsApi
 
-All URIs are relative to *https://api.factset.com*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **create_templated_pa_components**
-> TemplatedPAComponentSummaryRoot create_templated_pa_components(templated_pa_component_parameters_root)
+> StringTemplatedPAComponentSummaryDictionaryObjectDataAndMetaModel create_templated_pa_components(templated_pa_component_parameters_object_data_and_meta_model)
 
 Create templated PA component
 
@@ -25,14 +25,14 @@ This endpoint creates new component based off of linked PA template or unlinked 
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import templated_pa_components_api
-from fds.analyticsapi.engines.model.templated_pa_component_summary_root import TemplatedPAComponentSummaryRoot
-from fds.analyticsapi.engines.model.templated_pa_component_parameters_root import TemplatedPAComponentParametersRoot
+from fds.analyticsapi.engines.model.string_templated_pa_component_summary_dictionary_object_data_and_meta_model import StringTemplatedPAComponentSummaryDictionaryObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.templated_pa_component_parameters_object_data_and_meta_model import TemplatedPAComponentParametersObjectDataAndMetaModel
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.factset.com
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "https://api.factset.com"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -55,7 +55,7 @@ configuration = fds.analyticsapi.engines.Configuration(
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = templated_pa_components_api.TemplatedPAComponentsApi(api_client)
-    templated_pa_component_parameters_root = TemplatedPAComponentParametersRoot(
+    templated_pa_component_parameters_object_data_and_meta_model = TemplatedPAComponentParametersObjectDataAndMetaModel(
         data=TemplatedPAComponentParameters(
             directory="directory_example",
             parent_template_id="parent_template_id_example",
@@ -95,13 +95,13 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                 componentdetail="componentdetail_example",
             ),
         ),
-        meta={},
-    ) # TemplatedPAComponentParametersRoot | Request Parameters
+        meta=None,
+    ) # TemplatedPAComponentParametersObjectDataAndMetaModel | Request Parameters
 
     # example passing only required values which don't have defaults set
     try:
         # Create templated PA component
-        api_response = api_instance.create_templated_pa_components(templated_pa_component_parameters_root)
+        api_response = api_instance.create_templated_pa_components(templated_pa_component_parameters_object_data_and_meta_model)
         pprint(api_response)
     except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling TemplatedPAComponentsApi->create_templated_pa_components: %s\n" % e)
@@ -112,12 +112,12 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **templated_pa_component_parameters_root** | [**TemplatedPAComponentParametersRoot**](TemplatedPAComponentParametersRoot.md)| Request Parameters |
+ **templated_pa_component_parameters_object_data_and_meta_model** | [**TemplatedPAComponentParametersObjectDataAndMetaModel**](TemplatedPAComponentParametersObjectDataAndMetaModel.md)| Request Parameters |
 
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**TemplatedPAComponentSummaryRoot**](TemplatedPAComponentSummaryRoot.md)
+ - **Response datatype**: [**StringTemplatedPAComponentSummaryDictionaryObjectDataAndMetaModel**](StringTemplatedPAComponentSummaryDictionaryObjectDataAndMetaModel.md)
 
 ### Authorization
 
@@ -161,10 +161,10 @@ import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import templated_pa_components_api
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.factset.com
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "https://api.factset.com"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -235,7 +235,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_templated_pa_components**
-> TemplatedPAComponentSummaryRoot update_templated_pa_components(id, templated_pa_component_update_parameters_root)
+> StringTemplatedPAComponentSummaryDictionaryObjectDataAndMetaModel update_templated_pa_components(id, templated_pa_component_update_parameters_object_data_and_meta_model)
 
 Update templated PA component
 
@@ -249,14 +249,14 @@ This endpoint allows the user to change the request body from an existing templa
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import templated_pa_components_api
-from fds.analyticsapi.engines.model.templated_pa_component_summary_root import TemplatedPAComponentSummaryRoot
+from fds.analyticsapi.engines.model.templated_pa_component_update_parameters_object_data_and_meta_model import TemplatedPAComponentUpdateParametersObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.string_templated_pa_component_summary_dictionary_object_data_and_meta_model import StringTemplatedPAComponentSummaryDictionaryObjectDataAndMetaModel
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
-from fds.analyticsapi.engines.model.templated_pa_component_update_parameters_root import TemplatedPAComponentUpdateParametersRoot
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.factset.com
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "https://api.factset.com"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -280,7 +280,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = templated_pa_components_api.TemplatedPAComponentsApi(api_client)
     id = "id_example" # str | Unique identifier for a templated PA component
-    templated_pa_component_update_parameters_root = TemplatedPAComponentUpdateParametersRoot(
+    templated_pa_component_update_parameters_object_data_and_meta_model = TemplatedPAComponentUpdateParametersObjectDataAndMetaModel(
         data=TemplatedPAComponentUpdateParameters(
             parent_template_id="parent_template_id_example",
             description="description_example",
@@ -319,13 +319,13 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                 componentdetail="componentdetail_example",
             ),
         ),
-        meta={},
-    ) # TemplatedPAComponentUpdateParametersRoot | Request Parameters
+        meta=None,
+    ) # TemplatedPAComponentUpdateParametersObjectDataAndMetaModel | Request Parameters
 
     # example passing only required values which don't have defaults set
     try:
         # Update templated PA component
-        api_response = api_instance.update_templated_pa_components(id, templated_pa_component_update_parameters_root)
+        api_response = api_instance.update_templated_pa_components(id, templated_pa_component_update_parameters_object_data_and_meta_model)
         pprint(api_response)
     except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling TemplatedPAComponentsApi->update_templated_pa_components: %s\n" % e)
@@ -337,12 +337,12 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| Unique identifier for a templated PA component |
- **templated_pa_component_update_parameters_root** | [**TemplatedPAComponentUpdateParametersRoot**](TemplatedPAComponentUpdateParametersRoot.md)| Request Parameters |
+ **templated_pa_component_update_parameters_object_data_and_meta_model** | [**TemplatedPAComponentUpdateParametersObjectDataAndMetaModel**](TemplatedPAComponentUpdateParametersObjectDataAndMetaModel.md)| Request Parameters |
 
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**TemplatedPAComponentSummaryRoot**](TemplatedPAComponentSummaryRoot.md)
+ - **Response datatype**: [**StringTemplatedPAComponentSummaryDictionaryObjectDataAndMetaModel**](StringTemplatedPAComponentSummaryDictionaryObjectDataAndMetaModel.md)
 
 ### Authorization
 

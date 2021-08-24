@@ -1,7 +1,7 @@
 
 # fds.analyticsapi.engines.ColumnStatisticsApi
 
-All URIs are relative to *https://api.factset.com*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **get_pa_column_statistics**
-> ColumnStatisticRoot get_pa_column_statistics()
+> StringColumnStatisticDictionaryObjectDataAndMetaModel get_pa_column_statistics()
 
 Get PA column statistics
 
@@ -23,12 +23,12 @@ This endpoint lists all the column statistics that can be applied to a PA column
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import column_statistics_api
-from fds.analyticsapi.engines.model.column_statistic_root import ColumnStatisticRoot
+from fds.analyticsapi.engines.model.string_column_statistic_dictionary_object_data_and_meta_model import StringColumnStatisticDictionaryObjectDataAndMetaModel
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.factset.com
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "https://api.factset.com"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -68,7 +68,7 @@ This endpoint does not need any parameter.
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**ColumnStatisticRoot**](ColumnStatisticRoot.md)
+ - **Response datatype**: [**StringColumnStatisticDictionaryObjectDataAndMetaModel**](StringColumnStatisticDictionaryObjectDataAndMetaModel.md)
 
 ### Authorization
 

@@ -1,7 +1,7 @@
 
 # fds.analyticsapi.engines.AFIOptimizerApi
 
-All URIs are relative to *https://api.factset.com*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -30,10 +30,10 @@ import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import afi_optimizer_api
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.factset.com
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "https://api.factset.com"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -102,7 +102,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_optimization_parameters**
-> AFIOptimizationParametersRoot get_optimization_parameters(id)
+> AFIOptimizationParametersOptimizerCalculationMetaInteractiveCalculationParameters get_optimization_parameters(id)
 
 Get AFI optimization parameters by id
 
@@ -116,13 +116,13 @@ This is the endpoint that returns the optimization parameters passed for an opti
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import afi_optimizer_api
-from fds.analyticsapi.engines.model.afi_optimization_parameters_root import AFIOptimizationParametersRoot
+from fds.analyticsapi.engines.model.afi_optimization_parameters_optimizer_calculation_meta_interactive_calculation_parameters import AFIOptimizationParametersOptimizerCalculationMetaInteractiveCalculationParameters
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.factset.com
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "https://api.factset.com"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -166,7 +166,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**AFIOptimizationParametersRoot**](AFIOptimizationParametersRoot.md)
+ - **Response datatype**: [**AFIOptimizationParametersOptimizerCalculationMetaInteractiveCalculationParameters**](AFIOptimizationParametersOptimizerCalculationMetaInteractiveCalculationParameters.md)
 
 ### Authorization
 
@@ -192,7 +192,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_optimization_result**
-> ObjectRoot get_optimization_result(id)
+> ObjectObjectDataAndMetaModel get_optimization_result(id)
 
 Get AFI optimization result by id
 
@@ -206,13 +206,13 @@ This is the endpoint to get the result of a previously requested optimization.
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import afi_optimizer_api
-from fds.analyticsapi.engines.model.object_root import ObjectRoot
+from fds.analyticsapi.engines.model.object_object_data_and_meta_model import ObjectObjectDataAndMetaModel
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.factset.com
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "https://api.factset.com"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -256,7 +256,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**ObjectRoot**](ObjectRoot.md)
+ - **Response datatype**: [**ObjectObjectDataAndMetaModel**](ObjectObjectDataAndMetaModel.md)
 
 ### Authorization
 
@@ -282,7 +282,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_optimization_status_by_id**
-> ObjectRoot get_optimization_status_by_id(id)
+> ObjectObjectDataAndMetaModel get_optimization_status_by_id(id)
 
 Get AFI optimization status by id
 
@@ -296,13 +296,13 @@ This is the endpoint to check on the progress of a previously requested optimiza
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import afi_optimizer_api
-from fds.analyticsapi.engines.model.object_root import ObjectRoot
+from fds.analyticsapi.engines.model.object_object_data_and_meta_model import ObjectObjectDataAndMetaModel
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.factset.com
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "https://api.factset.com"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -346,7 +346,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: (For 201 status - [**ObjectRoot**](ObjectRoot.md))(For 202 status - None (empty response body) )
+ - **Response datatype**: [**ObjectObjectDataAndMetaModel**](ObjectObjectDataAndMetaModel.md)
 
 ### Authorization
 
@@ -373,7 +373,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_and_optimize**
-> ObjectRoot post_and_optimize()
+> ObjectObjectDataAndMetaModel post_and_optimize()
 
 Create and Run AFI optimization
 
@@ -387,15 +387,15 @@ This endpoint creates and runs AFI optimization specified in the POST body param
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import afi_optimizer_api
-from fds.analyticsapi.engines.model.object_root import ObjectRoot
-from fds.analyticsapi.engines.model.afi_optimization_parameters_root import AFIOptimizationParametersRoot
-from fds.analyticsapi.engines.model.calculation_info_root import CalculationInfoRoot
+from fds.analyticsapi.engines.model.afi_optimization_parameters_optimizer_calculation_meta_interactive_calculation_parameters import AFIOptimizationParametersOptimizerCalculationMetaInteractiveCalculationParameters
+from fds.analyticsapi.engines.model.persisted_calculation_info_object_data_and_meta_model import PersistedCalculationInfoObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.object_object_data_and_meta_model import ObjectObjectDataAndMetaModel
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.factset.com
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "https://api.factset.com"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -420,7 +420,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     api_instance = afi_optimizer_api.AFIOptimizerApi(api_client)
     x_fact_set_api_long_running_deadline = 1 # int | Long running deadline in seconds. (optional)
     cache_control = "Cache-Control_example" # str | Standard HTTP header.  Accepts max-stale. (optional)
-    afi_optimization_parameters_root = AFIOptimizationParametersRoot(
+    afi_optimization_parameters_optimizer_calculation_meta_interactive_calculation_parameters = AFIOptimizationParametersOptimizerCalculationMetaInteractiveCalculationParameters(
         data=AFIOptimizationParameters(
             strategy=AFIOptimizerStrategy(
                 overrides=AFIOptimizerStrategyOverrides(
@@ -469,13 +469,13 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
             ),
         ),
         meta={},
-    ) # AFIOptimizationParametersRoot | Optimization Parameters (optional)
+    ) # AFIOptimizationParametersOptimizerCalculationMetaInteractiveCalculationParameters | Optimization Parameters (optional)
 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
         # Create and Run AFI optimization
-        api_response = api_instance.post_and_optimize(x_fact_set_api_long_running_deadline=x_fact_set_api_long_running_deadline, cache_control=cache_control, afi_optimization_parameters_root=afi_optimization_parameters_root)
+        api_response = api_instance.post_and_optimize(x_fact_set_api_long_running_deadline=x_fact_set_api_long_running_deadline, cache_control=cache_control, afi_optimization_parameters_optimizer_calculation_meta_interactive_calculation_parameters=afi_optimization_parameters_optimizer_calculation_meta_interactive_calculation_parameters)
         pprint(api_response)
     except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling AFIOptimizerApi->post_and_optimize: %s\n" % e)
@@ -488,12 +488,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **x_fact_set_api_long_running_deadline** | **int**| Long running deadline in seconds. | [optional]
  **cache_control** | **str**| Standard HTTP header.  Accepts max-stale. | [optional]
- **afi_optimization_parameters_root** | [**AFIOptimizationParametersRoot**](AFIOptimizationParametersRoot.md)| Optimization Parameters | [optional]
+ **afi_optimization_parameters_optimizer_calculation_meta_interactive_calculation_parameters** | [**AFIOptimizationParametersOptimizerCalculationMetaInteractiveCalculationParameters**](AFIOptimizationParametersOptimizerCalculationMetaInteractiveCalculationParameters.md)| Optimization Parameters | [optional]
 
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: (For 202 status - [**CalculationInfoRoot**](CalculationInfoRoot.md))(For 201 status - [**ObjectRoot**](ObjectRoot.md))
+ - **Response datatype**: [**ObjectObjectDataAndMetaModel**](ObjectObjectDataAndMetaModel.md)
 
 ### Authorization
 
@@ -522,7 +522,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_and_optimize**
-> ObjectRoot put_and_optimize(id)
+> ObjectObjectDataAndMetaModel put_and_optimize(id)
 
 Create or Update AFI optimization and run it.
 
@@ -536,15 +536,15 @@ This endpoint updates and run the AFI optimization specified in the PUT body par
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import afi_optimizer_api
-from fds.analyticsapi.engines.model.object_root import ObjectRoot
-from fds.analyticsapi.engines.model.afi_optimization_parameters_root import AFIOptimizationParametersRoot
-from fds.analyticsapi.engines.model.calculation_info_root import CalculationInfoRoot
+from fds.analyticsapi.engines.model.afi_optimization_parameters_optimizer_calculation_meta_interactive_calculation_parameters import AFIOptimizationParametersOptimizerCalculationMetaInteractiveCalculationParameters
+from fds.analyticsapi.engines.model.persisted_calculation_info_object_data_and_meta_model import PersistedCalculationInfoObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.object_object_data_and_meta_model import ObjectObjectDataAndMetaModel
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.factset.com
+# Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "https://api.factset.com"
+    host = "http://localhost"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -570,7 +570,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     id = "id_example" # str | from url, provided from the location header in the Create and Run AFI optimization endpoint
     x_fact_set_api_long_running_deadline = 1 # int | Long running deadline in seconds. (optional)
     cache_control = "Cache-Control_example" # str | Standard HTTP header.  Accepts max-stale. (optional)
-    afi_optimization_parameters_root = AFIOptimizationParametersRoot(
+    afi_optimization_parameters_optimizer_calculation_meta_interactive_calculation_parameters = AFIOptimizationParametersOptimizerCalculationMetaInteractiveCalculationParameters(
         data=AFIOptimizationParameters(
             strategy=AFIOptimizerStrategy(
                 overrides=AFIOptimizerStrategyOverrides(
@@ -619,7 +619,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
             ),
         ),
         meta={},
-    ) # AFIOptimizationParametersRoot | Optimization Parameters (optional)
+    ) # AFIOptimizationParametersOptimizerCalculationMetaInteractiveCalculationParameters | Optimization Parameters (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -633,7 +633,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Create or Update AFI optimization and run it.
-        api_response = api_instance.put_and_optimize(id, x_fact_set_api_long_running_deadline=x_fact_set_api_long_running_deadline, cache_control=cache_control, afi_optimization_parameters_root=afi_optimization_parameters_root)
+        api_response = api_instance.put_and_optimize(id, x_fact_set_api_long_running_deadline=x_fact_set_api_long_running_deadline, cache_control=cache_control, afi_optimization_parameters_optimizer_calculation_meta_interactive_calculation_parameters=afi_optimization_parameters_optimizer_calculation_meta_interactive_calculation_parameters)
         pprint(api_response)
     except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling AFIOptimizerApi->put_and_optimize: %s\n" % e)
@@ -647,12 +647,12 @@ Name | Type | Description  | Notes
  **id** | **str**| from url, provided from the location header in the Create and Run AFI optimization endpoint |
  **x_fact_set_api_long_running_deadline** | **int**| Long running deadline in seconds. | [optional]
  **cache_control** | **str**| Standard HTTP header.  Accepts max-stale. | [optional]
- **afi_optimization_parameters_root** | [**AFIOptimizationParametersRoot**](AFIOptimizationParametersRoot.md)| Optimization Parameters | [optional]
+ **afi_optimization_parameters_optimizer_calculation_meta_interactive_calculation_parameters** | [**AFIOptimizationParametersOptimizerCalculationMetaInteractiveCalculationParameters**](AFIOptimizationParametersOptimizerCalculationMetaInteractiveCalculationParameters.md)| Optimization Parameters | [optional]
 
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: (For 202 status - [**CalculationInfoRoot**](CalculationInfoRoot.md))(For 201 status - [**ObjectRoot**](ObjectRoot.md))
+ - **Response datatype**: [**ObjectObjectDataAndMetaModel**](ObjectObjectDataAndMetaModel.md)
 
 ### Authorization
 
