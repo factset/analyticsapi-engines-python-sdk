@@ -25,6 +25,11 @@ from fds.analyticsapi.engines.model.pa_calculation_column import PACalculationCo
 from fds.analyticsapi.engines.model.unlinked_pa_template_parameters import UnlinkedPATemplateParameters
 from fds.analyticsapi.engines.model.template_content_types import TemplateContentTypes
 from fds.analyticsapi.engines.model.unlinked_pa_template_parameters_root import UnlinkedPATemplateParametersRoot
+from fds.analyticsapi.engines.api.columns_api import ColumnsApi
+from fds.analyticsapi.engines.api.column_statistics_api import ColumnStatisticsApi
+from fds.analyticsapi.engines.model.column_statistic import ColumnStatistic
+from fds.analyticsapi.engines.api.groups_api import GroupsApi
+from fds.analyticsapi.engines.model.group import Group
 
 from urllib3 import Retry
 
@@ -48,9 +53,6 @@ def main():
 
     api_client = ApiClient(config)
 
-    templated_pa_components_api = TemplatedPAComponentsApi(api_client)
-    unlinked_pa_template_api = UnlinkedPATemplatesApi(api_client)
-
     try:
         pa_benchmark_sp_50 = "BENCH:SP50"
         pa_benchmark_r_1000 = "BENCH:R.1000"
@@ -58,10 +60,44 @@ def main():
         enddate = "20181231"
         frequency = "Monthly"
 
+        # get template-type
+        template_type = "996E90B981AEE83F14029ED3D309FB3F03EC6E2ACC7FD42C22CBD5D279502CFD"
+
+        # get column id
+        columns_api = ColumnsApi(api_client)
+        column = columns_api.get_pa_columns(
+            name = "Port. Average Weight",
+            category = "Portfolio/Position Data",
+            directory = "Factset"
+        )
+        column_id = list(column[0].data.keys())[0]
+
+        # get column statistics id
+        column_statistics_api = ColumnStatisticsApi(api_client)
+        get_all_column_statistics = column_statistics_api.get_pa_column_statistics()
+        desired_column_statistic = ColumnStatistic(name="Active Weights")
+        column_statistic_id = [id for id in list(
+            get_all_column_statistics[0].data.keys()) if get_all_column_statistics[0].data[id] == desired_column_statistic][0]
+
+        # create columns parameter
+        columns = [PACalculationColumn(id=column_id, statistics=[column_statistic_id])]
+
+        # get group id
+        groups_api = GroupsApi(api_client)
+        groups = groups_api.get_pa_groups()
+        desired_group = Group(category="JP Morgan CEMBI ", directory="Factset", name="Country - JP Morgan CEMBI ")
+        group_id = [id for id in list(
+            groups[0].data.keys()) if groups[0].data[id] == desired_group][0]
+
+        # create groups parameter
+        groups = [PACalculationGroup(id=group_id)]
+
         # create an unlinked PA template
+        unlinked_pa_template_api = UnlinkedPATemplatesApi(api_client)
+
         unlinked_pa_template_parameters = UnlinkedPATemplateParameters(
             directory="Personal:UnlinkedPATemplates/",
-            template_type_id="996E90B981AEE83F14029ED3D309FB3F03EC6E2ACC7FD42C22CBD5D279502CFD",
+            template_type_id=template_type,
             description="This is an unlinked PA template that only returns security level data",
             accounts = [
                 PAIdentifier(
@@ -77,16 +113,12 @@ def main():
                 PAIdentifier(
                     id = "DJGX:AMERICAS",
                     holdingsmode = "B&H")],
-            columns = [
-                PACalculationColumn(
-                    id = "BD1720474AB8A80BDD79777F5B9CA594F4151C0554E30F9C916BA73BFAFC1FE0",
-                    statistics = ["eb9d6d91416e4224bacadc261787e56f"])],
+            columns = columns,
             dates = PADateParameters(
                 startdate = "20200101",
                 enddate = "20201215",
                 frequency = "Monthly"),
-            groups = [
-                PACalculationGroup(id = "5BCFFD17598FAEBD88EB4934EFB5FEF53849867D607ECEF232CD42D3369BBBCA")],
+            groups = groups,
             currencyisocode = "USD",
             componentdetail = "GROUPS",
             content = TemplateContentTypes(
@@ -105,6 +137,8 @@ def main():
         parent_template_id = list(response[0].data.keys())[0]
 
         # create a templated component
+        templated_pa_components_api = TemplatedPAComponentsApi(api_client)
+
         templated_pa_component_parameters = TemplatedPAComponentParameters(
             directory="Personal:TemplatedPAComponents/",
             parent_template_id=parent_template_id,
@@ -124,12 +158,8 @@ def main():
                     PAIdentifier(
                         id = "DJGX:AMERICAS",
                         holdingsmode = "B&H")],
-                columns = [
-                    PACalculationColumn(
-                        id = "BD1720474AB8A80BDD79777F5B9CA594F4151C0554E30F9C916BA73BFAFC1FE0",
-                        statistics = ["eb9d6d91416e4224bacadc261787e56f"])],
-                groups = [
-                    PACalculationGroup(id = "5BCFFD17598FAEBD88EB4934EFB5FEF53849867D607ECEF232CD42D3369BBBCA")],
+                columns = columns,
+                groups = groups,
                 currencyisocode = "USD",
                 componentdetail = "GROUPS"
             )
