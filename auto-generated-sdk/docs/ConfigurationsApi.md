@@ -1,7 +1,7 @@
 
 # fds.analyticsapi.engines.ConfigurationsApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api.factset.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **get_vault_configuration_by_id**
-> VaultConfigurationObjectDataAndMetaModel get_vault_configuration_by_id(id)
+> VaultConfigurationRoot get_vault_configuration_by_id(id)
 
 Get Vault configuration by id
 
@@ -24,13 +24,13 @@ This endpoint returns details for a Vault configuration as well as a list of acc
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import configurations_api
-from fds.analyticsapi.engines.model.vault_configuration_object_data_and_meta_model import VaultConfigurationObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.vault_configuration_root import VaultConfigurationRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "http://localhost"
+    host = "https://api.factset.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**VaultConfigurationObjectDataAndMetaModel**](VaultConfigurationObjectDataAndMetaModel.md)
+ - **Response datatype**: [**VaultConfigurationRoot**](VaultConfigurationRoot.md)
 
 ### Authorization
 
@@ -102,7 +102,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_vault_configurations**
-> StringVaultConfigurationSummaryDictionaryObjectDataAndMetaModel get_vault_configurations(account)
+> VaultConfigurationSummaryRoot get_vault_configurations(account)
 
 Get Vault configurations
 
@@ -116,13 +116,13 @@ This endpoint returns all the Vault configurations saved in the provided account
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import configurations_api
-from fds.analyticsapi.engines.model.string_vault_configuration_summary_dictionary_object_data_and_meta_model import StringVaultConfigurationSummaryDictionaryObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.vault_configuration_summary_root import VaultConfigurationSummaryRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "http://localhost"
+    host = "https://api.factset.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -166,7 +166,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**StringVaultConfigurationSummaryDictionaryObjectDataAndMetaModel**](StringVaultConfigurationSummaryDictionaryObjectDataAndMetaModel.md)
+ - **Response datatype**: [**VaultConfigurationSummaryRoot**](VaultConfigurationSummaryRoot.md)
 
 ### Authorization
 

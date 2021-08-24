@@ -1,7 +1,7 @@
 
 # fds.analyticsapi.engines.ComponentsApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api.factset.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **get_pa_component_by_id**
-> PAComponentObjectDataAndMetaModel get_pa_component_by_id(id)
+> PAComponentRoot get_pa_component_by_id(id)
 
 Get PA component by id
 
@@ -27,13 +27,13 @@ This endpoint returns the default settings of a PA component.
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import components_api
-from fds.analyticsapi.engines.model.pa_component_object_data_and_meta_model import PAComponentObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.pa_component_root import PAComponentRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "http://localhost"
+    host = "https://api.factset.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**PAComponentObjectDataAndMetaModel**](PAComponentObjectDataAndMetaModel.md)
+ - **Response datatype**: [**PAComponentRoot**](PAComponentRoot.md)
 
 ### Authorization
 
@@ -105,7 +105,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_pa_components**
-> StringComponentSummaryDictionaryObjectDataAndMetaModel get_pa_components()
+> ComponentSummaryRoot get_pa_components()
 
 Get PA components
 
@@ -119,13 +119,13 @@ This endpoint returns      1.List of PA components in a given PA document if doc
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import components_api
-from fds.analyticsapi.engines.model.string_component_summary_dictionary_object_data_and_meta_model import StringComponentSummaryDictionaryObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.component_summary_root import ComponentSummaryRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "http://localhost"
+    host = "https://api.factset.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -172,7 +172,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**StringComponentSummaryDictionaryObjectDataAndMetaModel**](StringComponentSummaryDictionaryObjectDataAndMetaModel.md)
+ - **Response datatype**: [**ComponentSummaryRoot**](ComponentSummaryRoot.md)
 
 ### Authorization
 
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_spar_components**
-> StringComponentSummaryDictionaryObjectDataAndMetaModel get_spar_components(document)
+> ComponentSummaryRoot get_spar_components(document)
 
 Get SPAR components
 
@@ -214,13 +214,13 @@ This endpoint returns the list of SPAR components in a given SPAR document.
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import components_api
-from fds.analyticsapi.engines.model.string_component_summary_dictionary_object_data_and_meta_model import StringComponentSummaryDictionaryObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.component_summary_root import ComponentSummaryRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "http://localhost"
+    host = "https://api.factset.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -264,7 +264,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**StringComponentSummaryDictionaryObjectDataAndMetaModel**](StringComponentSummaryDictionaryObjectDataAndMetaModel.md)
+ - **Response datatype**: [**ComponentSummaryRoot**](ComponentSummaryRoot.md)
 
 ### Authorization
 
@@ -292,7 +292,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_vault_component_by_id**
-> VaultComponentObjectDataAndMetaModel get_vault_component_by_id(id)
+> VaultComponentRoot get_vault_component_by_id(id)
 
 Get Vault component by id
 
@@ -306,13 +306,13 @@ This endpoint returns the default settings of a Vault component.
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import components_api
-from fds.analyticsapi.engines.model.vault_component_object_data_and_meta_model import VaultComponentObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.vault_component_root import VaultComponentRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "http://localhost"
+    host = "https://api.factset.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -356,7 +356,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**VaultComponentObjectDataAndMetaModel**](VaultComponentObjectDataAndMetaModel.md)
+ - **Response datatype**: [**VaultComponentRoot**](VaultComponentRoot.md)
 
 ### Authorization
 
@@ -384,7 +384,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_vault_components**
-> StringComponentSummaryDictionaryObjectDataAndMetaModel get_vault_components(document)
+> ComponentSummaryRoot get_vault_components(document)
 
 Get Vault components
 
@@ -398,13 +398,13 @@ This endpoint returns the list of Vault components in a given Vault document.
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import components_api
-from fds.analyticsapi.engines.model.string_component_summary_dictionary_object_data_and_meta_model import StringComponentSummaryDictionaryObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.component_summary_root import ComponentSummaryRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "http://localhost"
+    host = "https://api.factset.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -448,7 +448,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**StringComponentSummaryDictionaryObjectDataAndMetaModel**](StringComponentSummaryDictionaryObjectDataAndMetaModel.md)
+ - **Response datatype**: [**ComponentSummaryRoot**](ComponentSummaryRoot.md)
 
 ### Authorization
 

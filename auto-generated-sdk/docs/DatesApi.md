@@ -1,7 +1,7 @@
 
 # fds.analyticsapi.engines.DatesApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api.factset.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **convert_pa_dates_to_absolute_format**
-> DateParametersSummaryObjectDataAndMetaModel convert_pa_dates_to_absolute_format(enddate, componentid, account)
+> DateParametersSummaryRoot convert_pa_dates_to_absolute_format(enddate, componentid, account)
 
 Convert PA dates to absolute format
 
@@ -24,13 +24,13 @@ This endpoint converts the given start and end dates in FactSet date format to y
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import dates_api
-from fds.analyticsapi.engines.model.date_parameters_summary_object_data_and_meta_model import DateParametersSummaryObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.date_parameters_summary_root import DateParametersSummaryRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "http://localhost"
+    host = "https://api.factset.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -89,7 +89,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**DateParametersSummaryObjectDataAndMetaModel**](DateParametersSummaryObjectDataAndMetaModel.md)
+ - **Response datatype**: [**DateParametersSummaryRoot**](DateParametersSummaryRoot.md)
 
 ### Authorization
 
@@ -117,7 +117,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **convert_vault_dates_to_absolute_format**
-> DateParametersSummaryObjectDataAndMetaModel convert_vault_dates_to_absolute_format(enddate, componentid, account)
+> DateParametersSummaryRoot convert_vault_dates_to_absolute_format(enddate, componentid, account)
 
 Convert Vault dates to absolute format
 
@@ -131,13 +131,13 @@ This endpoint converts the given start and end dates in FactSet date format to y
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import dates_api
-from fds.analyticsapi.engines.model.date_parameters_summary_object_data_and_meta_model import DateParametersSummaryObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.date_parameters_summary_root import DateParametersSummaryRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "http://localhost"
+    host = "https://api.factset.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**DateParametersSummaryObjectDataAndMetaModel**](DateParametersSummaryObjectDataAndMetaModel.md)
+ - **Response datatype**: [**DateParametersSummaryRoot**](DateParametersSummaryRoot.md)
 
 ### Authorization
 

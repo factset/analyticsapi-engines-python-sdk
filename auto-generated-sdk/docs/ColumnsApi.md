@@ -1,7 +1,7 @@
 
 # fds.analyticsapi.engines.ColumnsApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api.factset.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **get_pa_column_by_id**
-> ColumnObjectDataAndMetaModel get_pa_column_by_id(id)
+> ColumnRoot get_pa_column_by_id(id)
 
 Get PA column settings
 
@@ -24,13 +24,13 @@ This endpoint returns the default settings of a PA column.
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import columns_api
-from fds.analyticsapi.engines.model.column_object_data_and_meta_model import ColumnObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.column_root import ColumnRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "http://localhost"
+    host = "https://api.factset.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**ColumnObjectDataAndMetaModel**](ColumnObjectDataAndMetaModel.md)
+ - **Response datatype**: [**ColumnRoot**](ColumnRoot.md)
 
 ### Authorization
 
@@ -102,7 +102,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_pa_columns**
-> StringColumnSummaryDictionaryObjectDataAndMetaModel get_pa_columns()
+> ColumnSummaryRoot get_pa_columns()
 
 Get PA columns
 
@@ -116,12 +116,12 @@ This endpoint lists all the PA columns that can be applied to a calculation.
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import columns_api
-from fds.analyticsapi.engines.model.string_column_summary_dictionary_object_data_and_meta_model import StringColumnSummaryDictionaryObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.column_summary_root import ColumnSummaryRoot
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "http://localhost"
+    host = "https://api.factset.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -170,7 +170,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**StringColumnSummaryDictionaryObjectDataAndMetaModel**](StringColumnSummaryDictionaryObjectDataAndMetaModel.md)
+ - **Response datatype**: [**ColumnSummaryRoot**](ColumnSummaryRoot.md)
 
 ### Authorization
 

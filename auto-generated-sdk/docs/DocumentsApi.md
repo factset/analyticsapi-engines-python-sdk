@@ -1,7 +1,7 @@
 
 # fds.analyticsapi.engines.DocumentsApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api.factset.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **get_pa3_documents**
-> DocumentDirectoriesObjectDataAndMetaModel get_pa3_documents()
+> DocumentDirectoriesRoot get_pa3_documents()
 
 Get PA3 documents and sub-directories in a directory
 
@@ -26,13 +26,13 @@ This endpoint looks up all PA3 documents and sub-directories in a given director
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import documents_api
-from fds.analyticsapi.engines.model.document_directories_object_data_and_meta_model import DocumentDirectoriesObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.document_directories_root import DocumentDirectoriesRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "http://localhost"
+    host = "https://api.factset.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**DocumentDirectoriesObjectDataAndMetaModel**](DocumentDirectoriesObjectDataAndMetaModel.md)
+ - **Response datatype**: [**DocumentDirectoriesRoot**](DocumentDirectoriesRoot.md)
 
 ### Authorization
 
@@ -103,7 +103,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_pub_documents**
-> DocumentDirectoriesObjectDataAndMetaModel get_pub_documents()
+> DocumentDirectoriesRoot get_pub_documents()
 
 Gets Publisher documents and sub-directories in a directory
 
@@ -117,13 +117,13 @@ This endpoint looks up all Publisher documents and sub-directories in a given di
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import documents_api
-from fds.analyticsapi.engines.model.document_directories_object_data_and_meta_model import DocumentDirectoriesObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.document_directories_root import DocumentDirectoriesRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "http://localhost"
+    host = "https://api.factset.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -166,7 +166,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**DocumentDirectoriesObjectDataAndMetaModel**](DocumentDirectoriesObjectDataAndMetaModel.md)
+ - **Response datatype**: [**DocumentDirectoriesRoot**](DocumentDirectoriesRoot.md)
 
 ### Authorization
 
@@ -194,7 +194,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_spar3_documents**
-> DocumentDirectoriesObjectDataAndMetaModel get_spar3_documents()
+> DocumentDirectoriesRoot get_spar3_documents()
 
 Gets SPAR3 documents and sub-directories in a directory
 
@@ -208,13 +208,13 @@ This endpoint looks up all SPAR3 documents and sub-directories in a given direct
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import documents_api
-from fds.analyticsapi.engines.model.document_directories_object_data_and_meta_model import DocumentDirectoriesObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.document_directories_root import DocumentDirectoriesRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "http://localhost"
+    host = "https://api.factset.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -257,7 +257,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**DocumentDirectoriesObjectDataAndMetaModel**](DocumentDirectoriesObjectDataAndMetaModel.md)
+ - **Response datatype**: [**DocumentDirectoriesRoot**](DocumentDirectoriesRoot.md)
 
 ### Authorization
 
@@ -285,7 +285,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_vault_documents**
-> DocumentDirectoriesObjectDataAndMetaModel get_vault_documents()
+> DocumentDirectoriesRoot get_vault_documents()
 
 Get Vault documents and sub-directories in a directory
 
@@ -299,13 +299,13 @@ This endpoint looks up all Vault documents and sub-directories in a given direct
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import documents_api
-from fds.analyticsapi.engines.model.document_directories_object_data_and_meta_model import DocumentDirectoriesObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.document_directories_root import DocumentDirectoriesRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "http://localhost"
+    host = "https://api.factset.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -348,7 +348,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**DocumentDirectoriesObjectDataAndMetaModel**](DocumentDirectoriesObjectDataAndMetaModel.md)
+ - **Response datatype**: [**DocumentDirectoriesRoot**](DocumentDirectoriesRoot.md)
 
 ### Authorization
 

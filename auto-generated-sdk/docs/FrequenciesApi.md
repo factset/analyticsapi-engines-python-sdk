@@ -1,7 +1,7 @@
 
 # fds.analyticsapi.engines.FrequenciesApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api.factset.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **get_pa_frequencies**
-> StringFrequencyDictionaryObjectDataAndMetaModel get_pa_frequencies()
+> FrequencyRoot get_pa_frequencies()
 
 Get PA frequencies
 
@@ -25,12 +25,12 @@ This endpoint lists all the frequencies that can be applied to a PA calculation.
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import frequencies_api
-from fds.analyticsapi.engines.model.string_frequency_dictionary_object_data_and_meta_model import StringFrequencyDictionaryObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.frequency_root import FrequencyRoot
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "http://localhost"
+    host = "https://api.factset.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -70,7 +70,7 @@ This endpoint does not need any parameter.
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**StringFrequencyDictionaryObjectDataAndMetaModel**](StringFrequencyDictionaryObjectDataAndMetaModel.md)
+ - **Response datatype**: [**FrequencyRoot**](FrequencyRoot.md)
 
 ### Authorization
 
@@ -96,7 +96,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_spar_frequencies**
-> StringFrequencyDictionaryObjectDataAndMetaModel get_spar_frequencies()
+> FrequencyRoot get_spar_frequencies()
 
 Get SPAR frequencies
 
@@ -110,12 +110,12 @@ This endpoint lists all the frequencies that can be applied to a SPAR calculatio
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import frequencies_api
-from fds.analyticsapi.engines.model.string_frequency_dictionary_object_data_and_meta_model import StringFrequencyDictionaryObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.frequency_root import FrequencyRoot
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "http://localhost"
+    host = "https://api.factset.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -155,7 +155,7 @@ This endpoint does not need any parameter.
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**StringFrequencyDictionaryObjectDataAndMetaModel**](StringFrequencyDictionaryObjectDataAndMetaModel.md)
+ - **Response datatype**: [**FrequencyRoot**](FrequencyRoot.md)
 
 ### Authorization
 
@@ -181,7 +181,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_vault_frequencies**
-> StringFrequencyDictionaryObjectDataAndMetaModel get_vault_frequencies()
+> FrequencyRoot get_vault_frequencies()
 
 Get Vault frequencies
 
@@ -195,12 +195,12 @@ This endpoint lists all the frequencies that can be applied to a Vault calculati
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import frequencies_api
-from fds.analyticsapi.engines.model.string_frequency_dictionary_object_data_and_meta_model import StringFrequencyDictionaryObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.frequency_root import FrequencyRoot
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "http://localhost"
+    host = "https://api.factset.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -240,7 +240,7 @@ This endpoint does not need any parameter.
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**StringFrequencyDictionaryObjectDataAndMetaModel**](StringFrequencyDictionaryObjectDataAndMetaModel.md)
+ - **Response datatype**: [**FrequencyRoot**](FrequencyRoot.md)
 
 ### Authorization
 

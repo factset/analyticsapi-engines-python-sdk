@@ -1,7 +1,7 @@
 
 # fds.analyticsapi.engines.UnlinkedPATemplatesApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api.factset.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **create_unlinked_pa_templates**
-> StringUnlinkedPATemplateSummaryDictionaryObjectDataAndMetaModel create_unlinked_pa_templates(unlinked_pa_template_parameters_object_data_and_meta_model)
+> UnlinkedPATemplateSummaryRoot create_unlinked_pa_templates(unlinked_pa_template_parameters_root)
 
 Create unlinked PA template
 
@@ -29,14 +29,14 @@ This endpoint creates a template which is not linked to any specific PA3 tile.  
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import unlinked_pa_templates_api
-from fds.analyticsapi.engines.model.string_unlinked_pa_template_summary_dictionary_object_data_and_meta_model import StringUnlinkedPATemplateSummaryDictionaryObjectDataAndMetaModel
-from fds.analyticsapi.engines.model.unlinked_pa_template_parameters_object_data_and_meta_model import UnlinkedPATemplateParametersObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.unlinked_pa_template_summary_root import UnlinkedPATemplateSummaryRoot
+from fds.analyticsapi.engines.model.unlinked_pa_template_parameters_root import UnlinkedPATemplateParametersRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "http://localhost"
+    host = "https://api.factset.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -59,7 +59,7 @@ configuration = fds.analyticsapi.engines.Configuration(
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unlinked_pa_templates_api.UnlinkedPATemplatesApi(api_client)
-    unlinked_pa_template_parameters_object_data_and_meta_model = UnlinkedPATemplateParametersObjectDataAndMetaModel(
+    unlinked_pa_template_parameters_root = UnlinkedPATemplateParametersRoot(
         data=UnlinkedPATemplateParameters(
             directory="directory_example",
             template_type_id="template_type_id_example",
@@ -109,12 +109,12 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
             ),
         ),
         meta=None,
-    ) # UnlinkedPATemplateParametersObjectDataAndMetaModel | Request Parameters
+    ) # UnlinkedPATemplateParametersRoot | Request Parameters
 
     # example passing only required values which don't have defaults set
     try:
         # Create unlinked PA template
-        api_response = api_instance.create_unlinked_pa_templates(unlinked_pa_template_parameters_object_data_and_meta_model)
+        api_response = api_instance.create_unlinked_pa_templates(unlinked_pa_template_parameters_root)
         pprint(api_response)
     except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling UnlinkedPATemplatesApi->create_unlinked_pa_templates: %s\n" % e)
@@ -125,12 +125,12 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **unlinked_pa_template_parameters_object_data_and_meta_model** | [**UnlinkedPATemplateParametersObjectDataAndMetaModel**](UnlinkedPATemplateParametersObjectDataAndMetaModel.md)| Request Parameters |
+ **unlinked_pa_template_parameters_root** | [**UnlinkedPATemplateParametersRoot**](UnlinkedPATemplateParametersRoot.md)| Request Parameters |
 
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**StringUnlinkedPATemplateSummaryDictionaryObjectDataAndMetaModel**](StringUnlinkedPATemplateSummaryDictionaryObjectDataAndMetaModel.md)
+ - **Response datatype**: [**UnlinkedPATemplateSummaryRoot**](UnlinkedPATemplateSummaryRoot.md)
 
 ### Authorization
 
@@ -173,10 +173,10 @@ import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import unlinked_pa_templates_api
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "http://localhost"
+    host = "https://api.factset.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -247,7 +247,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_default_unlinked_pa_template_types**
-> StringUnlinkedPATemplateCategoryAndTypeDictionaryObjectDataAndMetaModel get_default_unlinked_pa_template_types()
+> UnlinkedPATemplateCategoryAndTypeRoot get_default_unlinked_pa_template_types()
 
 Get default unlinked PA template types.
 
@@ -261,12 +261,12 @@ This endpoint fetches default unlinked PA template types.
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import unlinked_pa_templates_api
-from fds.analyticsapi.engines.model.string_unlinked_pa_template_category_and_type_dictionary_object_data_and_meta_model import StringUnlinkedPATemplateCategoryAndTypeDictionaryObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.unlinked_pa_template_category_and_type_root import UnlinkedPATemplateCategoryAndTypeRoot
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "http://localhost"
+    host = "https://api.factset.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -306,7 +306,7 @@ This endpoint does not need any parameter.
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**StringUnlinkedPATemplateCategoryAndTypeDictionaryObjectDataAndMetaModel**](StringUnlinkedPATemplateCategoryAndTypeDictionaryObjectDataAndMetaModel.md)
+ - **Response datatype**: [**UnlinkedPATemplateCategoryAndTypeRoot**](UnlinkedPATemplateCategoryAndTypeRoot.md)
 
 ### Authorization
 
@@ -332,7 +332,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_details_type**
-> UnlinkedPATemplateCategoryAndTypeDetailsObjectDataAndMetaModel get_details_type(id)
+> UnlinkedPATemplateCategoryAndTypeDetailsRoot get_details_type(id)
 
 Get unlinked PA template type details by id.
 
@@ -346,13 +346,13 @@ This endpoint fetches the unlinked PA template type details.
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import unlinked_pa_templates_api
-from fds.analyticsapi.engines.model.unlinked_pa_template_category_and_type_details_object_data_and_meta_model import UnlinkedPATemplateCategoryAndTypeDetailsObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.unlinked_pa_template_category_and_type_details_root import UnlinkedPATemplateCategoryAndTypeDetailsRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "http://localhost"
+    host = "https://api.factset.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -396,7 +396,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**UnlinkedPATemplateCategoryAndTypeDetailsObjectDataAndMetaModel**](UnlinkedPATemplateCategoryAndTypeDetailsObjectDataAndMetaModel.md)
+ - **Response datatype**: [**UnlinkedPATemplateCategoryAndTypeDetailsRoot**](UnlinkedPATemplateCategoryAndTypeDetailsRoot.md)
 
 ### Authorization
 
@@ -424,7 +424,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_unlinked_pa_templates**
-> StringUnlinkedPATemplateSummaryDictionaryObjectDataAndMetaModel get_unlinked_pa_templates()
+> UnlinkedPATemplateSummaryRoot get_unlinked_pa_templates()
 
 Get unlinked PA templates
 
@@ -438,13 +438,13 @@ This endpoint returns the list of unlinked PA templates.
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import unlinked_pa_templates_api
-from fds.analyticsapi.engines.model.string_unlinked_pa_template_summary_dictionary_object_data_and_meta_model import StringUnlinkedPATemplateSummaryDictionaryObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.unlinked_pa_template_summary_root import UnlinkedPATemplateSummaryRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "http://localhost"
+    host = "https://api.factset.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -491,7 +491,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**StringUnlinkedPATemplateSummaryDictionaryObjectDataAndMetaModel**](StringUnlinkedPATemplateSummaryDictionaryObjectDataAndMetaModel.md)
+ - **Response datatype**: [**UnlinkedPATemplateSummaryRoot**](UnlinkedPATemplateSummaryRoot.md)
 
 ### Authorization
 
@@ -518,7 +518,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_unlinked_pa_templates_by_id**
-> UnlinkedPATemplateObjectDataAndMetaModel get_unlinked_pa_templates_by_id(id)
+> UnlinkedPATemplateRoot get_unlinked_pa_templates_by_id(id)
 
 Get unlinked PA template details by id
 
@@ -532,13 +532,13 @@ This endpoint fetches the template settings.
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import unlinked_pa_templates_api
-from fds.analyticsapi.engines.model.unlinked_pa_template_object_data_and_meta_model import UnlinkedPATemplateObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.unlinked_pa_template_root import UnlinkedPATemplateRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "http://localhost"
+    host = "https://api.factset.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -582,7 +582,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**UnlinkedPATemplateObjectDataAndMetaModel**](UnlinkedPATemplateObjectDataAndMetaModel.md)
+ - **Response datatype**: [**UnlinkedPATemplateRoot**](UnlinkedPATemplateRoot.md)
 
 ### Authorization
 
@@ -610,7 +610,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_unlinked_pa_templates**
-> StringUnlinkedPATemplateSummaryDictionaryObjectDataAndMetaModel update_unlinked_pa_templates(id, unlinked_pa_template_update_parameters_object_data_and_meta_model)
+> UnlinkedPATemplateSummaryRoot update_unlinked_pa_templates(id, unlinked_pa_template_update_parameters_root)
 
 Update unlinked PA template
 
@@ -624,14 +624,14 @@ This endpoint updates an existing unlinked PA template.    Remarks:             
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import unlinked_pa_templates_api
-from fds.analyticsapi.engines.model.string_unlinked_pa_template_summary_dictionary_object_data_and_meta_model import StringUnlinkedPATemplateSummaryDictionaryObjectDataAndMetaModel
-from fds.analyticsapi.engines.model.unlinked_pa_template_update_parameters_object_data_and_meta_model import UnlinkedPATemplateUpdateParametersObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.unlinked_pa_template_summary_root import UnlinkedPATemplateSummaryRoot
+from fds.analyticsapi.engines.model.unlinked_pa_template_update_parameters_root import UnlinkedPATemplateUpdateParametersRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "http://localhost"
+    host = "https://api.factset.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -655,7 +655,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unlinked_pa_templates_api.UnlinkedPATemplatesApi(api_client)
     id = "id_example" # str | Unique identifier for an unlinked PA template
-    unlinked_pa_template_update_parameters_object_data_and_meta_model = UnlinkedPATemplateUpdateParametersObjectDataAndMetaModel(
+    unlinked_pa_template_update_parameters_root = UnlinkedPATemplateUpdateParametersRoot(
         data=UnlinkedPATemplateUpdateParameters(
             description="description_example",
             accounts=[
@@ -703,12 +703,12 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
             ),
         ),
         meta=None,
-    ) # UnlinkedPATemplateUpdateParametersObjectDataAndMetaModel | Request Parameters
+    ) # UnlinkedPATemplateUpdateParametersRoot | Request Parameters
 
     # example passing only required values which don't have defaults set
     try:
         # Update unlinked PA template
-        api_response = api_instance.update_unlinked_pa_templates(id, unlinked_pa_template_update_parameters_object_data_and_meta_model)
+        api_response = api_instance.update_unlinked_pa_templates(id, unlinked_pa_template_update_parameters_root)
         pprint(api_response)
     except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling UnlinkedPATemplatesApi->update_unlinked_pa_templates: %s\n" % e)
@@ -720,12 +720,12 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| Unique identifier for an unlinked PA template |
- **unlinked_pa_template_update_parameters_object_data_and_meta_model** | [**UnlinkedPATemplateUpdateParametersObjectDataAndMetaModel**](UnlinkedPATemplateUpdateParametersObjectDataAndMetaModel.md)| Request Parameters |
+ **unlinked_pa_template_update_parameters_root** | [**UnlinkedPATemplateUpdateParametersRoot**](UnlinkedPATemplateUpdateParametersRoot.md)| Request Parameters |
 
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**StringUnlinkedPATemplateSummaryDictionaryObjectDataAndMetaModel**](StringUnlinkedPATemplateSummaryDictionaryObjectDataAndMetaModel.md)
+ - **Response datatype**: [**UnlinkedPATemplateSummaryRoot**](UnlinkedPATemplateSummaryRoot.md)
 
 ### Authorization
 

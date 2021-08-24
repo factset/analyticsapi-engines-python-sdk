@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**constraints** | [**[StringConstraintActionTuple]**](StringConstraintActionTuple.md) | List of constraints | [optional] 
+**constraints** | [**[ConstraintAction]**](ConstraintAction.md) | List of constraints | [optional] 
 **alpha** | [**BPMOptimizerStrategyAlphaOverride**](BPMOptimizerStrategyAlphaOverride.md) |  | [optional] 
 **tax** | **str** | Tax  Can be set to \&quot;\&quot; for local | [optional] 
 **transaction_cost** | **str** | Transaction cost  Can be set to \&quot;\&quot; for local | [optional] 

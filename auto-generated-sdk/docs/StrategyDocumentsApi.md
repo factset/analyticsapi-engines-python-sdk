@@ -1,7 +1,7 @@
 
 # fds.analyticsapi.engines.StrategyDocumentsApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api.factset.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **get_axioma_equity_strategy_documents**
-> DocumentDirectoriesObjectDataAndMetaModel get_axioma_equity_strategy_documents()
+> DocumentDirectoriesRoot get_axioma_equity_strategy_documents()
 
 Get Axioma Equity strategy documents and sub-directories in a directory
 
@@ -27,13 +27,13 @@ This endpoint looks up all Axioma Equity strategy documents and sub-directories 
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import strategy_documents_api
-from fds.analyticsapi.engines.model.document_directories_object_data_and_meta_model import DocumentDirectoriesObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.document_directories_root import DocumentDirectoriesRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "http://localhost"
+    host = "https://api.factset.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -76,7 +76,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**DocumentDirectoriesObjectDataAndMetaModel**](DocumentDirectoriesObjectDataAndMetaModel.md)
+ - **Response datatype**: [**DocumentDirectoriesRoot**](DocumentDirectoriesRoot.md)
 
 ### Authorization
 
@@ -104,7 +104,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_axioma_fi_strategy_documents**
-> DocumentDirectoriesObjectDataAndMetaModel get_axioma_fi_strategy_documents()
+> DocumentDirectoriesRoot get_axioma_fi_strategy_documents()
 
 Get Axioma FI strategy documents and sub-directories in a directory
 
@@ -118,13 +118,13 @@ This endpoint looks up all Axioma FI strategy documents and sub-directories in a
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import strategy_documents_api
-from fds.analyticsapi.engines.model.document_directories_object_data_and_meta_model import DocumentDirectoriesObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.document_directories_root import DocumentDirectoriesRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "http://localhost"
+    host = "https://api.factset.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -167,7 +167,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**DocumentDirectoriesObjectDataAndMetaModel**](DocumentDirectoriesObjectDataAndMetaModel.md)
+ - **Response datatype**: [**DocumentDirectoriesRoot**](DocumentDirectoriesRoot.md)
 
 ### Authorization
 
@@ -195,7 +195,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_barra_strategy_documents**
-> DocumentDirectoriesObjectDataAndMetaModel get_barra_strategy_documents()
+> DocumentDirectoriesRoot get_barra_strategy_documents()
 
 Get Barra strategy documents and sub-directories in a directory
 
@@ -209,13 +209,13 @@ This endpoint looks up all Barra strategy documents and sub-directories in a giv
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import strategy_documents_api
-from fds.analyticsapi.engines.model.document_directories_object_data_and_meta_model import DocumentDirectoriesObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.document_directories_root import DocumentDirectoriesRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "http://localhost"
+    host = "https://api.factset.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -258,7 +258,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**DocumentDirectoriesObjectDataAndMetaModel**](DocumentDirectoriesObjectDataAndMetaModel.md)
+ - **Response datatype**: [**DocumentDirectoriesRoot**](DocumentDirectoriesRoot.md)
 
 ### Authorization
 
@@ -286,7 +286,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_fpo_strategy_documents**
-> DocumentDirectoriesObjectDataAndMetaModel get_fpo_strategy_documents()
+> DocumentDirectoriesRoot get_fpo_strategy_documents()
 
 Get FactSet Portfolio Optimizer strategy documents and sub-directories in a directory
 
@@ -300,13 +300,13 @@ This endpoint looks up all FactSet Portfolio Optimizer strategy documents and su
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import strategy_documents_api
-from fds.analyticsapi.engines.model.document_directories_object_data_and_meta_model import DocumentDirectoriesObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.document_directories_root import DocumentDirectoriesRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "http://localhost"
+    host = "https://api.factset.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -349,7 +349,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**DocumentDirectoriesObjectDataAndMetaModel**](DocumentDirectoriesObjectDataAndMetaModel.md)
+ - **Response datatype**: [**DocumentDirectoriesRoot**](DocumentDirectoriesRoot.md)
 
 ### Authorization
 
@@ -377,7 +377,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_northfield_strategy_documents**
-> DocumentDirectoriesObjectDataAndMetaModel get_northfield_strategy_documents()
+> DocumentDirectoriesRoot get_northfield_strategy_documents()
 
 Get Northfield strategy documents and sub-directories in a directory
 
@@ -391,13 +391,13 @@ This endpoint looks up all Northfield strategy documents and sub-directories in 
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import strategy_documents_api
-from fds.analyticsapi.engines.model.document_directories_object_data_and_meta_model import DocumentDirectoriesObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.document_directories_root import DocumentDirectoriesRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "http://localhost"
+    host = "https://api.factset.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -440,7 +440,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**DocumentDirectoriesObjectDataAndMetaModel**](DocumentDirectoriesObjectDataAndMetaModel.md)
+ - **Response datatype**: [**DocumentDirectoriesRoot**](DocumentDirectoriesRoot.md)
 
 ### Authorization
 

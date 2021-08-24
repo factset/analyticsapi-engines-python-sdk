@@ -1,7 +1,7 @@
 
 # fds.analyticsapi.engines.GroupsApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api.factset.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **get_pa_groups**
-> StringGroupDictionaryObjectDataAndMetaModel get_pa_groups()
+> GroupRoot get_pa_groups()
 
 Get PA groups
 
@@ -23,12 +23,12 @@ This endpoint lists all the PA groups that can be applied to a PA calculation.
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import groups_api
-from fds.analyticsapi.engines.model.string_group_dictionary_object_data_and_meta_model import StringGroupDictionaryObjectDataAndMetaModel
+from fds.analyticsapi.engines.model.group_root import GroupRoot
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.factset.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = fds.analyticsapi.engines.Configuration(
-    host = "http://localhost"
+    host = "https://api.factset.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -68,7 +68,7 @@ This endpoint does not need any parameter.
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**StringGroupDictionaryObjectDataAndMetaModel**](StringGroupDictionaryObjectDataAndMetaModel.md)
+ - **Response datatype**: [**GroupRoot**](GroupRoot.md)
 
 ### Authorization
 
