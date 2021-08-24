@@ -425,6 +425,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
             securities=[
                 FISecurity(
                     settlement="settlement_example",
+                    call_method="No Call",
                     calc_from_method="calc_from_method_example",
                     calc_from_value=3.14,
                     face=1,
@@ -441,6 +442,9 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                 partial_duration_months=[
                     1,
                 ],
+                call_method="No Call",
+                settlement="settlement_example",
+                calc_from_method="calc_from_method_example",
             ),
         ),
         meta=CalculationMeta(
@@ -555,6 +559,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
             securities=[
                 FISecurity(
                     settlement="settlement_example",
+                    call_method="No Call",
                     calc_from_method="calc_from_method_example",
                     calc_from_value=3.14,
                     face=1,
@@ -571,6 +576,9 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                 partial_duration_months=[
                     1,
                 ],
+                call_method="No Call",
+                settlement="settlement_example",
+                calc_from_method="calc_from_method_example",
             ),
         ),
         meta=CalculationMeta(

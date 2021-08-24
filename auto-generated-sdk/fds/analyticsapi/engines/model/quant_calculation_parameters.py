@@ -28,22 +28,22 @@ from fds.analyticsapi.engines.model_utils import (  # noqa: F401
 )
 
 def lazy_import():
-    from fds.analyticsapi.engines.model.quant_date_list import QuantDateList
-    from fds.analyticsapi.engines.model.quant_fds_date import QuantFdsDate
-    from fds.analyticsapi.engines.model.quant_fql_expression import QuantFqlExpression
-    from fds.analyticsapi.engines.model.quant_identifier_universe import QuantIdentifierUniverse
-    from fds.analyticsapi.engines.model.quant_screening_expression import QuantScreeningExpression
-    from fds.analyticsapi.engines.model.quant_screening_expression_universe import QuantScreeningExpressionUniverse
-    from fds.analyticsapi.engines.model.quant_universal_screen_parameter import QuantUniversalScreenParameter
-    from fds.analyticsapi.engines.model.quant_universal_screen_universe import QuantUniversalScreenUniverse
-    globals()['QuantDateList'] = QuantDateList
-    globals()['QuantFdsDate'] = QuantFdsDate
-    globals()['QuantFqlExpression'] = QuantFqlExpression
-    globals()['QuantIdentifierUniverse'] = QuantIdentifierUniverse
-    globals()['QuantScreeningExpression'] = QuantScreeningExpression
-    globals()['QuantScreeningExpressionUniverse'] = QuantScreeningExpressionUniverse
-    globals()['QuantUniversalScreenParameter'] = QuantUniversalScreenParameter
-    globals()['QuantUniversalScreenUniverse'] = QuantUniversalScreenUniverse
+    from fds.analyticsapi.engines.model.quant_date_list1 import QuantDateList1
+    from fds.analyticsapi.engines.model.quant_fds_date1 import QuantFdsDate1
+    from fds.analyticsapi.engines.model.quant_fql_expression1 import QuantFqlExpression1
+    from fds.analyticsapi.engines.model.quant_identifier_universe1 import QuantIdentifierUniverse1
+    from fds.analyticsapi.engines.model.quant_screening_expression1 import QuantScreeningExpression1
+    from fds.analyticsapi.engines.model.quant_screening_expression_universe1 import QuantScreeningExpressionUniverse1
+    from fds.analyticsapi.engines.model.quant_universal_screen_parameter1 import QuantUniversalScreenParameter1
+    from fds.analyticsapi.engines.model.quant_universal_screen_universe1 import QuantUniversalScreenUniverse1
+    globals()['QuantDateList1'] = QuantDateList1
+    globals()['QuantFdsDate1'] = QuantFdsDate1
+    globals()['QuantFqlExpression1'] = QuantFqlExpression1
+    globals()['QuantIdentifierUniverse1'] = QuantIdentifierUniverse1
+    globals()['QuantScreeningExpression1'] = QuantScreeningExpression1
+    globals()['QuantScreeningExpressionUniverse1'] = QuantScreeningExpressionUniverse1
+    globals()['QuantUniversalScreenParameter1'] = QuantUniversalScreenParameter1
+    globals()['QuantUniversalScreenUniverse1'] = QuantUniversalScreenUniverse1
 
 
 class QuantCalculationParameters(ModelNormal):
@@ -92,14 +92,17 @@ class QuantCalculationParameters(ModelNormal):
         """
         lazy_import()
         return {
-            'screening_expression_universe': (QuantScreeningExpressionUniverse,),  # noqa: E501
-            'universal_screen_universe': (QuantUniversalScreenUniverse,),  # noqa: E501
-            'identifier_universe': (QuantIdentifierUniverse,),  # noqa: E501
-            'fds_date': (QuantFdsDate,),  # noqa: E501
-            'date_list': (QuantDateList,),  # noqa: E501
-            'screening_expression': ([QuantScreeningExpression],),  # noqa: E501
-            'fql_expression': ([QuantFqlExpression],),  # noqa: E501
-            'universal_screen_parameter': ([QuantUniversalScreenParameter],),  # noqa: E501
+            'universe': (object,),  # noqa: E501
+            'quant_date': (object,),  # noqa: E501
+            'quant_formula': (object,),  # noqa: E501
+            'screening_expression_universe': (QuantScreeningExpressionUniverse1,),  # noqa: E501
+            'universal_screen_universe': (QuantUniversalScreenUniverse1,),  # noqa: E501
+            'identifier_universe': (QuantIdentifierUniverse1,),  # noqa: E501
+            'fds_date': (QuantFdsDate1,),  # noqa: E501
+            'date_list': (QuantDateList1,),  # noqa: E501
+            'screening_expression': ([QuantScreeningExpression1],),  # noqa: E501
+            'fql_expression': ([QuantFqlExpression1],),  # noqa: E501
+            'universal_screen_parameter': ([QuantUniversalScreenParameter1],),  # noqa: E501
             'all_universal_screen_parameters': ([object],),  # noqa: E501
         }
 
@@ -109,6 +112,9 @@ class QuantCalculationParameters(ModelNormal):
 
 
     attribute_map = {
+        'universe': 'universe',  # noqa: E501
+        'quant_date': 'quantDate',  # noqa: E501
+        'quant_formula': 'quantFormula',  # noqa: E501
         'screening_expression_universe': 'screeningExpressionUniverse',  # noqa: E501
         'universal_screen_universe': 'universalScreenUniverse',  # noqa: E501
         'identifier_universe': 'identifierUniverse',  # noqa: E501
@@ -166,14 +172,17 @@ class QuantCalculationParameters(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            screening_expression_universe (QuantScreeningExpressionUniverse): [optional]  # noqa: E501
-            universal_screen_universe (QuantUniversalScreenUniverse): [optional]  # noqa: E501
-            identifier_universe (QuantIdentifierUniverse): [optional]  # noqa: E501
-            fds_date (QuantFdsDate): [optional]  # noqa: E501
-            date_list (QuantDateList): [optional]  # noqa: E501
-            screening_expression ([QuantScreeningExpression]): [optional]  # noqa: E501
-            fql_expression ([QuantFqlExpression]): [optional]  # noqa: E501
-            universal_screen_parameter ([QuantUniversalScreenParameter]): [optional]  # noqa: E501
+            universe (object): [optional]  # noqa: E501
+            quant_date (object): [optional]  # noqa: E501
+            quant_formula (object): [optional]  # noqa: E501
+            screening_expression_universe (QuantScreeningExpressionUniverse1): [optional]  # noqa: E501
+            universal_screen_universe (QuantUniversalScreenUniverse1): [optional]  # noqa: E501
+            identifier_universe (QuantIdentifierUniverse1): [optional]  # noqa: E501
+            fds_date (QuantFdsDate1): [optional]  # noqa: E501
+            date_list (QuantDateList1): [optional]  # noqa: E501
+            screening_expression ([QuantScreeningExpression1]): [optional]  # noqa: E501
+            fql_expression ([QuantFqlExpression1]): [optional]  # noqa: E501
+            universal_screen_parameter ([QuantUniversalScreenParameter1]): [optional]  # noqa: E501
             all_universal_screen_parameters ([object]): [optional]  # noqa: E501
         """
 
