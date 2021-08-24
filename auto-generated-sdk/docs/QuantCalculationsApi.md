@@ -516,8 +516,10 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
         data={
             "key": QuantCalculationParameters(
                 universe=,
-                quant_date=,
-                quant_formula=,
+                dates=,
+                formulas=[
+                    ,
+                ],
                 screening_expression_universe=QuantScreeningExpressionUniverse1(
                     universe_expr="universe_expr_example",
                     universe_type="Equity",
@@ -682,8 +684,10 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
         data={
             "key": QuantCalculationParameters(
                 universe=,
-                quant_date=,
-                quant_formula=,
+                dates=,
+                formulas=[
+                    ,
+                ],
                 screening_expression_universe=QuantScreeningExpressionUniverse1(
                     universe_expr="universe_expr_example",
                     universe_type="Equity",

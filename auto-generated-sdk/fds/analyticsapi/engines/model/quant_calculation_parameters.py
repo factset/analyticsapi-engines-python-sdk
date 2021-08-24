@@ -93,8 +93,8 @@ class QuantCalculationParameters(ModelNormal):
         lazy_import()
         return {
             'universe': (object,),  # noqa: E501
-            'quant_date': (object,),  # noqa: E501
-            'quant_formula': (object,),  # noqa: E501
+            'dates': (object,),  # noqa: E501
+            'formulas': ([object],),  # noqa: E501
             'screening_expression_universe': (QuantScreeningExpressionUniverse1,),  # noqa: E501
             'universal_screen_universe': (QuantUniversalScreenUniverse1,),  # noqa: E501
             'identifier_universe': (QuantIdentifierUniverse1,),  # noqa: E501
@@ -113,8 +113,8 @@ class QuantCalculationParameters(ModelNormal):
 
     attribute_map = {
         'universe': 'universe',  # noqa: E501
-        'quant_date': 'quantDate',  # noqa: E501
-        'quant_formula': 'quantFormula',  # noqa: E501
+        'dates': 'dates',  # noqa: E501
+        'formulas': 'formulas',  # noqa: E501
         'screening_expression_universe': 'screeningExpressionUniverse',  # noqa: E501
         'universal_screen_universe': 'universalScreenUniverse',  # noqa: E501
         'identifier_universe': 'identifierUniverse',  # noqa: E501
@@ -138,8 +138,12 @@ class QuantCalculationParameters(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, *args, **kwargs):  # noqa: E501
+    def __init__(self, universe, dates, *args, **kwargs):  # noqa: E501
         """QuantCalculationParameters - a model defined in OpenAPI
+
+        Args:
+            universe (object):
+            dates (object):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -172,9 +176,7 @@ class QuantCalculationParameters(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            universe (object): [optional]  # noqa: E501
-            quant_date (object): [optional]  # noqa: E501
-            quant_formula (object): [optional]  # noqa: E501
+            formulas ([object]): [optional]  # noqa: E501
             screening_expression_universe (QuantScreeningExpressionUniverse1): [optional]  # noqa: E501
             universal_screen_universe (QuantUniversalScreenUniverse1): [optional]  # noqa: E501
             identifier_universe (QuantIdentifierUniverse1): [optional]  # noqa: E501
@@ -209,6 +211,8 @@ class QuantCalculationParameters(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.universe = universe
+        self.dates = dates
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

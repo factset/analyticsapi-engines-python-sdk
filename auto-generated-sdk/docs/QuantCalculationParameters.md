@@ -4,9 +4,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**universe** | **object** |  | [optional] 
-**quant_date** | **object** |  | [optional] 
-**quant_formula** | **object** |  | [optional] 
+**universe** | **object** |  | 
+**dates** | **object** |  | 
+**formulas** | **[object]** |  | [optional] 
 **screening_expression_universe** | [**QuantScreeningExpressionUniverse1**](QuantScreeningExpressionUniverse1.md) |  | [optional] 
 **universal_screen_universe** | [**QuantUniversalScreenUniverse1**](QuantUniversalScreenUniverse1.md) |  | [optional] 
 **identifier_universe** | [**QuantIdentifierUniverse1**](QuantIdentifierUniverse1.md) |  | [optional] 

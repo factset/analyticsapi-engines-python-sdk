@@ -127,13 +127,14 @@ class QuantScreeningExpression(ModelComposed):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, expr, name, type, *args, **kwargs):  # noqa: E501
+    def __init__(self, expr, name, type, source, *args, **kwargs):  # noqa: E501
         """QuantScreeningExpression - a model defined in OpenAPI
 
         Args:
             expr (str):
             name (str):
             type (str):
+            source (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -166,7 +167,6 @@ class QuantScreeningExpression(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            source (str): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -203,6 +203,7 @@ class QuantScreeningExpression(ModelComposed):
             'expr': expr,
             'name': name,
             'type': type,
+            'source': source,
         }
         model_args = {}
         model_args.update(required_args)

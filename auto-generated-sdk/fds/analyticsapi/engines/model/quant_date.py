@@ -85,9 +85,9 @@ class QuantDate(ModelNormal):
         lazy_import()
         return {
             'type': (str,),  # noqa: E501
+            'source': (str,),  # noqa: E501
             'frequency': (str,),  # noqa: E501
             'calendar': (str,),  # noqa: E501
-            'source': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -103,9 +103,9 @@ class QuantDate(ModelNormal):
 
     attribute_map = {
         'type': '$type',  # noqa: E501
+        'source': 'source',  # noqa: E501
         'frequency': 'frequency',  # noqa: E501
         'calendar': 'calendar',  # noqa: E501
-        'source': 'source',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -120,11 +120,12 @@ class QuantDate(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, type, frequency, calendar, *args, **kwargs):  # noqa: E501
+    def __init__(self, type, source, frequency, calendar, *args, **kwargs):  # noqa: E501
         """QuantDate - a model defined in OpenAPI
 
         Args:
             type (str):
+            source (str):
             frequency (str):
             calendar (str):
 
@@ -159,7 +160,6 @@ class QuantDate(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            source (str): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -186,6 +186,7 @@ class QuantDate(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.type = type
+        self.source = source
         self.frequency = frequency
         self.calendar = calendar
         for var_name, var_value in kwargs.items():

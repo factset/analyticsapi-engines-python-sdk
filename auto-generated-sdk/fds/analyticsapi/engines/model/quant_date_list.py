@@ -92,10 +92,10 @@ class QuantDateList(ModelComposed):
         lazy_import()
         return {
             'type': (str,),  # noqa: E501
+            'source': (str,),  # noqa: E501
             'frequency': (str,),  # noqa: E501
             'calendar': (str,),  # noqa: E501
             'dates': ([str], none_type,),  # noqa: E501
-            'source': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -108,10 +108,10 @@ class QuantDateList(ModelComposed):
 
     attribute_map = {
         'type': '$type',  # noqa: E501
+        'source': 'source',  # noqa: E501
         'frequency': 'frequency',  # noqa: E501
         'calendar': 'calendar',  # noqa: E501
         'dates': 'dates',  # noqa: E501
-        'source': 'source',  # noqa: E501
     }
 
     required_properties = set([
@@ -127,11 +127,12 @@ class QuantDateList(ModelComposed):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, type, frequency, calendar, *args, **kwargs):  # noqa: E501
+    def __init__(self, type, source, frequency, calendar, *args, **kwargs):  # noqa: E501
         """QuantDateList - a model defined in OpenAPI
 
         Args:
             type (str):
+            source (str):
             frequency (str):
             calendar (str):
 
@@ -167,7 +168,6 @@ class QuantDateList(ModelComposed):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             dates ([str], none_type): [optional]  # noqa: E501
-            source (str): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -202,6 +202,7 @@ class QuantDateList(ModelComposed):
         }
         required_args = {
             'type': type,
+            'source': source,
             'frequency': frequency,
             'calendar': calendar,
         }

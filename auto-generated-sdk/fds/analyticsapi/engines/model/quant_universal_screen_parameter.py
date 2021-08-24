@@ -127,13 +127,14 @@ class QuantUniversalScreenParameter(ModelComposed):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, reference_name, name, type, *args, **kwargs):  # noqa: E501
+    def __init__(self, reference_name, name, type, source, *args, **kwargs):  # noqa: E501
         """QuantUniversalScreenParameter - a model defined in OpenAPI
 
         Args:
             reference_name (str):
             name (str):
             type (str):
+            source (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -166,7 +167,6 @@ class QuantUniversalScreenParameter(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            source (str): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -203,6 +203,7 @@ class QuantUniversalScreenParameter(ModelComposed):
             'reference_name': reference_name,
             'name': name,
             'type': type,
+            'source': source,
         }
         model_args = {}
         model_args.update(required_args)

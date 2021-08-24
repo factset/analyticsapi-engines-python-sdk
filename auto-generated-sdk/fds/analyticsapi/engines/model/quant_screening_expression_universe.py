@@ -99,8 +99,8 @@ class QuantScreeningExpressionUniverse(ModelComposed):
             'universe_expr': (str,),  # noqa: E501
             'universe_type': (str,),  # noqa: E501
             'type': (str,),  # noqa: E501
-            'security_expr': (str, none_type,),  # noqa: E501
             'source': (str,),  # noqa: E501
+            'security_expr': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -115,8 +115,8 @@ class QuantScreeningExpressionUniverse(ModelComposed):
         'universe_expr': 'universeExpr',  # noqa: E501
         'universe_type': 'universeType',  # noqa: E501
         'type': '$type',  # noqa: E501
-        'security_expr': 'securityExpr',  # noqa: E501
         'source': 'source',  # noqa: E501
+        'security_expr': 'securityExpr',  # noqa: E501
     }
 
     required_properties = set([
@@ -132,13 +132,14 @@ class QuantScreeningExpressionUniverse(ModelComposed):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, universe_expr, universe_type, type, *args, **kwargs):  # noqa: E501
+    def __init__(self, universe_expr, universe_type, type, source, *args, **kwargs):  # noqa: E501
         """QuantScreeningExpressionUniverse - a model defined in OpenAPI
 
         Args:
             universe_expr (str):
             universe_type (str):
             type (str):
+            source (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -172,7 +173,6 @@ class QuantScreeningExpressionUniverse(ModelComposed):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             security_expr (str, none_type): [optional]  # noqa: E501
-            source (str): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -209,6 +209,7 @@ class QuantScreeningExpressionUniverse(ModelComposed):
             'universe_expr': universe_expr,
             'universe_type': universe_type,
             'type': type,
+            'source': source,
         }
         model_args = {}
         model_args.update(required_args)

@@ -94,9 +94,9 @@ class QuantFdsDate(ModelComposed):
             'start_date': (str,),  # noqa: E501
             'end_date': (str,),  # noqa: E501
             'type': (str,),  # noqa: E501
+            'source': (str,),  # noqa: E501
             'frequency': (str,),  # noqa: E501
             'calendar': (str,),  # noqa: E501
-            'source': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -111,9 +111,9 @@ class QuantFdsDate(ModelComposed):
         'start_date': 'startDate',  # noqa: E501
         'end_date': 'endDate',  # noqa: E501
         'type': '$type',  # noqa: E501
+        'source': 'source',  # noqa: E501
         'frequency': 'frequency',  # noqa: E501
         'calendar': 'calendar',  # noqa: E501
-        'source': 'source',  # noqa: E501
     }
 
     required_properties = set([
@@ -129,13 +129,14 @@ class QuantFdsDate(ModelComposed):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, start_date, end_date, type, frequency, calendar, *args, **kwargs):  # noqa: E501
+    def __init__(self, start_date, end_date, type, source, frequency, calendar, *args, **kwargs):  # noqa: E501
         """QuantFdsDate - a model defined in OpenAPI
 
         Args:
             start_date (str):
             end_date (str):
             type (str):
+            source (str):
             frequency (str):
             calendar (str):
 
@@ -170,7 +171,6 @@ class QuantFdsDate(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            source (str): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -207,6 +207,7 @@ class QuantFdsDate(ModelComposed):
             'start_date': start_date,
             'end_date': end_date,
             'type': type,
+            'source': source,
             'frequency': frequency,
             'calendar': calendar,
         }
