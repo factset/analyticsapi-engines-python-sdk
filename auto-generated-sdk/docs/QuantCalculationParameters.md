@@ -12,7 +12,8 @@ Name | Type | Description | Notes
 **screening_expression** | [**[QuantScreeningExpression]**](QuantScreeningExpression.md) |  | [optional] 
 **fql_expression** | [**[QuantFqlExpression]**](QuantFqlExpression.md) |  | [optional] 
 **universal_screen_parameter** | [**[QuantUniversalScreenParameter]**](QuantUniversalScreenParameter.md) |  | [optional] 
-**all_universal_screen_parameters** | **[object]** |  | [optional] 
+**all_universal_screen_parameters** | **[dict]** |  | [optional] 
+**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
