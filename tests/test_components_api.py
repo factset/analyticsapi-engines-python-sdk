@@ -25,7 +25,6 @@ class TestComponentsApi(unittest.TestCase):
             document=common_parameters.pa_default_document,
             _return_http_data_only=False
         )
-        print(response)
         component_id = list(response[0]['data'].keys())[0]
         self.assertEqual(response[1], 200, "Response should be 200 - Success")
         self.assertEqual(
