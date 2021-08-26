@@ -12,6 +12,7 @@ class CommonFunctions:
             config.host = common_parameters.base_url
             config.username = common_parameters.user_name
             config.password = common_parameters.password
+            config.discard_unknown_keys = True
             config.verify_ssl = False
 
             return ApiClient(config)
