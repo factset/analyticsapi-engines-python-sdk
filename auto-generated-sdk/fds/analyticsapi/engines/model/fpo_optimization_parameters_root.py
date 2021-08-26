@@ -65,14 +65,7 @@ class FPOOptimizationParametersRoot(ModelNormal):
     validations = {
     }
 
-    @cached_property
-    def additional_properties_type():
-        """
-        This must be a method because a model may have properties that are
-        of type self, this must run after the class is loaded
-        """
-        lazy_import()
-        return (bool, date, datetime, dict, float, int, list, str, none_type,)  # noqa: E501
+    additional_properties_type = None
 
     _nullable = False
 
@@ -89,7 +82,7 @@ class FPOOptimizationParametersRoot(ModelNormal):
         lazy_import()
         return {
             'data': (FPOOptimizationParameters,),  # noqa: E501
-            'meta': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
+            'meta': (dict,),  # noqa: E501
         }
 
     @cached_property
@@ -144,7 +137,7 @@ class FPOOptimizationParametersRoot(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             data (FPOOptimizationParameters): [optional]  # noqa: E501
-            meta ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
+            meta (dict): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -227,7 +220,7 @@ class FPOOptimizationParametersRoot(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             data (FPOOptimizationParameters): [optional]  # noqa: E501
-            meta ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
+            meta (dict): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

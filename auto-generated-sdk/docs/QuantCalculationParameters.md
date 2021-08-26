@@ -4,16 +4,18 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**screening_expression_universe** | [**QuantScreeningExpressionUniverse**](QuantScreeningExpressionUniverse.md) |  | [optional] 
-**universal_screen_universe** | [**QuantUniversalScreenUniverse**](QuantUniversalScreenUniverse.md) |  | [optional] 
-**identifier_universe** | [**QuantIdentifierUniverse**](QuantIdentifierUniverse.md) |  | [optional] 
-**fds_date** | [**QuantFdsDate**](QuantFdsDate.md) |  | [optional] 
-**date_list** | [**QuantDateList**](QuantDateList.md) |  | [optional] 
-**screening_expression** | [**[QuantScreeningExpression]**](QuantScreeningExpression.md) |  | [optional] 
-**fql_expression** | [**[QuantFqlExpression]**](QuantFqlExpression.md) |  | [optional] 
-**universal_screen_parameter** | [**[QuantUniversalScreenParameter]**](QuantUniversalScreenParameter.md) |  | [optional] 
+**universe** | **dict** |  | 
+**dates** | **dict** |  | 
+**formulas** | **[dict]** |  | [optional] 
+**screening_expression_universe** | [**QuantScreeningExpressionUniverse1**](QuantScreeningExpressionUniverse1.md) |  | [optional] 
+**universal_screen_universe** | [**QuantUniversalScreenUniverse1**](QuantUniversalScreenUniverse1.md) |  | [optional] 
+**identifier_universe** | [**QuantIdentifierUniverse1**](QuantIdentifierUniverse1.md) |  | [optional] 
+**fds_date** | [**QuantFdsDate1**](QuantFdsDate1.md) |  | [optional] 
+**date_list** | [**QuantDateList1**](QuantDateList1.md) |  | [optional] 
+**screening_expression** | [**[QuantScreeningExpression1]**](QuantScreeningExpression1.md) |  | [optional] 
+**fql_expression** | [**[QuantFqlExpression1]**](QuantFqlExpression1.md) |  | [optional] 
+**universal_screen_parameter** | [**[QuantUniversalScreenParameter1]**](QuantUniversalScreenParameter1.md) |  | [optional] 
 **all_universal_screen_parameters** | **[dict]** |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

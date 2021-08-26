@@ -61,13 +61,7 @@ class ComponentSummary(ModelNormal):
     validations = {
     }
 
-    @cached_property
-    def additional_properties_type():
-        """
-        This must be a method because a model may have properties that are
-        of type self, this must run after the class is loaded
-        """
-        return (bool, date, datetime, dict, float, int, list, str, none_type,)  # noqa: E501
+    additional_properties_type = None
 
     _nullable = False
 
@@ -84,6 +78,7 @@ class ComponentSummary(ModelNormal):
         return {
             'name': (str,),  # noqa: E501
             'category': (str,),  # noqa: E501
+            'type': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -94,6 +89,7 @@ class ComponentSummary(ModelNormal):
     attribute_map = {
         'name': 'name',  # noqa: E501
         'category': 'category',  # noqa: E501
+        'type': 'type',  # noqa: E501
     }
 
     read_only_vars = {
@@ -139,6 +135,7 @@ class ComponentSummary(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             name (str): Component name.. [optional]  # noqa: E501
             category (str): Component category.. [optional]  # noqa: E501
+            type (str): Component type.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -222,6 +219,7 @@ class ComponentSummary(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             name (str): Component name.. [optional]  # noqa: E501
             category (str): Component category.. [optional]  # noqa: E501
+            type (str): Component type.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

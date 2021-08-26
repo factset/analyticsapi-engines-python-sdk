@@ -515,27 +515,44 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     quant_calculation_parameters_root = QuantCalculationParametersRoot(
         data={
             "key": QuantCalculationParameters(
-                screening_expression_universe=QuantScreeningExpressionUniverse(
-                    universe_expr="universe_expr_example",
-                    universe_type="Equity",
-                    security_expr="security_expr_example",
-                ),
-                universal_screen_universe=QuantUniversalScreenUniverse(
-                    screen="screen_example",
-                ),
-                identifier_universe=QuantIdentifierUniverse(
+                universe=
                     universe_type="Equity",
                     identifiers=[
                         "identifiers_example",
                     ],
+                ,
+                dates=
+                    dates=[
+                        "dates_example",
+                    ],
+                ,
+                formulas=[
+                    ,
+                ],
+                screening_expression_universe=QuantScreeningExpressionUniverse1(
+                    universe_expr="universe_expr_example",
+                    universe_type="Equity",
+                    security_expr="security_expr_example",
+                    source="ScreeningExpressionUniverse",
                 ),
-                fds_date=QuantFdsDate(
+                universal_screen_universe=QuantUniversalScreenUniverse1(
+                    screen="screen_example",
+                    source="ScreeningExpressionUniverse",
+                ),
+                identifier_universe=QuantIdentifierUniverse1(
+                    universe_type="Equity",
+                    identifiers=[
+                        "identifiers_example",
+                    ],
+                    source="ScreeningExpressionUniverse",
+                ),
+                fds_date=QuantFdsDate1(
                     start_date="start_date_example",
                     end_date="end_date_example",
                     frequency="frequency_example",
                     calendar="calendar_example",
                 ),
-                date_list=QuantDateList(
+                date_list=QuantDateList1(
                     dates=[
                         "dates_example",
                     ],
@@ -543,19 +560,19 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                     calendar="calendar_example",
                 ),
                 screening_expression=[
-                    QuantScreeningExpression(
+                    QuantScreeningExpression1(
                         expr="expr_example",
                         name="name_example",
                     ),
                 ],
                 fql_expression=[
-                    QuantFqlExpression(
+                    QuantFqlExpression1(
                         expr="expr_example",
                         name="name_example",
                     ),
                 ],
                 universal_screen_parameter=[
-                    QuantUniversalScreenParameter(
+                    QuantUniversalScreenParameter1(
                         reference_name="reference_name_example",
                         name="name_example",
                     ),
@@ -675,27 +692,44 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     quant_calculation_parameters_root = QuantCalculationParametersRoot(
         data={
             "key": QuantCalculationParameters(
-                screening_expression_universe=QuantScreeningExpressionUniverse(
-                    universe_expr="universe_expr_example",
-                    universe_type="Equity",
-                    security_expr="security_expr_example",
-                ),
-                universal_screen_universe=QuantUniversalScreenUniverse(
-                    screen="screen_example",
-                ),
-                identifier_universe=QuantIdentifierUniverse(
+                universe=
                     universe_type="Equity",
                     identifiers=[
                         "identifiers_example",
                     ],
+                ,
+                dates=
+                    dates=[
+                        "dates_example",
+                    ],
+                ,
+                formulas=[
+                    ,
+                ],
+                screening_expression_universe=QuantScreeningExpressionUniverse1(
+                    universe_expr="universe_expr_example",
+                    universe_type="Equity",
+                    security_expr="security_expr_example",
+                    source="ScreeningExpressionUniverse",
                 ),
-                fds_date=QuantFdsDate(
+                universal_screen_universe=QuantUniversalScreenUniverse1(
+                    screen="screen_example",
+                    source="ScreeningExpressionUniverse",
+                ),
+                identifier_universe=QuantIdentifierUniverse1(
+                    universe_type="Equity",
+                    identifiers=[
+                        "identifiers_example",
+                    ],
+                    source="ScreeningExpressionUniverse",
+                ),
+                fds_date=QuantFdsDate1(
                     start_date="start_date_example",
                     end_date="end_date_example",
                     frequency="frequency_example",
                     calendar="calendar_example",
                 ),
-                date_list=QuantDateList(
+                date_list=QuantDateList1(
                     dates=[
                         "dates_example",
                     ],
@@ -703,19 +737,19 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                     calendar="calendar_example",
                 ),
                 screening_expression=[
-                    QuantScreeningExpression(
+                    QuantScreeningExpression1(
                         expr="expr_example",
                         name="name_example",
                     ),
                 ],
                 fql_expression=[
-                    QuantFqlExpression(
+                    QuantFqlExpression1(
                         expr="expr_example",
                         name="name_example",
                     ),
                 ],
                 universal_screen_parameter=[
-                    QuantUniversalScreenParameter(
+                    QuantUniversalScreenParameter1(
                         reference_name="reference_name_example",
                         name="name_example",
                     ),

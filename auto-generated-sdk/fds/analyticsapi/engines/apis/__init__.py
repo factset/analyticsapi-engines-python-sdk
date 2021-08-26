@@ -31,10 +31,13 @@ from fds.analyticsapi.engines.api.fi_calculations_api import FICalculationsApi
 from fds.analyticsapi.engines.api.fpo_optimizer_api import FPOOptimizerApi
 from fds.analyticsapi.engines.api.frequencies_api import FrequenciesApi
 from fds.analyticsapi.engines.api.groups_api import GroupsApi
+from fds.analyticsapi.engines.api.linked_pa_templates_api import LinkedPATemplatesApi
 from fds.analyticsapi.engines.api.npo_optimizer_api import NPOOptimizerApi
 from fds.analyticsapi.engines.api.pa_calculations_api import PACalculationsApi
 from fds.analyticsapi.engines.api.pub_calculations_api import PubCalculationsApi
 from fds.analyticsapi.engines.api.quant_calculations_api import QuantCalculationsApi
 from fds.analyticsapi.engines.api.spar_calculations_api import SPARCalculationsApi
 from fds.analyticsapi.engines.api.strategy_documents_api import StrategyDocumentsApi
+from fds.analyticsapi.engines.api.templated_pa_components_api import TemplatedPAComponentsApi
+from fds.analyticsapi.engines.api.unlinked_pa_templates_api import UnlinkedPATemplatesApi
 from fds.analyticsapi.engines.api.vault_calculations_api import VaultCalculationsApi

@@ -56,18 +56,18 @@ class FIJobSettings(ModelNormal):
     """
 
     allowed_values = {
+        ('call_method',): {
+            'NO_CALL': "No Call",
+            'INTRINSIC_VALUE': "Intrinsic Value",
+            'FIRST_CALL': "First Call",
+            'FIRST_PAR': "First Par",
+        },
     }
 
     validations = {
     }
 
-    @cached_property
-    def additional_properties_type():
-        """
-        This must be a method because a model may have properties that are
-        of type self, this must run after the class is loaded
-        """
-        return (bool, date, datetime, dict, float, int, list, str, none_type,)  # noqa: E501
+    additional_properties_type = None
 
     _nullable = False
 
@@ -84,6 +84,9 @@ class FIJobSettings(ModelNormal):
         return {
             'as_of_date': (str,),  # noqa: E501
             'partial_duration_months': ([int],),  # noqa: E501
+            'call_method': (str,),  # noqa: E501
+            'settlement': (str,),  # noqa: E501
+            'calc_from_method': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -94,6 +97,9 @@ class FIJobSettings(ModelNormal):
     attribute_map = {
         'as_of_date': 'asOfDate',  # noqa: E501
         'partial_duration_months': 'partialDurationMonths',  # noqa: E501
+        'call_method': 'callMethod',  # noqa: E501
+        'settlement': 'settlement',  # noqa: E501
+        'calc_from_method': 'calcFromMethod',  # noqa: E501
     }
 
     read_only_vars = {
@@ -141,6 +147,9 @@ class FIJobSettings(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             partial_duration_months ([int]): Partial duration months. [optional]  # noqa: E501
+            call_method (str): Call Method. [optional]  # noqa: E501
+            settlement (str): Settlement Date. [optional]  # noqa: E501
+            calc_from_method (str): Calculation from method. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -227,6 +236,9 @@ class FIJobSettings(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             partial_duration_months ([int]): Partial duration months. [optional]  # noqa: E501
+            call_method (str): Call Method. [optional]  # noqa: E501
+            settlement (str): Settlement Date. [optional]  # noqa: E501
+            calc_from_method (str): Calculation from method. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
