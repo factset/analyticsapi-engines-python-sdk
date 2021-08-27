@@ -35,7 +35,7 @@ from fds.analyticsapi.engines.model.group import Group
 
 from urllib3 import Retry
 
-host = "https://api.staging-cauth.factset.com"
+host = "https://api.factset.com"
 username = os.environ["ANALYTICS_API_QAR_USERNAME_SERIAL"]
 password = os.environ["ANALYTICS_API_QAR_PASSWORD"]
 

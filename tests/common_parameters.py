@@ -6,7 +6,7 @@ user_name = os.getenv("ANALYTICS_API_QAR_USERNAME_SERIAL")
 password = os.getenv("ANALYTICS_API_QAR_PASSWORD")
 
 # Set 'ANALYTICS_API_URL' environment variable with api url as value
-base_url = 'https://api.staging-cauth.factset.com' if not os.getenv("ANALYTICS_API_URL") else os.getenv("ANALYTICS_API_URL")
+base_url = 'https://api.factset.com' if not os.getenv("ANALYTICS_API_URL") else os.getenv("ANALYTICS_API_URL")
 
 pa_default_document = "PA_DOCUMENTS:DEFAULT"
 pa_default_component_name = "Weights"

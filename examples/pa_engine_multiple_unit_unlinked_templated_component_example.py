@@ -33,7 +33,7 @@ from fds.analyticsapi.engines.model.group import Group
 
 from urllib3 import Retry
 
-host = "https://api.staging-cauth.factset.com"
+host = "https://api.factset.com"
 username = os.environ["ANALYTICS_API_QAR_USERNAME_SERIAL"]
 password = os.environ["ANALYTICS_API_QAR_PASSWORD"]
 
@@ -194,14 +194,7 @@ def main():
         post_and_calculate_response = pa_calculations_api.post_and_calculate(
             pa_calculation_parameters_root=pa_calculation_parameter_root)
 
-        if post_and_calculate_response[1] == 201:
-            output_calculation_result(post_and_calculate_response[0]['data'])
-        elif post_and_calculate_response[1] == 200:
-            for (calculation_unit_id, calculation_unit) in post_and_calculate_response[0].data.units.items():
-                print("Calculation Unit Id:" +
-                      calculation_unit_id + " Failed!!!")
-                print("Error message : " + str(calculation_unit.errors))
-        else:
+        if post_and_calculate_response[1] == 202 or post_and_calculate_response[1] == 200:
             calculation_id = post_and_calculate_response[0].data.calculationid
             print("Calculation Id: " + calculation_id)
 
@@ -227,6 +220,10 @@ def main():
                     print("Calculation Unit Id:" +
                           calculation_unit_id + " Failed!!!")
                     print("Error message : " + str(calculation_unit.errors))
+        else:
+            print("Calculation creation failed")
+            print("Error status : " + str(post_and_calculate_response[1]))
+            print("Error message : " + str(post_and_calculate_response[0]))
 
     except ApiException as e:
         print("Api exception Encountered")
