@@ -25,7 +25,7 @@ class TestUnlinkedPaTemplatesApi(unittest.TestCase):
     def setUp(self):
         self.unlinked_pa_templates_api = UnlinkedPATemplatesApi(CommonFunctions.build_api_client())
 
-    def test_create_unlinked_pa_template(self):
+    def test_a_create_unlinked_pa_template(self):
         unlinked_pa_template_parameters = UnlinkedPATemplateParameters(
             directory="Personal:UnlinkedPATemplates/",
             template_type_id="996E90B981AEE83F14029ED3D309FB3F03EC6E2ACC7FD42C22CBD5D279502CFD",
@@ -76,7 +76,7 @@ class TestUnlinkedPaTemplatesApi(unittest.TestCase):
             UnlinkedPATemplateSummary, "Response should be of UnlinkedPATemplateSummary type.")
         self.assertGreater(len(response[0].data), 0, "Response result should not be an empty list.")
 
-    def test_get_all_unlinked_pa_templates_by_directory(self):
+    def test_b_get_all_unlinked_pa_templates_by_directory(self):
         response = self.unlinked_pa_templates_api.get_unlinked_pa_templates(
             directory = "Personal:UnlinkedPATemplates/"
         )
@@ -88,7 +88,7 @@ class TestUnlinkedPaTemplatesApi(unittest.TestCase):
             UnlinkedPATemplateSummary, "Response should be of UnlinkedPATemplateSummary type.")
         self.assertGreater(len(response[0].data), 0, "Response result should not be an empty list.")
 
-    def test_get_all_unlinked_pa_templates_by_category(self):
+    def test_c_get_all_unlinked_pa_templates_by_category(self):
         response = self.unlinked_pa_templates_api.get_unlinked_pa_templates(
             category = "Weights"
         )
@@ -100,7 +100,7 @@ class TestUnlinkedPaTemplatesApi(unittest.TestCase):
             UnlinkedPATemplateSummary, "Response should be of UnlinkedPATemplateSummary type.")
         self.assertGreater(len(response[0].data), 0, "Response result should not be an empty list.")
 
-    def test_update_unlinked_pa_template(self):
+    def test_d_update_unlinked_pa_template(self):
         templates = self.unlinked_pa_templates_api.get_unlinked_pa_templates(
             directory = "Personal:UnlinkedPATemplates/"
         )
@@ -153,19 +153,7 @@ class TestUnlinkedPaTemplatesApi(unittest.TestCase):
             UnlinkedPATemplateSummary, "Response should be of UnlinkedPATemplateSummary type.")
         self.assertGreater(len(response[0].data), 0, "Response result should not be an empty list.")
 
-    def test_delete_unlinked_pa_template(self):
-        templates = self.unlinked_pa_templates_api.get_unlinked_pa_templates(
-            directory = "Personal:UnlinkedPATemplates/"
-        )
-        template_id = list(templates[0].data.keys())[0]
-
-        response = self.unlinked_pa_templates_api.delete_unlinked_pa_templates(
-            id = template_id
-        )
-
-        self.assertEqual(response[1], 204, "Response should be 204 - Success")
-
-    def test_get_unlinked_pa_template_by_id(self):
+    def test_e_get_unlinked_pa_template_by_id(self):
         templates = self.unlinked_pa_templates_api.get_unlinked_pa_templates(
             directory = "Personal:UnlinkedPATemplates/"
         )
@@ -180,7 +168,7 @@ class TestUnlinkedPaTemplatesApi(unittest.TestCase):
         self.assertEqual(type(response[0].data),
             UnlinkedPATemplate, "Response should be of UnlinkedPATemplate type.")
 
-    def test_get_default_unlinked_pa_template_types(self):
+    def test_f_get_default_unlinked_pa_template_types(self):
         response = self.unlinked_pa_templates_api.get_default_unlinked_pa_template_types()
         firsttemplatetype = list(response[0].data.keys())[0]
 
@@ -190,7 +178,7 @@ class TestUnlinkedPaTemplatesApi(unittest.TestCase):
         self.assertEqual(type(response[0].data[firsttemplatetype]),
             UnlinkedPATemplateCategoryAndType, "Response should be of UnlinkedPATemplateCategoryAndType type.")
 
-    def test_get_unlinked_pa_type_details_by_id(self):
+    def test_g_get_unlinked_pa_type_details_by_id(self):
         templatetypes = self.unlinked_pa_templates_api.get_default_unlinked_pa_template_types()
         template_type_id = list(templatetypes[0].data.keys())[0]
 
@@ -201,6 +189,18 @@ class TestUnlinkedPaTemplatesApi(unittest.TestCase):
             UnlinkedPATemplateCategoryAndTypeDetailsRoot, "Response should be of UnlinkedPATemplateCategoryAndTypeDetailsRoot type.")
         self.assertEqual(type(response[0].data),
             UnlinkedPATemplateCategoryAndTypeDetails, "Response should be of UnlinkedPATemplateCategoryAndTypeDetails type.")
+   
+    def test_h_delete_unlinked_pa_template(self):
+        templates = self.unlinked_pa_templates_api.get_unlinked_pa_templates(
+            directory = "Personal:UnlinkedPATemplates/"
+        )
+        template_id = list(templates[0].data.keys())[0]
+
+        response = self.unlinked_pa_templates_api.delete_unlinked_pa_templates(
+            id = template_id
+        )
+
+        self.assertEqual(response[1], 204, "Response should be 204 - Success")
 
 if __name__ == '__main__':
     unittest.main()

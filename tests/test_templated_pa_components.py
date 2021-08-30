@@ -12,6 +12,9 @@ from fds.analyticsapi.engines.model.pa_calculation_column import PACalculationCo
 from fds.analyticsapi.engines.model.templated_pa_component_summary import TemplatedPAComponentSummary
 from fds.analyticsapi.engines.model.templated_pa_component_update_parameters import TemplatedPAComponentUpdateParameters
 from fds.analyticsapi.engines.model.templated_pa_component_update_parameters_root import TemplatedPAComponentUpdateParametersRoot
+from fds.analyticsapi.engines.model.unlinked_pa_template_parameters import UnlinkedPATemplateParameters
+from fds.analyticsapi.engines.model.unlinked_pa_template_parameters_root import UnlinkedPATemplateParametersRoot
+from fds.analyticsapi.engines.model.template_content_types import TemplateContentTypes
 
 
 from common_functions import CommonFunctions
@@ -21,10 +24,52 @@ class TestTemplatedPaComponents(unittest.TestCase):
         self.templated_pa_components_api = TemplatedPAComponentsApi(CommonFunctions.build_api_client())
         self.unlinked_pa_templates_api = UnlinkedPATemplatesApi(CommonFunctions.build_api_client())
 
-    def test_create_templated_pa_component(self):
-        templates = self.unlinked_pa_templates_api.get_unlinked_pa_templates(
-            directory = "Personal:UnlinkedPATemplates/"
+    def test_a_create_templated_pa_component(self):
+        # create unlinked template
+        unlinked_pa_template_parameters = UnlinkedPATemplateParameters(
+            directory="Personal:UnlinkedPATemplates/",
+            template_type_id="996E90B981AEE83F14029ED3D309FB3F03EC6E2ACC7FD42C22CBD5D279502CFD",
+            description="This is an unlinked PA template that only returns security level data",
+            accounts = [
+                PAIdentifier(
+                    id = "SPN:SP50",
+                    holdingsmode = "B&H"),
+                PAIdentifier(
+                    id = "MSCI_USA:984000",
+                    holdingsmode = "B&H")],
+            benchmarks = [
+                PAIdentifier(
+                    id = "SPN:SP50",
+                    holdingsmode = "B&H"),
+                PAIdentifier(
+                    id = "DJGX:AMERICAS",
+                    holdingsmode = "B&H")],
+            columns = [
+                PACalculationColumn(
+                    id = "BD1720474AB8A80BDD79777F5B9CA594F4151C0554E30F9C916BA73BFAFC1FE0",
+                    statistics = ["eb9d6d91416e4224bacadc261787e56f"])],
+            dates = PADateParameters(
+                startdate = "20200101",
+                enddate = "20201215",
+                frequency = "Monthly"),
+            groups = [
+                PACalculationGroup(id = "5BCFFD17598FAEBD88EB4934EFB5FEF53849867D607ECEF232CD42D3369BBBCA")],
+            currencyisocode = "USD",
+            componentdetail = "GROUPS",
+            content = TemplateContentTypes(
+                mandatory = ["accounts", "benchmarks"],
+                optional = ["groups", "columns", "currencyisocode", "componentdetail"],
+                locked = ["dates"])
         )
+
+        unlinked_pa_template_parameters_root = UnlinkedPATemplateParametersRoot(
+            data = unlinked_pa_template_parameters
+        )
+
+        templates = self.unlinked_pa_templates_api.create_unlinked_pa_templates(
+            unlinked_pa_template_parameters_root = unlinked_pa_template_parameters_root)
+
+        # create templated component
         parent_template_id = list(templates[0].data.keys())[0]
 
         templated_pa_component_parameters = TemplatedPAComponentParameters(
@@ -71,7 +116,7 @@ class TestTemplatedPaComponents(unittest.TestCase):
             TemplatedPAComponentSummary, "Response should be of TemplatedPAComponentSummary type.")
         self.assertGreater(len(response[0].data), 0, "Response result should not be an empty list.")
 
-    def test_update_templated_pa_component(self):
+    def test_b_update_templated_pa_component(self):
         # create templated PA component to use component id later
         templates = self.unlinked_pa_templates_api.get_unlinked_pa_templates(
             directory = "Personal:UnlinkedPATemplates/"
@@ -161,7 +206,7 @@ class TestTemplatedPaComponents(unittest.TestCase):
             TemplatedPAComponentSummary, "Response should be of TemplatedPAComponentSummary type.")
         self.assertGreater(len(response[0].data), 0, "Response result should not be an empty list.")
 
-    def test_delete_templated_pa_component(self):
+    def test_c_delete_templated_pa_component(self):
         # create templated PA component to use component id later
         templates = self.unlinked_pa_templates_api.get_unlinked_pa_templates(
             directory = "Personal:UnlinkedPATemplates/"
