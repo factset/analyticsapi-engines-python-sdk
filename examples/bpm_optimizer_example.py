@@ -27,6 +27,7 @@ def main():
     config.host = host
     config.username = username
     config.password = password
+    config.discard_unknown_keys = True
     # add proxy and/or disable ssl verification according to your development environment
     # config.proxy = "<proxyUrl>"
     config.verify_ssl = False
