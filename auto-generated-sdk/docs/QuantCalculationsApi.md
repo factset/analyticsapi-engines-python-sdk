@@ -522,9 +522,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                     ],
                 ,
                 dates=
-                    dates=[
-                        "dates_example",
-                    ],
+                    dates=[],
                 ,
                 formulas=[
                     ,
@@ -699,9 +697,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                     ],
                 ,
                 dates=
-                    dates=[
-                        "dates_example",
-                    ],
+                    dates=[],
                 ,
                 formulas=[
                     ,

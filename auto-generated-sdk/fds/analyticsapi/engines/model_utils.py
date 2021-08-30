@@ -1339,6 +1339,9 @@ def is_valid_type(input_class_simple, valid_classes):
             issubclass(input_class_simple, OpenApiModel) or
             input_class_simple is none_type):
         for valid_class in valid_classes:
+            if valid_class is object:
+				# this is to handle oneOf fields in a Model. AAPI team added this if condition to handle Quant API
+                return True
             if input_class_simple is none_type and is_type_nullable(valid_class):
                 # Schema is oneOf/anyOf and the 'null' type is one of the allowed types.
                 return True
@@ -1494,19 +1497,13 @@ def model_to_dict(model_instance, serialize=True):
                 # exist in attribute_map
                 attr = model_instance.attribute_map.get(attr, attr)
             if isinstance(value, list):
-               if not value:
-                   # empty list or None
-                   result[attr] = value
-               else:
-                   res = []
-                   for v in value:
-                       if isinstance(v, PRIMITIVE_TYPES) or v is None:
-                           res.append(v)
-                       elif isinstance(v, ModelSimple):
-                           res.append(v.value)
-                       else:
-                           res.append(model_to_dict(v, serialize=serialize))
-                   result[attr] = res
+                if not value or isinstance(value[0], PRIMITIVE_TYPES):
+                    # empty list or primitive types
+                    result[attr] = value
+                elif isinstance(value[0], ModelSimple):
+                    result[attr] = [x.value for x in value]
+                else:
+                    result[attr] = [model_to_dict(x, serialize=serialize) for x in value]
             elif isinstance(value, dict):
                 result[attr] = dict(map(
                     lambda item: (item[0],
@@ -1566,16 +1563,11 @@ def get_valid_classes_phrase(input_classes):
 def convert_js_args_to_python_args(fn):
     from functools import wraps
     @wraps(fn)
-    def wrapped_init(_self, *args, **kwargs):
-        """
-        An attribute named `self` received from the api will conflicts with the reserved `self`
-        parameter of a class method. During generation, `self` attributes are mapped
-        to `_self` in models. Here, we name `_self` instead of `self` to avoid conflicts.
-        """
+    def wrapped_init(self, *args, **kwargs):
         spec_property_naming = kwargs.get('_spec_property_naming', False)
         if spec_property_naming:
-            kwargs = change_keys_js_to_python(kwargs, _self.__class__)
-        return fn(_self, *args, **kwargs)
+            kwargs = change_keys_js_to_python(kwargs, self.__class__)
+        return fn(self, *args, **kwargs)
     return wrapped_init
 
 

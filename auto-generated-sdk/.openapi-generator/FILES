@@ -382,6 +382,7 @@ fds/analyticsapi/engines/model/vault_date_parameters.py
 fds/analyticsapi/engines/model/vault_identifier.py
 fds/analyticsapi/engines/model_utils.py
 fds/analyticsapi/engines/models/__init__.py
+fds/analyticsapi/engines/models/__init__.py
 fds/analyticsapi/engines/rest.py
 git_push.sh
 requirements.txt
