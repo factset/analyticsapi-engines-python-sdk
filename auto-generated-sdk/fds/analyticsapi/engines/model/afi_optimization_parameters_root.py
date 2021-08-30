@@ -79,7 +79,7 @@ class AFIOptimizationParametersRoot(ModelNormal):
         lazy_import()
         return {
             'data': (AFIOptimizationParameters,),  # noqa: E501
-            'meta': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
+            'meta': (bool, date, datetime, dict, float, int, list, str,),  # noqa: E501
         }
 
     @cached_property
@@ -139,7 +139,7 @@ class AFIOptimizationParametersRoot(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             data (AFIOptimizationParameters): [optional]  # noqa: E501
-            meta ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
+            meta (bool, date, datetime, dict, float, int, list, str): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

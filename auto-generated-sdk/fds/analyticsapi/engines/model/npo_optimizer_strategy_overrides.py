@@ -78,7 +78,7 @@ class NPOOptimizerStrategyOverrides(ModelNormal):
         """
         lazy_import()
         return {
-            'objective': ({str: ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},)},),  # noqa: E501
+            'objective': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
             'constraints': ([ConstraintAction],),  # noqa: E501
             'tax': (str,),  # noqa: E501
             'transaction_cost': (str,),  # noqa: E501
@@ -144,7 +144,7 @@ class NPOOptimizerStrategyOverrides(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            objective ({str: ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},)}): Objective parameters. [optional]  # noqa: E501
+            objective ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): Objective parameters. [optional]  # noqa: E501
             constraints ([ConstraintAction]): List of constraints. [optional]  # noqa: E501
             tax (str): Tax  Can be set to \"\" for local. [optional]  # noqa: E501
             transaction_cost (str): Transaction cost  Can be set to \"\" for local. [optional]  # noqa: E501
