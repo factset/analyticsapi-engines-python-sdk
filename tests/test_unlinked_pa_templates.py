@@ -27,7 +27,7 @@ class TestUnlinkedPaTemplatesApi(unittest.TestCase):
 
     def test_a_create_unlinked_pa_template(self):
         unlinked_pa_template_parameters = UnlinkedPATemplateParameters(
-            directory="Personal:UnlinkedPATemplates/",
+            directory="Personal:UnlinkedPATemplates2/",
             template_type_id="996E90B981AEE83F14029ED3D309FB3F03EC6E2ACC7FD42C22CBD5D279502CFD",
             description="This is an unlinked PA template that only returns security level data",
             accounts = [
@@ -78,7 +78,7 @@ class TestUnlinkedPaTemplatesApi(unittest.TestCase):
 
     def test_b_get_all_unlinked_pa_templates_by_directory(self):
         response = self.unlinked_pa_templates_api.get_unlinked_pa_templates(
-            directory = "Personal:UnlinkedPATemplates/"
+            directory = "Personal:UnlinkedPATemplates2/"
         )
 
         firsttemplate = list(response[0].data.keys())[0]
@@ -102,7 +102,7 @@ class TestUnlinkedPaTemplatesApi(unittest.TestCase):
 
     def test_d_update_unlinked_pa_template(self):
         templates = self.unlinked_pa_templates_api.get_unlinked_pa_templates(
-            directory = "Personal:UnlinkedPATemplates/"
+            directory = "Personal:UnlinkedPATemplates2/"
         )
         template_id = list(templates[0].data.keys())[0]
 
@@ -155,7 +155,7 @@ class TestUnlinkedPaTemplatesApi(unittest.TestCase):
 
     def test_e_get_unlinked_pa_template_by_id(self):
         templates = self.unlinked_pa_templates_api.get_unlinked_pa_templates(
-            directory = "Personal:UnlinkedPATemplates/"
+            directory = "Personal:UnlinkedPATemplates2/"
         )
         template_id = list(templates[0].data.keys())[0]
 
@@ -192,7 +192,7 @@ class TestUnlinkedPaTemplatesApi(unittest.TestCase):
    
     def test_h_delete_unlinked_pa_template(self):
         templates = self.unlinked_pa_templates_api.get_unlinked_pa_templates(
-            directory = "Personal:UnlinkedPATemplates/"
+            directory = "Personal:UnlinkedPATemplates2/"
         )
         template_id = list(templates[0].data.keys())[0]
 

@@ -27,7 +27,7 @@ class TestTemplatedPaComponents(unittest.TestCase):
     def test_a_create_templated_pa_component(self):
         # create unlinked template
         unlinked_pa_template_parameters = UnlinkedPATemplateParameters(
-            directory="Personal:UnlinkedPATemplates/",
+            directory="Personal:UnlinkedPATemplates2/",
             template_type_id="996E90B981AEE83F14029ED3D309FB3F03EC6E2ACC7FD42C22CBD5D279502CFD",
             description="This is an unlinked PA template that only returns security level data",
             accounts = [
@@ -116,10 +116,15 @@ class TestTemplatedPaComponents(unittest.TestCase):
             TemplatedPAComponentSummary, "Response should be of TemplatedPAComponentSummary type.")
         self.assertGreater(len(response[0].data), 0, "Response result should not be an empty list.")
 
+        # delete templated PA component
+        response = self.templated_pa_components_api.delete_templated_pa_components(
+            id = firstcomponent
+        )
+
     def test_b_update_templated_pa_component(self):
         # create templated PA component to use component id later
         templates = self.unlinked_pa_templates_api.get_unlinked_pa_templates(
-            directory = "Personal:UnlinkedPATemplates/"
+            directory = "Personal:UnlinkedPATemplates2/"
         )
         parent_template_id = list(templates[0].data.keys())[0]
 
@@ -206,10 +211,15 @@ class TestTemplatedPaComponents(unittest.TestCase):
             TemplatedPAComponentSummary, "Response should be of TemplatedPAComponentSummary type.")
         self.assertGreater(len(response[0].data), 0, "Response result should not be an empty list.")
 
+        # delete templated PA component
+        response = self.templated_pa_components_api.delete_templated_pa_components(
+            id = component_id
+        )
+
     def test_c_delete_templated_pa_component(self):
         # create templated PA component to use component id later
         templates = self.unlinked_pa_templates_api.get_unlinked_pa_templates(
-            directory = "Personal:UnlinkedPATemplates/"
+            directory = "Personal:UnlinkedPATemplates2/"
         )
         parent_template_id = list(templates[0].data.keys())[0]
 
