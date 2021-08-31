@@ -19,12 +19,16 @@ from fds.analyticsapi.engines.model.template_content_types import TemplateConten
 
 from common_functions import CommonFunctions
 
+parent_template_id = ""
+
 class TestTemplatedPaComponents(unittest.TestCase):
     def setUp(self):
         self.templated_pa_components_api = TemplatedPAComponentsApi(CommonFunctions.build_api_client())
         self.unlinked_pa_templates_api = UnlinkedPATemplatesApi(CommonFunctions.build_api_client())
 
     def test_a_create_templated_pa_component(self):
+        global parent_template_id
+
         # create unlinked template
         unlinked_pa_template_parameters = UnlinkedPATemplateParameters(
             directory="Personal:UnlinkedPATemplates2/",
@@ -71,6 +75,7 @@ class TestTemplatedPaComponents(unittest.TestCase):
 
         # create templated component
         parent_template_id = list(templates[0].data.keys())[0]
+        print("created parent_template_id: {id}".format(id=parent_template_id))
 
         templated_pa_component_parameters = TemplatedPAComponentParameters(
             directory="Personal:TemplatedPAComponents/",
@@ -121,17 +126,8 @@ class TestTemplatedPaComponents(unittest.TestCase):
             id = firstcomponent
         )
 
-        # delete unlinked template
-        response = self.unlinked_pa_templates_api.delete_unlinked_pa_templates(
-            id=parent_template_id
-        )
-
     def test_b_update_templated_pa_component(self):
-        # create templated PA component to use component id later
-        templates = self.unlinked_pa_templates_api.get_unlinked_pa_templates(
-            directory = "Personal:UnlinkedPATemplates2/"
-        )
-        parent_template_id = list(templates[0].data.keys())[0]
+        global parent_template_id
 
         templated_pa_component_parameters = TemplatedPAComponentParameters(
             directory="Personal:TemplatedPAComponents/",
@@ -171,6 +167,7 @@ class TestTemplatedPaComponents(unittest.TestCase):
             templated_pa_component_parameters_root = templated_pa_component_parameters_root)
 
         component_id = list(components[0].data.keys())[0]
+        print("parent_template_id: {id}".format(id=parent_template_id))
 
         # update templated PA component
         templated_pa_component_update_parameters = TemplatedPAComponentUpdateParameters(
@@ -221,18 +218,9 @@ class TestTemplatedPaComponents(unittest.TestCase):
             id = component_id
         )
 
-        # delete unlinked template
-        response = self.unlinked_pa_templates_api.delete_unlinked_pa_templates(
-            id=parent_template_id
-        )
-
     def test_c_delete_templated_pa_component(self):
-        # create templated PA component to use component id later
-        templates = self.unlinked_pa_templates_api.get_unlinked_pa_templates(
-            directory = "Personal:UnlinkedPATemplates2/"
-        )
-        parent_template_id = list(templates[0].data.keys())[0]
-
+        global parent_template_id
+        
         templated_pa_component_parameters = TemplatedPAComponentParameters(
             directory="Personal:TemplatedPAComponents/",
             parent_template_id=parent_template_id,
@@ -271,6 +259,7 @@ class TestTemplatedPaComponents(unittest.TestCase):
             templated_pa_component_parameters_root = templated_pa_component_parameters_root)
 
         component_id = list(components[0].data.keys())[0]
+        print("parent_template_id: {id}".format(id=parent_template_id))
 
         # delete templated PA component
         response = self.templated_pa_components_api.delete_templated_pa_components(
