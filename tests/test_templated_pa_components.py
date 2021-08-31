@@ -121,6 +121,11 @@ class TestTemplatedPaComponents(unittest.TestCase):
             id = firstcomponent
         )
 
+        # delete unlinked template
+        response = self.unlinked_pa_templates_api.delete_unlinked_pa_templates(
+            id=parent_template_id
+        )
+
     def test_b_update_templated_pa_component(self):
         # create templated PA component to use component id later
         templates = self.unlinked_pa_templates_api.get_unlinked_pa_templates(
@@ -216,6 +221,11 @@ class TestTemplatedPaComponents(unittest.TestCase):
             id = component_id
         )
 
+        # delete unlinked template
+        response = self.unlinked_pa_templates_api.delete_unlinked_pa_templates(
+            id=parent_template_id
+        )
+
     def test_c_delete_templated_pa_component(self):
         # create templated PA component to use component id later
         templates = self.unlinked_pa_templates_api.get_unlinked_pa_templates(
@@ -268,6 +278,11 @@ class TestTemplatedPaComponents(unittest.TestCase):
         )
 
         self.assertEqual(response[1], 204, "Response should be 204 - Success")
+
+        # delete unlinked template
+        response = self.unlinked_pa_templates_api.delete_unlinked_pa_templates(
+            id=parent_template_id
+        )
 
 if __name__ == '__main__':
     unittest.main()
