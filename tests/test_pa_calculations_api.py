@@ -30,7 +30,7 @@ class TestPaCalculationsApi(unittest.TestCase):
                 document="PA_DOCUMENTS:DEFAULT",
                 _return_http_data_only=True)
             component_summary = ComponentSummary(
-                name="Weights", category="Weights / Exposures")
+                name="Weights", category="Weights / Exposures", type="PA component")
             component_id = [id for id in list(
                 components.data.keys()) if components.data[id] == component_summary][0]
             pa_accounts = [PAIdentifier(id="BENCH:SP50")]

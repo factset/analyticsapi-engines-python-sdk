@@ -53,6 +53,12 @@ class FISecurity(ModelNormal):
     """
 
     allowed_values = {
+        ('call_method',): {
+            'NO_CALL': "No Call",
+            'INTRINSIC_VALUE': "Intrinsic Value",
+            'FIRST_CALL': "First Call",
+            'FIRST_PAR': "First Par",
+        },
         ('face_type',): {
             'CURRENT': "Current",
             'ORIGINAL': "Original",
@@ -77,10 +83,11 @@ class FISecurity(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'calc_from_method': (str,),  # noqa: E501
             'calc_from_value': (float,),  # noqa: E501
             'symbol': (str,),  # noqa: E501
             'settlement': (str,),  # noqa: E501
+            'call_method': (str,),  # noqa: E501
+            'calc_from_method': (str,),  # noqa: E501
             'face': (float,),  # noqa: E501
             'face_type': (str,),  # noqa: E501
             'discount_curve': (str,),  # noqa: E501
@@ -92,10 +99,11 @@ class FISecurity(ModelNormal):
 
 
     attribute_map = {
-        'calc_from_method': 'calcFromMethod',  # noqa: E501
         'calc_from_value': 'calcFromValue',  # noqa: E501
         'symbol': 'symbol',  # noqa: E501
         'settlement': 'settlement',  # noqa: E501
+        'call_method': 'callMethod',  # noqa: E501
+        'calc_from_method': 'calcFromMethod',  # noqa: E501
         'face': 'face',  # noqa: E501
         'face_type': 'faceType',  # noqa: E501
         'discount_curve': 'discountCurve',  # noqa: E501
@@ -113,11 +121,10 @@ class FISecurity(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, calc_from_method, calc_from_value, symbol, *args, **kwargs):  # noqa: E501
+    def __init__(self, calc_from_value, symbol, *args, **kwargs):  # noqa: E501
         """FISecurity - a model defined in OpenAPI
 
         Args:
-            calc_from_method (str): Calculation from method
             calc_from_value (float): Calculation from value
             symbol (str): Symbol
 
@@ -153,6 +160,8 @@ class FISecurity(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             settlement (str): Settlement date. [optional]  # noqa: E501
+            call_method (str): Call Method. [optional]  # noqa: E501
+            calc_from_method (str): Calculation from method. [optional]  # noqa: E501
             face (float): Face. [optional] if omitted the server will use the default value of 1  # noqa: E501
             face_type (str): Face type. [optional] if omitted the server will use the default value of "Current"  # noqa: E501
             discount_curve (str): Discount curve. [optional]  # noqa: E501
@@ -181,7 +190,6 @@ class FISecurity(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.calc_from_method = calc_from_method
         self.calc_from_value = calc_from_value
         self.symbol = symbol
         for var_name, var_value in kwargs.items():
