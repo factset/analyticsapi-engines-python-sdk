@@ -75,7 +75,6 @@ class TestTemplatedPaComponents(unittest.TestCase):
 
         # create templated component
         parent_template_id = list(templates[0].data.keys())[0]
-        print("created parent_template_id: {id}".format(id=parent_template_id))
 
         templated_pa_component_parameters = TemplatedPAComponentParameters(
             directory="Personal:TemplatedPAComponents/",
@@ -167,7 +166,6 @@ class TestTemplatedPaComponents(unittest.TestCase):
             templated_pa_component_parameters_root = templated_pa_component_parameters_root)
 
         component_id = list(components[0].data.keys())[0]
-        print("parent_template_id: {id}".format(id=parent_template_id))
 
         # update templated PA component
         templated_pa_component_update_parameters = TemplatedPAComponentUpdateParameters(
@@ -220,7 +218,7 @@ class TestTemplatedPaComponents(unittest.TestCase):
 
     def test_c_delete_templated_pa_component(self):
         global parent_template_id
-        
+
         templated_pa_component_parameters = TemplatedPAComponentParameters(
             directory="Personal:TemplatedPAComponents/",
             parent_template_id=parent_template_id,
@@ -259,7 +257,6 @@ class TestTemplatedPaComponents(unittest.TestCase):
             templated_pa_component_parameters_root = templated_pa_component_parameters_root)
 
         component_id = list(components[0].data.keys())[0]
-        print("parent_template_id: {id}".format(id=parent_template_id))
 
         # delete templated PA component
         response = self.templated_pa_components_api.delete_templated_pa_components(
