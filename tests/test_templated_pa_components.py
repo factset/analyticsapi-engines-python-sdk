@@ -31,7 +31,7 @@ class TestTemplatedPaComponents(unittest.TestCase):
 
         # create unlinked template
         unlinked_pa_template_parameters = UnlinkedPATemplateParameters(
-            directory="Personal:UnlinkedPATemplates2/",
+            directory="Personal:SDKTests/DoNotModify/UnlinkedPATemplates/",
             template_type_id="996E90B981AEE83F14029ED3D309FB3F03EC6E2ACC7FD42C22CBD5D279502CFD",
             description="This is an unlinked PA template that only returns security level data",
             accounts = [
@@ -77,7 +77,7 @@ class TestTemplatedPaComponents(unittest.TestCase):
         parent_template_id = list(templates[0].data.keys())[0]
 
         templated_pa_component_parameters = TemplatedPAComponentParameters(
-            directory="Personal:TemplatedPAComponents/",
+            directory="Personal:SDKTests/DoNotModify/TemplatedPAComponents/",
             parent_template_id=parent_template_id,
             description="This is a templated PA component",
             component_data = PAComponentData(
@@ -129,7 +129,7 @@ class TestTemplatedPaComponents(unittest.TestCase):
         global parent_template_id
 
         templated_pa_component_parameters = TemplatedPAComponentParameters(
-            directory="Personal:TemplatedPAComponents/",
+            directory="Personal:SDKTests/DoNotModify/TemplatedPAComponents/",
             parent_template_id=parent_template_id,
             description="This is a templated PA component",
             component_data = PAComponentData(
@@ -220,7 +220,7 @@ class TestTemplatedPaComponents(unittest.TestCase):
         global parent_template_id
 
         templated_pa_component_parameters = TemplatedPAComponentParameters(
-            directory="Personal:TemplatedPAComponents/",
+            directory="Personal:SDKTests/DoNotModify/TemplatedPAComponents/",
             parent_template_id=parent_template_id,
             description="This is a templated PA component",
             component_data = PAComponentData(
