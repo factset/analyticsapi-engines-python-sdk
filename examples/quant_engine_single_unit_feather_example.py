@@ -24,6 +24,8 @@ password = os.environ["ANALYTICS_API_QAR_PASSWORD"]
 
 def main():
     config = Configuration()
+    config.discard_unknown_keys=True
+    config.discard_unknown_keys=True
     config.host = host
     config.username = username
     config.password = password
