@@ -45,15 +45,16 @@ def main():
         pa_document_name = "PA_DOCUMENTS:DEFAULT"
         pa_component_name = "Weights"
         pa_component_category = "Weights / Exposures"
+        pa_component_type = "PA component"
         pa_benchmark_sp_50 = "BENCH:SP50"
         pa_benchmark_r_1000 = "BENCH:R.1000"
         startdate = "20180101"
         enddate = "20181231"
         frequency = "Monthly"
 
-        get_components_response = components_api.get_pa_components(pa_document_name)
+        get_components_response = components_api.get_pa_components(document=pa_document_name)
         component_summary = ComponentSummary(
-            name=pa_component_name, category=pa_component_category)
+            name=pa_component_name, category=pa_component_category, type=pa_component_type)
         component_id = [id for id in list(
             get_components_response[0].data.keys()) if get_components_response[0].data[id] == component_summary][0]
         print("PA Component Id: " + component_id)

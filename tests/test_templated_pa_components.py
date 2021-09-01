@@ -19,15 +19,19 @@ from fds.analyticsapi.engines.model.template_content_types import TemplateConten
 
 from common_functions import CommonFunctions
 
+parent_template_id = ""
+
 class TestTemplatedPaComponents(unittest.TestCase):
     def setUp(self):
         self.templated_pa_components_api = TemplatedPAComponentsApi(CommonFunctions.build_api_client())
         self.unlinked_pa_templates_api = UnlinkedPATemplatesApi(CommonFunctions.build_api_client())
 
     def test_a_create_templated_pa_component(self):
+        global parent_template_id
+
         # create unlinked template
         unlinked_pa_template_parameters = UnlinkedPATemplateParameters(
-            directory="Personal:UnlinkedPATemplates2/",
+            directory="Personal:SDKTests/DoNotModify/UnlinkedPATemplates/",
             template_type_id="996E90B981AEE83F14029ED3D309FB3F03EC6E2ACC7FD42C22CBD5D279502CFD",
             description="This is an unlinked PA template that only returns security level data",
             accounts = [
@@ -73,7 +77,7 @@ class TestTemplatedPaComponents(unittest.TestCase):
         parent_template_id = list(templates[0].data.keys())[0]
 
         templated_pa_component_parameters = TemplatedPAComponentParameters(
-            directory="Personal:TemplatedPAComponents/",
+            directory="Personal:SDKTests/DoNotModify/TemplatedPAComponents/",
             parent_template_id=parent_template_id,
             description="This is a templated PA component",
             component_data = PAComponentData(
@@ -122,14 +126,10 @@ class TestTemplatedPaComponents(unittest.TestCase):
         )
 
     def test_b_update_templated_pa_component(self):
-        # create templated PA component to use component id later
-        templates = self.unlinked_pa_templates_api.get_unlinked_pa_templates(
-            directory = "Personal:UnlinkedPATemplates2/"
-        )
-        parent_template_id = list(templates[0].data.keys())[0]
+        global parent_template_id
 
         templated_pa_component_parameters = TemplatedPAComponentParameters(
-            directory="Personal:TemplatedPAComponents/",
+            directory="Personal:SDKTests/DoNotModify/TemplatedPAComponents/",
             parent_template_id=parent_template_id,
             description="This is a templated PA component",
             component_data = PAComponentData(
@@ -217,14 +217,10 @@ class TestTemplatedPaComponents(unittest.TestCase):
         )
 
     def test_c_delete_templated_pa_component(self):
-        # create templated PA component to use component id later
-        templates = self.unlinked_pa_templates_api.get_unlinked_pa_templates(
-            directory = "Personal:UnlinkedPATemplates2/"
-        )
-        parent_template_id = list(templates[0].data.keys())[0]
+        global parent_template_id
 
         templated_pa_component_parameters = TemplatedPAComponentParameters(
-            directory="Personal:TemplatedPAComponents/",
+            directory="Personal:SDKTests/DoNotModify/TemplatedPAComponents/",
             parent_template_id=parent_template_id,
             description="This is a templated PA component",
             component_data = PAComponentData(
@@ -268,6 +264,11 @@ class TestTemplatedPaComponents(unittest.TestCase):
         )
 
         self.assertEqual(response[1], 204, "Response should be 204 - Success")
+
+        # delete unlinked template
+        response = self.unlinked_pa_templates_api.delete_unlinked_pa_templates(
+            id=parent_template_id
+        )
 
 if __name__ == '__main__':
     unittest.main()

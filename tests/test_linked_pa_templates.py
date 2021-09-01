@@ -20,7 +20,7 @@ class TestLinkedPaTemplatesApi(unittest.TestCase):
 
     def test_a_create_linked_pa_template(self):
         linked_pa_template_parameters = LinkedPATemplateParameters(
-            directory="Personal:LinkedPATemplates/",
+            directory="Personal:SDKTests/DoNotModify/LinkedPATemplates/",
             parent_component_id="801B800245E468A52AEBEC4BE31CFF5AF82F371DAEF5F158AC2E98C2FA324B46",
             description="This is a linked PA template that only returns security level data",
             content = TemplateContentTypes(
@@ -46,7 +46,7 @@ class TestLinkedPaTemplatesApi(unittest.TestCase):
 
     def test_b_get_all_linked_pa_templates(self):
         response = self.linked_pa_templates_api.get_linked_pa_templates(
-            directory = "Personal:LinkedPATemplates/"
+            directory = "Personal:SDKTests/DoNotModify/LinkedPATemplates/"
         )
 
         firsttemplate = list(response[0].data.keys())[0]
@@ -58,7 +58,7 @@ class TestLinkedPaTemplatesApi(unittest.TestCase):
 
     def test_c_update_linked_pa_template(self):
         templates = self.linked_pa_templates_api.get_linked_pa_templates(
-            directory = "Personal:LinkedPATemplates/"
+            directory = "Personal:SDKTests/DoNotModify/LinkedPATemplates/"
         )
         template_id = list(templates[0].data.keys())[0]
 
@@ -86,7 +86,7 @@ class TestLinkedPaTemplatesApi(unittest.TestCase):
 
     def test_d_get_linked_pa_template_by_id(self):
         templates = self.linked_pa_templates_api.get_linked_pa_templates(
-            directory = "Personal:LinkedPATemplates/"
+            directory = "Personal:SDKTests/DoNotModify/LinkedPATemplates/"
         )
         template_id = list(templates[0].data.keys())[0]
 
@@ -101,7 +101,7 @@ class TestLinkedPaTemplatesApi(unittest.TestCase):
     
     def test_e_delete_linked_pa_template(self):
         templates = self.linked_pa_templates_api.get_linked_pa_templates(
-            directory = "Personal:LinkedPATemplates/"
+            directory = "Personal:SDKTests/DoNotModify/LinkedPATemplates/"
         )
         template_id = list(templates[0].data.keys())[0]
 
