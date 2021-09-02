@@ -12,7 +12,6 @@ from fds.analyticsapi.engines.model.quant_calculation_parameters import QuantCal
 from fds.analyticsapi.engines.model.quant_calculation_meta import QuantCalculationMeta
 from fds.analyticsapi.engines.model.quant_screening_expression_universe import QuantScreeningExpressionUniverse
 from fds.analyticsapi.engines.model.quant_fds_date import QuantFdsDate
-from fds.analyticsapi.engines.model.quant_screening_expression import QuantScreeningExpression
 from fds.analyticsapi.engines.model.quant_fql_expression import QuantFqlExpression
 
 from urllib3 import Retry
@@ -27,7 +26,6 @@ def main():
     config.host = host
     config.username = username
     config.password = password
-    config.discard_unknown_keys = True
     # add proxy and/or disable ssl verification according to your development environment
     # config.proxy = "<proxyUrl>"
     config.verify_ssl = False
@@ -39,20 +37,25 @@ def main():
     api_client = ApiClient(config)
 
     try:
-        screeningExpressionUniverse = QuantScreeningExpressionUniverse(
-            universe_expr="ISON_DOW", universe_type="Equity", security_expr="TICKER")
-        fdsDate = QuantFdsDate(
-            start_date="0", end_date="-5D", frequency="D", calendar="FIVEDAY")
-        screeningExpression = [QuantScreeningExpression(
-            expr="P_PRICE", name="Price (SCR)")]
-        fqlExpression = [QuantFqlExpression(
-            expr="P_PRICE(#DATE,#DATE,#FREQ)", name="Price (FQL)")]
+        screeningExpressionUniverse = QuantScreeningExpressionUniverse(source="ScreeningExpressionUniverse",
+                                                                       universe_expr="(TICKER=\"IBM\" OR TICKER=\"MS\" OR TICKER=\"GE\")=1", 
+                                                                       universe_type="Equity",
+                                                                       security_expr="TICKER")
+
+        fdsDate = QuantFdsDate(source="FdsDate",
+            start_date="20050701", end_date="20051001", frequency="M", calendar="FIVEDAY")
+            
+        fqlExpression = QuantFqlExpression(source="FqlExpression",
+            expr="P_PRICE(#DATE,#DATE,#FREQ)", name="Price")
+        fqlExpression1 = QuantFqlExpression(source="FqlExpression",
+            expr="FF_EPS(,#DATE,#DATE,#FREQ)", name="Eps")
+        fqlExpression2 = QuantFqlExpression(source="FqlExpression",
+            expr="FG_GICS_SECTOR", name="Sector")
 
         quant_calculation_parameters = {"1": QuantCalculationParameters(
-            screening_expression_universe=screeningExpressionUniverse,
-            fds_date=fdsDate,
-            screening_expression=screeningExpression,
-            fql_expression=fqlExpression)
+            universe=screeningExpressionUniverse,
+            dates=fdsDate,
+            formulas=[fqlExpression, fqlExpression1, fqlExpression2])
         }
 
         quant_calculations_meta = QuantCalculationMeta(format='Feather')
