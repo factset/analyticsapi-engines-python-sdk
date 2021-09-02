@@ -1,13 +1,11 @@
-# QuantFdsDate1
+# QuantUniversalScreenParameterObsolete
 
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**start_date** | **str** |  | 
-**end_date** | **str** |  | 
-**frequency** | **str** |  | 
-**calendar** | **str** |  | 
+**reference_name** | **str** |  | 
+**name** | **str** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
