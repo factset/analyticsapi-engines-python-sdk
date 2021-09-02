@@ -1,0 +1,91 @@
+name: Integration Tests
+
+on:
+  schedule:
+    - cron: "0 23 * * *" # 7:00 PM EST
+
+jobs:
+  run-integration-tests-4.0.0:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: '4.0.0'
+
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with: 
+          python-version: 3.8
+
+      - name: Build and install new SDK
+        run: |
+          python -m pip install --upgrade pip
+          cd auto-generated-sdk
+          python setup.py sdist
+          pip install .
+
+      - name: Build and Run Test
+        run: |
+          cd tests
+          if [ -f requirements.txt ]
+          then
+            pip install -r requirements.txt
+          fi
+          python -m unittest discover
+
+  run-integration-tests-v4.2.0:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: 'v4.2.0'
+
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with: 
+          python-version: 3.8
+
+      - name: Build and install new SDK
+        run: |
+          python -m pip install --upgrade pip
+          cd auto-generated-sdk
+          python setup.py sdist
+          pip install .
+
+      - name: Build and Run Test
+        run: |
+          cd tests
+          if [ -f requirements.txt ]
+          then
+            pip install -r requirements.txt
+          fi
+          python -m unittest discover
+
+  run-integration-tests-v5.1.0:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: 'v5.1.0'
+
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with: 
+          python-version: 3.8
+
+      - name: Build and install new SDK
+        run: |
+          python -m pip install --upgrade pip
+          cd auto-generated-sdk
+          python setup.py sdist
+          pip install .
+
+      - name: Build and Run Test
+        run: |
+          cd tests
+          if [ -f requirements.txt ]
+          then
+            pip install -r requirements.txt
+          fi
+          python -m unittest discover
+  
