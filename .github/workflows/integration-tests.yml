@@ -4,6 +4,9 @@ on:
   schedule:
     - cron: "0 23 * * *" # 7:00 PM EST
 
+  push:
+    branches: [ master ]
+
 jobs:
   run-integration-tests-4.0.0:
     runs-on: ubuntu-latest
