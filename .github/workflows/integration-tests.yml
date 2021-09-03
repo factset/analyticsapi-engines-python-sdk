@@ -8,7 +8,7 @@ on:
     branches: [ master ]
 
 jobs:
-  run-integration-tests-4.0.0:
+  run-integration-tests-400:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -36,7 +36,7 @@ jobs:
           fi
           python -m unittest discover
 
-  run-integration-tests-v4.2.0:
+  run-integration-tests-v420:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -64,7 +64,7 @@ jobs:
           fi
           python -m unittest discover
 
-  run-integration-tests-v5.1.0:
+  run-integration-tests-v510:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
