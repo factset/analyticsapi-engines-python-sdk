@@ -1,5 +1,9 @@
 name: Integration Tests
 
+env:
+  ANALYTICS_API_QAR_USERNAME_SERIAL: ${{ secrets.ANALYTICS_API_QAR_USERNAME_SERIAL }}
+  ANALYTICS_API_QAR_PASSWORD: ${{ secrets.ANALYTICS_API_QAR_PASSWORD }}
+
 on:
   schedule:
     - cron: "0 23 * * *" # 7:00 PM EST
