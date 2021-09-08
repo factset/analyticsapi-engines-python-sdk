@@ -4,8 +4,8 @@ env:
   ANALYTICS_API_QAR_USERNAME_SERIAL: ${{ secrets.ANALYTICS_API_QAR_USERNAME_SERIAL }}
   ANALYTICS_API_QAR_PASSWORD: ${{ secrets.ANALYTICS_API_QAR_PASSWORD }}
 
-  ANALYTICS_API_USERNAME_SERIAL: ${{ secrets.ANALYTICS_API_QAR_USERNAME_SERIAL }}
-  ANALYTICS_API_PASSWORD: ${{ secrets.ANALYTICS_API_QAR_PASSWORD }}
+  ANALYTICS_API_USERNAME_SERIAL: ${{ secrets.ANALYTICS_API_USERNAME_SERIAL }}
+  ANALYTICS_API_PASSWORD: ${{ secrets.ANALYTICS_API_PASSWORD }}
 
 on:
   schedule:
@@ -30,7 +30,7 @@ jobs:
       - name: Build and install new SDK
         run: |
           python -m pip install --upgrade pip
-          cd auto-generated-sdk
+          cd analyticsapi-engines-python-sdk
           python setup.py sdist
           pip install .
 
