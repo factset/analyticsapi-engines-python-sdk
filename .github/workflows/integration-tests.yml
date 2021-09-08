@@ -30,7 +30,7 @@ jobs:
       - name: Build and install new SDK
         run: |
           python -m pip install --upgrade pip
-          cd analyticsapi-engines-python-sdk
+          cd fds.analyticsapi.engines
           python setup.py sdist
           pip install .
 
