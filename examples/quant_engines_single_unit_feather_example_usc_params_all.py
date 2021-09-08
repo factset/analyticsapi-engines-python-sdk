@@ -10,14 +10,13 @@ from fds.analyticsapi.engines.configuration import Configuration
 from fds.analyticsapi.engines.model.quant_calculation_parameters_root import QuantCalculationParametersRoot
 from fds.analyticsapi.engines.model.quant_calculation_parameters import QuantCalculationParameters
 from fds.analyticsapi.engines.model.quant_calculation_meta import QuantCalculationMeta
-from fds.analyticsapi.engines.model.quant_screening_expression_universe import QuantScreeningExpressionUniverse
+from fds.analyticsapi.engines.model.quant_universal_screen_universe import QuantUniversalScreenUniverse
 from fds.analyticsapi.engines.model.quant_fds_date import QuantFdsDate
-from fds.analyticsapi.engines.model.quant_screening_expression import QuantScreeningExpression
-from fds.analyticsapi.engines.model.quant_fql_expression import QuantFqlExpression
+from fds.analyticsapi.engines.model.quant_all_universal_screen_parameters import QuantAllUniversalScreenParameters
 
 from urllib3 import Retry
 
-host = "https://api.factset.com"
+host = "https://api.inhouse-cauth.factset.com"
 username = os.environ["ANALYTICS_API_QAR_USERNAME_SERIAL"]
 password = os.environ["ANALYTICS_API_QAR_PASSWORD"]
 
@@ -38,26 +37,18 @@ def main():
     api_client = ApiClient(config)
 
     try:
-        screeningExpressionUniverse = QuantScreeningExpressionUniverse(source="ScreeningExpressionUniverse",
-                                                                       universe_expr="(ISON_DOW AND P_PRICE > 150)=1", universe_type="Equity",
-                                                                       security_expr="TICKER")
+        universalScreenUniverse = QuantUniversalScreenUniverse(source="UniversalScreenUniverse",
+                                                                       screen="Client:/Aapi/Quant/Basic_Screen")
 
         fdsDate = QuantFdsDate(source="FdsDate",
-            start_date="0", end_date="-2M", frequency="M", calendar="FIVEDAY")
-        
-        screeningExpression1 = QuantScreeningExpression(source="ScreeningExpression",
-            expr="FG_GICS_SECTOR", name="Sector (scr)")
-        screeningExpression2 = QuantScreeningExpression(source="ScreeningExpression",
-            expr="P_PRICE", name="Price (scr)")
-        fqlExpression1 = QuantFqlExpression(source="FqlExpression",
-            expr="P_PRICE(#DATE,#DATE,#FREQ)", name="Price (fql)")
-        fqlExpression2 = QuantFqlExpression(source="FqlExpression",
-            expr="OS_TOP_HLDR_POS(3,#DATE,#DATE,M,,S,SEC)", name="Top 3 Pos (fql)")
+            start_date="20050701", end_date="20050701", frequency="D", calendar="FIVEDAY")
+
+        allUniversalScreenParameter = QuantAllUniversalScreenParameters(source="AllUniversalScreenParameters")
 
         quant_calculation_parameters = {"1": QuantCalculationParameters(
-            universe=screeningExpressionUniverse,
+            universe=universalScreenUniverse,
             dates=fdsDate,
-            formulas=[screeningExpression1, screeningExpression2, fqlExpression1, fqlExpression2])
+            formulas=[allUniversalScreenParameter])
         }
 
         quant_calculations_meta = QuantCalculationMeta(format='Feather')
