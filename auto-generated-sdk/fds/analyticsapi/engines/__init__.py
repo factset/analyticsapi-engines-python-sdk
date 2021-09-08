@@ -11,7 +11,7 @@
 """
 
 
-__version__ = "5.2.1"
+__version__ = "5.2.0"
 
 # import ApiClient
 from fds.analyticsapi.engines.api_client import ApiClient
