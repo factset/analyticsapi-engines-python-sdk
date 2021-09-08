@@ -95,7 +95,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                 componentdetail="componentdetail_example",
             ),
         ),
-        meta={},
+        meta=None,
     ) # TemplatedPAComponentParametersRoot | Request Parameters
 
     # example passing only required values which don't have defaults set
@@ -319,7 +319,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                 componentdetail="componentdetail_example",
             ),
         ),
-        meta={},
+        meta=None,
     ) # TemplatedPAComponentUpdateParametersRoot | Request Parameters
 
     # example passing only required values which don't have defaults set
