@@ -17,8 +17,8 @@ from fds.analyticsapi.engines.model.quant_all_universal_screen_parameters import
 from urllib3 import Retry
 
 host = "https://api.factset.com"
-username = os.environ["ANALYTICS_API_QAR_USERNAME_SERIAL"]
-password = os.environ["ANALYTICS_API_QAR_PASSWORD"]
+username = "<username-serial>"
+password = "<apiKey>"
 
 
 def main():
