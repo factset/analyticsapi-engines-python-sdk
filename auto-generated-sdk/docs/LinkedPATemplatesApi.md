@@ -74,7 +74,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                 ],
             ),
         ),
-        meta={},
+        meta=None,
     ) # LinkedPATemplateParametersRoot | Request Parameters
 
     # example passing only required values which don't have defaults set
@@ -464,7 +464,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                 ],
             ),
         ),
-        meta={},
+        meta=None,
     ) # LinkedPATemplateUpdateParametersRoot | Request Parameters
 
     # example passing only required values which don't have defaults set
