@@ -162,6 +162,7 @@ class ComponentsApi(object):
 
         def __get_pa_components(
             self,
+            document,
             **kwargs
         ):
             """Get PA components  # noqa: E501
@@ -170,13 +171,13 @@ class ComponentsApi(object):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.get_pa_components(async_req=True)
+            >>> thread = api.get_pa_components(document, async_req=True)
             >>> result = thread.get()
 
+            Args:
+                document (str): Document Name
 
             Keyword Args:
-                document (str): Document Name. [optional]
-                directory (str): Directory to get the components. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is False.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -221,6 +222,8 @@ class ComponentsApi(object):
                 '_check_return_type', True
             )
             kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['document'] = \
+                document
             return self.call_with_http_info(**kwargs)
 
         self.get_pa_components = _Endpoint(
@@ -238,9 +241,10 @@ class ComponentsApi(object):
             params_map={
                 'all': [
                     'document',
-                    'directory',
                 ],
-                'required': [],
+                'required': [
+                    'document',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -256,16 +260,12 @@ class ComponentsApi(object):
                 'openapi_types': {
                     'document':
                         (str,),
-                    'directory':
-                        (str,),
                 },
                 'attribute_map': {
                     'document': 'document',
-                    'directory': 'directory',
                 },
                 'location_map': {
                     'document': 'query',
-                    'directory': 'query',
                 },
                 'collection_format_map': {
                 }
