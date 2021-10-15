@@ -52,10 +52,9 @@ def main():
         enddate = "20181231"
         frequency = "Monthly"
         get_components_response = components_api.get_spar_components(spar_document_name)
-        component_summary = ComponentSummary(
-            name=spar_component_name, category=spar_component_category)
+        
         component_id = [id for id in list(
-            get_components_response[0].data.keys()) if get_components_response[0].data[id] == component_summary][0]
+            get_components_response[0].data.keys()) if get_components_response[0].data[id].name == spar_component_name and get_components_response[0].data[id].category == spar_component_category][0]
         print("SPAR Component Id: " + component_id)
         spar_account_identifier = SPARIdentifier(id=spar_benchmark_r_1000, returntype=spar_benchmark_russell_return_type,
                                                  prefix=spar_benchmark_russell_prefix)
