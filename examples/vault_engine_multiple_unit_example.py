@@ -21,7 +21,7 @@ from urllib3 import Retry
 
 host = "https://api.factset.com"
 username = "<username-serial>"
-password = "<apikey>"
+password = "<apiKey>"
 
 
 def main():
