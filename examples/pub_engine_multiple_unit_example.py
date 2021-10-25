@@ -39,7 +39,9 @@ def main():
         pub_account_id = "BENCH:SP50"
         startdate = "-1M"
         enddate = "0M"
-
+        # uncomment the below code line to setup cache control; max-stale=0 will be a fresh adhoc run and the max-stale value is in seconds.
+        # Results are by default cached for 12 hours; Setting max-stale=300 will fetch a cached result which is 5 minutes older.
+        #cache_control = "max-stale=0"
         pub_account_identifier = PubIdentifier(pub_account_id)
         pub_dates = PubDateParameters(enddate, startdate=startdate)
 
@@ -54,7 +56,8 @@ def main():
         pub_calculations_api = PubCalculationsApi(api_client)
         post_and_calculate_response = pub_calculations_api.post_and_calculate(
             pub_calculation_parameters_root=pub_calculation_parameters_root)
-
+        # comment the above line and uncomment the below line to run the request with the cache_control header defined earlier
+        #post_and_calculate_response = pub_calculations_api.post_and_calculate(pub_calculation_parameters_root=pub_calculation_parameters_root, cache_control=cache_control)
         if post_and_calculate_response[1] == 202 or post_and_calculate_response[1] == 200:
             calculation_id = post_and_calculate_response[0].data.calculationid
             print("Calculation Id: " + calculation_id)
