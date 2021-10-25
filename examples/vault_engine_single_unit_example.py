@@ -52,10 +52,9 @@ def main():
         frequency = "Monthly"
 
         get_components_response = components_api.get_vault_components(vault_document_name)
-        component_summary = ComponentSummary(
-            name=vault_component_name, category=vault_component_category)
+        
         component_id = [id for id in list(
-            get_components_response[0].data.keys()) if get_components_response[0].data[id] == component_summary][0]
+            get_components_response[0].data.keys()) if get_components_response[0].data[id].name == vault_component_name and get_components_response[0].data[id].category == vault_component_category][0]
         print("Vault Component Id: " + component_id)
         vault_account_identifier = VaultIdentifier(vault_default_account)
         vault_dates = VaultDateParameters(

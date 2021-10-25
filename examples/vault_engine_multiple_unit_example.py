@@ -53,16 +53,11 @@ def main():
         frequency = "Monthly"
 
         get_components_response = components_api.get_vault_components(vault_document_name)
-        component_total_returns_summary = ComponentSummary(
-            name=vault_component_total_returns, category=vault_component_category)
-        component_total_returns_id = [id for id in list(get_components_response[0].data.keys(
-        )) if get_components_response[0].data[id] == component_total_returns_summary][0]
+        component_total_returns_id = [id for id in list(get_components_response[0].data.keys()) if get_components_response[0].data[id].name == vault_component_total_returns and get_components_response[0].data[id].category == vault_component_category][0]
         print("Vault Total Returns Component Id: " + component_total_returns_id)
 
-        component_performance_summary = ComponentSummary(
-            name=vault_component_performance, category=vault_component_category)
-        component_performance_id = [id for id in list(get_components_response[0].data.keys(
-        )) if get_components_response[0].data[id] == component_performance_summary][0]
+        
+        component_performance_id = [id for id in list(get_components_response[0].data.keys()) if get_components_response[0].data[id].name == vault_component_performance and get_components_response[0].data[id].category == vault_component_category][0]
         print("Vault Performance Over Time Component Id: " +
               component_performance_id)
 
