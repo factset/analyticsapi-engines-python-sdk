@@ -44,20 +44,20 @@ def main():
         spar_document_name = "pmw_root:/spar_documents/Factset Default Document"
         spar_component_name = "Returns Table"
         spar_component_category = "Raw Data / Returns"
-        #spar_benchmark_r_1000 = "R.1000"
+        # spar_benchmark_r_1000 = "R.1000"
         spar_benchmark_1 = "R.1000"
-        #spar_benchmark_russell_pr_2000 = "RUSSELL_P:R.2000"
+        # spar_benchmark_russell_pr_2000 = "RUSSELL_P:R.2000"
         spar_benchmark_2 = "RUSSELL_P:R.2000"
-        #spar_benchmark_russell_prefix = "RUSSELL"
+        # spar_benchmark_russell_prefix = "RUSSELL"
         spar_benchmark_prefix = "RUSSELL"
-        #spar_benchmark_russell_return_type = "GTR"
+        # spar_benchmark_russell_return_type = "GTR"
         spar_benchmark_return_type = "GTR"
         startdate = "20180101"
         enddate = "20181231"
         frequency = "Monthly"
         # uncomment the below code line to setup cache control; max-stale=0 will be a fresh adhoc run and the max-stale value is in seconds.
         # Results are by default cached for 12 hours; Setting max-stale=300 will fetch a cached result which is 5 minutes older.
-        #cache_control = "max-stale=0"
+        # cache_control = "max-stale=0"
         get_components_response = components_api.get_spar_components(spar_document_name)
         
         component_id = [id for id in list(
@@ -80,7 +80,7 @@ def main():
         post_and_calculate_response = spar_calculations_api.post_and_calculate(
             spar_calculation_parameters_root=spar_calculation_parameter_root)
         # comment the above line and uncomment the below line to run the request with the cache_control header defined earlier
-        #post_and_calculate_response = spar_calculations_api.post_and_calculate(spar_calculation_parameters_root=spar_calculation_parameter_root, cache_control=cache_control)
+        # post_and_calculate_response = spar_calculations_api.post_and_calculate(spar_calculation_parameters_root=spar_calculation_parameter_root, cache_control=cache_control)
         if post_and_calculate_response[1] == 201:
             output_calculation_result(post_and_calculate_response[0]['data'])
         elif post_and_calculate_response[1] == 200:

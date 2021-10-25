@@ -52,7 +52,7 @@ def main():
         frequency = "Monthly"
         # uncomment the below code line to setup cache control; max-stale=0 will be a fresh adhoc run and the max-stale value is in seconds.
         # Results are by default cached for 12 hours; Setting max-stale=300 will fetch a cached result which is 5 minutes older.
-        #cache_control = "max-stale=0"
+        # cache_control = "max-stale=0"
         get_components_response = components_api.get_vault_components(vault_document_name)
         
         component_id = [id for id in list(
@@ -78,7 +78,7 @@ def main():
         post_and_calculate_response = vault_calculations_api.post_and_calculate(
             vault_calculation_parameters_root=vault_calculation_parameters_root)
         # comment the above line and uncomment the below line to run the request with the cache_control header defined earlier
-        #post_and_calculate_response = vault_calculations_api.post_and_calculate(vault_calculation_parameters_root=vault_calculation_parameters_root, cache_control=cache_control)
+        # post_and_calculate_response = vault_calculations_api.post_and_calculate(vault_calculation_parameters_root=vault_calculation_parameters_root, cache_control=cache_control)
 
         if post_and_calculate_response[1] == 201:
             output_calculation_result(post_and_calculate_response[0]['data'])

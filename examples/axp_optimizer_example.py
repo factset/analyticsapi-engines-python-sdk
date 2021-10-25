@@ -83,7 +83,7 @@ def main():
         )
         # uncomment the below code line to setup cache control; max-stale=0 will be a fresh adhoc run and the max-stale value is in seconds.
         # Results are by default cached for 12 hours; Setting max-stale=300 will fetch a cached result which is 5 minutes older.
-        #cache_control = "max-stale=0"
+        # cache_control = "max-stale=0"
         axp_optimization_parameters_root = AxiomaEquityOptimizationParametersRoot(
             data=axp_optimizer_parameters)
 
@@ -93,9 +93,9 @@ def main():
             axioma_equity_optimization_parameters_root=axp_optimization_parameters_root
         )
         # comment the above line and uncomment the below line to run the request with the cache_control header defined earlier
-        #post_and_optimize_response = axp_optimizations_api.post_and_optimize(
-            #axioma_equity_optimization_parameters_root=axp_optimization_parameters_root, cache_control=cache_control
-        #)
+        # post_and_optimize_response = axp_optimizations_api.post_and_optimize(
+            # axioma_equity_optimization_parameters_root=axp_optimization_parameters_root, cache_control=cache_control
+        # )
         if post_and_optimize_response[1] == 201:
             output_optimization_result(post_and_optimize_response[0]['data'])
         else:
