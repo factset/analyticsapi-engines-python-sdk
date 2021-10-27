@@ -62,12 +62,16 @@ def main():
             afi_optimizer_strategy, afi_optimizer_output_types)
         afi_optimization_parameters_root = AFIOptimizationParametersRoot(
             data=afi_optimization_parameters)
-
+        # uncomment the below code line to setup cache control; max-stale=0 will be a fresh adhoc run and the max-stale value is in seconds.
+        # Results are by default cached for 12 hours; Setting max-stale=300 will fetch a cached result which is 5 minutes older.
+        # cache_control = "max-stale=0"
         afi_optimizations_api = AFIOptimizerApi(api_client)
-
+        
         post_and_optimize_response = afi_optimizations_api.post_and_optimize(
             afi_optimization_parameters_root=afi_optimization_parameters_root)
-
+        # comment the above line and uncomment the below line to run the request with the cache_control header defined earlier
+        # post_and_optimize_response = afi_optimizations_api.post_and_optimize(
+            # afi_optimization_parameters_root=afi_optimization_parameters_root, cache_control=cache_control)
         if post_and_optimize_response[1] == 201:
             output_optimization_result(post_and_optimize_response[0]['data'])
         else:

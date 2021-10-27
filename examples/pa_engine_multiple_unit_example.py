@@ -20,7 +20,7 @@ from urllib3 import Retry
 
 host = "https://api.factset.com"
 username = "<username-serial>"
-password = "<apikey>"
+password = "<apiKey>"
 
 
 def main():
@@ -45,18 +45,20 @@ def main():
         pa_document_name = "PA_DOCUMENTS:DEFAULT"
         pa_component_name = "Weights"
         pa_component_category = "Weights / Exposures"
-        pa_benchmark_sp_50 = "BENCH:SP50"
-        pa_benchmark_r_1000 = "BENCH:R.1000"
+        portfolio = "BENCH:SP50"
+        benchmark = "BENCH:R.1000"
         startdate = "20180101"
         enddate = "20181231"
         frequency = "Monthly"
-
+        # uncomment the below code line to setup cache control; max-stale=0 will be a fresh adhoc run and the max-stale value is in seconds.
+        # Results are by default cached for 12 hours; Setting max-stale=300 will fetch a cached result which is 5 minutes older. 
+        # cache_control = "max-stale=0"
         get_components_response = components_api.get_pa_components(document=pa_document_name)
         component_id = [id for id in list(
             get_components_response[0].data.keys()) if get_components_response[0].data[id].name == pa_component_name and get_components_response[0].data[id].category == pa_component_category][0]
         print("PA Component Id: " + component_id)
-        pa_accounts = [PAIdentifier(id=pa_benchmark_sp_50)]
-        pa_benchmarks = [PAIdentifier(id=pa_benchmark_r_1000)]
+        pa_accounts = [PAIdentifier(id=portfolio)]
+        pa_benchmarks = [PAIdentifier(id=benchmark)]
         pa_dates = PADateParameters(
             startdate=startdate, enddate=enddate, frequency=frequency)
 
@@ -72,7 +74,8 @@ def main():
 
         post_and_calculate_response = pa_calculations_api.post_and_calculate(
             pa_calculation_parameters_root=pa_calculation_parameter_root)
-
+        # comment the above line and uncomment the below line to run the request with the cache_control header defined earlier
+        # post_and_calculate_response = pa_calculations_api.post_and_calculate(pa_calculation_parameters_root=pa_calculation_parameter_root, cache_control=cache_control)
         if post_and_calculate_response[1] == 202 or post_and_calculate_response[1] == 200:
             calculation_id = post_and_calculate_response[0].data.calculationid
             print("Calculation Id: " + calculation_id)
