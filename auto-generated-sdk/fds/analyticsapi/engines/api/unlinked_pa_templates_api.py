@@ -26,6 +26,7 @@ from fds.analyticsapi.engines.model.client_error_response import ClientErrorResp
 from fds.analyticsapi.engines.model.unlinked_pa_template_category_and_type_details_root import UnlinkedPATemplateCategoryAndTypeDetailsRoot
 from fds.analyticsapi.engines.model.unlinked_pa_template_category_and_type_root import UnlinkedPATemplateCategoryAndTypeRoot
 from fds.analyticsapi.engines.model.unlinked_pa_template_parameters_root import UnlinkedPATemplateParametersRoot
+from fds.analyticsapi.engines.model.unlinked_pa_template_post_summary_root import UnlinkedPATemplatePostSummaryRoot
 from fds.analyticsapi.engines.model.unlinked_pa_template_root import UnlinkedPATemplateRoot
 from fds.analyticsapi.engines.model.unlinked_pa_template_summary_root import UnlinkedPATemplateSummaryRoot
 from fds.analyticsapi.engines.model.unlinked_pa_template_update_parameters_root import UnlinkedPATemplateUpdateParametersRoot
@@ -82,7 +83,7 @@ class UnlinkedPATemplatesApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                UnlinkedPATemplateSummaryRoot
+                UnlinkedPATemplatePostSummaryRoot
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -111,7 +112,7 @@ class UnlinkedPATemplatesApi(object):
 
         self.create_unlinked_pa_templates = _Endpoint(
             settings={
-                'response_type': dict({ 201:(UnlinkedPATemplateSummaryRoot,),  }),
+                'response_type': dict({ 201:(UnlinkedPATemplatePostSummaryRoot,),  }),
                 'auth': [
                     'Basic',
                     'Bearer'
@@ -793,7 +794,7 @@ class UnlinkedPATemplatesApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                UnlinkedPATemplateSummaryRoot
+                UnlinkedPATemplatePostSummaryRoot
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -824,7 +825,7 @@ class UnlinkedPATemplatesApi(object):
 
         self.update_unlinked_pa_templates = _Endpoint(
             settings={
-                'response_type': dict({ 200:(UnlinkedPATemplateSummaryRoot,),  }),
+                'response_type': dict({ 200:(UnlinkedPATemplatePostSummaryRoot,),  }),
                 'auth': [
                     'Basic',
                     'Bearer'

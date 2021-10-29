@@ -61,10 +61,17 @@ from fds.analyticsapi.engines.model.fiab_identifier import FIABIdentifier
 from fds.analyticsapi.engines.model.fi_calculation_parameters import FICalculationParameters
 from fds.analyticsapi.engines.model.fi_calculation_parameters_root import FICalculationParametersRoot
 from fds.analyticsapi.engines.model.fi_job_settings import FIJobSettings
+from fds.analyticsapi.engines.model.fi_loss import FILoss
+from fds.analyticsapi.engines.model.fi_prepay import FIPrepay
+from fds.analyticsapi.engines.model.fi_reference_prepay import FIReferencePrepay
+from fds.analyticsapi.engines.model.fi_reference_security import FIReferenceSecurity
 from fds.analyticsapi.engines.model.fi_security import FISecurity
 from fds.analyticsapi.engines.model.fpo_account import FPOAccount
+from fds.analyticsapi.engines.model.fpo_objective import FPOObjective
 from fds.analyticsapi.engines.model.fpo_optimization_parameters import FPOOptimizationParameters
 from fds.analyticsapi.engines.model.fpo_optimization_parameters_root import FPOOptimizationParametersRoot
+from fds.analyticsapi.engines.model.fpo_optimizer_strategy import FPOOptimizerStrategy
+from fds.analyticsapi.engines.model.fpo_optimizer_strategy_overrides import FPOOptimizerStrategyOverrides
 from fds.analyticsapi.engines.model.frequency import Frequency
 from fds.analyticsapi.engines.model.frequency_root import FrequencyRoot
 from fds.analyticsapi.engines.model.group import Group
@@ -72,6 +79,8 @@ from fds.analyticsapi.engines.model.group_root import GroupRoot
 from fds.analyticsapi.engines.model.linked_pa_template import LinkedPATemplate
 from fds.analyticsapi.engines.model.linked_pa_template_parameters import LinkedPATemplateParameters
 from fds.analyticsapi.engines.model.linked_pa_template_parameters_root import LinkedPATemplateParametersRoot
+from fds.analyticsapi.engines.model.linked_pa_template_post_summary import LinkedPATemplatePostSummary
+from fds.analyticsapi.engines.model.linked_pa_template_post_summary_root import LinkedPATemplatePostSummaryRoot
 from fds.analyticsapi.engines.model.linked_pa_template_root import LinkedPATemplateRoot
 from fds.analyticsapi.engines.model.linked_pa_template_summary import LinkedPATemplateSummary
 from fds.analyticsapi.engines.model.linked_pa_template_summary_root import LinkedPATemplateSummaryRoot
@@ -88,8 +97,6 @@ from fds.analyticsapi.engines.model.optimizer_account import OptimizerAccount
 from fds.analyticsapi.engines.model.optimizer_account_overrides import OptimizerAccountOverrides
 from fds.analyticsapi.engines.model.optimizer_optimal_holdings import OptimizerOptimalHoldings
 from fds.analyticsapi.engines.model.optimizer_output_types import OptimizerOutputTypes
-from fds.analyticsapi.engines.model.optimizer_strategy import OptimizerStrategy
-from fds.analyticsapi.engines.model.optimizer_strategy_overrides import OptimizerStrategyOverrides
 from fds.analyticsapi.engines.model.optimizer_trades_list import OptimizerTradesList
 from fds.analyticsapi.engines.model.pa_calculation_column import PACalculationColumn
 from fds.analyticsapi.engines.model.pa_calculation_group import PACalculationGroup
@@ -138,8 +145,12 @@ from fds.analyticsapi.engines.model.spar_calculation_parameters_root import SPAR
 from fds.analyticsapi.engines.model.spar_date_parameters import SPARDateParameters
 from fds.analyticsapi.engines.model.spar_identifier import SPARIdentifier
 from fds.analyticsapi.engines.model.template_content_types import TemplateContentTypes
+from fds.analyticsapi.engines.model.templated_pa_component import TemplatedPAComponent
 from fds.analyticsapi.engines.model.templated_pa_component_parameters import TemplatedPAComponentParameters
 from fds.analyticsapi.engines.model.templated_pa_component_parameters_root import TemplatedPAComponentParametersRoot
+from fds.analyticsapi.engines.model.templated_pa_component_post_summary import TemplatedPAComponentPostSummary
+from fds.analyticsapi.engines.model.templated_pa_component_post_summary_root import TemplatedPAComponentPostSummaryRoot
+from fds.analyticsapi.engines.model.templated_pa_component_root import TemplatedPAComponentRoot
 from fds.analyticsapi.engines.model.templated_pa_component_summary import TemplatedPAComponentSummary
 from fds.analyticsapi.engines.model.templated_pa_component_summary_root import TemplatedPAComponentSummaryRoot
 from fds.analyticsapi.engines.model.templated_pa_component_update_parameters import TemplatedPAComponentUpdateParameters
@@ -151,6 +162,8 @@ from fds.analyticsapi.engines.model.unlinked_pa_template_category_and_type_detai
 from fds.analyticsapi.engines.model.unlinked_pa_template_category_and_type_root import UnlinkedPATemplateCategoryAndTypeRoot
 from fds.analyticsapi.engines.model.unlinked_pa_template_parameters import UnlinkedPATemplateParameters
 from fds.analyticsapi.engines.model.unlinked_pa_template_parameters_root import UnlinkedPATemplateParametersRoot
+from fds.analyticsapi.engines.model.unlinked_pa_template_post_summary import UnlinkedPATemplatePostSummary
+from fds.analyticsapi.engines.model.unlinked_pa_template_post_summary_root import UnlinkedPATemplatePostSummaryRoot
 from fds.analyticsapi.engines.model.unlinked_pa_template_root import UnlinkedPATemplateRoot
 from fds.analyticsapi.engines.model.unlinked_pa_template_summary import UnlinkedPATemplateSummary
 from fds.analyticsapi.engines.model.unlinked_pa_template_summary_root import UnlinkedPATemplateSummaryRoot

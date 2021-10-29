@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **create_linked_pa_templates**
-> LinkedPATemplateSummaryRoot create_linked_pa_templates(linked_pa_template_parameters_root)
+> LinkedPATemplatePostSummaryRoot create_linked_pa_templates(linked_pa_template_parameters_root)
 
 Create a linked PA template
 
@@ -27,7 +27,7 @@ This endpoint creates a template from an **existing portfolio analysis tile**, a
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import linked_pa_templates_api
-from fds.analyticsapi.engines.model.linked_pa_template_summary_root import LinkedPATemplateSummaryRoot
+from fds.analyticsapi.engines.model.linked_pa_template_post_summary_root import LinkedPATemplatePostSummaryRoot
 from fds.analyticsapi.engines.model.linked_pa_template_parameters_root import LinkedPATemplateParametersRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
@@ -96,7 +96,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**LinkedPATemplateSummaryRoot**](LinkedPATemplateSummaryRoot.md)
+ - **Response datatype**: [**LinkedPATemplatePostSummaryRoot**](LinkedPATemplatePostSummaryRoot.md)
 
 ### Authorization
 
@@ -403,7 +403,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_linked_pa_templates**
-> LinkedPATemplateSummaryRoot update_linked_pa_templates(id, linked_pa_template_update_parameters_root)
+> LinkedPATemplatePostSummaryRoot update_linked_pa_templates(id, linked_pa_template_update_parameters_root)
 
 Update a linked PA template
 
@@ -417,7 +417,7 @@ This endpoint allows the user to change the request body and description from an
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import linked_pa_templates_api
-from fds.analyticsapi.engines.model.linked_pa_template_summary_root import LinkedPATemplateSummaryRoot
+from fds.analyticsapi.engines.model.linked_pa_template_post_summary_root import LinkedPATemplatePostSummaryRoot
 from fds.analyticsapi.engines.model.linked_pa_template_update_parameters_root import LinkedPATemplateUpdateParametersRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
@@ -487,7 +487,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**LinkedPATemplateSummaryRoot**](LinkedPATemplateSummaryRoot.md)
+ - **Response datatype**: [**LinkedPATemplatePostSummaryRoot**](LinkedPATemplatePostSummaryRoot.md)
 
 ### Authorization
 

@@ -426,6 +426,24 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                 FISecurity(
                     settlement="settlement_example",
                     call_method="No Call",
+                    reference_security=FIReferenceSecurity(
+                        security_type="security_type_example",
+                        security_name="security_name_example",
+                        calc_from_method="calc_from_method_example",
+                        calc_from_value=3.14,
+                        prepay=FIReferencePrepay(
+                            prepay_name="prepay_name_example",
+                        ),
+                        settlement="settlement_example",
+                    ),
+                    loss=FILoss(
+                        loss_name="loss_name_example",
+                    ),
+                    prepay=FIPrepay(
+                        prepay_name="prepay_name_example",
+                    ),
+                    matrix_spread_adjustment=3.14,
+                    matrix_multiplier=3.14,
                     calc_from_method="calc_from_method_example",
                     calc_from_value=3.14,
                     face=1,
@@ -560,6 +578,24 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                 FISecurity(
                     settlement="settlement_example",
                     call_method="No Call",
+                    reference_security=FIReferenceSecurity(
+                        security_type="security_type_example",
+                        security_name="security_name_example",
+                        calc_from_method="calc_from_method_example",
+                        calc_from_value=3.14,
+                        prepay=FIReferencePrepay(
+                            prepay_name="prepay_name_example",
+                        ),
+                        settlement="settlement_example",
+                    ),
+                    loss=FILoss(
+                        loss_name="loss_name_example",
+                    ),
+                    prepay=FIPrepay(
+                        prepay_name="prepay_name_example",
+                    ),
+                    matrix_spread_adjustment=3.14,
+                    matrix_multiplier=3.14,
                     calc_from_method="calc_from_method_example",
                     calc_from_value=3.14,
                     face=1,
