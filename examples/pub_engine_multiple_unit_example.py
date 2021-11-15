@@ -13,9 +13,9 @@ from fds.analyticsapi.engines.model.pub_date_parameters import PubDateParameters
 from urllib3 import Retry
 from pathlib import Path
 
-host = "https://api.factset.com"
-username = "<username-serial>"
-password = "<apiKey>"
+host = os.environ['FACTSET_HOST']
+username = os.environ['FACTSET_USERNAME']
+password = os.environ['FACTSET_API_KEY']
 
 
 def main():

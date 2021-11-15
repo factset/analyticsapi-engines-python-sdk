@@ -73,7 +73,7 @@ class TestUnlinkedPaTemplatesApi(unittest.TestCase):
         self.assertEqual(response[1], 201, "Response should be 201 - Success")
         self.assertEqual(type(response[0].data), dict, "Response should be of Dictionary type.")
         self.assertEqual(type(response[0].data[firsttemplate]),
-            UnlinkedPATemplateSummary, "Response should be of UnlinkedPATemplateSummary type.")
+            str, "Response should be of UnlinkedPATemplateSummary type.")
         self.assertGreater(len(response[0].data), 0, "Response result should not be an empty list.")
 
     def test_b_get_all_unlinked_pa_templates_by_directory(self):
@@ -105,7 +105,6 @@ class TestUnlinkedPaTemplatesApi(unittest.TestCase):
             directory = "Personal:SDKTests/DoNotModify/UnlinkedPATemplates/"
         )
         template_id = list(templates[0].data.keys())[0]
-
         unlinked_pa_template_update_parameters = UnlinkedPATemplateUpdateParameters(
             description="This is an updated unlinked PA template that only returns security level data",
             accounts = [
@@ -149,8 +148,8 @@ class TestUnlinkedPaTemplatesApi(unittest.TestCase):
 
         self.assertEqual(response[1], 200, "Response should be 200 - Success")
         self.assertEqual(type(response[0].data), dict, "Response should be of Dictionary type.")
-        self.assertEqual(type(response[0].data[template_id]),
-            UnlinkedPATemplateSummary, "Response should be of UnlinkedPATemplateSummary type.")
+        self.assertEqual(type(response[0].data),
+            dict, "Response should be of UnlinkedPATemplateSummary type.")
         self.assertGreater(len(response[0].data), 0, "Response result should not be an empty list.")
 
     def test_e_get_unlinked_pa_template_by_id(self):
