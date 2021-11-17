@@ -102,6 +102,7 @@ class TestLinkedPaTemplatesApi(unittest.TestCase):
         templates = self.linked_pa_templates_api.get_linked_pa_templates(
             directory = "Personal:SDKTests/DoNotModify/LinkedPATemplates/"
         )
+        print(templates[0])
         template_id = list(templates[0].data.keys())[0]
         response = self.linked_pa_templates_api.delete_linked_pa_templates(
             id = template_id

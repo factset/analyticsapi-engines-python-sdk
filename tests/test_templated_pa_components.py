@@ -268,5 +268,32 @@ class TestTemplatedPaComponents(unittest.TestCase):
             id=parent_template_id
         )
 
+    def test_d_get_templated_pa_component_by_id(self):
+        templates = self.templated_pa_components_api.get_templated_pa_component_by_id(
+            directory = "Personal:SDKTests/DoNotModify/TemplatedPAComponents/"
+        )
+        template_id = templates[0].data['id']
+
+        response = self.linked_pa_templates_api.get_linked_pa_templates_by_id(
+            id = template_id
+        )
+
+        self.assertEqual(response[1], 200, "Response should be 200 - Success")
+        self.assertEqual(type(response[0]), TemplatedPAComponentRoot, "Response should be of TemplatedPAComponentRoot type.")
+        self.assertEqual(type(response[0].data),
+            TemplatedPAComponentRoot, "Response should be of TemplatedPAComponentRoot type.")
+
+    def test_e__get_templated_pa_components_in_path(self):
+        response = self.templated_pa_components_api.get_templated_pa_components_in_path(
+            directory = "Personal:SDKTests/DoNotModify/TemplatedPAComponents/"
+        )
+
+        firsttemplate = response[0].data['id']
+        self.assertEqual(response[1], 200, "Response should be 200 - Success")
+        self.assertEqual(type(response[0].data), dict, "Response should be of Dictionary type.")
+        self.assertEqual(type(response[0].data[firsttemplate]),
+            TemplatedPAComponentSummaryRoot, "Response should be of TemplatedPAComponentSummaryRoot type.")
+        self.assertGreater(len(response[0].data), 0, "Response result should not be an empty list.")
+
 if __name__ == '__main__':
     unittest.main()
