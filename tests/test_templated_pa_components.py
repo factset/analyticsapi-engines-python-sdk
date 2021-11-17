@@ -10,6 +10,10 @@ from fds.analyticsapi.engines.model.pa_identifier import PAIdentifier
 from fds.analyticsapi.engines.model.pa_calculation_group import PACalculationGroup
 from fds.analyticsapi.engines.model.pa_calculation_column import PACalculationColumn
 from fds.analyticsapi.engines.model.templated_pa_component_summary import TemplatedPAComponentSummary
+from fds.analyticsapi.engines.model.templated_pa_component import TemplatedPAComponent
+from fds.analyticsapi.engines.model.templated_pa_component_root import TemplatedPAComponentRoot
+from fds.analyticsapi.engines.model.templated_pa_component_summary_root import TemplatedPAComponentSummaryRoot
+from fds.analyticsapi.engines.model.templated_pa_component_post_summary import TemplatedPAComponentPostSummary
 from fds.analyticsapi.engines.model.templated_pa_component_update_parameters import TemplatedPAComponentUpdateParameters
 from fds.analyticsapi.engines.model.templated_pa_component_update_parameters_root import TemplatedPAComponentUpdateParametersRoot
 from fds.analyticsapi.engines.model.unlinked_pa_template_parameters import UnlinkedPATemplateParameters
@@ -75,6 +79,7 @@ class TestTemplatedPaComponents(unittest.TestCase):
 
         # create templated component
         parent_template_id = templates[0].data['id']
+
         templated_pa_component_parameters = TemplatedPAComponentParameters(
             directory="Personal:SDKTests/DoNotModify/TemplatedPAComponents/",
             parent_template_id=parent_template_id,
@@ -104,20 +109,20 @@ class TestTemplatedPaComponents(unittest.TestCase):
                 componentdetail = "GROUPS"
             )
         )
-        
+
         templated_pa_component_parameters_root = TemplatedPAComponentParametersRoot(
             data = templated_pa_component_parameters
         )
-        
+
         response = self.templated_pa_components_api.create_templated_pa_components(
             templated_pa_component_parameters_root = templated_pa_component_parameters_root)
 
         firstcomponent = response[0].data['id']
         self.assertEqual(response[1], 201, "Response should be 201 - Success")
-        self.assertEqual(type(response[0].data), dict, "Response should be of Dictionary type.")
+        self.assertEqual(type(response[0].data), TemplatedPAComponentPostSummary, "Response should be of TemplatedPAComponentPostSummary type.")
         self.assertEqual(type(response[0].data['id']),
             str, "Response should be of String type.")
-        self.assertGreater(len(response[0].data), 0, "Response result should not be an empty list.")
+        self.assertGreater(len(response[0].data['id']), 0, "Response result should not be an empty list.")
 
         # delete templated PA component
         response = self.templated_pa_components_api.delete_templated_pa_components(
@@ -165,6 +170,7 @@ class TestTemplatedPaComponents(unittest.TestCase):
             templated_pa_component_parameters_root = templated_pa_component_parameters_root)
 
         component_id = components[0].data['id']
+
         # update templated PA component
         templated_pa_component_update_parameters = TemplatedPAComponentUpdateParameters(
             parent_template_id = parent_template_id,
@@ -204,10 +210,10 @@ class TestTemplatedPaComponents(unittest.TestCase):
         )
 
         self.assertEqual(response[1], 200, "Response should be 200 - Success")
-        self.assertEqual(type(response[0].data), dict, "Response should be of Dictionary type.")
+        self.assertEqual(type(response[0].data), TemplatedPAComponentPostSummary, "Response should be of TemplatedPAComponentPostSummary type.")
         self.assertEqual(type(response[0].data['id']),
             str, "Response should be of String type.")
-        self.assertGreater(len(response[0].data), 0, "Response result should not be an empty list.")
+        self.assertGreater(len(response[0].data['id']), 0, "Response result should not be an empty list.")
 
         # delete templated PA component
         response = self.templated_pa_components_api.delete_templated_pa_components(
@@ -265,34 +271,34 @@ class TestTemplatedPaComponents(unittest.TestCase):
 
         # delete unlinked template
         response = self.unlinked_pa_templates_api.delete_unlinked_pa_templates(
-            id=parent_template_id
+            id = parent_template_id
         )
 
     def test_d_get_templated_pa_component_by_id(self):
-        templates = self.templated_pa_components_api.get_templated_pa_component_by_id(
+        templates = self.templated_pa_components_api.get_templated_pa_components_in_path( 
             directory = "Personal:SDKTests/DoNotModify/TemplatedPAComponents/"
         )
-        template_id = templates[0].data['id']
+        template_id = list(templates[0].data.keys())[0]
 
-        response = self.linked_pa_templates_api.get_linked_pa_templates_by_id(
+        response = self.templated_pa_components_api.get_templated_pa_component_by_id(
             id = template_id
         )
-
+        
         self.assertEqual(response[1], 200, "Response should be 200 - Success")
-        self.assertEqual(type(response[0]), TemplatedPAComponentRoot, "Response should be of TemplatedPAComponentRoot type.")
+        self.assertEqual(type(response[0]), TemplatedPAComponentRoot, "Response should be of TemplatedPAComponentSummaryRoot type.")
         self.assertEqual(type(response[0].data),
-            TemplatedPAComponentRoot, "Response should be of TemplatedPAComponentRoot type.")
+            TemplatedPAComponent, "Response should be of LinkedPATemplate type.")
 
     def test_e__get_templated_pa_components_in_path(self):
         response = self.templated_pa_components_api.get_templated_pa_components_in_path(
             directory = "Personal:SDKTests/DoNotModify/TemplatedPAComponents/"
         )
-
-        firsttemplate = response[0].data['id']
+        firsttemplate = list(response[0].data.keys())[0]
+        
         self.assertEqual(response[1], 200, "Response should be 200 - Success")
         self.assertEqual(type(response[0].data), dict, "Response should be of Dictionary type.")
         self.assertEqual(type(response[0].data[firsttemplate]),
-            TemplatedPAComponentSummaryRoot, "Response should be of TemplatedPAComponentSummaryRoot type.")
+            TemplatedPAComponentSummary, "Response should be of TemplatedPAComponentSummary type.")
         self.assertGreater(len(response[0].data), 0, "Response result should not be an empty list.")
 
 if __name__ == '__main__':
