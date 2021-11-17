@@ -151,7 +151,7 @@ class FIJobSettings(ModelNormal):
             partial_duration_months ([int]): Partial duration months. [optional]  # noqa: E501
             call_method (str): Call Method. [optional]  # noqa: E501
             settlement (str): Settlement Date. [optional]  # noqa: E501
-            calc_from_method (str): Calculation from method. [optional]  # noqa: E501
+            calc_from_method (str): Calculation Method.  Methods : Active Spread, Actual Spread, Actual Spread To Worst Call, OAS, Price, Yield, Yield To No Call, Act/Act Yield To No Call, Bond Equivalent Yield,  Yield To Worst Call, Discount Yield, Discount Margin, Implied Volatility, Bullet Spread, Bullet Spread To Worst Call, Pricing Matrix. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

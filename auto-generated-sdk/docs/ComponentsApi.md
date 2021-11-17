@@ -109,7 +109,7 @@ Name | Type | Description  | Notes
 
 Get PA components
 
-This endpoint returns      1.List of PA components in a given PA document if document name is provided.    2.List of components in given directory if directory is provided.
+This endpoint returns the list of PA components in a given PA document.
 
 ### Example
 

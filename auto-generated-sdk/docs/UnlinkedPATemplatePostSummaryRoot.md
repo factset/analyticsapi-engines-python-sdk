@@ -1,11 +1,11 @@
-# ComponentSummary
+# UnlinkedPATemplatePostSummaryRoot
 
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** | Component name. | [optional] 
-**category** | **str** | Component category. | [optional] 
+**data** | [**UnlinkedPATemplatePostSummary**](UnlinkedPATemplatePostSummary.md) |  | 
+**meta** | **bool, date, datetime, dict, float, int, list, str, none_type** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

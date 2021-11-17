@@ -167,7 +167,7 @@ class ComponentsApi(object):
         ):
             """Get PA components  # noqa: E501
 
-            This endpoint returns      1.List of PA components in a given PA document if document name is provided.    2.List of components in given directory if directory is provided.  # noqa: E501
+            This endpoint returns the list of PA components in a given PA document.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 

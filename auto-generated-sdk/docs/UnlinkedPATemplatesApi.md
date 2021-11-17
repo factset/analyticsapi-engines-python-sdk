@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **create_unlinked_pa_templates**
-> UnlinkedPATemplateSummaryRoot create_unlinked_pa_templates(unlinked_pa_template_parameters_root)
+> UnlinkedPATemplatePostSummaryRoot create_unlinked_pa_templates(unlinked_pa_template_parameters_root)
 
 Create unlinked PA template
 
@@ -29,7 +29,7 @@ This endpoint creates a template which is not linked to any specific PA3 tile.  
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import unlinked_pa_templates_api
-from fds.analyticsapi.engines.model.unlinked_pa_template_summary_root import UnlinkedPATemplateSummaryRoot
+from fds.analyticsapi.engines.model.unlinked_pa_template_post_summary_root import UnlinkedPATemplatePostSummaryRoot
 from fds.analyticsapi.engines.model.unlinked_pa_template_parameters_root import UnlinkedPATemplateParametersRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
@@ -130,7 +130,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**UnlinkedPATemplateSummaryRoot**](UnlinkedPATemplateSummaryRoot.md)
+ - **Response datatype**: [**UnlinkedPATemplatePostSummaryRoot**](UnlinkedPATemplatePostSummaryRoot.md)
 
 ### Authorization
 
@@ -610,7 +610,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_unlinked_pa_templates**
-> UnlinkedPATemplateSummaryRoot update_unlinked_pa_templates(id, unlinked_pa_template_update_parameters_root)
+> UnlinkedPATemplatePostSummaryRoot update_unlinked_pa_templates(id, unlinked_pa_template_update_parameters_root)
 
 Update unlinked PA template
 
@@ -624,8 +624,8 @@ This endpoint updates an existing unlinked PA template.    Remarks:             
 import time
 import fds.analyticsapi.engines
 from fds.analyticsapi.engines.api import unlinked_pa_templates_api
-from fds.analyticsapi.engines.model.unlinked_pa_template_summary_root import UnlinkedPATemplateSummaryRoot
 from fds.analyticsapi.engines.model.unlinked_pa_template_update_parameters_root import UnlinkedPATemplateUpdateParametersRoot
+from fds.analyticsapi.engines.model.unlinked_pa_template_post_summary_root import UnlinkedPATemplatePostSummaryRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
@@ -725,7 +725,7 @@ Name | Type | Description  | Notes
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**UnlinkedPATemplateSummaryRoot**](UnlinkedPATemplateSummaryRoot.md)
+ - **Response datatype**: [**UnlinkedPATemplatePostSummaryRoot**](UnlinkedPATemplatePostSummaryRoot.md)
 
 ### Authorization
 

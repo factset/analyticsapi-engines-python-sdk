@@ -24,6 +24,7 @@ from fds.analyticsapi.engines.model_utils import (  # noqa: F401
 )
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from fds.analyticsapi.engines.model.linked_pa_template_parameters_root import LinkedPATemplateParametersRoot
+from fds.analyticsapi.engines.model.linked_pa_template_post_summary_root import LinkedPATemplatePostSummaryRoot
 from fds.analyticsapi.engines.model.linked_pa_template_root import LinkedPATemplateRoot
 from fds.analyticsapi.engines.model.linked_pa_template_summary_root import LinkedPATemplateSummaryRoot
 from fds.analyticsapi.engines.model.linked_pa_template_update_parameters_root import LinkedPATemplateUpdateParametersRoot
@@ -80,7 +81,7 @@ class LinkedPATemplatesApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                LinkedPATemplateSummaryRoot
+                LinkedPATemplatePostSummaryRoot
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -109,7 +110,7 @@ class LinkedPATemplatesApi(object):
 
         self.create_linked_pa_templates = _Endpoint(
             settings={
-                'response_type': dict({ 201:(LinkedPATemplateSummaryRoot,),  }),
+                'response_type': dict({ 201:(LinkedPATemplatePostSummaryRoot,),  }),
                 'auth': [
                     'Basic',
                     'Bearer'
@@ -571,7 +572,7 @@ class LinkedPATemplatesApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                LinkedPATemplateSummaryRoot
+                LinkedPATemplatePostSummaryRoot
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -602,7 +603,7 @@ class LinkedPATemplatesApi(object):
 
         self.update_linked_pa_templates = _Endpoint(
             settings={
-                'response_type': dict({ 200:(LinkedPATemplateSummaryRoot,),  }),
+                'response_type': dict({ 200:(LinkedPATemplatePostSummaryRoot,),  }),
                 'auth': [
                     'Basic',
                     'Bearer'
