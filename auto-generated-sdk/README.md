@@ -368,6 +368,8 @@ Class | Method | HTTP request | Description
  - [UnlinkedPATemplateCategoryAndTypeDetails](docs/UnlinkedPATemplateCategoryAndTypeDetails.md)
  - [UnlinkedPATemplateCategoryAndTypeDetailsRoot](docs/UnlinkedPATemplateCategoryAndTypeDetailsRoot.md)
  - [UnlinkedPATemplateCategoryAndTypeRoot](docs/UnlinkedPATemplateCategoryAndTypeRoot.md)
+ - [UnlinkedPATemplateColumnDetails](docs/UnlinkedPATemplateColumnDetails.md)
+ - [UnlinkedPATemplateGroupDetails](docs/UnlinkedPATemplateGroupDetails.md)
  - [UnlinkedPATemplateParameters](docs/UnlinkedPATemplateParameters.md)
  - [UnlinkedPATemplateParametersRoot](docs/UnlinkedPATemplateParametersRoot.md)
  - [UnlinkedPATemplatePostSummary](docs/UnlinkedPATemplatePostSummary.md)

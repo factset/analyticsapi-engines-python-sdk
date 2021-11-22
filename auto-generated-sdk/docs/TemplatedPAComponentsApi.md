@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 Create templated PA component
 
-This endpoint creates new component based off of linked PA template or unlinked PA template.
+This endpoint creates new component based off of linked PA template or unlinked PA template.    Remarks:    *   Any settings in the POST body will act as a one-time override over the settings saved in the PA template.    *   Multi-horizon frequencies are not supported through this endpoint.    *   Componentdetail supports securities, groups, and totals as well but if we don't pass anything that defaults to securities.
 
 ### Example
 
@@ -424,7 +424,7 @@ Name | Type | Description  | Notes
 
 Update templated PA component
 
-This endpoint allows the user to change the request body from an existing templated PA component.
+This endpoint allows the user to change the request body from an existing templated PA component.    Remarks:    *   Any settings in the POST body will act as a one-time override over the settings saved in the PA template.    *   Multi-horizon frequencies are not supported through this endpoint.    *   Componentdetail supports securities, groups, and totals as well but if we don't pass anything that defaults to securities.
 
 ### Example
 

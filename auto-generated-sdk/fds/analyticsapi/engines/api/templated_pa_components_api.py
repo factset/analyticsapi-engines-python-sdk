@@ -49,7 +49,7 @@ class TemplatedPAComponentsApi(object):
         ):
             """Create templated PA component  # noqa: E501
 
-            This endpoint creates new component based off of linked PA template or unlinked PA template.  # noqa: E501
+            This endpoint creates new component based off of linked PA template or unlinked PA template.    Remarks:    *   Any settings in the POST body will act as a one-time override over the settings saved in the PA template.    *   Multi-horizon frequencies are not supported through this endpoint.    *   Componentdetail supports securities, groups, and totals as well but if we don't pass anything that defaults to securities.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
@@ -535,7 +535,7 @@ class TemplatedPAComponentsApi(object):
         ):
             """Update templated PA component  # noqa: E501
 
-            This endpoint allows the user to change the request body from an existing templated PA component.  # noqa: E501
+            This endpoint allows the user to change the request body from an existing templated PA component.    Remarks:    *   Any settings in the POST body will act as a one-time override over the settings saved in the PA template.    *   Multi-horizon frequencies are not supported through this endpoint.    *   Componentdetail supports securities, groups, and totals as well but if we don't pass anything that defaults to securities.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
