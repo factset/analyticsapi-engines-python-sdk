@@ -1,3 +1,4 @@
+
 """
     Engines API
 
@@ -1340,7 +1341,7 @@ def is_valid_type(input_class_simple, valid_classes):
             input_class_simple is none_type):
         for valid_class in valid_classes:
             if valid_class is object:
-				# this is to handle oneOf fields in a Model. AAPI team added this if condition to handle Quant API
+                # this is to handle oneOf fields in a Model. AAPI team added this if condition to handle Quant API
                 return True
             if input_class_simple is none_type and is_type_nullable(valid_class):
                 # Schema is oneOf/anyOf and the 'null' type is one of the allowed types.

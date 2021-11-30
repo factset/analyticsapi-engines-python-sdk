@@ -19,9 +19,9 @@ from fds.protobuf.stach.extensions.StachVersion import StachVersion
 
 from urllib3 import Retry
 
-host = "https://api.factset.com"
-username = "<username-serial>"
-password = "<apiKey>"
+host = os.environ['FACTSET_HOST']
+username = os.environ['FACTSET_USERNAME']
+password = os.environ['FACTSET_API_KEY']
 
 
 def main():

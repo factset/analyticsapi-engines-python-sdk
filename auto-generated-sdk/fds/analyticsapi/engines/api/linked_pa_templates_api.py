@@ -24,6 +24,7 @@ from fds.analyticsapi.engines.model_utils import (  # noqa: F401
 )
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from fds.analyticsapi.engines.model.linked_pa_template_parameters_root import LinkedPATemplateParametersRoot
+from fds.analyticsapi.engines.model.linked_pa_template_post_summary_root import LinkedPATemplatePostSummaryRoot
 from fds.analyticsapi.engines.model.linked_pa_template_root import LinkedPATemplateRoot
 from fds.analyticsapi.engines.model.linked_pa_template_summary_root import LinkedPATemplateSummaryRoot
 from fds.analyticsapi.engines.model.linked_pa_template_update_parameters_root import LinkedPATemplateUpdateParametersRoot
@@ -48,7 +49,7 @@ class LinkedPATemplatesApi(object):
         ):
             """Create a linked PA template  # noqa: E501
 
-            This endpoint creates a template from an **existing portfolio analysis tile**, allowing the user to replicate and fetch reports settings.    Remarks:    *   Mandatory, optional and locked fields can be  \"accounts\", \"benchmarks\", \"groups\", \"columns\", \"dates\", \"currencyisocode\" and \"componentdetail\".    *   Mandatory and locked strings are mutually exclusive.  # noqa: E501
+            This endpoint creates a template from an **existing portfolio analysis tile**, allowing the user to replicate and fetch reports settings.    Remarks:    *   Mandatory fields are required to be passed in POST requests and Optional fields are not necessary.       If no mandatory fields are passed, then we can use the template as a component and skip the component creation.        *   Mandatory, optional and locked fields can be  \"accounts\", \"benchmarks\", \"groups\", \"columns\", \"dates\", \"currencyisocode\" and \"componentdetail\".    *   We cannot override the Locked fields when creating the Component.    *   Mandatory and locked strings are mutually exclusive.    *   Multi-horizon frequencies are not supported through this endpoint.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
@@ -80,7 +81,7 @@ class LinkedPATemplatesApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                LinkedPATemplateSummaryRoot
+                LinkedPATemplatePostSummaryRoot
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -109,7 +110,7 @@ class LinkedPATemplatesApi(object):
 
         self.create_linked_pa_templates = _Endpoint(
             settings={
-                'response_type': dict({ 201:(LinkedPATemplateSummaryRoot,),  }),
+                'response_type': dict({ 201:(LinkedPATemplatePostSummaryRoot,),  }),
                 'auth': [
                     'Basic',
                     'Bearer'
@@ -538,7 +539,7 @@ class LinkedPATemplatesApi(object):
         ):
             """Update a linked PA template  # noqa: E501
 
-            This endpoint allows the user to change the request body and description from an existing template.    Remarks:    *   Mandatory, optional and locked fields can be  \"accounts\", \"benchmarks\", \"groups\", \"columns\", \"dates\", \"currencyisocode\" and \"componentdetail\".    *   Mandatory and locked strings are mutually exclusive.  # noqa: E501
+            This endpoint allows the user to change the request body and description from an existing template.    Remarks:    *   Mandatory fields are required to be passed in POST requests and Optional fields are not necessary.       If no mandatory fields are passed, then we can use the template as a component and skip the component creation.        *   Mandatory, optional and locked fields can be  \"accounts\", \"benchmarks\", \"groups\", \"columns\", \"dates\", \"currencyisocode\" and \"componentdetail\".    *   We cannot override the Locked fields when creating the Component.    *   Mandatory and locked strings are mutually exclusive.    *   Multi-horizon frequencies are not supported through this endpoint.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
@@ -571,7 +572,7 @@ class LinkedPATemplatesApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                LinkedPATemplateSummaryRoot
+                LinkedPATemplatePostSummaryRoot
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -602,7 +603,7 @@ class LinkedPATemplatesApi(object):
 
         self.update_linked_pa_templates = _Endpoint(
             settings={
-                'response_type': dict({ 200:(LinkedPATemplateSummaryRoot,),  }),
+                'response_type': dict({ 200:(LinkedPATemplatePostSummaryRoot,),  }),
                 'auth': [
                     'Basic',
                     'Bearer'
