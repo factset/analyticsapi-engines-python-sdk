@@ -515,17 +515,10 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     quant_calculation_parameters_root = QuantCalculationParametersRoot(
         data={
             "key": QuantCalculationParameters(
-                universe=
-                    universe_type="Equity",
-                    identifiers=[
-                        "identifiers_example",
-                    ],
-                ,
-                dates=
-                    dates=[],
-                ,
+                universe=None,
+                dates=None,
                 formulas=[
-                    ,
+                    None,
                 ],
             ),
         },
@@ -639,17 +632,10 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     quant_calculation_parameters_root = QuantCalculationParametersRoot(
         data={
             "key": QuantCalculationParameters(
-                universe=
-                    universe_type="Equity",
-                    identifiers=[
-                        "identifiers_example",
-                    ],
-                ,
-                dates=
-                    dates=[],
-                ,
+                universe=None,
+                dates=None,
                 formulas=[
-                    ,
+                    None,
                 ],
             ),
         },
