@@ -60,7 +60,7 @@ class QuantAllUniversalScreenParameters(ModelComposed):
     """
 
     allowed_values = {
-        ('class_name',): {
+        ('source',): {
             'SCREENINGEXPRESSION': "ScreeningExpression",
             'FQLEXPRESSION': "FqlExpression",
             'UNIVERSALSCREENPARAMETER': "UniversalScreenParameter",
@@ -87,7 +87,7 @@ class QuantAllUniversalScreenParameters(ModelComposed):
         """
         lazy_import()
         return {
-            'class_name': (str,),  # noqa: E501
+            'source': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -96,7 +96,7 @@ class QuantAllUniversalScreenParameters(ModelComposed):
 
 
     attribute_map = {
-        'class_name': 'className',  # noqa: E501
+        'source': 'source',  # noqa: E501
     }
 
     read_only_vars = {
@@ -108,7 +108,7 @@ class QuantAllUniversalScreenParameters(ModelComposed):
         """QuantAllUniversalScreenParameters - a model defined in OpenAPI
 
         Keyword Args:
-            class_name (str):
+            source (str):
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.
@@ -208,7 +208,7 @@ class QuantAllUniversalScreenParameters(ModelComposed):
         """QuantAllUniversalScreenParameters - a model defined in OpenAPI
 
         Keyword Args:
-            class_name (str):
+            source (str):
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.

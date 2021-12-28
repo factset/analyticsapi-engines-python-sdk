@@ -60,7 +60,7 @@ class QuantScreeningExpression(ModelComposed):
     """
 
     allowed_values = {
-        ('class_name',): {
+        ('source',): {
             'SCREENINGEXPRESSION': "ScreeningExpression",
             'FQLEXPRESSION': "FqlExpression",
             'UNIVERSALSCREENPARAMETER': "UniversalScreenParameter",
@@ -89,7 +89,7 @@ class QuantScreeningExpression(ModelComposed):
         return {
             'expr': (str,),  # noqa: E501
             'name': (str,),  # noqa: E501
-            'class_name': (str,),  # noqa: E501
+            'source': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -100,7 +100,7 @@ class QuantScreeningExpression(ModelComposed):
     attribute_map = {
         'expr': 'expr',  # noqa: E501
         'name': 'name',  # noqa: E501
-        'class_name': 'className',  # noqa: E501
+        'source': 'source',  # noqa: E501
     }
 
     read_only_vars = {
@@ -114,7 +114,7 @@ class QuantScreeningExpression(ModelComposed):
         Keyword Args:
             expr (str):
             name (str):
-            class_name (str):
+            source (str):
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.
@@ -216,7 +216,7 @@ class QuantScreeningExpression(ModelComposed):
         Keyword Args:
             expr (str):
             name (str):
-            class_name (str):
+            source (str):
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.

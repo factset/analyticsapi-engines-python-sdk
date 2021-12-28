@@ -56,7 +56,7 @@ class QuantUniverse(ModelNormal):
     """
 
     allowed_values = {
-        ('class_name',): {
+        ('source',): {
             'SCREENINGEXPRESSIONUNIVERSE': "ScreeningExpressionUniverse",
             'UNIVERSALSCREENUNIVERSE': "UniversalScreenUniverse",
             'IDENTIFIERUNIVERSE': "IdentifierUniverse",
@@ -81,7 +81,7 @@ class QuantUniverse(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'class_name': (str,),  # noqa: E501
+            'source': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -90,7 +90,7 @@ class QuantUniverse(ModelNormal):
 
 
     attribute_map = {
-        'class_name': 'className',  # noqa: E501
+        'source': 'source',  # noqa: E501
     }
 
     read_only_vars = {
@@ -100,11 +100,11 @@ class QuantUniverse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, class_name, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, source, *args, **kwargs):  # noqa: E501
         """QuantUniverse - a model defined in OpenAPI
 
         Args:
-            class_name (str):
+            source (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -164,7 +164,7 @@ class QuantUniverse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.class_name = class_name
+        self.source = source
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -185,11 +185,11 @@ class QuantUniverse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, class_name, *args, **kwargs):  # noqa: E501
+    def __init__(self, source, *args, **kwargs):  # noqa: E501
         """QuantUniverse - a model defined in OpenAPI
 
         Args:
-            class_name (str):
+            source (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -247,7 +247,7 @@ class QuantUniverse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.class_name = class_name
+        self.source = source
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

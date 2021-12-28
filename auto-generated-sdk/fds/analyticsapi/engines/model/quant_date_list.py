@@ -60,7 +60,7 @@ class QuantDateList(ModelComposed):
     """
 
     allowed_values = {
-        ('class_name',): {
+        ('source',): {
             'FDSDATE': "FdsDate",
             'DATELIST': "DateList",
         },
@@ -85,7 +85,7 @@ class QuantDateList(ModelComposed):
         """
         lazy_import()
         return {
-            'class_name': (str,),  # noqa: E501
+            'source': (str,),  # noqa: E501
             'frequency': (str,),  # noqa: E501
             'calendar': (str,),  # noqa: E501
             'dates': ([str],),  # noqa: E501
@@ -97,7 +97,7 @@ class QuantDateList(ModelComposed):
 
 
     attribute_map = {
-        'class_name': 'className',  # noqa: E501
+        'source': 'source',  # noqa: E501
         'frequency': 'frequency',  # noqa: E501
         'calendar': 'calendar',  # noqa: E501
         'dates': 'dates',  # noqa: E501
@@ -112,7 +112,7 @@ class QuantDateList(ModelComposed):
         """QuantDateList - a model defined in OpenAPI
 
         Keyword Args:
-            class_name (str):
+            source (str):
             frequency (str):
             calendar (str):
             _check_type (bool): if True, values for parameters in openapi_types
@@ -215,7 +215,7 @@ class QuantDateList(ModelComposed):
         """QuantDateList - a model defined in OpenAPI
 
         Keyword Args:
-            class_name (str):
+            source (str):
             frequency (str):
             calendar (str):
             _check_type (bool): if True, values for parameters in openapi_types

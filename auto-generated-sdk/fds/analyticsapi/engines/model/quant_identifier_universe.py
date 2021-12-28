@@ -64,7 +64,7 @@ class QuantIdentifierUniverse(ModelComposed):
             'EQUITY': "Equity",
             'DEBT': "Debt",
         },
-        ('class_name',): {
+        ('source',): {
             'SCREENINGEXPRESSIONUNIVERSE': "ScreeningExpressionUniverse",
             'UNIVERSALSCREENUNIVERSE': "UniversalScreenUniverse",
             'IDENTIFIERUNIVERSE': "IdentifierUniverse",
@@ -92,7 +92,7 @@ class QuantIdentifierUniverse(ModelComposed):
         return {
             'universe_type': (str,),  # noqa: E501
             'identifiers': ([str],),  # noqa: E501
-            'class_name': (str,),  # noqa: E501
+            'source': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -103,7 +103,7 @@ class QuantIdentifierUniverse(ModelComposed):
     attribute_map = {
         'universe_type': 'universeType',  # noqa: E501
         'identifiers': 'identifiers',  # noqa: E501
-        'class_name': 'className',  # noqa: E501
+        'source': 'source',  # noqa: E501
     }
 
     read_only_vars = {
@@ -117,7 +117,7 @@ class QuantIdentifierUniverse(ModelComposed):
         Keyword Args:
             universe_type (str):
             identifiers ([str]):
-            class_name (str):
+            source (str):
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.
@@ -219,7 +219,7 @@ class QuantIdentifierUniverse(ModelComposed):
         Keyword Args:
             universe_type (str):
             identifiers ([str]):
-            class_name (str):
+            source (str):
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.
