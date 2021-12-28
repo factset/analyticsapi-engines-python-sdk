@@ -50,6 +50,7 @@ from fds.analyticsapi.engines.model.date_parameters_summary import DateParameter
 from fds.analyticsapi.engines.model.date_parameters_summary_root import DateParametersSummaryRoot
 from fds.analyticsapi.engines.model.document_directories import DocumentDirectories
 from fds.analyticsapi.engines.model.document_directories_root import DocumentDirectoriesRoot
+from fds.analyticsapi.engines.model.dummy_universe import DummyUniverse
 from fds.analyticsapi.engines.model.error import Error
 from fds.analyticsapi.engines.model.error_source import ErrorSource
 from fds.analyticsapi.engines.model.event_summary import EventSummary

@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**universe** | **bool, date, datetime, dict, float, int, list, str, none_type** |  | [optional] 
+**universe** | [**DummyUniverse**](DummyUniverse.md) |  | [optional] 
 **dates** | **bool, date, datetime, dict, float, int, list, str, none_type** |  | [optional] 
 **formulas** | **[bool, date, datetime, dict, float, int, list, str, none_type]** |  | [optional] 
 

@@ -258,6 +258,7 @@ Class | Method | HTTP request | Description
  - [DateParametersSummaryRoot](docs/DateParametersSummaryRoot.md)
  - [DocumentDirectories](docs/DocumentDirectories.md)
  - [DocumentDirectoriesRoot](docs/DocumentDirectoriesRoot.md)
+ - [DummyUniverse](docs/DummyUniverse.md)
  - [Error](docs/Error.md)
  - [ErrorSource](docs/ErrorSource.md)
  - [EventSummary](docs/EventSummary.md)

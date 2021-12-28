@@ -56,6 +56,7 @@ docs/DatesApi.md
 docs/DocumentDirectories.md
 docs/DocumentDirectoriesRoot.md
 docs/DocumentsApi.md
+docs/DummyUniverse.md
 docs/Error.md
 docs/ErrorSource.md
 docs/EventSummary.md
@@ -279,6 +280,7 @@ fds/analyticsapi/engines/model/date_parameters_summary.py
 fds/analyticsapi/engines/model/date_parameters_summary_root.py
 fds/analyticsapi/engines/model/document_directories.py
 fds/analyticsapi/engines/model/document_directories_root.py
+fds/analyticsapi/engines/model/dummy_universe.py
 fds/analyticsapi/engines/model/error.py
 fds/analyticsapi/engines/model/error_source.py
 fds/analyticsapi/engines/model/event_summary.py
