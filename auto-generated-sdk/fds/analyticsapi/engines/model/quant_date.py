@@ -56,7 +56,7 @@ class QuantDate(ModelNormal):
     """
 
     allowed_values = {
-        ('source',): {
+        ('class_name',): {
             'FDSDATE': "FdsDate",
             'DATELIST': "DateList",
         },
@@ -80,7 +80,7 @@ class QuantDate(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'source': (str,),  # noqa: E501
+            'class_name': (str,),  # noqa: E501
             'frequency': (str,),  # noqa: E501
             'calendar': (str,),  # noqa: E501
         }
@@ -91,7 +91,7 @@ class QuantDate(ModelNormal):
 
 
     attribute_map = {
-        'source': 'source',  # noqa: E501
+        'class_name': 'className',  # noqa: E501
         'frequency': 'frequency',  # noqa: E501
         'calendar': 'calendar',  # noqa: E501
     }
@@ -103,11 +103,11 @@ class QuantDate(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, source, frequency, calendar, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, class_name, frequency, calendar, *args, **kwargs):  # noqa: E501
         """QuantDate - a model defined in OpenAPI
 
         Args:
-            source (str):
+            class_name (str):
             frequency (str):
             calendar (str):
 
@@ -169,7 +169,7 @@ class QuantDate(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.source = source
+        self.class_name = class_name
         self.frequency = frequency
         self.calendar = calendar
         for var_name, var_value in kwargs.items():
@@ -192,11 +192,11 @@ class QuantDate(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, source, frequency, calendar, *args, **kwargs):  # noqa: E501
+    def __init__(self, class_name, frequency, calendar, *args, **kwargs):  # noqa: E501
         """QuantDate - a model defined in OpenAPI
 
         Args:
-            source (str):
+            class_name (str):
             frequency (str):
             calendar (str):
 
@@ -256,7 +256,7 @@ class QuantDate(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.source = source
+        self.class_name = class_name
         self.frequency = frequency
         self.calendar = calendar
         for var_name, var_value in kwargs.items():

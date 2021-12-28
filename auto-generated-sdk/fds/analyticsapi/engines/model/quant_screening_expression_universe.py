@@ -64,7 +64,7 @@ class QuantScreeningExpressionUniverse(ModelComposed):
             'EQUITY': "Equity",
             'DEBT': "Debt",
         },
-        ('source',): {
+        ('class_name',): {
             'SCREENINGEXPRESSIONUNIVERSE': "ScreeningExpressionUniverse",
             'UNIVERSALSCREENUNIVERSE': "UniversalScreenUniverse",
             'IDENTIFIERUNIVERSE': "IdentifierUniverse",
@@ -92,7 +92,7 @@ class QuantScreeningExpressionUniverse(ModelComposed):
         return {
             'universe_expr': (str,),  # noqa: E501
             'universe_type': (str,),  # noqa: E501
-            'source': (str,),  # noqa: E501
+            'class_name': (str,),  # noqa: E501
             'security_expr': (str,),  # noqa: E501
         }
 
@@ -104,7 +104,7 @@ class QuantScreeningExpressionUniverse(ModelComposed):
     attribute_map = {
         'universe_expr': 'universeExpr',  # noqa: E501
         'universe_type': 'universeType',  # noqa: E501
-        'source': 'source',  # noqa: E501
+        'class_name': 'className',  # noqa: E501
         'security_expr': 'securityExpr',  # noqa: E501
     }
 
@@ -119,7 +119,7 @@ class QuantScreeningExpressionUniverse(ModelComposed):
         Keyword Args:
             universe_expr (str):
             universe_type (str):
-            source (str):
+            class_name (str):
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.
@@ -222,7 +222,7 @@ class QuantScreeningExpressionUniverse(ModelComposed):
         Keyword Args:
             universe_expr (str):
             universe_type (str):
-            source (str):
+            class_name (str):
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.

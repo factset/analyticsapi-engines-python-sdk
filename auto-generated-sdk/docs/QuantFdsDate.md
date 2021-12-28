@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **start_date** | **str** |  | 
 **end_date** | **str** |  | 
-**source** | **str** |  | 
+**class_name** | **str** |  | 
 **frequency** | **str** |  | 
 **calendar** | **str** |  | 
 

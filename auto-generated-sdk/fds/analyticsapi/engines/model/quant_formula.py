@@ -56,7 +56,7 @@ class QuantFormula(ModelNormal):
     """
 
     allowed_values = {
-        ('source',): {
+        ('class_name',): {
             'SCREENINGEXPRESSION': "ScreeningExpression",
             'FQLEXPRESSION': "FqlExpression",
             'UNIVERSALSCREENPARAMETER': "UniversalScreenParameter",
@@ -82,7 +82,7 @@ class QuantFormula(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'source': (str,),  # noqa: E501
+            'class_name': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -91,7 +91,7 @@ class QuantFormula(ModelNormal):
 
 
     attribute_map = {
-        'source': 'source',  # noqa: E501
+        'class_name': 'className',  # noqa: E501
     }
 
     read_only_vars = {
@@ -101,11 +101,11 @@ class QuantFormula(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, source, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, class_name, *args, **kwargs):  # noqa: E501
         """QuantFormula - a model defined in OpenAPI
 
         Args:
-            source (str):
+            class_name (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -165,7 +165,7 @@ class QuantFormula(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.source = source
+        self.class_name = class_name
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -186,11 +186,11 @@ class QuantFormula(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, source, *args, **kwargs):  # noqa: E501
+    def __init__(self, class_name, *args, **kwargs):  # noqa: E501
         """QuantFormula - a model defined in OpenAPI
 
         Args:
-            source (str):
+            class_name (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -248,7 +248,7 @@ class QuantFormula(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.source = source
+        self.class_name = class_name
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

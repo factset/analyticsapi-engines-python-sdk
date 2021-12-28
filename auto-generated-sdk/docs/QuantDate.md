@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**source** | **str** |  | 
+**class_name** | **str** |  | 
 **frequency** | **str** |  | 
 **calendar** | **str** |  | 
 
