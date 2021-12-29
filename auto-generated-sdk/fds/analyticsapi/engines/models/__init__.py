@@ -50,7 +50,6 @@ from fds.analyticsapi.engines.model.date_parameters_summary import DateParameter
 from fds.analyticsapi.engines.model.date_parameters_summary_root import DateParametersSummaryRoot
 from fds.analyticsapi.engines.model.document_directories import DocumentDirectories
 from fds.analyticsapi.engines.model.document_directories_root import DocumentDirectoriesRoot
-from fds.analyticsapi.engines.model.dummy_universe import DummyUniverse
 from fds.analyticsapi.engines.model.error import Error
 from fds.analyticsapi.engines.model.error_source import ErrorSource
 from fds.analyticsapi.engines.model.event_summary import EventSummary
@@ -92,6 +91,9 @@ from fds.analyticsapi.engines.model.npo_optimization_parameters_root import NPOO
 from fds.analyticsapi.engines.model.npo_optimizer_strategy import NPOOptimizerStrategy
 from fds.analyticsapi.engines.model.npo_optimizer_strategy_overrides import NPOOptimizerStrategyOverrides
 from fds.analyticsapi.engines.model.object_root import ObjectRoot
+from fds.analyticsapi.engines.model.one_of_quant_dates import OneOfQuantDates
+from fds.analyticsapi.engines.model.one_of_quant_formulas import OneOfQuantFormulas
+from fds.analyticsapi.engines.model.one_of_quant_universe import OneOfQuantUniverse
 from fds.analyticsapi.engines.model.optimal_portfolio import OptimalPortfolio
 from fds.analyticsapi.engines.model.optimization import Optimization
 from fds.analyticsapi.engines.model.optimizer_account import OptimizerAccount
