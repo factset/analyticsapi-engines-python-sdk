@@ -93,6 +93,7 @@ from fds.analyticsapi.engines.model.npo_optimizer_strategy_overrides import NPOO
 from fds.analyticsapi.engines.model.object_root import ObjectRoot
 from fds.analyticsapi.engines.model.one_of_quant_dates import OneOfQuantDates
 from fds.analyticsapi.engines.model.one_of_quant_formulas import OneOfQuantFormulas
+from fds.analyticsapi.engines.model.one_of_quant_formulas_array import OneOfQuantFormulasArray
 from fds.analyticsapi.engines.model.one_of_quant_universe import OneOfQuantUniverse
 from fds.analyticsapi.engines.model.optimal_portfolio import OptimalPortfolio
 from fds.analyticsapi.engines.model.optimization import Optimization

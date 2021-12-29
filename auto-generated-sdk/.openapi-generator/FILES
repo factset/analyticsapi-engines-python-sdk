@@ -106,6 +106,7 @@ docs/NPOOptimizerStrategyOverrides.md
 docs/ObjectRoot.md
 docs/OneOfQuantDates.md
 docs/OneOfQuantFormulas.md
+docs/OneOfQuantFormulasArray.md
 docs/OneOfQuantUniverse.md
 docs/OptimalPortfolio.md
 docs/Optimization.md
@@ -325,6 +326,7 @@ fds/analyticsapi/engines/model/npo_optimizer_strategy_overrides.py
 fds/analyticsapi/engines/model/object_root.py
 fds/analyticsapi/engines/model/one_of_quant_dates.py
 fds/analyticsapi/engines/model/one_of_quant_formulas.py
+fds/analyticsapi/engines/model/one_of_quant_formulas_array.py
 fds/analyticsapi/engines/model/one_of_quant_universe.py
 fds/analyticsapi/engines/model/optimal_portfolio.py
 fds/analyticsapi/engines/model/optimization.py

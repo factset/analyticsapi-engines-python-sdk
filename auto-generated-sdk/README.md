@@ -301,6 +301,7 @@ Class | Method | HTTP request | Description
  - [ObjectRoot](docs/ObjectRoot.md)
  - [OneOfQuantDates](docs/OneOfQuantDates.md)
  - [OneOfQuantFormulas](docs/OneOfQuantFormulas.md)
+ - [OneOfQuantFormulasArray](docs/OneOfQuantFormulasArray.md)
  - [OneOfQuantUniverse](docs/OneOfQuantUniverse.md)
  - [OptimalPortfolio](docs/OptimalPortfolio.md)
  - [Optimization](docs/Optimization.md)

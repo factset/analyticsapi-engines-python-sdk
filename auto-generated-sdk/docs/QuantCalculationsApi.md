@@ -518,7 +518,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                 universe=OneOfQuantUniverse(None),
                 dates=OneOfQuantDates(None),
                 formulas=OneOfQuantFormulas([
-                    None,
+                    OneOfQuantFormulasArray(None),
                 ]),
             ),
         },
@@ -635,7 +635,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                 universe=OneOfQuantUniverse(None),
                 dates=OneOfQuantDates(None),
                 formulas=OneOfQuantFormulas([
-                    None,
+                    OneOfQuantFormulasArray(None),
                 ]),
             ),
         },
