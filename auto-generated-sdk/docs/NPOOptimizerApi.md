@@ -425,7 +425,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
             strategy=NPOOptimizerStrategy(
                 overrides=NPOOptimizerStrategyOverrides(
                     objective={
-                        "key": None,
+                        "key": {},
                     },
                     constraints=[
                         ConstraintAction(
@@ -580,7 +580,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
             strategy=NPOOptimizerStrategy(
                 overrides=NPOOptimizerStrategyOverrides(
                     objective={
-                        "key": None,
+                        "key": {},
                     },
                     constraints=[
                         ConstraintAction(

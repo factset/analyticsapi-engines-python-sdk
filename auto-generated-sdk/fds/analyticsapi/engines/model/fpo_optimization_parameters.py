@@ -29,13 +29,13 @@ from fds.analyticsapi.engines.model_utils import (  # noqa: F401
 
 def lazy_import():
     from fds.analyticsapi.engines.model.fpo_account import FPOAccount
-    from fds.analyticsapi.engines.model.fpo_optimizer_strategy import FPOOptimizerStrategy
     from fds.analyticsapi.engines.model.optimization import Optimization
     from fds.analyticsapi.engines.model.optimizer_output_types import OptimizerOutputTypes
+    from fds.analyticsapi.engines.model.optimizer_strategy import OptimizerStrategy
     globals()['FPOAccount'] = FPOAccount
-    globals()['FPOOptimizerStrategy'] = FPOOptimizerStrategy
     globals()['Optimization'] = Optimization
     globals()['OptimizerOutputTypes'] = OptimizerOutputTypes
+    globals()['OptimizerStrategy'] = OptimizerStrategy
 
 
 class FPOOptimizationParameters(ModelNormal):
@@ -84,7 +84,7 @@ class FPOOptimizationParameters(ModelNormal):
         """
         lazy_import()
         return {
-            'strategy': (FPOOptimizerStrategy,),  # noqa: E501
+            'strategy': (OptimizerStrategy,),  # noqa: E501
             'output_types': (OptimizerOutputTypes,),  # noqa: E501
             'account': (FPOAccount,),  # noqa: E501
             'optimization': (Optimization,),  # noqa: E501
@@ -118,7 +118,7 @@ class FPOOptimizationParameters(ModelNormal):
         """FPOOptimizationParameters - a model defined in OpenAPI
 
         Args:
-            strategy (FPOOptimizerStrategy):
+            strategy (OptimizerStrategy):
             output_types (OptimizerOutputTypes):
 
         Keyword Args:

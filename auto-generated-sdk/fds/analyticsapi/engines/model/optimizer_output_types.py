@@ -85,7 +85,7 @@ class OptimizerOutputTypes(ModelNormal):
             'trades': (OptimizerTradesList,),  # noqa: E501
             'optimal': (OptimizerOptimalHoldings,),  # noqa: E501
             'account': (OptimalPortfolio,),  # noqa: E501
-            'stats': (bool, date, datetime, dict, float, int, list, str,),  # noqa: E501
+            'stats': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
         }
 
     @cached_property
@@ -149,7 +149,7 @@ class OptimizerOutputTypes(ModelNormal):
             trades (OptimizerTradesList): [optional]  # noqa: E501
             optimal (OptimizerOptimalHoldings): [optional]  # noqa: E501
             account (OptimalPortfolio): [optional]  # noqa: E501
-            stats (bool, date, datetime, dict, float, int, list, str): [optional]  # noqa: E501
+            stats ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

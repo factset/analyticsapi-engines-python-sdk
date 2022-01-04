@@ -26,7 +26,6 @@ from fds.analyticsapi.engines.model.client_error_response import ClientErrorResp
 from fds.analyticsapi.engines.model.unlinked_pa_template_category_and_type_details_root import UnlinkedPATemplateCategoryAndTypeDetailsRoot
 from fds.analyticsapi.engines.model.unlinked_pa_template_category_and_type_root import UnlinkedPATemplateCategoryAndTypeRoot
 from fds.analyticsapi.engines.model.unlinked_pa_template_parameters_root import UnlinkedPATemplateParametersRoot
-from fds.analyticsapi.engines.model.unlinked_pa_template_post_summary_root import UnlinkedPATemplatePostSummaryRoot
 from fds.analyticsapi.engines.model.unlinked_pa_template_root import UnlinkedPATemplateRoot
 from fds.analyticsapi.engines.model.unlinked_pa_template_summary_root import UnlinkedPATemplateSummaryRoot
 from fds.analyticsapi.engines.model.unlinked_pa_template_update_parameters_root import UnlinkedPATemplateUpdateParametersRoot
@@ -51,7 +50,7 @@ class UnlinkedPATemplatesApi(object):
         ):
             """Create unlinked PA template  # noqa: E501
 
-            This endpoint creates a template which is not linked to any specific PA3 tile.     Remarks:    *   Mandatory fields are required to be passed in POST requests and Optional fields are not necessary.       If no mandatory fields are passed, then we can use the template as a component and skip the component creation.        *   Mandatory, optional and locked fields can be  \"accounts\", \"benchmarks\", \"groups\", \"columns\", \"dates\", \"currencyisocode\" and \"componentdetail\".    *   We cannot override the Locked fields when creating the Component.    *   Mandatory and locked strings are mutually exclusive.    *   Any settings in the POST body will act as a one-time override over the settings saved in the PA template.    *   Multi-horizon frequencies are not supported through this endpoint.    *   Componentdetail supports securities, groups, and totals as well but if we don't pass anything that defaults to securities.  # noqa: E501
+            This endpoint creates a template which is not linked to any specific PA3 tile.     Remarks:    *   Mandatory, optional and locked fields can be  \"accounts\", \"benchmarks\", \"groups\", \"columns\", \"dates\", \"currencyisocode\" and \"componentdetail\".    *   Mandatory and locked strings are mutually exclusive.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
@@ -83,7 +82,7 @@ class UnlinkedPATemplatesApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                UnlinkedPATemplatePostSummaryRoot
+                UnlinkedPATemplateSummaryRoot
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -112,7 +111,7 @@ class UnlinkedPATemplatesApi(object):
 
         self.create_unlinked_pa_templates = _Endpoint(
             settings={
-                'response_type': dict({ 201:(UnlinkedPATemplatePostSummaryRoot,),  }),
+                'response_type': dict({ 201:(UnlinkedPATemplateSummaryRoot,),  }),
                 'auth': [
                     'Basic',
                     'Bearer'
@@ -761,7 +760,7 @@ class UnlinkedPATemplatesApi(object):
         ):
             """Update unlinked PA template  # noqa: E501
 
-            This endpoint updates an existing unlinked PA template.    Remarks:                *   Mandatory fields are required to be passed in POST requests and Optional fields are not necessary.       If no mandatory fields are passed, then we can use the template as a component and skip the component creation.        *   Mandatory, optional and locked fields can be  \"accounts\", \"benchmarks\", \"groups\", \"columns\", \"dates\", \"currencyisocode\" and \"componentdetail\".    *   We cannot override the Locked fields when creating the Component.    *   Mandatory and locked strings are mutually exclusive.    *   Any settings in the POST body will act as a one-time override over the settings saved in the PA template.    *   Multi-horizon frequencies are not supported through this endpoint.    *   Componentdetail supports securities, groups, and totals as well but if we don't pass anything that defaults to securities.  # noqa: E501
+            This endpoint updates an existing unlinked PA template.    Remarks:                *   Mandatory, optional and locked fields can be  \"accounts\", \"benchmarks\", \"groups\", \"columns\", \"dates\", \"currencyisocode\" and \"componentdetail\".    *   Mandatory and locked strings are mutually exclusive.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
@@ -794,7 +793,7 @@ class UnlinkedPATemplatesApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                UnlinkedPATemplatePostSummaryRoot
+                UnlinkedPATemplateSummaryRoot
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -825,7 +824,7 @@ class UnlinkedPATemplatesApi(object):
 
         self.update_unlinked_pa_templates = _Endpoint(
             settings={
-                'response_type': dict({ 200:(UnlinkedPATemplatePostSummaryRoot,),  }),
+                'response_type': dict({ 200:(UnlinkedPATemplateSummaryRoot,),  }),
                 'auth': [
                     'Basic',
                     'Bearer'
