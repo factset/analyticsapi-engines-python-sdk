@@ -8,7 +8,7 @@ from fds.analyticsapi.engines.api.fpo_optimizer_api import FPOOptimizerApi
 from fds.analyticsapi.engines.api_client import ApiClient
 from fds.analyticsapi.engines.configuration import Configuration
 from fds.analyticsapi.engines.model.fpo_optimization_parameters_root import FPOOptimizationParametersRoot
-from fds.analyticsapi.engines.model.optimizer_strategy import OptimizerStrategy
+from fds.analyticsapi.engines.model.fpo_optimizer_strategy import FPOOptimizerStrategy
 from fds.analyticsapi.engines.model.pa_doc import PaDoc
 from fds.analyticsapi.engines.model.fpo_account import FPOAccount
 from fds.analyticsapi.engines.model.fpo_optimization_parameters import FPOOptimizationParameters
@@ -21,15 +21,15 @@ from fds.protobuf.stach.extensions.StachVersion import StachVersion
 from urllib3 import Retry
 
 host = os.environ['FACTSET_HOST']
-username = os.environ['FACTSET_USERNAME']
-password = os.environ['FACTSET_API_KEY']
+fds_username = os.environ['FACTSET_USERNAME']
+fds_api_key = os.environ['FACTSET_API_KEY']
 
 
 def main():
     config = Configuration()
     config.host = host
-    config.username = username
-    config.password = password
+    config.username = fds_username
+    config.password = fds_api_key
     config.discard_unknown_keys = True
     # add proxy and/or disable ssl verification according to your development environment
     # config.proxy = "<proxyUrl>"
@@ -66,7 +66,7 @@ def main():
         # uncomment the below code line to setup cache control; max-stale=0 will be a fresh adhoc run and the max-stale value is in seconds.
         # Results are by default cached for 12 hours; Setting max-stale=300 will fetch a cached result which is 5 minutes older. 
         # cache_control = "max-stale=0"
-        fpo_optimizer_strategy = OptimizerStrategy(
+        fpo_optimizer_strategy = FPOOptimizerStrategy(
             id="Client:/analytics_api/dbui_simple_strategy")
         fpo_pa_doc = PaDoc("CLIENT:/FPO/FPO_MASTER")
         fpo_optimizer_account = FPOAccount(
