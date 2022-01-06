@@ -69,7 +69,7 @@ class TestFpoOptimizationsApi(unittest.TestCase):
             calculation_id = test_context["calculation_id"]
             print("Calculation Id: " + calculation_id)
 
-            status_response = self.axp_optimizer_api.get_optimization_status_by_id(id=calculation_id)
+            status_response = self.fpo_optimizer_api.get_optimization_status_by_id(id=calculation_id)
 
             self.assertTrue(status_response[1] == 202 or status_response[1] == 201)
 
@@ -80,7 +80,7 @@ class TestFpoOptimizationsApi(unittest.TestCase):
                     max_age = age_value.replace("max-age=", "")
                 print('Sleeping: ' + max_age)
                 time.sleep(int(max_age))
-                status_response = self.axp_optimizer_api.get_optimization_status_by_id(id=calculation_id)
+                status_response = self.fpo_optimizer_api.get_optimization_status_by_id(id=calculation_id)
 
             return {
                 "continue_workflow": True,
