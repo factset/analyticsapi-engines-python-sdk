@@ -179,6 +179,8 @@ docs/UnlinkedPATemplateCategoryAndType.md
 docs/UnlinkedPATemplateCategoryAndTypeDetails.md
 docs/UnlinkedPATemplateCategoryAndTypeDetailsRoot.md
 docs/UnlinkedPATemplateCategoryAndTypeRoot.md
+docs/UnlinkedPATemplateColumnDetails.md
+docs/UnlinkedPATemplateGroupDetails.md
 docs/UnlinkedPATemplateParameters.md
 docs/UnlinkedPATemplateParametersRoot.md
 docs/UnlinkedPATemplatePostSummary.md
@@ -387,6 +389,8 @@ fds/analyticsapi/engines/model/unlinked_pa_template_category_and_type.py
 fds/analyticsapi/engines/model/unlinked_pa_template_category_and_type_details.py
 fds/analyticsapi/engines/model/unlinked_pa_template_category_and_type_details_root.py
 fds/analyticsapi/engines/model/unlinked_pa_template_category_and_type_root.py
+fds/analyticsapi/engines/model/unlinked_pa_template_column_details.py
+fds/analyticsapi/engines/model/unlinked_pa_template_group_details.py
 fds/analyticsapi/engines/model/unlinked_pa_template_parameters.py
 fds/analyticsapi/engines/model/unlinked_pa_template_parameters_root.py
 fds/analyticsapi/engines/model/unlinked_pa_template_post_summary.py

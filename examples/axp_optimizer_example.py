@@ -23,7 +23,6 @@ host = os.environ['FACTSET_HOST']
 fds_username = os.environ['FACTSET_USERNAME']
 fds_api_key = os.environ['FACTSET_API_KEY']
 
-
 def main():
     config = Configuration()
     config.host = host
