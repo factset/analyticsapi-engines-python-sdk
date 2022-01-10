@@ -19,15 +19,14 @@ from fds.protobuf.stach.extensions.StachExtensionFactory import StachExtensionFa
 from urllib3 import Retry
 
 host = os.environ['FACTSET_HOST']
-username = os.environ['FACTSET_USERNAME']
-password = os.environ['FACTSET_API_KEY']
-
+fds_username = os.environ['FACTSET_USERNAME']
+fds_api_key = os.environ['FACTSET_API_KEY']
 
 def main():
     config = Configuration()
     config.host = host
-    config.username = username
-    config.password = password
+    config.username = fds_username
+    config.password = fds_api_key
     config.discard_unknown_keys = True
     # add proxy and/or disable ssl verification according to your development environment
     # config.proxy = "<proxyUrl>"
@@ -52,6 +51,7 @@ def main():
         startdate1 = "20180101"
         enddate1 = "20181231"
         frequency1 = "Monthly"
+        currency = "INR"
 
         startdate2 = "20190101"
         enddate2 = "20191231"
@@ -73,9 +73,9 @@ def main():
         spar_dates2 = SPARDateParameters(startdate2, enddate2, frequency2)
 
         spar_calculation_parameters = {"2018": SPARCalculationParameters(componentid=component_id, accounts=spar_accounts, benchmark=spar_benchmark_identifier,
-                                                                         dates=spar_dates1),
+                                                                         dates=spar_dates1, currencyisocode=currency),
                                        "2019": SPARCalculationParameters(componentid=component_id, accounts=spar_accounts, benchmark=spar_benchmark_identifier,
-                                                                         dates=spar_dates2)}
+                                                                         dates=spar_dates2, currencyisocode=currency)}
 
         spar_calculation_parameter_root = SPARCalculationParametersRoot(
             data=spar_calculation_parameters)

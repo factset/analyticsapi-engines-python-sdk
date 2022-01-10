@@ -20,15 +20,14 @@ from fds.protobuf.stach.extensions.StachExtensionFactory import StachExtensionFa
 from urllib3 import Retry
 
 host = os.environ['FACTSET_HOST']
-username = os.environ['FACTSET_USERNAME']
-password = os.environ['FACTSET_API_KEY']
-
+fds_username = os.environ['FACTSET_USERNAME']
+fds_api_key = os.environ['FACTSET_API_KEY']
 
 def main():
     config = Configuration()
     config.host = host
-    config.username = username
-    config.password = password
+    config.username = fds_username
+    config.password = fds_api_key
     config.discard_unknown_keys = True
     # add proxy and/or disable ssl verification according to your development environment
     # config.proxy = "<proxyUrl>"

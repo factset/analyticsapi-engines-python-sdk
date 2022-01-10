@@ -19,15 +19,14 @@ from fds.protobuf.stach.extensions.StachExtensionFactory import StachExtensionFa
 from urllib3 import Retry
 
 host = os.environ['FACTSET_HOST']
-username = os.environ['FACTSET_USERNAME']
-password = os.environ['FACTSET_API_KEY']
-
+fds_username = os.environ['FACTSET_USERNAME']
+fds_api_key = os.environ['FACTSET_API_KEY']
 
 def main():
     config = Configuration()
     config.host = host
-    config.username = username
-    config.password = password
+    config.username = fds_username
+    config.password = fds_api_key
     config.discard_unknown_keys = True
     # add proxy and/or disable ssl verification according to your development environment
     # config.proxy = "<proxyUrl>"
@@ -51,6 +50,7 @@ def main():
         startdate = "20180101"
         enddate = "20181231"
         frequency = "Monthly"
+        currency = "USD"
         # uncomment the below code line to setup cache control; max-stale=0 will be a fresh adhoc run and the max-stale value is in seconds.
         # Results are by default cached for 12 hours; Setting max-stale=300 will fetch a cached result which is 5 minutes older.
         # cache_control = "max-stale=0"
@@ -67,7 +67,7 @@ def main():
         spar_dates = SPARDateParameters(startdate, enddate, frequency)
 
         spar_calculation_parameters = {"1": SPARCalculationParameters(componentid=component_id, accounts=spar_accounts, benchmark=spar_benchmark_identifier,
-                                                                      dates=spar_dates)}
+                                                                      dates=spar_dates, currencyisocode=currency)}
 
         spar_calculation_parameter_root = SPARCalculationParametersRoot(
             data=spar_calculation_parameters)
