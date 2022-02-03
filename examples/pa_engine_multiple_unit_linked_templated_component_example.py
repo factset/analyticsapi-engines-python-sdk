@@ -35,16 +35,16 @@ from fds.analyticsapi.engines.model.group import Group
 
 from urllib3 import Retry
 
-host = "https://api.factset.com"
-username = os.environ["ANALYTICS_API_QAR_USERNAME_SERIAL"]
-password = os.environ["ANALYTICS_API_QAR_PASSWORD"]
-
+host = os.environ['FACTSET_HOST']
+fds_username = os.environ['FACTSET_USERNAME']
+fds_api_key = os.environ['FACTSET_API_KEY']
 
 def main():
     config = Configuration()
     config.host = host
-    config.username = username
-    config.password = password
+    config.username = fds_username
+    config.password = fds_api_key
+    config.discard_unknown_keys = True
     # add proxy and/or disable ssl verification according to your development environment
     # config.proxy = "<proxyUrl>"
     config.verify_ssl = False
@@ -56,26 +56,74 @@ def main():
     api_client = ApiClient(config)
 
     try:
-        pa_benchmark_sp_50 = "BENCH:SP50"
-        pa_benchmark_r_1000 = "BENCH:R.1000"
+        column_name = "Port. Average Weight"
+        column_category = "Portfolio/Position Data"
+        column_statistic_name = "Active Weights"
+
+        group_category = "JP Morgan CEMBI "
+        group_name = "Country - JP Morgan CEMBI "
+
+        component_document = "PA_DOCUMENTS:DEFAULT"
+        component_name = "Weights"
+        component_category = "Weights / Exposures"
+
+        linked_pa_template_directory = "Personal:LinkedPATemplates/"
+        templated_pa_component_directory = "Personal:TemplatedPAComponents/"
+
+        portfolio = "BENCH:SP50"
+        benchmark = "BENCH:R.1000"
         startdate = "20180101"
         enddate = "20181231"
         frequency = "Monthly"
+        currencyisocode = "USD"
+        componentdetail = "GROUPS"
+        directory = "Factset"
+
+        # uncomment the below code line to setup cache control; max-stale=0 will be a fresh adhoc run and the max-stale value is in seconds.
+        # Results are by default cached for 12 hours; Setting max-stale=300 will fetch a cached result which is 5 minutes older. 
+        # cache_control = "max-stale=0"
+        
+        # get column id
+        columns_api = ColumnsApi(api_client)
+        column = columns_api.get_pa_columns(
+            name = column_name,
+            category = column_category,
+            directory = directory
+        )
+        column_id = list(column[0].data.keys())[0]
+
+        # get column statistics id
+        column_statistics_api = ColumnStatisticsApi(api_client)
+        get_all_column_statistics = column_statistics_api.get_pa_column_statistics()
+        desired_column_statistic = ColumnStatistic(name=column_statistic_name)
+        column_statistic_id = [id for id in list(
+            get_all_column_statistics[0].data.keys()) if get_all_column_statistics[0].data[id] == desired_column_statistic][0]
+
+        # create columns parameter
+        columns = [PACalculationColumn(id=column_id, statistics=[column_statistic_id])]
+
+        # get group id
+        groups_api = GroupsApi(api_client)
+        groups = groups_api.get_pa_groups()
+        desired_group = Group(category=group_category, directory=directory, name=group_name)
+        group_id = [id for id in list(
+            groups[0].data.keys()) if groups[0].data[id] == desired_group][0]
+
+        # create groups parameter
+        groups = [PACalculationGroup(id=group_id)]
 
         # get parent component id
         components_api = ComponentsApi(api_client)
-        components = components_api.get_pa_components(document="PA_DOCUMENTS:DEFAULT")
+        components = components_api.get_pa_components(document=component_document)
         desired_component = ComponentSummary(
-            name="Weights", category="Weights / Exposures", type="PA component"
+            name=component_name, category=component_category
         )
         parent_component_id = [id for id in list(
             components[0].data.keys()) if components[0].data[id] == desired_component][0]
 
         # create a linked PA template
-        linked_pa_template_api = LinkedPATemplatesApi(api_client)
-
         linked_pa_template_parameters = LinkedPATemplateParameters(
-            directory="Personal:LinkedPATemplates/",
+            directory=linked_pa_template_directory,
             parent_component_id=parent_component_id,
             description="This is a linked PA template that only returns security level data",
             content = TemplateContentTypes(
@@ -89,82 +137,44 @@ def main():
             data = linked_pa_template_parameters
         )
 
+        linked_pa_template_api = LinkedPATemplatesApi(api_client)
+
         response = linked_pa_template_api.create_linked_pa_templates(
             linked_pa_template_parameters_root = linked_pa_template_parameters_root)
 
-        parent_template_id = list(response[0].data.keys())[0]
-
         # create a templated component
-        templated_pa_components_api = TemplatedPAComponentsApi(api_client)
-
-       # get column id
-        columns_api = ColumnsApi(api_client)
-        column = columns_api.get_pa_columns(
-            name = "Port. Average Weight",
-            category = "Portfolio/Position Data",
-            directory = "Factset"
-        )
-        column_id = list(column[0].data.keys())[0]
-
-        # get column statistics id
-        column_statistics_api = ColumnStatisticsApi(api_client)
-        get_all_column_statistics = column_statistics_api.get_pa_column_statistics()
-        desired_column_statistic = ColumnStatistic(name="Active Weights")
-        column_statistic_id = [id for id in list(
-            get_all_column_statistics[0].data.keys()) if get_all_column_statistics[0].data[id] == desired_column_statistic][0]
-
-        # create columns parameter
-        columns = [PACalculationColumn(id=column_id, statistics=[column_statistic_id])]
-
-        # get group id
-        groups_api = GroupsApi(api_client)
-        groups = groups_api.get_pa_groups()
-        desired_group = Group(category="JP Morgan CEMBI ", directory="Factset", name="Country - JP Morgan CEMBI ")
-        group_id = [id for id in list(
-            groups[0].data.keys()) if groups[0].data[id] == desired_group][0]
-
-        # create groups parameter
-        groups = [PACalculationGroup(id=group_id)]
+        parent_template_id = response[0].data.get("id")
 
         templated_pa_component_parameters = TemplatedPAComponentParameters(
-            directory="Personal:TemplatedPAComponents/",
+            directory=templated_pa_component_directory,
             parent_template_id=parent_template_id,
             description="This is a templated PA component",
             component_data = PAComponentData(
-                accounts = [
-                    PAIdentifier(
-                        id = "SPN:SP50",
-                        holdingsmode = "B&H"),
-                    PAIdentifier(
-                        id = "MSCI_USA:984000",
-                        holdingsmode = "B&H")],
-                benchmarks = [
-                    PAIdentifier(
-                        id = "SPN:SP50",
-                        holdingsmode = "B&H"),
-                    PAIdentifier(
-                        id = "DJGX:AMERICAS",
-                        holdingsmode = "B&H")],
+                accounts = [PAIdentifier(id=portfolio)],
+                benchmarks = [PAIdentifier(id=benchmark)],
                 columns = columns,
                 groups = groups,
-                currencyisocode = "USD",
-                componentdetail = "GROUPS"
+                currencyisocode = currencyisocode,
+                componentdetail = componentdetail
             )
         )
 
         templated_pa_component_parameters_root = TemplatedPAComponentParametersRoot(
             data = templated_pa_component_parameters
         )
+
+        templated_pa_components_api = TemplatedPAComponentsApi(api_client)
+
         response = templated_pa_components_api.create_templated_pa_components(
             templated_pa_component_parameters_root = templated_pa_component_parameters_root)
 
-        component_id = list(response[0].data.keys())[0]
+        component_id = response[0].data.get("id")
 
         print("PA Component Id: " + component_id)
 
         # do PA calculation with given templated component id
-        pa_accounts = [PAIdentifier(id=pa_benchmark_sp_50)]
-        pa_benchmarks = [PAIdentifier(id=pa_benchmark_r_1000)]
+        pa_accounts = [PAIdentifier(id=portfolio)]
+        pa_benchmarks = [PAIdentifier(id=benchmark)]
         pa_dates = PADateParameters(
             startdate=startdate, enddate=enddate, frequency=frequency)
 

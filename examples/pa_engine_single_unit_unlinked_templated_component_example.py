@@ -1,3 +1,4 @@
+from locale import currency
 import time
 import os
 import uuid
@@ -33,16 +34,16 @@ from fds.analyticsapi.engines.model.group import Group
 
 from urllib3 import Retry
 
-host = "https://api.factset.com"
-username = os.environ["ANALYTICS_API_QAR_USERNAME_SERIAL"]
-password = os.environ["ANALYTICS_API_QAR_PASSWORD"]
-
+host = os.environ['FACTSET_HOST']
+fds_username = os.environ['FACTSET_USERNAME']
+fds_api_key = os.environ['FACTSET_API_KEY']
 
 def main():
     config = Configuration()
     config.host = host
-    config.username = username
-    config.password = password
+    config.username = fds_username
+    config.password = fds_api_key
+    config.discard_unknown_keys = True
     # add proxy and/or disable ssl verification according to your development environment
     # config.proxy = "<proxyUrl>"
     config.verify_ssl = False
@@ -54,28 +55,44 @@ def main():
     api_client = ApiClient(config)
 
     try:
-        pa_benchmark_sp_50 = "BENCH:SP50"
-        pa_benchmark_r_1000 = "BENCH:R.1000"
+        column_name = "Port. Average Weight"
+        column_category = "Portfolio/Position Data"
+        column_statistic_name = "Active Weights"
+
+        group_category = "JP Morgan CEMBI "
+        group_name = "Country - JP Morgan CEMBI "
+
+        unlinked_pa_template_directory = "Personal:UnlinkedPATemplates/"
+        unlinked_pa_template_type_id = "996E90B981AEE83F14029ED3D309FB3F03EC6E2ACC7FD42C22CBD5D279502CFD"
+
+        templated_pa_component_directory = "Personal:TemplatedPAComponents/"
+
+        portfolio = "BENCH:SP50"
+        benchmark = "BENCH:R.1000"
         startdate = "20180101"
         enddate = "20181231"
         frequency = "Monthly"
+        currencyisocode = "USD"
+        componentdetail = "GROUPS"
+        directory = "Factset"
 
-        # get template-type
-        template_type = "996E90B981AEE83F14029ED3D309FB3F03EC6E2ACC7FD42C22CBD5D279502CFD"
+        # uncomment the below code line to setup cache control; max-stale=0 will be a fresh adhoc run and the max-stale value is in seconds.
+        # Results are by default cached for 12 hours; Setting max-stale=300 will fetch a cached result which is 5 minutes older. 
+        # cache_control = "max-stale=0"
 
         # get column id
         columns_api = ColumnsApi(api_client)
         column = columns_api.get_pa_columns(
-            name = "Port. Average Weight",
-            category = "Portfolio/Position Data",
-            directory = "Factset"
+            name = column_name,
+            category = column_category,
+            directory = directory
         )
         column_id = list(column[0].data.keys())[0]
 
         # get column statistics id
         column_statistics_api = ColumnStatisticsApi(api_client)
         get_all_column_statistics = column_statistics_api.get_pa_column_statistics()
-        desired_column_statistic = ColumnStatistic(name="Active Weights")
+        desired_column_statistic = ColumnStatistic(name=column_statistic_name)
         column_statistic_id = [id for id in list(
             get_all_column_statistics[0].data.keys()) if get_all_column_statistics[0].data[id] == desired_column_statistic][0]
 
@@ -85,7 +102,7 @@ def main():
         # get group id
         groups_api = GroupsApi(api_client)
         groups = groups_api.get_pa_groups()
-        desired_group = Group(category="JP Morgan CEMBI ", directory="Factset", name="Country - JP Morgan CEMBI ")
+        desired_group = Group(category=group_category, directory=directory, name=group_name)
         group_id = [id for id in list(
             groups[0].data.keys()) if groups[0].data[id] == desired_group][0]
 
@@ -93,34 +110,20 @@ def main():
         groups = [PACalculationGroup(id=group_id)]
 
         # create an unlinked PA template
-        unlinked_pa_template_api = UnlinkedPATemplatesApi(api_client)
-
         unlinked_pa_template_parameters = UnlinkedPATemplateParameters(
-            directory="Personal:UnlinkedPATemplates/",
-            template_type_id=template_type,
+            directory=unlinked_pa_template_directory,
+            template_type_id=unlinked_pa_template_type_id,
             description="This is an unlinked PA template that only returns security level data",
-            accounts = [
-                PAIdentifier(
-                    id = "SPN:SP50",
-                    holdingsmode = "B&H"),
-                PAIdentifier(
-                    id = "MSCI_USA:984000",
-                    holdingsmode = "B&H")],
-            benchmarks = [
-                PAIdentifier(
-                    id = "SPN:SP50",
-                    holdingsmode = "B&H"),
-                PAIdentifier(
-                    id = "DJGX:AMERICAS",
-                    holdingsmode = "B&H")],
+            accounts = [PAIdentifier(id=portfolio)],
+            benchmarks = [PAIdentifier(id=benchmark)],
             columns = columns,
             dates = PADateParameters(
-                startdate = "20200101",
-                enddate = "20201215",
-                frequency = "Monthly"),
+                startdate = startdate,
+                enddate = enddate,
+                frequency = frequency),
             groups = groups,
-            currencyisocode = "USD",
-            componentdetail = "GROUPS",
+            currencyisocode = currencyisocode,
+            componentdetail = componentdetail,
             content = TemplateContentTypes(
                 mandatory = ["accounts", "benchmarks"],
                 optional = ["groups", "columns", "currencyisocode", "componentdetail"],
@@ -131,53 +134,44 @@ def main():
             data = unlinked_pa_template_parameters
         )
 
+        unlinked_pa_template_api = UnlinkedPATemplatesApi(api_client)
+
         response = unlinked_pa_template_api.create_unlinked_pa_templates(
             unlinked_pa_template_parameters_root = unlinked_pa_template_parameters_root)
 
-        parent_template_id = list(response[0].data.keys())[0]
-
-        # create a templated component
-        templated_pa_components_api = TemplatedPAComponentsApi(api_client)
+        # create a templated PA component
+        parent_template_id = response[0].data.get("id")
 
         templated_pa_component_parameters = TemplatedPAComponentParameters(
-            directory="Personal:TemplatedPAComponents/",
+            directory=templated_pa_component_directory,
             parent_template_id=parent_template_id,
             description="This is a templated PA component",
             component_data = PAComponentData(
-                accounts = [
-                    PAIdentifier(
-                        id = "SPN:SP50",
-                        holdingsmode = "B&H"),
-                    PAIdentifier(
-                        id = "MSCI_USA:984000",
-                        holdingsmode = "B&H")],
-                benchmarks = [
-                    PAIdentifier(
-                        id = "SPN:SP50",
-                        holdingsmode = "B&H"),
-                    PAIdentifier(
-                        id = "DJGX:AMERICAS",
-                        holdingsmode = "B&H")],
+                accounts = [PAIdentifier(id=portfolio)],
+                benchmarks = [PAIdentifier(id=benchmark)],
                 columns = columns,
                 groups = groups,
-                currencyisocode = "USD",
-                componentdetail = "GROUPS"
+                currencyisocode = currencyisocode,
+                componentdetail = componentdetail
             )
         )
 
         templated_pa_component_parameters_root = TemplatedPAComponentParametersRoot(
             data = templated_pa_component_parameters
         )
+
+        templated_pa_components_api = TemplatedPAComponentsApi(api_client)
+
         response = templated_pa_components_api.create_templated_pa_components(
             templated_pa_component_parameters_root = templated_pa_component_parameters_root)
 
-        component_id = list(response[0].data.keys())[0]
+        component_id = response[0].data.get("id")
 
         print("PA Component Id: " + component_id)
 
         # do PA calculation with given templated component id
-        pa_accounts = [PAIdentifier(id=pa_benchmark_sp_50)]
-        pa_benchmarks = [PAIdentifier(id=pa_benchmark_r_1000)]
+        pa_accounts = [PAIdentifier(id=portfolio)]
+        pa_benchmarks = [PAIdentifier(id=benchmark)]
         pa_dates = PADateParameters(
             startdate=startdate, enddate=enddate, frequency=frequency)
 
@@ -191,7 +185,9 @@ def main():
 
         post_and_calculate_response = pa_calculations_api.post_and_calculate(
             pa_calculation_parameters_root=pa_calculation_parameter_root)
-
+        
+        # comment the above line and uncomment the below line to run the request with the cache_control header defined earlier
+        # post_and_calculate_response = pa_calculations_api.post_and_calculate(pa_calculation_parameters_root=pa_calculation_parameter_root, cache_control=cache_control)
         if post_and_calculate_response[1] == 201:
             output_calculation_result(post_and_calculate_response[0]['data'])
         elif post_and_calculate_response[1] == 200:
