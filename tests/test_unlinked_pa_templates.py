@@ -97,7 +97,7 @@ class TestUnlinkedPaTemplatesApi(unittest.TestCase):
         )
 
         firsttemplate = list(response[0].data.keys())[0]
-        
+
         self.assertEqual(response[1], 200, "Response should be 200 - Success")
         self.assertEqual(type(response[0].data), dict, "Response should be of Dictionary type.")
         self.assertEqual(type(response[0].data[firsttemplate]),
