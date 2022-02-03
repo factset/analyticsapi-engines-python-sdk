@@ -32,7 +32,7 @@ class TestPaCalculationsApi(unittest.TestCase):
             component_summary = ComponentSummary(
                 name="Weights", category="Weights / Exposures")
             component_id = [id for id in list(
-                components.data.keys()) if components.data[id] == component_summary][0]
+                components.data.keys()) if components.data[id].name == component_summary.name and components.data[id].category == component_summary.category][0]
             pa_accounts = [PAIdentifier(id="BENCH:SP50")]
             pa_benchmarks = [PAIdentifier(id="BENCH:R.1000")]
             pa_dates = PADateParameters(

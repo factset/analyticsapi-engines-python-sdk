@@ -10,23 +10,21 @@ from fds.analyticsapi.engines.configuration import Configuration
 from fds.analyticsapi.engines.model.quant_calculation_parameters_root import QuantCalculationParametersRoot
 from fds.analyticsapi.engines.model.quant_calculation_parameters import QuantCalculationParameters
 from fds.analyticsapi.engines.model.quant_calculation_meta import QuantCalculationMeta
-from fds.analyticsapi.engines.model.quant_screening_expression_universe import QuantScreeningExpressionUniverse
+from fds.analyticsapi.engines.model.quant_universal_screen_universe import QuantUniversalScreenUniverse
 from fds.analyticsapi.engines.model.quant_fds_date import QuantFdsDate
-from fds.analyticsapi.engines.model.quant_screening_expression import QuantScreeningExpression
-from fds.analyticsapi.engines.model.quant_fql_expression import QuantFqlExpression
+from fds.analyticsapi.engines.model.quant_all_universal_screen_parameters import QuantAllUniversalScreenParameters
 
 from urllib3 import Retry
 
-host = "https://api.factset.com"
-username = os.environ["ANALYTICS_API_QAR_USERNAME_SERIAL"]
-password = os.environ["ANALYTICS_API_QAR_PASSWORD"]
-
+host = os.environ['FACTSET_HOST']
+fds_username = os.environ['FACTSET_USERNAME']
+fds_api_key = os.environ['FACTSET_API_KEY']
 
 def main():
     config = Configuration()
     config.host = host
-    config.username = username
-    config.password = password
+    config.username = fds_username
+    config.password = fds_api_key
     # add proxy and/or disable ssl verification according to your development environment
     # config.proxy = "<proxyUrl>"
     config.verify_ssl = False
@@ -38,22 +36,22 @@ def main():
     api_client = ApiClient(config)
 
     try:
-        screeningExpressionUniverse = QuantScreeningExpressionUniverse(
-            universe_expr="ISON_DOW", universe_type="Equity", security_expr="TICKER")
-        fdsDate = QuantFdsDate(
-            start_date="0", end_date="-5D", frequency="D", calendar="FIVEDAY")
-        screeningExpression = [QuantScreeningExpression(
-            expr="P_PRICE", name="Price (SCR)")]
-        fqlExpression = [QuantFqlExpression(
-            expr="P_PRICE(#DATE,#DATE,#FREQ)", name="Price (FQL)")]
+        universalScreenUniverse = QuantUniversalScreenUniverse(source="UniversalScreenUniverse",
+                                                                       screen="Client:/Aapi/Quant/Basic_Screen")
+
+        fdsDate = QuantFdsDate(source="FdsDate",
+            start_date="20050701", end_date="20050701", frequency="D", calendar="FIVEDAY")
+
+        allUniversalScreenParameter = QuantAllUniversalScreenParameters(source="AllUniversalScreenParameters")
 
         quant_calculation_parameters = {"1": QuantCalculationParameters(
-            screening_expression_universe=screeningExpressionUniverse,
-            fds_date=fdsDate,
-            screening_expression=screeningExpression,
-            fql_expression=fqlExpression)
+            universe=universalScreenUniverse,
+            dates=fdsDate,
+            formulas=[allUniversalScreenParameter])
         }
-
+        # uncomment the below code line to setup cache control; max-stale=0 will be a fresh adhoc run and the max-stale value is in seconds.
+        # Results are by default cached for 12 hours; Setting max-stale=300 will fetch a cached result which is 5 minutes older. 
+        # cache_control = "max-stale=0"
         quant_calculations_meta = QuantCalculationMeta(format='Feather')
 
         quant_calculation_parameter_root = QuantCalculationParametersRoot(
@@ -63,7 +61,9 @@ def main():
 
         post_and_calculate_response = quant_calculations_api.post_and_calculate(
             quant_calculation_parameters_root=quant_calculation_parameter_root)
-
+        # comment the above line and uncomment the below line to run the request with the cache_control header defined earlier
+        # post_and_calculate_response = quant_calculations_api.post_and_calculate(
+            # quant_calculation_parameters_root=quant_calculation_parameter_root, cache_control=cache_control)
         if post_and_calculate_response[1] == 201:
             output_calculation_result('data', post_and_calculate_response[0])
         else:

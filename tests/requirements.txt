@@ -2,7 +2,6 @@ astroid==2.6.2
 atomicwrites==1.4.0
 attrs==21.2.0
 colorama==0.4.4
-fds.analyticsapi.engines<6.0.0
 fds.protobuf.stach<2.0.0
 fds.protobuf.stach.extensions<2.0.0
 fds.protobuf.stach.v2<2.0.0

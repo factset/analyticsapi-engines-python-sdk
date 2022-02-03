@@ -18,16 +18,16 @@ from fds.protobuf.stach.extensions.StachExtensionFactory import StachExtensionFa
 
 from urllib3 import Retry
 
-host = "https://api.factset.com"
-username = os.environ["ANALYTICS_API_QAR_USERNAME_SERIAL"]
-password = os.environ["ANALYTICS_API_QAR_PASSWORD"]
-
+host = os.environ['FACTSET_HOST']
+fds_username = os.environ['FACTSET_USERNAME']
+fds_api_key = os.environ['FACTSET_API_KEY']
 
 def main():
     config = Configuration()
     config.host = host
-    config.username = username
-    config.password = password
+    config.username = fds_username
+    config.password = fds_api_key
+    config.discard_unknown_keys = True
     # add proxy and/or disable ssl verification according to your development environment
     # config.proxy = "<proxyUrl>"
     config.verify_ssl = False
@@ -44,20 +44,20 @@ def main():
         pa_document_name = "PA_DOCUMENTS:DEFAULT"
         pa_component_name = "Weights"
         pa_component_category = "Weights / Exposures"
-        pa_benchmark_sp_50 = "BENCH:SP50"
-        pa_benchmark_r_1000 = "BENCH:R.1000"
+        portfolio = "BENCH:SP50"
+        benchmark = "BENCH:R.1000"
         startdate = "20180101"
         enddate = "20181231"
         frequency = "Monthly"
-
-        get_components_response = components_api.get_pa_components(pa_document_name)
-        component_summary = ComponentSummary(
-            name=pa_component_name, category=pa_component_category)
+        # uncomment the below code line to setup cache control; max-stale=0 will be a fresh adhoc run and the max-stale value is in seconds.
+        # Results are by default cached for 12 hours; Setting max-stale=300 will fetch a cached result which is 5 minutes older.
+        # cache_control = "max-stale=0"
+        get_components_response = components_api.get_pa_components(document=pa_document_name)
         component_id = [id for id in list(
-            get_components_response[0].data.keys()) if get_components_response[0].data[id] == component_summary][0]
+            get_components_response[0].data.keys()) if get_components_response[0].data[id].name == pa_component_name and get_components_response[0].data[id].category == pa_component_category][0]
         print("PA Component Id: " + component_id)
-        pa_accounts = [PAIdentifier(id=pa_benchmark_sp_50)]
-        pa_benchmarks = [PAIdentifier(id=pa_benchmark_r_1000)]
+        pa_accounts = [PAIdentifier(id=portfolio)]
+        pa_benchmarks = [PAIdentifier(id=benchmark)]
         pa_dates = PADateParameters(
             startdate=startdate, enddate=enddate, frequency=frequency)
 
@@ -71,7 +71,8 @@ def main():
 
         post_and_calculate_response = pa_calculations_api.post_and_calculate(
             pa_calculation_parameters_root=pa_calculation_parameter_root)
-
+        # comment the above line and uncomment the below line to run the request with the cache_control header defined earlier
+        # post_and_calculate_response = pa_calculations_api.post_and_calculate(pa_calculation_parameters_root=pa_calculation_parameter_root, cache_control=cache_control)
         if post_and_calculate_response[1] == 201:
             output_calculation_result(post_and_calculate_response[0]['data'])
         elif post_and_calculate_response[1] == 200:

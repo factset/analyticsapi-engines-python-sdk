@@ -4,6 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**source** | **str** |  | 
 **frequency** | **str** |  | 
 **calendar** | **str** |  | 
 **dates** | **[str]** |  | [optional] 

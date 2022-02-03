@@ -102,7 +102,7 @@ conf = fds.analyticsapi.engines.Configuration(
                  api_key=None, api_key_prefix=None,
                  access_token=None,
                  username=None, password=None,
-                 discard_unknown_keys=False,
+                 discard_unknown_keys=True,
                  disabled_client_side_validations="",
                  server_index=None, server_variables=None,
                  server_operation_index=None, server_operation_variables=None,
@@ -409,7 +409,7 @@ conf = fds.analyticsapi.engines.Configuration(
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: v3:[pa,spar,vault,pub,quant,fi,axp,afi,npo,bpm,fpo,others],v1:[fiab]\n"\
-               "SDK Package Version: 5.2.0".\
+               "SDK Package Version: 5.3.0".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self):

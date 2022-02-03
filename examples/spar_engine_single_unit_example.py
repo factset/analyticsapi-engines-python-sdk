@@ -18,16 +18,16 @@ from fds.protobuf.stach.extensions.StachExtensionFactory import StachExtensionFa
 
 from urllib3 import Retry
 
-host = "https://api.factset.com"
-username = os.environ["ANALYTICS_API_QAR_USERNAME_SERIAL"]
-password = os.environ["ANALYTICS_API_QAR_PASSWORD"]
-
+host = os.environ['FACTSET_HOST']
+fds_username = os.environ['FACTSET_USERNAME']
+fds_api_key = os.environ['FACTSET_API_KEY']
 
 def main():
     config = Configuration()
     config.host = host
-    config.username = username
-    config.password = password
+    config.username = fds_username
+    config.password = fds_api_key
+    config.discard_unknown_keys = True
     # add proxy and/or disable ssl verification according to your development environment
     # config.proxy = "<proxyUrl>"
     config.verify_ssl = False
@@ -43,28 +43,31 @@ def main():
         spar_document_name = "pmw_root:/spar_documents/Factset Default Document"
         spar_component_name = "Returns Table"
         spar_component_category = "Raw Data / Returns"
-        spar_benchmark_r_1000 = "R.1000"
-        spar_benchmark_russell_pr_2000 = "RUSSELL_P:R.2000"
-        spar_benchmark_russell_prefix = "RUSSELL"
-        spar_benchmark_russell_return_type = "GTR"
+        spar_benchmark_1 = "R.1000"
+        spar_benchmark_2 = "RUSSELL_P:R.2000"
+        spar_benchmark_prefix = "RUSSELL"
+        spar_benchmark_return_type = "GTR"
         startdate = "20180101"
         enddate = "20181231"
         frequency = "Monthly"
+        currency = "USD"
+        # uncomment the below code line to setup cache control; max-stale=0 will be a fresh adhoc run and the max-stale value is in seconds.
+        # Results are by default cached for 12 hours; Setting max-stale=300 will fetch a cached result which is 5 minutes older.
+        # cache_control = "max-stale=0"
         get_components_response = components_api.get_spar_components(spar_document_name)
-        component_summary = ComponentSummary(
-            name=spar_component_name, category=spar_component_category)
+        
         component_id = [id for id in list(
-            get_components_response[0].data.keys()) if get_components_response[0].data[id] == component_summary][0]
+            get_components_response[0].data.keys()) if get_components_response[0].data[id].name == spar_component_name and get_components_response[0].data[id].category == spar_component_category][0]
         print("SPAR Component Id: " + component_id)
-        spar_account_identifier = SPARIdentifier(id=spar_benchmark_r_1000, returntype=spar_benchmark_russell_return_type,
-                                                 prefix=spar_benchmark_russell_prefix)
+        spar_account_identifier = SPARIdentifier(id=spar_benchmark_1, returntype=spar_benchmark_return_type,
+                                                 prefix=spar_benchmark_prefix)
         spar_accounts = [spar_account_identifier]
-        spar_benchmark_identifier = SPARIdentifier(id=spar_benchmark_russell_pr_2000, returntype=spar_benchmark_russell_return_type,
-                                                   prefix=spar_benchmark_russell_prefix)
+        spar_benchmark_identifier = SPARIdentifier(id=spar_benchmark_2, returntype=spar_benchmark_return_type,
+                                                   prefix=spar_benchmark_prefix)
         spar_dates = SPARDateParameters(startdate, enddate, frequency)
 
         spar_calculation_parameters = {"1": SPARCalculationParameters(componentid=component_id, accounts=spar_accounts, benchmark=spar_benchmark_identifier,
-                                                                      dates=spar_dates)}
+                                                                      dates=spar_dates, currencyisocode=currency)}
 
         spar_calculation_parameter_root = SPARCalculationParametersRoot(
             data=spar_calculation_parameters)
@@ -72,7 +75,8 @@ def main():
         spar_calculations_api = SPARCalculationsApi(api_client)
         post_and_calculate_response = spar_calculations_api.post_and_calculate(
             spar_calculation_parameters_root=spar_calculation_parameter_root)
-
+        # comment the above line and uncomment the below line to run the request with the cache_control header defined earlier
+        # post_and_calculate_response = spar_calculations_api.post_and_calculate(spar_calculation_parameters_root=spar_calculation_parameter_root, cache_control=cache_control)
         if post_and_calculate_response[1] == 201:
             output_calculation_result(post_and_calculate_response[0]['data'])
         elif post_and_calculate_response[1] == 200:

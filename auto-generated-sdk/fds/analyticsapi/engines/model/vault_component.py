@@ -86,6 +86,7 @@ class VaultComponent(ModelNormal):
             'currencyisocode': (str,),  # noqa: E501
             'dates': (VaultDateParameters,),  # noqa: E501
             'snapshot': (bool,),  # noqa: E501
+            'path': (str,),  # noqa: E501
             'name': (str,),  # noqa: E501
             'category': (str,),  # noqa: E501
             'type': (str,),  # noqa: E501
@@ -103,6 +104,7 @@ class VaultComponent(ModelNormal):
         'currencyisocode': 'currencyisocode',  # noqa: E501
         'dates': 'dates',  # noqa: E501
         'snapshot': 'snapshot',  # noqa: E501
+        'path': 'path',  # noqa: E501
         'name': 'name',  # noqa: E501
         'category': 'category',  # noqa: E501
         'type': 'type',  # noqa: E501
@@ -160,6 +162,7 @@ class VaultComponent(ModelNormal):
             currencyisocode (str): Currency iso code saved in the document. [optional]  # noqa: E501
             dates (VaultDateParameters): [optional]  # noqa: E501
             snapshot (bool): Snapshot. [optional]  # noqa: E501
+            path (str): The path to the document. [optional]  # noqa: E501
             name (str): Component name.. [optional]  # noqa: E501
             category (str): Component category.. [optional]  # noqa: E501
             type (str): Component type.. [optional]  # noqa: E501

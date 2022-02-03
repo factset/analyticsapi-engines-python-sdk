@@ -445,16 +445,21 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                     currency="currency_example",
                 ),
             ),
-            strategy=OptimizerStrategy(
-                id="id_example",
-                overrides=OptimizerStrategyOverrides(
-                    tax="tax_example",
+            strategy=FPOOptimizerStrategy(
+                overrides=FPOOptimizerStrategyOverrides(
+                    objective=FPOObjective(
+                        active="active_example",
+                        terms={
+                            "Disable": "Disable",
+                        },
+                    ),
                     constraints={
                         "Disable": "Disable",
                     },
                     alpha="alpha_example",
                     transaction_cost="transaction_cost_example",
                 ),
+                id="id_example",
             ),
             optimization=Optimization(
                 risk_model_date="risk_model_date_example",
@@ -597,16 +602,21 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                     currency="currency_example",
                 ),
             ),
-            strategy=OptimizerStrategy(
-                id="id_example",
-                overrides=OptimizerStrategyOverrides(
-                    tax="tax_example",
+            strategy=FPOOptimizerStrategy(
+                overrides=FPOOptimizerStrategyOverrides(
+                    objective=FPOObjective(
+                        active="active_example",
+                        terms={
+                            "Disable": "Disable",
+                        },
+                    ),
                     constraints={
                         "Disable": "Disable",
                     },
                     alpha="alpha_example",
                     transaction_cost="transaction_cost_example",
                 ),
+                id="id_example",
             ),
             optimization=Optimization(
                 risk_model_date="risk_model_date_example",

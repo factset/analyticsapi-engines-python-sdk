@@ -19,16 +19,16 @@ from fds.protobuf.stach.extensions.StachExtensionFactory import StachExtensionFa
 
 from urllib3 import Retry
 
-host = "https://api.factset.com"
-username = os.environ["ANALYTICS_API_QAR_USERNAME_SERIAL"]
-password = os.environ["ANALYTICS_API_QAR_PASSWORD"]
-
+host = os.environ['FACTSET_HOST']
+fds_username = os.environ['FACTSET_USERNAME']
+fds_api_key = os.environ['FACTSET_API_KEY']
 
 def main():
     config = Configuration()
     config.host = host
-    config.username = username
-    config.password = password
+    config.username = fds_username
+    config.password = fds_api_key
+    config.discard_unknown_keys = True
     # add proxy and/or disable ssl verification according to your development environment
     # config.proxy = "<proxyUrl>"
     config.verify_ssl = False
@@ -50,18 +50,15 @@ def main():
         vault_startdate = "20180101"
         vault_enddate = "20180329"
         frequency = "Monthly"
-
+        # uncomment the below code line to setup cache control; max-stale=0 will be a fresh adhoc run and the max-stale value is in seconds.
+        # Results are by default cached for 12 hours; Setting max-stale=300 will fetch a cached result which is 5 minutes older.
+        # cache_control = "max-stale=0"
         get_components_response = components_api.get_vault_components(vault_document_name)
-        component_total_returns_summary = ComponentSummary(
-            name=vault_component_total_returns, category=vault_component_category)
-        component_total_returns_id = [id for id in list(get_components_response[0].data.keys(
-        )) if get_components_response[0].data[id] == component_total_returns_summary][0]
+        component_total_returns_id = [id for id in list(get_components_response[0].data.keys()) if get_components_response[0].data[id].name == vault_component_total_returns and get_components_response[0].data[id].category == vault_component_category][0]
         print("Vault Total Returns Component Id: " + component_total_returns_id)
 
-        component_performance_summary = ComponentSummary(
-            name=vault_component_performance, category=vault_component_category)
-        component_performance_id = [id for id in list(get_components_response[0].data.keys(
-        )) if get_components_response[0].data[id] == component_performance_summary][0]
+        
+        component_performance_id = [id for id in list(get_components_response[0].data.keys()) if get_components_response[0].data[id].name == vault_component_performance and get_components_response[0].data[id].category == vault_component_category][0]
         print("Vault Performance Over Time Component Id: " +
               component_performance_id)
 
@@ -85,7 +82,8 @@ def main():
 
         post_and_calculate_response = vault_calculations_api.post_and_calculate(
             vault_calculation_parameters_root=vault_calculation_parameters_root)
-
+        # comment the above line and uncomment the below line to run the request with the cache_control header defined earlier
+        # post_and_calculate_response = vault_calculations_api.post_and_calculate(vault_calculation_parameters_root=vault_calculation_parameters_root, cache_control=cache_control)
         if post_and_calculate_response[1] == 202 or post_and_calculate_response[1] == 200:
             calculation_id = post_and_calculate_response[0].data.calculationid
             print("Calculation Id: " + calculation_id)

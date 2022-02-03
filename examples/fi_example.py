@@ -16,16 +16,16 @@ from fds.protobuf.stach.extensions.StachExtensionFactory import StachExtensionFa
 
 from urllib3 import Retry
 
-host = "https://api.factset.com"
-username = os.environ["ANALYTICS_API_QAR_USERNAME_SERIAL"]
-password = os.environ["ANALYTICS_API_QAR_PASSWORD"]
-
+host = os.environ['FACTSET_HOST']
+fds_username = os.environ['FACTSET_USERNAME']
+fds_api_key = os.environ['FACTSET_API_KEY']
 
 def main():
     config = Configuration()
     config.host = host
-    config.username = username
-    config.password = password
+    config.username = fds_username
+    config.password = fds_api_key
+    config.discard_unknown_keys = True
     # add proxy and/or disable ssl verification according to your development environment
     # config.proxy = "<proxyUrl>"
     config.verify_ssl = False
@@ -69,6 +69,10 @@ def main():
         discount_curve = "UST"
     )
 
+    # uncomment the below code line to setup cache control; max-stale=0 will be a fresh adhoc run and the max-stale value is in seconds.
+    # Results are by default cached for 12 hours; Setting max-stale=300 will fetch a cached result which is 5 minutes older. 
+    # cache_control = "max-stale=0"
+
     securities = [security1, security2]
 
     jobSettings = FIJobSettings(as_of_date="20201201",
@@ -81,7 +85,9 @@ def main():
     fi_calculations_api = FICalculationsApi(api_client)
     run_calculation_response = fi_calculations_api.post_and_calculate(
         fi_calculation_parameters_root=fi_calculation_parameters_root)
-
+    # comment the above line and uncomment the below line to run the request with the cache_control header defined earlier
+    # run_calculation_response = fi_calculations_api.post_and_calculate(
+        # fi_calculation_parameters_root=fi_calculation_parameters_root, cache_control=cache_control)
     if run_calculation_response[1] != 202 and run_calculation_response[1] != 201:
         print_error(run_calculation_response)
         sys.exit()
