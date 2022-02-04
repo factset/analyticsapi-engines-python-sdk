@@ -75,7 +75,6 @@ class ComponentSummary(ModelNormal):
         return {
             'name': (str,),  # noqa: E501
             'category': (str,),  # noqa: E501
-            'type': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -86,7 +85,6 @@ class ComponentSummary(ModelNormal):
     attribute_map = {
         'name': 'name',  # noqa: E501
         'category': 'category',  # noqa: E501
-        'type': 'type',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -137,7 +135,6 @@ class ComponentSummary(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             name (str): Component name.. [optional]  # noqa: E501
             category (str): Component category.. [optional]  # noqa: E501
-            type (str): Component type.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

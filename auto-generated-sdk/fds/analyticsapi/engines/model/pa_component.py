@@ -89,7 +89,6 @@ class PAComponent(ModelNormal):
             'path': (str,),  # noqa: E501
             'name': (str,),  # noqa: E501
             'category': (str,),  # noqa: E501
-            'type': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -107,7 +106,6 @@ class PAComponent(ModelNormal):
         'path': 'path',  # noqa: E501
         'name': 'name',  # noqa: E501
         'category': 'category',  # noqa: E501
-        'type': 'type',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -165,7 +163,6 @@ class PAComponent(ModelNormal):
             path (str): The path to the document. [optional]  # noqa: E501
             name (str): Component name.. [optional]  # noqa: E501
             category (str): Component category.. [optional]  # noqa: E501
-            type (str): Component type.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
