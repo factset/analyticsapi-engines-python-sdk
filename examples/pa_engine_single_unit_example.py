@@ -15,6 +15,7 @@ from fds.analyticsapi.engines.model.pa_date_parameters import PADateParameters
 from fds.analyticsapi.engines.model.pa_identifier import PAIdentifier
 from fds.protobuf.stach.extensions.StachVersion import StachVersion
 from fds.protobuf.stach.extensions.StachExtensionFactory import StachExtensionFactory
+from fds.protobuf.stach.extensions.v2.StachUtilities import StachUtilities
 
 from urllib3 import Retry
 
@@ -119,7 +120,13 @@ def output_calculation_result(result):
         StachVersion.V2)
     stachExtension = stachBuilder.set_package(result).build()
     dataFramesList = stachExtension.convert_to_dataframe()
+    getMetadata = stachExtension.get_metadata()
     print(dataFramesList)
+    print('MetaData:')
+    for metadaItem in getMetadata:
+        for keyName in metadaItem:
+            appendedValues = ','.join(str(x.string_value) for x in metadaItem[keyName])
+            print(keyName, ':', appendedValues)
     # generate_excel(dataFramesList)  # Uncomment this line to get the result in table format exported to excel file.
 
 

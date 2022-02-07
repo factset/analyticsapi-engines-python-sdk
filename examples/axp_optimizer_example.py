@@ -62,9 +62,9 @@ def main():
         #     }
         # }
         axp_optimizer_strategy = AxiomaEquityOptimizerStrategy(
-            id="Client:/Optimizer/CN_TEST")
+            id="Client:/Optimizer/TAXTEST")
         axp_optimizer_account = OptimizerAccount(
-            id="CLIENT:/OPTIMIZER/IBM.ACCT")
+            id="BENCH:SP50")
         axp_optimizer_optimization = Optimization(
             risk_model_date="09/01/2020",
             backtest_date="09/01/2020",
