@@ -195,7 +195,7 @@ def main():
 
             status_response = pa_calculations_api.get_calculation_status_by_id(id=calculation_id)
 
-            while status_response[1] == 202 and (status_response[0].data.status in ("Queued", "Executing")):
+            while status_response[1] == 202:
                 max_age = '5'
                 age_value = status_response[2].get("cache-control")
                 if age_value is not None:
