@@ -91,9 +91,8 @@ def main():
         # get column statistics id
         column_statistics_api = ColumnStatisticsApi(api_client)
         get_all_column_statistics = column_statistics_api.get_pa_column_statistics()
-        desired_column_statistic = ColumnStatistic(name=column_statistic_name)
         column_statistic_id = [id for id in list(
-            get_all_column_statistics[0].data.keys()) if get_all_column_statistics[0].data[id] == desired_column_statistic][0]
+            get_all_column_statistics[0].data.keys()) if get_all_column_statistics[0].data[id].name == column_statistic_name][0]
 
         # create columns parameter
         columns = [PACalculationColumn(id=column_id, statistics=[column_statistic_id])]
@@ -101,9 +100,10 @@ def main():
         # get group id
         groups_api = GroupsApi(api_client)
         groups = groups_api.get_pa_groups()
-        desired_group = Group(category=group_category, directory=directory, name=group_name)
         group_id = [id for id in list(
-            groups[0].data.keys()) if groups[0].data[id] == desired_group][0]
+            groups[0].data.keys()) if groups[0].data[id].category == group_category and 
+                                      groups[0].data[id].directory == directory and
+                                      groups[0].data[id].name == group_name][0]
 
         # create groups parameter
         groups = [PACalculationGroup(id=group_id)]
