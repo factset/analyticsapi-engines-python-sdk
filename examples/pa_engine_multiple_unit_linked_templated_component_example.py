@@ -53,7 +53,7 @@ def main():
     config.retries = Retry(total=3, status=3, status_forcelist=frozenset([429, 503]), backoff_factor=2,
                            raise_on_status=False)
 
-    api_client = ApiClient(config)
+    api_client = ApiClient(configuration=config)
 
     try:
         column_name = "Port. Average Weight"
@@ -84,7 +84,7 @@ def main():
         # cache_control = "max-stale=0"
         
         # get column id
-        columns_api = ColumnsApi(api_client)
+        columns_api = ColumnsApi(api_client=api_client)
         column = columns_api.get_pa_columns(
             name = column_name,
             category = column_category,
@@ -93,7 +93,7 @@ def main():
         column_id = list(column[0].data.keys())[0]
 
         # get column statistics id
-        column_statistics_api = ColumnStatisticsApi(api_client)
+        column_statistics_api = ColumnStatisticsApi(api_client=api_client)
         get_all_column_statistics = column_statistics_api.get_pa_column_statistics()
         column_statistic_id = [id for id in list(
             get_all_column_statistics[0].data.keys()) if get_all_column_statistics[0].data[id].name == column_statistic_name][0]
@@ -102,7 +102,7 @@ def main():
         columns = [PACalculationColumn(id=column_id, statistics=[column_statistic_id])]
 
         # get group id
-        groups_api = GroupsApi(api_client)
+        groups_api = GroupsApi(api_client=api_client)
         groups = groups_api.get_pa_groups()
         group_id = [id for id in list(
             groups[0].data.keys()) if groups[0].data[id].category == group_category and 
@@ -113,7 +113,7 @@ def main():
         groups = [PACalculationGroup(id=group_id)]
 
         # get parent component id
-        components_api = ComponentsApi(api_client)
+        components_api = ComponentsApi(api_client=api_client)
         components = components_api.get_pa_components(document=component_document)
         parent_component_id = [id for id in list(
             components[0].data.keys()) if components[0].data[id].name == component_name and
@@ -135,7 +135,7 @@ def main():
             data = linked_pa_template_parameters
         )
 
-        linked_pa_template_api = LinkedPATemplatesApi(api_client)
+        linked_pa_template_api = LinkedPATemplatesApi(api_client=api_client)
 
         response = linked_pa_template_api.create_linked_pa_templates(
             linked_pa_template_parameters_root = linked_pa_template_parameters_root)
@@ -161,7 +161,7 @@ def main():
             data = templated_pa_component_parameters
         )
 
-        templated_pa_components_api = TemplatedPAComponentsApi(api_client)
+        templated_pa_components_api = TemplatedPAComponentsApi(api_client=api_client)
 
         response = templated_pa_components_api.create_templated_pa_components(
             templated_pa_component_parameters_root = templated_pa_component_parameters_root)
@@ -184,7 +184,7 @@ def main():
         pa_calculation_parameter_root = PACalculationParametersRoot(
             data=pa_calculation_parameters)
 
-        pa_calculations_api = PACalculationsApi(api_client)
+        pa_calculations_api = PACalculationsApi(api_client=api_client)
 
         post_and_calculate_response = pa_calculations_api.post_and_calculate(
             pa_calculation_parameters_root=pa_calculation_parameter_root)
@@ -210,7 +210,7 @@ def main():
                           calculation_unit_id + " Succeeded!!!")
                     result_response = pa_calculations_api.get_calculation_unit_result_by_id(id=calculation_id,
                                                                                             unit_id=calculation_unit_id)
-                    output_calculation_result(result_response[0]['data'])
+                    output_calculation_result(result=result_response[0]['data'])
                 else:
                     print("Calculation Unit Id:" +
                           calculation_unit_id + " Failed!!!")
@@ -230,7 +230,7 @@ def output_calculation_result(result):
     print("Calculation Result")
     stachBuilder = StachExtensionFactory.get_row_organized_builder(
         StachVersion.V2)
-    stachExtension = stachBuilder.set_package(result).build()
+    stachExtension = stachBuilder.set_package(pkg=result).build()
     dataFramesList = stachExtension.convert_to_dataframe()
     print(dataFramesList)
     # generate_excel(dataFramesList)  # Uncomment this line to get the result in table format exported to excel file.
