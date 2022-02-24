@@ -89,6 +89,7 @@ class CalculationUnitStatus(ModelNormal):
             'errors': ([Error],),  # noqa: E501
             'result': (str,),  # noqa: E501
             'progress': (str,),  # noqa: E501
+            'points': (int,),  # noqa: E501
         }
 
     @cached_property
@@ -101,6 +102,7 @@ class CalculationUnitStatus(ModelNormal):
         'errors': 'errors',  # noqa: E501
         'result': 'result',  # noqa: E501
         'progress': 'progress',  # noqa: E501
+        'points': 'points',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -153,6 +155,7 @@ class CalculationUnitStatus(ModelNormal):
             errors ([Error]): The error in a calculation unit.. [optional]  # noqa: E501
             result (str): The result URL of the calculation.. [optional]  # noqa: E501
             progress (str): The progress of the calculation unit.. [optional]  # noqa: E501
+            points (int): The points for the calculation unit.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

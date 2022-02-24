@@ -105,11 +105,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_pa_components**
-> ComponentSummaryRoot get_pa_components()
+> ComponentSummaryRoot get_pa_components(document)
 
 Get PA components
 
-This endpoint returns      1.List of PA components in a given PA document if document name is provided.    2.List of components in given directory if directory is provided.
+This endpoint returns the list of PA components in a given PA document.
 
 ### Example
 
@@ -148,14 +148,12 @@ configuration = fds.analyticsapi.engines.Configuration(
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = components_api.ComponentsApi(api_client)
-    document = "document_example" # str | Document Name (optional)
-    directory = "directory_example" # str | Directory to get the components (optional)
+    document = "document_example" # str | Document Name
 
     # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # Get PA components
-        api_response = api_instance.get_pa_components(document=document, directory=directory)
+        api_response = api_instance.get_pa_components(document)
         pprint(api_response)
     except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling ComponentsApi->get_pa_components: %s\n" % e)
@@ -166,8 +164,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **document** | **str**| Document Name | [optional]
- **directory** | **str**| Directory to get the components | [optional]
+ **document** | **str**| Document Name |
 
 ### Return type
 
