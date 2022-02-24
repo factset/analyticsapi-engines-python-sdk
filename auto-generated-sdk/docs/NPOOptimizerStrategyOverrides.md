@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**objective** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}** | Objective parameters | [optional] 
+**objective** | **{str: ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},)}** | Objective parameters | [optional] 
 **constraints** | [**[ConstraintAction]**](ConstraintAction.md) | List of constraints | [optional] 
 **tax** | **str** | Tax  Can be set to \&quot;\&quot; for local | [optional] 
 **transaction_cost** | **str** | Transaction cost  Can be set to \&quot;\&quot; for local | [optional] 

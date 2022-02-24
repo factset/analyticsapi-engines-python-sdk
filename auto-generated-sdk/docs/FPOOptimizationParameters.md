@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**strategy** | [**FPOOptimizerStrategy**](FPOOptimizerStrategy.md) |  | 
+**strategy** | [**OptimizerStrategy**](OptimizerStrategy.md) |  | 
 **output_types** | [**OptimizerOutputTypes**](OptimizerOutputTypes.md) |  | 
 **account** | [**FPOAccount**](FPOAccount.md) |  | [optional] 
 **optimization** | [**Optimization**](Optimization.md) |  | [optional] 

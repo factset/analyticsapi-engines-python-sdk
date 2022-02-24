@@ -86,8 +86,8 @@ class UnlinkedPATemplate(ModelNormal):
         """
         lazy_import()
         return {
-            'id': (str,),  # noqa: E501
             'directory': (str,),  # noqa: E501
+            'id': (str,),  # noqa: E501
             'template_type_id': (str,),  # noqa: E501
             'snapshot': (bool,),  # noqa: E501
             'accounts': ([PAIdentifier],),  # noqa: E501
@@ -109,8 +109,8 @@ class UnlinkedPATemplate(ModelNormal):
 
 
     attribute_map = {
-        'id': 'id',  # noqa: E501
         'directory': 'directory',  # noqa: E501
+        'id': 'id',  # noqa: E501
         'template_type_id': 'templateTypeId',  # noqa: E501
         'snapshot': 'snapshot',  # noqa: E501
         'accounts': 'accounts',  # noqa: E501
@@ -172,21 +172,21 @@ class UnlinkedPATemplate(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            id (str): Template id.. [optional]  # noqa: E501
-            directory (str): Template directory.. [optional]  # noqa: E501
-            template_type_id (str): Template type id. [optional]  # noqa: E501
-            snapshot (bool): snapshot.. [optional]  # noqa: E501
-            accounts ([PAIdentifier]): List of accounts. [optional]  # noqa: E501
-            benchmarks ([PAIdentifier]): List of benchmarks. [optional]  # noqa: E501
-            columns ([PACalculationColumn]): List of columns for the PA calculation. [optional]  # noqa: E501
+            directory (str): [optional]  # noqa: E501
+            id (str): [optional]  # noqa: E501
+            template_type_id (str): [optional]  # noqa: E501
+            snapshot (bool): [optional]  # noqa: E501
+            accounts ([PAIdentifier]): [optional]  # noqa: E501
+            benchmarks ([PAIdentifier]): [optional]  # noqa: E501
+            columns ([PACalculationColumn]): [optional]  # noqa: E501
             dates (PADateParameters): [optional]  # noqa: E501
-            groups ([PACalculationGroup]): List of groupings for the PA calculation. [optional]  # noqa: E501
-            currencyisocode (str): Currency ISO code for calculation.. [optional]  # noqa: E501
-            componentdetail (str): PA storage type. It can be GROUPS or TOTALS or SECURITIES.. [optional]  # noqa: E501
+            groups ([PACalculationGroup]): [optional]  # noqa: E501
+            currencyisocode (str): [optional]  # noqa: E501
+            componentdetail (str): [optional]  # noqa: E501
             content (TemplateContentTypes): [optional]  # noqa: E501
-            description (str): Template description.. [optional]  # noqa: E501
-            name (str): Template name.. [optional]  # noqa: E501
-            category (str): Unlinked template category. [optional]  # noqa: E501
+            description (str): [optional]  # noqa: E501
+            name (str): [optional]  # noqa: E501
+            category (str): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
