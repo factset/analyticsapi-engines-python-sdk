@@ -36,6 +36,7 @@ from urllib3 import Retry
 host = os.environ['FACTSET_HOST']
 fds_username = os.environ['FACTSET_USERNAME']
 fds_api_key = os.environ['FACTSET_API_KEY']
+proxy_url = os.environ['PROXY_URL']
 
 def main():
     config = Configuration()
@@ -44,7 +45,7 @@ def main():
     config.password = fds_api_key
     config.discard_unknown_keys = True
     # add proxy and/or disable ssl verification according to your development environment
-    # config.proxy = "<proxyUrl>"
+    # config.proxy = proxy_url
     config.verify_ssl = False
 
     # Setting configuration to retry api calls on http status codes of 429 and 503.
