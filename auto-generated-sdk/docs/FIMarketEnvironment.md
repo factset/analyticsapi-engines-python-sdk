@@ -1,15 +1,10 @@
-# QuantFdsDate
+# FIMarketEnvironment
 
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**start_date** | **str** |  | 
-**end_date** | **str** |  | 
-**source** | **str** |  | 
-**frequency** | **str** |  | 
-**calendar** | **str** |  | 
-**override_universal_screen_calendar** | **bool** |  | [optional] 
+**rate_path** | **str** |  | [optional]  if omitted the server will use the default value of "FLAT & FORWARD"
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

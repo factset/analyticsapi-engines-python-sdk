@@ -77,6 +77,7 @@ class QuantFdsDateObsolete(ModelNormal):
             'end_date': (str,),  # noqa: E501
             'frequency': (str,),  # noqa: E501
             'calendar': (str,),  # noqa: E501
+            'override_universal_screen_calendar': (bool,),  # noqa: E501
         }
 
     @cached_property
@@ -89,6 +90,7 @@ class QuantFdsDateObsolete(ModelNormal):
         'end_date': 'endDate',  # noqa: E501
         'frequency': 'frequency',  # noqa: E501
         'calendar': 'calendar',  # noqa: E501
+        'override_universal_screen_calendar': 'overrideUniversalScreenCalendar',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -143,6 +145,7 @@ class QuantFdsDateObsolete(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            override_universal_screen_calendar (bool): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

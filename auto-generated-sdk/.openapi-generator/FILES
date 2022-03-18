@@ -53,6 +53,7 @@ docs/CurrencyRoot.md
 docs/DateParametersSummary.md
 docs/DateParametersSummaryRoot.md
 docs/DatesApi.md
+docs/DiscountCurvesApi.md
 docs/DocumentDirectories.md
 docs/DocumentDirectoriesRoot.md
 docs/DocumentsApi.md
@@ -68,8 +69,11 @@ docs/FIABIdentifier.md
 docs/FICalculationParameters.md
 docs/FICalculationParametersRoot.md
 docs/FICalculationsApi.md
+docs/FIDiscountCurveInfo.md
+docs/FIDiscountCurveInfoRoot.md
 docs/FIJobSettings.md
 docs/FILoss.md
+docs/FIMarketEnvironment.md
 docs/FIPrepay.md
 docs/FIReferencePrepay.md
 docs/FIReferenceSecurity.md
@@ -217,6 +221,7 @@ fds/analyticsapi/engines/api/components_api.py
 fds/analyticsapi/engines/api/configurations_api.py
 fds/analyticsapi/engines/api/currencies_api.py
 fds/analyticsapi/engines/api/dates_api.py
+fds/analyticsapi/engines/api/discount_curves_api.py
 fds/analyticsapi/engines/api/documents_api.py
 fds/analyticsapi/engines/api/fi_calculations_api.py
 fds/analyticsapi/engines/api/fiab_calculations_api.py
@@ -284,8 +289,11 @@ fds/analyticsapi/engines/model/error_source.py
 fds/analyticsapi/engines/model/event_summary.py
 fds/analyticsapi/engines/model/fi_calculation_parameters.py
 fds/analyticsapi/engines/model/fi_calculation_parameters_root.py
+fds/analyticsapi/engines/model/fi_discount_curve_info.py
+fds/analyticsapi/engines/model/fi_discount_curve_info_root.py
 fds/analyticsapi/engines/model/fi_job_settings.py
 fds/analyticsapi/engines/model/fi_loss.py
+fds/analyticsapi/engines/model/fi_market_environment.py
 fds/analyticsapi/engines/model/fi_prepay.py
 fds/analyticsapi/engines/model/fi_reference_prepay.py
 fds/analyticsapi/engines/model/fi_reference_security.py

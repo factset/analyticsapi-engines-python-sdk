@@ -76,6 +76,7 @@ class QuantDateListObsolete(ModelNormal):
             'frequency': (str,),  # noqa: E501
             'calendar': (str,),  # noqa: E501
             'dates': ([str],),  # noqa: E501
+            'override_universal_screen_calendar': (bool,),  # noqa: E501
         }
 
     @cached_property
@@ -87,6 +88,7 @@ class QuantDateListObsolete(ModelNormal):
         'frequency': 'frequency',  # noqa: E501
         'calendar': 'calendar',  # noqa: E501
         'dates': 'dates',  # noqa: E501
+        'override_universal_screen_calendar': 'overrideUniversalScreenCalendar',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -140,6 +142,7 @@ class QuantDateListObsolete(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             dates ([str]): [optional]  # noqa: E501
+            override_universal_screen_calendar (bool): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

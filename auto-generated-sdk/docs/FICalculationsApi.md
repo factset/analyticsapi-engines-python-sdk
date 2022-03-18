@@ -463,6 +463,9 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                 call_method="No Call",
                 settlement="settlement_example",
                 calc_from_method="calc_from_method_example",
+                market_environment=FIMarketEnvironment(
+                    rate_path="FLAT & FORWARD",
+                ),
             ),
         ),
         meta=CalculationMeta(
@@ -615,6 +618,9 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                 call_method="No Call",
                 settlement="settlement_example",
                 calc_from_method="calc_from_method_example",
+                market_environment=FIMarketEnvironment(
+                    rate_path="FLAT & FORWARD",
+                ),
             ),
         ),
         meta=CalculationMeta(

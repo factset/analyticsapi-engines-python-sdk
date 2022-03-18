@@ -60,8 +60,11 @@ from fds.analyticsapi.engines.model.fiab_date_parameters import FIABDateParamete
 from fds.analyticsapi.engines.model.fiab_identifier import FIABIdentifier
 from fds.analyticsapi.engines.model.fi_calculation_parameters import FICalculationParameters
 from fds.analyticsapi.engines.model.fi_calculation_parameters_root import FICalculationParametersRoot
+from fds.analyticsapi.engines.model.fi_discount_curve_info import FIDiscountCurveInfo
+from fds.analyticsapi.engines.model.fi_discount_curve_info_root import FIDiscountCurveInfoRoot
 from fds.analyticsapi.engines.model.fi_job_settings import FIJobSettings
 from fds.analyticsapi.engines.model.fi_loss import FILoss
+from fds.analyticsapi.engines.model.fi_market_environment import FIMarketEnvironment
 from fds.analyticsapi.engines.model.fi_prepay import FIPrepay
 from fds.analyticsapi.engines.model.fi_reference_prepay import FIReferencePrepay
 from fds.analyticsapi.engines.model.fi_reference_security import FIReferenceSecurity
