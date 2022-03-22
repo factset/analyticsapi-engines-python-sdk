@@ -45,7 +45,7 @@ def main():
 						])
 
         fdsDate = QuantFdsDate(source="FdsDate",
-            start_date="20050701", end_date="20051001", frequency="M", calendar="FIVEDAY")
+            start_date="20050701", end_date="20051001", frequency="M", calendar="FIVEDAY", override_universal_screen_calendar= True)
 
         screeningExpression = QuantScreeningExpression(source="ScreeningExpression",
             expr="P_PRICE", name="Price")

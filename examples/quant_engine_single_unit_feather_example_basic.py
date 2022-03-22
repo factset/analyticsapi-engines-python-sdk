@@ -42,7 +42,7 @@ def main():
                                                                        security_expr="TICKER")
 
         fdsDate = QuantFdsDate(source="FdsDate",
-            start_date="0", end_date="-2M", frequency="M", calendar="FIVEDAY")
+            start_date="0", end_date="-2M", frequency="M", calendar="FIVEDAY", override_universal_screen_calendar= False)
         
         screeningExpression1 = QuantScreeningExpression(source="ScreeningExpression",
             expr="FG_GICS_SECTOR", name="Sector (scr)")

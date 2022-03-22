@@ -40,7 +40,7 @@ def main():
                                                                        screen="Client:/Aapi/Quant/Basic_Screen")
 
         fdsDate = QuantFdsDate(source="FdsDate",
-            start_date="20050701", end_date="20050701", frequency="D", calendar="FIVEDAY")
+            start_date="20050701", end_date="20050701", frequency="D", calendar="FIVEDAY", override_universal_screen_calendar= False)
 
         allUniversalScreenParameter = QuantAllUniversalScreenParameters(source="AllUniversalScreenParameters")
 
