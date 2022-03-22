@@ -87,6 +87,7 @@ class QuantFdsDate(ModelComposed):
             'source': (str,),  # noqa: E501
             'frequency': (str,),  # noqa: E501
             'calendar': (str,),  # noqa: E501
+            'override_universal_screen_calendar': (bool,),  # noqa: E501
         }
 
     @cached_property
@@ -100,6 +101,7 @@ class QuantFdsDate(ModelComposed):
         'source': 'source',  # noqa: E501
         'frequency': 'frequency',  # noqa: E501
         'calendar': 'calendar',  # noqa: E501
+        'override_universal_screen_calendar': 'overrideUniversalScreenCalendar',  # noqa: E501
     }
 
     required_properties = set([
@@ -156,6 +158,7 @@ class QuantFdsDate(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            override_universal_screen_calendar (bool): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

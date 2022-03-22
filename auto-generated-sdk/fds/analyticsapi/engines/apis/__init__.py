@@ -25,6 +25,7 @@ from fds.analyticsapi.engines.api.components_api import ComponentsApi
 from fds.analyticsapi.engines.api.configurations_api import ConfigurationsApi
 from fds.analyticsapi.engines.api.currencies_api import CurrenciesApi
 from fds.analyticsapi.engines.api.dates_api import DatesApi
+from fds.analyticsapi.engines.api.discount_curves_api import DiscountCurvesApi
 from fds.analyticsapi.engines.api.documents_api import DocumentsApi
 from fds.analyticsapi.engines.api.fiab_calculations_api import FIABCalculationsApi
 from fds.analyticsapi.engines.api.fi_calculations_api import FICalculationsApi
