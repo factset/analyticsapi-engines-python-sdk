@@ -13,6 +13,7 @@ from fds.analyticsapi.engines.model.fi_security import FISecurity
 from fds.analyticsapi.engines.model.fi_job_settings import FIJobSettings
 from fds.protobuf.stach.extensions.StachVersion import StachVersion
 from fds.protobuf.stach.extensions.StachExtensionFactory import StachExtensionFactory
+from fds.analyticsapi.engines.model.fi_market_environment import FIMarketEnvironment
 
 from urllib3 import Retry
 
@@ -68,6 +69,10 @@ def main():
         settlement = "20201203",
         discount_curve = "UST"
     )
+    rate_path = FIMarketEnvironment(
+        rate_path = "FLAT & FORWARD"
+    )
+    
 
     # uncomment the below code line to setup cache control; max-stale=0 will be a fresh adhoc run and the max-stale value is in seconds.
     # Results are by default cached for 12 hours; Setting max-stale=300 will fetch a cached result which is 5 minutes older. 
@@ -75,8 +80,7 @@ def main():
 
     securities = [security1, security2]
 
-    jobSettings = FIJobSettings(as_of_date="20201201",
-                                partial_duration_months = [1,3,6])
+    jobSettings = FIJobSettings(as_of_date="20201201",partial_duration_months =[1,3,6], market_environment=rate_path)
 
     fi_calculation_parameters = FICalculationParameters(securities, calculations, jobSettings)
 
