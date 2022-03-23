@@ -108,6 +108,10 @@ docs/NPOOptimizerApi.md
 docs/NPOOptimizerStrategy.md
 docs/NPOOptimizerStrategyOverrides.md
 docs/ObjectRoot.md
+docs/OneOfQuantDates.md
+docs/OneOfQuantFormulas.md
+docs/OneOfQuantFormulasArray.md
+docs/OneOfQuantUniverse.md
 docs/OptimalPortfolio.md
 docs/Optimization.md
 docs/OptimizerAccount.md
@@ -328,6 +332,10 @@ fds/analyticsapi/engines/model/npo_optimization_parameters_root.py
 fds/analyticsapi/engines/model/npo_optimizer_strategy.py
 fds/analyticsapi/engines/model/npo_optimizer_strategy_overrides.py
 fds/analyticsapi/engines/model/object_root.py
+fds/analyticsapi/engines/model/one_of_quant_dates.py
+fds/analyticsapi/engines/model/one_of_quant_formulas.py
+fds/analyticsapi/engines/model/one_of_quant_formulas_array.py
+fds/analyticsapi/engines/model/one_of_quant_universe.py
 fds/analyticsapi/engines/model/optimal_portfolio.py
 fds/analyticsapi/engines/model/optimization.py
 fds/analyticsapi/engines/model/optimizer_account.py
@@ -419,7 +427,6 @@ fds/analyticsapi/engines/model/vault_configuration_summary_root.py
 fds/analyticsapi/engines/model/vault_date_parameters.py
 fds/analyticsapi/engines/model/vault_identifier.py
 fds/analyticsapi/engines/model_utils.py
-fds/analyticsapi/engines/models/__init__.py
 fds/analyticsapi/engines/models/__init__.py
 fds/analyticsapi/engines/rest.py
 git_push.sh
