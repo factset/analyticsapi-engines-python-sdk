@@ -29,10 +29,12 @@ from fds.analyticsapi.engines.model_utils import (  # noqa: F401
 
 def lazy_import():
     from fds.analyticsapi.engines.model.pa_calculation_column import PACalculationColumn
+    from fds.analyticsapi.engines.model.pa_calculation_data_sources import PACalculationDataSources
     from fds.analyticsapi.engines.model.pa_calculation_group import PACalculationGroup
     from fds.analyticsapi.engines.model.pa_date_parameters import PADateParameters
     from fds.analyticsapi.engines.model.pa_identifier import PAIdentifier
     globals()['PACalculationColumn'] = PACalculationColumn
+    globals()['PACalculationDataSources'] = PACalculationDataSources
     globals()['PACalculationGroup'] = PACalculationGroup
     globals()['PADateParameters'] = PADateParameters
     globals()['PAIdentifier'] = PAIdentifier
@@ -89,6 +91,7 @@ class PAComponentData(ModelNormal):
             'groups': ([PACalculationGroup],),  # noqa: E501
             'columns': ([PACalculationColumn],),  # noqa: E501
             'dates': (PADateParameters,),  # noqa: E501
+            'datasources': (PACalculationDataSources,),  # noqa: E501
             'currencyisocode': (str,),  # noqa: E501
             'componentdetail': (str,),  # noqa: E501
         }
@@ -104,6 +107,7 @@ class PAComponentData(ModelNormal):
         'groups': 'groups',  # noqa: E501
         'columns': 'columns',  # noqa: E501
         'dates': 'dates',  # noqa: E501
+        'datasources': 'datasources',  # noqa: E501
         'currencyisocode': 'currencyisocode',  # noqa: E501
         'componentdetail': 'componentdetail',  # noqa: E501
     }
@@ -159,6 +163,7 @@ class PAComponentData(ModelNormal):
             groups ([PACalculationGroup]): List of groupings for the PA calculation. This will take precedence over the groupings saved in the PA document.. [optional]  # noqa: E501
             columns ([PACalculationColumn]): List of columns for the PA calculation. This will take precedence over the columns saved in the PA document.. [optional]  # noqa: E501
             dates (PADateParameters): [optional]  # noqa: E501
+            datasources (PACalculationDataSources): [optional]  # noqa: E501
             currencyisocode (str): Currency ISO code for calculation.. [optional]  # noqa: E501
             componentdetail (str): PA Storage type. It can be GROUPS or TOTALS or SECURITIES.. [optional]  # noqa: E501
         """

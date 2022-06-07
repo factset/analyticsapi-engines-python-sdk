@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **settlement** | **str** | Settlement date | [optional] 
 **call_method** | **str** | Call Method | [optional] 
 **reference_security** | [**FIReferenceSecurity**](FIReferenceSecurity.md) |  | [optional] 
+**bank_loans** | [**FIBankLoans**](FIBankLoans.md) |  | [optional] 
+**municipal_bonds** | [**FIMunicipalBonds**](FIMunicipalBonds.md) |  | [optional] 
 **loss** | [**FILoss**](FILoss.md) |  | [optional] 
 **prepay** | [**FIPrepay**](FIPrepay.md) |  | [optional] 
 **matrix_spread_adjustment** | **float** | Matrix Spread Adjustment | [optional] 

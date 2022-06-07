@@ -33,6 +33,8 @@ from fds.analyticsapi.engines.model.calculation_status_meta import CalculationSt
 from fds.analyticsapi.engines.model.calculation_status_root import CalculationStatusRoot
 from fds.analyticsapi.engines.model.calculation_unit_status import CalculationUnitStatus
 from fds.analyticsapi.engines.model.calculation_unit_status_meta import CalculationUnitStatusMeta
+from fds.analyticsapi.engines.model.calculations_summary import CalculationsSummary
+from fds.analyticsapi.engines.model.calculations_summary_root import CalculationsSummaryRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from fds.analyticsapi.engines.model.column import Column
 from fds.analyticsapi.engines.model.column_root import ColumnRoot
@@ -58,6 +60,7 @@ from fds.analyticsapi.engines.model.fiab_calculation_status import FIABCalculati
 from fds.analyticsapi.engines.model.fiab_calculation_status_summary import FIABCalculationStatusSummary
 from fds.analyticsapi.engines.model.fiab_date_parameters import FIABDateParameters
 from fds.analyticsapi.engines.model.fiab_identifier import FIABIdentifier
+from fds.analyticsapi.engines.model.fi_bank_loans import FIBankLoans
 from fds.analyticsapi.engines.model.fi_calculation_parameters import FICalculationParameters
 from fds.analyticsapi.engines.model.fi_calculation_parameters_root import FICalculationParametersRoot
 from fds.analyticsapi.engines.model.fi_discount_curve_info import FIDiscountCurveInfo
@@ -65,6 +68,8 @@ from fds.analyticsapi.engines.model.fi_discount_curve_info_root import FIDiscoun
 from fds.analyticsapi.engines.model.fi_job_settings import FIJobSettings
 from fds.analyticsapi.engines.model.fi_loss import FILoss
 from fds.analyticsapi.engines.model.fi_market_environment import FIMarketEnvironment
+from fds.analyticsapi.engines.model.fi_municipal_bonds import FIMunicipalBonds
+from fds.analyticsapi.engines.model.fi_municipal_bonds_for_job_settings import FIMunicipalBondsForJobSettings
 from fds.analyticsapi.engines.model.fi_prepay import FIPrepay
 from fds.analyticsapi.engines.model.fi_reference_prepay import FIReferencePrepay
 from fds.analyticsapi.engines.model.fi_reference_security import FIReferenceSecurity
@@ -102,15 +107,21 @@ from fds.analyticsapi.engines.model.optimizer_optimal_holdings import OptimizerO
 from fds.analyticsapi.engines.model.optimizer_output_types import OptimizerOutputTypes
 from fds.analyticsapi.engines.model.optimizer_trades_list import OptimizerTradesList
 from fds.analyticsapi.engines.model.pa_calculation_column import PACalculationColumn
+from fds.analyticsapi.engines.model.pa_calculation_data_sources import PACalculationDataSources
 from fds.analyticsapi.engines.model.pa_calculation_group import PACalculationGroup
 from fds.analyticsapi.engines.model.pa_calculation_parameters import PACalculationParameters
 from fds.analyticsapi.engines.model.pa_calculation_parameters_root import PACalculationParametersRoot
+from fds.analyticsapi.engines.model.pa_calculation_pricing_source import PACalculationPricingSource
 from fds.analyticsapi.engines.model.pa_component import PAComponent
 from fds.analyticsapi.engines.model.pa_component_data import PAComponentData
 from fds.analyticsapi.engines.model.pa_component_root import PAComponentRoot
 from fds.analyticsapi.engines.model.pa_date_parameters import PADateParameters
 from fds.analyticsapi.engines.model.pa_identifier import PAIdentifier
+from fds.analyticsapi.engines.model.pa_pricing_source import PAPricingSource
+from fds.analyticsapi.engines.model.pa_pricing_source_root import PAPricingSourceRoot
 from fds.analyticsapi.engines.model.pa_doc import PaDoc
+from fds.analyticsapi.engines.model.pagination_info import PaginationInfo
+from fds.analyticsapi.engines.model.pagination_meta import PaginationMeta
 from fds.analyticsapi.engines.model.pub_calculation_parameters import PubCalculationParameters
 from fds.analyticsapi.engines.model.pub_calculation_parameters_root import PubCalculationParametersRoot
 from fds.analyticsapi.engines.model.pub_date_parameters import PubDateParameters

@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 Create templated PA component
 
-This endpoint creates new component based off of linked PA template or unlinked PA template.    Remarks:    *   Any settings in the POST body will act as a one-time override over the settings saved in the PA template.    *   Multi-horizon frequencies are not supported through this endpoint.    *   Componentdetail supports securities, groups, and totals as well but if we don't pass anything that defaults to securities.
+This endpoint creates new component based off of linked PA template or unlinked PA template.    Remarks:    *   Any settings in the POST body will act as a one-time override over the settings saved in the PA template.    *   Multi-horizon frequencies are not supported through this endpoint.    *   Componentdetail supports securities, groups, and totals as well but if we don't pass anything that defaults to securities.    *   If we are overriding the grouping with a frequency, we will be overriding the grouping saved to the original component and also overriding       the default frequency of the Beginning of Period to whatever we pass in the request body.        *   If we are overriding gouping frequency without overriding the group id it will not be applied to the default groupings saved to the original component.
 
 ### Example
 
@@ -78,6 +78,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                 groups=[
                     PACalculationGroup(
                         id="id_example",
+                        frequency="frequency_example",
                     ),
                 ],
                 columns=[
@@ -92,6 +93,19 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                     startdate="startdate_example",
                     enddate="enddate_example",
                     frequency="frequency_example",
+                ),
+                datasources=PACalculationDataSources(
+                    portfoliopricingsources=[
+                        PACalculationPricingSource(
+                            id="id_example",
+                        ),
+                    ],
+                    benchmarkpricingsources=[
+                        PACalculationPricingSource(
+                            id="id_example",
+                        ),
+                    ],
+                    useportfoliopricingsourcesforbenchmark=True,
                 ),
                 currencyisocode="currencyisocode_example",
                 componentdetail="componentdetail_example",
@@ -424,7 +438,7 @@ Name | Type | Description  | Notes
 
 Update templated PA component
 
-This endpoint allows the user to change the request body from an existing templated PA component.    Remarks:    *   Any settings in the POST body will act as a one-time override over the settings saved in the PA template.    *   Multi-horizon frequencies are not supported through this endpoint.    *   Componentdetail supports securities, groups, and totals as well but if we don't pass anything that defaults to securities.
+This endpoint allows the user to change the request body from an existing templated PA component.    Remarks:    *   Any settings in the POST body will act as a one-time override over the settings saved in the PA template.    *   Multi-horizon frequencies are not supported through this endpoint.    *   Componentdetail supports securities, groups, and totals as well but if we don't pass anything that defaults to securities.    *   If we are overriding the grouping with a frequency, we will be overriding the grouping saved to the original component and also overriding       the default frequency of the Beginning of Period to whatever we pass in the request body.        *   If we are overriding gouping frequency without overriding the group id it will not be applied to the default groupings saved to the original component.
 
 ### Example
 
@@ -485,6 +499,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                 groups=[
                     PACalculationGroup(
                         id="id_example",
+                        frequency="frequency_example",
                     ),
                 ],
                 columns=[
@@ -499,6 +514,19 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                     startdate="startdate_example",
                     enddate="enddate_example",
                     frequency="frequency_example",
+                ),
+                datasources=PACalculationDataSources(
+                    portfoliopricingsources=[
+                        PACalculationPricingSource(
+                            id="id_example",
+                        ),
+                    ],
+                    benchmarkpricingsources=[
+                        PACalculationPricingSource(
+                            id="id_example",
+                        ),
+                    ],
+                    useportfoliopricingsourcesforbenchmark=True,
                 ),
                 currencyisocode="currencyisocode_example",
                 componentdetail="componentdetail_example",

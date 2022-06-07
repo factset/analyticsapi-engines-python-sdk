@@ -76,6 +76,7 @@ class QuantCalculationParameters(ModelNormal):
             'universe': (object,),  # noqa: E501
             'dates': (object,),  # noqa: E501
             'formulas': ([object],),  # noqa: E501
+            'job_description': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -87,6 +88,7 @@ class QuantCalculationParameters(ModelNormal):
         'universe': 'universe',  # noqa: E501
         'dates': 'dates',  # noqa: E501
         'formulas': 'formulas',  # noqa: E501
+        'job_description': 'jobDescription',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -138,6 +140,7 @@ class QuantCalculationParameters(ModelNormal):
             universe (object): [optional]  # noqa: E501
             dates (object): [optional]  # noqa: E501
             formulas ([object]): [optional]  # noqa: E501
+            job_description (str): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

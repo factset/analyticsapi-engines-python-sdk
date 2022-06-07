@@ -28,10 +28,14 @@ from fds.analyticsapi.engines.model_utils import (  # noqa: F401
 )
 
 def lazy_import():
+    from fds.analyticsapi.engines.model.fi_bank_loans import FIBankLoans
     from fds.analyticsapi.engines.model.fi_loss import FILoss
+    from fds.analyticsapi.engines.model.fi_municipal_bonds import FIMunicipalBonds
     from fds.analyticsapi.engines.model.fi_prepay import FIPrepay
     from fds.analyticsapi.engines.model.fi_reference_security import FIReferenceSecurity
+    globals()['FIBankLoans'] = FIBankLoans
     globals()['FILoss'] = FILoss
+    globals()['FIMunicipalBonds'] = FIMunicipalBonds
     globals()['FIPrepay'] = FIPrepay
     globals()['FIReferenceSecurity'] = FIReferenceSecurity
 
@@ -97,6 +101,8 @@ class FISecurity(ModelNormal):
             'settlement': (str,),  # noqa: E501
             'call_method': (str,),  # noqa: E501
             'reference_security': (FIReferenceSecurity,),  # noqa: E501
+            'bank_loans': (FIBankLoans,),  # noqa: E501
+            'municipal_bonds': (FIMunicipalBonds,),  # noqa: E501
             'loss': (FILoss,),  # noqa: E501
             'prepay': (FIPrepay,),  # noqa: E501
             'matrix_spread_adjustment': (float,),  # noqa: E501
@@ -118,6 +124,8 @@ class FISecurity(ModelNormal):
         'settlement': 'settlement',  # noqa: E501
         'call_method': 'callMethod',  # noqa: E501
         'reference_security': 'referenceSecurity',  # noqa: E501
+        'bank_loans': 'bankLoans',  # noqa: E501
+        'municipal_bonds': 'municipalBonds',  # noqa: E501
         'loss': 'loss',  # noqa: E501
         'prepay': 'prepay',  # noqa: E501
         'matrix_spread_adjustment': 'matrixSpreadAdjustment',  # noqa: E501
@@ -181,6 +189,8 @@ class FISecurity(ModelNormal):
             settlement (str): Settlement date. [optional]  # noqa: E501
             call_method (str): Call Method. [optional]  # noqa: E501
             reference_security (FIReferenceSecurity): [optional]  # noqa: E501
+            bank_loans (FIBankLoans): [optional]  # noqa: E501
+            municipal_bonds (FIMunicipalBonds): [optional]  # noqa: E501
             loss (FILoss): [optional]  # noqa: E501
             prepay (FIPrepay): [optional]  # noqa: E501
             matrix_spread_adjustment (float): Matrix Spread Adjustment. [optional]  # noqa: E501
