@@ -15,6 +15,7 @@ class TestPubCalculationsApi(unittest.TestCase):
     def setUp(self):
         api_client = CommonFunctions.build_api_client()
         self.pub_calculations_api = PubCalculationsApi(api_client)
+        self.page_number = 1
 
     def test_single_unit_scenario(self):
         create_step_name = "create_calculation"
@@ -97,6 +98,10 @@ class TestPubCalculationsApi(unittest.TestCase):
         starting_test_context = {}
         run_api_workflow_with_assertions(
             workflow_specification, starting_request, starting_test_context)
+
+    def test_get_all_calculations_scenario(self):
+        response = self.pub_calculations_api.get_all_calculations(page_number=self.page_number)
+        self.assertEqual(response[1], 200, "Response should be 200 - Success")
 
 
 if __name__ == '__main__':
