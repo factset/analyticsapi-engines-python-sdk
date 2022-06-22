@@ -23,6 +23,7 @@ from fds.analyticsapi.engines.model_utils import (  # noqa: F401
     validate_and_convert_types
 )
 from fds.analyticsapi.engines.model.calculation_status_root import CalculationStatusRoot
+from fds.analyticsapi.engines.model.calculations_summary_root import CalculationsSummaryRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from fds.analyticsapi.engines.model.object_root import ObjectRoot
 from fds.analyticsapi.engines.model.vault_calculation_parameters_root import VaultCalculationParametersRoot
@@ -160,6 +161,126 @@ class VaultCalculationsApi(object):
             },
             api_client=api_client,
             callable=__cancel_calculation_by_id
+        )
+
+        def __get_all_calculations(
+            self,
+            page_number=1,
+            **kwargs
+        ):
+            """Get all calculations  # noqa: E501
+
+            This endpoints returns all active calculation requests.  # noqa: E501
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.get_all_calculations(page_number=1, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                page_number (int): defaults to 1, must be one of [1]
+
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is False.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                CalculationsSummaryRoot
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', False
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['page_number'] = \
+                page_number
+            return self.call_with_http_info(**kwargs)
+
+        self.get_all_calculations = _Endpoint(
+            settings={
+                'response_type': dict({ 200:(CalculationsSummaryRoot,),  }),
+                'auth': [
+                    'Basic',
+                    'Bearer'
+                ],
+                'endpoint_path': '/analytics/engines/vault/v3/calculations',
+                'operation_id': 'get_all_calculations',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'page_number',
+                ],
+                'required': [
+                    'page_number',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'page_number':
+                        (int,),
+                },
+                'attribute_map': {
+                    'page_number': 'pageNumber',
+                },
+                'location_map': {
+                    'page_number': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__get_all_calculations
         )
 
         def __get_calculation_parameters(

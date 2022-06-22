@@ -136,7 +136,7 @@ class FIMarketEnvironment(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            rate_path (str): [optional] if omitted the server will use the default value of "FLAT & FORWARD"  # noqa: E501
+            rate_path (str): Rate Path. [optional] if omitted the server will use the default value of "FLAT & FORWARD"  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

@@ -75,6 +75,7 @@ class UnlinkedPATemplateGroupDetails(ModelNormal):
         return {
             'name': (str,),  # noqa: E501
             'id': (str,),  # noqa: E501
+            'frequency': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -85,6 +86,7 @@ class UnlinkedPATemplateGroupDetails(ModelNormal):
     attribute_map = {
         'name': 'name',  # noqa: E501
         'id': 'id',  # noqa: E501
+        'frequency': 'frequency',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -135,6 +137,7 @@ class UnlinkedPATemplateGroupDetails(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             name (str): Unlinked template group name. [optional]  # noqa: E501
             id (str): FactSet-defined or User-defined Group identifier.. [optional]  # noqa: E501
+            frequency (str): Grouping frequency. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

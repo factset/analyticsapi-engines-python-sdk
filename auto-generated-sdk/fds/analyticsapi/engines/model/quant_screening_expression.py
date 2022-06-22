@@ -87,6 +87,7 @@ class QuantScreeningExpression(ModelComposed):
             'expr': (str,),  # noqa: E501
             'name': (str,),  # noqa: E501
             'source': (str,),  # noqa: E501
+            'date_offset': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -98,6 +99,7 @@ class QuantScreeningExpression(ModelComposed):
         'expr': 'expr',  # noqa: E501
         'name': 'name',  # noqa: E501
         'source': 'source',  # noqa: E501
+        'date_offset': 'dateOffset',  # noqa: E501
     }
 
     required_properties = set([
@@ -152,6 +154,7 @@ class QuantScreeningExpression(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            date_offset (str): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

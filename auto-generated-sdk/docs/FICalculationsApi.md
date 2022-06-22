@@ -436,6 +436,13 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                         ),
                         settlement="settlement_example",
                     ),
+                    bank_loans=FIBankLoans(
+                        ignore_sinking_fund=True,
+                    ),
+                    municipal_bonds=FIMunicipalBonds(
+                        ignore_sinking_fund=True,
+                        use_anticipated_sink_schedule=True,
+                    ),
                     loss=FILoss(
                         loss_name="loss_name_example",
                     ),
@@ -463,6 +470,14 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                 call_method="No Call",
                 settlement="settlement_example",
                 calc_from_method="calc_from_method_example",
+                bank_loans=FIBankLoans(
+                    ignore_sinking_fund=True,
+                ),
+                municipal_bonds=FIMunicipalBondsForJobSettings(
+                    allow_sink_for_installment_payment=True,
+                    ignore_sinking_fund=True,
+                    use_anticipated_sink_schedule=True,
+                ),
                 market_environment=FIMarketEnvironment(
                     rate_path="FLAT & FORWARD",
                 ),
@@ -591,6 +606,13 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                         ),
                         settlement="settlement_example",
                     ),
+                    bank_loans=FIBankLoans(
+                        ignore_sinking_fund=True,
+                    ),
+                    municipal_bonds=FIMunicipalBonds(
+                        ignore_sinking_fund=True,
+                        use_anticipated_sink_schedule=True,
+                    ),
                     loss=FILoss(
                         loss_name="loss_name_example",
                     ),
@@ -618,6 +640,14 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                 call_method="No Call",
                 settlement="settlement_example",
                 calc_from_method="calc_from_method_example",
+                bank_loans=FIBankLoans(
+                    ignore_sinking_fund=True,
+                ),
+                municipal_bonds=FIMunicipalBondsForJobSettings(
+                    allow_sink_for_installment_payment=True,
+                    ignore_sinking_fund=True,
+                    use_anticipated_sink_schedule=True,
+                ),
                 market_environment=FIMarketEnvironment(
                     rate_path="FLAT & FORWARD",
                 ),
