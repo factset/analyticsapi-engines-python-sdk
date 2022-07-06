@@ -57,8 +57,8 @@ def main():
         component_id = [id for id in list(
             get_components_response[0].data.keys()) if get_components_response[0].data[id].name == pa_component_name and get_components_response[0].data[id].category == pa_component_category][0]
         print("PA Component Id: " + component_id)
-        pa_accounts = [PAIdentifier(id=portfolio,holdingsmode=holdings)]
-        pa_benchmarks = [PAIdentifier(id=benchmark,holdingsmode=holdings)]
+        pa_accounts = [PAIdentifier(id=portfolio, holdingsmode=holdings)]
+        pa_benchmarks = [PAIdentifier(id=benchmark, holdingsmode=holdings)]
         pa_dates = PADateParameters(
             startdate=startdate, enddate=enddate, frequency=frequency)
 
