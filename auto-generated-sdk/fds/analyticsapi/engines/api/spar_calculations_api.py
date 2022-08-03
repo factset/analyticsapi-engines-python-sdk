@@ -170,7 +170,7 @@ class SPARCalculationsApi(object):
         ):
             """Get all calculations  # noqa: E501
 
-            This endpoints returns all active calculation requests.  # noqa: E501
+            This endpoints returns all calculation requests.  # noqa: E501
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 

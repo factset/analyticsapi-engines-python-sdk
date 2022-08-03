@@ -74,6 +74,10 @@ class Frequency(ModelNormal):
         """
         return {
             'name': (str,),  # noqa: E501
+            'periodic_multipliers': ([float],),  # noqa: E501
+            'nperiodic_multipliers': ([float],),  # noqa: E501
+            'iperiodic_multipliers': ([int],),  # noqa: E501
+            'inperiodic_multipliers': ([int],),  # noqa: E501
         }
 
     @cached_property
@@ -83,6 +87,10 @@ class Frequency(ModelNormal):
 
     attribute_map = {
         'name': 'name',  # noqa: E501
+        'periodic_multipliers': 'periodicMultipliers',  # noqa: E501
+        'nperiodic_multipliers': 'nperiodicMultipliers',  # noqa: E501
+        'iperiodic_multipliers': 'iperiodicMultipliers',  # noqa: E501
+        'inperiodic_multipliers': 'inperiodicMultipliers',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -132,6 +140,10 @@ class Frequency(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             name (str): Frequency name.. [optional]  # noqa: E501
+            periodic_multipliers ([float]): [optional]  # noqa: E501
+            nperiodic_multipliers ([float]): [optional]  # noqa: E501
+            iperiodic_multipliers ([int]): [optional]  # noqa: E501
+            inperiodic_multipliers ([int]): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
