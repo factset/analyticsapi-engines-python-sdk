@@ -75,9 +75,9 @@ class Frequency(ModelNormal):
         return {
             'name': (str,),  # noqa: E501
             'periodic_multipliers': ([float],),  # noqa: E501
-            'nperiodic_multipliers': ([float],),  # noqa: E501
+            'nperiodic_multipliers': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
             'iperiodic_multipliers': ([int],),  # noqa: E501
-            'inperiodic_multipliers': ([int],),  # noqa: E501
+            'inperiodic_multipliers': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
         }
 
     @cached_property
@@ -141,9 +141,9 @@ class Frequency(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             name (str): Frequency name.. [optional]  # noqa: E501
             periodic_multipliers ([float]): [optional]  # noqa: E501
-            nperiodic_multipliers ([float]): [optional]  # noqa: E501
+            nperiodic_multipliers ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
             iperiodic_multipliers ([int]): [optional]  # noqa: E501
-            inperiodic_multipliers ([int]): [optional]  # noqa: E501
+            inperiodic_multipliers ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
