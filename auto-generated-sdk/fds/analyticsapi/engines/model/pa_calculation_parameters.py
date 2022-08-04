@@ -96,9 +96,9 @@ class PACalculationParameters(ModelNormal):
             'datasources': (PACalculationDataSources,),  # noqa: E501
             'componentdetail': (str,),  # noqa: E501
             'periodic_multipliers': ([float],),  # noqa: E501
-            'nperiodic_multipliers': ([float],),  # noqa: E501
+            'nperiodic_multipliers': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
             'iperiodic_multipliers': ([int],),  # noqa: E501
-            'inperiodic_multipliers': ([int],),  # noqa: E501
+            'inperiodic_multipliers': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
         }
 
     @cached_property
@@ -180,9 +180,9 @@ class PACalculationParameters(ModelNormal):
             datasources (PACalculationDataSources): [optional]  # noqa: E501
             componentdetail (str): Component detail type for the PA component. It can be GROUPS or TOTALS or SECURITIES.. [optional]  # noqa: E501
             periodic_multipliers ([float]): [optional]  # noqa: E501
-            nperiodic_multipliers ([float]): [optional]  # noqa: E501
+            nperiodic_multipliers ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
             iperiodic_multipliers ([int]): [optional]  # noqa: E501
-            inperiodic_multipliers ([int]): [optional]  # noqa: E501
+            inperiodic_multipliers ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

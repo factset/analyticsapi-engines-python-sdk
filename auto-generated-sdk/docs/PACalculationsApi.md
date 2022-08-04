@@ -568,13 +568,13 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                     3.14,
                 ],
                 nperiodic_multipliers=[
-                    3.14,
+                    None,
                 ],
                 iperiodic_multipliers=[
                     1,
                 ],
                 inperiodic_multipliers=[
-                    1,
+                    None,
                 ],
             ),
         },
@@ -740,13 +740,13 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                     3.14,
                 ],
                 nperiodic_multipliers=[
-                    3.14,
+                    None,
                 ],
                 iperiodic_multipliers=[
                     1,
                 ],
                 inperiodic_multipliers=[
-                    1,
+                    None,
                 ],
             ),
         },
