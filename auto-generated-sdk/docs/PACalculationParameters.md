@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **componentdetail** | **str** | Component detail type for the PA component. It can be GROUPS or TOTALS or SECURITIES. | [optional] 
 **periodic_multipliers** | **[float]** |  | [optional] 
 **nperiodic_multipliers** | **[bool, date, datetime, dict, float, int, list, str, none_type]** |  | [optional] 
-**hist_coupons** | **[object]** |  | [optional] 
+**hist_rcv_assump_rates** | **[float, none_type]** |  | [optional] 
 **iperiodic_multipliers** | **[int]** |  | [optional] 
 **inperiodic_multipliers** | **[bool, date, datetime, dict, float, int, list, str, none_type]** |  | [optional] 
 
