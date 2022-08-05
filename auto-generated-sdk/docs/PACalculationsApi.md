@@ -570,7 +570,10 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                 nperiodic_multipliers=[
                     None,
                 ],
-                hist_rcv_assump_rates=[
+                dhist_rcv_assump_rates=[
+                    3.14,
+                ],
+                ihist_rcv_assump_rates=[
                     3.14,
                 ],
                 iperiodic_multipliers=[
@@ -745,7 +748,10 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                 nperiodic_multipliers=[
                     None,
                 ],
-                hist_rcv_assump_rates=[
+                dhist_rcv_assump_rates=[
+                    3.14,
+                ],
+                ihist_rcv_assump_rates=[
                     3.14,
                 ],
                 iperiodic_multipliers=[

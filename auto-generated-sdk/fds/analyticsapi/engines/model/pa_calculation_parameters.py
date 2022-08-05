@@ -97,7 +97,8 @@ class PACalculationParameters(ModelNormal):
             'componentdetail': (str,),  # noqa: E501
             'periodic_multipliers': ([float],),  # noqa: E501
             'nperiodic_multipliers': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
-            'hist_rcv_assump_rates': ([float, none_type],),  # noqa: E501
+            'dhist_rcv_assump_rates': ([float, none_type],),  # noqa: E501
+            'ihist_rcv_assump_rates': ([float, none_type],),  # noqa: E501
             'iperiodic_multipliers': ([int],),  # noqa: E501
             'inperiodic_multipliers': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
         }
@@ -119,7 +120,8 @@ class PACalculationParameters(ModelNormal):
         'componentdetail': 'componentdetail',  # noqa: E501
         'periodic_multipliers': 'periodicMultipliers',  # noqa: E501
         'nperiodic_multipliers': 'nperiodicMultipliers',  # noqa: E501
-        'hist_rcv_assump_rates': 'histRcvAssumpRates',  # noqa: E501
+        'dhist_rcv_assump_rates': 'dhistRcvAssumpRates',  # noqa: E501
+        'ihist_rcv_assump_rates': 'ihistRcvAssumpRates',  # noqa: E501
         'iperiodic_multipliers': 'iperiodicMultipliers',  # noqa: E501
         'inperiodic_multipliers': 'inperiodicMultipliers',  # noqa: E501
     }
@@ -183,7 +185,8 @@ class PACalculationParameters(ModelNormal):
             componentdetail (str): Component detail type for the PA component. It can be GROUPS or TOTALS or SECURITIES.. [optional]  # noqa: E501
             periodic_multipliers ([float]): [optional]  # noqa: E501
             nperiodic_multipliers ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
-            hist_rcv_assump_rates ([float, none_type]): [optional]  # noqa: E501
+            dhist_rcv_assump_rates ([float, none_type]): [optional]  # noqa: E501
+            ihist_rcv_assump_rates ([float, none_type]): [optional]  # noqa: E501
             iperiodic_multipliers ([int]): [optional]  # noqa: E501
             inperiodic_multipliers ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
         """
