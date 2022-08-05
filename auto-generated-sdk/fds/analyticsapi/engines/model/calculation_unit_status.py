@@ -91,7 +91,7 @@ class CalculationUnitStatus(ModelNormal):
             'progress': (str,),  # noqa: E501
             'points': (int,),  # noqa: E501
             'dhist_rcv_assump_rates': ([float, none_type],),  # noqa: E501
-            'ihist_rcv_assump_rates': ([float, none_type],),  # noqa: E501
+            'ihist_rcv_assump_rates': ([int, none_type],),  # noqa: E501
         }
 
     @cached_property
@@ -161,7 +161,7 @@ class CalculationUnitStatus(ModelNormal):
             progress (str): The progress of the calculation unit.. [optional]  # noqa: E501
             points (int): The points for the calculation unit.. [optional]  # noqa: E501
             dhist_rcv_assump_rates ([float, none_type]): [optional]  # noqa: E501
-            ihist_rcv_assump_rates ([float, none_type]): [optional]  # noqa: E501
+            ihist_rcv_assump_rates ([int, none_type]): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

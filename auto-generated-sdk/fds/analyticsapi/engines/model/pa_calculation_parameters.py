@@ -98,7 +98,7 @@ class PACalculationParameters(ModelNormal):
             'periodic_multipliers': ([float],),  # noqa: E501
             'nperiodic_multipliers': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
             'dhist_rcv_assump_rates': ([float, none_type],),  # noqa: E501
-            'ihist_rcv_assump_rates': ([float, none_type],),  # noqa: E501
+            'ihist_rcv_assump_rates': ([int, none_type],),  # noqa: E501
             'iperiodic_multipliers': ([int],),  # noqa: E501
             'inperiodic_multipliers': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
         }
@@ -186,7 +186,7 @@ class PACalculationParameters(ModelNormal):
             periodic_multipliers ([float]): [optional]  # noqa: E501
             nperiodic_multipliers ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
             dhist_rcv_assump_rates ([float, none_type]): [optional]  # noqa: E501
-            ihist_rcv_assump_rates ([float, none_type]): [optional]  # noqa: E501
+            ihist_rcv_assump_rates ([int, none_type]): [optional]  # noqa: E501
             iperiodic_multipliers ([int]): [optional]  # noqa: E501
             inperiodic_multipliers ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
         """

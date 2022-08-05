@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **progress** | **str** | The progress of the calculation unit. | [optional] 
 **points** | **int** | The points for the calculation unit. | [optional] 
 **dhist_rcv_assump_rates** | **[float, none_type]** |  | [optional] 
-**ihist_rcv_assump_rates** | **[float, none_type]** |  | [optional] 
+**ihist_rcv_assump_rates** | **[int, none_type]** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

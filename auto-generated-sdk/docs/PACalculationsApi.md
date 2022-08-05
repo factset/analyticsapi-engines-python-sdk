@@ -574,7 +574,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                     3.14,
                 ],
                 ihist_rcv_assump_rates=[
-                    3.14,
+                    1,
                 ],
                 iperiodic_multipliers=[
                     1,
@@ -752,7 +752,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                     3.14,
                 ],
                 ihist_rcv_assump_rates=[
-                    3.14,
+                    1,
                 ],
                 iperiodic_multipliers=[
                     1,

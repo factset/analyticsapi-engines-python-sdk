@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **periodic_multipliers** | **[float]** |  | [optional] 
 **nperiodic_multipliers** | **[bool, date, datetime, dict, float, int, list, str, none_type]** |  | [optional] 
 **dhist_rcv_assump_rates** | **[float, none_type]** |  | [optional] 
-**ihist_rcv_assump_rates** | **[float, none_type]** |  | [optional] 
+**ihist_rcv_assump_rates** | **[int, none_type]** |  | [optional] 
 **iperiodic_multipliers** | **[int]** |  | [optional] 
 **inperiodic_multipliers** | **[bool, date, datetime, dict, float, int, list, str, none_type]** |  | [optional] 
 
