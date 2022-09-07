@@ -65,7 +65,6 @@ def main():
 
         pa_calculation_parameters = {"1": PACalculationParameters(componentid=component_id, accounts=pa_accounts,
                                                                   benchmarks=pa_benchmarks, dates=pa_dates, currencyisocode=currency)}
-        print(pa_calculation_parameters)
 
         pa_calculation_parameter_root = PACalculationParametersRoot(
             data=pa_calculation_parameters)
