@@ -49,6 +49,8 @@ def main():
         startdate = "20180101"
         enddate = "20181231"
         frequency = "Monthly"
+        currency = "USD"
+        holdings = "B&H"
         # uncomment the below code line to setup cache control; max-stale=0 will be a fresh adhoc run and the max-stale value is in seconds.
         # Results are by default cached for 12 hours; Setting max-stale=300 will fetch a cached result which is 5 minutes older.
         # cache_control = "max-stale=0"
@@ -56,13 +58,14 @@ def main():
         component_id = [id for id in list(
             get_components_response[0].data.keys()) if get_components_response[0].data[id].name == pa_component_name and get_components_response[0].data[id].category == pa_component_category][0]
         print("PA Component Id: " + component_id)
-        pa_accounts = [PAIdentifier(id=portfolio)]
-        pa_benchmarks = [PAIdentifier(id=benchmark)]
+        pa_accounts = [PAIdentifier(id=portfolio, holdingsmode=holdings)]
+        pa_benchmarks = [PAIdentifier(id=benchmark, holdingsmode=holdings)]
         pa_dates = PADateParameters(
             startdate=startdate, enddate=enddate, frequency=frequency)
 
         pa_calculation_parameters = {"1": PACalculationParameters(componentid=component_id, accounts=pa_accounts,
-                                                                  benchmarks=pa_benchmarks, dates=pa_dates)}
+                                                                  benchmarks=pa_benchmarks, dates=pa_dates, currencyisocode=currency)}
+        print(pa_calculation_parameters)
 
         pa_calculation_parameter_root = PACalculationParametersRoot(
             data=pa_calculation_parameters)
