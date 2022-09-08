@@ -50,6 +50,7 @@ def main():
         enddate = "20181231"
         frequency = "Monthly"
         holdings = "B&H"
+        currency = "USD"
         # uncomment the below code line to setup cache control; max-stale=0 will be a fresh adhoc run and the max-stale value is in seconds.
         # Results are by default cached for 12 hours; Setting max-stale=300 will fetch a cached result which is 5 minutes older. 
         # cache_control = "max-stale=0"
@@ -63,13 +64,13 @@ def main():
             startdate=startdate, enddate=enddate, frequency=frequency)
 
         pa_calculation_parameters = {"1": PACalculationParameters(componentid=component_id, accounts=pa_accounts,
-                                                                  benchmarks=pa_benchmarks, dates=pa_dates),
+                                                                  benchmarks=pa_benchmarks, dates=pa_dates, currencyisocode=currency),
                                      "2": PACalculationParameters(componentid=component_id, accounts=pa_accounts,
-                                                                  benchmarks=pa_benchmarks, dates=pa_dates)}
+                                                                  benchmarks=pa_benchmarks, dates=pa_dates, currencyisocode=currency)}
 
         pa_calculation_parameter_root = PACalculationParametersRoot(
             data=pa_calculation_parameters)
-
+        
         pa_calculations_api = PACalculationsApi(api_client)
 
         post_and_calculate_response = pa_calculations_api.post_and_calculate(
