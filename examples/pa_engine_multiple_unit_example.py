@@ -6,7 +6,6 @@ import pandas as pd
 from fds.analyticsapi.engines import ApiException
 from fds.analyticsapi.engines.api.pa_calculations_api import PACalculationsApi
 from fds.analyticsapi.engines.api.components_api import ComponentsApi
-from fds.analyticsapi.engines.api.pricing_sources_api import PricingSourcesApi
 from fds.analyticsapi.engines.api_client import ApiClient
 from fds.analyticsapi.engines.configuration import Configuration
 from fds.analyticsapi.engines.model.component_summary import ComponentSummary
@@ -14,8 +13,6 @@ from fds.analyticsapi.engines.model.pa_calculation_parameters_root import PACalc
 from fds.analyticsapi.engines.model.pa_calculation_parameters import PACalculationParameters
 from fds.analyticsapi.engines.model.pa_date_parameters import PADateParameters
 from fds.analyticsapi.engines.model.pa_identifier import PAIdentifier
-from fds.analyticsapi.engines.model.pa_calculation_data_sources import PACalculationDataSources
-from fds.analyticsapi.engines.model.pa_calculation_pricing_source import PACalculationPricingSource
 from fds.protobuf.stach.extensions.StachVersion import StachVersion
 from fds.protobuf.stach.extensions.StachExtensionFactory import StachExtensionFactory
 
@@ -24,7 +21,6 @@ from urllib3 import Retry
 host = os.environ['FACTSET_HOST']
 fds_username = os.environ['FACTSET_USERNAME']
 fds_api_key = os.environ['FACTSET_API_KEY']
-
 
 def main():
     config = Configuration()
@@ -43,7 +39,6 @@ def main():
     api_client = ApiClient(config)
 
     components_api = ComponentsApi(api_client)
-    pricingsources_api = PricingSourcesApi(api_client)
 
     try:
         pa_document_name = "PA_DOCUMENTS:DEFAULT"
@@ -54,48 +49,28 @@ def main():
         startdate = "20180101"
         enddate = "20181231"
         frequency = "Monthly"
-        pricing_source_name = "MSCI - Gross"
-        pricing_source_category = "MSCI"
-        pricing_source_directory = "Equity"
+        holdings = "B&H"
+        currency = "USD"
         # uncomment the below code line to setup cache control; max-stale=0 will be a fresh adhoc run and the max-stale value is in seconds.
         # Results are by default cached for 12 hours; Setting max-stale=300 will fetch a cached result which is 5 minutes older. 
         # cache_control = "max-stale=0"
         get_components_response = components_api.get_pa_components(document=pa_document_name)
         component_id = [id for id in list(
-            get_components_response[0].data.keys()) if get_components_response[0].data[id].name == pa_component_name and
-                        get_components_response[0].data[id].category == pa_component_category][0]
+            get_components_response[0].data.keys()) if get_components_response[0].data[id].name == pa_component_name and get_components_response[0].data[id].category == pa_component_category][0]
         print("PA Component Id: " + component_id)
-        pa_accounts = [PAIdentifier(id=portfolio)]
-        pa_benchmarks = [PAIdentifier(id=benchmark)]
+        pa_accounts = [PAIdentifier(id=portfolio, holdingsmode=holdings)]
+        pa_benchmarks = [PAIdentifier(id=benchmark, holdingsmode=holdings)]
         pa_dates = PADateParameters(
             startdate=startdate, enddate=enddate, frequency=frequency)
 
-        get_pricing_sources_response = pricingsources_api.get_pa_pricing_sources(name=pricing_source_name,
-                                                                                 category=pricing_source_category,
-                                                                                 directory=pricing_source_directory)
-        pricing_source_id = [id for id in list(
-            get_pricing_sources_response[0].data.keys()) if
-                             get_pricing_sources_response[0].data[id].name == pricing_source_name
-                             and get_pricing_sources_response[0].data[id].category == pricing_source_category
-                             and get_pricing_sources_response[0].data[id].directory == pricing_source_directory][0]
-
-        print("PA Pricing Source Id: " + pricing_source_id)
-
-        pa_pricing_sources = [PACalculationPricingSource(id=pricing_source_id)]
-
-        pa_datasources = PACalculationDataSources(portfoliopricingsources=pa_pricing_sources,
-                                                  useportfoliopricingsourcesforbenchmark=True)
-
         pa_calculation_parameters = {"1": PACalculationParameters(componentid=component_id, accounts=pa_accounts,
-                                                                  benchmarks=pa_benchmarks, dates=pa_dates,
-                                                                  datasources=pa_datasources),
+                                                                  benchmarks=pa_benchmarks, dates=pa_dates, currencyisocode=currency),
                                      "2": PACalculationParameters(componentid=component_id, accounts=pa_accounts,
-                                                                  benchmarks=pa_benchmarks, dates=pa_dates,
-                                                                  datasources=pa_datasources)}
+                                                                  benchmarks=pa_benchmarks, dates=pa_dates, currencyisocode=currency)}
 
         pa_calculation_parameter_root = PACalculationParametersRoot(
             data=pa_calculation_parameters)
-
+        
         pa_calculations_api = PACalculationsApi(api_client)
 
         post_and_calculate_response = pa_calculations_api.post_and_calculate(
