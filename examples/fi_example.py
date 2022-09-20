@@ -14,12 +14,16 @@ from fds.analyticsapi.engines.model.fi_job_settings import FIJobSettings
 from fds.protobuf.stach.extensions.StachVersion import StachVersion
 from fds.protobuf.stach.extensions.StachExtensionFactory import StachExtensionFactory
 from fds.analyticsapi.engines.model.fi_market_environment import FIMarketEnvironment
+from fds.analyticsapi.engines.model.fi_bank_loans import FIBankLoans
+from fds.analyticsapi.engines.model.fi_municipal_bonds import FIMunicipalBonds
+from fds.analyticsapi.engines.model.fi_municipal_bonds_for_job_settings import FIMunicipalBondsForJobSettings
 
 from urllib3 import Retry
 
 host = os.environ['FACTSET_HOST']
 fds_username = os.environ['FACTSET_USERNAME']
 fds_api_key = os.environ['FACTSET_API_KEY']
+
 
 def main():
     config = Configuration()
@@ -53,26 +57,45 @@ def main():
                     "Effective Convexity",
                     "CF Coupon"]
 
+    fi_bank_loans_for_securities = FIBankLoans(
+        ignore_sinking_fund=True
+    )
+
+    fi_municipal_bonds_for_securities = FIMunicipalBonds(
+        ignore_sinking_fund=True
+    )
+
     security1 = FISecurity(
-        calc_from_method = "Price",
-        calc_from_value = 100.285,
-        face = 10000.0,
-        symbol = "912828ZG8",
-        settlement = "20201202",
-        discount_curve = "UST"
+        calc_from_method="Price",
+        calc_from_value=100.285,
+        face=10000.0,
+        symbol="912828ZG8",
+        settlement="20201202",
+        discount_curve="UST",
+        bank_loans=fi_bank_loans_for_securities,
+        municipal_bonds=fi_municipal_bonds_for_securities
     )
     security2 = FISecurity(
-        calc_from_method = "Price",
-        calc_from_value = 101.138,
-        face = 200000.0,
-        symbol = "US037833AR12",
-        settlement = "20201203",
-        discount_curve = "UST"
+        calc_from_method="Price",
+        calc_from_value=101.138,
+        face=200000.0,
+        symbol="US037833AR12",
+        settlement="20201203",
+        discount_curve="UST",
+        bank_loans=fi_bank_loans_for_securities,
+        municipal_bonds=fi_municipal_bonds_for_securities
     )
     rate_path = FIMarketEnvironment(
-        rate_path = "FLAT & FORWARD"
+        rate_path="FLAT & FORWARD"
     )
-    
+
+    fi_bank_loans_for_JobSettings = FIBankLoans(
+        ignore_sinking_fund=True
+    )
+
+    fi_municipal_bonds_for_JobSettings = FIMunicipalBondsForJobSettings(
+        ignore_sinking_fund=True
+    )
 
     # uncomment the below code line to setup cache control; max-stale=0 will be a fresh adhoc run and the max-stale value is in seconds.
     # Results are by default cached for 12 hours; Setting max-stale=300 will fetch a cached result which is 5 minutes older. 
@@ -80,7 +103,9 @@ def main():
 
     securities = [security1, security2]
 
-    jobSettings = FIJobSettings(as_of_date="20201201",partial_duration_months =[1,3,6], market_environment=rate_path)
+    jobSettings = FIJobSettings(as_of_date="20201201", partial_duration_months=[1, 3, 6], market_environment=rate_path,
+                                bank_loans=fi_bank_loans_for_JobSettings,
+                                municipal_bonds=fi_municipal_bonds_for_JobSettings)
 
     fi_calculation_parameters = FICalculationParameters(securities, calculations, jobSettings)
 
@@ -91,7 +116,7 @@ def main():
         fi_calculation_parameters_root=fi_calculation_parameters_root)
     # comment the above line and uncomment the below line to run the request with the cache_control header defined earlier
     # run_calculation_response = fi_calculations_api.post_and_calculate(
-        # fi_calculation_parameters_root=fi_calculation_parameters_root, cache_control=cache_control)
+    # fi_calculation_parameters_root=fi_calculation_parameters_root, cache_control=cache_control)
     if run_calculation_response[1] != 202 and run_calculation_response[1] != 201:
         print_error(run_calculation_response)
         sys.exit()
