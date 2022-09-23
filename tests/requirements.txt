@@ -12,7 +12,7 @@ mccabe==0.6.1
 packaging==20.9
 pandas==1.2.5
 pluggy==0.13.1
-protobuf==3.17.3
+protobuf==3.18.3
 py==1.10.0
 pylint==2.9.1
 pyparsing==2.4.7
