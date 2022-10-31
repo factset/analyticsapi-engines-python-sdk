@@ -607,18 +607,18 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     quant_calculation_parameters_root = QuantCalculationParametersRoot(
         data={
             "key": QuantCalculationParameters(
-                universe=OneOfQuantUniverse(
+                universe=
                     universe_type="Equity",
                     identifiers=[
                         "identifiers_example",
                     ],
-                ),
-                dates=OneOfQuantDates(
+                ,
+                dates=
                     dates=[],
-                ),
-                formulas=OneOfQuantFormulasArray([
-                    OneOfQuantFormulas(),
-                ]),
+                ,
+                formulas=[
+                    ,
+                ],
                 job_description="job_description_example",
             ),
         },
@@ -732,18 +732,18 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     quant_calculation_parameters_root = QuantCalculationParametersRoot(
         data={
             "key": QuantCalculationParameters(
-                universe=OneOfQuantUniverse(
+                universe=
                     universe_type="Equity",
                     identifiers=[
                         "identifiers_example",
                     ],
-                ),
-                dates=OneOfQuantDates(
+                ,
+                dates=
                     dates=[],
-                ),
-                formulas=OneOfQuantFormulasArray([
-                    OneOfQuantFormulas(),
-                ]),
+                ,
+                formulas=[
+                    ,
+                ],
                 job_description="job_description_example",
             ),
         },
