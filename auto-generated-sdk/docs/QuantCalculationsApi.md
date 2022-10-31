@@ -108,7 +108,7 @@ Name | Type | Description  | Notes
 
 Get all calculations
 
-This endpoints returns all active calculation requests.
+This endpoints returns all calculation requests.
 
 ### Example
 
@@ -182,9 +182,9 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | List of active calculation requests. |  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  * X-FactSet-Api-RateLimit-Limit - Number of allowed requests for the time window. <br>  * X-FactSet-Api-RateLimit-Remaining - Number of requests left for the time window. <br>  * X-FactSet-Api-RateLimit-Reset - Number of seconds remaining till rate limit resets. <br>  |
+**200** | List of calculation requests. |  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  * X-FactSet-Api-RateLimit-Limit - Number of allowed requests for the time window. <br>  * X-FactSet-Api-RateLimit-Remaining - Number of requests left for the time window. <br>  * X-FactSet-Api-RateLimit-Reset - Number of seconds remaining till rate limit resets. <br>  |
 **400** | Invalid page number. |  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  * X-FactSet-Api-RateLimit-Limit - Number of allowed requests for the time window. <br>  * X-FactSet-Api-RateLimit-Remaining - Number of requests left for the time window. <br>  * X-FactSet-Api-RateLimit-Reset - Number of seconds remaining till rate limit resets. <br>  |
-**404** | No active calculation. |  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  * X-FactSet-Api-RateLimit-Limit - Number of allowed requests for the time window. <br>  * X-FactSet-Api-RateLimit-Remaining - Number of requests left for the time window. <br>  * X-FactSet-Api-RateLimit-Reset - Number of seconds remaining till rate limit resets. <br>  |
+**404** | No calculation found. |  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  * X-FactSet-Api-RateLimit-Limit - Number of allowed requests for the time window. <br>  * X-FactSet-Api-RateLimit-Remaining - Number of requests left for the time window. <br>  * X-FactSet-Api-RateLimit-Reset - Number of seconds remaining till rate limit resets. <br>  |
 **401** | Missing or invalid authentication. |  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  |
 **403** | User is forbidden with current credentials. |  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  * X-FactSet-Api-RateLimit-Limit - Number of allowed requests for the time window. <br>  * X-FactSet-Api-RateLimit-Remaining - Number of requests left for the time window. <br>  * X-FactSet-Api-RateLimit-Reset - Number of seconds remaining till rate limit resets. <br>  |
 **406** | Unsupported Accept header. Header needs to be set to application/json. |  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  * X-FactSet-Api-RateLimit-Limit - Number of allowed requests for the time window. <br>  * X-FactSet-Api-RateLimit-Remaining - Number of requests left for the time window. <br>  * X-FactSet-Api-RateLimit-Reset - Number of seconds remaining till rate limit resets. <br>  |
@@ -607,18 +607,18 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     quant_calculation_parameters_root = QuantCalculationParametersRoot(
         data={
             "key": QuantCalculationParameters(
-                universe=
+                universe=OneOfQuantUniverse(
                     universe_type="Equity",
                     identifiers=[
                         "identifiers_example",
                     ],
-                ,
-                dates=
+                ),
+                dates=OneOfQuantDates(
                     dates=[],
-                ,
-                formulas=[
-                    ,
-                ],
+                ),
+                formulas=OneOfQuantFormulasArray([
+                    OneOfQuantFormulas(),
+                ]),
                 job_description="job_description_example",
             ),
         },
@@ -732,18 +732,18 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     quant_calculation_parameters_root = QuantCalculationParametersRoot(
         data={
             "key": QuantCalculationParameters(
-                universe=
+                universe=OneOfQuantUniverse(
                     universe_type="Equity",
                     identifiers=[
                         "identifiers_example",
                     ],
-                ,
-                dates=
+                ),
+                dates=OneOfQuantDates(
                     dates=[],
-                ,
-                formulas=[
-                    ,
-                ],
+                ),
+                formulas=OneOfQuantFormulasArray([
+                    OneOfQuantFormulas(),
+                ]),
                 job_description="job_description_example",
             ),
         },
