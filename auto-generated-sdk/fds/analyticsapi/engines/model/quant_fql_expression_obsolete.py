@@ -76,6 +76,7 @@ class QuantFqlExpressionObsolete(ModelNormal):
             'expr': (str,),  # noqa: E501
             'name': (str,),  # noqa: E501
             'date_offset': (str,),  # noqa: E501
+            'is_array_return_type': (bool,),  # noqa: E501
         }
 
     @cached_property
@@ -87,6 +88,7 @@ class QuantFqlExpressionObsolete(ModelNormal):
         'expr': 'expr',  # noqa: E501
         'name': 'name',  # noqa: E501
         'date_offset': 'dateOffset',  # noqa: E501
+        'is_array_return_type': 'isArrayReturnType',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -140,6 +142,7 @@ class QuantFqlExpressionObsolete(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             date_offset (str): [optional]  # noqa: E501
+            is_array_return_type (bool): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
