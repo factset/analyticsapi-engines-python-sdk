@@ -60,9 +60,11 @@ from fds.analyticsapi.engines.model.fiab_calculation_status import FIABCalculati
 from fds.analyticsapi.engines.model.fiab_calculation_status_summary import FIABCalculationStatusSummary
 from fds.analyticsapi.engines.model.fiab_date_parameters import FIABDateParameters
 from fds.analyticsapi.engines.model.fiab_identifier import FIABIdentifier
+from fds.analyticsapi.engines.model.fi_balloon_extension import FIBalloonExtension
 from fds.analyticsapi.engines.model.fi_bank_loans import FIBankLoans
 from fds.analyticsapi.engines.model.fi_calculation_parameters import FICalculationParameters
 from fds.analyticsapi.engines.model.fi_calculation_parameters_root import FICalculationParametersRoot
+from fds.analyticsapi.engines.model.fi_cashflows import FICashflows
 from fds.analyticsapi.engines.model.fi_discount_curve_info import FIDiscountCurveInfo
 from fds.analyticsapi.engines.model.fi_discount_curve_info_root import FIDiscountCurveInfoRoot
 from fds.analyticsapi.engines.model.fi_job_settings import FIJobSettings
@@ -71,9 +73,14 @@ from fds.analyticsapi.engines.model.fi_market_environment import FIMarketEnviron
 from fds.analyticsapi.engines.model.fi_municipal_bonds import FIMunicipalBonds
 from fds.analyticsapi.engines.model.fi_municipal_bonds_for_job_settings import FIMunicipalBondsForJobSettings
 from fds.analyticsapi.engines.model.fi_prepay import FIPrepay
+from fds.analyticsapi.engines.model.fi_prepay_lockout import FIPrepayLockout
 from fds.analyticsapi.engines.model.fi_reference_prepay import FIReferencePrepay
 from fds.analyticsapi.engines.model.fi_reference_security import FIReferenceSecurity
 from fds.analyticsapi.engines.model.fi_security import FISecurity
+from fds.analyticsapi.engines.model.fi_servicer_advances import FIServicerAdvances
+from fds.analyticsapi.engines.model.fi_servicer_advances_for_securities import FIServicerAdvancesForSecurities
+from fds.analyticsapi.engines.model.fi_structured_products_for_job_settings import FIStructuredProductsForJobSettings
+from fds.analyticsapi.engines.model.fi_structured_products_for_securities import FIStructuredProductsForSecurities
 from fds.analyticsapi.engines.model.fpo_account import FPOAccount
 from fds.analyticsapi.engines.model.fpo_objective import FPOObjective
 from fds.analyticsapi.engines.model.fpo_optimization_parameters import FPOOptimizationParameters
