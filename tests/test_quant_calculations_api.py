@@ -31,20 +31,25 @@ class TestQuantCalculationsApi(unittest.TestCase):
         def create_calculation(test_context):
             print("Creating single unit calculation")
 
-            quant_identifiers = ["03748R74", "S8112735"]
-            quant_identifier_universe = QuantIdentifierUniverse( universe_type="Equity"
-                                                                 , identifiers=quant_identifiers
-                                                                 , source="IdentifierUniverse")
-
-            quant_formulas = [
+            if(test_context["is_array_return_type"]):
+                quant_formulas = [
                 QuantScreeningExpression(expr="P_PRICE", name="Price (SCR)", source="ScreeningExpression"),
                 (QuantFqlExpression(expr="P_PRICE", name="Price (SCR)", source="FqlExpression")),
                 (QuantFqlExpression(expr="P_PRICE(#DATE,#DATE-5D,#FREQ)", name="Price",
                                     is_array_return_type=True, source="FqlExpression"))]
+            else:
+                quant_formulas = [
+                    QuantScreeningExpression(expr="P_PRICE", name="Price (SCR)", source="ScreeningExpression"),
+                    (QuantFqlExpression(expr="P_PRICE", name="Price (SCR)", source="FqlExpression"))]
 
             quant_dates = QuantFdsDate(start_date="0", end_date="-5D", source="FdsDate", frequency="D", calendar="FIVEDAY")
 
             quant_calculations_meta = QuantCalculationMeta(format="Feather")
+
+            quant_identifiers = ["03748R74", "S8112735"]
+            quant_identifier_universe = QuantIdentifierUniverse(universe_type="Equity"
+                                                                , identifiers=quant_identifiers
+                                                                , source="IdentifierUniverse")
 
             quant_calculation_parameters = {"1": QuantCalculationParameters(universe=quant_identifier_universe,
                                                                             dates=quant_dates, formulas=quant_formulas)}
@@ -100,7 +105,7 @@ class TestQuantCalculationsApi(unittest.TestCase):
                 "test_context": test_context
             }
 
-        def read_calculation_unit_result(test_context):
+        def process_calculations_units(test_context):
             calculation_id = test_context["calculation_id"]
             for (calculation_unit_id, calculation_unit) in test_context["calculation_units"]:
                 result_response = self.quant_calculations_api.get_calculation_unit_result_by_id(id=calculation_id,
@@ -114,6 +119,23 @@ class TestQuantCalculationsApi(unittest.TestCase):
                 "test_context": test_context
             }
 
+        def read_calculation_unit_result_isarrayreturntype(test_context):
+            process_calculations_units(test_context)
+
+        workflow_specification = {
+            create_step_name: create_calculation,
+            read_status_step_name: read_calculation_status,
+            read_result_step_name: read_calculation_unit_result_isarrayreturntype
+        }
+        starting_request = workflow_specification['create_calculation']
+        test_context = {}
+        test_context["is_array_return_type"] = 'True'
+        run_api_workflow_with_assertions(
+            workflow_specification, starting_request, test_context)
+
+        def read_calculation_unit_result(test_context):
+            process_calculations_units(test_context)
+
         workflow_specification = {
             create_step_name: create_calculation,
             read_status_step_name: read_calculation_status,
@@ -121,6 +143,7 @@ class TestQuantCalculationsApi(unittest.TestCase):
         }
         starting_request = workflow_specification['create_calculation']
         test_context = {}
+        test_context["is_array_return_type"] = 'False'
         run_api_workflow_with_assertions(
             workflow_specification, starting_request, test_context)
 
