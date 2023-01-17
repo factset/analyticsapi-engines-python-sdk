@@ -51,7 +51,7 @@ def main():
         run_calculation = fiab_calculations_api.run_calculation(fiab_calculation_parameters=fiab_calculation_parameters)
         if run_calculation[1] == 202:
             calculation_id = run_calculation[2]['X-FactSet-Api-Calculation-Id']
-            print(calculation_id)
+            print('Calculation Id is ', calculation_id)
             status_response = fiab_calculations_api.get_calculation_by_id(calculation_id)
             while status_response[1] == 202:
                 max_age = '5'
