@@ -166,7 +166,7 @@ configuration = fds.analyticsapi.engines.Configuration(
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = linked_pa_templates_api.LinkedPATemplatesApi(api_client)
-    id = "id_example" # str | Unique identifier for a linked PA template
+    id = "01234567890123456789012345678901" # str | Unique identifier for a linked PA template
 
     # example passing only required values which don't have defaults set
     try:
@@ -257,7 +257,7 @@ configuration = fds.analyticsapi.engines.Configuration(
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = linked_pa_templates_api.LinkedPATemplatesApi(api_client)
-    directory = "directory_example" # str | Get linked PA templates in path. (optional)
+    directory = "Personal:LinkedPATemplates/" # str | Get linked PA templates in path. (optional)
     document_directory = "documentDirectory_example" # str | Get linked PA templates for documents in document path (optional)
     document_name = "documentName_example" # str | Get linked PA templates for documents by document name (optional)
 
@@ -354,7 +354,7 @@ configuration = fds.analyticsapi.engines.Configuration(
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = linked_pa_templates_api.LinkedPATemplatesApi(api_client)
-    id = "id_example" # str | Unique identifier for a linked PA template
+    id = "01234567890123456789012345678901" # str | Unique identifier for a linked PA template
 
     # example passing only required values which don't have defaults set
     try:
@@ -447,7 +447,7 @@ configuration = fds.analyticsapi.engines.Configuration(
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = linked_pa_templates_api.LinkedPATemplatesApi(api_client)
-    id = "id_example" # str | Unique identifier for a linked PA template
+    id = "01234567890123456789012345678901" # str | Unique identifier for a linked PA template
     linked_pa_template_update_parameters_root = LinkedPATemplateUpdateParametersRoot(
         data=LinkedPATemplateUpdateParameters(
             parent_component_id="parent_component_id_example",

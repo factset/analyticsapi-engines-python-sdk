@@ -213,7 +213,7 @@ configuration = fds.analyticsapi.engines.Configuration(
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unlinked_pa_templates_api.UnlinkedPATemplatesApi(api_client)
-    id = "id_example" # str | Unique identifier for an unlinked PA template
+    id = "01234567890123456789012345678901" # str | Unique identifier for an unlinked PA template
 
     # example passing only required values which don't have defaults set
     try:
@@ -481,8 +481,8 @@ configuration = fds.analyticsapi.engines.Configuration(
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unlinked_pa_templates_api.UnlinkedPATemplatesApi(api_client)
-    directory = "directory_example" # str | Get unlinked PA templates in path. (optional)
-    category = "category_example" # str | Get unlinked PA templates by category. (optional)
+    directory = "Personal:UninkedPATemplates/" # str | Get unlinked PA templates in path. (optional)
+    category = "Weights" # str | Get unlinked PA templates by category. (optional)
 
     # example passing only required values which don't have defaults set
     # and optional values
@@ -575,7 +575,7 @@ configuration = fds.analyticsapi.engines.Configuration(
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unlinked_pa_templates_api.UnlinkedPATemplatesApi(api_client)
-    id = "id_example" # str | Unique identifier for an unlinked PA template
+    id = "01234567890123456789012345678901" # str | Unique identifier for an unlinked PA template
 
     # example passing only required values which don't have defaults set
     try:
@@ -668,7 +668,7 @@ configuration = fds.analyticsapi.engines.Configuration(
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unlinked_pa_templates_api.UnlinkedPATemplatesApi(api_client)
-    id = "id_example" # str | Unique identifier for an unlinked PA template
+    id = "01234567890123456789012345678901" # str | Unique identifier for an unlinked PA template
     unlinked_pa_template_update_parameters_root = UnlinkedPATemplateUpdateParametersRoot(
         data=UnlinkedPATemplateUpdateParameters(
             description="description_example",

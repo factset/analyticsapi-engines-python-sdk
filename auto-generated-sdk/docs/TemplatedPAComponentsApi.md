@@ -203,7 +203,7 @@ configuration = fds.analyticsapi.engines.Configuration(
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = templated_pa_components_api.TemplatedPAComponentsApi(api_client)
-    id = "id_example" # str | Unique identifier for a templated PA component
+    id = "01234567890123456789012345678901" # str | Unique identifier for a templated PA component
 
     # example passing only required values which don't have defaults set
     try:
@@ -294,7 +294,7 @@ configuration = fds.analyticsapi.engines.Configuration(
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = templated_pa_components_api.TemplatedPAComponentsApi(api_client)
-    id = "id_example" # str | Unique identifier for a templated PA component
+    id = "01234567890123456789012345678901" # str | Unique identifier for a templated PA component
 
     # example passing only required values which don't have defaults set
     try:
@@ -386,7 +386,7 @@ configuration = fds.analyticsapi.engines.Configuration(
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = templated_pa_components_api.TemplatedPAComponentsApi(api_client)
-    directory = "directory_example" # str | Get templated PA components in path
+    directory = "Personal:TemplatedPAComponents/" # str | Get templated PA components in path
 
     # example passing only required values which don't have defaults set
     try:
@@ -478,7 +478,7 @@ configuration = fds.analyticsapi.engines.Configuration(
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = templated_pa_components_api.TemplatedPAComponentsApi(api_client)
-    id = "id_example" # str | Unique identifier for a templated PA component
+    id = "01234567890123456789012345678901" # str | Unique identifier for a templated PA component
     templated_pa_component_update_parameters_root = TemplatedPAComponentUpdateParametersRoot(
         data=TemplatedPAComponentUpdateParameters(
             parent_template_id="parent_template_id_example",
