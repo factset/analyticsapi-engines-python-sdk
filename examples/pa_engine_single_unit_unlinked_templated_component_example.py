@@ -37,7 +37,7 @@ from urllib3 import Retry
 host = os.environ['FACTSET_HOST']
 fds_username = os.environ['FACTSET_USERNAME']
 fds_api_key = os.environ['FACTSET_API_KEY']
-proxy_url = os.environ['PROXY_URL']
+#proxy_url = os.environ['PROXY_URL']
 
 def main():
     config = Configuration()
@@ -60,7 +60,7 @@ def main():
         column_category = "Portfolio/Position Data"
         column_statistic_name = "Active Weights"
 
-        group_category = "JP Morgan CEMBI "
+        group_category = "Country & Region/JP Morgan/JP Morgan CEMBI "
         group_name = "Country - JP Morgan CEMBI "
 
         unlinked_pa_template_directory = "Personal:UnlinkedPATemplates/"
