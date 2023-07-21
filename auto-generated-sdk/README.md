@@ -123,6 +123,7 @@ Class | Method | HTTP request | Description
 *ColumnsApi* | [**get_pa_columns**](docs/ColumnsApi.md#get_pa_columns) | **GET** /analytics/engines/pa/v3/columns | Get PA columns
 *ComponentsApi* | [**get_pa_component_by_id**](docs/ComponentsApi.md#get_pa_component_by_id) | **GET** /analytics/engines/pa/v3/components/{id} | Get PA component by id
 *ComponentsApi* | [**get_pa_components**](docs/ComponentsApi.md#get_pa_components) | **GET** /analytics/engines/pa/v3/components | Get PA components
+*ComponentsApi* | [**get_spar_component_by_id**](docs/ComponentsApi.md#get_spar_component_by_id) | **GET** /analytics/engines/spar/v3/components/{id} | Get SPAR component by id
 *ComponentsApi* | [**get_spar_components**](docs/ComponentsApi.md#get_spar_components) | **GET** /analytics/engines/spar/v3/components | Get SPAR components
 *ComponentsApi* | [**get_vault_component_by_id**](docs/ComponentsApi.md#get_vault_component_by_id) | **GET** /analytics/engines/vault/v3/components/{id} | Get Vault component by id
 *ComponentsApi* | [**get_vault_components**](docs/ComponentsApi.md#get_vault_components) | **GET** /analytics/engines/vault/v3/components | Get Vault components
@@ -221,6 +222,7 @@ Class | Method | HTTP request | Description
 *VaultCalculationsApi* | [**get_calculation_unit_result_by_id**](docs/VaultCalculationsApi.md#get_calculation_unit_result_by_id) | **GET** /analytics/engines/vault/v3/calculations/{id}/units/{unitId}/result | Get Vault calculation result by id
 *VaultCalculationsApi* | [**post_and_calculate**](docs/VaultCalculationsApi.md#post_and_calculate) | **POST** /analytics/engines/vault/v3/calculations | Create and Run Vault calculation
 *VaultCalculationsApi* | [**put_and_calculate**](docs/VaultCalculationsApi.md#put_and_calculate) | **PUT** /analytics/engines/vault/v3/calculations/{id} | Create or Update Vault calculation and run it.
+*VaultAttributionLoaderApi* | [**vault_attribution_loader**](docs/VaultAttributionLoaderApi.md#vault_attribution_loader) | **POST** /analytics/engines/vault/v3/load/{batchId} | Vault - External Attribution Loader
 
 
 ## Documentation For Models
@@ -276,6 +278,8 @@ Class | Method | HTTP request | Description
  - [FIABCalculationStatusSummary](docs/FIABCalculationStatusSummary.md)
  - [FIABDateParameters](docs/FIABDateParameters.md)
  - [FIABIdentifier](docs/FIABIdentifier.md)
+ - [FIAttributionForJobSettings](docs/FIAttributionForJobSettings.md)
+ - [FIAttributionForSecurities](docs/FIAttributionForSecurities.md)
  - [FIBalloonExtension](docs/FIBalloonExtension.md)
  - [FIBankLoans](docs/FIBankLoans.md)
  - [FICalculationParameters](docs/FICalculationParameters.md)
@@ -379,6 +383,8 @@ Class | Method | HTTP request | Description
  - [SPARBenchmarkRoot](docs/SPARBenchmarkRoot.md)
  - [SPARCalculationParameters](docs/SPARCalculationParameters.md)
  - [SPARCalculationParametersRoot](docs/SPARCalculationParametersRoot.md)
+ - [SPARComponent](docs/SPARComponent.md)
+ - [SPARComponentRoot](docs/SPARComponentRoot.md)
  - [SPARDateParameters](docs/SPARDateParameters.md)
  - [SPARIdentifier](docs/SPARIdentifier.md)
  - [TemplateContentTypes](docs/TemplateContentTypes.md)
@@ -408,6 +414,8 @@ Class | Method | HTTP request | Description
  - [UnlinkedPATemplateSummaryRoot](docs/UnlinkedPATemplateSummaryRoot.md)
  - [UnlinkedPATemplateUpdateParameters](docs/UnlinkedPATemplateUpdateParameters.md)
  - [UnlinkedPATemplateUpdateParametersRoot](docs/UnlinkedPATemplateUpdateParametersRoot.md)
+ - [VaultAttributionLoaderResponse](docs/VaultAttributionLoaderResponse.md)
+ - [VaultAttributionLoaderResponseRoot](docs/VaultAttributionLoaderResponseRoot.md)
  - [VaultCalculationParameters](docs/VaultCalculationParameters.md)
  - [VaultCalculationParametersRoot](docs/VaultCalculationParametersRoot.md)
  - [VaultComponent](docs/VaultComponent.md)

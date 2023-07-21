@@ -28,12 +28,14 @@ from fds.analyticsapi.engines.model_utils import (  # noqa: F401
 )
 
 def lazy_import():
+    from fds.analyticsapi.engines.model.fi_attribution_for_securities import FIAttributionForSecurities
     from fds.analyticsapi.engines.model.fi_bank_loans import FIBankLoans
     from fds.analyticsapi.engines.model.fi_loss import FILoss
     from fds.analyticsapi.engines.model.fi_municipal_bonds import FIMunicipalBonds
     from fds.analyticsapi.engines.model.fi_prepay import FIPrepay
     from fds.analyticsapi.engines.model.fi_reference_security import FIReferenceSecurity
     from fds.analyticsapi.engines.model.fi_structured_products_for_securities import FIStructuredProductsForSecurities
+    globals()['FIAttributionForSecurities'] = FIAttributionForSecurities
     globals()['FIBankLoans'] = FIBankLoans
     globals()['FILoss'] = FILoss
     globals()['FIMunicipalBonds'] = FIMunicipalBonds
@@ -110,6 +112,7 @@ class FISecurity(ModelNormal):
             'matrix_spread_adjustment': (float,),  # noqa: E501
             'matrix_multiplier': (float,),  # noqa: E501
             'structured_products': (FIStructuredProductsForSecurities,),  # noqa: E501
+            'attribution': (FIAttributionForSecurities,),  # noqa: E501
             'calc_from_method': (str,),  # noqa: E501
             'face': (float,),  # noqa: E501
             'face_type': (str,),  # noqa: E501
@@ -134,6 +137,7 @@ class FISecurity(ModelNormal):
         'matrix_spread_adjustment': 'matrixSpreadAdjustment',  # noqa: E501
         'matrix_multiplier': 'matrixMultiplier',  # noqa: E501
         'structured_products': 'structuredProducts',  # noqa: E501
+        'attribution': 'attribution',  # noqa: E501
         'calc_from_method': 'calcFromMethod',  # noqa: E501
         'face': 'face',  # noqa: E501
         'face_type': 'faceType',  # noqa: E501
@@ -200,6 +204,7 @@ class FISecurity(ModelNormal):
             matrix_spread_adjustment (float): Matrix Spread Adjustment. [optional]  # noqa: E501
             matrix_multiplier (float): Matrix Multiplier. [optional]  # noqa: E501
             structured_products (FIStructuredProductsForSecurities): [optional]  # noqa: E501
+            attribution (FIAttributionForSecurities): [optional]  # noqa: E501
             calc_from_method (str): Calculation Method.  Methods : Active Spread, Actual Spread, Actual Spread To Worst Call, OAS, Price, Yield, Yield To No Call, Act/Act Yield To No Call, Bond Equivalent Yield,  Yield To Worst Call, Discount Yield, Discount Margin, Implied Volatility, Bullet Spread, Bullet Spread To Worst Call, Pricing Matrix. [optional]  # noqa: E501
             face (float): Face. [optional] if omitted the server will use the default value of 1  # noqa: E501
             face_type (str): Face type. [optional] if omitted the server will use the default value of "Current"  # noqa: E501

@@ -1,11 +1,12 @@
-# AFIOptimizationParametersRoot
+# VaultAttributionLoaderResponse
 
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**AFIOptimizationParameters**](AFIOptimizationParameters.md) |  | [optional] 
-**meta** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}** |  | [optional] 
+**process_id** | **str** | ProcessId. | [optional] 
+**group_id** | **str** | GroupId. | [optional] 
+**object_id** | **str** | ObjectId. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -43,3 +43,4 @@ from fds.analyticsapi.engines.api.strategy_documents_api import StrategyDocument
 from fds.analyticsapi.engines.api.templated_pa_components_api import TemplatedPAComponentsApi
 from fds.analyticsapi.engines.api.unlinked_pa_templates_api import UnlinkedPATemplatesApi
 from fds.analyticsapi.engines.api.vault_calculations_api import VaultCalculationsApi
+from fds.analyticsapi.engines.api.vault_attribution_loader_api import VaultAttributionLoaderApi
