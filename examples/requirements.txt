@@ -1,6 +1,6 @@
 astroid==2.5.6
 autopep8==1.5.7
-certifi==2021.5.30
+certifi==2023.7.22
 colorama==0.4.4
 fds.protobuf.stach.extensions<2.0.0
 fds.protobuf.stach.v2<2.0.0
