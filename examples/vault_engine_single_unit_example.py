@@ -127,6 +127,11 @@ def output_calculation_result(result):
     dataFramesList = stachExtension.convert_to_dataframe()
     print(dataFramesList)
     # generate_excel(dataFramesList)  # Uncomment this line to get the result in table format exported to excel file.
+    print('MetaData:')
+    for metadaItem in getMetadata:
+        for keyName in metadaItem:
+            appendedValues = ','.join(str(x.string_value) for x in metadaItem[keyName])
+            print(keyName, ':', appendedValues)
 
 
 def generate_excel(data_frames_list):
