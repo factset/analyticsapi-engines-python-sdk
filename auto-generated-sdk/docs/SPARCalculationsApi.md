@@ -146,11 +146,13 @@ configuration = fds.analyticsapi.engines.Configuration(
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = spar_calculations_api.SPARCalculationsApi(api_client)
+    page_number = 1 # int |  (optional) if omitted the server will use the default value of 1
 
     # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Get all calculations
-        api_response = api_instance.get_all_calculations()
+        api_response = api_instance.get_all_calculations(page_number=page_number)
         pprint(api_response)
     except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling SPARCalculationsApi->get_all_calculations: %s\n" % e)
@@ -161,7 +163,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page_number** | **int**|  | defaults to 1
+ **page_number** | **int**|  | [optional] if omitted the server will use the default value of 1
 
 ### Return type
 

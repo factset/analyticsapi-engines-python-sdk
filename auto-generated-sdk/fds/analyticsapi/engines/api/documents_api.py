@@ -40,7 +40,7 @@ class DocumentsApi(object):
 
         def __get_pa3_documents(
             self,
-            path="",
+            path,
             **kwargs
         ):
             """Get PA3 documents and sub-directories in a directory  # noqa: E501
@@ -49,11 +49,11 @@ class DocumentsApi(object):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.get_pa3_documents(path="", async_req=True)
+            >>> thread = api.get_pa3_documents(path, async_req=True)
             >>> result = thread.get()
 
             Args:
-                path (str): The directory to get the documents and sub-directories in. defaults to "", must be one of [""]
+                path (str): The directory to get the documents and sub-directories in
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status

@@ -164,7 +164,6 @@ class PubCalculationsApi(object):
 
         def __get_all_calculations(
             self,
-            page_number=1,
             **kwargs
         ):
             """Get all calculations  # noqa: E501
@@ -173,13 +172,12 @@ class PubCalculationsApi(object):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.get_all_calculations(page_number=1, async_req=True)
+            >>> thread = api.get_all_calculations(async_req=True)
             >>> result = thread.get()
 
-            Args:
-                page_number (int): defaults to 1, must be one of [1]
 
             Keyword Args:
+                page_number (int): [optional] if omitted the server will use the default value of 1
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is False.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -224,8 +222,6 @@ class PubCalculationsApi(object):
                 '_check_return_type', True
             )
             kwargs['_host_index'] = kwargs.get('_host_index')
-            kwargs['page_number'] = \
-                page_number
             return self.call_with_http_info(**kwargs)
 
         self.get_all_calculations = _Endpoint(
@@ -244,9 +240,7 @@ class PubCalculationsApi(object):
                 'all': [
                     'page_number',
                 ],
-                'required': [
-                    'page_number',
-                ],
+                'required': [],
                 'nullable': [
                 ],
                 'enum': [

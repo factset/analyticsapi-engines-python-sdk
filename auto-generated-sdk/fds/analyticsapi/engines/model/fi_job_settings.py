@@ -28,10 +28,12 @@ from fds.analyticsapi.engines.model_utils import (  # noqa: F401
 )
 
 def lazy_import():
+    from fds.analyticsapi.engines.model.fi_attribution_for_job_settings import FIAttributionForJobSettings
     from fds.analyticsapi.engines.model.fi_bank_loans import FIBankLoans
     from fds.analyticsapi.engines.model.fi_market_environment import FIMarketEnvironment
     from fds.analyticsapi.engines.model.fi_municipal_bonds_for_job_settings import FIMunicipalBondsForJobSettings
     from fds.analyticsapi.engines.model.fi_structured_products_for_job_settings import FIStructuredProductsForJobSettings
+    globals()['FIAttributionForJobSettings'] = FIAttributionForJobSettings
     globals()['FIBankLoans'] = FIBankLoans
     globals()['FIMarketEnvironment'] = FIMarketEnvironment
     globals()['FIMunicipalBondsForJobSettings'] = FIMunicipalBondsForJobSettings
@@ -99,6 +101,7 @@ class FIJobSettings(ModelNormal):
             'municipal_bonds': (FIMunicipalBondsForJobSettings,),  # noqa: E501
             'market_environment': (FIMarketEnvironment,),  # noqa: E501
             'structured_products': (FIStructuredProductsForJobSettings,),  # noqa: E501
+            'attribution': (FIAttributionForJobSettings,),  # noqa: E501
         }
 
     @cached_property
@@ -116,6 +119,7 @@ class FIJobSettings(ModelNormal):
         'municipal_bonds': 'municipalBonds',  # noqa: E501
         'market_environment': 'marketEnvironment',  # noqa: E501
         'structured_products': 'structuredProducts',  # noqa: E501
+        'attribution': 'attribution',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -175,6 +179,7 @@ class FIJobSettings(ModelNormal):
             municipal_bonds (FIMunicipalBondsForJobSettings): [optional]  # noqa: E501
             market_environment (FIMarketEnvironment): [optional]  # noqa: E501
             structured_products (FIStructuredProductsForJobSettings): [optional]  # noqa: E501
+            attribution (FIAttributionForJobSettings): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

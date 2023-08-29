@@ -57,7 +57,7 @@ class DatesApi(object):
             Args:
                 enddate (str): End Date
                 componentid (str): Component Id
-                account (str): Account
+                account (str): Account ( Should be in Format - AccountName.ACCT )
 
             Keyword Args:
                 startdate (str): Start Date. [optional]
