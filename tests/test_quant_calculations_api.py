@@ -31,18 +31,27 @@ class TestQuantCalculationsApi(unittest.TestCase):
         def create_calculation(test_context):
             print("Creating single unit calculation")
 
-            if(test_context["is_array_return_type"]):
-                quant_formulas = [
-                QuantScreeningExpression(expr="P_PRICE", name="Price (SCR)", source="ScreeningExpression"),
-                (QuantFqlExpression(expr="P_PRICE", name="Price (SCR)", source="FqlExpression")),
-                (QuantFqlExpression(expr="P_PRICE(#DATE,#DATE-5D,#FREQ)", name="Price",
-                                    is_array_return_type=True, source="FqlExpression"))]
-            else:
+            if test_context["is_array_return_type"] == "True":
                 quant_formulas = [
                     QuantScreeningExpression(expr="P_PRICE", name="Price (SCR)", source="ScreeningExpression"),
+                    (QuantFqlExpression(expr="P_PRICE", name="Price (SCR)", source="FqlExpression")),
+                    (QuantFqlExpression(expr="P_PRICE(#DATE,#DATE-5D,#FREQ)", name="Price",
+                                        is_array_return_type=True, source="FqlExpression"))]
+            else:
+
+                if "test" in test_context:
+                    print("new test")
+                    expr = "FF_MKT_VAL(AN_R,0,RP,USD)"
+                else:
+                    print("old test")
+                    expr = "P_PRICE"
+
+                quant_formulas = [
+                    QuantScreeningExpression(expr=expr, name="Price (SCR)", source="ScreeningExpression"),
                     (QuantFqlExpression(expr="P_PRICE", name="Price (SCR)", source="FqlExpression"))]
 
-            quant_dates = QuantFdsDate(start_date="0", end_date="-5D", source="FdsDate", frequency="D", calendar="FIVEDAY")
+            quant_dates = QuantFdsDate(start_date="0", end_date="-5D", source="FdsDate", frequency="D",
+                                       calendar="FIVEDAY")
 
             quant_calculations_meta = QuantCalculationMeta(format="Feather")
 
@@ -86,7 +95,7 @@ class TestQuantCalculationsApi(unittest.TestCase):
             status_response = self.quant_calculations_api.get_calculation_status_by_id(id=calculation_id)
 
             self.assertTrue(status_response[1] == 202 and (
-                status_response[0].data.status in ("Queued", "Executing")))
+                    status_response[0].data.status in ("Queued", "Executing")))
 
             while status_response[1] == 202 and (status_response[0].data.status in ("Queued", "Executing")):
                 max_age = '5'
@@ -97,7 +106,12 @@ class TestQuantCalculationsApi(unittest.TestCase):
                 time.sleep(int(max_age))
                 status_response = self.quant_calculations_api.get_calculation_status_by_id(id=calculation_id)
 
-                test_context["calculation_units"] = status_response[0].data.units.items()
+            if status_response[1] == 200:
+                if status_response[0].data.units['1'].get("warnings") is not None:
+                    self.assertGreaterEqual(len(list(status_response[0].data.units['1']['warnings'])), 1, "Unit Status should have warnings")
+                    self.assertIsNotNone(status_response[0].data.units['1']['warnings'][0], "Unit Status with warnings should have a reason")
+
+            test_context["calculation_units"] = status_response[0].data.units.items()
 
             return {
                 "continue_workflow": True,
@@ -106,18 +120,13 @@ class TestQuantCalculationsApi(unittest.TestCase):
             }
 
         def process_calculations_units(test_context):
+            unit_status = test_context["calculation_units"]
             calculation_id = test_context["calculation_id"]
             for (calculation_unit_id, calculation_unit) in test_context["calculation_units"]:
                 result_response = self.quant_calculations_api.get_calculation_unit_result_by_id(id=calculation_id,
                                                                                                 unit_id=calculation_unit_id)
                 self.assertEqual(
                     result_response[1], 200, "Get calculation result should have succeeded")
-
-            return {
-                "continue_workflow": False,
-                "next_request": read_result_step_name,
-                "test_context": test_context
-            }
 
         def read_calculation_unit_result_isarrayreturntype(test_context):
             process_calculations_units(test_context)
@@ -144,6 +153,21 @@ class TestQuantCalculationsApi(unittest.TestCase):
         starting_request = workflow_specification['create_calculation']
         test_context = {}
         test_context["is_array_return_type"] = 'False'
+        run_api_workflow_with_assertions(
+            workflow_specification, starting_request, test_context)
+
+        def read_calculation_unit_result_with_warnings(test_context):
+            process_calculations_units(test_context)
+
+        workflow_specification = {
+            create_step_name: create_calculation,
+            read_status_step_name: read_calculation_status,
+            read_result_step_name: read_calculation_unit_result_with_warnings
+        }
+        starting_request = workflow_specification['create_calculation']
+        test_context = {}
+        test_context["is_array_return_type"] = 'False'
+        test_context["test"] = 'False'
         run_api_workflow_with_assertions(
             workflow_specification, starting_request, test_context)
 
