@@ -195,7 +195,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_spar3_documents**
-> DocumentDirectoriesRoot get_spar3_documents()
+> DocumentDirectoriesRoot get_spar3_documents(path)
 
 Gets SPAR3 documents and sub-directories in a directory
 
@@ -238,11 +238,12 @@ configuration = fds.analyticsapi.engines.Configuration(
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = documents_api.DocumentsApi(api_client)
+    path = "Client:" # str | The directory to get the documents in
 
     # example passing only required values which don't have defaults set
     try:
         # Gets SPAR3 documents and sub-directories in a directory
-        api_response = api_instance.get_spar3_documents()
+        api_response = api_instance.get_spar3_documents(path)
         pprint(api_response)
     except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling DocumentsApi->get_spar3_documents: %s\n" % e)
@@ -253,7 +254,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **path** | **str**| The directory to get the documents in | defaults to ""
+ **path** | **str**| The directory to get the documents in |
 
 ### Return type
 
