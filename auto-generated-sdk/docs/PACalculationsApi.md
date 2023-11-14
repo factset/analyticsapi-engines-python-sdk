@@ -514,7 +514,7 @@ configuration = fds.analyticsapi.engines.Configuration(
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pa_calculations_api.PACalculationsApi(api_client)
-    x_fact_set_api_long_running_deadline = 1 # int | Long running deadline in seconds when only one unit is passed in the POST body. (optional)
+    x_fact_set_api_long_running_deadline = 10 # int | Long running deadline in seconds when only one unit is passed in the POST body. (optional)
     cache_control = "Cache-Control_example" # str | Standard HTTP header.  Accepts max-stale. (optional)
     pa_calculation_parameters_root = PACalculationParametersRoot(
         data={
