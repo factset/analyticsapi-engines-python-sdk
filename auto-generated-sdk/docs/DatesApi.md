@@ -55,7 +55,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     api_instance = dates_api.DatesApi(api_client)
     enddate = "-1AY" # str | End Date
     componentid = "801B800245E468A52AEBEC4BE31CFF5AF82F371DAEF5F158AC2E98C2FA324B46" # str | Component Id
-    account = "Account Name" # str | Account ( Should be in Format - AccountName.ACCT )
+    account = "Client:/Folder1/Folder2/AccountName.ACCT" # str | Account ( Account Name ending with .ACCT or .ACTM )
     startdate = "-3AY" # str | Start Date (optional)
 
     # example passing only required values which don't have defaults set
@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **enddate** | **str**| End Date |
  **componentid** | **str**| Component Id |
- **account** | **str**| Account ( Should be in Format - AccountName.ACCT ) |
+ **account** | **str**| Account ( Account Name ending with .ACCT or .ACTM ) |
  **startdate** | **str**| Start Date | [optional]
 
 ### Return type

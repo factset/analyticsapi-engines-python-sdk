@@ -241,7 +241,7 @@ configuration = fds.analyticsapi.engines.Configuration(
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = components_api.ComponentsApi(api_client)
-    id = "id_example" # str | Unique identifier for a SPAR component
+    id = "067F5DE2E2A11F9AD734594AA8957E11B633438D0FADFCCE0F423ABEF2FC5F1D" # str | Unique identifier for a SPAR component
 
     # example passing only required values which don't have defaults set
     try:
