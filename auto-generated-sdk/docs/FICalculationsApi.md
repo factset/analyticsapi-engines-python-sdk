@@ -418,7 +418,7 @@ configuration = fds.analyticsapi.engines.Configuration(
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fi_calculations_api.FICalculationsApi(api_client)
-    x_fact_set_api_long_running_deadline = 1 # int | Long running deadline in seconds. (optional)
+    x_fact_set_api_long_running_deadline = 10 # int | Long running deadline in seconds. (optional)
     cache_control = "Cache-Control_example" # str | Standard HTTP header.  Accepts max-stale. (optional)
     fi_calculation_parameters_root = FICalculationParametersRoot(
         data=FICalculationParameters(
@@ -649,7 +649,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fi_calculations_api.FICalculationsApi(api_client)
     id = "id_example" # str | from url, provided from the location header in the Create and Run FI calculation endpoint
-    x_fact_set_api_long_running_deadline = 1 # int | Long running deadline in seconds. (optional)
+    x_fact_set_api_long_running_deadline = 10 # int | Long running deadline in seconds. (optional)
     cache_control = "Cache-Control_example" # str | Standard HTTP header.  Accepts max-stale. (optional)
     fi_calculation_parameters_root = FICalculationParametersRoot(
         data=FICalculationParameters(
