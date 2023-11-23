@@ -2,6 +2,7 @@ import time
 import os
 import uuid
 import pandas as pd
+import urllib3
 
 from fds.analyticsapi.engines import ApiException
 from fds.analyticsapi.engines.api.afi_optimizer_api import AFIOptimizerApi
@@ -16,6 +17,7 @@ from fds.protobuf.stach.extensions.StachExtensionFactory import StachExtensionFa
 from fds.protobuf.stach.extensions.StachVersion import StachVersion
 
 from urllib3 import Retry
+urllib3.disable_warnings()
 
 host = os.environ['FACTSET_HOST']
 fds_username = os.environ['FACTSET_USERNAME']

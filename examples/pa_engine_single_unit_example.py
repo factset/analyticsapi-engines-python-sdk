@@ -2,6 +2,7 @@ import time
 import os
 import uuid
 import pandas as pd
+import urllib3
 
 from fds.analyticsapi.engines import ApiException
 from fds.analyticsapi.engines.api.pa_calculations_api import PACalculationsApi
@@ -18,8 +19,10 @@ from fds.analyticsapi.engines.model.pa_calculation_data_sources import PACalcula
 from fds.analyticsapi.engines.model.pa_calculation_pricing_source import PACalculationPricingSource
 from fds.protobuf.stach.extensions.StachVersion import StachVersion
 from fds.protobuf.stach.extensions.StachExtensionFactory import StachExtensionFactory
+from fds.protobuf.stach.extensions.v2.StachUtilities import StachUtilities
 
 from urllib3 import Retry
+urllib3.disable_warnings()
 
 host = os.environ['FACTSET_HOST']
 fds_username = os.environ['FACTSET_USERNAME']
@@ -59,6 +62,7 @@ def main():
         pricing_source_name = "MSCI - Gross"
         pricing_source_category = "MSCI"
         pricing_source_directory = "Equity"
+
         # uncomment the below code line to setup cache control; max-stale=0 will be a fresh adhoc run and the max-stale value is in seconds.
         # Results are by default cached for 12 hours; Setting max-stale=300 will fetch a cached result which is 5 minutes older.
         # cache_control = "max-stale=0"
@@ -94,7 +98,6 @@ def main():
                                                                   currencyisocode=currency, datasources=pa_datasources)}
         pa_calculation_parameter_root = PACalculationParametersRoot(
             data=pa_calculation_parameters)
-
         pa_calculations_api = PACalculationsApi(api_client)
 
         post_and_calculate_response = pa_calculations_api.post_and_calculate(
@@ -143,11 +146,29 @@ def main():
 
 def output_calculation_result(result):
     print("Calculation Result")
-    stachBuilder = StachExtensionFactory.get_row_organized_builder(
-        StachVersion.V2)
+    metadata_list = []
+    stachBuilder = StachExtensionFactory.get_row_organized_builder(StachVersion.V2)
     stachExtension = stachBuilder.set_package(result).build()
     dataFramesList = stachExtension.convert_to_dataframe()
+    getMetadata = stachExtension.get_metadata()
     print(dataFramesList)
+    print('\n MetaData:')
+    for metadataItem in getMetadata:
+        metadata_dict = {}
+        for keyName in metadataItem:
+            appendedValues = ','.join(str(StachUtilities.get_value(x)) for x in metadataItem[keyName])
+            metadata_dict[keyName] = appendedValues
+        metadata_list.append(metadata_dict)
+
+    metadata_df = pd.DataFrame(metadata_list)
+    # Set display options for better readability
+    pd.set_option('display.max_rows', None)
+    pd.set_option('display.max_columns', None)
+    pd.set_option('display.width', None)
+
+    # Print the organized DataFrame
+
+    print(metadata_df.to_string(index=False, header=True, justify='left', col_space=20))
     # generate_excel(dataFramesList)  # Uncomment this line to get the result in table format exported to excel file.
 
 
