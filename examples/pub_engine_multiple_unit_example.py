@@ -1,6 +1,7 @@
 import os
 import time
 
+import urllib3
 from fds.analyticsapi.engines import ApiException
 from fds.analyticsapi.engines.api_client import ApiClient
 from fds.analyticsapi.engines.api.pub_calculations_api import PubCalculationsApi
@@ -11,6 +12,7 @@ from fds.analyticsapi.engines.model.pub_identifier import PubIdentifier
 from fds.analyticsapi.engines.model.pub_date_parameters import PubDateParameters
 
 from urllib3 import Retry
+urllib3.disable_warnings()
 from pathlib import Path
 
 host = os.environ['FACTSET_HOST']
