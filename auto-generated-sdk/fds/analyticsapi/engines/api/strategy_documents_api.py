@@ -40,7 +40,7 @@ class StrategyDocumentsApi(object):
 
         def __get_axioma_equity_strategy_documents(
             self,
-            path="",
+            path,
             **kwargs
         ):
             """Get Axioma Equity strategy documents and sub-directories in a directory  # noqa: E501
@@ -49,11 +49,11 @@ class StrategyDocumentsApi(object):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.get_axioma_equity_strategy_documents(path="", async_req=True)
+            >>> thread = api.get_axioma_equity_strategy_documents(path, async_req=True)
             >>> result = thread.get()
 
             Args:
-                path (str): The directory to get the strategy documents and sub-directories in. defaults to "", must be one of [""]
+                path (str): The directory to get the strategy documents and sub-directories in
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
@@ -160,7 +160,7 @@ class StrategyDocumentsApi(object):
 
         def __get_axioma_fi_strategy_documents(
             self,
-            path="",
+            path,
             **kwargs
         ):
             """Get Axioma FI strategy documents and sub-directories in a directory  # noqa: E501
@@ -169,11 +169,11 @@ class StrategyDocumentsApi(object):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.get_axioma_fi_strategy_documents(path="", async_req=True)
+            >>> thread = api.get_axioma_fi_strategy_documents(path, async_req=True)
             >>> result = thread.get()
 
             Args:
-                path (str): The directory to get the strategy documents and sub-directories in. defaults to "", must be one of [""]
+                path (str): The directory to get the strategy documents and sub-directories in
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
@@ -280,7 +280,7 @@ class StrategyDocumentsApi(object):
 
         def __get_barra_strategy_documents(
             self,
-            path="",
+            path,
             **kwargs
         ):
             """Get Barra strategy documents and sub-directories in a directory  # noqa: E501
@@ -289,11 +289,11 @@ class StrategyDocumentsApi(object):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.get_barra_strategy_documents(path="", async_req=True)
+            >>> thread = api.get_barra_strategy_documents(path, async_req=True)
             >>> result = thread.get()
 
             Args:
-                path (str): The directory to get the strategy documents and sub-directories in. defaults to "", must be one of [""]
+                path (str): The directory to get the strategy documents and sub-directories in
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
@@ -400,7 +400,7 @@ class StrategyDocumentsApi(object):
 
         def __get_fpo_strategy_documents(
             self,
-            path="",
+            path,
             **kwargs
         ):
             """Get FactSet Portfolio Optimizer strategy documents and sub-directories in a directory  # noqa: E501
@@ -409,11 +409,11 @@ class StrategyDocumentsApi(object):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.get_fpo_strategy_documents(path="", async_req=True)
+            >>> thread = api.get_fpo_strategy_documents(path, async_req=True)
             >>> result = thread.get()
 
             Args:
-                path (str): The directory to get the strategy documents and sub-directories in. defaults to "", must be one of [""]
+                path (str): The directory to get the strategy documents and sub-directories in
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
@@ -520,7 +520,7 @@ class StrategyDocumentsApi(object):
 
         def __get_northfield_strategy_documents(
             self,
-            path="",
+            path,
             **kwargs
         ):
             """Get Northfield strategy documents and sub-directories in a directory  # noqa: E501
@@ -529,11 +529,11 @@ class StrategyDocumentsApi(object):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.get_northfield_strategy_documents(path="", async_req=True)
+            >>> thread = api.get_northfield_strategy_documents(path, async_req=True)
             >>> result = thread.get()
 
             Args:
-                path (str): The directory to get the strategy documents and sub-directories in. defaults to "", must be one of [""]
+                path (str): The directory to get the strategy documents and sub-directories in
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
