@@ -125,14 +125,14 @@ def output_calculation_result(result):
     stachBuilder = StachExtensionFactory.get_row_organized_builder(StachVersion.V2)
     stachExtension = stachBuilder.set_package(result).build()
     dataFramesList = stachExtension.convert_to_dataframe()
-    getMetadata = stachExtension.get_metadata()
+    MetaData = stachExtension.get_metadata()
     print(dataFramesList)
     print('\n MetaData:')
-    for metadataItem in getMetadata:
+    for metadataItem in MetaData:
         metadata_dict = {}
         for keyName in metadataItem:
-            appendedValues = ','.join(str(StachUtilities.get_value(x)) for x in metadataItem[keyName])
-            metadata_dict[keyName] = appendedValues
+            appendedMetadata = ','.join(str(StachUtilities.get_value(x)) for x in metadataItem[keyName])
+            metadata_dict[keyName] = appendedMetadata
         metadata_list.append(metadata_dict)
 
     metadata_df = pd.DataFrame(metadata_list)
