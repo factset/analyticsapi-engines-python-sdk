@@ -222,7 +222,6 @@ Class | Method | HTTP request | Description
 *VaultCalculationsApi* | [**get_calculation_unit_result_by_id**](docs/VaultCalculationsApi.md#get_calculation_unit_result_by_id) | **GET** /analytics/engines/vault/v3/calculations/{id}/units/{unitId}/result | Get Vault calculation result by id
 *VaultCalculationsApi* | [**post_and_calculate**](docs/VaultCalculationsApi.md#post_and_calculate) | **POST** /analytics/engines/vault/v3/calculations | Create and Run Vault calculation
 *VaultCalculationsApi* | [**put_and_calculate**](docs/VaultCalculationsApi.md#put_and_calculate) | **PUT** /analytics/engines/vault/v3/calculations/{id} | Create or Update Vault calculation and run it.
-*VaultAttributionLoaderApi* | [**vault_attribution_loader**](docs/VaultAttributionLoaderApi.md#vault_attribution_loader) | **POST** /analytics/engines/vault/v3/load/{batchId} | Vault - External Attribution Loader
 
 
 ## Documentation For Models
@@ -414,8 +413,6 @@ Class | Method | HTTP request | Description
  - [UnlinkedPATemplateSummaryRoot](docs/UnlinkedPATemplateSummaryRoot.md)
  - [UnlinkedPATemplateUpdateParameters](docs/UnlinkedPATemplateUpdateParameters.md)
  - [UnlinkedPATemplateUpdateParametersRoot](docs/UnlinkedPATemplateUpdateParametersRoot.md)
- - [VaultAttributionLoaderResponse](docs/VaultAttributionLoaderResponse.md)
- - [VaultAttributionLoaderResponseRoot](docs/VaultAttributionLoaderResponseRoot.md)
  - [VaultCalculationParameters](docs/VaultCalculationParameters.md)
  - [VaultCalculationParametersRoot](docs/VaultCalculationParametersRoot.md)
  - [VaultComponent](docs/VaultComponent.md)

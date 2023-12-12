@@ -218,9 +218,6 @@ docs/UnlinkedPATemplateSummaryRoot.md
 docs/UnlinkedPATemplateUpdateParameters.md
 docs/UnlinkedPATemplateUpdateParametersRoot.md
 docs/UnlinkedPATemplatesApi.md
-docs/VaultAttributionLoaderApi.md
-docs/VaultAttributionLoaderResponse.md
-docs/VaultAttributionLoaderResponseRoot.md
 docs/VaultCalculationParameters.md
 docs/VaultCalculationParametersRoot.md
 docs/VaultCalculationsApi.md
@@ -264,7 +261,6 @@ fds/analyticsapi/engines/api/spar_calculations_api.py
 fds/analyticsapi/engines/api/strategy_documents_api.py
 fds/analyticsapi/engines/api/templated_pa_components_api.py
 fds/analyticsapi/engines/api/unlinked_pa_templates_api.py
-fds/analyticsapi/engines/api/vault_attribution_loader_api.py
 fds/analyticsapi/engines/api/vault_calculations_api.py
 fds/analyticsapi/engines/api_client.py
 fds/analyticsapi/engines/apis/__init__.py
@@ -458,8 +454,6 @@ fds/analyticsapi/engines/model/unlinked_pa_template_summary.py
 fds/analyticsapi/engines/model/unlinked_pa_template_summary_root.py
 fds/analyticsapi/engines/model/unlinked_pa_template_update_parameters.py
 fds/analyticsapi/engines/model/unlinked_pa_template_update_parameters_root.py
-fds/analyticsapi/engines/model/vault_attribution_loader_response.py
-fds/analyticsapi/engines/model/vault_attribution_loader_response_root.py
 fds/analyticsapi/engines/model/vault_calculation_parameters.py
 fds/analyticsapi/engines/model/vault_calculation_parameters_root.py
 fds/analyticsapi/engines/model/vault_component.py
