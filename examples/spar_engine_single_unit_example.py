@@ -3,6 +3,7 @@ import pandas as pd
 import os
 import uuid
 
+import urllib3
 from fds.analyticsapi.engines import ApiException
 from fds.analyticsapi.engines.api.spar_calculations_api import SPARCalculationsApi
 from fds.analyticsapi.engines.api.components_api import ComponentsApi
@@ -15,8 +16,10 @@ from fds.analyticsapi.engines.model.spar_date_parameters import SPARDateParamete
 from fds.analyticsapi.engines.model.spar_identifier import SPARIdentifier
 from fds.protobuf.stach.extensions.StachVersion import StachVersion
 from fds.protobuf.stach.extensions.StachExtensionFactory import StachExtensionFactory
+from fds.protobuf.stach.extensions.v2.StachUtilities import StachUtilities
 
 from urllib3 import Retry
+urllib3.disable_warnings()
 
 host = os.environ['FACTSET_HOST']
 fds_username = os.environ['FACTSET_USERNAME']
@@ -118,11 +121,26 @@ def main():
 
 def output_calculation_result(result):
     print("Calculation Result")
-    stachBuilder = StachExtensionFactory.get_row_organized_builder(
-        StachVersion.V2)
+    metadata_list = []
+    stachBuilder = StachExtensionFactory.get_row_organized_builder(StachVersion.V2)
     stachExtension = stachBuilder.set_package(result).build()
     dataFramesList = stachExtension.convert_to_dataframe()
+    MetaData = stachExtension.get_metadata()
     print(dataFramesList)
+    print('\n MetaData:')
+    for metadataItem in MetaData:
+        metadata_dict = {}
+        for keyName in metadataItem:
+            appendedMetadata = ','.join(str(StachUtilities.get_value(x)) for x in metadataItem[keyName])
+            metadata_dict[keyName] = appendedMetadata
+        metadata_list.append(metadata_dict)
+
+    metadata_df = pd.DataFrame(metadata_list)
+    # Set display options for better readability
+    pd.set_option('display.max_rows', None)
+    pd.set_option('display.max_columns', None)
+    pd.set_option('display.width', None)
+    print(metadata_df.to_string(index=False, header=True, justify='left', col_space=20))
     # generate_excel(dataFramesList)  # Uncomment this line to get the result in table format exported to excel file.
 
 

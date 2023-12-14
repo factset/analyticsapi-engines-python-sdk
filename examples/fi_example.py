@@ -3,6 +3,7 @@ import time
 import uuid
 import os
 import pandas as pd
+import urllib3
 
 from fds.analyticsapi.engines.api.fi_calculations_api import FICalculationsApi
 from fds.analyticsapi.engines.api_client import ApiClient
@@ -19,6 +20,7 @@ from fds.analyticsapi.engines.model.fi_municipal_bonds import FIMunicipalBonds
 from fds.analyticsapi.engines.model.fi_municipal_bonds_for_job_settings import FIMunicipalBondsForJobSettings
 
 from urllib3 import Retry
+urllib3.disable_warnings()
 
 host = os.environ['FACTSET_HOST']
 fds_username = os.environ['FACTSET_USERNAME']

@@ -15,7 +15,7 @@ from fds.analyticsapi.engines.model.fiab_date_parameters import FIABDateParamete
 from fds.analyticsapi.engines.model.fiab_identifier import FIABIdentifier
 from urllib3 import Retry
 
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+urllib3.disable_warnings()
 
 fds_username = os.environ['FACTSET_USERNAME']
 fds_api_key = os.environ['FACTSET_API_KEY']
