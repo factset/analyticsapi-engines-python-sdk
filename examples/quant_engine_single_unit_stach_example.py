@@ -3,6 +3,7 @@ import os
 import uuid
 import json
 import pandas as pd
+import urllib3
 
 from fds.analyticsapi.engines import ApiException
 from fds.analyticsapi.engines.api.quant_calculations_api import QuantCalculationsApi
@@ -18,6 +19,7 @@ from fds.protobuf.stach.extensions.StachVersion import StachVersion
 from fds.protobuf.stach.extensions.StachExtensionFactory import StachExtensionFactory
 
 from urllib3 import Retry
+urllib3.disable_warnings()
 
 host = os.environ['FACTSET_HOST']
 fds_username = os.environ['FACTSET_USERNAME']

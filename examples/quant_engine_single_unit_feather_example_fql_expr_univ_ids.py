@@ -2,6 +2,7 @@ import time
 import os
 from pathlib import Path
 import pandas as pd
+import urllib3
 
 from fds.analyticsapi.engines import ApiException
 from fds.analyticsapi.engines.api.quant_calculations_api import QuantCalculationsApi
@@ -18,6 +19,7 @@ from fds.analyticsapi.engines.model.quant_fql_expression import QuantFqlExpressi
 from fds.analyticsapi.engines.model.quant_all_universal_screen_parameters import QuantAllUniversalScreenParameters
 
 from urllib3 import Retry
+urllib3.disable_warnings()
 
 host = os.environ['FACTSET_HOST']
 fds_username = os.environ['FACTSET_USERNAME']
