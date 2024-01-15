@@ -1,3 +1,98 @@
+6.0.0 (16/01/2023)
+
+Supported API versions:
+* v3: [pa,spar,vault,pub,fi,axp,fpo,afi,npo,bpm,quant]
+
+Summmary:
+* Supporting new functionalities in pa,spar,vault,pub,quant and fi.
+
+Functionality Additions:
+* New Parameters are added in the FI Request.
+* 413 status code is added to Quant Reponse.
+* 'Warnings' are added as an enhancement to quant unit status response object.
+* In the Error response object new fields - code and title are added.
+* Added new end point for SPAR Product to get component details by Id.
+
+Breaking changes:
+* Removed defaults values when the parameter field is required for look up end points for pa,spar,vault and strategy end points.
+
+Bug Fixes:
+* Removed requiredfield attribute for pagenumber field parameter in GetAllCalculations End Point for pa,spar,vault,pub and quant.
+* Updated the schema for GetAllCalculations End Point for pa,spar,vault,pub and quant.
+
+-----------------------
+
+5.4.0 (06/27/2022)
+
+Supported API versions:
+* v3: [pa,spar,vault,pub,fi,axp,fpo,afi,npo,bpm,quant]
+
+Summary:
+* Supporting new functionalities in FI and Quant.
+
+Functionality Additions:
+* Added new property "IsArrayReturnType" for FQL expression in Quant Request
+* Added new property "Structured Products" in FI Request
+
+Bug Fixes:
+*  NA
+
+-----------------------
+
+5.4.0 (06/27/2022)
+
+Supported API versions:
+* v3: [pa,spar,vault,pub,fi,axp,fpo,afi,npo,bpm,quant]
+
+Summary:
+* Supporting new functionalities in pa,spar,vault,pub,quant
+
+Functionality Additions:
+* Supporting new features/functionalities of the FI API.
+* Added new end point for GroupingFrequencies 
+* Added new endpoint for Pricing Sources. 
+
+Bug Fixes:
+* NA
+
+-----------------------
+
+5.4.0 (03/22/2022)
+
+Supported API versions:
+v3: [pa,spar,vault,pub,fi,axp,fpo,afi,npo,bpm,quant],v1:[fiab]
+
+Summary:
+ * Added support for MarketEnviornment in the FI calculation parameters.
+ * Added FI Discount curves endpoint.
+ * Added support for `override_universal_screen_calendar` for Quant Dates.
+
+-----------------------
+
+5.3.0 (11/30/2021)
+
+Supported API versions:
+v3: [pa,spar,vault,pub,fi,axp,fpo,afi,npo,bpm,quant],v1:[fiab]
+
+Summary:
+ * Added new methods for getting components in TemplatedPAComponentsAPI
+ * Added support for new parameters for FI inputs.
+ * Bug fixes for FPO API
+ * Bug fixes for component manager API.
+
+-----------------------
+
+5.2.0 (09/14/2021)
+
+Supported API versions:
+v3: [pa,spar,vault,pub,fi,axp,fpo,afi,npo,bpm,quant],v1:[fiab]
+
+Summary:
+* Support for PA Component Manager API endpoints
+* Support new fields in QuantCalculationParameters and deprecate old fields.
+
+-----------------------
+
 5.1.0 (07/20/2021)
 
 Supported API versions:
