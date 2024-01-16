@@ -8,7 +8,7 @@ Summmary:
 
 Functionality Additions:
 * New Parameters are added in the FI Request.
-* 413 status code is added to Quant Reponse.
+* 413 status code is added to Quant Response.
 * 'Warnings' are added as an enhancement to quant unit status response object.
 * Added code and title as two new fields in the Error Response object.
 * Added new Get Component details by Id endpoint for SPAR.
