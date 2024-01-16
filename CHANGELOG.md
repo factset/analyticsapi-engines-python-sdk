@@ -1,7 +1,7 @@
 6.0.0 (16/01/2023)
 
 Supported API versions:
-* v3: [pa,spar,vault,pub,fi,axp,fpo,afi,npo,bpm,quant]
+* v3: [pa,spar,vault,pub,fi,axp,fpo,afi,npo,bpm,quant],v1:[fiab]
 
 Summmary:
 * Supporting new functionalities in pa,spar,vault,pub,quant and fi.
@@ -10,11 +10,11 @@ Functionality Additions:
 * New Parameters are added in the FI Request.
 * 413 status code is added to Quant Reponse.
 * 'Warnings' are added as an enhancement to quant unit status response object.
-* In the Error response object new fields - code and title are added.
-* Added new end point for SPAR Product to get component details by Id.
+* Added code and title as two new fields in the Error Response object.
+* Added new Get Component details by Id endpoint for SPAR.
 
 Breaking changes:
-* Removed defaults values when the parameter field is required for look up end points for pa,spar,vault and strategy end points.
+* Removed default values when the parameter field is required for lookup end points for pa,spar,vault and strategy document end points for optimizers.
 
 Bug Fixes:
 * Removed requiredfield attribute for pagenumber field parameter in GetAllCalculations End Point for pa,spar,vault,pub and quant.
