@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **get_accounts**
-> AccountDirectoriesRoot get_accounts()
+> AccountDirectoriesRoot get_accounts(path)
 
 Get accounts and sub-directories in a directory
 
@@ -53,11 +53,12 @@ configuration = fds.analyticsapi.engines.Configuration(
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = accounts_api.AccountsApi(api_client)
+    path = "Client:" # str | The directory to get the accounts and sub-directories.
 
     # example passing only required values which don't have defaults set
     try:
         # Get accounts and sub-directories in a directory
-        api_response = api_instance.get_accounts()
+        api_response = api_instance.get_accounts(path)
         pprint(api_response)
     except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling AccountsApi->get_accounts: %s\n" % e)
@@ -68,7 +69,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **path** | **str**| The directory to get the accounts and sub-directories in | defaults to ""
+ **path** | **str**| The directory to get the accounts and sub-directories. |
 
 ### Return type
 

@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **get_axioma_equity_strategy_documents**
-> DocumentDirectoriesRoot get_axioma_equity_strategy_documents()
+> DocumentDirectoriesRoot get_axioma_equity_strategy_documents(path)
 
 Get Axioma Equity strategy documents and sub-directories in a directory
 
@@ -56,11 +56,12 @@ configuration = fds.analyticsapi.engines.Configuration(
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = strategy_documents_api.StrategyDocumentsApi(api_client)
+    path = "Client:" # str | The directory to get the strategy documents and sub-directories in
 
     # example passing only required values which don't have defaults set
     try:
         # Get Axioma Equity strategy documents and sub-directories in a directory
-        api_response = api_instance.get_axioma_equity_strategy_documents()
+        api_response = api_instance.get_axioma_equity_strategy_documents(path)
         pprint(api_response)
     except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling StrategyDocumentsApi->get_axioma_equity_strategy_documents: %s\n" % e)
@@ -71,7 +72,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **path** | **str**| The directory to get the strategy documents and sub-directories in | defaults to ""
+ **path** | **str**| The directory to get the strategy documents and sub-directories in |
 
 ### Return type
 
@@ -104,7 +105,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_axioma_fi_strategy_documents**
-> DocumentDirectoriesRoot get_axioma_fi_strategy_documents()
+> DocumentDirectoriesRoot get_axioma_fi_strategy_documents(path)
 
 Get Axioma FI strategy documents and sub-directories in a directory
 
@@ -147,11 +148,12 @@ configuration = fds.analyticsapi.engines.Configuration(
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = strategy_documents_api.StrategyDocumentsApi(api_client)
+    path = "Client:" # str | The directory to get the strategy documents and sub-directories in
 
     # example passing only required values which don't have defaults set
     try:
         # Get Axioma FI strategy documents and sub-directories in a directory
-        api_response = api_instance.get_axioma_fi_strategy_documents()
+        api_response = api_instance.get_axioma_fi_strategy_documents(path)
         pprint(api_response)
     except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling StrategyDocumentsApi->get_axioma_fi_strategy_documents: %s\n" % e)
@@ -162,7 +164,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **path** | **str**| The directory to get the strategy documents and sub-directories in | defaults to ""
+ **path** | **str**| The directory to get the strategy documents and sub-directories in |
 
 ### Return type
 
@@ -195,7 +197,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_barra_strategy_documents**
-> DocumentDirectoriesRoot get_barra_strategy_documents()
+> DocumentDirectoriesRoot get_barra_strategy_documents(path)
 
 Get Barra strategy documents and sub-directories in a directory
 
@@ -238,11 +240,12 @@ configuration = fds.analyticsapi.engines.Configuration(
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = strategy_documents_api.StrategyDocumentsApi(api_client)
+    path = "Client:" # str | The directory to get the strategy documents and sub-directories in
 
     # example passing only required values which don't have defaults set
     try:
         # Get Barra strategy documents and sub-directories in a directory
-        api_response = api_instance.get_barra_strategy_documents()
+        api_response = api_instance.get_barra_strategy_documents(path)
         pprint(api_response)
     except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling StrategyDocumentsApi->get_barra_strategy_documents: %s\n" % e)
@@ -253,7 +256,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **path** | **str**| The directory to get the strategy documents and sub-directories in | defaults to ""
+ **path** | **str**| The directory to get the strategy documents and sub-directories in |
 
 ### Return type
 
@@ -286,7 +289,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_fpo_strategy_documents**
-> DocumentDirectoriesRoot get_fpo_strategy_documents()
+> DocumentDirectoriesRoot get_fpo_strategy_documents(path)
 
 Get FactSet Portfolio Optimizer strategy documents and sub-directories in a directory
 
@@ -329,11 +332,12 @@ configuration = fds.analyticsapi.engines.Configuration(
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = strategy_documents_api.StrategyDocumentsApi(api_client)
+    path = "Client:" # str | The directory to get the strategy documents and sub-directories in
 
     # example passing only required values which don't have defaults set
     try:
         # Get FactSet Portfolio Optimizer strategy documents and sub-directories in a directory
-        api_response = api_instance.get_fpo_strategy_documents()
+        api_response = api_instance.get_fpo_strategy_documents(path)
         pprint(api_response)
     except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling StrategyDocumentsApi->get_fpo_strategy_documents: %s\n" % e)
@@ -344,7 +348,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **path** | **str**| The directory to get the strategy documents and sub-directories in | defaults to ""
+ **path** | **str**| The directory to get the strategy documents and sub-directories in |
 
 ### Return type
 
@@ -377,7 +381,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_northfield_strategy_documents**
-> DocumentDirectoriesRoot get_northfield_strategy_documents()
+> DocumentDirectoriesRoot get_northfield_strategy_documents(path)
 
 Get Northfield strategy documents and sub-directories in a directory
 
@@ -420,11 +424,12 @@ configuration = fds.analyticsapi.engines.Configuration(
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = strategy_documents_api.StrategyDocumentsApi(api_client)
+    path = "Client:" # str | The directory to get the strategy documents and sub-directories in
 
     # example passing only required values which don't have defaults set
     try:
         # Get Northfield strategy documents and sub-directories in a directory
-        api_response = api_instance.get_northfield_strategy_documents()
+        api_response = api_instance.get_northfield_strategy_documents(path)
         pprint(api_response)
     except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling StrategyDocumentsApi->get_northfield_strategy_documents: %s\n" % e)
@@ -435,7 +440,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **path** | **str**| The directory to get the strategy documents and sub-directories in | defaults to ""
+ **path** | **str**| The directory to get the strategy documents and sub-directories in |
 
 ### Return type
 

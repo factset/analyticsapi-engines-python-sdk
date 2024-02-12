@@ -53,7 +53,7 @@ configuration = fds.analyticsapi.engines.Configuration(
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = columns_api.ColumnsApi(api_client)
-    id = "id_example" # str | Unique identifier for a column
+    id = "2DBD317E3C235BC96E2FF8CA36CE036AF2F7F55525479B524AE78FD7D6BBC4A7" # str | Unique identifier for a column
 
     # example passing only required values which don't have defaults set
     try:
@@ -144,9 +144,9 @@ configuration = fds.analyticsapi.engines.Configuration(
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = columns_api.ColumnsApi(api_client)
-    name = "" # str | Column name (optional) if omitted the server will use the default value of ""
+    name = "Security Name" # str | Column name (optional) if omitted the server will use the default value of ""
     category = "" # str | Column category (optional) if omitted the server will use the default value of ""
-    directory = "" # str | The directory to get the columns in (optional) if omitted the server will use the default value of ""
+    directory = "Client" # str | The directory to get the columns in (optional) if omitted the server will use the default value of ""
 
     # example passing only required values which don't have defaults set
     # and optional values

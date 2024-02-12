@@ -180,7 +180,7 @@ class UnlinkedPATemplateParameters(ModelNormal):
             groups ([PACalculationGroup]): List of groupings for the PA calculation. [optional]  # noqa: E501
             datasources (PACalculationDataSources): [optional]  # noqa: E501
             currencyisocode (str): Currency ISO code for calculation.. [optional]  # noqa: E501
-            componentdetail (str): PA storage type. It can be GROUPS or TOTALS or SECURITIES.. [optional]  # noqa: E501
+            componentdetail (str): PA storage type. It can be GROUPS or GROUPSALL or TOTALS or SECURITIES.. [optional]  # noqa: E501
             content (TemplateContentTypes): [optional]  # noqa: E501
         """
 

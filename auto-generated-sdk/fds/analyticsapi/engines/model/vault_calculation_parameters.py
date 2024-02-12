@@ -152,7 +152,7 @@ class VaultCalculationParameters(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             dates (VaultDateParameters): [optional]  # noqa: E501
-            componentdetail (str): Component detail type for the Vault component. It can be GROUPS or TOTALS or SECURITIES.. [optional]  # noqa: E501
+            componentdetail (str): Component detail type for the Vault component. It can be GROUPS or GROUPSALL or TOTALS or SECURITIES.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

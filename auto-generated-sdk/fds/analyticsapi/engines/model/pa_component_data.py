@@ -165,7 +165,7 @@ class PAComponentData(ModelNormal):
             dates (PADateParameters): [optional]  # noqa: E501
             datasources (PACalculationDataSources): [optional]  # noqa: E501
             currencyisocode (str): Currency ISO code for calculation.. [optional]  # noqa: E501
-            componentdetail (str): PA Storage type. It can be GROUPS or TOTALS or SECURITIES.. [optional]  # noqa: E501
+            componentdetail (str): PA Storage type. It can be GROUPS or GROUPSALL or TOTALS or SECURITIES.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
