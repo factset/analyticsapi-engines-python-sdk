@@ -418,7 +418,7 @@ configuration = fds.analyticsapi.engines.Configuration(
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = bpm_optimizer_api.BPMOptimizerApi(api_client)
-    x_fact_set_api_long_running_deadline = 1 # int | Long running deadline in seconds. (optional)
+    x_fact_set_api_long_running_deadline = 10 # int | Long running deadline in seconds. Example value is set to 10s. Please update it as per requirement before triggering a calculation. (optional)
     cache_control = "Cache-Control_example" # str | Standard HTTP header.  Accepts max-stale. (optional)
     bpm_optimization_parameters_root = BPMOptimizationParametersRoot(
         data=BPMOptimizationParameters(
@@ -494,7 +494,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_fact_set_api_long_running_deadline** | **int**| Long running deadline in seconds. | [optional]
+ **x_fact_set_api_long_running_deadline** | **int**| Long running deadline in seconds. Example value is set to 10s. Please update it as per requirement before triggering a calculation. | [optional]
  **cache_control** | **str**| Standard HTTP header.  Accepts max-stale. | [optional]
  **bpm_optimization_parameters_root** | [**BPMOptimizationParametersRoot**](BPMOptimizationParametersRoot.md)| Optimization Parameters | [optional]
 
@@ -576,7 +576,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = bpm_optimizer_api.BPMOptimizerApi(api_client)
     id = "id_example" # str | from url, provided from the location header in the Create and Run BPM optimization endpoint
-    x_fact_set_api_long_running_deadline = 1 # int | Long running deadline in seconds. (optional)
+    x_fact_set_api_long_running_deadline = 10 # int | Long running deadline in seconds. Example value is set to 10s. Please update it as per requirement before triggering a calculation. (optional)
     cache_control = "Cache-Control_example" # str | Standard HTTP header.  Accepts max-stale. (optional)
     bpm_optimization_parameters_root = BPMOptimizationParametersRoot(
         data=BPMOptimizationParameters(
@@ -661,7 +661,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| from url, provided from the location header in the Create and Run BPM optimization endpoint |
- **x_fact_set_api_long_running_deadline** | **int**| Long running deadline in seconds. | [optional]
+ **x_fact_set_api_long_running_deadline** | **int**| Long running deadline in seconds. Example value is set to 10s. Please update it as per requirement before triggering a calculation. | [optional]
  **cache_control** | **str**| Standard HTTP header.  Accepts max-stale. | [optional]
  **bpm_optimization_parameters_root** | [**BPMOptimizationParametersRoot**](BPMOptimizationParametersRoot.md)| Optimization Parameters | [optional]
 

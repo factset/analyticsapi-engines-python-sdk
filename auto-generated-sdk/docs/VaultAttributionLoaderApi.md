@@ -1,19 +1,19 @@
 
-# fds.analyticsapi.engines.BenchmarksApi
+# fds.analyticsapi.engines.VaultAttributionLoaderApi
 
 All URIs are relative to *https://api.factset.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_spar_benchmark_by_id**](BenchmarksApi.md#get_spar_benchmark_by_id) | **GET** /analytics/engines/spar/v3/benchmarks | Get SPAR benchmark details
+[**vault_attribution_loader**](VaultAttributionLoaderApi.md#vault_attribution_loader) | **POST** /analytics/engines/vault/v3/load/{batchId} | Vault - External Attribution Loader
 
 
-# **get_spar_benchmark_by_id**
-> SPARBenchmarkRoot get_spar_benchmark_by_id(id)
+# **vault_attribution_loader**
+> VaultAttributionLoaderResponseRoot vault_attribution_loader(batch_id)
 
-Get SPAR benchmark details
+Vault - External Attribution Loader
 
-This endpoint returns the details of a given SPAR benchmark identifier.
+This endpoint loads Vault External Attributions.
 
 ### Example
 
@@ -22,8 +22,8 @@ This endpoint returns the details of a given SPAR benchmark identifier.
 ```python
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.api import benchmarks_api
-from fds.analyticsapi.engines.model.spar_benchmark_root import SPARBenchmarkRoot
+from fds.analyticsapi.engines.api import vault_attribution_loader_api
+from fds.analyticsapi.engines.model.vault_attribution_loader_response_root import VaultAttributionLoaderResponseRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
@@ -51,16 +51,26 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = benchmarks_api.BenchmarksApi(api_client)
-    id = "R.1000" # str | Benchmark Identifier
+    api_instance = vault_attribution_loader_api.VaultAttributionLoaderApi(api_client)
+    batch_id = "batchId_example" # str | 
+    file = open('/path/to/file', 'rb') # file_type, none_type |  (optional)
 
     # example passing only required values which don't have defaults set
     try:
-        # Get SPAR benchmark details
-        api_response = api_instance.get_spar_benchmark_by_id(id)
+        # Vault - External Attribution Loader
+        api_response = api_instance.vault_attribution_loader(batch_id)
         pprint(api_response)
     except fds.analyticsapi.engines.ApiException as e:
-        print("Exception when calling BenchmarksApi->get_spar_benchmark_by_id: %s\n" % e)
+        print("Exception when calling VaultAttributionLoaderApi->vault_attribution_loader: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Vault - External Attribution Loader
+        api_response = api_instance.vault_attribution_loader(batch_id, file=file)
+        pprint(api_response)
+    except fds.analyticsapi.engines.ApiException as e:
+        print("Exception when calling VaultAttributionLoaderApi->vault_attribution_loader: %s\n" % e)
 ```
 
 
@@ -68,12 +78,13 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| Benchmark Identifier |
+ **batch_id** | **str**|  |
+ **file** | **file_type, none_type**|  | [optional]
 
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**SPARBenchmarkRoot**](SPARBenchmarkRoot.md)
+ - **Response datatype**: [**VaultAttributionLoaderResponseRoot**](VaultAttributionLoaderResponseRoot.md)
 
 ### Authorization
 
@@ -81,16 +92,15 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Expected response, returns the list of prefix and return types for the benchmark. |  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  * X-FactSet-Api-RateLimit-Limit - Number of allowed requests for the time window. <br>  * X-FactSet-Api-RateLimit-Remaining - Number of requests left for the time window. <br>  * X-FactSet-Api-RateLimit-Reset - Number of seconds remaining till rate limit resets. <br>  |
-**400** | Invalid benchmark identifier. |  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  * X-FactSet-Api-RateLimit-Limit - Number of allowed requests for the time window. <br>  * X-FactSet-Api-RateLimit-Remaining - Number of requests left for the time window. <br>  * X-FactSet-Api-RateLimit-Reset - Number of seconds remaining till rate limit resets. <br>  |
-**404** | Benchmark identifier not found. |  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  * X-FactSet-Api-RateLimit-Limit - Number of allowed requests for the time window. <br>  * X-FactSet-Api-RateLimit-Remaining - Number of requests left for the time window. <br>  * X-FactSet-Api-RateLimit-Reset - Number of seconds remaining till rate limit resets. <br>  |
+**200** | Expected response, returns a status of operation along with errors and warnings if found any. |  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  * X-FactSet-Api-RateLimit-Limit - Number of allowed requests for the time window. <br>  * X-FactSet-Api-RateLimit-Remaining - Number of requests left for the time window. <br>  * X-FactSet-Api-RateLimit-Reset - Number of seconds remaining till rate limit resets. <br>  |
+**400** | Bad Request |  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  * X-FactSet-Api-RateLimit-Limit - Number of allowed requests for the time window. <br>  * X-FactSet-Api-RateLimit-Remaining - Number of requests left for the time window. <br>  * X-FactSet-Api-RateLimit-Reset - Number of seconds remaining till rate limit resets. <br>  |
 **401** | Missing or invalid authentication. |  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  |
 **403** | User is forbidden with current credentials |  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  * X-FactSet-Api-RateLimit-Limit - Number of allowed requests for the time window. <br>  * X-FactSet-Api-RateLimit-Remaining - Number of requests left for the time window. <br>  * X-FactSet-Api-RateLimit-Reset - Number of seconds remaining till rate limit resets. <br>  |
 **406** | Unsupported Accept header. Header needs to be set to application/json. |  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  * X-FactSet-Api-RateLimit-Limit - Number of allowed requests for the time window. <br>  * X-FactSet-Api-RateLimit-Remaining - Number of requests left for the time window. <br>  * X-FactSet-Api-RateLimit-Reset - Number of seconds remaining till rate limit resets. <br>  |

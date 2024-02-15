@@ -14,7 +14,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "fds.analyticsapi.engines"
-VERSION = "5.7.0"
+VERSION = "5.6.0-rc.1"
 # To install the library, run the following
 #
 # python setup.py install

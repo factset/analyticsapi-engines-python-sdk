@@ -40,7 +40,7 @@ class DocumentsApi(object):
 
         def __get_pa3_documents(
             self,
-            path="",
+            path,
             **kwargs
         ):
             """Get PA3 documents and sub-directories in a directory  # noqa: E501
@@ -49,11 +49,11 @@ class DocumentsApi(object):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.get_pa3_documents(path="", async_req=True)
+            >>> thread = api.get_pa3_documents(path, async_req=True)
             >>> result = thread.get()
 
             Args:
-                path (str): The directory to get the documents and sub-directories in. defaults to "", must be one of [""]
+                path (str): The directory to get the documents and sub-directories in
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
@@ -160,7 +160,7 @@ class DocumentsApi(object):
 
         def __get_pub_documents(
             self,
-            path="",
+            path,
             **kwargs
         ):
             """Gets Publisher documents and sub-directories in a directory  # noqa: E501
@@ -169,11 +169,11 @@ class DocumentsApi(object):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.get_pub_documents(path="", async_req=True)
+            >>> thread = api.get_pub_documents(path, async_req=True)
             >>> result = thread.get()
 
             Args:
-                path (str): The directory to get the documents in. defaults to "", must be one of [""]
+                path (str): The directory to get the documents in
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
@@ -280,7 +280,7 @@ class DocumentsApi(object):
 
         def __get_spar3_documents(
             self,
-            path="",
+            path,
             **kwargs
         ):
             """Gets SPAR3 documents and sub-directories in a directory  # noqa: E501
@@ -289,11 +289,11 @@ class DocumentsApi(object):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.get_spar3_documents(path="", async_req=True)
+            >>> thread = api.get_spar3_documents(path, async_req=True)
             >>> result = thread.get()
 
             Args:
-                path (str): The directory to get the documents in. defaults to "", must be one of [""]
+                path (str): The directory to get the documents in
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
@@ -400,7 +400,7 @@ class DocumentsApi(object):
 
         def __get_vault_documents(
             self,
-            path="",
+            path,
             **kwargs
         ):
             """Get Vault documents and sub-directories in a directory  # noqa: E501
@@ -409,11 +409,11 @@ class DocumentsApi(object):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.get_vault_documents(path="", async_req=True)
+            >>> thread = api.get_vault_documents(path, async_req=True)
             >>> result = thread.get()
 
             Args:
-                path (str): The directory to get the documents in. defaults to "", must be one of [""]
+                path (str): The directory to get the documents in
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status

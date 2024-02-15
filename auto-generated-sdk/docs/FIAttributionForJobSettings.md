@@ -1,13 +1,11 @@
-# QuantDateListObsolete
+# FIAttributionForJobSettings
 
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**frequency** | **str** |  | 
-**calendar** | **str** |  | 
-**dates** | **[str]** |  | [optional] 
-**override_universal_screen_calendar** | **bool** |  | [optional] 
+**start_date** | **str** | Start Date | [optional] 
+**end_date** | **str** | End Date | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

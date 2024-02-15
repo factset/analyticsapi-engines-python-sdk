@@ -170,7 +170,7 @@ class PACalculationParameters(ModelNormal):
             currencyisocode (str): Currency ISO code for calculation.. [optional]  # noqa: E501
             columns ([PACalculationColumn]): List of columns for the PA calculation. This will take precedence over the columns saved in the PA document.. [optional]  # noqa: E501
             datasources (PACalculationDataSources): [optional]  # noqa: E501
-            componentdetail (str): Component detail type for the PA component. It can be GROUPS or TOTALS or SECURITIES.. [optional]  # noqa: E501
+            componentdetail (str): Component detail type for the PA component. It can be GROUPS or GROUPSALL or TOTALS or SECURITIES.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

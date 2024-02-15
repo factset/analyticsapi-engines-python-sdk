@@ -41,7 +41,7 @@ class AccountsApi(object):
 
         def __get_accounts(
             self,
-            path="",
+            path,
             **kwargs
         ):
             """Get accounts and sub-directories in a directory  # noqa: E501
@@ -50,11 +50,11 @@ class AccountsApi(object):
             This method makes a synchronous HTTP request by default. To make an
             asynchronous HTTP request, please pass async_req=True
 
-            >>> thread = api.get_accounts(path="", async_req=True)
+            >>> thread = api.get_accounts(path, async_req=True)
             >>> result = thread.get()
 
             Args:
-                path (str): The directory to get the accounts and sub-directories in. defaults to "", must be one of [""]
+                path (str): The directory to get the accounts and sub-directories.
 
             Keyword Args:
                 _return_http_data_only (bool): response data without head status
