@@ -2,7 +2,7 @@
 """
     Engines API
 
-    Allow clients to fetch Analytics through APIs.  # noqa: E501
+    Allow clients to fetch Analytics through API.  # noqa: E501
 
     The version of the OpenAPI document: v3:[pa,spar,vault,pub,quant,fi,axp,afi,npo,bpm,fpo,others],v1:[fiab]
     Contact: api@factset.com
