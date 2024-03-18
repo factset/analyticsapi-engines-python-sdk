@@ -1,4 +1,4 @@
-6.0.0 (29/01/2024)
+6.0.0 (18/03/2024)
 
 Supported API versions:
 * v3: [pa,spar,vault,pub,fi,axp,fpo,afi,npo,bpm,quant],v1:[fiab]
