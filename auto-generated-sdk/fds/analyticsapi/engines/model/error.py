@@ -79,6 +79,8 @@ class Error(ModelNormal):
         lazy_import()
         return {
             'id': (str,),  # noqa: E501
+            'code': (str,),  # noqa: E501
+            'title': (str,),  # noqa: E501
             'detail': (str,),  # noqa: E501
             'source': (ErrorSource,),  # noqa: E501
         }
@@ -90,6 +92,8 @@ class Error(ModelNormal):
 
     attribute_map = {
         'id': 'id',  # noqa: E501
+        'code': 'code',  # noqa: E501
+        'title': 'title',  # noqa: E501
         'detail': 'detail',  # noqa: E501
         'source': 'source',  # noqa: E501
     }
@@ -141,6 +145,8 @@ class Error(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             id (str): [optional]  # noqa: E501
+            code (str): [optional]  # noqa: E501
+            title (str): [optional]  # noqa: E501
             detail (str): [optional]  # noqa: E501
             source (ErrorSource): [optional]  # noqa: E501
         """

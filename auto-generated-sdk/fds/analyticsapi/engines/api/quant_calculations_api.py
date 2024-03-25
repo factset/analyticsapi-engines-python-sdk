@@ -25,7 +25,6 @@ from fds.analyticsapi.engines.model_utils import (  # noqa: F401
 from fds.analyticsapi.engines.model.calculation_status_root import CalculationStatusRoot
 from fds.analyticsapi.engines.model.calculations_summary_root import CalculationsSummaryRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
-from fds.analyticsapi.engines.model.object_root import ObjectRoot
 from fds.analyticsapi.engines.model.quant_calculation_parameters_root import QuantCalculationParametersRoot
 
 
@@ -645,9 +644,8 @@ class QuantCalculationsApi(object):
             },
             headers_map={
                 'accept': [
-                    'application/json',
-                    'application/x-protobuf',
-                    'application/octet-stream'
+                    'application/octet-stream',
+                    'application/json'
                 ],
                 'content_type': [],
             },
@@ -777,9 +775,8 @@ class QuantCalculationsApi(object):
             },
             headers_map={
                 'accept': [
-                    'application/json',
-                    'application/x-protobuf',
-                    'application/octet-stream'
+                    'application/octet-stream',
+                    'application/json'
                 ],
                 'content_type': [],
             },
@@ -825,7 +822,7 @@ class QuantCalculationsApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                (For 202 status - CalculationStatusRoot)(For 201 status - ObjectRoot)(For 200 status - CalculationStatusRoot)
+                (For 200 status - CalculationStatusRoot)(For 201 status - File)(For 202 status - CalculationStatusRoot)
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -852,7 +849,7 @@ class QuantCalculationsApi(object):
 
         self.post_and_calculate = _Endpoint(
             settings={
-                'response_type': dict({ 202:(CalculationStatusRoot,), 201:(ObjectRoot,), 200:(CalculationStatusRoot,),  }),
+                'response_type': dict({ 200:(CalculationStatusRoot,), 201:(file_type,), 202:(CalculationStatusRoot,),  }),
                 'auth': [
                     'Basic',
                     'Bearer'
@@ -899,7 +896,7 @@ class QuantCalculationsApi(object):
             headers_map={
                 'accept': [
                     'application/json',
-                    'application/x-protobuf'
+                    'application/octet-stream'
                 ],
                 'content_type': [
                     'application/json'
@@ -950,7 +947,7 @@ class QuantCalculationsApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                (For 202 status - CalculationStatusRoot)(For 200 status - CalculationStatusRoot)(For 201 status - ObjectRoot)
+                (For 200 status - CalculationStatusRoot)(For 201 status - File)(For 202 status - CalculationStatusRoot)
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -979,7 +976,7 @@ class QuantCalculationsApi(object):
 
         self.put_and_calculate = _Endpoint(
             settings={
-                'response_type': dict({ 202:(CalculationStatusRoot,), 200:(CalculationStatusRoot,), 201:(ObjectRoot,),  }),
+                'response_type': dict({ 200:(CalculationStatusRoot,), 201:(file_type,), 202:(CalculationStatusRoot,),  }),
                 'auth': [
                     'Basic',
                     'Bearer'
@@ -1033,7 +1030,7 @@ class QuantCalculationsApi(object):
             headers_map={
                 'accept': [
                     'application/json',
-                    'application/x-protobuf'
+                    'application/octet-stream'
                 ],
                 'content_type': [
                     'application/json'

@@ -60,6 +60,8 @@ from fds.analyticsapi.engines.model.fiab_calculation_status import FIABCalculati
 from fds.analyticsapi.engines.model.fiab_calculation_status_summary import FIABCalculationStatusSummary
 from fds.analyticsapi.engines.model.fiab_date_parameters import FIABDateParameters
 from fds.analyticsapi.engines.model.fiab_identifier import FIABIdentifier
+from fds.analyticsapi.engines.model.fi_attribution_for_job_settings import FIAttributionForJobSettings
+from fds.analyticsapi.engines.model.fi_attribution_for_securities import FIAttributionForSecurities
 from fds.analyticsapi.engines.model.fi_balloon_extension import FIBalloonExtension
 from fds.analyticsapi.engines.model.fi_bank_loans import FIBankLoans
 from fds.analyticsapi.engines.model.fi_calculation_parameters import FICalculationParameters
@@ -163,6 +165,8 @@ from fds.analyticsapi.engines.model.spar_benchmark import SPARBenchmark
 from fds.analyticsapi.engines.model.spar_benchmark_root import SPARBenchmarkRoot
 from fds.analyticsapi.engines.model.spar_calculation_parameters import SPARCalculationParameters
 from fds.analyticsapi.engines.model.spar_calculation_parameters_root import SPARCalculationParametersRoot
+from fds.analyticsapi.engines.model.spar_component import SPARComponent
+from fds.analyticsapi.engines.model.spar_component_root import SPARComponentRoot
 from fds.analyticsapi.engines.model.spar_date_parameters import SPARDateParameters
 from fds.analyticsapi.engines.model.spar_identifier import SPARIdentifier
 from fds.analyticsapi.engines.model.template_content_types import TemplateContentTypes
@@ -192,6 +196,8 @@ from fds.analyticsapi.engines.model.unlinked_pa_template_summary import Unlinked
 from fds.analyticsapi.engines.model.unlinked_pa_template_summary_root import UnlinkedPATemplateSummaryRoot
 from fds.analyticsapi.engines.model.unlinked_pa_template_update_parameters import UnlinkedPATemplateUpdateParameters
 from fds.analyticsapi.engines.model.unlinked_pa_template_update_parameters_root import UnlinkedPATemplateUpdateParametersRoot
+from fds.analyticsapi.engines.model.vault_attribution_loader_response import VaultAttributionLoaderResponse
+from fds.analyticsapi.engines.model.vault_attribution_loader_response_root import VaultAttributionLoaderResponseRoot
 from fds.analyticsapi.engines.model.vault_calculation_parameters import VaultCalculationParameters
 from fds.analyticsapi.engines.model.vault_calculation_parameters_root import VaultCalculationParametersRoot
 from fds.analyticsapi.engines.model.vault_component import VaultComponent
