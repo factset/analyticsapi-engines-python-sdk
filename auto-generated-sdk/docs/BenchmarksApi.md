@@ -52,7 +52,7 @@ configuration = fds.analyticsapi.engines.Configuration(
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = benchmarks_api.BenchmarksApi(api_client)
-    id = "id_example" # str | Benchmark Identifier
+    id = "R.1000" # str | Benchmark Identifier
 
     # example passing only required values which don't have defaults set
     try:

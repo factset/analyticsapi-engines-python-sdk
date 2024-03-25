@@ -68,6 +68,8 @@ docs/FIABCalculationStatusSummary.md
 docs/FIABCalculationsApi.md
 docs/FIABDateParameters.md
 docs/FIABIdentifier.md
+docs/FIAttributionForJobSettings.md
+docs/FIAttributionForSecurities.md
 docs/FIBalloonExtension.md
 docs/FIBankLoans.md
 docs/FICalculationParameters.md
@@ -182,6 +184,8 @@ docs/SPARBenchmarkRoot.md
 docs/SPARCalculationParameters.md
 docs/SPARCalculationParametersRoot.md
 docs/SPARCalculationsApi.md
+docs/SPARComponent.md
+docs/SPARComponentRoot.md
 docs/SPARDateParameters.md
 docs/SPARIdentifier.md
 docs/StrategyDocumentsApi.md
@@ -309,6 +313,8 @@ fds/analyticsapi/engines/model/document_directories_root.py
 fds/analyticsapi/engines/model/error.py
 fds/analyticsapi/engines/model/error_source.py
 fds/analyticsapi/engines/model/event_summary.py
+fds/analyticsapi/engines/model/fi_attribution_for_job_settings.py
+fds/analyticsapi/engines/model/fi_attribution_for_securities.py
 fds/analyticsapi/engines/model/fi_balloon_extension.py
 fds/analyticsapi/engines/model/fi_bank_loans.py
 fds/analyticsapi/engines/model/fi_calculation_parameters.py
@@ -417,6 +423,8 @@ fds/analyticsapi/engines/model/spar_benchmark.py
 fds/analyticsapi/engines/model/spar_benchmark_root.py
 fds/analyticsapi/engines/model/spar_calculation_parameters.py
 fds/analyticsapi/engines/model/spar_calculation_parameters_root.py
+fds/analyticsapi/engines/model/spar_component.py
+fds/analyticsapi/engines/model/spar_component_root.py
 fds/analyticsapi/engines/model/spar_date_parameters.py
 fds/analyticsapi/engines/model/spar_identifier.py
 fds/analyticsapi/engines/model/template_content_types.py

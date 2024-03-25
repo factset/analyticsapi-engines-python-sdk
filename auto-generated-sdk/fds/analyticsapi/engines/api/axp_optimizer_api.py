@@ -537,7 +537,7 @@ class AXPOptimizerApi(object):
 
 
             Keyword Args:
-                x_fact_set_api_long_running_deadline (int): Long running deadline in seconds.. [optional]
+                x_fact_set_api_long_running_deadline (int): Long running deadline in seconds. Example value is set to 10s. Please update it as per requirement before triggering a calculation.. [optional]
                 cache_control (str): Standard HTTP header.  Accepts max-stale.. [optional]
                 axioma_equity_optimization_parameters_root (AxiomaEquityOptimizationParametersRoot): Optimization Parameters. [optional]
                 _return_http_data_only (bool): response data without head status
@@ -667,7 +667,7 @@ class AXPOptimizerApi(object):
                 id (str): from url, provided from the location header in the Create and Run Axioma optimization endpoint
 
             Keyword Args:
-                x_fact_set_api_long_running_deadline (int): Long running deadline in seconds.. [optional]
+                x_fact_set_api_long_running_deadline (int): Long running deadline in seconds. Example value is set to 10s. Please update it as per requirement before triggering a calculation.. [optional]
                 cache_control (str): Standard HTTP header.  Accepts max-stale.. [optional]
                 axioma_equity_optimization_parameters_root (AxiomaEquityOptimizationParametersRoot): Optimization Parameters. [optional]
                 _return_http_data_only (bool): response data without head status

@@ -9,6 +9,8 @@ from fds.analyticsapi.engines.model.fi_job_settings import FIJobSettings
 from fds.analyticsapi.engines.model.fi_bank_loans import FIBankLoans
 from fds.analyticsapi.engines.model.fi_municipal_bonds import FIMunicipalBonds
 from fds.analyticsapi.engines.model.fi_municipal_bonds_for_job_settings import FIMunicipalBondsForJobSettings
+from fds.analyticsapi.engines.model.fi_attribution_for_securities import FIAttributionForSecurities
+from fds.analyticsapi.engines.model.fi_attribution_for_job_settings import FIAttributionForJobSettings
 
 import common_parameters
 from common_functions import CommonFunctions
@@ -45,7 +47,9 @@ class TestFICalculationsApi(unittest.TestCase):
                        discount_curve="UST",
                        face=10000.0,
                        bank_loans=FIBankLoans(ignore_sinking_fund=True),
-                       municipal_bonds=FIMunicipalBonds(ignore_sinking_fund=True)
+                       municipal_bonds=FIMunicipalBonds(ignore_sinking_fund=True),
+                       attribution=FIAttributionForSecurities(start_price=100.00, end_price=100.3668,
+                                                              pricing_method="Inputted Price")
                        ),
             FISecurity(calc_from_method="Price",
                        calc_from_value=101.138,
@@ -54,13 +58,16 @@ class TestFICalculationsApi(unittest.TestCase):
                        discount_curve="UST",
                        face=200000.0,
                        bank_loans=FIBankLoans(ignore_sinking_fund=True),
-                       municipal_bonds=FIMunicipalBonds(ignore_sinking_fund=True)
+                       municipal_bonds=FIMunicipalBonds(ignore_sinking_fund=True),
+                       attribution=FIAttributionForSecurities(start_price=100.00, end_price=100.3668,
+                                                              pricing_method="Inputted Price")
                        )
         ]
 
         jobSettings = FIJobSettings(as_of_date="20201201",
                                     bank_loans=FIBankLoans(ignore_sinking_fund=True),
-                                    municipal_bonds=FIMunicipalBondsForJobSettings(ignore_sinking_fund=True))
+                                    municipal_bonds=FIMunicipalBondsForJobSettings(ignore_sinking_fund=True),
+                                    attribution=FIAttributionForJobSettings(start_date="20210611", end_date="20210611"))
 
         fi_calculation_parameters = FICalculationParameters(
             securities, calculations, jobSettings)

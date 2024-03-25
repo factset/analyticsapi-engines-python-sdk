@@ -146,11 +146,13 @@ configuration = fds.analyticsapi.engines.Configuration(
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = vault_calculations_api.VaultCalculationsApi(api_client)
+    page_number = 1 # int |  (optional) if omitted the server will use the default value of 1
 
     # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Get all calculations
-        api_response = api_instance.get_all_calculations()
+        api_response = api_instance.get_all_calculations(page_number=page_number)
         pprint(api_response)
     except fds.analyticsapi.engines.ApiException as e:
         print("Exception when calling VaultCalculationsApi->get_all_calculations: %s\n" % e)
@@ -161,7 +163,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page_number** | **int**|  | defaults to 1
+ **page_number** | **int**|  | [optional] if omitted the server will use the default value of 1
 
 ### Return type
 
@@ -512,7 +514,7 @@ configuration = fds.analyticsapi.engines.Configuration(
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = vault_calculations_api.VaultCalculationsApi(api_client)
-    x_fact_set_api_long_running_deadline = 1 # int | Long running deadline in seconds when only one unit is passed in the POST body. (optional)
+    x_fact_set_api_long_running_deadline = 10 # int | Long running deadline in seconds when only one unit is passed in the POST body. Example value is set to 10s. Please update it as per requirement before triggering a calculation. (optional)
     cache_control = "Cache-Control_example" # str | Standard HTTP header.  Accepts max-stale. (optional)
     vault_calculation_parameters_root = VaultCalculationParametersRoot(
         data={
@@ -553,7 +555,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_fact_set_api_long_running_deadline** | **int**| Long running deadline in seconds when only one unit is passed in the POST body. | [optional]
+ **x_fact_set_api_long_running_deadline** | **int**| Long running deadline in seconds when only one unit is passed in the POST body. Example value is set to 10s. Please update it as per requirement before triggering a calculation. | [optional]
  **cache_control** | **str**| Standard HTTP header.  Accepts max-stale. | [optional]
  **vault_calculation_parameters_root** | [**VaultCalculationParametersRoot**](VaultCalculationParametersRoot.md)| Calculation Parameters | [optional]
 
@@ -636,7 +638,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = vault_calculations_api.VaultCalculationsApi(api_client)
     id = "id_example" # str | from url, provided from the location header in the Create and Run Vault calculation endpoint
-    x_fact_set_api_long_running_deadline = 1 # int | Long running deadline in seconds when only one unit is passed in the PUT body. (optional)
+    x_fact_set_api_long_running_deadline = 10 # int | Long running deadline in seconds when only one unit is passed in the PUT body. Example value is set to 10s. Please update it as per requirement before triggering a calculation. (optional)
     cache_control = "Cache-Control_example" # str | Standard HTTP header.  Accepts max-stale. (optional)
     vault_calculation_parameters_root = VaultCalculationParametersRoot(
         data={
@@ -686,7 +688,7 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| from url, provided from the location header in the Create and Run Vault calculation endpoint |
- **x_fact_set_api_long_running_deadline** | **int**| Long running deadline in seconds when only one unit is passed in the PUT body. | [optional]
+ **x_fact_set_api_long_running_deadline** | **int**| Long running deadline in seconds when only one unit is passed in the PUT body. Example value is set to 10s. Please update it as per requirement before triggering a calculation. | [optional]
  **cache_control** | **str**| Standard HTTP header.  Accepts max-stale. | [optional]
  **vault_calculation_parameters_root** | [**VaultCalculationParametersRoot**](VaultCalculationParametersRoot.md)| Calculation Parameters | [optional]
 
