@@ -95,6 +95,12 @@ class PACalculationParameters(ModelNormal):
             'columns': ([PACalculationColumn],),  # noqa: E501
             'datasources': (PACalculationDataSources,),  # noqa: E501
             'componentdetail': (str,),  # noqa: E501
+            'periodic_multipliers': ([float],),  # noqa: E501
+            'nperiodic_multipliers': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
+            'dhist_rcv_assump_rates': ([float], none_type,),  # noqa: E501
+            'ihist_rcv_assump_rates': ([int], none_type,),  # noqa: E501
+            'iperiodic_multipliers': ([int],),  # noqa: E501
+            'inperiodic_multipliers': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
         }
 
     @cached_property
@@ -112,6 +118,12 @@ class PACalculationParameters(ModelNormal):
         'columns': 'columns',  # noqa: E501
         'datasources': 'datasources',  # noqa: E501
         'componentdetail': 'componentdetail',  # noqa: E501
+        'periodic_multipliers': 'periodicMultipliers',  # noqa: E501
+        'nperiodic_multipliers': 'nperiodicMultipliers',  # noqa: E501
+        'dhist_rcv_assump_rates': 'dhistRcvAssumpRates',  # noqa: E501
+        'ihist_rcv_assump_rates': 'ihistRcvAssumpRates',  # noqa: E501
+        'iperiodic_multipliers': 'iperiodicMultipliers',  # noqa: E501
+        'inperiodic_multipliers': 'inperiodicMultipliers',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -171,6 +183,12 @@ class PACalculationParameters(ModelNormal):
             columns ([PACalculationColumn]): List of columns for the PA calculation. This will take precedence over the columns saved in the PA document.. [optional]  # noqa: E501
             datasources (PACalculationDataSources): [optional]  # noqa: E501
             componentdetail (str): Component detail type for the PA component. It can be GROUPS or TOTALS or SECURITIES.. [optional]  # noqa: E501
+            periodic_multipliers ([float]): [optional]  # noqa: E501
+            nperiodic_multipliers ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
+            dhist_rcv_assump_rates ([float], none_type): [optional]  # noqa: E501
+            ihist_rcv_assump_rates ([int], none_type): [optional]  # noqa: E501
+            iperiodic_multipliers ([int]): [optional]  # noqa: E501
+            inperiodic_multipliers ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

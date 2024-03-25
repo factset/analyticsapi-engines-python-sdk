@@ -564,6 +564,24 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                     useportfoliopricingsourcesforbenchmark=True,
                 ),
                 componentdetail="componentdetail_example",
+                periodic_multipliers=[
+                    3.14,
+                ],
+                nperiodic_multipliers=[
+                    None,
+                ],
+                dhist_rcv_assump_rates=[
+                    3.14,
+                ],
+                ihist_rcv_assump_rates=[
+                    1,
+                ],
+                iperiodic_multipliers=[
+                    1,
+                ],
+                inperiodic_multipliers=[
+                    None,
+                ],
             ),
         },
         meta=CalculationMeta(
@@ -724,6 +742,24 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                     useportfoliopricingsourcesforbenchmark=True,
                 ),
                 componentdetail="componentdetail_example",
+                periodic_multipliers=[
+                    3.14,
+                ],
+                nperiodic_multipliers=[
+                    None,
+                ],
+                dhist_rcv_assump_rates=[
+                    3.14,
+                ],
+                ihist_rcv_assump_rates=[
+                    1,
+                ],
+                iperiodic_multipliers=[
+                    1,
+                ],
+                inperiodic_multipliers=[
+                    None,
+                ],
             ),
         },
         meta=CalculationMeta(
