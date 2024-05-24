@@ -49,14 +49,14 @@ def main():
     pricingsources_api = PricingSourcesApi(api_client)
 
     try:
-        pa_document_name = "PA_DOCUMENTS:DEFAULT"
-        pa_component_name = "Weights"
-        pa_component_category = "Weights / Exposures"
-        portfolio = "BENCH:SP50"
-        benchmark = "BENCH:R.1000"
-        startdate = "20180101"
-        enddate = "20181231"
-        frequency = "Monthly"
+        pa_document_name = "pa3_documents:/pa_api_default_document-rbics"
+        pa_component_name = "Multiple Portfolios"
+        pa_component_category = "Exposures & Characteristics / Exposures & Characteristics"
+        portfolio = "LION:100D-GB"
+        benchmark = "LION:OEF-US"
+        startdate = ""
+        enddate = "20240508"
+        frequency = "Single"
         currency = "USD"
         holdings = "B&H"
         pricing_source_name = "MSCI - Gross"
