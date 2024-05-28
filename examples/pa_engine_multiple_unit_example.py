@@ -49,14 +49,17 @@ def main():
     pricingsources_api = PricingSourcesApi(api_client)
 
     try:
-        pa_document_name = "PA_DOCUMENTS:DEFAULT"
-        pa_component_name = "Weights"
-        pa_component_category = "Weights / Exposures"
-        portfolio = "BENCH:SP50"
-        benchmark = "BENCH:R.1000"
-        startdate = "20180101"
-        enddate = "20181231"
-        frequency = "Monthly"
+        pa_document_name = "pa3_documents:/pa_api_default_document-rbics"
+        pa_component_name = "Multiple Portfolios"
+        pa_component_category = "Exposures & Characteristics / Exposures & Characteristics"
+        portfolio1 = "LION:100D-GB"
+        portfolio2 = "LION:FXI-US"
+        benchmark = "LION:OEF-US"
+        startdate1 = "20240507"
+        startdate2 = "20240507"
+        enddate = "20240508"
+        frequency1 = "Single"
+        frequency2 = "Daily"
         holdings = "B&H"
         currency = "USD"
         pricing_source_name = "MSCI - Gross"
@@ -70,10 +73,14 @@ def main():
             get_components_response[0].data.keys()) if get_components_response[0].data[id].name == pa_component_name and
                         get_components_response[0].data[id].category == pa_component_category][0]
         print("PA Component Id: " + component_id)
-        pa_accounts = [PAIdentifier(id=portfolio, holdingsmode=holdings)]
+        pa_accounts1 = [PAIdentifier(id=portfolio1, holdingsmode=holdings)]
+        pa_accounts2 = [PAIdentifier(id=portfolio2, holdingsmode=holdings)]
         pa_benchmarks = [PAIdentifier(id=benchmark, holdingsmode=holdings)]
-        pa_dates = PADateParameters(
-            startdate=startdate, enddate=enddate, frequency=frequency)
+        pa_dates1 = PADateParameters(
+            startdate=startdate1, enddate=enddate, frequency=frequency1)
+
+        pa_dates2 = PADateParameters(
+            startdate=startdate2, enddate=enddate, frequency=frequency2)
 
         get_pricing_sources_response = pricingsources_api.get_pa_pricing_sources(name=pricing_source_name,
                                                                                  category=pricing_source_category,
@@ -91,11 +98,11 @@ def main():
         pa_datasources = PACalculationDataSources(portfoliopricingsources=pa_pricing_sources,
                                                   useportfoliopricingsourcesforbenchmark=True)
 
-        pa_calculation_parameters = {"1": PACalculationParameters(componentid=component_id, accounts=pa_accounts,
-                                                                  benchmarks=pa_benchmarks, dates=pa_dates,
+        pa_calculation_parameters = {"1": PACalculationParameters(componentid=component_id, accounts=pa_accounts1,
+                                                                  benchmarks=pa_benchmarks, dates=pa_dates1,
                                                                   currencyisocode=currency, datasources=pa_datasources),
-                                     "2": PACalculationParameters(componentid=component_id, accounts=pa_accounts,
-                                                                  benchmarks=pa_benchmarks, dates=pa_dates,
+                                     "2": PACalculationParameters(componentid=component_id, accounts=pa_accounts2,
+                                                                  benchmarks=pa_benchmarks, dates=pa_dates2,
                                                                   currencyisocode=currency, datasources=pa_datasources)}
 
         pa_calculation_parameter_root = PACalculationParametersRoot(
