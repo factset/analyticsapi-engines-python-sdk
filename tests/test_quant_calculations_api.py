@@ -13,6 +13,7 @@ from fds.analyticsapi.engines.model.quant_fds_date import QuantFdsDate
 from fds.analyticsapi.engines.model.quant_calculation_meta import QuantCalculationMeta
 from common_functions import CommonFunctions
 from api_workflow import run_api_workflow_with_assertions
+import common_parameters
 
 
 class TestQuantCalculationsApi(unittest.TestCase):
@@ -98,7 +99,8 @@ class TestQuantCalculationsApi(unittest.TestCase):
                     status_response[0].data.status in ("Queued", "Executing")))
 
             while status_response[1] == 202 and (status_response[0].data.status in ("Queued", "Executing")):
-                max_age = '5'
+                max_age = common_parameters.quant_max_age
+                print('max-age: ' + max_age)
                 age_value = status_response[2].get("cache-control")
                 if age_value is not None:
                     max_age = age_value.replace("max-age=", "")

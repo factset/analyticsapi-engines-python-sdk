@@ -32,3 +32,5 @@ default_end_date = "20181231"
 default_dates_frequency = "Monthly"
 default_dates_account = "CLIENT:/BISAM/REPOSITORY/QA/SMALL_PORT.ACCT"
 default_lookup_directory = "client:"
+# This is exclusively created for the quant tests to avoid frequent status calls
+quant_max_age = '5' if not os.getenv("QUANT_CUSTOM_MAX_AGE") else os.getenv("QUANT_CUSTOM_MAX_AGE")
