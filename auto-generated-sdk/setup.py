@@ -41,7 +41,7 @@ setup(
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,
     license="Apache License, Version 2.0",    
-    description="DEPRECATED: Use <https://pypi.org/search/?q=%22fds.sdk%22> instead.",
+    #description="DEPRECATED: Use <https://pypi.org/search/?q=%22fds.sdk%22> instead.",
     long_description="""\
     This package is deprecated. Please transition to <https://pypi.org/search/?q=%22fds.sdk%22>.
     """,
