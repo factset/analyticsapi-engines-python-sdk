@@ -1,19 +1,19 @@
 
-# fds.analyticsapi.engines.DatesApi
+# fds.analyticsapi.engines.VaultAttributionLoaderApi
 
 All URIs are relative to *https://api.factset.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**convert_vault_dates_to_absolute_format**](DatesApi.md#convert_vault_dates_to_absolute_format) | **GET** /analytics/engines/vault/v3/dates | Convert Vault dates to absolute format
+[**vault_attribution_loader**](VaultAttributionLoaderApi.md#vault_attribution_loader) | **POST** /analytics/engines/vault/v3/load/{batchId} | Vault - External Attribution Loader
 
 
-# **convert_vault_dates_to_absolute_format**
-> DateParametersSummaryRoot convert_vault_dates_to_absolute_format(enddate, componentid, account)
+# **vault_attribution_loader**
+> VaultAttributionLoaderResponseRoot vault_attribution_loader(batch_id)
 
-Convert Vault dates to absolute format
+Vault - External Attribution Loader
 
-This endpoint converts the given start and end dates in FactSet date format to yyyymmdd format for a Vault calculation. For more information on FactSet date format, please refer to the Vault API documentation under the 'API Documentation' section in the developer portal.
+This endpoint loads Vault External Attributions.
 
 ### Example
 
@@ -22,8 +22,8 @@ This endpoint converts the given start and end dates in FactSet date format to y
 ```python
 import time
 import fds.analyticsapi.engines
-from fds.analyticsapi.engines.api import dates_api
-from fds.analyticsapi.engines.model.date_parameters_summary_root import DateParametersSummaryRoot
+from fds.analyticsapi.engines.api import vault_attribution_loader_api
+from fds.analyticsapi.engines.model.vault_attribution_loader_response_root import VaultAttributionLoaderResponseRoot
 from fds.analyticsapi.engines.model.client_error_response import ClientErrorResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.factset.com
@@ -51,28 +51,26 @@ configuration = fds.analyticsapi.engines.Configuration(
 # Enter a context with an instance of the API client
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = dates_api.DatesApi(api_client)
-    enddate = "enddate_example" # str | End Date
-    componentid = "componentid_example" # str | Vault Component Id
-    account = "account_example" # str | Account
-    startdate = "startdate_example" # str | Start Date (optional)
+    api_instance = vault_attribution_loader_api.VaultAttributionLoaderApi(api_client)
+    batch_id = "batchId_example" # str | 
+    file = open('/path/to/file', 'rb') # file_type, none_type |  (optional)
 
     # example passing only required values which don't have defaults set
     try:
-        # Convert Vault dates to absolute format
-        api_response = api_instance.convert_vault_dates_to_absolute_format(enddate, componentid, account)
+        # Vault - External Attribution Loader
+        api_response = api_instance.vault_attribution_loader(batch_id)
         pprint(api_response)
     except fds.analyticsapi.engines.ApiException as e:
-        print("Exception when calling DatesApi->convert_vault_dates_to_absolute_format: %s\n" % e)
+        print("Exception when calling VaultAttributionLoaderApi->vault_attribution_loader: %s\n" % e)
 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        # Convert Vault dates to absolute format
-        api_response = api_instance.convert_vault_dates_to_absolute_format(enddate, componentid, account, startdate=startdate)
+        # Vault - External Attribution Loader
+        api_response = api_instance.vault_attribution_loader(batch_id, file=file)
         pprint(api_response)
     except fds.analyticsapi.engines.ApiException as e:
-        print("Exception when calling DatesApi->convert_vault_dates_to_absolute_format: %s\n" % e)
+        print("Exception when calling VaultAttributionLoaderApi->vault_attribution_loader: %s\n" % e)
 ```
 
 
@@ -80,15 +78,13 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **enddate** | **str**| End Date |
- **componentid** | **str**| Vault Component Id |
- **account** | **str**| Account |
- **startdate** | **str**| Start Date | [optional]
+ **batch_id** | **str**|  |
+ **file** | **file_type, none_type**|  | [optional]
 
 ### Return type
 
  - A tuple with response data, HTTP status code and response headers.
- - **Response datatype**: [**DateParametersSummaryRoot**](DateParametersSummaryRoot.md)
+ - **Response datatype**: [**VaultAttributionLoaderResponseRoot**](VaultAttributionLoaderResponseRoot.md)
 
 ### Authorization
 
@@ -96,16 +92,15 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Expected response, returns the converted dates in yyyymmdd format. |  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  * X-FactSet-Api-RateLimit-Limit - Number of allowed requests for the time window. <br>  * X-FactSet-Api-RateLimit-Remaining - Number of requests left for the time window. <br>  * X-FactSet-Api-RateLimit-Reset - Number of seconds remaining till rate limit resets. <br>  |
-**400** | Invalid query parameter or value is provided. |  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  * X-FactSet-Api-RateLimit-Limit - Number of allowed requests for the time window. <br>  * X-FactSet-Api-RateLimit-Remaining - Number of requests left for the time window. <br>  * X-FactSet-Api-RateLimit-Reset - Number of seconds remaining till rate limit resets. <br>  |
-**404** | vault Document or account not found. |  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  * X-FactSet-Api-RateLimit-Limit - Number of allowed requests for the time window. <br>  * X-FactSet-Api-RateLimit-Remaining - Number of requests left for the time window. <br>  * X-FactSet-Api-RateLimit-Reset - Number of seconds remaining till rate limit resets. <br>  |
+**200** | Expected response, returns a status of operation along with errors and warnings if found any. |  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  * X-FactSet-Api-RateLimit-Limit - Number of allowed requests for the time window. <br>  * X-FactSet-Api-RateLimit-Remaining - Number of requests left for the time window. <br>  * X-FactSet-Api-RateLimit-Reset - Number of seconds remaining till rate limit resets. <br>  |
+**400** | Bad Request |  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  * X-FactSet-Api-RateLimit-Limit - Number of allowed requests for the time window. <br>  * X-FactSet-Api-RateLimit-Remaining - Number of requests left for the time window. <br>  * X-FactSet-Api-RateLimit-Reset - Number of seconds remaining till rate limit resets. <br>  |
 **401** | Missing or invalid authentication. |  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  |
 **403** | User is forbidden with current credentials |  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  * X-FactSet-Api-RateLimit-Limit - Number of allowed requests for the time window. <br>  * X-FactSet-Api-RateLimit-Remaining - Number of requests left for the time window. <br>  * X-FactSet-Api-RateLimit-Reset - Number of seconds remaining till rate limit resets. <br>  |
 **406** | Unsupported Accept header. Header needs to be set to application/json. |  * X-DataDirect-Request-Key - FactSet&#39;s request key header. <br>  * X-FactSet-Api-Request-Key - Key to uniquely identify an Analytics API request. Only available after successful authentication. <br>  * X-FactSet-Api-RateLimit-Limit - Number of allowed requests for the time window. <br>  * X-FactSet-Api-RateLimit-Remaining - Number of requests left for the time window. <br>  * X-FactSet-Api-RateLimit-Reset - Number of seconds remaining till rate limit resets. <br>  |

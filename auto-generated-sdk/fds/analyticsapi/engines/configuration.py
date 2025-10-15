@@ -409,7 +409,7 @@ conf = fds.analyticsapi.engines.Configuration(
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: v3:[pa,spar,vault,pub,quant,fi,axp,afi,npo,bpm,fpo,others],v1:[fiab]\n"\
-               "SDK Package Version: 6.0.0".\
+               "SDK Package Version: 6.1.0-rc.1".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self):

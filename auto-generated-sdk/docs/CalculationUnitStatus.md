@@ -1,5 +1,6 @@
 # CalculationUnitStatus
 
+The status of the calculation as per FactSets API standards
 
 ## Properties
 Name | Type | Description | Notes

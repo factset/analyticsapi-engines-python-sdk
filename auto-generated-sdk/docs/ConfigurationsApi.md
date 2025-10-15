@@ -53,7 +53,7 @@ configuration = fds.analyticsapi.engines.Configuration(
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = configurations_api.ConfigurationsApi(api_client)
-    id = "id_example" # str | Vault configuration id to get the details of
+    id = "e95ef921-b4d4-4bb7-93ba-60eca8e3247a" # str | Vault configuration id to get the details of
 
     # example passing only required values which don't have defaults set
     try:
@@ -145,7 +145,7 @@ configuration = fds.analyticsapi.engines.Configuration(
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = configurations_api.ConfigurationsApi(api_client)
-    account = "account_example" # str | Required account query parameter to filter configurations for a specific account
+    account = "CLIENT:/MAC/DEMO/DEMO_PS_EQ_EM_COUNTRY_ALPHA.ACCT" # str | Required account query parameter to filter configurations for a specific account
 
     # example passing only required values which don't have defaults set
     try:
