@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: text/plain, application/json, text/json
 
 
 ### HTTP response details
@@ -536,7 +536,6 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                     startdate="startdate_example",
                     enddate="enddate_example",
                     frequency="frequency_example",
-                    useeachportfolioinception=True,
                 ),
                 currencyisocode="currencyisocode_example",
             ),
@@ -669,7 +668,6 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                     startdate="startdate_example",
                     enddate="enddate_example",
                     frequency="frequency_example",
-                    useeachportfolioinception=True,
                 ),
                 currencyisocode="currencyisocode_example",
             ),

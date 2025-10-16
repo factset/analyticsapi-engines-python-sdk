@@ -152,7 +152,9 @@ class FICalculationsApi(object):
             },
             headers_map={
                 'accept': [
-                    'application/json'
+                    'text/plain',
+                    'application/json',
+                    'text/json'
                 ],
                 'content_type': [],
             },

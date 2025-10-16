@@ -1,6 +1,5 @@
 # Currency
 
-Details of the currency.
 
 ## Properties
 Name | Type | Description | Notes

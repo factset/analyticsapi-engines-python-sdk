@@ -153,7 +153,9 @@ class TemplatedPAComponentsApi(object):
             },
             headers_map={
                 'accept': [
-                    'application/json'
+                    'text/plain',
+                    'application/json',
+                    'text/json'
                 ],
                 'content_type': [
                     'application/json'
@@ -275,7 +277,9 @@ class TemplatedPAComponentsApi(object):
             },
             headers_map={
                 'accept': [
-                    'application/json'
+                    'text/plain',
+                    'application/json',
+                    'text/json'
                 ],
                 'content_type': [],
             },

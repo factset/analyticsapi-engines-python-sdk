@@ -1,6 +1,5 @@
 # AccountDirectories
 
-List of the accounts and directories.
 
 ## Properties
 Name | Type | Description | Notes

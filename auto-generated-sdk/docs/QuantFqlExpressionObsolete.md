@@ -1,11 +1,13 @@
-# VaultAttributionLoaderResponseRoot
+# QuantFqlExpressionObsolete
 
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**VaultAttributionLoaderResponse**](VaultAttributionLoaderResponse.md) |  | 
-**meta** | **bool, date, datetime, dict, float, int, list, str, none_type** |  | [optional] 
+**expr** | **str** |  | 
+**name** | **str** |  | 
+**date_offset** | **str** |  | [optional] 
+**is_array_return_type** | **bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

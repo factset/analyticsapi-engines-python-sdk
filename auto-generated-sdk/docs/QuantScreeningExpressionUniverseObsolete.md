@@ -1,11 +1,13 @@
-# PACommentaryParametersRoot
+# QuantScreeningExpressionUniverseObsolete
 
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**PACommentaryParameters**](PACommentaryParameters.md) |  | 
-**meta** | **bool, date, datetime, dict, float, int, list, str, none_type** |  | [optional] 
+**universe_expr** | **str** |  | 
+**universe_type** | **str** |  | 
+**security_expr** | **str** |  | [optional] 
+**source** | **str** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

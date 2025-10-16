@@ -1,6 +1,5 @@
 # CalculationUnitStatusMeta
 
-Meta of the calculation unit.
 
 ## Properties
 Name | Type | Description | Notes

@@ -152,7 +152,9 @@ class PubCalculationsApi(object):
             },
             headers_map={
                 'accept': [
-                    'application/json'
+                    'text/plain',
+                    'application/json',
+                    'text/json'
                 ],
                 'content_type': [],
             },
@@ -636,9 +638,9 @@ class PubCalculationsApi(object):
             },
             headers_map={
                 'accept': [
-                    'application/pdf',
-                    'application/vnd.openxmlformats-officedocument.presentationml.presentation',
-                    'application/json'
+                    'application/json',
+                    'application/x-protobuf',
+                    'application/pdf'
                 ],
                 'content_type': [],
             },
@@ -685,7 +687,7 @@ class PubCalculationsApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                (For 200 status - CalculationStatusRoot)(For 201 status - File)(For 202 status - CalculationStatusRoot)
+                (For 202 status - CalculationStatusRoot)(For 200 status - CalculationStatusRoot)(For 201 status - File)
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -712,7 +714,7 @@ class PubCalculationsApi(object):
 
         self.post_and_calculate = _Endpoint(
             settings={
-                'response_type': dict({ 200:(CalculationStatusRoot,), 201:(file_type,), 202:(CalculationStatusRoot,),  }),
+                'response_type': dict({ 202:(CalculationStatusRoot,), 200:(CalculationStatusRoot,), 201:(file_type,),  }),
                 'auth': [
                     'Basic',
                     'Bearer'
@@ -763,7 +765,6 @@ class PubCalculationsApi(object):
             },
             headers_map={
                 'accept': [
-                    'application/json',
                     'application/pdf',
                     'application/vnd.openxmlformats-officedocument.presentationml.presentation'
                 ],
@@ -817,7 +818,7 @@ class PubCalculationsApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                (For 200 status - CalculationStatusRoot)(For 201 status - File)(For 202 status - CalculationStatusRoot)
+                (For 202 status - CalculationStatusRoot)(For 200 status - CalculationStatusRoot)(For 201 status - File)
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -846,7 +847,7 @@ class PubCalculationsApi(object):
 
         self.put_and_calculate = _Endpoint(
             settings={
-                'response_type': dict({ 200:(CalculationStatusRoot,), 201:(file_type,), 202:(CalculationStatusRoot,),  }),
+                'response_type': dict({ 202:(CalculationStatusRoot,), 200:(CalculationStatusRoot,), 201:(file_type,),  }),
                 'auth': [
                     'Basic',
                     'Bearer'
@@ -904,9 +905,7 @@ class PubCalculationsApi(object):
             },
             headers_map={
                 'accept': [
-                    'application/json',
-                    'application/pdf',
-                    'application/vnd.openxmlformats-officedocument.presentationml.presentation'
+                    'application/pdf'
                 ],
                 'content_type': [
                     'application/json'

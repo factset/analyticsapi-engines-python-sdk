@@ -1,10 +1,12 @@
-# PACommentaryParameters
+# QuantIdentifierUniverseObsolete
 
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**configurationid** | **str** | Commentary configuration id | [optional] 
+**universe_type** | **str** |  | 
+**identifiers** | **[str]** |  | 
+**source** | **str** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

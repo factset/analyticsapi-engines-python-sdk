@@ -1,6 +1,5 @@
 # CalculationStatus
 
-Details of the calculation.
 
 ## Properties
 Name | Type | Description | Notes

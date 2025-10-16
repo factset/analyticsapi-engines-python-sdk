@@ -425,7 +425,7 @@ configuration = fds.analyticsapi.engines.Configuration(
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = components_api.ComponentsApi(api_client)
-    id = "AFB43C61A6651B87988FEA62ED333638595AE7D8D7345A33AB9994CF23AFCC5D" # str | Unique identifier for a vault component
+    id = "id_example" # str | Unique identifier for a vault component
 
     # example passing only required values which don't have defaults set
     try:
@@ -517,7 +517,7 @@ configuration = fds.analyticsapi.engines.Configuration(
 with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = components_api.ComponentsApi(api_client)
-    document = "CLIENT:/MAC/DEMO/DEMO_PS_EQ_EM_COUNTRY_ALPHA.ACCT" # str | Document Name
+    document = "document_example" # str | Document Name
 
     # example passing only required values which don't have defaults set
     try:

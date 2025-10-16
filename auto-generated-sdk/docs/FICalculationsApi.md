@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: text/plain, application/json, text/json
 
 
 ### HTTP response details
@@ -484,14 +484,6 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                         end_spread=3.14,
                         pricing_method="Inputted Price",
                     ),
-                    convertible=FIConvertibleSettings(
-                        equity_price=3.14,
-                        equity_index_volatility=3.14,
-                        equity_dividend_yield=3.14,
-                        volatility_cap_method="noCap",
-                        volatility_cap_method_value=3.14,
-                        equity_exchange_rate=3.14,
-                    ),
                     calc_from_method="calc_from_method_example",
                     calc_from_value=3.14,
                     face=1,
@@ -722,14 +714,6 @@ with fds.analyticsapi.engines.ApiClient(configuration) as api_client:
                         start_spread=3.14,
                         end_spread=3.14,
                         pricing_method="Inputted Price",
-                    ),
-                    convertible=FIConvertibleSettings(
-                        equity_price=3.14,
-                        equity_index_volatility=3.14,
-                        equity_dividend_yield=3.14,
-                        volatility_cap_method="noCap",
-                        volatility_cap_method_value=3.14,
-                        equity_exchange_rate=3.14,
                     ),
                     calc_from_method="calc_from_method_example",
                     calc_from_value=3.14,

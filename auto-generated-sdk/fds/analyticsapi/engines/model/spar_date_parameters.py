@@ -76,7 +76,6 @@ class SPARDateParameters(ModelNormal):
             'startdate': (str,),  # noqa: E501
             'enddate': (str,),  # noqa: E501
             'frequency': (str,),  # noqa: E501
-            'useeachportfolioinception': (bool,),  # noqa: E501
         }
 
     @cached_property
@@ -88,7 +87,6 @@ class SPARDateParameters(ModelNormal):
         'startdate': 'startdate',  # noqa: E501
         'enddate': 'enddate',  # noqa: E501
         'frequency': 'frequency',  # noqa: E501
-        'useeachportfolioinception': 'useeachportfolioinception',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -142,7 +140,6 @@ class SPARDateParameters(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            useeachportfolioinception (bool): Use Each Portfolio Inception. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

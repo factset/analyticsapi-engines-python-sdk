@@ -136,7 +136,7 @@ class CalculationStatusMeta(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            units ({str: (CalculationUnitStatusMeta,)}): List of calculation units in batch.. [optional]  # noqa: E501
+            units ({str: (CalculationUnitStatusMeta,)}): Meta of calculation units in batch.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
