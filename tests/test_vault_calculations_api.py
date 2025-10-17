@@ -30,16 +30,17 @@ class TestVaultCalculationsApi(unittest.TestCase):
         def create_calculation(test_context):
             print("Creating single unit calculation")
             components = self.components_api.get_vault_components(
-                document="Client:/aapi/VAULT_QA_PI_DEFAULT_LOCKED",
+                document="CLIENT:/YETI/YETI-API-TEST",
                 _return_http_data_only=True)
             component_summary = ComponentSummary(
-                name="Total Returns", category="Performance / Performance Relative Dates")
+                name="7D-Returns", category="General / 7D")
+
             component_id = [id for id in list(
                 components.data.keys()) if components.data[id] == component_summary][0]
-            account = "CLIENT:/BISAM/REPOSITORY/QA/SMALL_PORT.ACCT"
+            account = "CLIENT:/YETI/YETI-API-TEST.ACCT"
             vault_account = VaultIdentifier(id=account)
             vault_dates = VaultDateParameters(
-                startdate="20180101", enddate="20180329", frequency="Monthly")
+                startdate="20211231", enddate="20220131", frequency="Monthly")
 
             configurations = self.configurations_api.get_vault_configurations(
                 account,
