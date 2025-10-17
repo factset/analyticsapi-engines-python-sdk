@@ -106,6 +106,7 @@ class TestLinkedPaTemplatesApi(unittest.TestCase):
         )
 
         self.assertEqual(response[1], 204, "Response should be 204 - Success")
+        
 
 if __name__ == '__main__':
     unittest.main()
