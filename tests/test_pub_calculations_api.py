@@ -27,7 +27,7 @@ class TestPubCalculationsApi(unittest.TestCase):
             pub_account = PubIdentifier(id="Client:DOMESTIC_2.ACCT")
             pub_dates = PubDateParameters(startdate="20180101", enddate="20180331")
 
-            pub_calculation_parameters = {"1": PubCalculationParameters(document="Client:/AAPI/Puma Test Doc.Pub_bridge_pdf",
+            pub_calculation_parameters = {"1": PubCalculationParameters(document="Client:/AAPI/Puma Narrative Test.PUB_BRIDGE_PDF",
                 account=pub_account, dates=pub_dates)}
 
             pub_calculation_parameter_root = PubCalculationParametersRoot(
