@@ -6,6 +6,9 @@
 [![PyPi](https://img.shields.io/pypi/v/fds.analyticsapi.engines)](https://pypi.org/project/fds.analyticsapi.engines/)
 ![API version](https://img.shields.io/badge/API-v2-blue)
 [![Apache-2 license](https://img.shields.io/badge/license-Apache2-brightgreen.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+![Deprecated](https://img.shields.io/badge/status-deprecated-red)
+
+*```**Note: This library is no longer maintained and is deprecated. Please use``` [enterprise-sdk](https://github.com/FactSet/enterprise-sdk) ```instead.```*
 
 Use this library to integrate with FactSet's Analytics APIs. Below APIs are supported by this SDK.
 

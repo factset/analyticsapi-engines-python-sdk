@@ -98,7 +98,7 @@ class TestComponentsApi(unittest.TestCase):
 
     def test_get_spar_component_by_id(self):
         response = self.components_api.get_spar_components(
-            document=common_parameters.spar_default_document,
+            document=common_parameters.spar_account,
             _return_http_data_only=False
         )
         component_id = list(response[0]['data'].keys())[0]
