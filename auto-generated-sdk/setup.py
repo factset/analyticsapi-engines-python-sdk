@@ -42,6 +42,6 @@ setup(
     include_package_data=True,
     license="Apache License, Version 2.0",
     long_description="""\
-    Allow clients to fetch Analytics through APIs.  # noqa: E501
+    This package is deprecated. Please use <https://pypi.org/search/?q=%22fds.sdk%22> instead.
     """
 )

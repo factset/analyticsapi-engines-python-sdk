@@ -1,3 +1,6 @@
+## 🚨 THIS PACKAGE IS DEPRECATED!
+Please use <https://pypi.org/search/?q=%22fds.sdk%22> instead.
+
 # fds.analyticsapi.engines
 Allow clients to fetch Analytics through APIs.
 
