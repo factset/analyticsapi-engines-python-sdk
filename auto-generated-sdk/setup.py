@@ -14,7 +14,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "fds.analyticsapi.engines"
-VERSION = "6.0.0"
+VERSION = "6.1.0"
 # To install the library, run the following
 #
 # python setup.py install
@@ -40,8 +40,12 @@ setup(
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,
-    license="Apache License, Version 2.0",
+    license="Apache License, Version 2.0",    
+    #description="DEPRECATED: Use <https://pypi.org/search/?q=%22fds.sdk%22> instead.",
     long_description="""\
-    Allow clients to fetch Analytics through APIs.  # noqa: E501
-    """
+    This package is deprecated. Please transition to <https://pypi.org/search/?q=%22fds.sdk%22>.
+    """,
+    classifiers=[
+        "Development Status :: 7 - Inactive"
+    ],
 )
