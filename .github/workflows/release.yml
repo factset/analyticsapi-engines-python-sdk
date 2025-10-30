@@ -5,8 +5,11 @@ env:
   PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
 
 on:
-  release:
-    types: [ published ]
+  workflow_dispatch:
+
+# on:
+#   release:
+#     types: [ published ]
 
 jobs:
   build:
