@@ -8,7 +8,8 @@
 [![Apache-2 license](https://img.shields.io/badge/license-Apache2-brightgreen.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 ![Deprecated](https://img.shields.io/badge/status-deprecated-red)
 
-*```**Note: The Analytics SDK will be deprecated effective 31-Aug-2026. While we intend to provide limited security fixes till 31-Aug-2026, this SDK will be archived thereafter and will no longer receive updates or security patches. Please migrate to our Enterprise SDK, which is the long-term supported solution from FactSet. Please choose the appropriate API-specific Enterprise SDK from these search results: [enterprise-sdk](https://github.com/factset/enterprise-sdk/tree/main/code/python).```*
+*```**Note: The Analytics SDK will be deprecated effective 31-Aug-2026. While we intend to provide limited security fixes till 31-Aug-2026, this SDK will be archived thereafter and will no longer receive updates or security patches. Please migrate to our Enterprise SDK, which is the long-term supported solution from FactSet. Please choose the appropriate API-specific Enterprise SDK from these search results:```
+[enterprise-sdk](https://github.com/factset/enterprise-sdk/tree/main/code/python)*
 
 Use this library to integrate with FactSet's Analytics APIs. Below APIs are supported by this SDK.
 
