@@ -27,7 +27,7 @@ from fds.analyticsapi.engines.model.currency_root import CurrencyRoot
 import warnings
 
 warnings.warn(
-    "This library is deprecated. Please use <https://pypi.org/search/?q=%22fds.sdk%22> instead.",
+    "The Analytics SDK will be deprecated effective 31-Aug-2026. While we intend to provide limited security fixes till 31-Aug-2026, this SDK will be archived thereafter and will no longer receive updates or security patches. Please migrate to our Enterprise SDK, which is the long-term supported solution from FactSet. Please choose the appropriate API-specific Enterprise SDK from these search results: [enterprise-sdk](https://pypi.org/search/?q=%22fds.sdk%22)",
     DeprecationWarning
 )
 

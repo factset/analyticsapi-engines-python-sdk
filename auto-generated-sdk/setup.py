@@ -14,7 +14,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "fds_analyticsapi_engines"
-VERSION = "6.1.0"
+VERSION = "6.1.1"
 # To install the library, run the following
 #
 # python setup.py install
@@ -42,6 +42,6 @@ setup(
     include_package_data=True,
     license="Apache License, Version 2.0",
     long_description="""\
-    This package is deprecated. Please use <https://pypi.org/search/?q=%22fds.sdk%22> instead.
+    The Analytics SDK will be deprecated effective 31-Aug-2026. While we intend to provide limited security fixes till 31-Aug-2026, this SDK will be archived thereafter and will no longer receive updates or security patches. Please migrate to our Enterprise SDK, which is the long-term supported solution from FactSet. Please choose the appropriate API-specific Enterprise SDK from these search results: [enterprise-sdk](https://pypi.org/search/?q=%22fds.sdk%22).
     """
 )
