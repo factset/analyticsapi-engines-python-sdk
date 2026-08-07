@@ -18,11 +18,26 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Check deprecation date
+      run: |
+        DEPRECATION_DATE="2026-08-31"
+        CURRENT_DATE=$(date +%Y-%m-%d)
+
+        if [[ "$CURRENT_DATE" > "$DEPRECATION_DATE" ]]; then
+          echo "ERROR: SDK deprecation date has passed ($DEPRECATION_DATE)"
+          echo "Publishing to PyPI is disabled after the deprecation date."
+          exit 1
+        fi
+
+        DAYS_REMAINING=$(( ($(date -d "$DEPRECATION_DATE" +%s) - $(date +%s)) / 86400 ))
+        echo "Days until deprecation: $DAYS_REMAINING"
+        echo "Publishing allowed"
+
     - name: Set up Python 3.10.0
       uses: actions/setup-python@v4
       with:
         python-version: '3.10'
-    
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
